@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Srinidhi Bhat — UI/UX Designer & Visual Storyteller</title>
+  <meta name="description" content="Srinidhi Bhat is a UI/UX and graphic designer from Goa, India — crafting bold interfaces, brands, posters and stories. Open for freelance.">
+  <meta property="og:title" content="Srinidhi Bhat — UI/UX Designer">
+  <meta property="og:description" content="Bold interfaces, brands & stories. Open for freelance.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b0b0c">
+  <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-name">
+      <span class="pl-letter">S</span><span class="pl-letter">R</span><span class="pl-letter">I</span><span class="pl-letter">N</span><span class="pl-letter">I</span><span class="pl-letter">D</span><span class="pl-letter">H</span><span class="pl-letter">I</span>
+    </div>
+    <div class="preloader-count" id="preloaderCount">0</div>
+  </div>
+
+  <!-- Custom cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
+
+  <!-- Grain -->
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Nav ===== -->
+  <header class="nav" id="nav">
+    <a class="nav-logo" href="#top" data-cursor="hover">SB<sup>©</sup></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work" data-cursor="hover">Work</a>
+      <a href="#craft" data-cursor="hover">Craft</a>
+      <a href="#about" data-cursor="hover">About</a>
+      <a href="#contact" data-cursor="hover">Contact</a>
+    </nav>
+    <a class="nav-status" href="#contact" data-cursor="hover">
+      <span class="status-dot"></span>Open for freelance
+    </a>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <!-- Mobile menu -->
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <nav aria-label="Mobile">
+      <a href="#work">Work</a>
+      <a href="#craft">Craft</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="mobile-menu-foot">
+      <a href="mailto:srinidhibhat45@gmail.com">srinidhibhat45@gmail.com</a>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="hero">
+      <div class="hero-stage">
+        <h1 class="hero-name" aria-label="Srinidhi Bhat">
+          <span class="hero-line hero-line-1"><span class="hw">SRINIDHI</span></span>
+          <span class="hero-line hero-line-2"><span class="hw">BHAT</span><span class="hero-star">✦</span></span>
+        </h1>
+        <div class="hero-portrait" id="heroPortrait">
+          <img src="assets/img/profile.png" alt="Portrait of Srinidhi Bhat" fetchpriority="high">
+        </div>
+      </div>
+
+      <div class="hero-meta">
+        <p class="hero-role"><span>UI/UX Designer</span><span class="hero-amp">&</span><span>Visual Storyteller</span></p>
+        <p class="hero-loc">Based in Goa, India — designing for everywhere</p>
+      </div>
+
+      <a class="hero-badge" href="#contact" aria-label="Open for freelance — let's talk" data-cursor="hover">
+        <svg viewBox="0 0 120 120" width="120" height="120">
+          <defs><path id="circlePath" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"></path></defs>
+          <text><textPath href="#circlePath">OPEN FOR FREELANCE ✦ LET'S TALK ✦ </textPath></text>
+        </svg>
+        <span class="hero-badge-arrow">↓</span>
+      </a>
+
+      <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><span class="hero-scroll-line"></span></div>
+    </section>
+
+    <!-- ===== Marquee ===== -->
+    <div class="marquee-band" aria-hidden="true">
+      <div class="marquee-track" data-marquee>
+        <span>UI/UX Design ✦ Brand Identity ✦ Posters ✦ Logos ✦ Presentations ✦ Mock-ups ✦ Low-poly Art ✦&nbsp;</span><span>UI/UX Design ✦ Brand Identity ✦ Posters ✦ Logos ✦ Presentations ✦ Mock-ups ✦ Low-poly Art ✦&nbsp;</span>
+      </div>
+    </div>
+
+    <!-- ===== Manifesto / intro statement ===== -->
+    <section class="manifesto" id="about">
+      <p class="manifesto-kicker" data-reveal>( The human behind the pixels )</p>
+      <h2 class="manifesto-text" data-split>
+        I design interfaces people feel, brands people remember, and stories people carry home. Pixels are my medium — curiosity is the engine.
+      </h2>
+      <div class="stats" data-reveal>
+        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">+</span><span class="stat-label">Projects shipped</span></div>
+        <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-plus">+</span><span class="stat-label">Years designing</span></div>
+        <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-plus"></span><span class="stat-label">Case studies below</span></div>
+        <div class="stat"><span class="stat-num stat-inf">∞</span><span class="stat-plus"></span><span class="stat-label">Iterations, happily</span></div>
+      </div>
+    </section>
+
+    <!-- ===== Selected Work ===== -->
+    <section class="work" id="work">
+      <div class="section-head">
+        <h2 class="section-title" data-split>Selected<br><em>Work</em></h2>
+        <p class="section-note" data-reveal>Ten case studies — product design, landing pages & brand concepts.<br>Every row opens the full PDF deep-dive. ↗</p>
+      </div>
+
+      <ul class="work-list" id="workList">
+        <li><a class="work-row" href="assets/pdfs/onespace.pdf" target="_blank" rel="noopener" data-thumb="assets/work/onespace.png">
+          <span class="work-idx">01</span>
+          <span class="work-title">OneSpace</span>
+          <span class="work-tags">Product Design · Ed-tech</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/onespace.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/umatter.pdf" target="_blank" rel="noopener" data-thumb="assets/work/umatter.png">
+          <span class="work-idx">02</span>
+          <span class="work-title">uMatter</span>
+          <span class="work-tags">Mobile App · Design Challenge</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/umatter.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/mucoin.pdf" target="_blank" rel="noopener" data-thumb="assets/work/mucoin.png">
+          <span class="work-idx">03</span>
+          <span class="work-title">MuCoin</span>
+          <span class="work-tags">Fintech · Onboarding UX</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/mucoin.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/gmd.pdf" target="_blank" rel="noopener" data-thumb="assets/work/gmd.png">
+          <span class="work-idx">04</span>
+          <span class="work-title">GetMetaData</span>
+          <span class="work-tags">Web Extension · Material UI</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/gmd.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/steve-wilson.pdf" target="_blank" rel="noopener" data-thumb="assets/work/swportfolio.png">
+          <span class="work-idx">05</span>
+          <span class="work-title">Steve Wilson</span>
+          <span class="work-tags">Portfolio · Minimal Concept</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/swportfolio.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/gloria-furniture.pdf" target="_blank" rel="noopener" data-thumb="assets/work/gloriafurniture.png">
+          <span class="work-idx">06</span>
+          <span class="work-title">Gloria Furniture</span>
+          <span class="work-tags">Landing Page · E-commerce</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/gloriafurniture.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/fun-cruises.pdf" target="_blank" rel="noopener" data-thumb="assets/work/funcruises.png">
+          <span class="work-idx">07</span>
+          <span class="work-title">Fun Cruises Goa</span>
+          <span class="work-tags">Landing Page · Redesign</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/funcruises.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/bni-website.pdf" target="_blank" rel="noopener" data-thumb="assets/work/bniwebsite.png">
+          <span class="work-idx">08</span>
+          <span class="work-title">BNI Goa</span>
+          <span class="work-tags">Landing Page · Redesign</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/bniwebsite.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/irctc.pdf" target="_blank" rel="noopener" data-thumb="assets/work/irctc.png">
+          <span class="work-idx">09</span>
+          <span class="work-title">IRCTC</span>
+          <span class="work-tags">Landing Page · Redesign</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/irctc.png" alt="" loading="lazy">
+        </a></li>
+        <li><a class="work-row" href="assets/pdfs/nityananda.pdf" target="_blank" rel="noopener" data-thumb="assets/work/nityananda.png">
+          <span class="work-idx">10</span>
+          <span class="work-title">Nitya Nanda</span>
+          <span class="work-tags">Photographer Portfolio · Concept</span>
+          <span class="work-arrow">↗</span>
+          <img class="work-thumb-inline" src="assets/work/nityananda.png" alt="" loading="lazy">
+        </a></li>
+      </ul>
+
+      <div class="work-float" id="workFloat" aria-hidden="true"><img src="" alt="" id="workFloatImg"></div>
+    </section>
+
+    <!-- ===== Craft / gallery ===== -->
+    <section class="craft" id="craft">
+      <div class="craft-head">
+        <h2 class="section-title" data-split>The Poster<br><em>Wall</em></h2>
+        <p class="section-note" data-reveal>Posters, logos & visual experiments — drag or scroll sideways.<br>Tap any piece to see it full size.</p>
+      </div>
+      <div class="craft-viewport" id="craftViewport">
+        <div class="craft-track" id="craftTrack">
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster11.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item"><img src="assets/gallery/poster1.jpg" alt="Shri's Podcast branding" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster3.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo1.png" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item is-wide"><img src="assets/gallery/poster5.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster12.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/minimal2.jpg" alt="Minimalist artwork" loading="lazy"></figure>
+          <figure class="craft-item"><img src="assets/gallery/logo2.png" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster4.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-wide"><img src="assets/gallery/poster6.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo5.jpg" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster9.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item"><img src="assets/gallery/minimal1.jpg" alt="Minimalist artwork" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/poster2.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-wide"><img src="assets/gallery/poster7.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo9.jpg" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster13.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo10.jpg" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item"><img src="assets/gallery/minimal3.jpg" alt="Minimalist artwork" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo16.jpg" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item is-wide"><img src="assets/gallery/poster8.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo11.jpg" alt="Logo design" loading="lazy"></figure>
+          <figure class="craft-item"><img src="assets/gallery/minimal4.jpg" alt="Minimalist artwork" loading="lazy"></figure>
+          <figure class="craft-item is-tall"><img src="assets/gallery/poster10.jpg" alt="Poster design" loading="lazy"></figure>
+          <figure class="craft-item is-square"><img src="assets/gallery/logo3.png" alt="Logo design" loading="lazy"></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Experience ===== -->
+    <section class="xp" id="experience">
+      <div class="section-head">
+        <h2 class="section-title" data-split>Where I've<br><em>Been</em></h2>
+        <p class="section-note" data-reveal>The road so far — design, leadership & the occasional detour.</p>
+      </div>
+      <ul class="xp-list">
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2024 — Now</span>
+          <span class="xp-what"><strong>UI/UX Designer</strong><em>Genora Infotech</em></span>
+          <span class="xp-note">Leading design & ideation for Genora and Goan Narrative — from iteration to developer handoff.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2021 — 2024</span>
+          <span class="xp-what"><strong>UI/UX Designer & Outreach Lead</strong><em>Linktopus</em></span>
+          <span class="xp-note">Product design & outreach at an early-stage startup. 25%+ lift in engagement and sales.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2022</span>
+          <span class="xp-what"><strong>Software Intern</strong><em>Persistent Systems</em></span>
+          <span class="xp-note">Chatbot development with Azure pipelines, Python & Java — plus QA automation training.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2021 — 2022</span>
+          <span class="xp-what"><strong>Chapter Lead & Design Intern</strong><em>GirlScript</em></span>
+          <span class="xp-note">Led the Ponda chapter; designed posters and social media visuals for GirlScript India.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2021</span>
+          <span class="xp-what"><strong>Mentor — Public Speaking</strong><em>The Uplift Project</em></span>
+          <span class="xp-note">Mentored 40+ students in public speaking & storytelling across 100 days.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- ===== Services ===== -->
+    <section class="services" id="services">
+      <div class="section-head">
+        <h2 class="section-title" data-split>What I<br><em>Do</em></h2>
+        <p class="section-note" data-reveal>Hire me for one thing or the whole brand universe.</p>
+      </div>
+      <ul class="svc-list">
+        <li class="svc-row" data-reveal><span class="svc-idx">S.01</span><span class="svc-name">UI/UX Design</span><span class="svc-desc">Research → wireframes → hi-fi prototypes → handoff</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.02</span><span class="svc-name">Brand & Logo</span><span class="svc-desc">Identities that survive a squint test at 16px</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.03</span><span class="svc-name">Posters & Print</span><span class="svc-desc">Loud, print-ready, occasionally framed by clients</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.04</span><span class="svc-name">Presentations</span><span class="svc-desc">Decks that keep the back row awake</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.05</span><span class="svc-name">Mock-ups</span><span class="svc-desc">Product shots ready to publish anywhere</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.06</span><span class="svc-name">Low-poly Portraits</span><span class="svc-desc">You, but geometric — a signature side-craft</span></li>
+      </ul>
+    </section>
+
+    <!-- ===== Contact ===== -->
+    <section class="contact" id="contact">
+      <p class="contact-kicker" data-reveal>( Got an idea? I've got pixels )</p>
+      <h2 class="contact-title" data-split>LET'S MAKE SOMETHING LOUD</h2>
+      <a class="contact-mail" href="mailto:srinidhibhat45@gmail.com" data-cursor="hover" data-magnetic>
+        srinidhibhat45@gmail.com <span>↗</span>
+      </a>
+      <div class="contact-links" data-reveal>
+        <a href="https://www.linkedin.com/in/bhatsrinidhi" target="_blank" rel="noopener" data-cursor="hover">LinkedIn</a>
+        <a href="https://www.instagram.com/shrxnxdhx" target="_blank" rel="noopener" data-cursor="hover">Instagram</a>
+        <a href="https://www.github.com/srinidhibhat45" target="_blank" rel="noopener" data-cursor="hover">GitHub</a>
+        <a href="https://srinidhi-blogs.netlify.app" target="_blank" rel="noopener" data-cursor="hover">Blog</a>
+        <a href="https://www.buymeacoffee.com/srinidhibhat" target="_blank" rel="noopener" data-cursor="hover">Coffee</a>
+        <a href="assets/pdfs/srinidhi-bhat-resume.pdf" target="_blank" rel="noopener" data-cursor="hover">Résumé ↓</a>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span>© 2026 Srinidhi Bhat</span>
+      <span class="footer-time">Goa, IN — <span id="localTime">--:--</span></span>
+      <span>Designed & built with obsession</span>
+    </footer>
+
+  </main>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <img src="" alt="Artwork enlarged" id="lightboxImg">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
