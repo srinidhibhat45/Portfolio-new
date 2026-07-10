@@ -4,16 +4,16 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Srinidhi Bhat — UI/UX Designer & Visual Storyteller</title>
-  <meta name="description" content="Srinidhi Bhat is a UI/UX and graphic designer from Goa, India — crafting bold interfaces, brands, posters and stories. Open for freelance.">
+  <meta name="description" content="Srinidhi Bhat — UI/UX and graphic designer from Goa, India. Interfaces people feel, brands people remember, stories people carry home. Open for freelance.">
   <meta property="og:title" content="Srinidhi Bhat — UI/UX Designer">
-  <meta property="og:description" content="Bold interfaces, brands & stories. Open for freelance.">
+  <meta property="og:description" content="Interfaces, brands & stories, designed from Goa. Open for freelance.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#0b0b0c">
+  <meta name="theme-color" content="#17140f">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
   <script>document.documentElement.classList.add('js');</script>
@@ -22,10 +22,11 @@
 
   <!-- Preloader -->
   <div class="preloader" id="preloader" aria-hidden="true">
-    <div class="preloader-name">
-      <span class="pl-letter">S</span><span class="pl-letter">R</span><span class="pl-letter">I</span><span class="pl-letter">N</span><span class="pl-letter">I</span><span class="pl-letter">D</span><span class="pl-letter">H</span><span class="pl-letter">I</span>
+    <div class="preloader-inner">
+      <div class="preloader-name" id="preloaderName">Srinidhi Bhat</div>
+      <div class="preloader-bar"><span id="preloaderFill"></span></div>
     </div>
-    <div class="preloader-count" id="preloaderCount">0</div>
+    <div class="preloader-count" id="preloaderCount">00</div>
   </div>
 
   <!-- Custom cursor -->
@@ -36,12 +37,12 @@
 
   <!-- ===== Nav ===== -->
   <header class="nav" id="nav">
-    <a class="nav-logo" href="#top" data-cursor="hover">SB<sup>©</sup></a>
+    <a class="nav-logo" href="#top" data-cursor="hover">Srinidhi<span>®</span></a>
     <nav class="nav-links" aria-label="Primary">
-      <a href="#work" data-cursor="hover">Work</a>
-      <a href="#craft" data-cursor="hover">Craft</a>
-      <a href="#about" data-cursor="hover">About</a>
-      <a href="#contact" data-cursor="hover">Contact</a>
+      <a href="#work" data-cursor="hover"><span>Work</span></a>
+      <a href="#gallery" data-cursor="hover"><span>Craft</span></a>
+      <a href="#about" data-cursor="hover"><span>About</span></a>
+      <a href="#contact" data-cursor="hover"><span>Contact</span></a>
     </nav>
     <a class="nav-status" href="#contact" data-cursor="hover">
       <span class="status-dot"></span>Open for freelance
@@ -55,7 +56,7 @@
   <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
     <nav aria-label="Mobile">
       <a href="#work">Work</a>
-      <a href="#craft">Craft</a>
+      <a href="#gallery">Craft</a>
       <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -68,218 +69,236 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero" id="hero">
-      <div class="hero-stage">
-        <h1 class="hero-name" aria-label="Srinidhi Bhat">
-          <span class="hero-line hero-line-1"><span class="hw">SRINIDHI</span></span>
-          <span class="hero-line hero-line-2"><span class="hw">BHAT</span><span class="hero-star">✦</span></span>
-        </h1>
-        <div class="hero-portrait" id="heroPortrait">
-          <img src="assets/img/profile.png" alt="Portrait of Srinidhi Bhat" fetchpriority="high">
+      <span class="hero-bgword" aria-hidden="true">Design</span>
+      <div class="hero-glow" aria-hidden="true"></div>
+
+      <div class="hero-grid">
+        <div class="hero-lead">
+          <p class="hero-eyebrow"><span>Portfolio — Vol. 02</span><span>Goa · India</span></p>
+          <h1 class="hero-name" aria-label="Srinidhi Bhat">
+            <span class="hn-1">Srinidhi</span>
+            <span class="hn-2"><em>Bhat</em><span class="hero-ast">✻</span></span>
+          </h1>
+          <p class="hero-role">UI/UX Designer &amp; Visual Storyteller</p>
+        </div>
+
+        <div class="hero-figure" id="heroFigure">
+          <img class="hero-echo" src="assets/img/hero-echo.png" alt="" aria-hidden="true">
+          <img class="hero-cut" src="assets/img/hero.png" alt="Srinidhi Bhat" fetchpriority="high">
+        </div>
+
+        <div class="hero-bio">
+          <p>I design interfaces people <em>feel</em>, brands people remember, and stories people carry home — currently shaping products at Genora Infotech.</p>
+          <a class="hero-cta" href="#work" data-cursor="hover" data-magnetic>
+            <span>See selected work</span>
+            <span class="hero-cta-ico">↓</span>
+          </a>
         </div>
       </div>
 
-      <div class="hero-meta">
-        <p class="hero-role"><span>UI/UX Designer</span><span class="hero-amp">&</span><span>Visual Storyteller</span></p>
-        <p class="hero-loc">Based in Goa, India — designing for everywhere</p>
-      </div>
-
-      <a class="hero-badge" href="#contact" aria-label="Open for freelance — let's talk" data-cursor="hover">
-        <svg viewBox="0 0 120 120" width="120" height="120">
-          <defs><path id="circlePath" d="M 60,60 m -46,0 a 46,46 0 1,1 92,0 a 46,46 0 1,1 -92,0"></path></defs>
-          <text><textPath href="#circlePath">OPEN FOR FREELANCE ✦ LET'S TALK ✦ </textPath></text>
+      <a class="hero-seal" href="#contact" aria-label="Open for freelance — let's talk" data-cursor="hover">
+        <svg viewBox="0 0 120 120" width="118" height="118">
+          <defs><path id="sealPath" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"></path></defs>
+          <text><textPath href="#sealPath">✦ OPEN FOR FREELANCE ✦ LET'S TALK </textPath></text>
         </svg>
-        <span class="hero-badge-arrow">↓</span>
+        <span class="hero-seal-ico">↗</span>
       </a>
 
-      <div class="hero-scroll" aria-hidden="true"><span>Scroll</span><span class="hero-scroll-line"></span></div>
+      <div class="hero-foot">
+        <span class="hero-coords">15.42°N / 73.98°E</span>
+        <span class="hero-scroll"><span class="hero-scroll-line"></span>Scroll to explore</span>
+        <span class="hero-clock">Goa — <span id="heroTime">--:--</span></span>
+      </div>
     </section>
 
-    <!-- ===== Marquee ===== -->
-    <div class="marquee-band" aria-hidden="true">
-      <div class="marquee-track" data-marquee>
-        <span>UI/UX Design ✦ Brand Identity ✦ Posters ✦ Logos ✦ Presentations ✦ Mock-ups ✦ Low-poly Art ✦&nbsp;</span><span>UI/UX Design ✦ Brand Identity ✦ Posters ✦ Logos ✦ Presentations ✦ Mock-ups ✦ Low-poly Art ✦&nbsp;</span>
+    <!-- ===== Ticker ===== -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track" data-marquee>
+        <span>UI/UX Design<i>✦</i>Brand Identity<i>✦</i>Posters<i>✦</i>Logos<i>✦</i>Presentations<i>✦</i>Mock-ups<i>✦</i>Low-poly Portraits<i>✦</i></span>
+        <span>UI/UX Design<i>✦</i>Brand Identity<i>✦</i>Posters<i>✦</i>Logos<i>✦</i>Presentations<i>✦</i>Mock-ups<i>✦</i>Low-poly Portraits<i>✦</i></span>
       </div>
     </div>
 
-    <!-- ===== Manifesto / intro statement ===== -->
-    <section class="manifesto" id="about">
-      <p class="manifesto-kicker" data-reveal>( The human behind the pixels )</p>
-      <h2 class="manifesto-text" data-split>
-        I design interfaces people feel, brands people remember, and stories people carry home. Pixels are my medium — curiosity is the engine.
-      </h2>
-      <div class="stats" data-reveal>
-        <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">+</span><span class="stat-label">Projects shipped</span></div>
-        <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-plus">+</span><span class="stat-label">Years designing</span></div>
-        <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-plus"></span><span class="stat-label">Case studies below</span></div>
-        <div class="stat"><span class="stat-num stat-inf">∞</span><span class="stat-plus"></span><span class="stat-label">Iterations, happily</span></div>
+    <!-- ===== About (cream editorial panel) ===== -->
+    <section class="about" id="about">
+      <div class="about-inner">
+        <div class="about-head">
+          <p class="kicker kicker-ink" data-reveal>( The human behind the pixels )</p>
+          <p class="about-sign" data-reveal>Est. Corlim, Goa</p>
+        </div>
+        <h2 class="about-statement" data-split>
+          Four years turning research, pixels and a stubborn eye for detail into products that feel effortless — and brands that refuse to be forgotten.
+        </h2>
+        <div class="about-foot">
+          <div class="stats">
+            <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">+</span><span class="stat-label">Projects shipped</span></div>
+            <div class="stat"><span class="stat-num" data-count="4">0</span><span class="stat-plus">+</span><span class="stat-label">Years designing</span></div>
+            <div class="stat"><span class="stat-num" data-count="10">0</span><span class="stat-label">Case studies</span></div>
+            <div class="stat"><span class="stat-num stat-inf">∞</span><span class="stat-label">Iterations, happily</span></div>
+          </div>
+          <p class="about-note" data-reveal>Design that works for people who don't think about design at all. Research-led, detail-obsessed, endlessly curious.</p>
+        </div>
       </div>
     </section>
 
-    <!-- ===== Selected Work ===== -->
+    <!-- ===== Selected Work (cards) ===== -->
     <section class="work" id="work">
       <div class="section-head">
-        <h2 class="section-title" data-split>Selected<br><em>Work</em></h2>
-        <p class="section-note" data-reveal>Ten case studies — product design, landing pages & brand concepts.<br>Every row opens the full PDF deep-dive. ↗</p>
-      </div>
-
-      <ul class="work-list" id="workList">
-        <li><a class="work-row" href="assets/pdfs/onespace.pdf" target="_blank" rel="noopener" data-thumb="assets/work/onespace.png">
-          <span class="work-idx">01</span>
-          <span class="work-title">OneSpace</span>
-          <span class="work-tags">Product Design · Ed-tech</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/onespace.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/umatter.pdf" target="_blank" rel="noopener" data-thumb="assets/work/umatter.png">
-          <span class="work-idx">02</span>
-          <span class="work-title">uMatter</span>
-          <span class="work-tags">Mobile App · Design Challenge</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/umatter.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/mucoin.pdf" target="_blank" rel="noopener" data-thumb="assets/work/mucoin.png">
-          <span class="work-idx">03</span>
-          <span class="work-title">MuCoin</span>
-          <span class="work-tags">Fintech · Onboarding UX</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/mucoin.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/gmd.pdf" target="_blank" rel="noopener" data-thumb="assets/work/gmd.png">
-          <span class="work-idx">04</span>
-          <span class="work-title">GetMetaData</span>
-          <span class="work-tags">Web Extension · Material UI</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/gmd.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/steve-wilson.pdf" target="_blank" rel="noopener" data-thumb="assets/work/swportfolio.png">
-          <span class="work-idx">05</span>
-          <span class="work-title">Steve Wilson</span>
-          <span class="work-tags">Portfolio · Minimal Concept</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/swportfolio.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/gloria-furniture.pdf" target="_blank" rel="noopener" data-thumb="assets/work/gloriafurniture.png">
-          <span class="work-idx">06</span>
-          <span class="work-title">Gloria Furniture</span>
-          <span class="work-tags">Landing Page · E-commerce</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/gloriafurniture.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/fun-cruises.pdf" target="_blank" rel="noopener" data-thumb="assets/work/funcruises.png">
-          <span class="work-idx">07</span>
-          <span class="work-title">Fun Cruises Goa</span>
-          <span class="work-tags">Landing Page · Redesign</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/funcruises.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/bni-website.pdf" target="_blank" rel="noopener" data-thumb="assets/work/bniwebsite.png">
-          <span class="work-idx">08</span>
-          <span class="work-title">BNI Goa</span>
-          <span class="work-tags">Landing Page · Redesign</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/bniwebsite.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/irctc.pdf" target="_blank" rel="noopener" data-thumb="assets/work/irctc.png">
-          <span class="work-idx">09</span>
-          <span class="work-title">IRCTC</span>
-          <span class="work-tags">Landing Page · Redesign</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/irctc.png" alt="" loading="lazy">
-        </a></li>
-        <li><a class="work-row" href="assets/pdfs/nityananda.pdf" target="_blank" rel="noopener" data-thumb="assets/work/nityananda.png">
-          <span class="work-idx">10</span>
-          <span class="work-title">Nitya Nanda</span>
-          <span class="work-tags">Photographer Portfolio · Concept</span>
-          <span class="work-arrow">↗</span>
-          <img class="work-thumb-inline" src="assets/work/nityananda.png" alt="" loading="lazy">
-        </a></li>
-      </ul>
-
-      <div class="work-float" id="workFloat" aria-hidden="true"><img src="" alt="" id="workFloatImg"></div>
-    </section>
-
-    <!-- ===== Craft / gallery ===== -->
-    <section class="craft" id="craft">
-      <div class="craft-head">
-        <h2 class="section-title" data-split>The Poster<br><em>Wall</em></h2>
-        <p class="section-note" data-reveal>Posters, logos & visual experiments — drag or scroll sideways.<br>Tap any piece to see it full size.</p>
-      </div>
-      <div class="craft-viewport" id="craftViewport">
-        <div class="craft-track" id="craftTrack">
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster11.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item"><img src="assets/gallery/poster1.jpg" alt="Shri's Podcast branding" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster3.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo1.png" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item is-wide"><img src="assets/gallery/poster5.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster12.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/minimal2.jpg" alt="Minimalist artwork" loading="lazy"></figure>
-          <figure class="craft-item"><img src="assets/gallery/logo2.png" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster4.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-wide"><img src="assets/gallery/poster6.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo5.jpg" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster9.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item"><img src="assets/gallery/minimal1.jpg" alt="Minimalist artwork" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/poster2.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-wide"><img src="assets/gallery/poster7.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo9.jpg" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster13.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo10.jpg" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item"><img src="assets/gallery/minimal3.jpg" alt="Minimalist artwork" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo16.jpg" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item is-wide"><img src="assets/gallery/poster8.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo11.jpg" alt="Logo design" loading="lazy"></figure>
-          <figure class="craft-item"><img src="assets/gallery/minimal4.jpg" alt="Minimalist artwork" loading="lazy"></figure>
-          <figure class="craft-item is-tall"><img src="assets/gallery/poster10.jpg" alt="Poster design" loading="lazy"></figure>
-          <figure class="craft-item is-square"><img src="assets/gallery/logo3.png" alt="Logo design" loading="lazy"></figure>
+        <div>
+          <p class="kicker" data-reveal>( Selected work — 01 / 10 )</p>
+          <h2 class="section-title" data-split>Selected <em>Work</em></h2>
         </div>
+        <p class="section-note" data-reveal>Ten case studies across product design, landing pages &amp; brand concepts. Each card opens the full PDF deep-dive. ↗</p>
+      </div>
+
+      <div class="cards" id="cards">
+        <a class="card" href="assets/pdfs/onespace.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">01</span><img src="assets/work/onespace.png" alt="OneSpace" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>OneSpace</h3><span class="card-tags">Product Design · Ed-tech</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/umatter.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">02</span><img src="assets/work/umatter.png" alt="uMatter" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>uMatter</h3><span class="card-tags">Mobile App · Design Challenge</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/mucoin.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">03</span><img src="assets/work/mucoin.png" alt="MuCoin" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>MuCoin</h3><span class="card-tags">Fintech · Onboarding UX</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/gmd.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">04</span><img src="assets/work/gmd.png" alt="GetMetaData" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>GetMetaData</h3><span class="card-tags">Web Extension · Material UI</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/steve-wilson.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">05</span><img src="assets/work/swportfolio.png" alt="Steve Wilson" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>Steve Wilson</h3><span class="card-tags">Portfolio · Minimal Concept</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/gloria-furniture.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">06</span><img src="assets/work/gloriafurniture.png" alt="Gloria Furniture" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>Gloria Furniture</h3><span class="card-tags">Landing Page · E-commerce</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/fun-cruises.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">07</span><img src="assets/work/funcruises.png" alt="Fun Cruises Goa" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>Fun Cruises Goa</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/bni-website.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">08</span><img src="assets/work/bniwebsite.png" alt="BNI Goa" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>BNI Goa</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/irctc.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">09</span><img src="assets/work/irctc.png" alt="IRCTC" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>IRCTC</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
+        <a class="card" href="assets/pdfs/nityananda.pdf" target="_blank" rel="noopener" data-cursor="view">
+          <div class="card-media"><span class="card-num">10</span><img src="assets/work/nityananda.png" alt="Nitya Nanda" loading="lazy"></div>
+          <div class="card-body"><div class="card-titles"><h3>Nitya Nanda</h3><span class="card-tags">Photographer Portfolio · Concept</span></div><span class="card-cta">Open ↗</span></div>
+        </a>
       </div>
     </section>
 
     <!-- ===== Experience ===== -->
     <section class="xp" id="experience">
       <div class="section-head">
-        <h2 class="section-title" data-split>Where I've<br><em>Been</em></h2>
-        <p class="section-note" data-reveal>The road so far — design, leadership & the occasional detour.</p>
+        <div>
+          <p class="kicker" data-reveal>( The road so far )</p>
+          <h2 class="section-title" data-split>Where I've <em>Been</em></h2>
+        </div>
+        <p class="section-note" data-reveal>Design, leadership &amp; the occasional detour — from startups to mentorship.</p>
       </div>
       <ul class="xp-list">
         <li class="xp-row" data-reveal>
           <span class="xp-when">2024 — Now</span>
           <span class="xp-what"><strong>UI/UX Designer</strong><em>Genora Infotech</em></span>
-          <span class="xp-note">Leading design & ideation for Genora and Goan Narrative — from iteration to developer handoff.</span>
+          <span class="xp-note">Leading design &amp; ideation for Genora and Goan Narrative — from iteration to developer handoff.</span>
         </li>
         <li class="xp-row" data-reveal>
           <span class="xp-when">2021 — 2024</span>
-          <span class="xp-what"><strong>UI/UX Designer & Outreach Lead</strong><em>Linktopus</em></span>
-          <span class="xp-note">Product design & outreach at an early-stage startup. 25%+ lift in engagement and sales.</span>
+          <span class="xp-what"><strong>UI/UX Designer &amp; Outreach Lead</strong><em>Linktopus</em></span>
+          <span class="xp-note">Product design &amp; outreach at an early-stage startup. 25%+ lift in engagement and sales.</span>
         </li>
         <li class="xp-row" data-reveal>
           <span class="xp-when">2022</span>
           <span class="xp-what"><strong>Software Intern</strong><em>Persistent Systems</em></span>
-          <span class="xp-note">Chatbot development with Azure pipelines, Python & Java — plus QA automation training.</span>
+          <span class="xp-note">Chatbot development with Azure pipelines, Python &amp; Java — plus QA automation training.</span>
         </li>
         <li class="xp-row" data-reveal>
           <span class="xp-when">2021 — 2022</span>
-          <span class="xp-what"><strong>Chapter Lead & Design Intern</strong><em>GirlScript</em></span>
+          <span class="xp-what"><strong>Chapter Lead &amp; Design Intern</strong><em>GirlScript</em></span>
           <span class="xp-note">Led the Ponda chapter; designed posters and social media visuals for GirlScript India.</span>
         </li>
         <li class="xp-row" data-reveal>
           <span class="xp-when">2021</span>
           <span class="xp-what"><strong>Mentor — Public Speaking</strong><em>The Uplift Project</em></span>
-          <span class="xp-note">Mentored 40+ students in public speaking & storytelling across 100 days.</span>
+          <span class="xp-note">Mentored 40+ students in public speaking &amp; storytelling across 100 days.</span>
         </li>
       </ul>
+    </section>
+
+    <!-- ===== Gallery collage ===== -->
+    <section class="gallery" id="gallery">
+      <div class="section-head">
+        <div>
+          <p class="kicker" data-reveal>( Posters, logos &amp; experiments )</p>
+          <h2 class="section-title" data-split>The Craft <em>Wall</em></h2>
+        </div>
+        <p class="section-note" data-reveal>A wall of visual work — always moving. Tap any piece to see it full size.</p>
+      </div>
+
+      <div class="collage" id="collage">
+        <div class="collage-row" data-speed="34" data-dir="1">
+          <div class="collage-set">
+            <figure class="gi"><img src="assets/gallery/poster11.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster1.jpg" alt="Shri's Podcast" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo1.png" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster3.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster5.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/minimal2.jpg" alt="Minimal art" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo2.png" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster12.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo5.jpg" alt="Logo" loading="lazy"></figure>
+          </div>
+        </div>
+        <div class="collage-row" data-speed="30" data-dir="-1">
+          <div class="collage-set">
+            <figure class="gi"><img src="assets/gallery/poster7.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster9.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo9.jpg" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/minimal1.jpg" alt="Minimal art" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster2.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster13.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo10.jpg" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster6.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo16.jpg" alt="Logo" loading="lazy"></figure>
+          </div>
+        </div>
+        <div class="collage-row" data-speed="38" data-dir="1">
+          <div class="collage-set">
+            <figure class="gi"><img src="assets/gallery/poster4.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/minimal3.jpg" alt="Minimal art" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster8.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo11.jpg" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/poster10.jpg" alt="Poster" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/minimal4.jpg" alt="Minimal art" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo3.png" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo17.jpg" alt="Logo" loading="lazy"></figure>
+            <figure class="gi"><img src="assets/gallery/logo13.jpg" alt="Logo" loading="lazy"></figure>
+          </div>
+        </div>
+      </div>
     </section>
 
     <!-- ===== Services ===== -->
     <section class="services" id="services">
       <div class="section-head">
-        <h2 class="section-title" data-split>What I<br><em>Do</em></h2>
-        <p class="section-note" data-reveal>Hire me for one thing or the whole brand universe.</p>
+        <div>
+          <p class="kicker" data-reveal>( How I can help )</p>
+          <h2 class="section-title" data-split>What I <em>Do</em></h2>
+        </div>
+        <p class="section-note" data-reveal>Hire me for one thing — or the whole brand universe.</p>
       </div>
       <ul class="svc-list">
         <li class="svc-row" data-reveal><span class="svc-idx">S.01</span><span class="svc-name">UI/UX Design</span><span class="svc-desc">Research → wireframes → hi-fi prototypes → handoff</span></li>
-        <li class="svc-row" data-reveal><span class="svc-idx">S.02</span><span class="svc-name">Brand & Logo</span><span class="svc-desc">Identities that survive a squint test at 16px</span></li>
-        <li class="svc-row" data-reveal><span class="svc-idx">S.03</span><span class="svc-name">Posters & Print</span><span class="svc-desc">Loud, print-ready, occasionally framed by clients</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.02</span><span class="svc-name">Brand &amp; Logo</span><span class="svc-desc">Identities that survive a squint test at 16px</span></li>
+        <li class="svc-row" data-reveal><span class="svc-idx">S.03</span><span class="svc-name">Posters &amp; Print</span><span class="svc-desc">Loud, print-ready, occasionally framed by clients</span></li>
         <li class="svc-row" data-reveal><span class="svc-idx">S.04</span><span class="svc-name">Presentations</span><span class="svc-desc">Decks that keep the back row awake</span></li>
         <li class="svc-row" data-reveal><span class="svc-idx">S.05</span><span class="svc-name">Mock-ups</span><span class="svc-desc">Product shots ready to publish anywhere</span></li>
         <li class="svc-row" data-reveal><span class="svc-idx">S.06</span><span class="svc-name">Low-poly Portraits</span><span class="svc-desc">You, but geometric — a signature side-craft</span></li>
@@ -288,17 +307,16 @@
 
     <!-- ===== Contact ===== -->
     <section class="contact" id="contact">
-      <p class="contact-kicker" data-reveal>( Got an idea? I've got pixels )</p>
-      <h2 class="contact-title" data-split>LET'S MAKE SOMETHING LOUD</h2>
+      <p class="kicker contact-kicker" data-reveal>( Got an idea? I've got pixels )</p>
+      <h2 class="contact-title" data-split>Let's make something <em>unforgettable</em></h2>
       <a class="contact-mail" href="mailto:srinidhibhat45@gmail.com" data-cursor="hover" data-magnetic>
-        srinidhibhat45@gmail.com <span>↗</span>
+        <span>srinidhibhat45@gmail.com</span> <span class="contact-mail-ico">↗</span>
       </a>
       <div class="contact-links" data-reveal>
         <a href="https://www.linkedin.com/in/bhatsrinidhi" target="_blank" rel="noopener" data-cursor="hover">LinkedIn</a>
         <a href="https://www.instagram.com/shrxnxdhx" target="_blank" rel="noopener" data-cursor="hover">Instagram</a>
         <a href="https://www.github.com/srinidhibhat45" target="_blank" rel="noopener" data-cursor="hover">GitHub</a>
         <a href="https://srinidhi-blogs.netlify.app" target="_blank" rel="noopener" data-cursor="hover">Blog</a>
-        <a href="https://www.buymeacoffee.com/srinidhibhat" target="_blank" rel="noopener" data-cursor="hover">Coffee</a>
         <a href="assets/pdfs/srinidhi-bhat-resume.pdf" target="_blank" rel="noopener" data-cursor="hover">Résumé ↓</a>
       </div>
     </section>
@@ -306,7 +324,7 @@
     <footer class="footer">
       <span>© 2026 Srinidhi Bhat</span>
       <span class="footer-time">Goa, IN — <span id="localTime">--:--</span></span>
-      <span>Designed & built with obsession</span>
+      <span>Designed &amp; built with obsession</span>
     </footer>
 
   </main>
