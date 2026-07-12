@@ -8,7 +8,7 @@
   <meta property="og:title" content="Srinidhi Bhat — UI/UX Designer">
   <meta property="og:description" content="Interfaces, brands & stories, designed from Goa. Open for freelance.">
   <meta property="og:type" content="website">
-  <meta name="theme-color" content="#17140f">
+  <meta name="theme-color" content="#f6f4ef">
   <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,7 +16,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add('js');</script>
+  <script>
+    document.documentElement.classList.add('js');
+    try {
+      var savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+    } catch (e) {}
+  </script>
 </head>
 <body>
 
@@ -32,6 +38,9 @@
   <!-- Custom cursor -->
   <div class="cursor" id="cursor" aria-hidden="true"><span class="cursor-label" id="cursorLabel"></span></div>
 
+  <!-- Card hover preview (first 3 case-study pages, follows cursor) -->
+  <div class="card-preview" id="cardPreview" aria-hidden="true"></div>
+
   <!-- Grain -->
   <div class="grain" aria-hidden="true"></div>
 
@@ -44,9 +53,10 @@
       <a href="#about" data-cursor="hover"><span>About</span></a>
       <a href="#contact" data-cursor="hover"><span>Contact</span></a>
     </nav>
-    <a class="nav-status" href="#contact" data-cursor="hover">
-      <span class="status-dot"></span>Open for freelance
-    </a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark mode" data-cursor="hover">
+      <svg class="theme-toggle-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.6M12 18.9v2.6M4.4 4.4l1.8 1.8M17.8 17.8l1.8 1.8M2.5 12h2.6M18.9 12h2.6M4.4 19.6l1.8-1.8M17.8 6.2l1.8-1.8"/></svg>
+      <svg class="theme-toggle-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 14.7A8.5 8.5 0 1 1 9.3 3.6a7 7 0 0 0 11.1 11.1Z"/></svg>
+    </button>
     <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -69,12 +79,17 @@
 
     <!-- ===== Hero ===== -->
     <section class="hero" id="hero">
-      <span class="hero-bgword" aria-hidden="true">Design</span>
-      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-bg" aria-hidden="true">
+        <span class="hero-orb hero-orb-1"></span>
+        <span class="hero-orb hero-orb-2"></span>
+        <span class="hero-mesh"></span>
+        <span class="hero-scan"></span>
+      </div>
 
+      <div class="hero-inner">
       <div class="hero-grid">
         <div class="hero-lead">
-          <p class="hero-eyebrow"><span>Portfolio — Vol. 02</span><span>Goa · India</span></p>
+          <p class="hero-eyebrow"><span>UI/UX &amp; Brand Design</span><span>Goa · India</span></p>
           <h1 class="hero-name" aria-label="Srinidhi Bhat">
             <span class="hn-1">Srinidhi</span>
             <span class="hn-2"><em>Bhat</em><span class="hero-ast">✻</span></span>
@@ -83,31 +98,82 @@
         </div>
 
         <div class="hero-figure" id="heroFigure">
-          <img class="hero-echo" src="assets/img/hero-echo.png" alt="" aria-hidden="true">
           <img class="hero-cut" src="assets/img/hero.png" alt="Srinidhi Bhat" fetchpriority="high">
         </div>
 
         <div class="hero-bio">
-          <p>I design interfaces people <em>feel</em>, brands people remember, and stories people carry home — currently shaping products at Genora Infotech.</p>
-          <a class="hero-cta" href="#work" data-cursor="hover" data-magnetic>
-            <span>See selected work</span>
-            <span class="hero-cta-ico">↓</span>
-          </a>
+          <p>I design interfaces people <em>feel</em>, brands people remember, and stories people carry home — currently crafting experiences for the maritime industry at OneOcean.</p>
+          <div class="hero-bio-ctas">
+            <a class="hero-cta" href="#work" data-cursor="hover" data-magnetic>
+              <span>See selected work</span>
+              <span class="hero-cta-ico">↓</span>
+            </a>
+            <a class="hero-seal" href="#contact" aria-label="Open for freelance — let's talk" data-cursor="hover">
+              <svg viewBox="0 0 120 120" width="86" height="86">
+                <defs><path id="sealPath" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"></path></defs>
+                <text><textPath href="#sealPath">✦ OPEN FOR FREELANCE ✦ LET'S TALK </textPath></text>
+              </svg>
+              <span class="hero-seal-ico">↗</span>
+            </a>
+          </div>
+          <div class="hero-socials" aria-label="Social links">
+            <a href="https://www.instagram.com/shrxnxdhx" target="_blank" rel="noopener" aria-label="Instagram" data-cursor="hover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/bhatsrinidhi" target="_blank" rel="noopener" aria-label="LinkedIn" data-cursor="hover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><line x1="7.5" y1="10.3" x2="7.5" y2="16.5"/><circle cx="7.5" cy="7.2" r="0.15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/><path d="M11 16.5v-3.6c0-1.4 1-2.4 2.2-2.4 1.2 0 2 .9 2 2.4v3.6"/></svg>
+            </a>
+            <a href="https://www.github.com/srinidhibhat45" target="_blank" rel="noopener" aria-label="GitHub" data-cursor="hover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2a10 10 0 0 0-3.16 19.5c.5.1.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.68-.1-.25-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02a9.6 9.6 0 0 1 5 0c1.91-1.3 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.66.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2Z"/></svg>
+            </a>
+          </div>
         </div>
       </div>
 
-      <a class="hero-seal" href="#contact" aria-label="Open for freelance — let's talk" data-cursor="hover">
-        <svg viewBox="0 0 120 120" width="118" height="118">
-          <defs><path id="sealPath" d="M 60,60 m -44,0 a 44,44 0 1,1 88,0 a 44,44 0 1,1 -88,0"></path></defs>
-          <text><textPath href="#sealPath">✦ OPEN FOR FREELANCE ✦ LET'S TALK </textPath></text>
+      <div class="hero-notes" aria-hidden="false">
+        <a class="note note-1" href="assets/pdfs/srinidhi-bhat-resume.pdf" target="_blank" rel="noopener" data-cursor="hover">
+          <span class="note-label">Psst, recruiter?</span>
+          <span class="note-body">Grab the résumé before you scroll past.</span>
+          <span class="note-cta">Get it here <span aria-hidden="true">↓</span></span>
+        </a>
+        <svg class="note-arrow arrow-1" viewBox="0 0 150 90" aria-hidden="true">
+          <defs><marker id="ah1" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path class="note-arrow-head" d="M0.5,0.5 L8.5,4.5 L0.5,8.5 Z"/></marker></defs>
+          <path d="M4,8 C 60,2 110,30 138,64" marker-end="url(#ah1)"/>
         </svg>
-        <span class="hero-seal-ico">↗</span>
-      </a>
+
+        <a class="note note-2" href="https://arkitype.vercel.app/" target="_blank" rel="noopener" data-cursor="hover">
+          <span class="note-label">Right now</span>
+          <span class="note-body">Building <em>Arkitype</em> — a design system you can bend without touching Figma.</span>
+          <span class="note-cta">Peek at it <span aria-hidden="true">↗</span></span>
+        </a>
+        <svg class="note-arrow arrow-2" viewBox="0 0 210 70" aria-hidden="true">
+          <defs><marker id="ah2" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path class="note-arrow-head" d="M0.5,0.5 L8.5,4.5 L0.5,8.5 Z"/></marker></defs>
+          <path d="M4,54 C 70,66 140,10 199,15" marker-end="url(#ah2)"/>
+        </svg>
+
+        <div class="note note-3">
+          <span class="note-label">Say hey</span>
+          <span class="note-body">Skip the form below — just slide into the DMs.</span>
+          <span class="note-social">
+            <a href="https://www.instagram.com/shrxnxdhx" target="_blank" rel="noopener" aria-label="Instagram" data-cursor="hover">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.3" cy="6.7" r="1.1" fill="currentColor" stroke="none"/></svg>
+            </a>
+            <a href="https://www.linkedin.com/in/bhatsrinidhi" target="_blank" rel="noopener" aria-label="LinkedIn" data-cursor="hover">
+              <svg class="li-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><text x="12" y="16.3" text-anchor="middle">in</text></svg>
+            </a>
+          </span>
+        </div>
+        <svg class="note-arrow arrow-3" viewBox="0 0 170 110" aria-hidden="true">
+          <defs><marker id="ah3" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path class="note-arrow-head" d="M0.5,0.5 L8.5,4.5 L0.5,8.5 Z"/></marker></defs>
+          <path d="M4,100 C 60,110 110,50 157,10" marker-end="url(#ah3)"/>
+        </svg>
+      </div>
 
       <div class="hero-foot">
         <span class="hero-coords">15.42°N / 73.98°E</span>
         <span class="hero-scroll"><span class="hero-scroll-line"></span>Scroll to explore</span>
         <span class="hero-clock">Goa — <span id="heroTime">--:--</span></span>
+      </div>
       </div>
     </section>
 
@@ -122,13 +188,20 @@
     <!-- ===== About (cream editorial panel) ===== -->
     <section class="about" id="about">
       <div class="about-inner">
-        <div class="about-head">
-          <p class="kicker kicker-ink" data-reveal>( The human behind the pixels )</p>
-          <p class="about-sign" data-reveal>Est. Corlim, Goa</p>
+        <div class="about-top">
+          <div class="about-portrait-wrap" aria-hidden="true">
+            <span class="about-portrait-glow"></span>
+            <span class="about-portrait-ast">✻</span>
+            <img class="about-portrait" src="assets/img/about-portrait.png" alt="">
+          </div>
+          <div class="about-head">
+            <p class="kicker kicker-ink" data-reveal>( The human behind the pixels )</p>
+            <p class="about-sign" data-reveal>Est. Corlim, Goa</p>
+          </div>
+          <h2 class="about-statement" data-split>
+            Four years turning research, pixels and a stubborn eye for detail into products that feel effortless — and brands that refuse to be forgotten.
+          </h2>
         </div>
-        <h2 class="about-statement" data-split>
-          Four years turning research, pixels and a stubborn eye for detail into products that feel effortless — and brands that refuse to be forgotten.
-        </h2>
         <div class="about-foot">
           <div class="stats">
             <div class="stat"><span class="stat-num" data-count="30">0</span><span class="stat-plus">+</span><span class="stat-label">Projects shipped</span></div>
@@ -145,53 +218,21 @@
     <section class="work" id="work">
       <div class="section-head">
         <div>
-          <p class="kicker" data-reveal>( Selected work — 01 / 10 )</p>
-          <h2 class="section-title" data-split>Selected <em>Work</em></h2>
+          <p class="kicker" data-reveal id="workKicker">( Selected work — 01 / 10 )</p>
+          <h2 class="section-title" data-reveal id="workTitle">Selected <em>Work</em></h2>
         </div>
-        <p class="section-note" data-reveal>Ten case studies across product design, landing pages &amp; brand concepts. Each card opens the full PDF deep-dive. ↗</p>
+        <p class="section-note" data-reveal id="workNote">Ten case studies across product design, landing pages &amp; brand concepts. Tap any card to view the full screens — right here, no downloads. ↗</p>
       </div>
 
-      <div class="cards" id="cards">
-        <a class="card" href="assets/pdfs/onespace.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">01</span><img src="assets/work/onespace.png" alt="OneSpace" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>OneSpace</h3><span class="card-tags">Product Design · Ed-tech</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/umatter.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">02</span><img src="assets/work/umatter.png" alt="uMatter" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>uMatter</h3><span class="card-tags">Mobile App · Design Challenge</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/mucoin.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">03</span><img src="assets/work/mucoin.png" alt="MuCoin" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>MuCoin</h3><span class="card-tags">Fintech · Onboarding UX</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/gmd.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">04</span><img src="assets/work/gmd.png" alt="GetMetaData" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>GetMetaData</h3><span class="card-tags">Web Extension · Material UI</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/steve-wilson.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">05</span><img src="assets/work/swportfolio.png" alt="Steve Wilson" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>Steve Wilson</h3><span class="card-tags">Portfolio · Minimal Concept</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/gloria-furniture.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">06</span><img src="assets/work/gloriafurniture.png" alt="Gloria Furniture" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>Gloria Furniture</h3><span class="card-tags">Landing Page · E-commerce</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/fun-cruises.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">07</span><img src="assets/work/funcruises.png" alt="Fun Cruises Goa" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>Fun Cruises Goa</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/bni-website.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">08</span><img src="assets/work/bniwebsite.png" alt="BNI Goa" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>BNI Goa</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/irctc.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">09</span><img src="assets/work/irctc.png" alt="IRCTC" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>IRCTC</h3><span class="card-tags">Landing Page · Redesign</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
-        <a class="card" href="assets/pdfs/nityananda.pdf" target="_blank" rel="noopener" data-cursor="view">
-          <div class="card-media"><span class="card-num">10</span><img src="assets/work/nityananda.png" alt="Nitya Nanda" loading="lazy"></div>
-          <div class="card-body"><div class="card-titles"><h3>Nitya Nanda</h3><span class="card-tags">Photographer Portfolio · Concept</span></div><span class="card-cta">Open ↗</span></div>
-        </a>
+      <div class="work-tabs" role="tablist" aria-label="Work view">
+        <button type="button" class="work-tab is-active" data-tab="work" role="tab" aria-selected="true" aria-controls="cards" data-cursor="hover">Selected Work</button>
+        <button type="button" class="work-tab" data-tab="vibe" role="tab" aria-selected="false" aria-controls="vibeCards" data-cursor="hover">Sh*t I've Vibe Coded</button>
+      </div>
+
+      <div class="cards work-panel" id="cards" role="tabpanel">
+      </div>
+
+      <div class="vcards work-panel" id="vibeCards" role="tabpanel" hidden>
       </div>
     </section>
 
@@ -206,7 +247,12 @@
       </div>
       <ul class="xp-list">
         <li class="xp-row" data-reveal>
-          <span class="xp-when">2024 — Now</span>
+          <span class="xp-when">2025 — Now</span>
+          <span class="xp-what"><strong>UX Designer</strong><em>OneOcean</em></span>
+          <span class="xp-note">Crafting experiences for the maritime industry.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-when">2024 — 2025</span>
           <span class="xp-what"><strong>UI/UX Designer</strong><em>Genora Infotech</em></span>
           <span class="xp-note">Leading design &amp; ideation for Genora and Goan Narrative — from iteration to developer handoff.</span>
         </li>
@@ -245,43 +291,13 @@
 
       <div class="collage" id="collage">
         <div class="collage-row" data-speed="34" data-dir="1">
-          <div class="collage-set">
-            <figure class="gi"><img src="assets/gallery/poster11.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster1.jpg" alt="Shri's Podcast" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo1.png" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster3.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster5.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/minimal2.jpg" alt="Minimal art" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo2.png" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster12.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo5.jpg" alt="Logo" loading="lazy"></figure>
-          </div>
+          <div class="collage-set"></div>
         </div>
         <div class="collage-row" data-speed="30" data-dir="-1">
-          <div class="collage-set">
-            <figure class="gi"><img src="assets/gallery/poster7.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster9.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo9.jpg" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/minimal1.jpg" alt="Minimal art" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster2.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster13.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo10.jpg" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster6.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo16.jpg" alt="Logo" loading="lazy"></figure>
-          </div>
+          <div class="collage-set"></div>
         </div>
         <div class="collage-row" data-speed="38" data-dir="1">
-          <div class="collage-set">
-            <figure class="gi"><img src="assets/gallery/poster4.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/minimal3.jpg" alt="Minimal art" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster8.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo11.jpg" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/poster10.jpg" alt="Poster" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/minimal4.jpg" alt="Minimal art" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo3.png" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo17.jpg" alt="Logo" loading="lazy"></figure>
-            <figure class="gi"><img src="assets/gallery/logo13.jpg" alt="Logo" loading="lazy"></figure>
-          </div>
+          <div class="collage-set"></div>
         </div>
       </div>
     </section>
@@ -305,13 +321,105 @@
       </ul>
     </section>
 
+    <!-- ===== Testimonials (draft — uncomment once real quotes are in, and
+         swap the [bracketed] placeholders below for the real thing) =====
+    <section class="testimonials" id="testimonials">
+      <div class="section-head">
+        <div>
+          <p class="kicker" data-reveal>( Kind words )</p>
+          <h2 class="section-title" data-split>What Clients <em>Say</em></h2>
+        </div>
+        <p class="section-note" data-reveal>A few words from people I've built things with.</p>
+      </div>
+      <div class="test-grid">
+        <figure class="test-card" data-reveal>
+          <blockquote class="test-quote">"[Quote goes here — two or three sentences on the experience and the outcome.]"</blockquote>
+          <figcaption class="test-person">
+            <span class="test-avatar">[JD]</span>
+            <span class="test-who">
+              <span class="test-name">[Full Name]</span>
+              <span class="test-role">[Role, Company]</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="test-card" data-reveal>
+          <blockquote class="test-quote">"[Quote goes here — two or three sentences on the experience and the outcome.]"</blockquote>
+          <figcaption class="test-person">
+            <span class="test-avatar">[AB]</span>
+            <span class="test-who">
+              <span class="test-name">[Full Name]</span>
+              <span class="test-role">[Role, Company]</span>
+            </span>
+          </figcaption>
+        </figure>
+        <figure class="test-card" data-reveal>
+          <blockquote class="test-quote">"[Quote goes here — two or three sentences on the experience and the outcome.]"</blockquote>
+          <figcaption class="test-person">
+            <span class="test-avatar">[CD]</span>
+            <span class="test-who">
+              <span class="test-name">[Full Name]</span>
+              <span class="test-role">[Role, Company]</span>
+            </span>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+    ===== end testimonials draft ===== -->
+
     <!-- ===== Contact ===== -->
     <section class="contact" id="contact">
       <p class="kicker contact-kicker" data-reveal>( Got an idea? I've got pixels )</p>
       <h2 class="contact-title" data-split>Let's make something <em>unforgettable</em></h2>
-      <a class="contact-mail" href="mailto:srinidhibhat45@gmail.com" data-cursor="hover" data-magnetic>
-        <span>srinidhibhat45@gmail.com</span> <span class="contact-mail-ico">↗</span>
-      </a>
+
+      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1" data-reveal>
+        <input type="hidden" name="form-name" value="contact">
+        <p class="cf-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+
+        <div class="cf-grid">
+          <div class="cf-field">
+            <label for="cf-name">Name</label>
+            <input id="cf-name" name="name" type="text" required autocomplete="name" placeholder="Your name">
+          </div>
+          <div class="cf-field">
+            <label for="cf-email">Email</label>
+            <input id="cf-email" name="email" type="email" required autocomplete="email" placeholder="you@studio.com">
+          </div>
+          <div class="cf-field">
+            <label for="cf-type">What do you need?</label>
+            <select id="cf-type" name="project_type">
+              <option>UI/UX Design</option>
+              <option>Brand &amp; Logo</option>
+              <option>Landing Page</option>
+              <option>Posters / Print</option>
+              <option>Presentation</option>
+              <option>Something else</option>
+            </select>
+          </div>
+          <div class="cf-field">
+            <label for="cf-budget">Budget <span>(optional)</span></label>
+            <select id="cf-budget" name="budget">
+              <option value="">Prefer not to say</option>
+              <option>Under ₹25k</option>
+              <option>₹25k – ₹75k</option>
+              <option>₹75k – ₹2L</option>
+              <option>₹2L +</option>
+            </select>
+          </div>
+          <div class="cf-field cf-full">
+            <label for="cf-message">Tell me about the project</label>
+            <textarea id="cf-message" name="message" rows="4" required placeholder="A few lines about what you're building…"></textarea>
+          </div>
+        </div>
+
+        <div class="cf-actions">
+          <button type="submit" class="cf-submit" data-cursor="hover" data-magnetic>
+            <span class="cf-submit-txt">Send it over</span><span class="cf-submit-ico">↗</span>
+          </button>
+          <p class="cf-alt">or just email <a href="mailto:srinidhibhat45@gmail.com" data-cursor="hover">srinidhibhat45@gmail.com</a></p>
+        </div>
+        <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
+      </form>
+
       <div class="contact-links" data-reveal>
         <a href="https://www.linkedin.com/in/bhatsrinidhi" target="_blank" rel="noopener" data-cursor="hover">LinkedIn</a>
         <a href="https://www.instagram.com/shrxnxdhx" target="_blank" rel="noopener" data-cursor="hover">Instagram</a>
@@ -322,7 +430,10 @@
     </section>
 
     <footer class="footer">
-      <span>© 2026 Srinidhi Bhat</span>
+      <span class="footer-left">
+        <a class="footer-status" href="#contact" data-cursor="hover"><span class="status-dot"></span>Open for freelance</a>
+        <span>© 2026 Srinidhi Bhat</span>
+      </span>
       <span class="footer-time">Goa, IN — <span id="localTime">--:--</span></span>
       <span>Designed &amp; built with obsession</span>
     </footer>
@@ -335,9 +446,30 @@
     <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
   </div>
 
+  <!-- Case-study viewer (native screens, no PDF download) -->
+  <div class="cv" id="caseViewer" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Case study">
+    <div class="cv-bar">
+      <div class="cv-meta">
+        <span class="cv-eyebrow" id="cvEyebrow">Case study</span>
+        <h3 class="cv-title" id="cvTitle"></h3>
+        <span class="cv-tags" id="cvTags"></span>
+      </div>
+      <div class="cv-actions">
+        <span class="cv-progress" id="cvProgress" aria-hidden="true">01 / 01</span>
+        <a class="cv-proto" id="cvProto" href="#" target="_blank" rel="noopener" data-cursor="hover" hidden>View Prototype ↗</a>
+        <a class="cv-pdf" id="cvPdf" href="#" target="_blank" rel="noopener" data-cursor="hover">PDF ↓</a>
+        <button class="cv-close" id="cvClose" aria-label="Close case study" data-cursor="hover">✕</button>
+      </div>
+    </div>
+    <div class="cv-bar-fill" id="cvBarFill"></div>
+    <div class="cv-scroll" id="cvScroll" tabindex="0"></div>
+  </div>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
+  <script src="js/site-data.js"></script>
+  <script src="js/cases-data.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
