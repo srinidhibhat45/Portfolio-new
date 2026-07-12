@@ -96,7 +96,11 @@ window.SITE_DATA = {
 
     { path: "~/projects/matinee", status: "live", cmd: "netlify deploy --prod",
       name: "Matinee", desc: "A movie & TV browser for when \"what should we watch\" turns into a 20-minute debate.",
-      stack: ["React", "TMDB API"], href: "https://matinee-app.netlify.app/", cta: "Go browse" }
+      stack: ["React", "TMDB API"], href: "https://matinee-app.netlify.app/", cta: "Go browse" },
+
+    { path: "~/projects/birthsky", status: "live", cmd: "npx serve",
+      name: "BirthSky", desc: "A star map of exactly what the sky looked like the moment you were born, generated with hand-rolled astronomical math — no API required.",
+      stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.netlify.app/", cta: "Check your sky" }
   ],
 
   posters: [

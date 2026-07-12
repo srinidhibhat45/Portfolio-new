@@ -513,6 +513,12 @@
         var section = document.getElementById('work');
         var anchor = section.getBoundingClientRect().top + window.scrollY - 90;
         window.scrollTo({ top: Math.max(0, anchor), behavior: reduceMotion ? 'auto' : 'smooth' });
+        // every section below (experience, gallery, ...) just shifted with
+        // the height change, but their reveal-on-scroll triggers keep the
+        // stale pixel offsets from page load -- refresh so ScrollTrigger
+        // re-measures against the new layout, or those reveals fire at the
+        // wrong scroll position (reads as a dead gap before the next section)
+        if (hasST) ScrollTrigger.refresh();
       }, 220);
     }
     tabs.forEach(function (t) {
