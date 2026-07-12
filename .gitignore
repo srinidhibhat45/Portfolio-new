@@ -1,0 +1,5 @@
+# Netlify CLI local state
+.netlify/
+
+# Local build artifacts
+*.apk

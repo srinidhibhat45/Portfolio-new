@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hued — One colour a day. Find it in the real world, photograph it well, and climb the ranks. Sideload the Hued APK for Android today.">
+  <meta name="theme-color" content="#FAF6F0">
+  <title>Hued — One colour a day. Find it in the real world.</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+  <link rel="apple-touch-icon" href="assets/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="index.css">
+</head>
+<body class="light-mode">
+
+  <!-- Password Gateway Overlay -->
+  <div id="password-gateway" class="password-gateway-overlay">
+    <div class="gateway-card">
+      <img src="assets/logo-light.png" id="gateway-logo" alt="Hued Logo" class="brand-logo gateway-logo">
+      <h2>Enter Access Code</h2>
+      <p>Please enter the access code to view the Hued landing page.</p>
+      <form id="gateway-form" class="gateway-form" name="gateway-access" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="gateway-access">
+        <p class="sr-only"><label>Don't fill this out: <input name="bot-field"></label></p>
+        <div class="input-group">
+          <label for="gateway-password" class="sr-only">Access Code</label>
+          <div class="password-input-wrapper">
+            <input type="password" id="gateway-password" placeholder="Enter code" required autocomplete="current-password">
+            <button type="button" id="toggle-gateway-password" class="password-toggle-btn" aria-label="Show password">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="eye-icon">
+                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+            </button>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary w-full">Access Site</button>
+        <p id="gateway-error" class="gateway-error-msg" role="alert" style="display: none;">Incorrect access code. Please try again.</p>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Header -->
+  <header class="main-header">
+    <div class="header-container">
+      <div class="brand">
+        <img src="assets/logo-light.png" id="header-logo" alt="Hued Logo" class="brand-logo">
+      </div>
+      <nav class="nav-links">
+        <a href="#today">Today's Color</a>
+        <a href="#simulator">Try Scoring</a>
+        <a href="#features">Features</a>
+        <a href="hued-release.apk" class="btn btn-sm btn-outline">Download</a>
+      </nav>
+      <button class="theme-toggle" id="theme-toggle-btn" aria-label="Toggle dark mode">
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"></circle>
+          <line x1="12" y1="1" x2="12" y2="3"></line>
+          <line x1="12" y1="21" x2="12" y2="23"></line>
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+          <line x1="1" y1="12" x2="3" y2="12"></line>
+          <line x1="21" y1="12" x2="23" y2="12"></line>
+          <line x1="4.22" y1="19.77" x2="5.64" y2="18.36"></line>
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+        </svg>
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container hero-centered">
+      <div class="hero-content">
+        <div class="tagline">A DAILY REAL-WORLD COLOR HUNT</div>
+        <h1>One colour a day.<br>Find it in the wild.</h1>
+        <p class="hero-description">
+          Every day, everyone on Earth gets the <strong>same</strong> colour. Your job is to find it, frame it, and photograph it. Score points based on perceptual color match and climb the leaderboards.
+        </p>
+        <div class="hero-actions">
+          <a href="hued-release.apk" download class="btn btn-primary btn-lg download-btn">
+            <svg class="android-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.61 15.15c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75m-9.22 0c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m4.9 11.83c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m-9.8 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m10.74-5.32l1.62-2.8a.498.498 0 00-.18-.68.498.498 0 00-.68.18l-1.66 2.88C15.75 7.64 13.94 7 12 7c-1.94 0-3.75.64-5.14 1.71L5.2 5.83a.498.498 0 00-.68-.18.498.498 0 00-.18.68l1.62 2.8C3.78 10.23 2.38 12.37 2.07 15h19.86c-.31-2.63-1.71-4.77-3.89-5.89z"/>
+            </svg>
+            <span>Download APK for Android</span>
+          </a>
+          <a href="#today" class="btn btn-outline btn-lg">See Today's Color</a>
+        </div>
+        <p class="download-meta">hued-release.apk &bull; ~103 MB &bull; Requires Android 8.0+</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Today's Color Section -->
+  <section id="today" class="today-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Today's Challenge</h2>
+        <p>This color was deterministically generated at UTC midnight. Go find it!</p>
+      </div>
+
+      <div class="color-challenge-card" id="color-card">
+        <div class="color-display-swatch" id="today-swatch">
+          <span class="color-code-overlay" id="today-hex">#FFFFFF</span>
+        </div>
+        <div class="color-details">
+          <span class="card-date-badge" id="today-date">YYYY-MM-DD</span>
+          <h3 id="today-name">Loading Color...</h3>
+          <p class="color-prompt" id="today-prompt">...</p>
+          <div class="color-meta-row">
+            <div class="meta-item">
+              <span class="meta-label">Findability</span>
+              <span class="meta-value" id="today-achievability">0%</span>
+            </div>
+            <div class="meta-item">
+              <span class="meta-label">Match Reward</span>
+              <span class="meta-value" id="today-reward">Low</span>
+            </div>
+            <button class="copy-hex-btn" id="copy-hex-btn" aria-label="Copy hex code">
+              Copy Hex
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Colors Row -->
+      <div class="past-colors-container">
+        <h4>Recent Challenges</h4>
+        <div class="past-colors-grid" id="past-colors-list">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Live Simulator Section -->
+  <section id="simulator" class="simulator-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Test Your Finder Eye</h2>
+        <p>Upload a photo to our scoring simulator to check how close it is to today's target color!</p>
+      </div>
+
+      <div class="simulator-grid">
+        <div class="simulator-card upload-panel">
+          <div class="upload-zone" id="upload-zone">
+            <input type="file" id="photo-input" accept="image/*" class="file-input">
+            <div class="upload-prompt" id="upload-prompt">
+              <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+              <p>Drag your photo here, or <span>browse files</span></p>
+              <span class="upload-hint">Supported formats: JPG, PNG, WEBP</span>
+            </div>
+            <div class="upload-preview-container" id="preview-container" style="display: none;">
+              <img id="photo-preview" src="" alt="Upload Preview" class="photo-preview">
+              <button class="remove-photo-btn" id="remove-photo-btn">&times; Clear</button>
+            </div>
+          </div>
+          <button class="btn btn-primary w-full disabled" id="score-btn" disabled>Evaluate Photo</button>
+        </div>
+
+        <div class="simulator-card results-panel" id="results-panel">
+          <div class="results-empty" id="results-empty">
+            <p>Upload a photo and click evaluate to see the on-device scoring algorithm in action.</p>
+          </div>
+          
+          <div class="results-loading" id="results-loading" style="display: none;">
+            <div class="spinner"></div>
+            <p id="loading-status">Decoding image bytes...</p>
+          </div>
+
+          <div class="results-data" id="results-data" style="display: none;">
+            <div class="score-ring-container">
+              <div class="score-ring-svg-wrapper">
+                <svg viewBox="0 0 100 100" class="score-ring-svg">
+                  <circle cx="50" cy="50" r="42" stroke="var(--line-strong)" stroke-width="8" fill="transparent"></circle>
+                  <circle cx="50" cy="50" r="42" id="score-circle-progress" stroke="var(--success)" stroke-width="8" fill="transparent" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round" transform="rotate(-90 50 50)"></circle>
+                </svg>
+                <div class="score-number-container">
+                  <span class="score-value" id="result-score-num">0</span>
+                  <span class="score-label">score</span>
+                </div>
+              </div>
+              <div class="score-verdict-container">
+                <h4 id="result-verdict">Evaluating...</h4>
+                <div class="detected-color-swatch-group">
+                  <span>Detected Color:</span>
+                  <div class="detected-color-row">
+                    <div class="color-pill-sample" id="detected-color-pill"></div>
+                    <span id="detected-color-hex">#FFFFFF</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="score-breakdown">
+              <h5>Scoring Engine Diagnostics</h5>
+              
+              <div class="breakdown-item">
+                <div class="breakdown-header">
+                  <span>1. Color Perceptual Match (CIE L*a*b* &Delta;E)</span>
+                  <span class="breakdown-score" id="score-val-match">+0</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill-match" style="width: 0%;"></div></div>
+                <p class="breakdown-desc">Measures how close the photo's dominant color is to the target color using perceptual color space delta metrics.</p>
+              </div>
+
+              <div class="breakdown-item">
+                <div class="breakdown-header">
+                  <span>2. Texture &amp; Anti-Cheat Filter</span>
+                  <span class="breakdown-score" id="score-val-anticheat">+0</span>
+                </div>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" id="fill-anticheat" style="width: 0%;"></div></div>
+                <p class="breakdown-desc">Scans local gradient energy and color variance. Flat solid graphics, digital mockups, or walls receive low ratings.</p>
+              </div>
+
+              <div class="breakdown-item">
+                <div class="breakdown-header">
+                  <span>3. Camera EXIF Heuristic Check</span>
+                  <span class="breakdown-score text-success" id="score-val-exif">Passed</span>
+                </div>
+                <p class="breakdown-desc" id="exif-desc">Evaluates focal length, exposure metadata, and lens tags to identify genuine physical camera captures.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Section -->
+  <section id="features" class="features-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Built to be Light, Free, &amp; Fun</h2>
+        <p>No servers, no tracking, just pure color finding.</p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+          </div>
+          <h3>Zero Server Cost Scaling</h3>
+          <p>Scoring, image compression, and validation run directly on your phone. The database leverages Supabase's free tier, so the app runs at $0 cost forever.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M23 12a11 11 0 1 1-22 0 11 11 0 0 1 22 0z"></path>
+              <path d="M12 7v5l3 3"></path>
+            </svg>
+          </div>
+          <h3>Deterministic Algorithm</h3>
+          <p>The daily color is derived mathematically from the UTC date. There's no backend query required to get today's target color — every client calculates the same shade offline.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+          </div>
+          <h3>Climb the Ranks</h3>
+          <p>Show off your matches in a photo-first feed, upvote your friends' shots, follow others, keep daily streaks alive, and reach the top of the global podium.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download and Sideload Guide -->
+  <section id="download" class="download-section">
+    <div class="container">
+      <div class="download-container-card">
+        <div class="download-text">
+          <h2>Get Hued Today</h2>
+          <p>Install the beta and start training your eyes to spot colors out in the real world.</p>
+          <a href="hued-release.apk" download class="btn btn-primary btn-lg download-btn">
+            <svg class="android-icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M16.61 15.15c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75m-9.22 0c-.41 0-.75-.34-.75-.75s.34-.75.75-.75.75.34.75.75-.34.75-.75.75M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2m4.9 11.83c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m-9.8 0c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5m10.74-5.32l1.62-2.8a.498.498 0 00-.18-.68.498.498 0 00-.68.18l-1.66 2.88C15.75 7.64 13.94 7 12 7c-1.94 0-3.75.64-5.14 1.71L5.2 5.83a.498.498 0 00-.68-.18.498.498 0 00-.18.68l1.62 2.8C3.78 10.23 2.38 12.37 2.07 15h19.86c-.31-2.63-1.71-4.77-3.89-5.89z"/>
+            </svg>
+            <span>Download Hued APK</span>
+          </a>
+          <span class="meta-label text-center block mt-2">File: hued-release.apk (103.3 MB)</span>
+        </div>
+
+        <div class="sideload-guide">
+          <h3>How to Sideload on Android</h3>
+          <ol class="instructions-list">
+            <li>
+              <div class="step-num">1</div>
+              <div class="step-content">
+                <strong>Download the APK</strong>
+                <p>Tap the download button to retrieve the installer file on your Android device.</p>
+              </div>
+            </li>
+            <li>
+              <div class="step-num">2</div>
+              <div class="step-content">
+                <strong>Enable Unknown Sources</strong>
+                <p>If prompted, go to Settings &rarr; Apps &rarr; Special App Access &rarr; Install Unknown Apps and toggle permissions on for your browser.</p>
+              </div>
+            </li>
+            <li>
+              <div class="step-num">3</div>
+              <div class="step-content">
+                <strong>Complete Installation</strong>
+                <p>Locate the download in your browser's history or file manager, open it, and tap "Install". Start finding colors!</p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <div class="footer-brand">
+        <img src="assets/logo-light.png" id="footer-logo" alt="Hued Logo" class="brand-logo">
+        <p>One colour a day. Find it in the real world.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#today">Today's Color</a>
+        <a href="#simulator">Simulator</a>
+        <a href="#features">Features</a>
+        <a href="https://github.com/srinidhibhat45/hued" target="_blank" rel="noopener">GitHub Project</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Hued. Built for photography, color fans, and creators.</p>
+    </div>
+  </footer>
+
+  <script src="index.js"></script>
+</body>
+</html>
