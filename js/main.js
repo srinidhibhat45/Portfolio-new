@@ -558,8 +558,10 @@
     var form = document.querySelector('.contact-form');
     if (!form) return;
     var statusEl = document.getElementById('cfStatus');
+    var toastEl = document.getElementById('cfToast');
     var btn = form.querySelector('.cf-submit');
     var btnTxt = form.querySelector('.cf-submit-txt');
+    var toastTimer = null;
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var hp = form.querySelector('[name="bot-field"]');
@@ -576,9 +578,18 @@
         body: body
       }).then(function (res) {
         if (!res.ok) throw new Error('status ' + res.status);
-        form.classList.add('is-sent');
-        statusEl.className = 'cf-status is-ok';
-        statusEl.textContent = "Thanks — your message landed. I'll get back to you soon. ✦";
+        form.reset();
+        if (btn) btn.disabled = false;
+        if (btnTxt) btnTxt.textContent = 'Send it over';
+        if (toastEl) {
+          clearTimeout(toastTimer);
+          toastEl.classList.add('is-visible');
+          toastEl.setAttribute('aria-hidden', 'false');
+          toastTimer = setTimeout(function () {
+            toastEl.classList.remove('is-visible');
+            toastEl.setAttribute('aria-hidden', 'true');
+          }, 5000);
+        }
       }).catch(function () {
         if (btn) btn.disabled = false;
         if (btnTxt) btnTxt.textContent = 'Send it over';
