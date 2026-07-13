@@ -287,12 +287,12 @@
     document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
   }
 
-  /* ---------- Gallery collage: seamless infinite marquee ----------
+  /* ---------- Seamless infinite marquee ----------
+     Shared by the gallery collage rows and the testimonials strip.
      Measures a single set's width only AFTER its images have real
      dimensions, then clones enough copies to cover 2× viewport so the
      modulo wrap is invisible — no jerky jump, scrolls forever. */
-  document.querySelectorAll('.collage-row').forEach(function (row) {
-    var set = row.querySelector('.collage-set');
+  function initMarquee(row, set) {
     if (!set) return;
 
     var gapPx = parseFloat(getComputedStyle(set).gap) || 0;
@@ -358,6 +358,10 @@
         ensureFill();
       }, 150);
     });
+  }
+
+  document.querySelectorAll('.collage-row').forEach(function (row) {
+    initMarquee(row, row.querySelector('.collage-set'));
   });
 
   /* ---------- Lightbox ---------- */
