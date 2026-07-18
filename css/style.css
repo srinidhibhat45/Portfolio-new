@@ -767,12 +767,16 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
   position: relative;
   display: flex; flex-direction: column;
   border: 1px solid var(--line);
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
   background: var(--ink-2);
-  transition: border-color 0.4s var(--ease), transform 0.5s var(--ease), background-color 0.4s;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.03), 0 24px 40px -28px rgba(0,0,0,0.35);
+  transition: border-color 0.4s var(--ease), transform 0.5s var(--ease), background-color 0.4s, box-shadow 0.5s var(--ease);
 }
-.card:hover { border-color: var(--accent); transform: translateY(-6px) rotate(var(--tilt, 0deg)); background: var(--ink-3); }
+.card:hover {
+  border-color: var(--accent); transform: translateY(-8px) rotate(var(--tilt, 0deg)); background: var(--ink-3);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.04), 0 32px 54px -24px rgba(49,99,230,0.32);
+}
 .card:nth-child(odd) { --tilt: -0.6deg; }
 .card:nth-child(even) { --tilt: 0.6deg; }
 .card-media {
@@ -792,16 +796,17 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
 }
 .card-tags {
   display: inline-block;
-  font-size: 0.66rem; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--bone-dim);
-  border: 1px solid var(--line); border-radius: 99px;
-  padding: 0.28rem 0.6rem;
-  transition: border-color 0.35s, color 0.35s;
+  font-size: 0.68rem; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-soft);
+  border: 1px solid transparent; border-radius: 99px;
+  padding: 0.32rem 0.7rem;
+  transition: background-color 0.35s, color 0.35s;
 }
-.card:hover .card-tags { border-color: var(--accent); color: var(--accent); }
+.card:hover .card-tags { background: var(--accent); color: #fff; }
 .card-body h3 {
   font-family: var(--serif); font-weight: 400;
-  font-size: clamp(1.2rem, 1.6vw, 1.5rem); line-height: 1.08;
+  font-size: clamp(1.3rem, 1.8vw, 1.6rem); line-height: 1.08;
   letter-spacing: -0.01em;
 }
 .card:hover .card-body h3 { font-style: italic; }
@@ -812,33 +817,45 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
 .card:hover .card-blurb { color: var(--bone); }
 .card-cta {
   margin-top: 0.3rem;
-  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase;
   color: var(--bone-dim);
   border: 1px solid var(--line); border-radius: 99px;
-  padding: 0.45rem 0.8rem;
-  transition: background-color 0.35s, color 0.35s, border-color 0.35s;
+  padding: 0.48rem 0.85rem;
+  transition: background-color 0.35s, color 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
-.card:hover .card-cta { background: var(--accent); color: #fff; border-color: var(--accent); }
+.card:hover .card-cta { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 8px 18px -6px rgba(49,99,230,0.5); }
 
 /* ===== Work view switcher ===== */
 .work-tabs {
-  display: flex; gap: 0.6rem; flex-wrap: wrap;
-  margin: -1.5rem 0 clamp(2.5rem, 5vh, 3.5rem);
+  display: inline-flex; gap: 0.35rem; flex-wrap: wrap;
+  margin: 0.5rem 0 clamp(2.5rem, 5vh, 3.5rem);
+  padding: 0.4rem;
+  background: var(--ink-2);
+  border: 1px solid var(--line);
+  border-radius: 99px;
+  box-shadow: 0 2px 0 rgba(0,0,0,0.03), 0 16px 30px -20px rgba(0,0,0,0.3);
 }
 .work-tab {
   font-family: var(--sans);
-  font-size: 0.82rem; letter-spacing: 0.02em;
-  padding: 0.65rem 1.2rem;
+  font-size: 0.92rem; font-weight: 600; letter-spacing: 0.01em;
+  padding: 0.85rem 1.5rem;
   border-radius: 99px;
-  border: 1px solid var(--line);
+  border: 1px solid transparent;
   color: var(--bone-dim);
   background: transparent;
   cursor: pointer;
-  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  transition: background-color 0.3s, color 0.3s, box-shadow 0.35s var(--ease), transform 0.35s var(--ease);
 }
-.work-tab:hover { border-color: var(--bone-dim); color: var(--bone); }
-.work-tab.is-active { background: var(--accent); border-color: var(--accent); color: #fff; }
-.work-tab[data-tab="vibe"].is-active { background: var(--note-bg); border-color: var(--note-bg); color: var(--note-ink); }
+.work-tab:hover { color: var(--bone); }
+.work-tab.is-active {
+  background: var(--accent); border-color: var(--accent); color: #fff;
+  box-shadow: 0 10px 24px -8px rgba(49,99,230,0.55);
+  transform: translateY(-1px);
+}
+.work-tab[data-tab="vibe"].is-active {
+  background: var(--note-bg); border-color: var(--note-bg); color: var(--note-ink);
+  box-shadow: 0 10px 24px -8px rgba(255,207,134,0.55);
+}
 .work-panel { transition: opacity 0.35s ease, transform 0.35s ease; }
 .work-panel.is-entering { opacity: 0; transform: translateY(8px); }
 
@@ -852,14 +869,18 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
 .vcard {
   position: relative;
   display: flex; flex-direction: column;
-  border-radius: 14px;
+  border-radius: 18px;
   overflow: hidden;
   background: #0d1120;
   border: 1px solid var(--line);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15), 0 24px 40px -26px rgba(0,0,0,0.55);
   transform: rotate(var(--tilt, 0deg));
-  transition: transform 0.45s var(--ease), border-color 0.4s;
+  transition: transform 0.45s var(--ease), border-color 0.4s, box-shadow 0.45s var(--ease);
 }
-.vcard:hover { transform: translateY(-6px) rotate(var(--tilt, 0deg)); border-color: var(--note-bg); }
+.vcard:hover {
+  transform: translateY(-8px) rotate(var(--tilt, 0deg)); border-color: var(--note-bg);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15), 0 32px 54px -22px rgba(255,207,134,0.35);
+}
 .vcard:nth-child(odd) { --tilt: -0.5deg; }
 .vcard:nth-child(even) { --tilt: 0.5deg; }
 .vcard-bar {
