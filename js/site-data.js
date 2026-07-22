@@ -82,6 +82,14 @@ window.SITE_DATA = {
   ],
 
   vibe: [
+    { path: "~/projects/officegames", status: "live", cmd: "vercel --prod",
+      name: "The Office Games", desc: "A party-game arcade for office breaks — scrambled keyboards, team trivia face-offs, and a fake-artist drawing game.",
+      stack: ["React", "Multiplayer"], href: "https://officegames-six.vercel.app/", cta: "Start playing" },
+
+    { path: "~/projects/dashf1", status: "live", cmd: "npm run dev",
+      name: "DashF1", desc: "A real-time Formula 1 dashboard tracking live race data, standings, and driver stats.",
+      stack: ["React", "Tailwind", "Live Data API"], href: "https://dashf1.netlify.app/", cta: "Watch the race" },
+
     { path: "~/projects/hued", status: "live", cmd: "npx expo start",
       name: "Hued", desc: "A daily colour-challenge app — everyone gets the same colour, you go find it and shoot it.",
       stack: ["React Native", "Expo", "Supabase"], href: "https://hued-app.netlify.app/", cta: "Open the app" },
