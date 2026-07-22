@@ -26,6 +26,10 @@
   --sans: 'Space Grotesk', system-ui, sans-serif;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
   --pad: clamp(1.25rem, 4vw, 4.5rem);
+  /* one shared content cap: on viewports wider than --content-max the side
+     padding grows so every section stays centered at the same width as the hero */
+  --content-max: 1680px;
+  --pad-x: max(var(--pad), calc((100vw - var(--content-max)) / 2));
 }
 :root[data-theme="dark"] {
   --ink: #0b1020;          /* deep midnight navy base */
@@ -302,7 +306,7 @@ html.js .preloader { display: flex; }
 }
 .kicker-ink { color: var(--accent); }
 
-section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
+section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 
 .section-head {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -329,14 +333,14 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
   min-height: 100svh;
   display: flex;
   flex-direction: column;
-  padding: clamp(6rem, 13vh, 8rem) var(--pad) clamp(3.5rem, 8vh, 5rem);
+  padding: clamp(6rem, 13vh, 8rem) var(--pad-x) clamp(3.5rem, 8vh, 5rem);
   overflow: hidden;
 }
 .hero-inner {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1680px;
+  max-width: var(--content-max);
   margin: 0 auto;
   flex: 1;
   display: flex;
@@ -661,7 +665,8 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
   background: var(--paper);
   color: var(--paper-ink);
   border-radius: clamp(20px, 3vw, 34px);
-  margin: clamp(1rem, 3vw, 2.5rem);
+  width: min(100% - 2 * clamp(1rem, 3vw, 2.5rem), var(--content-max));
+  margin: clamp(1rem, 3vw, 2.5rem) auto;
   padding: clamp(3rem, 8vh, 6.5rem) clamp(1.5rem, 5vw, 5rem);
 }
 .about-inner { position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; }
@@ -960,7 +965,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
 .collage {
   display: flex; flex-direction: column;
   gap: clamp(0.9rem, 1.8vw, 1.4rem);
-  margin: 0 calc(var(--pad) * -1);
+  margin: 0 calc(var(--pad-x) * -1);
 }
 .collage-row { overflow: hidden; }
 .collage-set {
@@ -1229,7 +1234,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad); position: relative; }
 .footer {
   display: flex; justify-content: space-between; align-items: center;
   gap: 1rem; flex-wrap: wrap;
-  padding: 1.75rem var(--pad);
+  padding: 1.75rem var(--pad-x);
   border-top: 1px solid var(--line);
   color: var(--bone-dim); font-size: 0.78rem; letter-spacing: 0.04em;
 }
