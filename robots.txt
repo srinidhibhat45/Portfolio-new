@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://srinidhibhat.com/sitemap.xml
+Sitemap: https://srinidhibhat.netlify.app/sitemap.xml
