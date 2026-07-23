@@ -1405,6 +1405,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .about-top { min-height: 0; }
   .about-portrait-wrap {
     position: relative;
+    right: auto; left: auto; top: auto; bottom: auto;
     width: 68vw;
     max-width: 280px;
     height: auto;
@@ -1414,7 +1415,18 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .about-portrait-wrap::after { background: linear-gradient(to bottom, transparent 70%, var(--paper) 98%); }
 
   .cards, .vcards { grid-template-columns: 1fr; }
-  .work-tabs { margin-top: 0; }
+  .work-tabs {
+    margin-top: 0;
+    display: flex; flex-wrap: nowrap;
+    width: 100%;
+  }
+  .work-tab {
+    flex: 1 1 0;
+    padding: 0.75rem 0.5rem;
+    font-size: 0.78rem;
+    text-align: center;
+    white-space: nowrap;
+  }
 
   .xp-row { grid-template-columns: 1fr; gap: 0.4rem; }
   .xp-note { margin-top: 0.25rem; }
