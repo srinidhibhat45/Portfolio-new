@@ -84,19 +84,19 @@ window.SITE_DATA = {
   vibe: [
     { path: "~/projects/officegames", status: "live", cmd: "vercel --prod",
       name: "The Office Games", desc: "A party-game arcade for office breaks — scrambled keyboards, team trivia face-offs, and a fake-artist drawing game.",
-      stack: ["React", "Multiplayer"], href: "https://officegames-six.vercel.app/", cta: "Start playing" },
+      stack: ["React", "Multiplayer"], href: "https://officegames.srinidhibhat.com/", cta: "Start playing" },
 
     { path: "~/projects/dashf1", status: "live", cmd: "npm run dev",
       name: "DashF1", desc: "A real-time Formula 1 dashboard tracking live race data, standings, and driver stats.",
-      stack: ["React", "Tailwind", "Live Data API"], href: "https://dashf1.netlify.app/", cta: "Watch the race" },
+      stack: ["React", "Tailwind", "Live Data API"], href: "https://f1dash.srinidhibhat.com/", cta: "Watch the race" },
 
     { path: "~/projects/hued", status: "live", cmd: "npx expo start",
       name: "Hued", desc: "A daily colour-challenge app — everyone gets the same colour, you go find it and shoot it.",
-      stack: ["React Native", "Expo", "Supabase"], href: "https://hued-app.netlify.app/", cta: "Open the app" },
+      stack: ["React Native", "Expo", "Supabase"], href: "https://hued.srinidhibhat.com/", cta: "Open the app" },
 
     { path: "~/projects/arkitype", status: "building", cmd: "npm run dev --port 3111",
       name: "Arkitype", desc: "A guided design-system builder — 50 components you can re-bind to your own tokens, no Figma required.",
-      stack: ["Next.js", "Zustand", "Tailwind"], href: "https://arkitype.vercel.app/", cta: "Try the studio" },
+      stack: ["Next.js", "Zustand", "Tailwind"], href: "https://arkitype.srinidhibhat.com/", cta: "Try the studio" },
 
     { path: "~/projects/yuva-website", status: "live", cmd: "node scripts/build-db.js",
       name: "Yuva Panaji", desc: "A full CMS for a Goa NGO — 153 events parsed straight out of a PDF annual report.",
@@ -104,11 +104,11 @@ window.SITE_DATA = {
 
     { path: "~/projects/matinee", status: "live", cmd: "netlify deploy --prod",
       name: "Matinee", desc: "A movie & TV browser for when \"what should we watch\" turns into a 20-minute debate.",
-      stack: ["React", "TMDB API"], href: "https://matinee-app.netlify.app/", cta: "Go browse" },
+      stack: ["React", "TMDB API"], href: "https://matinee.srinidhibhat.com/", cta: "Go browse" },
 
     { path: "~/projects/birthsky", status: "live", cmd: "npx serve",
       name: "BirthSky", desc: "A star map of exactly what the sky looked like the moment you were born, generated with hand-rolled astronomical math — no API required.",
-      stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.netlify.app/", cta: "Check your sky" }
+      stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.srinidhibhat.com/", cta: "Check your sky" }
   ],
 
   posters: [
