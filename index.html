@@ -49,6 +49,16 @@
       var savedTheme = localStorage.getItem('theme');
       if (savedTheme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
     } catch (e) {}
+    // Hard failsafe: if the CDN scripts (GSAP/ScrollTrigger/Lenis) stall or
+    // fail on a slow/blocked mobile connection, main.js's own preloader
+    // timeout never gets a chance to run since it's defined inside a script
+    // tag that hasn't executed yet — leaving the preloader's near-black
+    // overlay stuck on screen. This runs independently of those scripts.
+    window.__killPreloaderFailsafe = setTimeout(function () {
+      var pl = document.getElementById('preloader');
+      if (pl) pl.style.display = 'none';
+      document.body.style.overflow = '';
+    }, 4000);
   </script>
 
   <!-- Structured data: Person + WebSite + ProfilePage, so search engines can
@@ -553,7 +563,7 @@
     <div class="cv-scroll" id="cvScroll" tabindex="0"></div>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" onerror="window.__killPreloaderFailsafe && clearTimeout(window.__killPreloaderFailsafe); var pl=document.getElementById('preloader'); if(pl) pl.style.display='none'; document.body.style.overflow='';"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
   <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.42/bundled/lenis.min.js"></script>
   <script src="js/site-data.js"></script>

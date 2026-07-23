@@ -144,6 +144,7 @@
   function killPreloader() {
     if (preloaderDone) return;
     preloaderDone = true;
+    if (window.__killPreloaderFailsafe) clearTimeout(window.__killPreloaderFailsafe);
     if (preloader) preloader.style.display = 'none';
     document.body.style.overflow = '';
     heroIntro();
