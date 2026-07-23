@@ -87,7 +87,14 @@
   var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
   var isMobile = window.matchMedia('(max-width: 900px)').matches;
 
-  if (hasST) gsap.registerPlugin(ScrollTrigger);
+  if (hasST) {
+    gsap.registerPlugin(ScrollTrigger);
+    // Mobile in-app browsers (Instagram, etc.) resize the viewport as their
+    // chrome collapses/expands mid-scroll; without this, ScrollTrigger's
+    // auto-refresh on that resize desyncs scrub positions (e.g. hero
+    // parallax stuck offset after scrolling down then back up).
+    ScrollTrigger.config({ ignoreMobileResize: true });
+  }
 
   /* ---------- Smooth scroll (Lenis) ---------- */
   var lenis = null;
