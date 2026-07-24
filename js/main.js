@@ -124,10 +124,18 @@
         var frag = document.createDocumentFragment();
         parts.forEach(function (part) {
           if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(' ')); return; }
+          // The heading fonts use very tight line-heights (as low as 0.9) for
+          // display sizing, which leaves no room for serif overshoot, italic
+          // swashes, or ascenders/descenders once each word is boxed into its
+          // own overflow:hidden mask for the reveal animation. Padding the
+          // mask out (and pulling it back in with an equal negative margin,
+          // so layout/line-wrapping is unaffected) gives glyphs breathing
+          // room before the box clips them.
           var wm = document.createElement('span'); wm.className = 'wm';
           wm.style.display = 'inline-block'; wm.style.overflow = 'hidden'; wm.style.verticalAlign = 'top';
+          wm.style.padding = '0.3em 0.2em'; wm.style.margin = '-0.3em -0.2em';
           var w = document.createElement('span'); w.className = 'w';
-          w.style.display = 'inline-block'; w.textContent = part;
+          w.style.display = 'inline-block'; w.style.lineHeight = '1.2'; w.textContent = part;
           wm.appendChild(w); frag.appendChild(wm);
         });
         el.replaceChild(frag, node);
