@@ -108,7 +108,11 @@ window.SITE_DATA = {
 
     { path: "~/projects/birthsky", status: "live", cmd: "npx serve",
       name: "BirthSky", desc: "A star map of exactly what the sky looked like the moment you were born, generated with hand-rolled astronomical math — no API required.",
-      stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.srinidhibhat.com/", cta: "Check your sky" }
+      stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.srinidhibhat.com/", cta: "Check your sky" },
+
+    { path: "~/projects/blogs", status: "live", cmd: "npm run build",
+      name: "The Blog", desc: "Poems, essays, serialised fiction and a written podcast — added to, one piece at a time, as अvinash.",
+      stack: ["Astro"], href: "https://blogs.srinidhibhat.com/", cta: "Start reading" }
   ],
 
   posters: [

@@ -116,6 +116,16 @@
     });
   });
 
+  /* ---------- Back-to-top button ---------- */
+  var backToTop = document.getElementById('backToTop');
+  if (backToTop) {
+    var toggleBackToTop = function () {
+      backToTop.classList.toggle('is-visible', window.scrollY > window.innerHeight * 0.6);
+    };
+    window.addEventListener('scroll', toggleBackToTop, { passive: true });
+    toggleBackToTop();
+  }
+
   /* ---------- Word-wrap for split reveals (preserves <br>, <em>) ---------- */
   function wrapWords(el) {
     Array.prototype.slice.call(el.childNodes).forEach(function (node) {
