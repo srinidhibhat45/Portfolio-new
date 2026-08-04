@@ -21,6 +21,7 @@
   --accent-2: #0891b2;
   --accent-soft: rgba(49, 99, 230, 0.12);
   --note-bg: #ffcf86;      /* sticky-note yellow (constant across themes) */
+  --note-bg-2: #ffb37e;    /* sticky-note peach */
   --note-ink: #3a2210;     /* coffee-brown text on notes */
   --note-line: rgba(58, 34, 16, 0.28);
   --serif: 'Fraunces', Georgia, serif;
@@ -553,13 +554,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   line-height: 1.65;
 }
 .hero-bio p em { color: var(--bone); font-style: italic; }
-.hero-inline-link {
-  color: var(--bone);
-  border-bottom: 1px solid var(--accent);
-  padding-bottom: 1px;
-  transition: color 0.3s, border-color 0.3s;
-}
-.hero-inline-link:hover { color: var(--accent); }
 .hero-bio-ctas { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.6rem; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 0.7rem;
@@ -658,8 +652,11 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 }
 .note-body { font-size: 0.94rem; line-height: 1.44; font-weight: 500; }
 .note-body em { font-style: italic; font-weight: 700; }
+/* flex + fit-content, not inline-flex: as an inline box this trailed straight
+   after the body copy, so whether it got its own line was down to where the
+   text happened to wrap. It now always starts one. */
 .note-cta {
-  display: inline-flex; align-items: center; gap: 0.35rem;
+  display: flex; width: fit-content; align-items: center; gap: 0.35rem;
   margin-top: 0.75rem;
   font-size: 0.78rem; font-weight: 700;
   border-bottom: 1.5px solid var(--note-ink);
@@ -667,13 +664,29 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   transition: gap 0.25s var(--ease), border-color 0.25s;
 }
 .note-cta:hover { gap: 0.55rem; border-color: var(--note-ink); }
-/* Sits in the open space between the bio column and the photo, clear of both
-   the headline and the figure. The old 11%/53% placement put it across the
-   chest with an arrow through the face. */
-.note-1 { --r: -4deg; top: 46%; left: 47%; background: var(--note-bg); }
+.note-social { display: flex; gap: 0.55rem; margin-top: 0.7rem; }
+.note-social a {
+  display: grid; place-items: center;
+  width: 34px; height: 34px; border-radius: 50%;
+  background: rgba(58,34,16,0.12); color: var(--note-ink);
+  transition: background-color 0.3s, color 0.3s, transform 0.3s;
+}
+.note-social a:hover { background: var(--note-ink); color: var(--note-bg); transform: translateY(-2px) scale(1.06); }
+.note-social svg { width: 15px; height: 15px; }
+.note-social .li-icon rect { fill: currentColor; }
+.note-social .li-icon text { fill: var(--note-bg); font-size: 11px; font-family: var(--sans); font-weight: 600; }
+.note-1 { --r: -5deg; top: 11%; left: 53%; background: var(--note-bg); }
+.note-2 { --r: 4deg; top: 38%; left: 46%; background: var(--note-bg-2); }
+.note-3 { --r: -3deg; top: 64%; left: 52%; background: var(--note-bg); }
+.note-arrow { position: absolute; overflow: visible; pointer-events: none; }
+.note-arrow path { fill: none; stroke: var(--note-bg); stroke-width: 3; stroke-linecap: round; opacity: 0.95; }
+.note-arrow-head { fill: var(--note-bg); opacity: 0.95; }
+.arrow-1 { top: 9%; left: 72%; width: 118px; height: 76px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
+.arrow-2 { top: 39%; left: 62%; width: 138px; height: 62px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
+.arrow-3 { top: 65%; left: 71%; width: 118px; height: 90px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
 
 @media (max-width: 1200px) {
-  .note-1 { width: clamp(170px, 22vw, 210px); top: 42%; left: 44%; }
+  .note-1, .note-2, .note-3 { width: clamp(170px, 22vw, 210px); }
   .cards { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -692,7 +705,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .hero-bio-ctas { margin-top: 1rem; }
   .hero-socials { margin-top: 0.9rem; }
   .hero-foot { margin-top: 1.25rem; padding-top: 1.1rem; }
-  .note-1 { top: 44%; }
 }
 @media (max-width: 900px) {
   .hero-grid { order: 1; }
@@ -706,6 +718,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .note { position: static; width: 100%; max-width: 320px; transform: none !important; }
   .note:hover { transform: none !important; }
   .note::before { display: none; }
+  .note-arrow { display: none; }
 }
 
 /* ===== Ticker ===== */
