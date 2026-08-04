@@ -9,7 +9,9 @@
   --ink-2: #ffffff;
   --ink-3: #ece6d8;
   --bone: #171b28;         /* near-black navy text on light */
-  --bone-dim: rgba(23, 27, 40, 0.6);
+  /* 0.64 not 0.60: at 0.60 this composites to #707278 = 4.37:1 on --ink, which
+     misses WCAG AA (4.5:1) for the body copy that uses it. 0.64 -> 4.7:1. */
+  --bone-dim: rgba(23, 27, 40, 0.64);
   --line: rgba(23, 27, 40, 0.12);
   --paper: #12172a;        /* inverted panel — dark navy on light theme */
   --paper-ink: #e9ecf5;
@@ -19,7 +21,6 @@
   --accent-2: #0891b2;
   --accent-soft: rgba(49, 99, 230, 0.12);
   --note-bg: #ffcf86;      /* sticky-note yellow (constant across themes) */
-  --note-bg-2: #ffb37e;    /* sticky-note peach */
   --note-ink: #3a2210;     /* coffee-brown text on notes */
   --note-line: rgba(58, 34, 16, 0.28);
   --serif: 'Fraunces', Georgia, serif;
@@ -40,7 +41,8 @@
   --line: rgba(219, 226, 240, 0.13);
   --paper: #e6e9f2;        /* cool porcelain panel */
   --paper-ink: #12172a;    /* navy text on porcelain */
-  --paper-dim: rgba(18, 23, 42, 0.55);
+  /* 0.65 not 0.55 — see --bone-dim above; 0.55 was 3.74:1 on --paper. */
+  --paper-dim: rgba(18, 23, 42, 0.65);
   --paper-line: rgba(18, 23, 42, 0.14);
   --accent: #4d84ff;       /* azure */
   --accent-2: #38bdf8;     /* sky cyan (sparing) */
@@ -75,6 +77,44 @@ body {
 
 ::selection { background: var(--accent); color: #fff; }
 
+/* ===== Focus =====
+   One ring for every keyboard-reachable control. :focus-visible means pointer
+   users never see it, so nothing about the hover design changes.
+   --focus-ring is overridden on controls that sit ON the accent colour, where
+   an accent ring would be invisible against its own background. */
+/* No border-radius here on purpose: an outline already follows the element's
+   own border-radius, so setting one would reshape flat elements on focus. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 2px solid var(--focus-ring, var(--accent));
+  outline-offset: 3px;
+}
+/* These sit on an accent or solid fill, where an accent ring would be
+   invisible against its own background. */
+.cf-submit, .cv-close, .lightbox-close, .back-to-top, .work-tab.is-active {
+  --focus-ring: var(--ink);
+}
+.nav, .mobile-menu, .cv-bar, .vcard { --focus-ring: #dbe2f0; }
+/* .nav-links a clips its underline sweep with overflow:hidden, which would
+   also clip the focus ring — let it escape only while focused. */
+.nav-links a:focus-visible { overflow: visible; }
+
+/* Skip link — first tab stop, hidden until focused. */
+.skip-link {
+  position: fixed;
+  top: 0; left: 50%;
+  transform: translate(-50%, -120%);
+  z-index: 10001;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--sans);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 1.5rem;
+  border-radius: 0 0 12px 12px;
+  transition: transform 0.25s var(--ease);
+}
+.skip-link:focus-visible { transform: translate(-50%, 0); outline-offset: -4px; }
+
 ::-webkit-scrollbar { width: 10px; }
 ::-webkit-scrollbar-track { background: var(--ink); }
 ::-webkit-scrollbar-thumb { background: var(--ink-3); border-radius: 5px; }
@@ -85,20 +125,17 @@ ul { list-style: none; }
 img { max-width: 100%; display: block; }
 em { font-style: italic; }
 
-/* ===== Grain ===== */
+/* ===== Grain =====
+   Static. This used to jitter on a 0.8s steps(4) loop, which meant a
+   full-viewport fixed layer repainted several times a second for the entire
+   session — on every page, forever, including while idle. The texture reads
+   identically standing still, and the scroll stays smooth on laptops. */
 .grain {
-  position: fixed; inset: -50%;
-  width: 200%; height: 200%;
+  position: fixed; inset: 0;
   pointer-events: none;
   z-index: 9990;
   opacity: 0.05;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  animation: grainShift 0.8s steps(4) infinite;
-}
-@keyframes grainShift {
-  0% { transform: translate(0, 0); } 25% { transform: translate(-2%, 3%); }
-  50% { transform: translate(3%, -2%); } 75% { transform: translate(-3%, -3%); }
-  100% { transform: translate(2%, 2%); }
 }
 
 /* ===== Preloader ===== */
@@ -169,7 +206,14 @@ html.js .preloader { display: flex; }
   text-transform: uppercase;
 }
 .cursor.is-view .cursor-label { opacity: 1; }
+.cursor.is-hidden { opacity: 0 !important; }
 @media (hover: none), (pointer: coarse) { .cursor { display: none; } }
+
+/* main.js adds .has-cursor once the custom cursor is actually running, so a
+   JS/CDN failure can never leave the page with no pointer at all. Text fields
+   keep the native caret — the custom dot hides itself over them instead. */
+html.has-cursor,
+html.has-cursor *:not(input):not(textarea):not(select) { cursor: none; }
 
 /* ===== Card hover preview (peek at first 3 case-study pages) ===== */
 .card-preview {
@@ -285,9 +329,12 @@ html.js .preloader { display: flex; }
 .mobile-menu {
   position: fixed; inset: 0; background: var(--ink); z-index: 850;
   display: flex; flex-direction: column; justify-content: center; padding: var(--pad);
-  clip-path: inset(0 0 100% 0); transition: clip-path 0.6s var(--ease);
+  clip-path: inset(0 0 100% 0); transition: clip-path 0.6s var(--ease), visibility 0.6s;
+  /* clip-path hides it visually but leaves all five links tab-reachable — on
+     desktop too, where the menu can never be opened at all. */
+  visibility: hidden;
 }
-.mobile-menu.is-open { clip-path: inset(0 0 0 0); }
+.mobile-menu.is-open { clip-path: inset(0 0 0 0); visibility: visible; }
 .mobile-menu nav { display: flex; flex-direction: column; gap: 0.25rem; }
 .mobile-menu nav a {
   font-family: var(--serif); font-weight: 400; font-size: clamp(2.6rem, 12vw, 4.5rem);
@@ -419,17 +466,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
           mask-image: radial-gradient(ellipse 70% 62% at 50% 44%, #000 0%, transparent 78%);
   opacity: 0.6;
 }
-/* slow drifting scan sheen */
-.hero-scan {
-  position: absolute; inset: 0;
-  background: linear-gradient(115deg, transparent 42%, rgba(219,226,240,0.05) 50%, transparent 58%);
-  background-size: 220% 220%;
-  animation: heroScan 12s linear infinite;
-}
-@keyframes heroScan {
-  0%   { background-position: 120% 0; }
-  100% { background-position: -60% 0; }
-}
 .hero-grid {
   position: relative;
   z-index: 2;
@@ -461,13 +497,13 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   line-height: 0.9;
   letter-spacing: -0.035em;
 }
-.hero-name .hn-1 { display: block; animation: heroNameFloat 7.5s ease-in-out infinite; }
-.hero-name .hn-2 { display: block; animation: heroNameFloat 8.5s ease-in-out infinite; animation-delay: -3.2s; }
+/* These two used to drift on independent 7.5s/8.5s loops. At 12rem the name is
+   the loudest thing on the page — floating it made the one element that should
+   anchor the composition the least stable thing in it. It holds still now; the
+   entrance animation in main.js is where its motion lives. */
+.hero-name .hn-1 { display: block; }
+.hero-name .hn-2 { display: block; }
 .hero-name em { color: var(--accent); }
-@keyframes heroNameFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-7px); }
-}
 .hero-ast {
   display: inline-block;
   font-family: var(--sans);
@@ -476,7 +512,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   vertical-align: super;
   color: var(--accent-2);
   margin-left: 0.15em;
-  animation: spin 9s linear infinite;
 }
 @keyframes spin { to { transform: rotate(360deg); } }
 .hero-role {
@@ -518,6 +553,13 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   line-height: 1.65;
 }
 .hero-bio p em { color: var(--bone); font-style: italic; }
+.hero-inline-link {
+  color: var(--bone);
+  border-bottom: 1px solid var(--accent);
+  padding-bottom: 1px;
+  transition: color 0.3s, border-color 0.3s;
+}
+.hero-inline-link:hover { color: var(--accent); }
 .hero-bio-ctas { display: flex; align-items: center; gap: 1.5rem; margin-top: 1.6rem; }
 .hero-cta {
   display: inline-flex; align-items: center; gap: 0.7rem;
@@ -598,11 +640,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   font-weight: 500;
   transform: rotate(var(--r, 0deg));
   transition: transform 0.35s var(--ease), box-shadow 0.35s var(--ease);
-  animation: noteFloat 6.5s ease-in-out infinite;
-}
-@keyframes noteFloat {
-  0%, 100% { transform: rotate(var(--r, 0deg)) translateY(0); }
-  50% { transform: rotate(calc(var(--r, 0deg) + 1.4deg)) translateY(-9px); }
 }
 .note::before {
   content: '';
@@ -612,7 +649,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   border: 1px solid rgba(255,255,255,0.35);
   transform: rotate(-4deg);
 }
-.note:hover { transform: translateY(-4px) rotate(var(--r, 0deg)); box-shadow: 0 4px 0 rgba(58,34,16,0.2), 0 28px 46px -16px rgba(0,0,0,0.62); animation-play-state: paused; }
+.note:hover { transform: translateY(-4px) rotate(var(--r, 0deg)); box-shadow: 0 4px 0 rgba(58,34,16,0.2), 0 28px 46px -16px rgba(0,0,0,0.62); }
 .note-label {
   display: block;
   font-size: 0.66rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
@@ -630,30 +667,32 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   transition: gap 0.25s var(--ease), border-color 0.25s;
 }
 .note-cta:hover { gap: 0.55rem; border-color: var(--note-ink); }
-.note-social { display: flex; gap: 0.55rem; margin-top: 0.7rem; }
-.note-social a {
-  display: grid; place-items: center;
-  width: 34px; height: 34px; border-radius: 50%;
-  background: rgba(58,34,16,0.12); color: var(--note-ink);
-  transition: background-color 0.3s, color 0.3s, transform 0.3s;
-}
-.note-social a:hover { background: var(--note-ink); color: var(--note-bg); transform: translateY(-2px) scale(1.06); }
-.note-social svg { width: 15px; height: 15px; }
-.note-social .li-icon rect { fill: currentColor; }
-.note-social .li-icon text { fill: var(--note-bg); font-size: 11px; font-family: var(--sans); font-weight: 600; }
-.note-1 { --r: -5deg; top: 11%; left: 53%; background: var(--note-bg); animation-duration: 6.8s; }
-.note-2 { --r: 4deg; top: 38%; left: 46%; background: var(--note-bg-2); animation-duration: 7.6s; animation-delay: -2.4s; }
-.note-3 { --r: -3deg; top: 64%; left: 52%; background: var(--note-bg); animation-duration: 7.2s; animation-delay: -4.6s; }
-.note-arrow { position: absolute; overflow: visible; pointer-events: none; }
-.note-arrow path { fill: none; stroke: var(--note-bg); stroke-width: 3; stroke-linecap: round; opacity: 0.95; }
-.note-arrow-head { fill: var(--note-bg); opacity: 0.95; }
-.arrow-1 { top: 9%; left: 72%; width: 118px; height: 76px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
-.arrow-2 { top: 39%; left: 62%; width: 138px; height: 62px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
-.arrow-3 { top: 65%; left: 71%; width: 118px; height: 90px; filter: drop-shadow(0 1px 2px rgba(0,0,0,0.35)); }
+/* Sits in the open space between the bio column and the photo, clear of both
+   the headline and the figure. The old 11%/53% placement put it across the
+   chest with an arrow through the face. */
+.note-1 { --r: -4deg; top: 46%; left: 47%; background: var(--note-bg); }
 
 @media (max-width: 1200px) {
-  .note-1, .note-2, .note-3 { width: clamp(170px, 22vw, 210px); }
+  .note-1 { width: clamp(170px, 22vw, 210px); top: 42%; left: 44%; }
   .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Short-viewport hero.
+   At 1440x900 the hero stacks to ~965px, so the scroll cue and the coords/clock
+   bar sat below the fold — the one affordance telling you there's more page was
+   only visible after you'd already scrolled. On a real laptop (~780px of usable
+   viewport after browser chrome) it was ~185px under. This claws that back from
+   leading and padding rather than shrinking any single element to nothing. */
+@media (min-width: 901px) and (max-height: 980px) {
+  .hero { padding-top: 5.5rem; padding-bottom: 2.25rem; }
+  .hero-name { font-size: clamp(3.6rem, 9.5vw, 9rem); }
+  .hero-eyebrow { margin-bottom: 0.9rem; }
+  .hero-role { margin-top: 0.9rem; }
+  .hero-bio { padding-top: 1rem; }
+  .hero-bio-ctas { margin-top: 1rem; }
+  .hero-socials { margin-top: 0.9rem; }
+  .hero-foot { margin-top: 1.25rem; padding-top: 1.1rem; }
+  .note-1 { top: 44%; }
 }
 @media (max-width: 900px) {
   .hero-grid { order: 1; }
@@ -667,7 +706,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .note { position: static; width: 100%; max-width: 320px; transform: none !important; }
   .note:hover { transform: none !important; }
   .note::before { display: none; }
-  .note-arrow { display: none; }
 }
 
 /* ===== Ticker ===== */
@@ -812,9 +850,11 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 }
 .card:nth-child(odd) { --tilt: -0.6deg; }
 .card:nth-child(even) { --tilt: 0.6deg; }
+/* 16/9 matches the source thumbs (1000x562) exactly. A 4/3 box here made
+   object-fit:cover slice ~25% off each side, cutting project names mid-word. */
 .card-media {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 16 / 9;
   overflow: hidden;
 }
 .card-media img {
@@ -1009,6 +1049,12 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   overflow: hidden;
   background: var(--ink-2);
   cursor: pointer;
+  /* rendered as a <button> so the lightbox is keyboard-operable */
+  display: block;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  color: inherit;
 }
 .gi img {
   height: 100%; width: auto; object-fit: cover;
@@ -1303,10 +1349,13 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   background: rgba(8,12,24,0.94);
   z-index: 9500; display: grid; place-items: center;
   opacity: 0; pointer-events: none;
-  transition: opacity 0.4s var(--ease);
+  /* opacity alone leaves the close button in the tab order while the overlay
+     is invisible — visibility is what actually takes it out. */
+  visibility: hidden;
+  transition: opacity 0.4s var(--ease), visibility 0.4s;
   padding: clamp(1rem, 5vw, 4rem);
 }
-.lightbox.is-open { opacity: 1; pointer-events: auto; }
+.lightbox.is-open { opacity: 1; pointer-events: auto; visibility: visible; }
 .lightbox img {
   max-width: 100%; max-height: 88vh; border-radius: 10px;
   box-shadow: 0 30px 100px rgba(0,0,0,0.7);
@@ -1509,5 +1558,4 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
     transition-duration: 0.01ms !important;
   }
   html { scroll-behavior: auto; }
-  .grain { animation: none; }
 }

@@ -34,6 +34,26 @@ Drop the image in `assets/gallery/`, then add one object to the `posters`
 array in `js/site-data.js`. `row` is optional — omit it and it's balanced
 across the three marquee rows automatically.
 
+## After adding any image — run the optimizer
+
+```
+python3 tools/optimize_images.py
+```
+
+Keep pointing `site-data.js` at the original `.png`/`.jpg` you dropped in.
+This generates a `.webp` next to each one (plus a smaller `-t.webp` for Craft
+Wall posters, which never render above 260px but open full-size in the
+lightbox), and `js/main.js` swaps the extension in at render time. Skipping
+this step isn't fatal — the `<img>` falls back to your original file — it just
+ships the heavy version.
+
+It's idempotent, so re-running only touches images whose source is newer.
+Pass `--force` to re-encode everything.
+
+Originals stay in the repo: they're the fallback and the re-encode source.
+Working files that nothing links to live in `assets/_src/` (gitignored) so
+they don't ship.
+
 ---
 Nothing else needs to change — `js/main.js` renders all three sections from
 this data at page load.

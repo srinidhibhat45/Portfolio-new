@@ -1,3 +1,7 @@
 .DS_Store
 .netlify/
-assets/img/hero-old-backup.png
+
+# Working originals kept locally but never published: full-res hero source,
+# old hero cut-outs, the PNG the OG JPEG is exported from. Nothing on the site
+# links to these, so shipping them was ~1.7MB of dead weight per deploy.
+assets/_src/

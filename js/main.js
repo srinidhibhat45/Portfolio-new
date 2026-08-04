@@ -20,6 +20,19 @@
       });
     }
 
+    // site-data.js keeps pointing at the original .png/.jpg you dropped in —
+    // tools/optimize_images.py generates a .webp (and a smaller `-t.webp` for
+    // the Craft Wall) next to it, and we swap the extension here. Keeps the
+    // "add an object, done" authoring flow while shipping ~85% fewer bytes.
+    // If the derivative is missing (script not run yet), onerror falls back
+    // to the original so nothing ever renders broken.
+    function webp(src, suffix) {
+      return String(src).replace(/\.(png|jpe?g)$/i, (suffix || '') + '.webp');
+    }
+    function fallback(src) {
+      return ' onerror="this.onerror=null;this.src=\'' + esc(src) + '\'"';
+    }
+
     // Merge hand-written card metadata with generated per-slug page data
     // into the single lookup the case viewer / hover preview read from.
     window.CASE_DATA = {};
@@ -31,7 +44,8 @@
     if (cardsEl && SITE.work && SITE.work.length) {
       cardsEl.innerHTML = SITE.work.map(function (w) {
         return '<a class="card" href="' + esc(w.pdf) + '" target="_blank" rel="noopener" data-case="' + esc(w.slug) + '" data-cursor="view">' +
-          '<div class="card-media"><img src="' + esc(w.thumb) + '" alt="' + esc(w.title) + '" loading="lazy"></div>' +
+          '<div class="card-media"><img src="' + esc(webp(w.thumb)) + '" alt="' + esc(w.title) + '"' +
+            ' width="1000" height="562" loading="lazy" decoding="async"' + fallback(w.thumb) + '></div>' +
           '<div class="card-body">' +
             '<span class="card-tags">' + esc(w.tags) + '</span>' +
             '<h3>' + esc(w.title) + '</h3>' +
@@ -75,7 +89,17 @@
         var set = sets[rowIdx];
         if (!set) return;
         counts[rowIdx]++;
-        set.insertAdjacentHTML('beforeend', '<figure class="gi"><img src="' + esc(p.src) + '" alt="' + esc(p.alt || 'Poster') + '"></figure>');
+        // The wall only ever shows these at <=260px tall, so it gets the small
+        // `-t.webp`; data-full points the lightbox at the full-size file, which
+        // is fetched only once someone actually opens one.
+        // A <button>, not a <figure>: this opens the lightbox, so it has to be
+        // reachable and operable from the keyboard like any other control.
+        set.insertAdjacentHTML('beforeend',
+          '<button class="gi" type="button" aria-label="View ' + esc(p.alt || 'poster') + ' full size">' +
+          '<img src="' + esc(webp(p.src, '-t')) + '"' +
+          ' data-full="' + esc(webp(p.src)) + '"' +
+          ' alt="' + esc(p.alt || 'Poster') + '"' +
+          ' loading="lazy" decoding="async"' + fallback(p.src) + '></button>');
       });
     }
   })();
@@ -113,6 +137,19 @@
       closeMenu();
       if (lenis) lenis.scrollTo(target, { offset: 0 });
       else target.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+      // preventDefault also cancels the focus move the browser would normally
+      // do for an in-page link, which would strand a keyboard user's focus at
+      // the top of the page — including anyone using the skip link. Sections
+      // aren't focusable by default, so make the target programmatically
+      // focusable just long enough to receive it.
+      if (!target.hasAttribute('tabindex')) {
+        target.setAttribute('tabindex', '-1');
+        target.addEventListener('blur', function once() {
+          target.removeAttribute('tabindex');
+          target.removeEventListener('blur', once);
+        });
+      }
+      target.focus({ preventScroll: true });
     });
   });
 
@@ -190,6 +227,22 @@
     }, 0.1);
     tl.to('.pl-w', { yPercent: -120, opacity: 0, duration: 0.55, stagger: 0.02, ease: 'expo.in' }, '+=0.15');
     tl.to(preloader, { clipPath: 'inset(0 0 100% 0)', duration: 0.8, ease: 'expo.inOut' }, '-=0.3');
+
+    // The counter used to run to 100 on a fixed ~2.4s timeline no matter how
+    // fast the page was actually ready — which, now that the payload is a
+    // fraction of what it was, made the preloader the slowest thing on the
+    // site. It's a progress indicator, so let it track real progress: once
+    // load fires, ease the timeline up to 3x and let it finish. The ramp keeps
+    // it feeling like an animation rather than a jump cut, and the 4.5s
+    // failsafe above still covers a load event that never arrives.
+    var sped = false;
+    function raceToEnd() {
+      if (sped) return;
+      sped = true;
+      gsap.to(tl, { timeScale: 3, duration: 0.25, ease: 'power2.in' });
+    }
+    if (document.readyState === 'complete') raceToEnd();
+    else window.addEventListener('load', raceToEnd, { once: true });
   } else {
     killPreloader();
   }
@@ -211,9 +264,18 @@
   var cursor = document.getElementById('cursor');
   var cursorLabel = document.getElementById('cursorLabel');
   if (cursor && !isTouch && hasGSAP) {
+    // Only now hide the native cursor. Doing it from CSS alone would leave a
+    // pointerless page if GSAP failed to load or this branch never ran.
+    document.documentElement.classList.add('has-cursor');
     var cx = gsap.quickTo(cursor, 'x', { duration: 0.18, ease: 'power3.out' });
     var cy = gsap.quickTo(cursor, 'y', { duration: 0.18, ease: 'power3.out' });
     window.addEventListener('mousemove', function (e) { cursor.style.opacity = '1'; cx(e.clientX); cy(e.clientY); });
+    // Over text fields the caret matters more than the dot: give the native
+    // I-beam back and get the custom cursor out of the way.
+    document.querySelectorAll('input, textarea, select').forEach(function (el) {
+      el.addEventListener('mouseenter', function () { cursor.classList.add('is-hidden'); });
+      el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hidden'); });
+    });
     function bindCursor(sel, cls, label) {
       document.querySelectorAll(sel).forEach(function (el) {
         el.addEventListener('mouseenter', function () { cursor.classList.add(cls); if (label) cursorLabel.textContent = label; });
@@ -340,7 +402,14 @@
     function ensureFill() {
       var need = window.innerWidth * 2 + setWidth;
       while (track.getBoundingClientRect().width < need && track.children.length < 48) {
-        track.appendChild(set.cloneNode(true));
+        var clone = set.cloneNode(true);
+        // Each poster is a <button> so the lightbox is keyboard-operable, which
+        // means every duplicate the marquee makes to fill the row would other-
+        // wise be another tab stop — up to 48 copies per row, three rows, all
+        // announcing the same posters. Only the original set stays reachable.
+        clone.setAttribute('aria-hidden', 'true');
+        clone.querySelectorAll('.gi').forEach(function (b) { b.tabIndex = -1; });
+        track.appendChild(clone);
       }
     }
     function tryStart() {
@@ -368,12 +437,36 @@
     row.addEventListener('mouseenter', function () { paused = true; });
     row.addEventListener('mouseleave', function () { paused = false; });
 
-    // Start once images have measurable width (handles lazy loading).
-    set.querySelectorAll('img').forEach(function (im) {
-      im.addEventListener('load', tryStart, { once: true });
-    });
-    var poll = setInterval(function () { started ? clearInterval(poll) : tryStart(); }, 300);
-    setTimeout(function () { clearInterval(poll); }, 8000);
+    // The posters are `loading="lazy"` and sit ~7000px down the page, so they
+    // have no width at page load and measuring now would size the track from
+    // nothing. Wait until the row is near the viewport (which is also what
+    // triggers the lazy fetch), then poll until the images report real widths.
+    // An earlier version polled on a fixed 8s timer from page load — that
+    // expired long before a scrolling visitor ever reached the wall.
+    var poll = null;
+    function beginWatching() {
+      if (poll || started) return;
+      set.querySelectorAll('img').forEach(function (im) {
+        if (im.complete) return;
+        im.addEventListener('load', tryStart, { once: true });
+      });
+      tryStart();
+      poll = setInterval(function () {
+        if (started) { clearInterval(poll); poll = null; }
+        else tryStart();
+      }, 300);
+    }
+
+    if ('IntersectionObserver' in window) {
+      var io = new IntersectionObserver(function (entries) {
+        if (!entries[0].isIntersecting) return;
+        io.disconnect();
+        beginWatching();
+      }, { rootMargin: '600px 0px' });
+      io.observe(row);
+    } else {
+      beginWatching();
+    }
 
     var rt;
     window.addEventListener('resize', function () {
@@ -390,25 +483,55 @@
     initMarquee(row, row.querySelector('.collage-set'));
   });
 
+  /* ---------- Focus trap (shared by the lightbox and the case viewer) ----------
+     Both overlays declare aria-modal="true", which tells assistive tech the rest
+     of the page is inert — but that's a promise the browser doesn't keep on its
+     own. Without this, Tab walks straight out of the dialog and into the work
+     cards behind it while the overlay still covers the screen. */
+  var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  function trapFocus(container) {
+    return function (e) {
+      if (e.key !== 'Tab') return;
+      var items = Array.prototype.filter.call(
+        container.querySelectorAll(FOCUSABLE),
+        function (el) { return el.offsetParent !== null || el === document.activeElement; }
+      );
+      if (!items.length) return;
+      var first = items[0], last = items[items.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    };
+  }
+
   /* ---------- Lightbox ---------- */
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
   var lightboxClose = document.getElementById('lightboxClose');
   if (lightbox) {
+    var lbTrap = trapFocus(lightbox);
+    var lbLastFocus = null;
     document.addEventListener('click', function (e) {
       var fig = e.target.closest && e.target.closest('.gi');
       if (!fig) return;
       var img = fig.querySelector('img');
       if (!img) return;
-      lightboxImg.src = img.currentSrc || img.src;
+      // The wall renders a downscaled thumb; open the full-size file here.
+      lightboxImg.src = img.getAttribute('data-full') || img.currentSrc || img.src;
+      lightboxImg.alt = img.alt || 'Artwork enlarged';
       lightbox.classList.add('is-open');
       lightbox.setAttribute('aria-hidden', 'false');
       if (lenis) lenis.stop();
+      lbLastFocus = document.activeElement;
+      document.addEventListener('keydown', lbTrap);
+      lightboxClose.focus();
     });
     function closeLightbox() {
+      if (!lightbox.classList.contains('is-open')) return;
       lightbox.classList.remove('is-open');
       lightbox.setAttribute('aria-hidden', 'true');
       if (lenis) lenis.start();
+      document.removeEventListener('keydown', lbTrap);
+      if (lbLastFocus && lbLastFocus.focus) lbLastFocus.focus();
     }
     lightboxClose.addEventListener('click', closeLightbox);
     lightbox.addEventListener('click', function (e) { if (e.target === lightbox) closeLightbox(); });
@@ -429,6 +552,7 @@
     var progressEl = document.getElementById('cvProgress');
     var fillEl = document.getElementById('cvBarFill');
     var total = 1, lastFocus = null;
+    var cvTrap = trapFocus(cv);
     function pad(n) { return ('0' + n).slice(-2); }
 
     function build(c) {
@@ -472,6 +596,7 @@
       if (lenis) lenis.stop();
       scroll.scrollTop = 0;
       updateProgress();
+      document.addEventListener('keydown', cvTrap);
       closeEl.focus();
       return true;
     }
@@ -480,6 +605,7 @@
       cv.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
       if (lenis) lenis.start();
+      document.removeEventListener('keydown', cvTrap);
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
     scroll.addEventListener('scroll', updateProgress, { passive: true });
