@@ -112,7 +112,15 @@ window.SITE_DATA = {
 
     { path: "~/projects/blogs", status: "live", cmd: "npm run build",
       name: "The Blog", desc: "Poems, essays, serialised fiction and a written podcast — added to, one piece at a time, as अvinash.",
-      stack: ["Astro"], href: "https://blogs.srinidhibhat.com/", cta: "Start reading" }
+      stack: ["Astro"], href: "https://blogs.srinidhibhat.com/", cta: "Start reading" },
+
+    { path: "~/projects/premoney", status: "live", cmd: "flutter run --release",
+      name: "PreMoney", desc: "An extensive expense and savings tracker that reads your SMS to track and visualise spending, no manual entry required.",
+      stack: ["Flutter", "Dart"], href: "https://github.com/srinidhibhat45/PreMoney-releases", cta: "Get the app" },
+
+    { path: "~/projects/vansh-vriksha", status: "live", cmd: "npm run build",
+      name: "Vansh Vriksha", desc: "A free, community-editable genealogy archive that helps families reconnect through ancestral villages, family deities, and lineage names.",
+      stack: ["Next.js", "Supabase"], href: "https://vanshvriksha.srinidhibhat.com/", cta: "Explore the tree" }
   ],
 
   posters: [

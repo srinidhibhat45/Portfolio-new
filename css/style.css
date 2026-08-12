@@ -1521,7 +1521,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
     height: auto;
     margin: 0 auto clamp(1.5rem, 5vh, 2.5rem);
   }
-  .about-portrait { max-height: none; width: 100%; }
+  .about-portrait { max-height: none; width: 100%; height: auto; }
   .about-portrait-wrap::after { background: linear-gradient(to bottom, transparent 70%, var(--paper) 98%); }
 
   .cards, .vcards { grid-template-columns: 1fr; }

@@ -639,7 +639,7 @@
       vibe: {
         kicker: '( Side projects · shipped after midnight )',
         title: "Sh*t I've <em>Vibe Coded</em>",
-        note: 'Four things I built solo with an AI pair-programmer and way too much coffee. Live links, zero polish guarantees. ↗'
+        note: 'Ten things I built solo with an AI pair-programmer and way too much coffee. Live links, zero polish guarantees. ↗'
       }
     };
     var current = 'work';
