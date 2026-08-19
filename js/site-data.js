@@ -120,7 +120,11 @@ window.SITE_DATA = {
 
     { path: "~/projects/vansh-vriksha", status: "live", cmd: "npm run build",
       name: "Vansh Vriksha", desc: "A free, community-editable genealogy archive that helps families reconnect through ancestral villages, family deities, and lineage names.",
-      stack: ["Next.js", "Supabase"], href: "https://vanshvriksha.srinidhibhat.com/", cta: "Explore the tree" }
+      stack: ["Next.js", "Supabase"], href: "https://vanshvriksha.srinidhibhat.com/", cta: "Explore the tree" },
+
+    { path: "~/projects/earthlog", status: "live", cmd: "node serve.mjs",
+      name: "Earthlog", desc: "An interactive web globe showing real-time planetary events — earthquakes, weather, ISS passes, and eclipses — for anywhere on Earth.",
+      stack: ["Vanilla JS", "MapLibre GL"], href: "https://earthlog.srinidhibhat.com/", cta: "Explore the globe" }
   ],
 
   posters: [
