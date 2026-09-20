@@ -124,7 +124,31 @@ window.SITE_DATA = {
 
     { path: "~/projects/earthlog", status: "live", cmd: "node serve.mjs",
       name: "Earthlog", desc: "An interactive web globe showing real-time planetary events — earthquakes, weather, ISS passes, and eclipses — for anywhere on Earth.",
-      stack: ["Vanilla JS", "MapLibre GL"], href: "https://earthlog.srinidhibhat.com/", cta: "Explore the globe" }
+      stack: ["Vanilla JS", "MapLibre GL"], href: "https://earthlog.srinidhibhat.com/", cta: "Explore the globe" },
+
+    { path: "~/projects/deckforge", status: "live", cmd: "npm run dev",
+      name: "DeckForge", desc: "Drop in a PDF and get your deck back as editable layers \u2014 text, logos, shapes \u2014 wrapped in a full animation studio. Nothing leaves your machine.",
+      stack: ["React", "TypeScript", "PDF.js"], href: "https://deckforge.srinidhibhat.com/", cta: "Forge a deck" },
+
+    { path: "~/projects/planit", status: "live", cmd: "npm run dev",
+      name: "PlanIt", desc: "An itinerary planner for trips where everyone's doing different things in different time zones \u2014 seven views, no account, no server.",
+      stack: ["React", "TypeScript", "Leaflet"], href: "https://planit.srinidhibhat.com/", cta: "Plan a trip" },
+
+    { path: "~/projects/scalesee", status: "live", cmd: "node serve.js",
+      name: "ScaleSee", desc: "How big is big, actually? Pick any two quantities of the same kind and watch them drawn side by side, to scale.",
+      stack: ["Vanilla JS", "SVG"], href: "https://scalesee.srinidhibhat.com/", cta: "See the scale" },
+
+    { path: "~/projects/wherewouldibe", status: "live", cmd: "npx serve",
+      name: "Where Would I Be\u2026?", desc: "A 3D globe you can fast-forward. Drop a pin, drag the clock, and watch your patch of crust drift off to a completely different set of neighbours.",
+      stack: ["Vanilla JS", "Three.js"], href: "https://wherewouldibe.srinidhibhat.com/", cta: "Move the earth" },
+
+    { path: "~/projects/soundbox", status: "live", cmd: "npx cap run android",
+      name: "SoundBox", desc: "Learn songs on the piano without reading music \u2014 it listens through the mic and waits for you to get it right before moving on.",
+      stack: ["React", "Capacitor", "TensorFlow.js"], href: "https://github.com/srinidhibhat45/soundbox", cta: "Get the app" },
+
+    { path: "~/projects/wheelie", status: "building", cmd: "flutter run --release",
+      name: "Wheelie", desc: "A glove-friendly app for group rides \u2014 live map, a fair meeting point computed from everyone's start, and helmet-headset voice chat.",
+      stack: ["Flutter", "Supabase", "WebRTC"], href: "https://github.com/srinidhibhat45/wheelie", cta: "See the build" }
   ],
 
   posters: [
