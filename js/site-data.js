@@ -148,7 +148,11 @@ window.SITE_DATA = {
 
     { path: "~/projects/wheelie", status: "building", cmd: "flutter run --release",
       name: "Wheelie", desc: "A glove-friendly app for group rides \u2014 live map, a fair meeting point computed from everyone's start, and helmet-headset voice chat.",
-      stack: ["Flutter", "Supabase", "WebRTC"], href: "https://github.com/srinidhibhat45/wheelie", cta: "See the build" }
+      stack: ["Flutter", "Supabase", "WebRTC"], href: "https://github.com/srinidhibhat45/wheelie", cta: "See the build" },
+
+    { path: "~/projects/applecider", status: "live", cmd: "npm run dev",
+      name: "AppleCider", desc: "A hand-drawn wireframe tool for blocking out screens while the idea is still cheap to change \u2014 250 components, all of them deliberately scruffy.",
+      stack: ["React", "TypeScript", "Zustand"], href: "https://applecider.srinidhibhat.com/", cta: "Start sketching" }
   ],
 
   posters: [
