@@ -5,7 +5,7 @@
     {id:'design',name:'Design & tools',color:'#794758',desc:'Interfaces, systems, and tools that make complicated things easier to use.',question:'How can a tool make the work feel easier?',examples:['Arkitype','AppleCider','OneSpace']},
     {id:'stories',name:'Stories & culture',color:'#a07b40',desc:'Writing, cinema, community, and the ways people keep a story alive.',question:'What helps people find a story—or keep one?',examples:['The Blog','Vansh Vriksha','अvinash']},
     {id:'world',name:'Science & play',color:'#537b69',desc:'The sky, the earth, music, movement, and ideas that are better understood by exploring them.',question:'What happens when curiosity becomes something you can explore?',examples:['Earthlog','BirthSky','ScaleSee']}
-    ,{id:'community',name:'Community & roots',color:'#526e88',desc:'My home in Goa, my volunteering with Yuva, and the work that connects people.',question:'What can we make possible when we show up for each other?',examples:['Yuva · Executive Member','Women & Child Welfare','Yuva Panaji']}
+    ,{id:'community',name:'Community & roots',color:'#526e88',desc:'My home in Goa, India, my volunteering with Yuva, and the work that connects people.',question:'What can we make possible when we show up for each other?',examples:['Yuva · Executive Member','Women & Child Welfare','Yuva Panaji']}
   ];
   var assignments = {
     'The Office Games':'world','DashF1':'world','Hued':'design','Arkitype':'design',
@@ -33,8 +33,8 @@
     connect('design',id,'A design study in '+p.tags.toLowerCase()+'.');
   });
   var personal = [
-    {id:'yuva-volunteer',name:'Yuva · Executive Member',kind:'role',topic:'community',desc:'I am an Executive Member and volunteer at Yuva, a youth social service organisation in Panaji, Goa. Its work is grounded in six pillars of community service.',tags:'Executive Member · Volunteer',href:'https://yuva-website.netlify.app/',cta:'Meet Yuva'},
-    {id:'goa',name:'Goa',kind:'place',topic:'community',desc:'I am from Corlim, Goa. It is where I am based, where I design, and where I volunteer with Yuva.'},
+    {id:'yuva-volunteer',name:'Yuva · Executive Member',kind:'role',topic:'community',desc:'I am an Executive Member and volunteer at Yuva, a youth social service organisation in Panaji, Goa, India. Its work is grounded in six pillars of community service.',tags:'Executive Member · Volunteer',href:'https://yuva-website.netlify.app/',cta:'Meet Yuva'},
+    {id:'goa',name:'Goa, India',kind:'place',topic:'community',desc:'I am from Goa, India. It is where I am based, where I design, and where I volunteer with Yuva.'},
     {id:'writer',name:'अvinash',kind:'interest',topic:'stories',desc:'The name I write under. Poems, essays, serialised fiction, and a written podcast—in English, Hindi, and Konkani.',href:'https://blogs.srinidhibhat.com/',cta:'Read my writing'}
   ];
   var pillars = [

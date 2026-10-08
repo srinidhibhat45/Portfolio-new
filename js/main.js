@@ -332,30 +332,11 @@
     });
   })();
 
-  /* ---------- Scroll reveals ---------- */
-  if (hasST && !reduceMotion) {
-    document.querySelectorAll('[data-split]').forEach(function (el) {
-      gsap.from(el.querySelectorAll('.w'), {
-        yPercent: 115, duration: 0.9, stagger: 0.045, ease: 'expo.out',
-        scrollTrigger: { trigger: el, start: 'top 88%' }
-      });
-    });
-    document.querySelectorAll('[data-reveal]').forEach(function (el) {
-      gsap.fromTo(el, { opacity: 0, y: 12 },
-        { opacity: 1, y: 0, duration: 0.55, ease: 'power3.out', scrollTrigger: { trigger: el, start: 'top 90%' } });
-    });
-    // Cards: staggered load reveal
-    gsap.utils.toArray('.card').forEach(function (card, i) {
-      gsap.fromTo(card,
-        { opacity: 0, y: 18, scale: 1 },
-        { opacity: 1, y: 0, scale: 1, duration: 0.55, ease: 'power3.out',
-          delay: (i % 2) * 0.08,
-          scrollTrigger: { trigger: card, start: 'top 92%' } });
-    });
-  } else {
-    document.querySelectorAll('[data-reveal]').forEach(function (el) { el.style.opacity = 1; });
-    document.querySelectorAll('[data-count]').forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
-  }
+  /* Scroll entrances are handled by scroll-motion.js after all content is ready.
+     Counts remain visible when animation libraries are unavailable. */
+  document.querySelectorAll('[data-count]').forEach(function (el) {
+    el.textContent = el.getAttribute('data-count');
+  });
 
   /* ---------- Seamless infinite marquee ----------
      Shared by the gallery collage rows and the testimonials strip.
@@ -683,14 +664,7 @@
     }
     setup('cards','projectSearch','projectSearchClear','projectResults','projectEmpty','design case studies');
     setup('playGrid','builtSearch','builtSearchClear','builtResults','builtEmpty','built products');
-    if(!reduceMotion&&'IntersectionObserver' in window){
-      var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){
-        if(!entry.isIntersecting)return;var media=entry.target.querySelector('.play-product-preview');
-        if(media&&media.animate)media.animate([{opacity:0,transform:'translateY(12px)'},{opacity:1,transform:'translateY(0)'}],{duration:500,easing:'cubic-bezier(.22,1,.36,1)'});
-        observer.unobserve(entry.target);
-      });},{threshold:.12});
-      document.querySelectorAll('#playGrid .play-card').forEach(function(card){observer.observe(card);});
-    }
+
   })();
 
   /* ---------- Contact form (Netlify AJAX submit) ---------- */

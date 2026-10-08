@@ -61,7 +61,7 @@
     if(!scope&&!query){
       if(mobile){
         height=1080;put('me',250,495);put('design',125,225);put('stories',375,225);put('community',125,735);put('world',375,735);
-        [['Arkitype',105,80],['OneSpace',105,375],['The Blog',395,80],['अvinash',395,375],['Yuva · Executive Member',105,910],['Earthlog',395,910],['Goa',250,1030]].forEach(function(e){put(nodes.find(function(n){return n.name===e[0];}).id,e[1],e[2]);});
+        [['Arkitype',105,80],['OneSpace',105,375],['The Blog',395,80],['अvinash',395,375],['Yuva · Executive Member',105,910],['Earthlog',395,910],['Goa, India',250,1030]].forEach(function(e){put(nodes.find(function(n){return n.name===e[0];}).id,e[1],e[2]);});
       }else{
         height=1060;put('me',650,555);put('design',330,490);put('stories',1010,385);put('community',330,665);put('world',1000,665);
         var groups={design:{cols:3,x:[110,315,520],y:80,gap:83},stories:{cols:2,x:[860,1100],y:105,gap:125},community:{cols:3,x:[110,315,520],y:800,gap:93},world:{cols:3,x:[790,995,1200],y:800,gap:93}};

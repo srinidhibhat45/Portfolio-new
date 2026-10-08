@@ -1,0 +1,10 @@
+/* Individual translate leaves existing hover, tilt, and marquee transforms intact. */
+.scroll-pending {opacity:0;translate:0 var(--arrival-distance,24px);}
+.scroll-arriving {will-change:opacity,translate;}
+.scroll-pending:focus-within {opacity:1;translate:0 0;}
+@media(prefers-reduced-motion:reduce) {
+  .scroll-pending,.scroll-arriving {opacity:1!important;translate:none!important;will-change:auto;}
+}
+@media print {
+  .scroll-pending,.scroll-arriving {opacity:1!important;translate:none!important;}
+}

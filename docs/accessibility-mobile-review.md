@@ -61,3 +61,9 @@ Draw and resign stop play and show explicit results. A timeout against an oppone
 These are browser viewport checks, not a physical iPhone/Android or assistive-technology certification. Real-device Safari/Chrome, VoiceOver/TalkBack, browser text enlargement, and the accessibility of existing PDFs remain follow-up checks. The third-party YouTube player and hosted Netlify form/guestbook should also be verified after deployment; the review did not submit a contact message or add public visitor marks.
 
 Reference methods: [axe-core](https://www.deque.com/axe/axe-core/), [axe API](https://github.com/dequelabs/axe-core/blob/develop/doc/API.md), [WCAG timing adjustment](https://www.w3.org/WAI/WCAG22/Understanding/timing-adjustable).
+
+## Follow-up: location and scroll entrances
+
+Personal location labels now consistently read Goa, India, including the résumé address. The rest of the résumé is preserved; the updated page was rendered and visually checked, and public PDF text extraction confirms that the former town name is removed.
+
+Scroll entrances now use a native, once-per-element sequence with gentle vertical movement, a slower ease-out, and short staggered delays. Individual translation preserves existing hover and continuously moving artwork transforms. Keyboard focus immediately reveals its containing content; reduced-motion/static mode shows content without these entrances. Desktop scrolling, direct section navigation, the Goa node, 390 × 844 reflow and keyboard access to the project rail were checked. The static preview has no pending hidden content; the browser error log was empty. All 31 JavaScript tests and the public build passed again.
