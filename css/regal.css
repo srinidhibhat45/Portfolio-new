@@ -1,0 +1,114 @@
+/* Lotus, floral jaali, and woven buti: quiet details around the content. */
+main>section {position:relative;isolation:isolate;overflow:clip;}
+.regal-motif {position:absolute;pointer-events:none;z-index:-1;background-position:center;background-repeat:no-repeat;opacity:.14;}
+.regal-mandala {width:420px;height:420px;background-image:url('../assets/img/lotus-mandala.svg?v=2');background-size:contain;}
+.regal-jaali {width:240px;height:380px;background-image:url('../assets/img/floral-jaali.svg');background-size:96px 144px;background-repeat:repeat;mask-image:linear-gradient(to bottom,#000,transparent);}
+.regal-buti {width:200px;height:260px;background-image:url('../assets/img/woven-flower.svg');background-size:72px 72px;background-repeat:repeat;mask-image:linear-gradient(to bottom,#000,transparent);}
+.heritage-photo {isolation:isolate;}
+.portrait-mandala {left:50%;top:52%;width:124%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.26;}
+.portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/lotus-mandala.svg?v=2') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
+.heritage-photo.is-rotating .portrait-mandala::before {animation-play-state:running;}
+@keyframes portrait-orbit {to {transform:rotate(360deg);}}
+#work>.regal-motif {right:var(--pad-x);top:50px;opacity:.13;}
+#playground>.regal-motif {left:-160px;top:40px;opacity:.18;}
+#brain>.regal-motif {right:var(--pad-x);top:30px;opacity:.16;}
+#about>.regal-motif {left:-145px;bottom:-120px;opacity:.18;}
+#experience>.regal-motif {right:var(--pad-x);top:50px;opacity:.14;}
+#gallery>.regal-motif {left:0;bottom:0;width:100%;height:85px;opacity:.18;mask-image:linear-gradient(to top,#000,transparent);}
+#services>.regal-motif {right:-15px;top:45px;opacity:.17;}
+#writing>.regal-motif {right:-140px;bottom:-115px;opacity:.20;}
+#testimonials>.regal-motif {left:var(--pad-x);top:15px;width:125px;height:150px;opacity:.16;}
+#board>.regal-motif {right:var(--pad-x);top:25px;height:280px;opacity:.15;}
+#contact>.regal-motif {right:-115px;bottom:-130px;width:580px;height:580px;opacity:.27;}
+.gallery {background:#292521;--ink:#292521;--bone-dim:#c2b6a8;}
+.contact {background:#532d3a;--ink:#532d3a;--paper:#532d3a;--bone:#faf2e5;--bone-dim:#e0cabb;--line:#d3b68350;--accent:#f2dfbe;--focus-ring:#f2dfbe;}
+.cf-submit,.cf-submit:hover {color:#532d3a;}
+.footer {background:#38252c;color:#d2bda9;border-top:1px solid #d3b68335;--accent:#ead2b2;}
+.footer-status {color:#faf2e5;}
+.note-pin {background:#6c3d4d;}
+.play-card:first-child .play-product-preview img {width:92%;}
+
+/* A little lotus blooms around the two menu strokes. */
+.nav-burger {position:relative;}
+.nav-burger>span {transition:transform .35s var(--ease),width .35s var(--ease),opacity .3s;}
+.burger-flower {position:absolute;width:50px;height:50px;left:50%;top:50%;pointer-events:none;color:#d3b683;opacity:0;transform:translate(-50%,-50%) scale(.84) rotate(-22.5deg);transition:opacity .4s,transform .6s cubic-bezier(.22,1,.36,1);}
+.burger-flower path {stroke-dasharray:80;stroke-dashoffset:80;transition:stroke-dashoffset .65s cubic-bezier(.22,1,.36,1);}
+.nav-burger:hover .burger-flower,.nav-burger:focus-visible .burger-flower,.nav-burger[aria-expanded="true"] .burger-flower {opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0);}
+.nav-burger:hover .burger-flower path,.nav-burger:focus-visible .burger-flower path,.nav-burger[aria-expanded="true"] .burger-flower path {stroke-dashoffset:0;}
+.nav-burger[aria-expanded="false"]:hover>span:first-child,.nav-burger[aria-expanded="false"]:focus-visible>span:first-child {width:17px;}
+.nav-burger[aria-expanded="false"]:hover>span:nth-child(2),.nav-burger[aria-expanded="false"]:focus-visible>span:nth-child(2) {width:25px;}
+.mobile-menu {isolation:isolate;overflow:hidden;}
+.menu-mandala {position:absolute;pointer-events:none;z-index:-1;width:550px;height:550px;right:-200px;bottom:-85px;background:url('../assets/img/lotus-mandala.svg?v=2') center/contain no-repeat;opacity:.26;transform:rotate(-15deg);transition:transform 1.1s cubic-bezier(.22,1,.36,1);}
+.mobile-menu.is-open .menu-mandala {transform:rotate(0);}
+.mobile-menu::before {content:'';position:absolute;left:10px;top:100px;bottom:25px;width:20px;background:url('../assets/img/textile-border.svg') center/24px 48px repeat-y;opacity:.22;pointer-events:none;}
+.mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 0;font-size:clamp(28px,7vw,46px);transition:padding .4s cubic-bezier(.22,1,.36,1),color .3s;}
+.mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/woven-flower.svg') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
+.mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
+.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:36px;color:#754651;}
+.mobile-menu nav a:hover::before,.mobile-menu nav a:focus-visible::before {opacity:1;transform:translateY(-50%) rotate(0) scale(1);}
+.mobile-menu nav a:hover::after,.mobile-menu nav a:focus-visible::after {opacity:1;transform:translate(0,-50%);}
+.mobile-menu-foot {position:relative;z-index:1;}
+:root[data-theme="dark"] .regal-jaali,:root[data-theme="dark"] .regal-buti {opacity:.17;}
+@media(max-width:600px) {
+ .portrait-mandala {width:118%;opacity:.25;}
+ #work>.regal-motif {right:-80px;width:190px;opacity:.1;}
+ #brain>.regal-motif,#experience>.regal-motif,#board>.regal-motif {right:-75px;opacity:.12;}
+ #services>.regal-motif {right:-70px;opacity:.12;}
+ #writing>.regal-motif {width:300px;height:300px;right:-160px;bottom:-100px;}
+ #contact>.regal-motif {width:400px;height:400px;right:-210px;bottom:-110px;opacity:.22;}
+ .mobile-menu nav a {padding-right:30px;}
+ .mobile-menu nav a::before {width:22px;height:22px;}
+ .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:29px;}
+ .menu-mandala {width:410px;height:410px;right:-180px;bottom:-100px;opacity:.23;}
+}
+@media(prefers-reduced-motion:reduce) {
+ .burger-flower,.burger-flower path,.nav-burger>span,.menu-mandala,.mobile-menu nav a,.mobile-menu nav a::before,.mobile-menu nav a::after {transition:none;}
+}
+@media(max-height:600px) {
+ .mobile-menu {padding-top:90px;padding-bottom:24px;justify-content:flex-start;}
+ .mobile-menu nav {gap:0;}
+ .mobile-menu nav a {font-size:28px;padding-block:3px;}
+ .mobile-menu-foot {margin-top:22px;}
+}
+@media(max-height:480px) {.mobile-menu nav a {font-size:24px;}.mobile-menu-foot {margin-top:16px;}}
+
+/* Small, consistent responses. Movement stays within the existing layout. */
+.heritage-work>span,.heritage-about>span,.heritage-footer>a>span,.writing-link-ico {transition:transform .35s cubic-bezier(.22,1,.36,1);}
+.writing-link {position:relative;}
+.writing-link::after {content:'';position:absolute;bottom:-1px;left:0;right:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.22,1,.36,1);}
+.work .card-body h3,.work .vcard-name,.play-card h3 {background:linear-gradient(currentColor,currentColor) left bottom/0% 1px no-repeat;padding-bottom:3px;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .3s;}
+.play-product-preview img {transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.xp-row,.svc-row {position:relative;transition:background .3s;}
+.xp-row::before,.svc-row::before {content:'';position:absolute;left:-12px;top:20px;bottom:20px;width:2px;background:#a88656;transform:scaleY(0);transform-origin:center;transition:transform .35s cubic-bezier(.22,1,.36,1);}
+.xp-row:hover {padding-left:0;}
+.test-item {transition:border-color .35s;}
+.gi img {transition:transform .6s cubic-bezier(.22,1,.36,1);}
+.pinned-note {animation-fill-mode:backwards;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;}
+.brain-controls button,.detail-links button,.brain-list button,.contact-direct>button,.gallery-browse,.xp-resume {transition:background .25s,border-color .25s,color .25s,transform .25s;}
+.brief-details summary {transition:color .25s;}
+.brief-details[open] .contact-form {animation:brief-arrive .3s ease both;}
+@keyframes brief-arrive {from {opacity:0;transform:translateY(6px);}to {opacity:1;transform:none;}}
+.heritage-work:focus-visible>span {transform:translateY(3px);}
+.heritage-about:focus-visible>span,.heritage-footer>a:focus-visible>span,.writing-link:focus-visible .writing-link-ico {transform:translate(3px,-3px);}
+.writing-link:focus-visible::after {transform:scaleX(1);}
+.work .card:focus-visible h3,.work .vcard:focus-visible .vcard-name,.play-card:focus-visible h3 {background-size:100% 1px;}
+.gi:focus-visible img {transform:scale(1.025);}
+@media(hover:hover) and (pointer:fine) {
+ .heritage-work:hover>span {transform:translateY(3px);}
+ .heritage-about:hover>span,.heritage-footer>a:hover>span,.writing-link:hover .writing-link-ico {transform:translate(3px,-3px);}
+ .writing-link:hover::after {transform:scaleX(1);}
+ .work .card:hover h3,.work .vcard:hover .vcard-name,.play-card:hover h3 {background-size:100% 1px;}
+ .play-card:hover .play-product-preview img {transform:scale(1.025);}
+ .xp-row:hover::before,.svc-row:hover::before {transform:scaleY(1);}
+ .svc-row:hover {background:var(--paper);}
+ .test-item:hover {border-color:#a88656;}
+ .pinned-note:hover {transform:translateY(-3px) rotate(0deg);box-shadow:2px 9px 16px #20201e18;}
+ .brain-controls button:hover,.detail-links button:hover,.brain-list button:hover {background:var(--accent-soft);}
+ .contact-direct>button:hover {background:#faf2e512;border-color:#d3b683;}
+ .brief-details summary:hover {color:#f2dfbe;}
+ .gallery-browse:hover,.xp-resume:hover {border-color:var(--accent);color:var(--accent);}
+}
+@media(prefers-reduced-motion:reduce) {
+ .portrait-mandala::before {animation:none;}
+ .heritage-work>span,.heritage-about>span,.heritage-footer>a>span,.writing-link-ico,.play-product-preview img,.pinned-note {transform:none!important;}
+}

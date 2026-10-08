@@ -5,3 +5,12 @@
 # old hero cut-outs, the PNG the OG JPEG is exported from. Nothing on the site
 # links to these, so shipping them was ~1.7MB of dead weight per deploy.
 assets/_src/
+
+# Local guestbook data stays private and persists across preview restarts.
+.local/
+node_modules/
+
+.dist/
+
+# Generated local accessibility audit surface
+js/__audit__/

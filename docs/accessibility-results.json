@@ -1,0 +1,1780 @@
+{
+  "date": "2026-10-08",
+  "tool": "axe-core 4.14.0",
+  "desktop": {
+    "viewport": {
+      "width": 1280,
+      "height": 720
+    },
+    "page": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#playroomOpen"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 282,
+          "nodes": [
+            {
+              "target": [
+                ".heritage-greeting"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > span"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > em"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-role"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-intro > p:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-work"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 25,
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"Previous projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Previous built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainBack"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomOut"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomIn"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#boardUndo"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 52
+    },
+    "dark": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#playroomOpen"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 282,
+          "nodes": [
+            {
+              "target": [
+                ".heritage-greeting"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > span"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > em"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-role"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-intro > p:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-work"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 25,
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"Previous projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Previous built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainBack"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomOut"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomIn"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#boardUndo"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 52
+    },
+    "games": {
+      "Pens": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 34
+      },
+      "Chess": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 18,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a8\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a7\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a5\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 8,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"b1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"c1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"d1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"e1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"f1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"g1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"h1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 31
+      },
+      "Cards": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 20,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  ".card-player:nth-child(1) > p"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "target": [
+                  "#botTotal"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"3 ♥\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 31
+      },
+      "Rps": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  ".hand-contender:nth-child(1) > span"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+              },
+              {
+                "target": [
+                  "#rpsYourScore"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  ".arena-versus"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      },
+      "Cricket": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#cricketInnings"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "target": [
+                  "#cricketBalls"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "target": [
+                  "#cricketTarget"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      },
+      "Ultimate": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 13,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 1\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 2\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 3\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 2,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[aria-label=\"Board 5, cell 5, X\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      }
+    }
+  },
+  "phone": {
+    "viewport": {
+      "width": 390,
+      "height": 844
+    },
+    "light": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#playroomOpen"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 257,
+          "nodes": [
+            {
+              "target": [
+                ".heritage-greeting"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > span"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > em"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-role"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-intro > p:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-work"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 20,
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"Previous projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Previous built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainBack"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomOut"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomIn"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#boardUndo"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 52
+    },
+    "dark": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#playroomOpen"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 257,
+          "nodes": [
+            {
+              "target": [
+                ".heritage-greeting"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > span"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > em"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-role"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-intro > p:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-work"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 20,
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"Previous projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Previous built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainBack"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomOut"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomIn"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#boardUndo"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 52
+    },
+    "menuDark": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-valid-attr-value",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#playroomOpen"
+              ],
+              "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 257,
+          "nodes": [
+            {
+              "target": [
+                ".heritage-greeting"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > span"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                "#heroTitle > em"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-role"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-intro > p:nth-child(1)"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-current > strong"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            },
+            {
+              "target": [
+                ".heritage-work"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 20,
+          "nodes": [
+            {
+              "target": [
+                "button[aria-label=\"Previous projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next projects\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Previous built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "button[aria-label=\"Next built products\"]"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainBack"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomOut"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#brainZoomIn"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            },
+            {
+              "target": [
+                "#boardUndo"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 52
+    },
+    "games": {
+      "Pens": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 5,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 33
+      },
+      "Chess": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 18,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a8\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a7\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "button[data-square=\"a5\"] > small"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 8,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"b1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"c1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"d1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"e1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"f1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"g1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[data-square=\"h1\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 32
+      },
+      "Cards": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 22,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  ".card-player:nth-child(1) > p"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "target": [
+                  "#botTotal"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"2 ♣\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a pseudo element"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 31
+      },
+      "Rps": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 10,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  ".hand-contender:nth-child(1) > span"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "target": [
+                  "#rpsYourScore"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  ".arena-versus"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      },
+      "Cricket": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "color-contrast",
+            "count": 11,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#cricketInnings"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "target": [
+                  "#cricketBalls"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              },
+              {
+                "target": [
+                  "#cricketTarget"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background gradient"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 1,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      },
+      "Ultimate": {
+        "violations": [],
+        "incomplete": [
+          {
+            "id": "aria-prohibited-attr",
+            "count": 9,
+            "nodes": [
+              {
+                "target": [
+                  "div[aria-label=\"Small board 1\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 2\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 3\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 4\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 5\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 6\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 7\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 8\"]"
+                ],
+                "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+              }
+            ]
+          },
+          {
+            "id": "color-contrast",
+            "count": 13,
+            "nodes": [
+              {
+                "target": [
+                  ".playroom-head > div > .play-eyebrow"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomTitle > em"
+                ],
+                "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+              },
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "#gameHelp > summary > span[aria-hidden=\"true\"]"
+                ],
+                "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 1\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 2\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              },
+              {
+                "target": [
+                  "div[aria-label=\"Small board 3\"] > .ultimate-number"
+                ],
+                "summary": "Fix any of the following:\n  Element content is too short to determine if it is actual text content"
+              }
+            ]
+          },
+          {
+            "id": "label-content-name-mismatch",
+            "count": 3,
+            "nodes": [
+              {
+                "target": [
+                  "#playroomClose"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  ".is-bot"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              },
+              {
+                "target": [
+                  "button[aria-label=\"Board 2, cell 1, X\"]"
+                ],
+                "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+              }
+            ]
+          }
+        ],
+        "passes": 30
+      }
+    }
+  },
+  "overlays": {
+    "notes": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                ".note-close"
+              ],
+              "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                ".note-close"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 26
+    },
+    "recruiter": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 3,
+          "nodes": [
+            {
+              "target": [
+                ".recruiter-close"
+              ],
+              "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+            },
+            {
+              "target": [
+                ".recruiter-summary"
+              ],
+              "summary": "Fix any of the following:\n  Element's background color could not be determined because it partially overlaps other elements"
+            },
+            {
+              "target": [
+                ".button-solid[download=\"Srinidhi-Bhat-Resume.pdf\"] > span"
+              ],
+              "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                ".recruiter-close"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 21
+    },
+    "caseStudy": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "aria-prohibited-attr",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#cvScroll"
+              ],
+              "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+            }
+          ]
+        },
+        {
+          "id": "color-contrast",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#cvClose"
+              ],
+              "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#cvClose"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 34
+    },
+    "artwork": {
+      "violations": [],
+      "incomplete": [
+        {
+          "id": "color-contrast",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#lightboxClose"
+              ],
+              "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+            }
+          ]
+        },
+        {
+          "id": "label-content-name-mismatch",
+          "count": 1,
+          "nodes": [
+            {
+              "target": [
+                "#lightboxClose"
+              ],
+              "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+            }
+          ]
+        }
+      ],
+      "passes": 28
+    }
+  }
+}

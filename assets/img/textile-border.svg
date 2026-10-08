@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="128" viewBox="0 0 64 128" fill="none">
+  <g stroke="#a88656" stroke-width=".65">
+    <path d="M4 0V128M60 0V128M8 0V128M56 0V128" opacity=".5"/>
+    <path d="M32 9L53 32 32 55 11 32ZM32 73L53 96 32 119 11 96Z"/>
+    <g id="flower">
+      <path d="M32 18C23 26 23 38 32 46C41 38 41 26 32 18Z"/>
+      <path d="M18 32C26 23 38 23 46 32C38 41 26 41 18 32Z"/>
+      <path d="M22 22C33 21 43 31 42 42C31 43 21 33 22 22Z"/>
+      <path d="M42 22C43 33 33 43 22 42C21 31 31 21 42 22Z"/>
+      <circle cx="32" cy="32" r="3"/>
+    </g>
+    <use href="#flower" transform="translate(0 64)"/>
+    <path d="M32 59L36 64 32 69 28 64Z"/>
+    <path d="M16 0L19 3 16 6 13 3ZM48 0L51 3 48 6 45 3ZM16 122L19 125 16 128 13 125ZM48 122L51 125 48 128 45 125Z"/>
+  </g>
+</svg>
