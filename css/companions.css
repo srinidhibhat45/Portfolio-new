@@ -1,0 +1,92 @@
+/* A native cursor: no trailing layer, no lost caret, precise hotspots. */
+@media (hover:hover) and (pointer:fine) {
+  html,body,body *:not(input):not(textarea):not(select):not([contenteditable="true"]) {cursor:url('../assets/img/royal-hand-open.svg?v=2') 16 19,grab;}
+  a,button,summary,[role="button"],label[for],.brain-node,.gi {cursor:url('../assets/img/royal-hand-point.svg?v=2') 14 3,pointer!important;}
+  .can-drag,.can-drag *,#jimmyPet,#jimmyPet *,#writingPen,#writingPen *,#visitorBoard,#visitorBoard * {cursor:url('../assets/img/royal-hand-open.svg?v=2') 16 19,grab!important;}
+  html.royal-grabbing body,html.royal-grabbing body *:not(input):not(textarea):not(select),.is-dragging,.is-dragging * {cursor:url('../assets/img/royal-hand-grab.svg?v=2') 16 21,grabbing!important;}
+  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),textarea,[contenteditable="true"] {cursor:text!important;}
+  input[type="range"],input[type="checkbox"],input[type="radio"],select {cursor:url('../assets/img/royal-hand-point.svg?v=2') 14 3,pointer;}
+}
+@media(forced-colors:active) {html,body,body * {cursor:auto!important;}}
+
+.jimmy-dock {position:fixed;right:58px;bottom:14px;width:172px;z-index:119;isolation:isolate;color:#532d3a;pointer-events:none;transition:opacity .25s;}
+.jimmy-dock.is-away {opacity:0;visibility:hidden;}
+.jimmy-pet {position:relative;display:block;width:100%;height:158px;padding:0;margin:0;border:0;background:transparent;touch-action:none;user-select:none;pointer-events:auto;outline-offset:-8px;}
+.jimmy-art {width:100%;height:100%;overflow:visible;display:block;filter:drop-shadow(0 3px 3px #37271b12);}
+.jimmy-caption {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:0 17px;pointer-events:auto;background:#fcf7eced;border:1px solid #d5c1a1;border-radius:30px;padding:4px 5px 4px 13px;box-shadow:0 2px 10px #37271b08;}
+.jimmy-name {font:20px/1 var(--serif);}
+.jimmy-name>span {display:block;font:7px/1.6 var(--sans);color:#78624d;margin-top:3px;letter-spacing:.02em;}
+.jimmy-rest {width:32px;height:32px;display:grid;place-items:center;border:0;background:transparent;color:#79563e;border-radius:50%;padding:6px;}
+.jimmy-rest:hover {background:#e9dcc5;}
+.jimmy-rest svg {width:20px;height:20px;}
+.jimmy-actions {display:flex;justify-content:center;gap:5px;pointer-events:none;opacity:0;translate:0 5px;transition:opacity .2s,translate .3s;position:absolute;bottom:calc(100% - 7px);left:0;right:0;}
+.jimmy-actions button {display:flex;align-items:center;justify-content:center;gap:4px;border:1px solid #bda17b;background:#fcf7ec;color:#532d3a;border-radius:7px;padding:7px 8px;min-height:34px;font:11px var(--sans);box-shadow:0 2px 10px #37271b10;}
+.jimmy-actions svg {width:15px;height:15px;}
+.jimmy-actions button:hover {background:#f0e3cc;border-color:#8e6942;}
+.jimmy-actions button:disabled {color:#8c7a66;border-color:#ddceb8;}
+.jimmy-dock:hover .jimmy-actions,.jimmy-dock:focus-within .jimmy-actions {pointer-events:auto;opacity:1;translate:0 0;}
+.jimmy-hint {position:absolute;left:-28px;right:-28px;bottom:-12px;text-align:center;font:8px/1.5 var(--sans);color:#684c37;background:#fcf7ec;border-radius:5px;padding:3px 7px;width:max-content;max-width:210px;margin:auto;opacity:0;pointer-events:none;transition:opacity .2s;}
+.jimmy-dock:hover .jimmy-hint,.jimmy-dock:focus-within .jimmy-hint {opacity:1;}
+.jimmy-bubble {position:absolute;right:0;bottom:calc(100% + 47px);width:190px;max-width:190px;z-index:3;background:#fcf7ec;color:#684533;border:1px solid #c3a985;border-radius:12px;padding:8px 12px;font:14px/1.45 var(--sans);opacity:0;translate:0 5px;transition:opacity .25s,translate .3s;pointer-events:none;text-align:center;}
+.jimmy-dock.is-speaking .jimmy-bubble {opacity:1;translate:0 0;}
+.jimmy-dock.is-speaking .jimmy-actions {bottom:calc(100% - 7px);}
+.jimmy-dog {transform-origin:112px 177px;animation:jimmy-breathe 5.5s ease-in-out infinite;}
+.jimmy-tail {transform-origin:146px 143px;animation:jimmy-tail-idle 13s ease-in-out infinite;}
+.jimmy-head-turn {transform-origin:109px 99px;transform:rotate(var(--jimmy-look,0deg));transition:transform .4s cubic-bezier(.2,.8,.3,1);}
+.jimmy-head {transform-origin:108px 99px;}
+.jimmy-ear-left {transform-origin:91px 53px;}
+.jimmy-ear-right {transform-origin:131px 53px;}
+.jimmy-eyes {transform-origin:111px 64px;}
+.jimmy-eye-open {transform-origin:111px 64px;animation:jimmy-blink 10.7s linear infinite;}
+.jimmy-eye-closed {opacity:0;}
+.jimmy-paw-give {transform-origin:129px 132px;}
+.jimmy-paw-left {transform-origin:102px 134px;}
+.jimmy-tongue,.jimmy-treat-art,.jimmy-love,.jimmy-sleep {opacity:0;}
+.jimmy-tongue {transform-origin:116px 90px;}
+.jimmy-dock[data-state="look"] .jimmy-head {animation:jimmy-curious 2.5s ease-in-out both;}
+.jimmy-dock[data-state="sniff"] .jimmy-head {animation:jimmy-sniff 1.9s ease-in-out both;}
+.jimmy-dock[data-state="look"] .jimmy-ear-left {animation:jimmy-ear .6s ease-in-out 2;}
+.jimmy-dock[data-state="boop"] .jimmy-head {animation:jimmy-boop .8s cubic-bezier(.2,1.1,.3,1) both;}
+.jimmy-dock[data-state="boop"] .jimmy-dog {animation:jimmy-hop 1s ease-out both;}
+.jimmy-dock[data-state="boop"] .jimmy-tail,.jimmy-dock[data-state="petting"] .jimmy-tail,.jimmy-dock[data-state="paw"] .jimmy-tail,.jimmy-dock[data-state="treat"] .jimmy-tail {animation:jimmy-wag .28s ease-in-out infinite alternate;}
+.jimmy-dock[data-state="petting"] .jimmy-head {transform:rotate(-9deg) translate(-1px,-2px);transition:transform .4s;}
+.jimmy-dock[data-state="petting"] .jimmy-eye-open,.jimmy-dock[data-state="nap"] .jimmy-eye-open {opacity:0;animation:none;}
+.jimmy-dock[data-state="petting"] .jimmy-eye-closed,.jimmy-dock[data-state="nap"] .jimmy-eye-closed {opacity:1;}
+.jimmy-dock[data-state="petting"] .jimmy-love {animation:jimmy-love 1.6s ease-out both;}
+.jimmy-dock[data-state="petting"] .jimmy-tongue {opacity:1;}
+.jimmy-dock[data-state="paw"] .jimmy-paw-give {animation:jimmy-paw 2.4s cubic-bezier(.2,.8,.3,1) both;}
+.jimmy-dock[data-state="paw"] .jimmy-head {animation:jimmy-curious 2.4s ease-in-out both;}
+.jimmy-dock[data-state="spin"] .jimmy-dog {animation:jimmy-spin 1.8s cubic-bezier(.4,0,.2,1) both;}
+.jimmy-dock[data-state="stretch"] .jimmy-body {transform-origin:112px 175px;animation:jimmy-stretch 2.8s ease-in-out both;}
+.jimmy-dock[data-state="stretch"] .jimmy-head {animation:jimmy-sniff 2.8s ease-in-out both;}
+.jimmy-dock[data-state="hop"] .jimmy-dog {animation:jimmy-hop 1.3s ease-out 2;}
+.jimmy-dock[data-state="treat"] .jimmy-head {animation:jimmy-chew .45s ease-in-out 4;}
+.jimmy-dock[data-state="treat"] .jimmy-treat-art {animation:jimmy-biscuit 1.5s ease-in both;}
+.jimmy-dock[data-state="nap"] .jimmy-head {transform:translate(5px,15px) rotate(13deg);transition:transform 1s ease;}
+.jimmy-dock[data-state="nap"] .jimmy-tail {animation:none;}
+.jimmy-dock[data-state="nap"] .jimmy-sleep {opacity:.8;}
+.jimmy-dock.is-paused * {animation-play-state:paused!important;}
+@keyframes jimmy-breathe {0%,100%{transform:scale(1,1);}50%{transform:scale(1.004,1.009);}}
+@keyframes jimmy-tail-idle {0%,25%,100%{transform:rotate(0);}3%,10%,17%{transform:rotate(9deg);}6%,13%,20%{transform:rotate(-7deg);}}
+@keyframes jimmy-wag {from{transform:rotate(-10deg);}to{transform:rotate(13deg);}}
+@keyframes jimmy-blink {0%,28%,30%,74%,76%,100%{transform:scaleY(1);}29%,75%{transform:scaleY(.08);}}
+@keyframes jimmy-curious {0%,100%{transform:rotate(0);}25%,65%{transform:rotate(-8deg);}80%{transform:rotate(3deg);}}
+@keyframes jimmy-sniff {0%,100%{transform:translateY(0);}30%,70%{transform:translateY(5px) rotate(4deg);}50%{transform:translateY(3px) rotate(4deg);}}
+@keyframes jimmy-ear {0%,100%{transform:rotate(0);}50%{transform:rotate(-7deg);}}
+@keyframes jimmy-boop {0%,100%{transform:rotate(0);}20%{transform:translateY(-3px) rotate(-9deg);}60%{transform:rotate(6deg);}}
+@keyframes jimmy-hop {0%,100%{transform:translateY(0) scale(1);}15%{transform:scale(1.03,.95);}40%{transform:translateY(-12px) scale(.99,1.03);}70%{transform:scale(1.02,.97);}}
+@keyframes jimmy-paw {0%,100%{transform:none;}25%,65%{transform:translate(-6px,-12px) rotate(-38deg);}45%{transform:translate(-5px,-15px) rotate(-43deg);}}
+@keyframes jimmy-spin {0%,100%{transform:scaleX(1);}25%{transform:scaleX(.1) translateY(-3px);}50%{transform:scaleX(-1);}75%{transform:scaleX(-.1) translateY(-3px);}}
+@keyframes jimmy-stretch {0%,100%{transform:none;}30%,70%{transform:scale(1.06,.9) translateY(4px);}}
+@keyframes jimmy-chew {0%,100%{transform:rotate(-2deg);}50%{transform:translateY(2px) rotate(2deg);}}
+@keyframes jimmy-biscuit {0%{opacity:0;transform:translate(15px,-12px) rotate(15deg);}25%{opacity:1;}85%{opacity:1;transform:translate(-54px,2px) scale(.65);}100%{opacity:0;transform:translate(-65px,2px) scale(.2);}}
+@keyframes jimmy-love {0%{opacity:0;transform:translateY(7px) scale(.95);}30%{opacity:.9;}100%{opacity:0;transform:translateY(-15px) scale(1.04);}}
+@media(min-width:601px) {.back-to-top {right:248px;bottom:24px;}}
+@media(max-width:600px) {.jimmy-dock,.music-widget {display:none!important;}}
+@media print {.jimmy-dock,.music-widget {display:none!important;}}
+@media(prefers-reduced-motion:reduce) {
+  .jimmy-dock * {animation:none!important;transition:none!important;}
+  .jimmy-dock[data-state="paw"] .jimmy-paw-give {transform:translate(-6px,-12px) rotate(-38deg);}
+  .jimmy-dock[data-state="treat"] .jimmy-treat-art {opacity:1;}
+  .jimmy-dock[data-state="petting"] .jimmy-love {opacity:.8;}
+}

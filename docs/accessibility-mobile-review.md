@@ -67,3 +67,13 @@ Reference methods: [axe-core](https://www.deque.com/axe/axe-core/), [axe API](ht
 Personal location labels now consistently read Goa, India, including the résumé address. The rest of the résumé is preserved; the updated page was rendered and visually checked, and public PDF text extraction confirms that the former town name is removed.
 
 Scroll entrances now use a native, once-per-element sequence with gentle vertical movement, a slower ease-out, and short staggered delays. Individual translation preserves existing hover and continuously moving artwork transforms. Keyboard focus immediately reveals its containing content; reduced-motion/static mode shows content without these entrances. Desktop scrolling, direct section navigation, the Goa node, 390 × 844 reflow and keyboard access to the project rail were checked. The static preview has no pending hidden content; the browser error log was empty. All 31 JavaScript tests and the public build passed again.
+
+## Follow-up: royal cursor and Jimmy
+
+Added a native ivory-glove cursor with an oxblood cuff, fine gold trim, and separate open, gripping and pointing poses. Text fields retain their caret cursor; forced-colour mode uses native cursors. The artwork was refined to slimmer proportions, subtle shading and fine seams after visual feedback.
+
+Jimmy is a small articulated brown-and-white indie dog fixed near the bottom-right. Boops, drag petting, keyboard petting, random tricks, feeding and a saved nap preference were checked in the browser. Feeding cooldown and nap preference survive reloads. His memories are saved only in that visitor's local browser storage. No visitor-board data was changed. He pauses and hides while a dialog or game is open, and returns when it closes. His position leaves the games launcher clear.
+
+Messages now occupy their own opaque cream bubble above Jimmy and the control row, with a higher stacking layer and no overlap with his ears or body. The final 1280 × 720 check placed the message bottom at 462px and the dog control top at 504px. Keyboard focus exposes the controls. Idle movements make no live-region announcements, and reduced motion stops looping animation.
+
+At 390 × 844, both Jimmy and music are hidden and there is no horizontal page overflow. Switching into the phone layout also pauses music. A fresh desktop axe scan reported zero violations; existing contrast and symbolic-control items still require manual judgement. The three new state tests passed along with the existing suite (34 JavaScript tests total), and the public build passed. These remain browser checks rather than a physical-device or screen-reader certification.
