@@ -77,3 +77,9 @@ Jimmy is a small articulated brown-and-white indie dog fixed near the bottom-rig
 Messages now occupy their own opaque cream bubble above Jimmy and the control row, with a higher stacking layer and no overlap with his ears or body. The final 1280 × 720 check placed the message bottom at 462px and the dog control top at 504px. Keyboard focus exposes the controls. Idle movements make no live-region announcements, and reduced motion stops looping animation.
 
 At 390 × 844, both Jimmy and music are hidden and there is no horizontal page overflow. Switching into the phone layout also pauses music. A fresh desktop axe scan reported zero violations; existing contrast and symbolic-control items still require manual judgement. The three new state tests passed along with the existing suite (34 JavaScript tests total), and the public build passed. These remain browser checks rather than a physical-device or screen-reader certification.
+
+## Follow-up: complete portrait in the mobile hero
+
+The phone hero now uses a compact one-line name and shows the complete portrait before the introduction and actions. The portrait keeps its original proportions, has no mobile cropping/fade mask, and scales with the small viewport height to leave space for browser bars. Its full bottom edge is visible at 320 × 568, 360 × 640, 393 × 694, 430 × 740 and 600 × 740; no page or title overflow was observed. Tablet 768 × 1024 also fits. Short desktop windows now constrain portrait size, with the whole image visible at 1280 × 720.
+
+At 393 × 694, the final portrait bottom measured 487px, the games launcher did not overlap it, and the two primary actions measured 49px and 44px high. The public build and whitespace checks passed. These are browser viewport checks; the supplied phone screenshot guided the available-space target.

@@ -170,7 +170,7 @@
 }
 @media(max-width:600px) {
  .nav {min-height:74px;padding:13px 22px;gap:12px;}.nav-logo {font-size:21px;}.nav .recruiter-trigger {display:none;}.nav .theme-toggle {display:grid;margin-left:auto;}.nav-burger {width:44px;min-width:44px;padding:8px;}
- .heritage-hero {padding-top:115px;}.heritage-hero::before,.heritage-hero::after {top:74px;}
+ .heritage-hero {padding-top:98px;}.heritage-hero::before,.heritage-hero::after {top:74px;}
  .work {padding:70px 22px;scroll-margin-top:14px;}.work .section-title {font-size:44px;}.work-tabs {gap:10px;}.work .work-tab {padding:17px 14px;grid-template-columns:1fr;}.work-tab-title {font-size:17px;}.work .tab-count {font-size:11px;margin-left:5px;}.work-tab-icon {display:none;}.work-tab-note {font-size:10px;}
  .work .project-tools {gap:13px;flex-direction:column;align-items:stretch;}.work .project-search {width:100%;}.work .project-search input {font-size:16px;}
  .work .cards,.work .vcards {grid-template-columns:minmax(0,1fr);gap:26px;}
