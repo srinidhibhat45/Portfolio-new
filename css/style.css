@@ -182,40 +182,6 @@ html.js .preloader { display: flex; }
   color: var(--accent);
 }
 
-/* ===== Cursor ===== */
-.cursor {
-  position: fixed; top: 0; left: 0;
-  width: 12px; height: 12px;
-  background: var(--accent);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  opacity: 0;
-  transform: translate(-50%, -50%);
-  display: flex; align-items: center; justify-content: center;
-  transition: width 0.35s var(--ease), height 0.35s var(--ease), background-color 0.25s;
-}
-.cursor.is-hover { width: 52px; height: 52px; background: rgba(219,226,240,0.18); backdrop-filter: invert(0.05); }
-.cursor.is-view { width: 92px; height: 92px; background: var(--accent); }
-.cursor-label {
-  font-family: var(--sans);
-  font-weight: 500;
-  font-size: 0.66rem;
-  letter-spacing: 0.1em;
-  color: #fff;
-  opacity: 0;
-  text-transform: uppercase;
-}
-.cursor.is-view .cursor-label { opacity: 1; }
-.cursor.is-hidden { opacity: 0 !important; }
-@media (hover: none), (pointer: coarse) { .cursor { display: none; } }
-
-/* main.js adds .has-cursor once the custom cursor is actually running, so a
-   JS/CDN failure can never leave the page with no pointer at all. Text fields
-   keep the native caret — the custom dot hides itself over them instead. */
-html.has-cursor,
-html.has-cursor *:not(input):not(textarea):not(select) { cursor: none; }
-
 /* ===== Card hover preview (peek at first 3 case-study pages) ===== */
 .card-preview {
   position: fixed; top: 0; left: 0;

@@ -70,7 +70,7 @@ Scroll entrances now use a native, once-per-element sequence with gentle vertica
 
 ## Follow-up: royal cursor and Jimmy
 
-Added a native ivory-glove cursor with an oxblood cuff, fine gold trim, and separate open, gripping and pointing poses. Text fields retain their caret cursor; forced-colour mode uses native cursors. The artwork was refined to slimmer proportions, subtle shading and fine seams after visual feedback.
+Restored the normal system cursor after visual feedback. Removed the custom glove assets, grip script and dormant cursor overlay code. Standard grab/grabbing cues remain on draggable project rails, graph nodes, the visitor canvas, fountain pen and Jimmy; text fields retain their caret cursor. The final preview reports auto for body/headings, text for the search field, and grab on draggable elements.
 
 Jimmy is a small articulated brown-and-white indie dog fixed near the bottom-right. Boops, drag petting, keyboard petting, random tricks, feeding and a saved nap preference were checked in the browser. Feeding cooldown and nap preference survive reloads. His memories are saved only in that visitor's local browser storage. No visitor-board data was changed. He pauses and hides while a dialog or game is open, and returns when it closes. His position leaves the games launcher clear.
 

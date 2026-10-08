@@ -43,7 +43,7 @@
     var cardsEl = document.getElementById('cards');
     if (cardsEl && SITE.work && SITE.work.length) {
       cardsEl.innerHTML = SITE.work.map(function (w, i) {
-        return '<a class="card" href="' + esc(w.pdf) + '" target="_blank" rel="noopener" data-case="' + esc(w.slug) + '" data-cursor="view">' +
+        return '<a class="card" href="' + esc(w.pdf) + '" target="_blank" rel="noopener" data-case="' + esc(w.slug) + '">' +
           '<div class="card-media"><span class="card-number">' + ('0' + (i + 1)).slice(-2) + ' / DESIGN STUDY</span><img src="' + esc(webp(w.thumb)) + '" alt="' + esc(w.title) + '"' +
             ' width="1000" height="562" loading="lazy" decoding="async"' + fallback(w.thumb) + '></div>' +
           '<div class="card-body">' +
@@ -241,33 +241,6 @@
     gsap.from('.heritage-title', { y: 22, opacity: 0, duration: 1, ease: 'power3.out', clearProps: 'opacity,transform' });
     gsap.from('.heritage-photo', { y: 28, opacity: 0, duration: 1, delay: 0.15, ease: 'power3.out', clearProps: 'opacity,transform' });
     gsap.from('.heritage-intro, .heritage-paths', { y: 14, opacity: 0, duration: 0.8, delay: 0.3, stagger: 0.08, ease: 'power3.out', clearProps: 'opacity,transform' });
-  }
-
-  /* ---------- Custom cursor ---------- */
-  var cursor = document.getElementById('cursor');
-  var cursorLabel = document.getElementById('cursorLabel');
-  if (cursor && !isTouch && hasGSAP) {
-    // Only now hide the native cursor. Doing it from CSS alone would leave a
-    // pointerless page if GSAP failed to load or this branch never ran.
-    document.documentElement.classList.add('has-cursor');
-    var cx = gsap.quickTo(cursor, 'x', { duration: 0.18, ease: 'power3.out' });
-    var cy = gsap.quickTo(cursor, 'y', { duration: 0.18, ease: 'power3.out' });
-    window.addEventListener('mousemove', function (e) { cursor.style.opacity = '1'; cx(e.clientX); cy(e.clientY); });
-    // Over text fields the caret matters more than the dot: give the native
-    // I-beam back and get the custom cursor out of the way.
-    document.querySelectorAll('input, textarea, select').forEach(function (el) {
-      el.addEventListener('mouseenter', function () { cursor.classList.add('is-hidden'); });
-      el.addEventListener('mouseleave', function () { cursor.classList.remove('is-hidden'); });
-    });
-    function bindCursor(sel, cls, label) {
-      document.querySelectorAll(sel).forEach(function (el) {
-        el.addEventListener('mouseenter', function () { cursor.classList.add(cls); if (label) cursorLabel.textContent = label; });
-        el.addEventListener('mouseleave', function () { cursor.classList.remove(cls); if (label) cursorLabel.textContent = ''; });
-      });
-    }
-    bindCursor('[data-cursor="hover"], .nav-links a, .contact-links a', 'is-hover', '');
-    bindCursor('[data-cursor="view"]', 'is-view', 'View ↗');
-    bindCursor('.gi', 'is-view', 'Open');
   }
 
   /* ---------- Mobile menu ---------- */

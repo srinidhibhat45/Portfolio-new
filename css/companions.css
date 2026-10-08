@@ -1,13 +1,8 @@
-/* A native cursor: no trailing layer, no lost caret, precise hotspots. */
-@media (hover:hover) and (pointer:fine) {
-  html,body,body *:not(input):not(textarea):not(select):not([contenteditable="true"]) {cursor:url('../assets/img/royal-hand-open.svg?v=2') 16 19,grab;}
-  a,button,summary,[role="button"],label[for],.brain-node,.gi {cursor:url('../assets/img/royal-hand-point.svg?v=2') 14 3,pointer!important;}
-  .can-drag,.can-drag *,#jimmyPet,#jimmyPet *,#writingPen,#writingPen *,#visitorBoard,#visitorBoard * {cursor:url('../assets/img/royal-hand-open.svg?v=2') 16 19,grab!important;}
-  html.royal-grabbing body,html.royal-grabbing body *:not(input):not(textarea):not(select),.is-dragging,.is-dragging * {cursor:url('../assets/img/royal-hand-grab.svg?v=2') 16 21,grabbing!important;}
-  input:not([type="range"]):not([type="checkbox"]):not([type="radio"]),textarea,[contenteditable="true"] {cursor:text!important;}
-  input[type="range"],input[type="checkbox"],input[type="radio"],select {cursor:url('../assets/img/royal-hand-point.svg?v=2') 14 3,pointer;}
-}
-@media(forced-colors:active) {html,body,body * {cursor:auto!important;}}
+/* Native grab cursors only for Jimmy’s petting interaction. */
+#jimmyPet {cursor:grab;}
+#jimmyPet:active {cursor:grabbing;}
+.jimmy-actions button,.jimmy-rest {cursor:pointer;}
+.jimmy-actions button:disabled {cursor:default;}
 
 .jimmy-dock {position:fixed;right:58px;bottom:18px;width:126px;z-index:119;isolation:isolate;color:#532d3a;pointer-events:none;transition:opacity .25s;}
 .jimmy-dock.is-away {opacity:0;visibility:hidden;}
