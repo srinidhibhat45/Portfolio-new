@@ -640,52 +640,6 @@
 
   })();
 
-  /* ---------- Contact form (Netlify AJAX submit) ---------- */
-  (function () {
-    var form = document.querySelector('.contact-form');
-    if (!form) return;
-    var statusEl = document.getElementById('cfStatus');
-    var toastEl = document.getElementById('cfToast');
-    var btn = form.querySelector('.cf-submit');
-    var btnTxt = form.querySelector('.cf-submit-txt');
-    var toastTimer = null;
-    form.addEventListener('submit', function (e) {
-      e.preventDefault();
-      var hp = form.querySelector('[name="bot-field"]');
-      if (hp && hp.value) return; // honeypot tripped
-      if (typeof form.reportValidity === 'function' && !form.reportValidity()) return;
-      var body = new URLSearchParams(new FormData(form)).toString();
-      if (btn) btn.disabled = true;
-      if (btnTxt) btnTxt.textContent = 'Sending…';
-      statusEl.className = 'cf-status';
-      statusEl.textContent = '';
-      fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: body
-      }).then(function (res) {
-        if (!res.ok) throw new Error('status ' + res.status);
-        form.reset();
-        if (btn) btn.disabled = false;
-        if (btnTxt) btnTxt.textContent = 'Send it over';
-        if (toastEl) {
-          clearTimeout(toastTimer);
-          toastEl.classList.add('is-visible');
-          toastEl.setAttribute('aria-hidden', 'false');
-          toastTimer = setTimeout(function () {
-            toastEl.classList.remove('is-visible');
-            toastEl.setAttribute('aria-hidden', 'true');
-          }, 5000);
-        }
-      }).catch(function () {
-        if (btn) btn.disabled = false;
-        if (btnTxt) btnTxt.textContent = 'Send it over';
-        statusEl.className = 'cf-status is-err';
-        statusEl.textContent = 'Something went wrong — please email srinidhibhat45@gmail.com instead.';
-      });
-    });
-  })();
-
   /* ---------- Magnetic ---------- */
   if (!isTouch && hasGSAP && !reduceMotion) {
     document.querySelectorAll('[data-magnetic]').forEach(function (el) {

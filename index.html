@@ -54,7 +54,7 @@
   <link rel="stylesheet" href="css/visitor-canvas.css?v=20261009-fit-2">
   <link rel="stylesheet" href="css/editorial.css?v=20261009-texture-refinement-3">
   <link rel="stylesheet" href="css/personal.css?v=20261009-texture-refinement-3">
-  <link rel="stylesheet" href="css/playful.css?v=20261009-texture-refinement-3">
+  <link rel="stylesheet" href="css/playful.css?v=20261009-service-rows">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -472,7 +472,7 @@
       <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
       <details class="brief-details"><summary>Have a project in mind? Leave me a brief. <span aria-hidden="true">+</span></summary>
 
-      <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?sent=1">
+      <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
         <input type="hidden" name="form-name" value="contact">
         <p class="cf-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
@@ -522,7 +522,7 @@
       </form>
       </details>
 
-      <div class="cf-toast" id="cfToast" role="status" aria-live="polite" aria-hidden="true">
+      <div class="cf-toast" id="cfToast" aria-hidden="true">
         <span class="cf-toast-msg">Thanks — your message landed. I'll get back to you soon. ✦</span>
       </div>
 
@@ -664,7 +664,8 @@
   <script src="js/site-data.js"></script>
   <script src="js/cases-data.js"></script>
   <script src="js/project-media.js?v=20261007-gallery-1"></script>
-  <script src="js/main.js?v=20261009-native-cursor"></script>
+  <script src="js/main.js?v=20261009-contact-form"></script>
+  <script type="module" src="js/contact-form.mjs?v=20261009-netlify"></script>
   <script src="js/studio.js?v=20261008-build-rail-1"></script>
   <script src="js/project-drag.js?v=20261008-build-rail-1"></script>
   <script src="js/project-rails.js?v=20261008-build-rail-1"></script>
