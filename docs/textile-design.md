@@ -10,13 +10,13 @@ These are contemporary interpretations inspired by textile forms, not reproducti
 ## Current composition
 
 - Portrait: a detailed jaali-inspired medallion, slowly rotating behind the photograph.
-- Hero, timeline, gallery, and board: narrow woven sari borders.
-- Project and services margins: soft Ajrakh-inspired print accents.
+- Hero, timeline, and board: broad Ajrakh print impressions that dissolve at the outer margins.
+- Project and services margins: soft Ajrakh-inspired print accents, with rounded fading masks and no ribbons.
 - About, contact, and menu: refined brocade paisleys, clear of the reading area.
 - Brain: a tied-dot hem, away from the interactive connections.
 - Writing room: two botanical parakeets in their own desktop column beside the notebook.
 
-All large artwork is contained and hidden from assistive technology. Smaller screens use narrow hems instead of large margin illustrations.
+All large artwork is contained and hidden from assistive technology. The hero edges are left clear on phones; the portrait ornament carries the theme. Narrow woven hems have been removed throughout.
 
 ## Motion and verification
 

@@ -8,12 +8,12 @@ Generated with the built-in image generation tool on 9 October 2026. Original in
 - `assets/img/textiles/parakeet-vine.webp`: botanical artwork in its own desktop writing column.
 - `assets/img/textiles/jaali-medallion.webp`: geometric portrait ornament; retains the slow rotation.
 - `assets/img/textiles/ajrakh-field.webp`: small faded geometric print accents.
-- `assets/img/textiles/sari-border.webp`: horizontal textile hems.
-- `assets/img/textiles/sari-border-vertical.webp`: rotated derivative for vertical seams.
+- `assets/img/textiles/sari-border.webp`: unused generated border study; no longer displayed.
+- `assets/img/textiles/sari-border-vertical.webp`: unused vertical derivative; no longer displayed.
 
 PNG masters are preserved locally in ignored `assets/_src/textiles/`. WebPs preserve alpha and use quality 84. Border preparation trims transparent padding and rotates a vertical derivative.
 
-Illustrations stay clear of text. Smaller screens use narrow textile hems instead of the large decorative illustrations. Decorative artwork is hidden from assistive technology, cannot intercept pointer input, and respects reduced motion. Gallery animation, portfolio content, and project interactions remain intact.
+Illustrations stay clear of text. Narrow textile hems are removed. Larger print motifs use rounded fade masks at the margins, and phone hero edges stay clear. Decorative artwork is hidden from assistive technology, cannot intercept pointer input, and respects reduced motion. Gallery animation, portfolio content, and project interactions remain intact.
 
 # Final generation prompts
 
@@ -37,6 +37,10 @@ Use case: stylized-concept. Asset type: clean transparent Indian textile border 
 
 Use case: stylized-concept. Asset type: refined original Indian textile pattern for small decorative panels on a cream and burgundy portfolio website. Create a beautifully detailed square repeat pattern inspired by artisan Ajrakh block-print textiles. Crisp intricate interlocking eight-point star geometry with fine nested outlines, small botanical seed motifs, rosette centres and tiny dotted border details. Rhythmic, beautifully balanced precision with authentic subtle ink-print texture. Sophisticated dusty indigo, burgundy, terracotta and muted antique-gold ink on a warm pale ivory #f0e9dd ground. Keep cream negative space between motifs; not a dark heavy filled tapestry. Expert contemporary textile art, richly crafted minute details rather than generic computer-generated triangles or simple outline stars. Flat front-facing artwork that fills the entire square, seamless repeat composition, no perspective or cloth folds. No text, logo, watermark, objects, photo, mockup or shadows.
 
+
+## Placement refinement
+
+Continuous side strips and horizontal ribbons were removed after review: their small scale compressed the artwork into heavy lines. Hero accents now show recognisable, larger Ajrakh motifs in asymmetrical patches with soft fades. Gallery and testimonial transitions have no extra decorations. The portrait, parakeets, and brocade illustrations are retained.
 
 ## Verification
 
