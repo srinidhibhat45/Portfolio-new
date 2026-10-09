@@ -1,25 +1,11 @@
-/* Lotus, floral jaali, and woven buti: quiet details around the content. */
+/* Shared decorative foundation and the portrait’s rotating medallion. */
 main>section {position:relative;isolation:isolate;overflow:clip;}
 .regal-motif {position:absolute;pointer-events:none;z-index:-1;background-position:center;background-repeat:no-repeat;opacity:.14;}
-.regal-mandala {width:420px;height:420px;background-image:url('../assets/img/lotus-mandala.svg?v=2');background-size:contain;}
-.regal-jaali {width:240px;height:380px;background-image:url('../assets/img/floral-jaali.svg');background-size:96px 144px;background-repeat:repeat;mask-image:linear-gradient(to bottom,#000,transparent);}
-.regal-buti {width:200px;height:260px;background-image:url('../assets/img/woven-flower.svg');background-size:72px 72px;background-repeat:repeat;mask-image:linear-gradient(to bottom,#000,transparent);}
 .heritage-photo {isolation:isolate;}
 .portrait-mandala {left:50%;top:52%;width:124%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.26;}
-.portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/lotus-mandala.svg?v=2') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
+.portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/textile-medallion.svg') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
 .heritage-photo.is-rotating .portrait-mandala::before {animation-play-state:running;}
 @keyframes portrait-orbit {to {transform:rotate(360deg);}}
-#work>.regal-motif {right:var(--pad-x);top:50px;opacity:.13;}
-#playground>.regal-motif {left:-160px;top:40px;opacity:.18;}
-#brain>.regal-motif {right:var(--pad-x);top:30px;opacity:.16;}
-#about>.regal-motif {left:-145px;bottom:-120px;opacity:.18;}
-#experience>.regal-motif {right:var(--pad-x);top:50px;opacity:.14;}
-#gallery>.regal-motif {left:0;bottom:0;width:100%;height:85px;opacity:.18;mask-image:linear-gradient(to top,#000,transparent);}
-#services>.regal-motif {right:-15px;top:45px;opacity:.17;}
-#writing>.regal-motif {right:-140px;bottom:-115px;opacity:.20;}
-#testimonials>.regal-motif {left:var(--pad-x);top:15px;width:125px;height:150px;opacity:.16;}
-#board>.regal-motif {right:var(--pad-x);top:25px;height:280px;opacity:.15;}
-#contact>.regal-motif {right:-115px;bottom:-130px;width:580px;height:580px;opacity:.27;}
 .gallery {background:#292521;--ink:#292521;--bone-dim:#c2b6a8;}
 .contact {background:#532d3a;--ink:#532d3a;--paper:#532d3a;--bone:#faf2e5;--bone-dim:#e0cabb;--line:#d3b68350;--accent:#f2dfbe;--focus-ring:#f2dfbe;}
 .cf-submit,.cf-submit:hover {color:#532d3a;}
@@ -38,31 +24,22 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .nav-burger[aria-expanded="false"]:hover>span:first-child,.nav-burger[aria-expanded="false"]:focus-visible>span:first-child {width:17px;}
 .nav-burger[aria-expanded="false"]:hover>span:nth-child(2),.nav-burger[aria-expanded="false"]:focus-visible>span:nth-child(2) {width:25px;}
 .mobile-menu {isolation:isolate;overflow:hidden;}
-.menu-mandala {position:absolute;pointer-events:none;z-index:-1;width:550px;height:550px;right:-200px;bottom:-85px;background:url('../assets/img/lotus-mandala.svg?v=2') center/contain no-repeat;opacity:.26;transform:rotate(-15deg);transition:transform 1.1s cubic-bezier(.22,1,.36,1);}
-.mobile-menu.is-open .menu-mandala {transform:rotate(0);}
-.mobile-menu::before {content:'';position:absolute;left:10px;top:100px;bottom:25px;width:20px;background:url('../assets/img/textile-border.svg') center/24px 48px repeat-y;opacity:.22;pointer-events:none;}
+.mobile-menu::before {content:'';position:absolute;left:10px;top:100px;bottom:25px;width:20px;background:url('../assets/img/textile-ikat.svg') center/24px 48px repeat-y;opacity:.22;pointer-events:none;}
 .mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 0;font-size:clamp(28px,7vw,46px);transition:padding .4s cubic-bezier(.22,1,.36,1),color .3s;}
-.mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/woven-flower.svg') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
+.mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textile-ajrakh.svg') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
 .mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
 .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:36px;color:#754651;}
 .mobile-menu nav a:hover::before,.mobile-menu nav a:focus-visible::before {opacity:1;transform:translateY(-50%) rotate(0) scale(1);}
 .mobile-menu nav a:hover::after,.mobile-menu nav a:focus-visible::after {opacity:1;transform:translate(0,-50%);}
 .mobile-menu-foot {position:relative;z-index:1;}
-:root[data-theme="dark"] .regal-jaali,:root[data-theme="dark"] .regal-buti {opacity:.17;}
 @media(max-width:600px) {
  .portrait-mandala {width:118%;opacity:.25;}
- #work>.regal-motif {right:-80px;width:190px;opacity:.1;}
- #brain>.regal-motif,#experience>.regal-motif,#board>.regal-motif {right:-75px;opacity:.12;}
- #services>.regal-motif {right:-70px;opacity:.12;}
- #writing>.regal-motif {width:300px;height:300px;right:-160px;bottom:-100px;}
- #contact>.regal-motif {width:400px;height:400px;right:-210px;bottom:-110px;opacity:.22;}
  .mobile-menu nav a {padding-right:30px;}
  .mobile-menu nav a::before {width:22px;height:22px;}
  .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:29px;}
- .menu-mandala {width:410px;height:410px;right:-180px;bottom:-100px;opacity:.23;}
 }
 @media(prefers-reduced-motion:reduce) {
- .burger-flower,.burger-flower path,.nav-burger>span,.menu-mandala,.mobile-menu nav a,.mobile-menu nav a::before,.mobile-menu nav a::after {transition:none;}
+ .burger-flower,.burger-flower path,.nav-burger>span,.mobile-menu nav a,.mobile-menu nav a::before,.mobile-menu nav a::after {transition:none;}
 }
 @media(max-height:600px) {
  .mobile-menu {padding-top:90px;padding-bottom:24px;justify-content:flex-start;}
