@@ -44,11 +44,11 @@
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;450;500;600;700;800;900&family=DM+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css?v=20261009-native-cursor">
-  <link rel="stylesheet" href="css/studio.css?v=20261007-clean-4">
-  <link rel="stylesheet" href="css/atelier.css?v=20261007-1">
+  <link rel="stylesheet" href="css/studio.css?v=20261009-visible-form">
+  <link rel="stylesheet" href="css/atelier.css?v=20261009-visible-form">
   <link rel="stylesheet" href="css/hero.css?v=20261009-mobile-portrait">
   <link rel="stylesheet" href="css/work.css?v=20261009-mobile-portrait">
-  <link rel="stylesheet" href="css/regal.css?v=20261009-texture-refinement-3">
+  <link rel="stylesheet" href="css/regal.css?v=20261009-visible-form">
   <link rel="stylesheet" href="css/brain.css?v=20261008-brain-10">
   <link rel="stylesheet" href="css/projects.css?v=20261008-build-rail-1">
   <link rel="stylesheet" href="css/visitor-canvas.css?v=20261009-fit-2">
@@ -485,9 +485,10 @@
       <h2 class="contact-title">Let's work together.</h2>
       <div class="contact-direct"><a href="mailto:srinidhibhat45@gmail.com">srinidhibhat45@gmail.com</a><button type="button" id="copyEmail" aria-label="Copy email address">Copy ↗</button></div>
       <p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>
-      <details class="brief-details"><summary>Have a project in mind? Leave me a brief. <span aria-hidden="true">+</span></summary>
+      <div class="contact-brief">
+      <p class="brief-heading" id="brief-heading">Have a project in mind? Leave me a brief.</p>
 
-      <form class="contact-form" id="contactForm" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
+      <form class="contact-form" id="contactForm" aria-labelledby="brief-heading" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html">
         <input type="hidden" name="form-name" value="contact">
         <p class="cf-hp" aria-hidden="true"><label>Leave this empty <input name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 
@@ -535,7 +536,7 @@
         </div>
         <p class="cf-status" id="cfStatus" role="status" aria-live="polite"></p>
       </form>
-      </details>
+      </div>
 
       <div class="cf-toast" id="cfToast" aria-hidden="true">
         <span class="cf-toast-msg">Thanks — your message landed. I'll get back to you soon. ✦</span>

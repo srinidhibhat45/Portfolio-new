@@ -62,9 +62,6 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .gi img {transition:transform .6s cubic-bezier(.22,1,.36,1);}
 .pinned-note {animation-fill-mode:backwards;transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;}
 .brain-controls button,.detail-links button,.brain-list button,.contact-direct>button,.gallery-browse,.xp-resume {transition:background .25s,border-color .25s,color .25s,transform .25s;}
-.brief-details summary {transition:color .25s;}
-.brief-details[open] .contact-form {animation:brief-arrive .3s ease both;}
-@keyframes brief-arrive {from {opacity:0;transform:translateY(6px);}to {opacity:1;transform:none;}}
 .heritage-work:focus-visible>span {transform:translateY(3px);}
 .heritage-about:focus-visible>span,.heritage-footer>a:focus-visible>span,.writing-link:focus-visible .writing-link-ico {transform:translate(3px,-3px);}
 .writing-link:focus-visible::after {transform:scaleX(1);}
@@ -82,7 +79,6 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
  .pinned-note:hover {transform:translateY(-3px) rotate(0deg);box-shadow:2px 9px 16px #20201e18;}
  .brain-controls button:hover,.detail-links button:hover,.brain-list button:hover {background:var(--accent-soft);}
  .contact-direct>button:hover {background:#faf2e512;border-color:#d3b683;}
- .brief-details summary:hover {color:#f2dfbe;}
  .gallery-browse:hover,.xp-resume:hover {border-color:var(--accent);color:var(--accent);}
 }
 @media(prefers-reduced-motion:reduce) {
