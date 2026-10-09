@@ -20,7 +20,8 @@
 .board-palette button:hover,.board-palette button:focus-visible {background:#eee3d5;transform:rotate(-8deg) scale(1.1);}
 .visitor-board {position:relative;display:block;width:100%;height:690px;min-height:0;padding:0;overflow:hidden;border:0;background:#f8f4ea;touch-action:none;cursor:grab;isolation:isolate;}
 .visitor-board.is-moving,.visitor-board.is-moving * {cursor:grabbing!important;}
-.board-world {position:absolute;top:0;left:0;width:1400px;height:900px;transform-origin:0 0;background:radial-gradient(#b9a89666 1px,transparent 1px) 0 0/24px 24px;}
+.board-world {position:absolute;top:0;left:0;width:1400px;height:900px;transform-origin:0 0;background:radial-gradient(#b9a89666 1px,transparent 1px) 0 0/24px 24px;opacity:0;}
+.visitor-board[data-camera-ready] .board-world {opacity:1;}
 .board-lettering {position:absolute;left:635px;top:100px;font:italic 31px var(--serif);color:#8a756080;transform:rotate(-3deg);pointer-events:none;}
 .board-item {position:absolute!important;animation:none!important;transform:rotate(var(--note-angle,0deg));transform-origin:center;cursor:grab;user-select:none;-webkit-user-select:none;outline:none;transition:box-shadow .2s;}
 .board-item.is-selected {outline:2px solid #794758;outline-offset:7px;}
@@ -32,6 +33,7 @@
 .board-item.pinned-note svg {display:block;width:100%;aspect-ratio:520/320;margin-block:17px 0;}
 .board-item .note-pin {width:7px;height:7px;top:10px;background:#794758;}
 .board-sticker {display:grid;place-items:center;width:90px;height:90px;font-size:72px;line-height:1;filter:drop-shadow(0 4px 3px #3f2a2514);}
+.board-sticker,.board-stamp {min-width:var(--board-target-size,26px);min-height:var(--board-target-size,26px);}
 .board-stamp {width:118px;height:118px;border:2px dashed #916745;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;color:#916745;background:#f8f0dd;font:600 15px/1.3 var(--sans);text-align:center;letter-spacing:.1em;}
 .board-stamp>span:last-child {font-size:28px;font-weight:400;}
 .board-bottom {display:flex;justify-content:space-between;align-items:center;gap:25px;padding:13px 18px;border-top:1px solid #dfd4c6;color:#867264;background:#faf6ed;font:400 10px/1.7 var(--sans);}

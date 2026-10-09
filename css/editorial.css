@@ -6,7 +6,7 @@
 .xp-row {position:relative;display:grid;grid-template-columns:minmax(0,1fr);gap:15px;padding:26px 30px 29px;border:1px solid #dbccba;border-radius:8px;background:#fcf9f2;overflow:hidden;transition:background .3s,border-color .3s,transform .3s;}
 .xp-row::before {content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:#ae8b59;opacity:.45;}
 .xp-current {background:#f0e5d7;border-color:#cbb28f;}
-.xp-chapter {position:absolute;right:22px;top:19px;display:grid;place-items:center;width:55px;height:55px;background:url('../assets/img/woven-flower.svg') center/contain no-repeat;color:#916d46;font:400 10px var(--mono);transition:transform .5s;}
+.xp-chapter {position:absolute;right:22px;top:19px;display:grid;place-items:center;width:55px;height:55px;background:url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;color:#916d46;font:400 10px var(--mono);transition:transform .5s;}
 .xp-when {padding:0;color:#8a6c52;font:400 10px/1.5 var(--mono);letter-spacing:.04em;}
 .xp-current .xp-when::after {content:' · CURRENT';color:#6c3d4d;}
 .xp-what {display:flex;flex-direction:column;gap:7px;padding-right:40px;}

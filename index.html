@@ -48,13 +48,13 @@
   <link rel="stylesheet" href="css/atelier.css?v=20261007-1">
   <link rel="stylesheet" href="css/hero.css?v=20261009-mobile-portrait">
   <link rel="stylesheet" href="css/work.css?v=20261009-mobile-portrait">
-  <link rel="stylesheet" href="css/regal.css?v=20261009-pattern-placement-2">
+  <link rel="stylesheet" href="css/regal.css?v=20261009-texture-refinement-3">
   <link rel="stylesheet" href="css/brain.css?v=20261008-brain-10">
   <link rel="stylesheet" href="css/projects.css?v=20261008-build-rail-1">
-  <link rel="stylesheet" href="css/visitor-canvas.css?v=20261008-canvas-4">
-  <link rel="stylesheet" href="css/editorial.css?v=20261009-pattern-placement-2">
-  <link rel="stylesheet" href="css/personal.css?v=20261008-personal-2">
-  <link rel="stylesheet" href="css/playful.css?v=20261008-play-10">
+  <link rel="stylesheet" href="css/visitor-canvas.css?v=20261009-fit-2">
+  <link rel="stylesheet" href="css/editorial.css?v=20261009-texture-refinement-3">
+  <link rel="stylesheet" href="css/personal.css?v=20261009-texture-refinement-3">
+  <link rel="stylesheet" href="css/playful.css?v=20261009-texture-refinement-3">
   <script>
     document.documentElement.classList.add('js');
     try {
@@ -123,7 +123,7 @@
     ]
   }
   </script>
-<link rel="stylesheet" href="css/textiles.css?v=20261009-pattern-placement-2">
+<link rel="stylesheet" href="css/textiles.css?v=20261009-texture-refinement-3">
 <link rel="stylesheet" href="css/scroll-motion.css?v=20261008-scroll-1">
 <link rel="stylesheet" href="css/accessibility.css?v=20261008-final-1">
 <link rel="stylesheet" href="css/companions.css?v=20261009-jimmy-4">
@@ -148,7 +148,7 @@
       <svg class="theme-toggle-moon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.4 14.7A8.5 8.5 0 1 1 9.3 3.6a7 7 0 0 0 11.1 11.1Z"/></svg>
     </button>
     <button class="nav-burger" id="navBurger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
-      <span></span><span></span><svg class="burger-flower" viewBox="0 0 64 64" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1"><path transform="rotate(0 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(45 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(90 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(135 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(180 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(225 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(270 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><path transform="rotate(315 32 32)" d="M32 13C25 9 26 3 32 2C38 3 39 9 32 13Z"/><circle cx="32" cy="32" r="24" stroke-dasharray="1 5"/></g></svg>
+      <span></span><span></span><img class="burger-flower" src="assets/img/textiles/blockprint-seal.webp" alt="" width="50" height="50">
     </button>
   </header>
 
@@ -354,7 +354,6 @@
 
     <!-- ===== Writing / Blog ===== -->
     <section class="brain-section" id="brain" aria-labelledby="brainTitle">
-      <div class="textile-panel print-dots" aria-hidden="true"><span class="textile-ink"></span></div>
       <div class="section-head"><div><p class="kicker">A FEW CONNECTED DOTS</p><h2 class="section-title" id="brainTitle">Me, <em>connected.</em></h2></div><p class="section-note">Design, writing, curiosity, and community. Move a node, follow a connection, and discover another part of me.</p></div>
       <div class="brain-space">
         <div class="brain-navigation">
@@ -452,7 +451,7 @@
             <button type="button" data-board-rotate="-5" aria-label="Rotate selected mark left" disabled>⟲</button>
             <button type="button" data-board-rotate="5" aria-label="Rotate selected mark right" disabled>⟳</button>
             <span class="board-tool-divider" aria-hidden="true"></span>
-            <button type="button" id="boardZoomOut" aria-label="Zoom out of board">−</button><span id="boardZoomLabel">100%</span><button type="button" id="boardZoomIn" aria-label="Zoom into board">+</button><button type="button" id="boardFit">Fit</button>
+            <button type="button" id="boardZoomOut" aria-label="Zoom out of board">−</button><span id="boardZoomLabel">Fit</span><button type="button" id="boardZoomIn" aria-label="Zoom into board">+</button><button type="button" id="boardFit" aria-pressed="true">Fit</button>
           </div>
         </div>
         <div id="boardPalette" class="board-palette" role="group" aria-label="Pick a sticker" hidden></div>
@@ -671,12 +670,12 @@
   <script src="js/project-rails.js?v=20261008-build-rail-1"></script>
   <script src="js/brain-data.js?v=20261008-location-1"></script>
   <script src="js/brain.js?v=20261008-location-1"></script>
-  <script src="js/visitor-canvas.js?v=20261008-canvas-4"></script>
+  <script src="js/visitor-canvas.js?v=20261009-fit-2"></script>
   <script src="js/atelier.js?v=20261008-canvas-4"></script>
-  <script src="js/editorial.js?v=20261009-pattern-placement-2"></script>
+  <script src="js/editorial.js?v=20261009-texture-refinement-3"></script>
   <script src="js/play-config.js?v=20261008-play-10"></script>
   <script src="js/delight.js?v=20261008-play-10"></script>
-  <script src="js/textile-motion.js?v=20261009-pattern-placement-2"></script>
+  <script src="js/textile-motion.js?v=20261009-texture-refinement-3"></script>
   <script src="js/scroll-motion.js?v=20261008-scroll-1"></script>
   <script type="module" src="js/jimmy.js?v=20261009-jimmy-1"></script>
   <script type="module" src="js/music.js?v=20261009-jimmy-1"></script>

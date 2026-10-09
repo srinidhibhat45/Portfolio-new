@@ -2,11 +2,13 @@
 
 Generated with the built-in image generation tool on 9 October 2026. Original interpretations of Indian textile traditions, not reproductions of apparel brand designs.
 
+The latest refinements, assets, placements, prompts and verification are recorded in [motif-texture-refinement.md](motif-texture-refinement.md). The entries below record the earlier generation pass.
+
 ## Saved assets
 
-- `assets/img/textiles/paisley-brocade.webp`: brocade boteh for about / contact / menu margins.
+- `assets/img/textiles/paisley-brocade.webp`: brocade boteh for contact / menu margins; about now uses the lotus garden.
 - `assets/img/textiles/parakeet-vine.webp`: botanical artwork in its own desktop writing column.
-- `assets/img/textiles/jaali-medallion.webp`: geometric portrait ornament; retains the slow rotation.
+- `assets/img/textiles/jaali-medallion.webp`: earlier geometric portrait ornament; replaced by `portrait-filigree-v2.webp`.
 - `assets/img/textiles/ajrakh-field.webp`: small faded geometric print accents.
 - `assets/img/textiles/sari-border.webp`: unused generated border study; no longer displayed.
 - `assets/img/textiles/sari-border-vertical.webp`: unused vertical derivative; no longer displayed.
@@ -48,4 +50,4 @@ Continuous side strips and horizontal ribbons were removed after review: their s
 - Desktop and mobile light/dark Axe checks reported zero detected violations. Patterned and pseudo-element backgrounds produce incomplete contrast results, so readability was reviewed visually as well.
 - No horizontal page overflow at 1280×720, 393×694, or 320×568.
 - The full portrait remains visible at 393×694, with its bottom at approximately 487 px.
-- The former paisley, tree, medallion, ikat, jaali, and stitched SVG illustrations were retired. The small menu stamp and tied-dot hem remain code-native accents.
+- The former paisley, tree, medallion, ikat, jaali, and stitched SVG illustrations were retired. The menu stamp and tied-dot hem were subsequently replaced or removed in the motif refinement.

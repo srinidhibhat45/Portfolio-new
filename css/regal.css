@@ -26,7 +26,7 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .mobile-menu {isolation:isolate;overflow:hidden;}
 .mobile-menu::before {content:none;}
 .mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 0;font-size:clamp(28px,7vw,46px);transition:padding .4s cubic-bezier(.22,1,.36,1),color .3s;}
-.mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textile-ajrakh.svg') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
+.mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
 .mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
 .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:36px;color:#754651;}
 .mobile-menu nav a:hover::before,.mobile-menu nav a:focus-visible::before {opacity:1;transform:translateY(-50%) rotate(0) scale(1);}

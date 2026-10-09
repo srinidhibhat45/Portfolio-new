@@ -3,7 +3,7 @@
   'use strict';
   var viewport=document.getElementById('visitorBoard'),world=document.getElementById('boardWorld');
   if(!viewport||!world)return;
-  var W=1400,H=900,records=new Map(),selected=null,gesture=null,tool='move',camera={x:0,y:0,scale:1},history=[],z=10;
+  var W=1400,H=900,records=new Map(),selected=null,gesture=null,tool='move',camera={x:0,y:0,scale:1},history=[],z=10,isFit=true;
   var status=document.getElementById('boardStatus'),palette=document.getElementById('boardPalette'),stickerButton=document.getElementById('boardSticker');
   var reduced=window.matchMedia('(prefers-reduced-motion: reduce)'),pending=new Set(),queues=new Map(),keyTimers=new Map(),posting=false,visible=false;
   var colors={butter:'#f4e6a7',blue:'#d9e3f9',rose:'#efd5d0',sage:'#dce9db'};
@@ -14,10 +14,10 @@
     record.position={x:Math.max(20,Math.min(W-record.el.offsetWidth-20,p.x)),y:Math.max(20,Math.min(H-record.el.offsetHeight-20,p.y)),rotation:Math.max(-15,Math.min(15,p.rotation))};
     record.el.style.left=record.position.x+'px';record.el.style.top=record.position.y+'px';record.el.style.setProperty('--note-angle',record.position.rotation+'deg');
   }
-  function paint(){world.style.transform='translate('+camera.x+'px,'+camera.y+'px) scale('+camera.scale+')';document.getElementById('boardZoomLabel').textContent=Math.round(camera.scale*100)+'%';}
-  function fit(){var scale=Math.min(viewport.clientWidth/W,viewport.clientHeight/H)*.96;camera={scale:scale,x:(viewport.clientWidth-W*scale)/2,y:(viewport.clientHeight-H*scale)/2};paint();}
-  function focusMark(record){var scale=Math.max(camera.scale,.85);camera={scale:scale,x:viewport.clientWidth/2-(record.position.x+record.el.offsetWidth/2)*scale,y:viewport.clientHeight/2-(record.position.y+record.el.offsetHeight/2)*scale};paint();}
-  function zoom(factor){var scale=Math.max(.2,Math.min(2,camera.scale*factor)),cx=viewport.clientWidth/2,cy=viewport.clientHeight/2;camera.x=cx-(cx-camera.x)*scale/camera.scale;camera.y=cy-(cy-camera.y)*scale/camera.scale;camera.scale=scale;paint();}
+  function paint(){viewport.dataset.cameraReady='true';world.style.setProperty('--board-target-size',26/camera.scale+'px');world.style.transform='translate('+camera.x+'px,'+camera.y+'px) scale('+camera.scale+')';document.getElementById('boardZoomLabel').textContent=Math.round(camera.scale*100)+'%';document.getElementById('boardFit').setAttribute('aria-pressed',String(isFit));}
+  function fit(){isFit=true;var scale=Math.min(viewport.clientWidth/W,viewport.clientHeight/H)*.96;camera={scale:scale,x:(viewport.clientWidth-W*scale)/2,y:(viewport.clientHeight-H*scale)/2};paint();}
+  function focusMark(record){isFit=false;var scale=Math.max(camera.scale,.85);camera={scale:scale,x:viewport.clientWidth/2-(record.position.x+record.el.offsetWidth/2)*scale,y:viewport.clientHeight/2-(record.position.y+record.el.offsetHeight/2)*scale};paint();}
+  function zoom(factor){isFit=false;var scale=Math.max(.2,Math.min(2,camera.scale*factor)),cx=viewport.clientWidth/2,cy=viewport.clientHeight/2;camera.x=cx-(cx-camera.x)*scale/camera.scale;camera.y=cy-(cy-camera.y)*scale/camera.scale;camera.scale=scale;paint();}
   function select(record){
     selected=record;records.forEach(function(r){r.el.classList.toggle('is-selected',r===record);r.el.setAttribute('aria-pressed',String(r===record));});
     document.querySelectorAll('[data-board-rotate]').forEach(function(b){b.disabled=!record;});
@@ -101,7 +101,7 @@
     if(!gesture||gesture.id!==e.pointerId)return;var dx=e.clientX-gesture.x,dy=e.clientY-gesture.y;
     if(Math.abs(dx)+Math.abs(dy)<4&&!gesture.moved)return;gesture.moved=true;e.preventDefault();
     if(gesture.kind==='item')place(gesture.record,{x:gesture.original.x+dx/camera.scale,y:gesture.original.y+dy/camera.scale,rotation:gesture.original.rotation});
-    else{camera.x=gesture.camera.x+dx;camera.y=gesture.camera.y+dy;paint();}
+    else{isFit=false;camera.x=gesture.camera.x+dx;camera.y=gesture.camera.y+dy;paint();}
   });
   function release(e){if(!gesture||gesture.id!==e.pointerId)return;var old=gesture;gesture=null;viewport.classList.remove('is-moving');if(viewport.hasPointerCapture(e.pointerId))viewport.releasePointerCapture(e.pointerId);if(old.moved&&old.kind==='item'){remember(old.record,old.original);save(old.record);}}
   viewport.addEventListener('pointerup',release);viewport.addEventListener('pointercancel',release);viewport.addEventListener('lostpointercapture',release);
@@ -116,8 +116,14 @@
   stickers.forEach(function(s){var b=document.createElement('button');b.type='button';b.textContent=s[0];b.setAttribute('aria-label','Add '+s[1].toLowerCase()+' sticker');b.addEventListener('click',async function(){if(posting)return;posting=true;palette.querySelectorAll('button').forEach(function(button){button.disabled=true;});try{await add({name:'',text:'',color:'butter',strokes:[],sticker:s[0]});closePalette();}catch(error){status.textContent=error.message;}finally{posting=false;palette.querySelectorAll('button').forEach(function(button){button.disabled=false;});}});palette.append(b);});
   document.addEventListener('click',function(e){if(!palette.contains(e.target)&&!stickerButton.contains(e.target))closePalette();});
   document.addEventListener('keydown',function(e){if(e.key==='Escape')closePalette();});
-  var lastWidth=0;
-  function resize(){if(viewport.clientWidth!==lastWidth){lastWidth=viewport.clientWidth;fit();if(viewport.clientWidth<600){camera.scale=.65;camera.x=viewport.clientWidth/2-385*camera.scale;camera.y=viewport.clientHeight/2-365*camera.scale;paint();}}}
+  var lastWidth=0,lastHeight=0;
+  function resize(){
+    var width=viewport.clientWidth,height=viewport.clientHeight;
+    if(width===lastWidth&&height===lastHeight)return;
+    if(isFit)fit();
+    else {camera.x+=(width-lastWidth)/2;camera.y+=(height-lastHeight)/2;paint();}
+    lastWidth=width;lastHeight=height;
+  }
   new ResizeObserver(resize).observe(viewport);resize();load();
   new IntersectionObserver(function(entries){visible=entries[0].isIntersecting;}).observe(viewport);
   setInterval(function(){if(visible&&!document.hidden)load();},20000);

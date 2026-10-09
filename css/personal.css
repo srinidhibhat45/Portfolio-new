@@ -34,7 +34,7 @@
 .xp-list::before {content:'';position:absolute;left:149px;top:40px;bottom:40px;width:2px;background:linear-gradient(#ceb78f,#794758);}
 .xp-row {overflow:visible;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);align-items:center;gap:35px;margin-left:190px;padding:28px 30px;border-radius:7px;}
 .xp-row::before {display:none;}
-.xp-chapter {left:-58px;right:auto;top:50%;width:36px;height:36px;transform:translateY(-50%);border-radius:50%;background:#f4f0e7 url('../assets/img/woven-flower.svg') center/contain no-repeat;border:1px solid #c8ae82;color:#794758;}
+.xp-chapter {left:-58px;right:auto;top:50%;width:36px;height:36px;transform:translateY(-50%);border-radius:50%;background:#f4f0e7 url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;border:1px solid #c8ae82;color:#794758;}
 .xp-when {position:absolute;top:50%;left:-190px;width:125px;transform:translateY(-50%);font-size:11px;line-height:1.7;}
 .xp-current .xp-when::after {display:block;}
 .xp-what {padding:0;}
