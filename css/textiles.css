@@ -54,7 +54,6 @@
 #contact::before {mix-blend-mode:screen;opacity:.035;}
 .board-world {isolation:isolate;}
 .board-world::before {content:'';position:absolute;inset:0;background:url('../assets/img/textiles/cotton-paper-texture.webp') center/640px repeat;opacity:.18;mix-blend-mode:multiply;z-index:-1;pointer-events:none;}
-.board-world::after {content:'';position:absolute;left:42px;bottom:32px;width:290px;height:195px;background:url('../assets/img/textiles/pichwai-lotus-garden.webp') center/contain no-repeat;opacity:.28;z-index:-1;pointer-events:none;}
 .mobile-menu.is-open .menu-textile .textile-ink {animation:menu-pallu-arrive 1.1s cubic-bezier(.16,1,.3,1) both;}
 @keyframes menu-pallu-arrive {from {opacity:0;transform:translateY(24px) rotate(7deg);}to {opacity:1;transform:none;}}
 /* A few pixels of motion, running only while the section is visible. */

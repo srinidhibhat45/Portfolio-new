@@ -22,7 +22,6 @@
 .visitor-board.is-moving,.visitor-board.is-moving * {cursor:grabbing!important;}
 .board-world {position:absolute;top:0;left:0;width:1400px;height:900px;transform-origin:0 0;background:radial-gradient(#b9a89666 1px,transparent 1px) 0 0/24px 24px;opacity:0;}
 .visitor-board[data-camera-ready] .board-world {opacity:1;}
-.board-lettering {position:absolute;left:635px;top:100px;font:italic 31px var(--serif);color:#8a756080;transform:rotate(-3deg);pointer-events:none;}
 .board-item {position:absolute!important;animation:none!important;transform:rotate(var(--note-angle,0deg));transform-origin:center;cursor:grab;user-select:none;-webkit-user-select:none;outline:none;transition:box-shadow .2s;}
 .board-item.is-selected {outline:2px solid #794758;outline-offset:7px;}
 .board-item:focus-visible {outline:3px solid #794758;outline-offset:7px;}
@@ -45,7 +44,6 @@
 :root[data-theme="dark"] .board-tools button {color:#ead9ca;}
 :root[data-theme="dark"] .board-tools button:hover:not(:disabled) {background:#56403e;}
 :root[data-theme="dark"] .visitor-board {background:#302a26;}
-:root[data-theme="dark"] .board-lettering {color:#ccad8680;}
 :root[data-theme="dark"] #boardZoomLabel {color:#cab29d;}
 @media(max-width:900px) {.board-toolbar {gap:4px;}.board-tools button {padding-inline:8px;}.board-camera {margin-left:auto;}.visitor-board {height:610px;}}
 @media(max-width:600px) {
