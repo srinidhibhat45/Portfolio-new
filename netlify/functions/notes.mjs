@@ -30,7 +30,8 @@ export async function handleNotes(request, context, storeFactory = getStore) {
     const store=storeFactory({name:'portfolio-visitor-notes',consistency:'strong'});
     if (request.method==='GET') {
       const {blobs}=await store.list({prefix:'notes/'});
-      const keys=blobs.map(b=>b.key).sort().slice(0,80);
+      // Site-scoped storage survives deploys; every saved mark belongs on the shared board.
+      const keys=blobs.map(b=>b.key).sort();
       const notes=(await Promise.all(keys.map(key=>store.get(key,{type:'json'})))).filter(Boolean);
       const {blobs:placements}=await store.list({prefix:'layout/'});
       const layout={};await Promise.all(placements.map(async blob=>{const position=await store.get(blob.key,{type:'json'});if(position)layout[blob.key.slice(7)]=position;}));

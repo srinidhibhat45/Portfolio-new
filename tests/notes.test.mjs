@@ -55,3 +55,33 @@ test('hosted handler saves, reads, rate limits and rejects external origins with
  assert.equal(sticker.status,201);
  assert.equal((await sticker.json()).note.sticker,'🙂');
 });
+
+test('all shared notes remain visible beyond 80 marks and across visitors and deploys',async()=>{
+ const saved=new Map();
+ const notes=Array.from({length:125},(_,i)=>({
+  ...valid,id:`00000000-0000-4000-8000-${String(i).padStart(12,'0')}`,
+  text:`Visitor note ${i}`,createdAt:new Date(1600000000000+i).toISOString()
+ }));
+ notes.forEach((note,i)=>saved.set(`notes/${String(i).padStart(4,'0')}-${note.id}`,note));
+ const options=[];
+ const store={
+  async list({prefix}){return {blobs:[...saved.keys()].filter(key=>key.startsWith(prefix)).map(key=>({key}))};},
+  async get(key){return saved.get(key)||null;},
+  async setJSON(key,value){saved.set(key,value);return {modified:true};}
+ };
+ const factory=option=>{options.push(option);return store;};
+ const endpoint='https://portfolio.example/api/notes';
+ for(const ip of ['first-visitor','another-visitor']){
+  const response=await handleNotes(new Request(endpoint),{ip},factory);
+  assert.equal(response.status,200);
+  assert.deepEqual((await response.json()).notes,notes);
+ }
+ assert.ok(options.every(option=>option.name==='portfolio-visitor-notes'&&!('deployID' in option)));
+ const position={x:460,y:330,rotation:2},oldest=notes.at(-1);
+ const patch=new Request(endpoint,{method:'PATCH',headers:{origin:'https://portfolio.example','content-type':'application/json'},body:JSON.stringify({id:oldest.id,position})});
+ assert.equal((await handleNotes(patch,{ip:'another-visitor'},factory)).status,200);
+ const again=await (await handleNotes(new Request(endpoint),{ip:'returning-visitor'},factory)).json();
+ assert.equal(again.notes.length,125);
+ assert.deepEqual(again.layout[oldest.id],position);
+ assert.deepEqual(again.notes.at(-1),oldest);
+});

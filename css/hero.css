@@ -111,7 +111,7 @@
   .heritage-about {font-size:11px;gap:12px;}
   /* Put the complete portrait before the supporting copy, even with browser bars visible. */
   .heritage-photo {order:1;max-width:280px;max-width:min(280px,40svh);width:100%;margin:0 auto 18px;}
-  .heritage-portrait {object-fit:contain;-webkit-mask-image:none;mask-image:none;}
+  .heritage-portrait {object-fit:contain;-webkit-mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);}
   .heritage-paths {order:3;display:flex;width:100%;justify-content:space-between;gap:18px;margin:12px 0 14px;padding-top:7px;}
   .heritage-paths>a {display:block;padding:10px 0;flex:1;text-align:center;}
   .heritage-path-name {font-size:26px;display:block;}

@@ -63,7 +63,7 @@ class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
         if urlsplit(self.path).path == '/api/notes':
             with sqlite3.connect(self.database) as db:
-                notes = [json.loads(row[0]) for row in db.execute('SELECT payload FROM notes ORDER BY created DESC LIMIT 80')]
+                notes = [json.loads(row[0]) for row in db.execute('SELECT payload FROM notes ORDER BY created DESC')]
             with sqlite3.connect(self.database) as db:
                 layout = {row[0]:json.loads(row[1]) for row in db.execute('SELECT id,payload FROM layout')}
             return self.json_response({'notes': notes,'layout':layout})
