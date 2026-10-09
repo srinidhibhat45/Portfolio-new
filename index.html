@@ -54,6 +54,7 @@
   <link rel="stylesheet" href="css/visitor-canvas.css?v=20261009-fit-2">
   <link rel="stylesheet" href="css/editorial.css?v=20261009-texture-refinement-3">
   <link rel="stylesheet" href="css/personal.css?v=20261009-texture-refinement-3">
+  <link rel="stylesheet" href="css/testimonials.css?v=20261009-flip-1">
   <link rel="stylesheet" href="css/playful.css?v=20261009-service-rows">
   <script>
     document.documentElement.classList.add('js');
@@ -403,34 +404,48 @@
         <p class="section-note" data-reveal>A few words from people I've worked alongside.</p>
       </div>
       <div class="test-grid">
-        <figure class="test-item" data-reveal>
-          <div class="test-polaroid">
-            <span class="test-clip" aria-hidden="true">
-              <svg viewBox="0 0 24 40" fill="none"><path d="M12 6v22a5 5 0 0 1-10 0V10a3.4 3.4 0 0 1 6.8 0v16a1.8 1.8 0 0 1-3.6 0V11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-            </span>
-            <img src="assets/img/testimonial-kanika.webp" alt="Kanika Kulshreshtha"
-                 width="122" height="122" loading="lazy" decoding="async">
+        <article class="test-item test-flip-card" aria-label="Testimonial from Kanika Kulshreshtha" data-reveal>
+          <div class="test-card-turn">
+            <div class="test-face test-front">
+              <div class="test-polaroid"><img src="assets/img/testimonial-kanika.webp" alt="Kanika Kulshreshtha" width="122" height="122" loading="lazy" decoding="async"></div>
+              <div class="test-note-text">
+                <h3 class="test-name">Kanika Kulshreshtha</h3>
+                <span class="test-role">Founder, Linktopus &amp; Buddee</span>
+                <blockquote class="test-pullquote">“Sri is the best employee one can ask for.”</blockquote>
+                <button type="button" class="test-flip-button" data-test-flip="back" aria-controls="test-kanika-back" aria-expanded="false">Read the full note <span aria-hidden="true">↻</span></button>
+              </div>
+            </div>
+            <div class="test-face test-back" id="test-kanika-back" aria-hidden="true" inert hidden>
+              <p class="test-back-kicker">IN THEIR WORDS</p>
+              <h3 class="test-name test-back-title" tabindex="-1">Full note from Kanika Kulshreshtha</h3>
+              <span class="test-role">Founder, Linktopus &amp; Buddee</span>
+              <div class="test-note-scroll" tabindex="0" role="region" aria-label="Full testimonial from Kanika Kulshreshtha"><blockquote class="test-quote">"Meet Srinidhi (we call him Sri), he worked with me when I was about to start out, basically at my O. And, whenever I'm in a professional space I always tell everyone that Sri is the best employee one can ask for. From watching you learn, step up and take action for Linktopus like it's yours to seeing you all grown up, buying your first bike to now being the founder of Cheh Designs - I wish you only the best, Sri :) This is your sign - start small, dream big!"</blockquote></div>
+              <button type="button" class="test-flip-button" data-test-flip="front">Back to the short note <span aria-hidden="true">↶</span></button>
+            </div>
           </div>
-          <figcaption class="test-note-text">
-            <span class="test-name">Kanika Kulshreshtha</span>
-            <span class="test-role">Founder, Linktopus &amp; Buddee</span>
-            <blockquote class="test-pullquote">“Sri is the best employee one can ask for.”</blockquote><details class="test-full-note"><summary>Read the full note <span aria-hidden="true">+</span></summary><blockquote class="test-quote">"Meet Srinidhi (we call him Sri), he worked with me when I was about to start out, basically at my O. And, whenever I'm in a professional space I always tell everyone that Sri is the best employee one can ask for. From watching you learn, step up and take action for Linktopus like it's yours to seeing you all grown up, buying your first bike to now being the founder of Cheh Designs - I wish you only the best, Sri :) This is your sign - start small, dream big!"</blockquote></details>
-          </figcaption>
-        </figure>
-        <figure class="test-item" data-reveal>
-          <div class="test-polaroid">
-            <span class="test-clip" aria-hidden="true">
-              <svg viewBox="0 0 24 40" fill="none"><path d="M12 6v22a5 5 0 0 1-10 0V10a3.4 3.4 0 0 1 6.8 0v16a1.8 1.8 0 0 1-3.6 0V11" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg>
-            </span>
-            <img src="assets/img/testimonial-gurudath.webp" alt="Gurudath Bantwalkar"
-                 width="160" height="160" loading="lazy" decoding="async">
+          <noscript><blockquote class="test-fallback">"Meet Srinidhi (we call him Sri), he worked with me when I was about to start out, basically at my O. And, whenever I'm in a professional space I always tell everyone that Sri is the best employee one can ask for. From watching you learn, step up and take action for Linktopus like it's yours to seeing you all grown up, buying your first bike to now being the founder of Cheh Designs - I wish you only the best, Sri :) This is your sign - start small, dream big!"</blockquote></noscript>
+        </article>
+        <article class="test-item test-flip-card" aria-label="Testimonial from Gurudath Bantwalkar" data-reveal>
+          <div class="test-card-turn">
+            <div class="test-face test-front">
+              <div class="test-polaroid"><img src="assets/img/testimonial-gurudath.webp" alt="Gurudath Bantwalkar" width="122" height="122" loading="lazy" decoding="async"></div>
+              <div class="test-note-text">
+                <h3 class="test-name">Gurudath Bantwalkar</h3>
+                <span class="test-role">Former CEO, World Konkani Centre · Co-Founder, Proto Concepts &amp; Creatives</span>
+                <blockquote class="test-pullquote">“He has this charisma of Viv Richards in him. Cool, composed and determined.”</blockquote>
+                <button type="button" class="test-flip-button" data-test-flip="back" aria-controls="test-gurudath-back" aria-expanded="false">Read the full note <span aria-hidden="true">↻</span></button>
+              </div>
+            </div>
+            <div class="test-face test-back" id="test-gurudath-back" aria-hidden="true" inert hidden>
+              <p class="test-back-kicker">IN THEIR WORDS</p>
+              <h3 class="test-name test-back-title" tabindex="-1">Full note from Gurudath Bantwalkar</h3>
+              <span class="test-role">Former CEO, World Konkani Centre · Co-Founder, Proto Concepts &amp; Creatives</span>
+              <div class="test-note-scroll" tabindex="0" role="region" aria-label="Full testimonial from Gurudath Bantwalkar"><blockquote class="test-quote">"I fell in awe of the persona of Shri during his SOTP camp, during the closing of the camp, he delivered a feedback address and I instantly knew, I got this man. He has this charisma of Viv Richards in him. Cool, composed and determined. And when he walks to the pitch, he knows he's there for a big knock. Qx Oct-Dec 2020 was one such great knock by Shri. There is a long way to go for you Shri, remember, there are souls on the sidewalk who take great pride in your stride. Keep walking."</blockquote></div>
+              <button type="button" class="test-flip-button" data-test-flip="front">Back to the short note <span aria-hidden="true">↶</span></button>
+            </div>
           </div>
-          <figcaption class="test-note-text">
-            <span class="test-name">Gurudath Bantwalkar</span>
-            <span class="test-role">Former CEO, World Konkani Centre · Co-Founder, Proto Concepts &amp; Creatives</span>
-            <blockquote class="test-pullquote">“He has this charisma of Viv Richards in him. Cool, composed and determined.”</blockquote><details class="test-full-note"><summary>Read the full note <span aria-hidden="true">+</span></summary><blockquote class="test-quote">"I fell in awe of the persona of Shri during his SOTP camp, during the closing of the camp, he delivered a feedback address and I instantly knew, I got this man. He has this charisma of Viv Richards in him. Cool, composed and determined. And when he walks to the pitch, he knows he's there for a big knock. Qx Oct-Dec 2020 was one such great knock by Shri. There is a long way to go for you Shri, remember, there are souls on the sidewalk who take great pride in your stride. Keep walking."</blockquote></details>
-          </figcaption>
-        </figure>
+          <noscript><blockquote class="test-fallback">"I fell in awe of the persona of Shri during his SOTP camp, during the closing of the camp, he delivered a feedback address and I instantly knew, I got this man. He has this charisma of Viv Richards in him. Cool, composed and determined. And when he walks to the pitch, he knows he's there for a big knock. Qx Oct-Dec 2020 was one such great knock by Shri. There is a long way to go for you Shri, remember, there are souls on the sidewalk who take great pride in your stride. Keep walking."</blockquote></noscript>
+        </article>
       </div>
     </section>
 
@@ -673,7 +688,7 @@
   <script src="js/brain.js?v=20261008-location-1"></script>
   <script src="js/visitor-canvas.js?v=20261009-fit-2"></script>
   <script src="js/atelier.js?v=20261008-canvas-4"></script>
-  <script src="js/editorial.js?v=20261009-texture-refinement-3"></script>
+  <script src="js/editorial.js?v=20261009-testimonial-flip-1"></script>
   <script src="js/play-config.js?v=20261008-play-10"></script>
   <script src="js/delight.js?v=20261008-play-10"></script>
   <script src="js/textile-motion.js?v=20261009-texture-refinement-3"></script>

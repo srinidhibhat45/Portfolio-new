@@ -83,3 +83,11 @@ At 390 × 844, both Jimmy and music are hidden and there is no horizontal page o
 The phone hero now uses a compact one-line name and shows the complete portrait before the introduction and actions. The portrait keeps its original proportions, has no mobile cropping/fade mask, and scales with the small viewport height to leave space for browser bars. Its full bottom edge is visible at 320 × 568, 360 × 640, 393 × 694, 430 × 740 and 600 × 740; no page or title overflow was observed. Tablet 768 × 1024 also fits. Short desktop windows now constrain portrait size, with the whole image visible at 1280 × 720.
 
 At 393 × 694, the final portrait bottom measured 487px, the games launcher did not overlap it, and the two primary actions measured 49px and 44px high. The public build and whitespace checks passed. These are browser viewport checks; the supplied phone screenshot guided the available-space target.
+
+## Fixed-footprint testimonials — 9 October 2026
+
+- Full notes now flip within the same card footprint. Manual checks at 1280 px, 393 px and 320 px measured zero change in the following board section's position when opening or closing a note.
+- Notes scroll inside their card when needed. At 320 px the complete note was reached with keyboard scrolling.
+- The inactive face is inert and hidden from assistive technology. Opening focuses the full-note heading; returning or pressing Escape restores focus to the original button.
+- Dark/light styling was reviewed. Reduced-motion CSS disables the rotation transition. Original photos, pull quotes and complete testimonial wording were preserved.
+- Production build, JavaScript syntax check and all 38 regression tests passed.

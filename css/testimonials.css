@@ -1,0 +1,48 @@
+/* The note turns over inside its own footprint, keeping the page still. */
+.test-flip-card {display:block;padding:0;min-height:0;gap:0;border:0;background:none;perspective:1300px;}
+.test-flip-card::before {display:none;}
+.test-card-turn {position:relative;transform-style:preserve-3d;transition:transform .72s cubic-bezier(.22,1,.36,1);}
+.test-flip-card.is-ready {height:460px;}
+.test-flip-card.is-ready .test-card-turn {height:100%;}
+.test-flip-card.is-flipped .test-card-turn {transform:rotateY(180deg);}
+.test-face {display:flex;flex-direction:column;align-items:center;gap:16px;padding:32px 36px 26px;background:#fffcf6;border:1px solid #d9c8b3;border-radius:9px;backface-visibility:hidden;-webkit-backface-visibility:hidden;}
+.test-flip-card.is-ready .test-face {position:absolute;inset:0;}
+.test-face::before {content:'';position:absolute;inset:12px;pointer-events:none;border:1px solid #e8dcc9;border-radius:4px;}
+.test-flip-card:hover .test-face {border-color:#b9976b;}
+.test-face[hidden] {display:none;}
+.test-front .test-polaroid {flex-shrink:0;}
+.test-front .test-note-text {min-height:0;display:flex;flex-direction:column;width:100%;flex:1;}
+.test-face .test-name {margin:0;}
+.test-front .test-pullquote {flex:1;display:grid;align-items:center;min-height:0;margin:15px 0 18px;font-size:30px;}
+.test-flip-button {position:relative;display:flex;align-items:center;justify-content:center;gap:18px;width:100%;flex-shrink:0;min-height:46px;padding:12px 4px 0;margin-top:auto;border:0;border-top:1px solid #dfceb8;background:none;color:#7d594a;font:500 12px var(--sans);cursor:pointer;}
+.test-flip-button span {font-size:20px;transition:transform .4s;}
+.test-flip-button:hover span {transform:rotate(-30deg);}
+.test-flip-button:focus-visible {outline:2px solid #794758;outline-offset:4px;border-radius:3px;}
+.test-flip-card:not(.is-ready) .test-flip-button {display:none;}
+.test-back {transform:rotateY(180deg);gap:7px;}
+.test-back-kicker {margin:0 0 9px;font:400 9px var(--mono);letter-spacing:.1em;color:#876a50;}
+.test-back .test-name {font-size:18px;}
+.test-back .test-role {min-height:0;}
+.test-back-title:focus {outline:none;}
+.test-note-scroll {position:relative;min-height:0;flex:1;width:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b9976b transparent;text-align:left;margin:12px 0;padding:0 8px 0 0;}
+.test-note-scroll .test-quote {margin:0;padding:0;color:#725842;font:400 13px/1.85 var(--sans);}
+.test-note-scroll:focus-visible {outline:2px solid #794758;outline-offset:4px;border-radius:3px;}
+.test-fallback {padding:25px;color:#725842;font:400 13px/1.85 var(--sans);}
+:root[data-theme="dark"] .test-flip-card {background:none;border:0;}
+:root[data-theme="dark"] .test-face {background:#352c28;border-color:#78604d;}
+:root[data-theme="dark"] .test-face::before {border-color:#5c483a;}
+:root[data-theme="dark"] .test-flip-button {color:#ceb69d;border-color:#67503f;}
+:root[data-theme="dark"] .test-back-kicker,:root[data-theme="dark"] .test-note-scroll .test-quote,:root[data-theme="dark"] .test-fallback {color:#ceb69d;}
+:root[data-theme="dark"] .test-note-scroll:focus-visible,:root[data-theme="dark"] .test-flip-button:focus-visible {outline-color:#e3c89f;}
+@media(max-width:900px) {.test-face {padding-inline:25px;}.test-front .test-pullquote {font-size:28px;}}
+@media(max-width:600px) {
+ .test-flip-card.is-ready {height:480px;}
+ .test-face {padding:28px 26px 22px;gap:14px;}
+ .test-front .test-polaroid {width:82px;height:82px;}
+ .test-front .test-pullquote {font-size:28px;}
+ .test-face .test-role {min-height:0;}
+ .test-back {gap:7px;}
+ .test-note-scroll .test-quote {font-size:13px;}
+}
+@media(max-width:360px) {.test-face {padding-inline:24px;}.test-front .test-pullquote {font-size:26px;}.test-face .test-name {font-size:18px;}}
+@media(prefers-reduced-motion:reduce) {.test-card-turn,.test-flip-button span {transition:none;}}
