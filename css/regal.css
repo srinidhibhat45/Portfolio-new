@@ -3,7 +3,7 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .regal-motif {position:absolute;pointer-events:none;z-index:-1;background-position:center;background-repeat:no-repeat;opacity:.14;}
 .heritage-photo {isolation:isolate;}
 .portrait-mandala {left:50%;top:52%;width:124%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.26;}
-.portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/textile-medallion.svg') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
+.portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/textiles/jaali-medallion.webp') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
 .heritage-photo.is-rotating .portrait-mandala::before {animation-play-state:running;}
 @keyframes portrait-orbit {to {transform:rotate(360deg);}}
 .gallery {background:#292521;--ink:#292521;--bone-dim:#c2b6a8;}
@@ -24,7 +24,7 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .nav-burger[aria-expanded="false"]:hover>span:first-child,.nav-burger[aria-expanded="false"]:focus-visible>span:first-child {width:17px;}
 .nav-burger[aria-expanded="false"]:hover>span:nth-child(2),.nav-burger[aria-expanded="false"]:focus-visible>span:nth-child(2) {width:25px;}
 .mobile-menu {isolation:isolate;overflow:hidden;}
-.mobile-menu::before {content:'';position:absolute;left:10px;top:100px;bottom:25px;width:20px;background:url('../assets/img/textile-ikat.svg') center/24px 48px repeat-y;opacity:.22;pointer-events:none;}
+.mobile-menu::before {content:'';position:absolute;left:10px;top:100px;bottom:25px;width:20px;background:url('../assets/img/textiles/sari-border-vertical.webp') center/100% auto repeat-y;opacity:.22;pointer-events:none;}
 .mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 0;font-size:clamp(28px,7vw,46px);transition:padding .4s cubic-bezier(.22,1,.36,1),color .3s;}
 .mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textile-ajrakh.svg') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
 .mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
