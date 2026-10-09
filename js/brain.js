@@ -78,7 +78,7 @@
     graph.setAttribute('viewBox','0 0 '+width+' '+height);graph.style.aspectRatio=width+' / '+height;
     nav.querySelectorAll('button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.brainTopic===(scope||'me')));});
     document.getElementById('brainClear').hidden=!query;document.getElementById('brainEmpty').hidden=!query||found.length>0||listMode;
-    status.textContent=query?found.length+' connections found':scope?found.length+' connections in '+byID.get(scope).name.toLowerCase():'28 projects, plus writing, home, and Yuva.';
+    status.textContent=query?found.length+' connections found':scope?found.length+' connections in '+byID.get(scope).name.toLowerCase():nodes.filter(function(n){return n.kind==='product'||n.kind==='case';}).length+' projects, plus writing, home, and Yuva.';
     document.getElementById('brainHint').textContent='Drag nodes to move them. Select one to explore. Shift + arrows move a focused node.';
     highlight();paint();renderList(found);syncMotion();document.dispatchEvent(new CustomEvent('portfolio:layout'));
   }

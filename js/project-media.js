@@ -1,4 +1,4 @@
-/* Real homepage captures, the Hued logo, and title artwork for app-only or unavailable previews. */
+/* Real interface captures, product wordmarks, and title artwork for app-only previews. */
 window.PROJECT_MEDIA = {
   "The Office Games": {
     "src": "assets/products/officegames.webp",
@@ -60,20 +60,25 @@ window.PROJECT_MEDIA = {
     "kind": "screen",
     "alt": "AppleCider — actual product homepage"
   },
+  "HexChess": {
+    "src": "assets/products/hexchess-live.webp",
+    "kind": "screen",
+    "alt": "HexChess — actual 91-cell hexagonal chessboard and game controls"
+  },
   "Hued": {
     "src": "assets/products/hued-logo.png",
     "kind": "logo",
     "alt": "Hued logo"
   },
   "DashF1": {
-    "src": "assets/products/dashf1.svg",
-    "kind": "title",
-    "alt": "DashF1 project title"
+    "src": "assets/products/f1dash-cover.svg",
+    "kind": "cover",
+    "alt": "F1DASH wordmark — live race mission control"
   },
   "Vansh Vriksha": {
-    "src": "assets/products/vansh.svg",
-    "kind": "title",
-    "alt": "Vansh Vriksha project title"
+    "src": "assets/products/vansh-live.webp",
+    "kind": "screen",
+    "alt": "Vansh Vriksha — actual lineage archive homepage"
   },
   "PreMoney": {
     "src": "assets/products/premoney.svg",

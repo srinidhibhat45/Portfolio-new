@@ -8,7 +8,7 @@
     ,{id:'community',name:'Community & roots',color:'#526e88',desc:'My home in Goa, India, my volunteering with Yuva, and the work that connects people.',question:'What can we make possible when we show up for each other?',examples:['Yuva · Executive Member','Women & Child Welfare','Yuva Panaji']}
   ];
   var assignments = {
-    'The Office Games':'world','DashF1':'world','Hued':'design','Arkitype':'design',
+    'The Office Games':'world','HexChess':'world','DashF1':'world','Hued':'design','Arkitype':'design',
     'Yuva Panaji':'community','Matinee':'stories','BirthSky':'world','The Blog':'stories',
     'PreMoney':'design','Vansh Vriksha':'stories','Earthlog':'world','DeckForge':'design',
     'PlanIt':'world','ScaleSee':'world','Where Would I Be…?':'world','SoundBox':'world',
@@ -59,7 +59,9 @@
     ['The Blog','Matinee','Stories to read and stories to watch.'],
     ['Vansh Vriksha','Yuva Panaji','Archives that keep family and community history accessible.'],
     ['PlanIt','Wheelie','Tools for coordinating people who are going somewhere together.'],
-    ['SoundBox','The Office Games','Learning and social interaction through play.']
+    ['SoundBox','The Office Games','Learning and social interaction through play.'],
+    ['HexChess','The Office Games','Two ways to bring people together through play: a fresh chess variant and a social arcade.'],
+    ['HexChess','ScaleSee','Familiar ideas explored visually, through a different geometry or sense of scale.']
   ].forEach(function(r){connect(byName(r[0]),byName(r[1]),r[2]);});
   connect('yuva-volunteer',byName('Yuva Panaji'),'My community role and the website I built for the organisation.');
   connect('goa','yuva-volunteer','Home and community service, connected through Yuva in Panaji.');

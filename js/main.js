@@ -58,7 +58,7 @@
 
     var vibeEl = document.getElementById('playGrid');
     if (vibeEl && SITE.vibe && SITE.vibe.length) {
-      var priority = ['Arkitype', 'Earthlog', 'AppleCider', 'Hued'];
+      var priority = ['Arkitype', 'Earthlog', 'AppleCider', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
       var products = SITE.vibe.slice().sort(function (a, b) {
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);

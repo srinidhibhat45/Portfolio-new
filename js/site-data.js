@@ -90,6 +90,10 @@ window.SITE_DATA = {
       name: "DashF1", desc: "A real-time Formula 1 dashboard tracking live race data, standings, and driver stats.",
       stack: ["React", "Tailwind", "Live Data API"], href: "https://f1dash.srinidhibhat.com/", cta: "Watch the race" },
 
+    { path: "~/projects/hexchess", status: "live", cmd: "npm run dev",
+      name: "HexChess", desc: "Chess from a different angle — a 91-cell hexagonal board, computer opponents, games with friends, and an interactive tutorial to learn the rules.",
+      stack: ["Web app", "Offline play"], href: "https://hexchess.srinidhibhat.com/", cta: "Find your angle" },
+
     { path: "~/projects/hued", status: "live", cmd: "npx expo start",
       name: "Hued", desc: "A daily colour-challenge app — everyone gets the same colour, you go find it and shoot it.",
       stack: ["React Native", "Expo", "Supabase"], href: "https://hued.srinidhibhat.com/", cta: "Open the app" },
