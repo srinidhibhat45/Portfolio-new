@@ -1,8 +1,8 @@
 # Animated introduction and refinement
 
-The showreel has a 16:9 space in About, following the introduction. Until the film is ready, it is labelled “Coming soon” with no active play button.
+The showreel has a 16:9 space in About, following the introduction. It now plays [Srinidhi’s animated introduction](https://youtu.be/YmEOMID3vVM), with the existing custom “Meet Shri” artwork as its cover.
 
-Add the public YouTube share or watch link to `showreelUrl` in `js/play-config.js`. The same space becomes a click-to-play, privacy-enhanced YouTube embed. Nothing loads from YouTube for the showreel before someone clicks. The embedded player keeps its native controls; starting it pauses the background playlist.
+The public YouTube link is configured in `showreelUrl` in `js/play-config.js`. Clicking the cover loads a privacy-enhanced YouTube embed in the same space. Nothing loads from YouTube for the showreel before someone clicks. The embedded player keeps its native controls; starting it pauses the background playlist. A direct YouTube link is available when JavaScript is disabled.
 
 Music waits for YouTube to return the playlist before selecting a random opening track. It excludes the previous opener when there is more than one video, remembers the video ID locally, and shuffles the remaining order after playback starts. Pause/resume retains the current song. A new page visit chooses a fresh opener. Playback stays opt-in and starts at 5% volume. A restricted browser storage setting does not prevent playback.
 
@@ -10,6 +10,7 @@ The refinement keeps the actual project images, testimonials, project links, vis
 
 ## Verification
 
+- The configured video played through in the browser. The custom cover returns on reload, with no showreel iframe loaded before clicking. All three showreel tests pass.
 - 47 automated tests pass, including playlist selection, delayed playlist loading, unavailable storage, pause/resume, cancellation, and click-to-load showreel behaviour.
 - Live YouTube playback started on “Badukina Bannave” and then “Seedhe Maut - TT / Shutdown” on consecutive page visits, with shuffle enabled and 5% volume.
 - Responsive layouts reviewed at 320, 390, and 768 pixels, alongside the desktop preview. The mobile game launcher is now a compact corner button.

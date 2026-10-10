@@ -1,7 +1,7 @@
 /* Personalise the playroom’s cartoon host and reactions here. */
 window.PortfolioPlayConfig={
-  // Add the public YouTube watch/share URL when the animated introduction is ready.
-  showreelUrl:'',
+  // The custom Meet Shri cover stays visible until someone chooses to play.
+  showreelUrl:'https://youtu.be/YmEOMID3vVM',
   botAvatar:'assets/img/shri-bot-pixel.png',
   playlistUrl:'https://music.youtube.com/playlist?list=PL0aa6KQuOUyKm5JpE9Et2r36cJrM2KaSl',
   expressions:{
