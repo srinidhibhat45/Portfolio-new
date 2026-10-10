@@ -50,7 +50,7 @@
             '<span class="card-tags">' + esc(w.tags) + '</span>' +
             '<h3>' + esc(w.title) + '</h3>' +
             '<p class="card-blurb">' + esc(w.blurb) + '</p>' +
-            '<span class="card-cta">Explore case study <span aria-hidden="true">↗</span></span>' +
+            '<span class="card-cta">View case study <span aria-hidden="true">↗</span></span>' +
           '</div>' +
         '</a>';
       }).join('');
@@ -69,7 +69,7 @@
         var chips = (v.stack || []).map(function (tool) { return '<span class="vcard-chip">' + esc(tool) + '</span>'; }).join('');
         var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="1280" height="720"></div>' : '';
         return '<a class="play-card" href="' + esc(v.href) + '" target="_blank" rel="noopener">' + preview +
-          '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '<span>INDEPENDENT PRODUCT</span>') +
+          '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '<span>Built independently</span>') +
           (v.status === 'building' ? '<span class="product-building">In development</span>' : '') + '</div>' +
           '<div class="play-card-head"><h3>' + esc(v.name) + '</h3><span aria-hidden="true">↗</span></div>' +
           '<p>' + esc(v.desc) + '</p><span class="play-stack">' + chips + '</span>' +
