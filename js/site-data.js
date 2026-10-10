@@ -39,103 +39,103 @@ window.SITE_DATA = {
 
   work: [
     { slug: "onespace", title: "OneSpace", tags: "Product Design · Ed-tech",
-      blurb: "An ed-tech product for finding courses and managing learning.",
+      blurb: "Course discovery and learning, in one place.",
       thumb: "assets/work/onespace.png", pdf: "assets/pdfs/onespace.pdf" },
 
     { slug: "umatter", title: "uMatter", tags: "Mobile App · Design Challenge",
-      blurb: "A mobile wellness app with social support and daily inspiration.",
+      blurb: "Social support and daily inspiration for mental wellbeing.",
       thumb: "assets/work/umatter.png", pdf: "assets/pdfs/umatter.pdf" },
 
     { slug: "mucoin", title: "MuCoin", tags: "Fintech · Onboarding UX",
-      blurb: "An onboarding flow for people using cryptocurrency for the first time.",
+      blurb: "Guiding first-time users through crypto onboarding.",
       thumb: "assets/work/mucoin.png", pdf: "assets/pdfs/mucoin.pdf",
       prototypeUrl: "https://www.figma.com/proto/fTSm9Chs0awMrjMUN2OWSa/MuCoin?node-id=1-2&starting-point-node-id=191%3A955&t=z97O9d2NsQAgujdk-1" },
 
     { slug: "gmd", title: "GetMetaData", tags: "Web Extension · Material UI",
-      blurb: "A browser extension for extracting and reviewing page metadata.",
+      blurb: "Page metadata, easier to find and review.",
       thumb: "assets/work/gmd.png", pdf: "assets/pdfs/gmd.pdf",
       prototypeUrl: "https://www.figma.com/proto/P86VsJJUoQDMzxsUFCnRHo/3MMaven-Project?node-id=8-2&starting-point-node-id=8%3A2&t=K4zjIkNOs7p8WSiR-1" },
 
     { slug: "steve-wilson", title: "Steve Wilson", tags: "Portfolio · Minimal Concept",
-      blurb: "A minimal portfolio concept with a focus on typography and layout.",
+      blurb: "A portfolio concept built around typography.",
       thumb: "assets/work/swportfolio.png", pdf: "assets/pdfs/steve-wilson.pdf" },
 
     { slug: "gloria-furniture", title: "Gloria Furniture", tags: "Landing Page · E-commerce",
-      blurb: "A furniture storefront concept for browsing products and collections.",
+      blurb: "A storefront concept for furniture and home collections.",
       thumb: "assets/work/gloriafurniture.png", pdf: "assets/pdfs/gloria-furniture.pdf" },
 
     { slug: "fun-cruises", title: "Fun Cruises Goa", tags: "Landing Page · Redesign",
-      blurb: "A website and booking-flow redesign for a Goa cruise business.",
+      blurb: "A new website and booking flow for a Goan cruise business.",
       thumb: "assets/work/funcruises.png", pdf: "assets/pdfs/fun-cruises.pdf" },
 
     { slug: "bni-website", title: "BNI Goa", tags: "Landing Page · Redesign",
-      blurb: "A website redesign for Goa’s local business network.",
+      blurb: "A new web presence for Goa’s business network.",
       thumb: "assets/work/bniwebsite.png", pdf: "assets/pdfs/bni-website.pdf" },
 
     { slug: "irctc", title: "IRCTC", tags: "Landing Page · Redesign",
-      blurb: "A redesign of the IRCTC train-booking website.",
+      blurb: "Rethinking the train-booking experience.",
       thumb: "assets/work/irctc.png", pdf: "assets/pdfs/irctc.pdf" },
 
     { slug: "nityananda", title: "Nitya Nanda", tags: "Photographer Portfolio · Concept",
-      blurb: "A portfolio concept that puts a photographer’s work first.",
+      blurb: "A photography portfolio led by the images.",
       thumb: "assets/work/nityananda.png", pdf: "assets/pdfs/nityananda.pdf" }
   ],
 
   vibe: [
     { path: "~/projects/officegames", status: "live", cmd: "vercel --prod",
-      name: "The Office Games", desc: "A multiplayer arcade for office breaks, with team trivia, scrambled keyboards, and drawing games.",
+      name: "The Office Games", desc: "Trivia, drawing games, and scrambled keyboards for multiplayer office breaks.",
       stack: ["React", "Multiplayer"], href: "https://officegames.srinidhibhat.com/", cta: "Start playing" },
 
     { path: "~/projects/dashf1", status: "live", cmd: "npm run dev",
-      name: "DashF1", desc: "A real-time Formula 1 dashboard tracking live race data, standings, and driver stats.",
-      stack: ["React", "Tailwind", "Live Data API"], href: "https://f1dash.srinidhibhat.com/", cta: "Watch the race" },
+      name: "DashF1", desc: "Live Formula 1 race data, standings, and driver statistics.",
+      stack: ["React", "Tailwind", "Live Data API"], href: "https://f1dash.srinidhibhat.com/", cta: "Open dashboard" },
 
     { path: "~/projects/hexchess", status: "live", cmd: "npm run dev",
-      name: "HexChess", desc: "Chess on a 91-cell hexagonal board, with computer opponents, games with friends, and a rules tutorial.",
-      stack: ["Web app", "Offline play"], href: "https://hexchess.srinidhibhat.com/", cta: "Find your angle" },
+      name: "HexChess", desc: "Hexagonal chess on 91 cells. Play the computer or a friend, with a tutorial to learn the rules.",
+      stack: ["Web app", "Offline play"], href: "https://hexchess.srinidhibhat.com/", cta: "Play HexChess" },
 
     { path: "~/projects/hued", status: "live", cmd: "npx expo start",
-      name: "Hued", desc: "A daily photography challenge: everyone gets one colour to find and photograph.",
+      name: "Hued", desc: "One colour a day. Find it, photograph it.",
       stack: ["React Native", "Expo", "Supabase"], href: "https://hued.srinidhibhat.com/", cta: "Open the app" },
 
     { path: "~/projects/arkitype", status: "building", cmd: "npm run dev --port 3111",
-      name: "Arkitype", desc: "A guided design-system builder with 50 components and editable tokens. No Figma required.",
+      name: "Arkitype", desc: "Build a design system in the browser, with 50 components and editable tokens.",
       stack: ["Next.js", "Zustand", "Tailwind"], href: "https://arkitype.srinidhibhat.com/", cta: "Try the studio" },
 
     { path: "~/projects/yuva-website", status: "live", cmd: "node scripts/build-db.js",
-      name: "Yuva Panaji", desc: "A website and CMS for a Goa NGO, with 153 events imported from its annual report.",
+      name: "Yuva Panaji", desc: "A website and CMS for Yuva Panaji, documenting 153 community events.",
       stack: ["Next.js", "SQLite", "Decap CMS"], href: "https://yuva-website.netlify.app/", cta: "See the site" },
 
     { path: "~/projects/matinee", status: "live", cmd: "netlify deploy --prod",
-      name: "Matinee", desc: "A movie and TV browser for deciding what to watch next.",
-      stack: ["React", "TMDB API"], href: "https://matinee.srinidhibhat.com/", cta: "Go browse" },
+      name: "Matinee", desc: "Find your next film or series.",
+      stack: ["React", "TMDB API"], href: "https://matinee.srinidhibhat.com/", cta: "Browse films" },
 
     { path: "~/projects/birthsky", status: "live", cmd: "npx serve",
-      name: "BirthSky", desc: "A star map of the sky at the moment you were born, calculated without an external API.",
+      name: "BirthSky", desc: "The sky at the moment you were born, mapped in your browser.",
       stack: ["Vanilla JS", "Canvas"], href: "https://birthsky.srinidhibhat.com/", cta: "Check your sky" },
 
     { path: "~/projects/blogs", status: "live", cmd: "npm run build",
-      name: "The Blog", desc: "Poems, essays, serialised fiction, and a written podcast. Published as अvinash.",
+      name: "The Blog", desc: "Poems, essays, fiction, and a written podcast under the name अvinash.",
       stack: ["Astro"], href: "https://blogs.srinidhibhat.com/", cta: "Start reading" },
 
     { path: "~/projects/premoney", status: "live", cmd: "flutter run --release",
-      name: "PreMoney", desc: "An expense and savings tracker that reads SMS transactions and visualises spending.",
+      name: "PreMoney", desc: "Spending and savings, tracked from SMS transactions.",
       stack: ["Flutter", "Dart"], href: "https://github.com/srinidhibhat45/PreMoney-releases", cta: "Get the app" },
 
     { path: "~/projects/vansh-vriksha", status: "live", cmd: "npm run build",
-      name: "Vansh Vriksha", desc: "A free, community-editable genealogy archive connecting families through villages, deities, and lineage names.",
-      stack: ["Next.js", "Supabase"], href: "https://vanshvriksha.srinidhibhat.com/", cta: "Explore the tree" },
+      name: "Vansh Vriksha", desc: "A free community genealogy archive linking families, villages, deities, and lineage names.",
+      stack: ["Next.js", "Supabase"], href: "https://vanshvriksha.srinidhibhat.com/", cta: "Explore the archive" },
 
     { path: "~/projects/earthlog", status: "live", cmd: "node serve.mjs",
-      name: "Earthlog", desc: "An interactive globe for earthquakes, weather, ISS passes, and eclipses around the world.",
+      name: "Earthlog", desc: "Earthquakes, weather, ISS passes, and eclipses on an interactive globe.",
       stack: ["Vanilla JS", "MapLibre GL"], href: "https://earthlog.srinidhibhat.com/", cta: "Explore the globe" },
 
     { path: "~/projects/deckforge", status: "live", cmd: "npm run dev",
-      name: "DeckForge", desc: "Turn a PDF deck into editable text, logos, and shapes, with an animation studio. Everything stays on your device.",
-      stack: ["React", "TypeScript", "PDF.js"], href: "https://deckforge.srinidhibhat.com/", cta: "Forge a deck" },
+      name: "DeckForge", desc: "Edit text, logos, and shapes from PDF decks, then animate them. Runs entirely on your device.",
+      stack: ["React", "TypeScript", "PDF.js"], href: "https://deckforge.srinidhibhat.com/", cta: "Edit a deck" },
 
     { path: "~/projects/planit", status: "live", cmd: "npm run dev",
-      name: "PlanIt", desc: "A trip planner with seven views for groups travelling across time zones. No account or server needed.",
+      name: "PlanIt", desc: "Seven views for planning a group trip across time zones. No account or server needed.",
       stack: ["React", "TypeScript", "Leaflet"], href: "https://planit.srinidhibhat.com/", cta: "Plan a trip" },
 
     { path: "~/projects/scalesee", status: "live", cmd: "node serve.js",
@@ -143,19 +143,19 @@ window.SITE_DATA = {
       stack: ["Vanilla JS", "SVG"], href: "https://scalesee.srinidhibhat.com/", cta: "See the scale" },
 
     { path: "~/projects/wherewouldibe", status: "live", cmd: "npx serve",
-      name: "Where Would I Be\u2026?", desc: "An interactive 3D globe that shows how your location moves with Earth’s tectonic plates over time.",
-      stack: ["Vanilla JS", "Three.js"], href: "https://wherewouldibe.srinidhibhat.com/", cta: "Move the earth" },
+      name: "Where Would I Be\u2026?", desc: "Follow your location through geological time as Earth’s tectonic plates move.",
+      stack: ["Vanilla JS", "Three.js"], href: "https://wherewouldibe.srinidhibhat.com/", cta: "Explore the map" },
 
     { path: "~/projects/soundbox", status: "live", cmd: "npx cap run android",
-      name: "SoundBox", desc: "A piano-learning app that listens through your microphone and waits for the right notes.",
+      name: "SoundBox", desc: "Learn piano with an app that listens and waits for you to play the right notes.",
       stack: ["React", "Capacitor", "TensorFlow.js"], href: "https://github.com/srinidhibhat45/soundbox", cta: "Get the app" },
 
     { path: "~/projects/wheelie", status: "building", cmd: "flutter run --release",
-      name: "Wheelie", desc: "A group-riding app with a live map, shared meeting points, and helmet-headset voice chat.",
+      name: "Wheelie", desc: "Live group rides, shared meeting points, and voice chat for helmet headsets.",
       stack: ["Flutter", "Supabase", "WebRTC"], href: "https://github.com/srinidhibhat45/wheelie", cta: "See the build" },
 
     { path: "~/projects/applecider", status: "live", cmd: "npm run dev",
-      name: "AppleCider", desc: "A hand-drawn wireframing tool with 250 components for sketching early product ideas.",
+      name: "AppleCider", desc: "Sketch early interfaces with 250 hand-drawn components.",
       stack: ["React", "TypeScript", "Zustand"], href: "https://applecider.srinidhibhat.com/", cta: "Start sketching" }
   ],
 

@@ -9,7 +9,7 @@ test('showreel accepts supported public YouTube links and rejects unrelated host
 
 function setup(){
   let callback,frame,paused=false;
-  const elements={showreel:{dataset:{state:'pending'}},showreelPlay:{hidden:true,addEventListener:(event,fn)=>callback=fn},showreelPoster:{replaceChildren:f=>frame=f},showreelDescription:{},showreelStatus:{}};
+  const elements={showreel:{dataset:{state:'pending'}},showreelPlay:{hidden:true,addEventListener:(event,fn)=>callback=fn},showreelPoster:{replaceChildren:f=>frame=f},showreelStatus:{}};
   const doc={getElementById:id=>elements[id],createElement:()=>({focus(){this.focused=true;}}),dispatchEvent:event=>paused=event.detail.open};
   return {doc,elements,click:()=>callback(),get frame(){return frame;},get paused(){return paused;}};
 }

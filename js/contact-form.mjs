@@ -34,7 +34,7 @@ export function initContactForm(doc, {fetchImpl = globalThis.fetch, FormDataImpl
       });
       if (!response.ok) throw new Error('Submission failed');
       form.reset();
-      message('Thanks — your message landed. I’ll get back to you soon.', 'ok');
+      message('Message sent. I’ll get back to you soon.', 'ok');
       if (toast) {
         clearTimeout(toastTimer);
         toast.classList.add('is-visible');
@@ -48,7 +48,7 @@ export function initContactForm(doc, {fetchImpl = globalThis.fetch, FormDataImpl
       clearTimeout(timeout);
       sending = false;
       button.disabled = false;
-      label.textContent = 'Send it over';
+      label.textContent = 'Send message';
       form.setAttribute('aria-busy', 'false');
     }
   });

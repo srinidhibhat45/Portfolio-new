@@ -28,6 +28,7 @@
 .work .project-search input {font-size:16px;}
 .about {padding-block:76px;}
 .about-statement {max-width:25ch;font-size:clamp(36px,4.6vw,64px);font-weight:500;line-height:1.15;letter-spacing:-.045em;margin:32px 0 40px;}
+.about-statement em {font:italic 400 1.08em/1.08 var(--serif);letter-spacing:-.025em;}
 .about-note {font-size:15px;line-height:1.85;}
 .about-foot {grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:65px;}
 .stat-label {font-family:var(--sans);font-size:11px;letter-spacing:.03em;}
@@ -61,7 +62,6 @@
 .showreel-copy .kicker {margin-bottom:16px;}
 .showreel-copy h3 {font:500 clamp(28px,3vw,42px)/1.18 var(--sans);letter-spacing:-.035em;color:var(--bone);}
 .showreel-copy h3 em {font:italic 400 1.12em/1.1 var(--serif);letter-spacing:-.025em;}
-.showreel-copy>p:last-child {font-size:14px;line-height:1.85;color:var(--bone-dim);max-width:36ch;margin-top:18px;}
 .showreel-poster {position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:5px;background:#532d3a;color:#f4eadb;isolation:isolate;}
 .showreel-poster::before {content:'';position:absolute;inset:0;background:url('../assets/img/textiles/ajrakh-field.webp') center/360px;opacity:.09;mask-image:linear-gradient(90deg,transparent 40%,#000);z-index:-1;}
 .showreel-slate {position:absolute;inset:27px 32px 50px;display:flex;align-items:center;}
@@ -99,7 +99,6 @@
  .about-note {font-size:14px;}
  .showreel {margin-top:36px;padding-top:30px;}
  .showreel-copy h3 {font-size:29px;}
- .showreel-copy>p:last-child {font-size:14px;max-width:none;}
  .slate-title {font-size:44px;}
  .service-offering {padding:15px;}
  .service-name {font-size:20px;}

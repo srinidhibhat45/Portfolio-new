@@ -19,8 +19,7 @@ export function initShowreel(doc, config) {
   const poster = doc.getElementById('showreelPoster');
   const button = doc.getElementById('showreelPlay');
   section.dataset.state = 'ready';
-  doc.getElementById('showreelDescription').textContent = 'An animated introduction to me and the things I make.';
-  doc.getElementById('showreelStatus').textContent = 'Animated introduction';
+  doc.getElementById('showreelStatus').textContent = 'Showreel';
   button.hidden = false;
   button.addEventListener('click', () => {
     doc.dispatchEvent(new CustomEvent('portfolio:dialog', {detail:{open:true}}));

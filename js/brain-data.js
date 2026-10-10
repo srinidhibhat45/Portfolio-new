@@ -2,10 +2,10 @@
 (function () {
   'use strict';
   var topics = [
-    {id:'design',name:'Design & tools',color:'#794758',desc:'Interfaces, systems, and tools that make complicated things easier to use.',question:'How can a tool make the work feel easier?',examples:['Arkitype','AppleCider','OneSpace']},
-    {id:'stories',name:'Stories & culture',color:'#a07b40',desc:'Writing, cinema, community, and the ways people keep a story alive.',question:'What helps people find a story—or keep one?',examples:['The Blog','Vansh Vriksha','अvinash']},
-    {id:'world',name:'Science & play',color:'#537b69',desc:'The sky, the earth, music, movement, and ideas that are better understood by exploring them.',question:'What happens when curiosity becomes something you can explore?',examples:['Earthlog','BirthSky','ScaleSee']}
-    ,{id:'community',name:'Community & roots',color:'#526e88',desc:'My home in Goa, India, my volunteering with Yuva, and the work that connects people.',question:'What can we make possible when we show up for each other?',examples:['Yuva · Executive Member','Women & Child Welfare','Yuva Panaji']}
+    {id:'design',name:'Design & tools',color:'#794758',desc:'Interface design, design systems, and the tools I build.',examples:['Arkitype','AppleCider','OneSpace']},
+    {id:'stories',name:'Stories & culture',color:'#a07b40',desc:'Writing, cinema, and family history.',examples:['The Blog','Vansh Vriksha','अvinash']},
+    {id:'world',name:'Science & play',color:'#537b69',desc:'Earth, space, music, and games.',examples:['Earthlog','BirthSky','ScaleSee']}
+    ,{id:'community',name:'Community & roots',color:'#526e88',desc:'Goa and my work with Yuva.',examples:['Yuva · Executive Member','Women & Child Welfare','Yuva Panaji']}
   ];
   var assignments = {
     'The Office Games':'world','HexChess':'world','DashF1':'world','Hued':'design','Arkitype':'design',
@@ -14,7 +14,7 @@
     'PlanIt':'world','ScaleSee':'world','Where Would I Be…?':'world','SoundBox':'world',
     'Wheelie':'world','AppleCider':'design'
   };
-  var nodes = [{id:'me',name:'Srinidhi',kind:'person',desc:'Design engineer, builder, writer, and Yuva volunteer. These are the people, places, ideas, and projects that connect those parts of me. Pick a node to discover what it means, or move things around and follow the lines.'}].concat(topics.map(function(t){return Object.assign({kind:'topic'},t);}));
+  var nodes = [{id:'me',name:'Srinidhi',kind:'person',desc:'I design at OneOcean, build independent products, write as अvinash, and volunteer with Yuva as an Executive Member.'}].concat(topics.map(function(t){return Object.assign({kind:'topic'},t);}));
   var links = [];
   function connect(a,b,reason) {
     if (!links.some(function(l){return (l.from===a&&l.to===b)||(l.from===b&&l.to===a);})) links.push({from:a,to:b,reason:reason});
@@ -33,9 +33,9 @@
     connect('design',id,'A design study in '+p.tags.toLowerCase()+'.');
   });
   var personal = [
-    {id:'yuva-volunteer',name:'Yuva · Executive Member',kind:'role',topic:'community',desc:'I am an Executive Member and volunteer at Yuva, a youth social service organisation in Panaji, Goa, India. Its work is grounded in six pillars of community service.',tags:'Executive Member · Volunteer',href:'https://yuva-website.netlify.app/',cta:'Meet Yuva'},
-    {id:'goa',name:'Goa, India',kind:'place',topic:'community',desc:'I am from Goa, India. It is where I am based, where I design, and where I volunteer with Yuva.'},
-    {id:'writer',name:'अvinash',kind:'interest',topic:'stories',desc:'The name I write under. Poems, essays, serialised fiction, and a written podcast—in English, Hindi, and Konkani.',href:'https://blogs.srinidhibhat.com/',cta:'Read my writing'}
+    {id:'yuva-volunteer',name:'Yuva · Executive Member',kind:'role',topic:'community',desc:'Executive Member and volunteer at Yuva, a youth social service organisation in Panaji, Goa. The six pillars below guide its work.',tags:'Executive Member · Volunteer',href:'https://yuva-website.netlify.app/',cta:'Meet Yuva'},
+    {id:'goa',name:'Goa, India',kind:'place',topic:'community',desc:'Home. I’m based in Goa and volunteer with Yuva in Panaji.'},
+    {id:'writer',name:'अvinash',kind:'interest',topic:'stories',desc:'My pen name. Poems, essays, fiction, and a written podcast in English, Hindi, and Konkani.',href:'https://blogs.srinidhibhat.com/',cta:'Read my writing'}
   ];
   var pillars = [
     ['women-child','Women & Child Welfare','Yuva supports underprivileged women and children through educational sponsorships, sanitisation kits, vocational workshops, and self-defense workshops.'],
@@ -49,23 +49,23 @@
   pillars.forEach(function(p){var id='yuva-'+p[0];nodes.push({id:id,name:p[1],kind:'pillar',topic:'community',desc:p[2],tags:'One of Yuva’s six pillars',href:'https://yuva-website.netlify.app/',cta:'Explore Yuva’s work'});connect('yuva-volunteer',id,p[2]);});
   function byName(name){return nodes.find(function(n){return n.name===name;}).id;}
   [
-    ['Arkitype','AppleCider','Two stages of making an interface: sketching the idea, then building its design system.'],
-    ['Arkitype','DeckForge','Both make reusable design work editable, instead of starting from scratch.'],
-    ['Hued','Arkitype','Colour as a daily creative prompt, and as part of a reusable design system.'],
-    ['OneSpace','uMatter','Mobile experiences that organise information around a person’s needs.'],
-    ['Earthlog','BirthSky','Two ways to explore a place and a moment: what is happening on Earth, and what was happening in the sky.'],
-    ['Earthlog','Where Would I Be…?','The same planet, explored through current events and through geological time.'],
-    ['BirthSky','ScaleSee','Abstract numbers and calculations made visible and easier to grasp.'],
+    ['Arkitype','AppleCider','Wireframing and design systems.'],
+    ['Arkitype','DeckForge','Editable components and reusable design assets.'],
+    ['Hued','Arkitype','Colour in photography and interface design.'],
+    ['OneSpace','uMatter','Learning and wellbeing on mobile.'],
+    ['Earthlog','BirthSky','Earth events and the night sky.'],
+    ['Earthlog','Where Would I Be…?','Earth today and through geological time.'],
+    ['BirthSky','ScaleSee','Astronomy and scale, visualised.'],
     ['The Blog','Matinee','Stories to read and stories to watch.'],
-    ['Vansh Vriksha','Yuva Panaji','Archives that keep family and community history accessible.'],
-    ['PlanIt','Wheelie','Tools for coordinating people who are going somewhere together.'],
-    ['SoundBox','The Office Games','Learning and social interaction through play.'],
-    ['HexChess','The Office Games','Two ways to bring people together through play: a fresh chess variant and a social arcade.'],
-    ['HexChess','ScaleSee','Familiar ideas explored visually, through a different geometry or sense of scale.']
+    ['Vansh Vriksha','Yuva Panaji','Family and community archives.'],
+    ['PlanIt','Wheelie','Group travel, on trips and rides.'],
+    ['SoundBox','The Office Games','Learning and multiplayer games.'],
+    ['HexChess','The Office Games','Chess and multiplayer games.'],
+    ['HexChess','ScaleSee','Geometry and visual comparisons.']
   ].forEach(function(r){connect(byName(r[0]),byName(r[1]),r[2]);});
-  connect('yuva-volunteer',byName('Yuva Panaji'),'My community role and the website I built for the organisation.');
-  connect('goa','yuva-volunteer','Home and community service, connected through Yuva in Panaji.');
-  connect('writer',byName('The Blog'),'The writing identity behind my poems, essays, fiction, and podcast.');
+  connect('yuva-volunteer',byName('Yuva Panaji'),'The website I built for the organisation I volunteer with.');
+  connect('goa','yuva-volunteer','Volunteering in Panaji.');
+  connect('writer',byName('The Blog'),'Where I publish as अvinash.');
   topics.forEach(function(t){t.count=nodes.filter(function(n){return n.topic===t.id;}).length;});
   nodes.filter(function(n){return n.kind==='topic';}).forEach(function(n){n.count=topics.find(function(t){return t.id===n.id;}).count;});
   window.BRAIN_MAP={nodes:nodes,links:links,topics:topics};

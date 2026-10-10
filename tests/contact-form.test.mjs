@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {initContactForm} from '../js/contact-form.mjs';
 
 function setup(fetchImpl, entries = {}) {
-  const status = {}, button = {disabled:false}, label = {textContent:'Send it over'}, attrs = {};
+  const status = {}, button = {disabled:false}, label = {textContent:'Send message'}, attrs = {};
   let handler, resets = 0;
   const values = {'name':'Test visitor', email:'test@example.com', message:'Design & build a café site', budget:'₹25k – ₹75k', 'bot-field':'', ...entries};
   const form = {
@@ -33,7 +33,7 @@ test('Netlify contact submissions encode named fields and only reset after accep
   assert.equal(body.get('message'),'Design & build a café site');
   assert.equal(body.get('budget'),'₹25k – ₹75k');
   assert.equal(ui.resets,1);
-  assert.match(ui.status.textContent,/message landed/);
+  assert.match(ui.status.textContent,/Message sent/);
   assert.equal(ui.button.disabled,false);
   assert.equal(ui.attrs['aria-busy'],'false');
 });
@@ -46,7 +46,7 @@ test('server failures, network errors and timeouts keep the brief and allow retr
     assert.match(ui.status.textContent,/brief is still here/);
     assert.equal(ui.status.className,'cf-status is-err');
     assert.equal(ui.button.disabled,false);
-    assert.equal(ui.label.textContent,'Send it over');
+    assert.equal(ui.label.textContent,'Send message');
   }
 });
 

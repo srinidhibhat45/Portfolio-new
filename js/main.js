@@ -69,7 +69,7 @@
         var chips = (v.stack || []).map(function (tool) { return '<span class="vcard-chip">' + esc(tool) + '</span>'; }).join('');
         var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="1280" height="720"></div>' : '';
         return '<a class="play-card" href="' + esc(v.href) + '" target="_blank" rel="noopener">' + preview +
-          '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '<span>Built independently</span>') +
+          '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '') +
           (v.status === 'building' ? '<span class="product-building">In development</span>' : '') + '</div>' +
           '<div class="play-card-head"><h3>' + esc(v.name) + '</h3><span aria-hidden="true">↗</span></div>' +
           '<p>' + esc(v.desc) + '</p><span class="play-stack">' + chips + '</span>' +
@@ -445,7 +445,7 @@
     browseButton.setAttribute('aria-pressed', String(browsing));
     document.getElementById('galleryMotion').hidden=browsing||reduceMotion;
     browseButton.textContent = browsing ? 'Show moving artwork' : 'Show artwork grid';
-    galleryHint.textContent = browsing ? 'Every piece, in one place. Select any artwork to enlarge it.' : 'A moving collection. Open any piece, or explore the grid.';
+    galleryHint.textContent = 'Select an artwork to view it full size.';
     if (hasST) ScrollTrigger.refresh();
   }
   if (collage && browseButton) {

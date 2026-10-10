@@ -47,7 +47,7 @@
     try {
       await navigator.clipboard.writeText(email);
       copyButton.textContent = 'Copied ✓';
-      copyStatus.textContent = 'Email address copied. Say hello whenever you’re ready.';
+      copyStatus.textContent = 'Email address copied.';
     } catch (_) {
       copyStatus.textContent = 'You can select the email address above, or click it to open your email app.';
     }
@@ -68,7 +68,8 @@
     if (section) observer.observe(section);
   });
   observer.observe(document.getElementById('hero'));
-  document.querySelector('.brief-details').addEventListener('toggle', function () {
+  var briefDetails = document.querySelector('.brief-details');
+  if (briefDetails) briefDetails.addEventListener('toggle', function () {
     document.dispatchEvent(new CustomEvent('portfolio:layout'));
   });
 

@@ -1,6 +1,6 @@
 # Animated introduction and refinement
 
-The showreel has a 16:9 space in About, following the introduction. Until the film is ready, it is labelled “In the making” with no active play button.
+The showreel has a 16:9 space in About, following the introduction. Until the film is ready, it is labelled “Coming soon” with no active play button.
 
 Add the public YouTube share or watch link to `showreelUrl` in `js/play-config.js`. The same space becomes a click-to-play, privacy-enhanced YouTube embed. Nothing loads from YouTube for the showreel before someone clicks. The embedded player keeps its native controls; starting it pauses the background playlist.
 
