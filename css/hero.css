@@ -52,7 +52,17 @@
 .heritage-about {display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:6px 0;background:none;border:0;border-bottom:1px solid #a8865660;color:var(--hero-wine);font:400 11px var(--sans);cursor:pointer;transition:border-color .25s;}
 .heritage-about:hover {border-color:var(--hero-wine);}
 .heritage-photo {width:100%;max-width:450px;align-self:end;justify-self:center;margin:0;position:relative;}
-.heritage-portrait {display:block;position:relative;width:100%;height:auto;max-width:100%;filter:grayscale(1);-webkit-mask-image:linear-gradient(#000 0 90%,transparent 100%);mask-image:linear-gradient(#000 0 90%,transparent 100%);}
+/* One centered composition: the textile and portrait dissolve at the same baseline. */
+.heritage-composition {
+  position:relative;
+  isolation:isolate;
+  width:124%;
+  margin-left:-12%;
+  padding-top:12%;
+  -webkit-mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);
+  mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);
+}
+.heritage-portrait {display:block;position:relative;width:80.6452%;height:auto;max-width:100%;margin-inline:auto;filter:grayscale(1);transform:translateX(2%);}
 .heritage-paths {justify-self:end;align-self:center;min-width:200px;margin-bottom:35px;}
 .heritage-paths>a {display:grid;grid-template-columns:1fr 24px;gap:6px 22px;align-items:center;padding:19px 0;color:var(--hero-wine);position:relative;}
 .heritage-paths>a::after {content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;background:#a886563f;transition:background .25s;}
@@ -111,7 +121,7 @@
   .heritage-about {font-size:11px;gap:12px;}
   /* Put the complete portrait before the supporting copy, even with browser bars visible. */
   .heritage-photo {order:1;max-width:280px;max-width:min(280px,40svh);width:100%;margin:0 auto 18px;}
-  .heritage-portrait {object-fit:contain;-webkit-mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0 82%,rgba(0,0,0,.8) 90%,rgba(0,0,0,.3) 96%,transparent 100%);}
+  .heritage-portrait {object-fit:contain;}
   .heritage-paths {order:3;display:flex;width:100%;justify-content:space-between;gap:18px;margin:12px 0 14px;padding-top:7px;}
   .heritage-paths>a {display:block;padding:10px 0;flex:1;text-align:center;}
   .heritage-path-name {font-size:26px;display:block;}
@@ -122,6 +132,8 @@
 }
 @media(max-width:360px) {
   .heritage-hero {padding-inline:20px;}
+  .heritage-composition {width:114%;margin-left:-7%;}
+  .heritage-portrait {width:87.7193%;}
   .heritage-actions {gap:16px;}
   .heritage-work {padding:10px 12px;gap:12px;}
   .heritage-about {font-size:9px;}

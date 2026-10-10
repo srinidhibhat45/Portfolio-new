@@ -2,7 +2,7 @@
 main>section {position:relative;isolation:isolate;overflow:clip;}
 .regal-motif {position:absolute;pointer-events:none;z-index:-1;background-position:center;background-repeat:no-repeat;opacity:.14;}
 .heritage-photo {isolation:isolate;}
-.portrait-mandala {left:50%;top:52%;width:124%;height:auto;aspect-ratio:1;transform:translate(-50%,-50%);opacity:.26;}
+.portrait-mandala {left:50%;top:0;width:100%;height:auto;aspect-ratio:1;transform:translateX(-50%);opacity:.26;}
 .portrait-mandala::before {content:'';position:absolute;inset:0;background:url('../assets/img/textiles/jaali-medallion.webp') center/contain no-repeat;animation:portrait-orbit 120s linear infinite;animation-play-state:paused;}
 .heritage-photo.is-rotating .portrait-mandala::before {animation-play-state:running;}
 @keyframes portrait-orbit {to {transform:rotate(360deg);}}
@@ -33,7 +33,7 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .mobile-menu nav a:hover::after,.mobile-menu nav a:focus-visible::after {opacity:1;transform:translate(0,-50%);}
 .mobile-menu-foot {position:relative;z-index:1;}
 @media(max-width:600px) {
- .portrait-mandala {width:118%;opacity:.25;}
+ .portrait-mandala {opacity:.25;}
  .mobile-menu nav a {padding-right:30px;}
  .mobile-menu nav a::before {width:22px;height:22px;}
  .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:29px;}
