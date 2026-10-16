@@ -26,7 +26,7 @@
 .mobile-menu {background:#f0e9dd;color:#532d3a;--bone:#532d3a;--accent:#532d3a;--focus-ring:#532d3a;}
 .mobile-menu nav a {color:#532d3a;}
 .mobile-menu-foot a {color:#532d3a;}
-.heritage-hero {padding-top:140px;}
+.heritage-hero {padding-top:116px;}
 .heritage-hero::before,.heritage-hero::after {top:82px;}
 .work {
   --accent:#532d3a;

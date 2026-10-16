@@ -1,0 +1,452 @@
+{
+  "onespace": {
+    "presentation": "spread",
+    "src": "assets/cases/onespace/p14.webp",
+    "alt": "Original OneSpace file store, announcements and profile screens.",
+    "caption": "The original screens give files and announcements destinations beyond the conversation stream.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/onespace.pdf",
+    "focus": [
+      {
+        "title": "Retrieve",
+        "detail": "Files have a searchable destination."
+      },
+      {
+        "title": "Notice",
+        "detail": "Announcements have a separate reading surface."
+      },
+      {
+        "title": "Personalise",
+        "detail": "Preferences remain close to the core experience."
+      }
+    ],
+    "width": 1600,
+    "height": 900,
+    "details": [
+      {
+        "decision": 1,
+        "x": 95,
+        "y": 190,
+        "width": 840,
+        "height": 610,
+        "caption": "Files and announcements each have a dedicated destination in the original prototype.",
+        "alt": "Detail of the original OneSpace file store and announcements screens."
+      }
+    ]
+  },
+  "umatter": {
+    "presentation": "spread",
+    "src": "assets/cases/umatter/p17.webp",
+    "alt": "Original expert list, feed, expert profile, calendar and payment screens.",
+    "caption": "The designed route from discovering an expert to viewing details, choosing a date, and payment.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/umatter.pdf",
+    "width": 1600,
+    "height": 900
+  },
+  "mucoin": {
+    "presentation": "document",
+    "src": "assets/cases/mucoin/p02.webp",
+    "alt": "Original MuCoin rationale for income and expense onboarding.",
+    "caption": "The source is a written design rationale. Its performance claims are reframed here as hypotheses.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/mucoin.pdf",
+    "width": 1120,
+    "height": 1585
+  },
+  "gmd": {
+    "presentation": "spread",
+    "src": "assets/cases/gmd/p14.webp",
+    "alt": "Original high-fidelity GetMetaData extension design.",
+    "caption": "The final prototype provides the visual outcome; task-based validation remains the next step.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/gmd.pdf",
+    "width": 1600,
+    "height": 900
+  },
+  "steve-wilson": {
+    "presentation": "split",
+    "src": "assets/cases/steve-wilson/p02.webp",
+    "alt": "Original Steve Wilson project listing.",
+    "caption": "The work list keeps project browsing separate from the longer case-study template.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/steve-wilson.pdf",
+    "width": 1600,
+    "height": 1800
+  },
+  "gloria-furniture": {
+    "presentation": "spread",
+    "src": "assets/cases/gloria-furniture/p01_02.webp",
+    "alt": "Original Gloria Furniture featured product groups.",
+    "caption": "Repeated product cards carry the browsing pattern through to purchase actions.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/gloria-furniture.pdf",
+    "width": 1400,
+    "height": 1969
+  },
+  "fun-cruises": {
+    "presentation": "spread",
+    "src": "assets/cases/fun-cruises/p01_02.webp",
+    "alt": "Original Fun Cruises boat listings with capacity and price content.",
+    "caption": "Fleet listings surface practical information next to the experience imagery.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/fun-cruises.pdf",
+    "width": 1400,
+    "height": 2166
+  },
+  "bni-website": {
+    "presentation": "spread",
+    "src": "assets/cases/bni-website/p01_01.webp",
+    "alt": "Original BNI Victory Goa hero and organisation overview.",
+    "caption": "The original chapter introduction connects the invitation to a purpose-led overview.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/bni-website.pdf",
+    "width": 1400,
+    "height": 2411
+  },
+  "irctc": {
+    "presentation": "spread",
+    "src": "assets/cases/irctc/p01_01.webp",
+    "alt": "Original independent IRCTC redesign with booking panel and service shortcuts.",
+    "caption": "The concept makes the booking form the visual centre while retaining adjacent rail tasks.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/irctc.pdf",
+    "width": 1400,
+    "height": 1969
+  },
+  "nityananda": {
+    "presentation": "split",
+    "src": "assets/cases/nityananda/p01.webp",
+    "alt": "Original Nitya Nanda photography portfolio layout.",
+    "caption": "The original full-page concept: images carry the story and contact closes the sequence.",
+    "label": "Original design artifact",
+    "source": "assets/pdfs/nityananda.pdf",
+    "width": 1400,
+    "height": 3557
+  },
+  "arkitype": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/arkitype-workspace.jpg",
+    "alt": "Arkitype workspace showing foundation palettes, navigation and contrast inspector.",
+    "caption": "Foundations in context: the palette, navigation and contrast inspector share one workspace.",
+    "label": "Product interface",
+    "source": "Arkitype/docs/images/workspace.jpg",
+    "focus": [
+      {
+        "title": "Navigate the system",
+        "detail": "Foundations and components remain within reach."
+      },
+      {
+        "title": "See the consequence",
+        "detail": "Editable palettes stay beside the result."
+      },
+      {
+        "title": "Inspect the decision",
+        "detail": "Contrast information sits in the same workspace."
+      }
+    ],
+    "width": 1280,
+    "height": 720,
+    "details": [
+      {
+        "decision": 0,
+        "x": 0,
+        "y": 60,
+        "width": 550,
+        "height": 360,
+        "caption": "Foundations and components stay available in the workspace navigation.",
+        "alt": "Detail of the original Arkitype navigation beside the foundation palette."
+      }
+    ]
+  },
+  "applecider": {
+    "presentation": "spread",
+    "src": "assets/products/applecider.webp",
+    "alt": "AppleCider — archived product interface",
+    "caption": "The archived homepage demonstrates the intentionally rough visual language. These are the project’s own wireframe examples.",
+    "label": "Original wireframe examples",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "planit": {
+    "presentation": "spread",
+    "src": "assets/products/planit.webp",
+    "alt": "PlanIt — archived product interface",
+    "caption": "The archived PlanIt interface. Ideas, scheduled commitments and location are treated as different views of a shared trip.",
+    "label": "Planning workspace",
+    "source": "Existing portfolio product capture",
+    "width": 1280,
+    "height": 720
+  },
+  "earthlog": {
+    "presentation": "spread",
+    "src": "assets/products/earthlog.webp",
+    "alt": "Earthlog — archived product interface",
+    "caption": "The actual exploration surface: globe and event entry points on the left; place, weather, sky and history in the inspector.",
+    "label": "Globe and place inspector",
+    "source": "Existing portfolio product capture",
+    "focus": [
+      {
+        "title": "Enter through a place",
+        "detail": "Search and globe selection start from a location."
+      },
+      {
+        "title": "Enter through an event",
+        "detail": "Event shortcuts reverse the route into the same place context."
+      },
+      {
+        "title": "Read in context",
+        "detail": "The inspector separates place, weather, sky and history."
+      }
+    ],
+    "width": 1280,
+    "height": 720,
+    "details": [
+      {
+        "decision": 0,
+        "x": 14,
+        "y": 488,
+        "width": 500,
+        "height": 192,
+        "caption": "Event shortcuts let a visitor start with a question before choosing a place.",
+        "alt": "Original Earthlog event shortcuts for earthquakes, eclipses, the space station and other events."
+      }
+    ]
+  },
+  "hexchess": {
+    "presentation": "spread",
+    "src": "assets/products/hexchess-live.webp",
+    "alt": "HexChess — archived product interface",
+    "caption": "The original playing room: a 91-cell board, legal-move guidance and game controls.",
+    "label": "Playing interface",
+    "source": "Existing portfolio product capture",
+    "focus": [
+      {
+        "title": "Understand the board",
+        "detail": "The playing surface carries the movement explanation."
+      },
+      {
+        "title": "Try a move",
+        "detail": "Guidance stays in the context of play."
+      },
+      {
+        "title": "Continue",
+        "detail": "Practice and a saved game support a return to the board."
+      }
+    ],
+    "width": 1265,
+    "height": 949
+  },
+  "dashf1": {
+    "presentation": "type",
+    "label": "Product direction",
+    "caption": "A race dashboard connecting timing, track context, and replay while distinguishing measured data from estimated positions.",
+    "source": "Product scope and project documentation"
+  },
+  "hued": {
+    "presentation": "type",
+    "label": "Product direction",
+    "caption": "A daily photography prompt with a shared constraint, on-device scoring, and a warm visual language.",
+    "source": "Product scope and project documentation"
+  },
+  "yuva-panaji": {
+    "presentation": "spread",
+    "src": "assets/products/yuva.webp",
+    "alt": "Yuva Panaji — archived product interface",
+    "caption": "An archived view of Yuva Panaji. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "deckforge": {
+    "presentation": "spread",
+    "src": "assets/products/deckforge.webp",
+    "alt": "DeckForge — archived product interface",
+    "caption": "An archived view of DeckForge. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1269,
+    "height": 714
+  },
+  "vansh-vriksha": {
+    "presentation": "spread",
+    "src": "assets/products/vansh-live.webp",
+    "alt": "Vansh Vriksha — archived product interface",
+    "caption": "The original archive interface introduces people, families and the connections between records.",
+    "label": "Archive interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "premoney": {
+    "presentation": "type",
+    "label": "Product direction",
+    "caption": "A personal-finance app that converts bank and UPI messages into reviewable transactions, categories, and summaries.",
+    "source": "Product scope and project documentation"
+  },
+  "soundbox": {
+    "presentation": "portrait",
+    "src": "assets/case-study-evidence/soundbox-practice.png",
+    "alt": "Original SoundBox practice screen with chord sequence, keyboard and Wait for me mode.",
+    "caption": "The practice screen keeps the current chord, keyboard and pace controls together.",
+    "label": "Practice interface",
+    "source": "SoundBox/docs/play-screen.png",
+    "focus": [
+      {
+        "title": "Recognise",
+        "detail": "The current chord and keyboard remain visible."
+      },
+      {
+        "title": "Repeat",
+        "detail": "A passage can be approached at the learner’s pace."
+      },
+      {
+        "title": "Control the pace",
+        "detail": "Wait for me is an explicit mode."
+      }
+    ],
+    "width": 1080,
+    "height": 2400,
+    "details": [
+      {
+        "decision": 0,
+        "x": 25,
+        "y": 1470,
+        "width": 1030,
+        "height": 700,
+        "caption": "The keyboard and Wait for me control sit together in the practice screen.",
+        "alt": "Detail of the original SoundBox keyboard, listening button and Wait for me practice mode."
+      }
+    ]
+  },
+  "wheelie": {
+    "presentation": "type",
+    "label": "Product direction",
+    "caption": "A group-riding beta that connects rendezvous planning, rider location, helmet voice, and ride summaries.",
+    "source": "Product scope and project documentation"
+  },
+  "matinee": {
+    "presentation": "spread",
+    "src": "assets/products/matinee.webp",
+    "alt": "Matinee — archived product interface",
+    "caption": "An archived view of Matinee. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1280,
+    "height": 720
+  },
+  "birthsky": {
+    "presentation": "spread",
+    "src": "assets/products/birthsky.webp",
+    "alt": "BirthSky — archived product interface",
+    "caption": "An archived view of BirthSky. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "scalesee": {
+    "presentation": "spread",
+    "src": "assets/products/scalesee.webp",
+    "alt": "ScaleSee — archived product interface",
+    "caption": "An archived view of ScaleSee. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "where-would-i-be": {
+    "presentation": "spread",
+    "src": "assets/products/wherewouldibe.webp",
+    "alt": "Where Would I Be…? — archived product interface",
+    "caption": "An archived view of Where Would I Be…?. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1280,
+    "height": 720
+  },
+  "the-blog": {
+    "presentation": "spread",
+    "src": "assets/products/blogs.webp",
+    "alt": "The Blog — archived product interface",
+    "caption": "An archived view of The Blog. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "office-games": {
+    "presentation": "spread",
+    "src": "assets/products/officegames.webp",
+    "alt": "The Office Games — archived product interface",
+    "caption": "An archived view of The Office Games. The case study examines the UX direction behind the experience.",
+    "label": "Product interface",
+    "source": "Existing portfolio product capture",
+    "width": 1265,
+    "height": 712
+  },
+  "forma": {
+    "presentation": "portrait",
+    "src": "assets/case-study-evidence/forma-today.webp",
+    "alt": "Archived Forma native Today screen with demo activity rings and sample heart rate",
+    "caption": "Archived native Today screen with clearly marked demo values. This capture predates the later Health-tab and personal-tool cleanup.",
+    "label": "Archived native interface · sample data",
+    "source": "Health++ output/forma-today-rings.png, captured in the project on 13 October 2026. Lossy WebP delivery copy, no UI alteration.",
+    "width": 1080,
+    "height": 2400,
+    "focus": [
+      {
+        "title": "Native interface",
+        "detail": "The Android app uses native screens and charts; the web version is a design preview."
+      },
+      {
+        "title": "Inspectable estimates",
+        "detail": "Experimental wellness scores retain input and coverage limits."
+      }
+    ],
+    "details": [
+      {
+        "decision": 0,
+        "x": 50,
+        "y": 1710,
+        "width": 980,
+        "height": 430,
+        "alt": "Forma sample heart-rate reading with explicit sample and recorded-range labels",
+        "caption": "A detail of the archived Today capture. Sample labels and measurement context stay beside the value."
+      }
+    ]
+  },
+  "ohcaptain": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/ohcaptain-combat.webp",
+    "alt": "OhCaptain actual solo gameplay with compact battle score, hull status and persistent map",
+    "caption": "Actual local gameplay with an AI-filled crew: compact battle status, a persistent map, the Fleet control and the player’s hull.",
+    "label": "Actual solo gameplay",
+    "source": "Screenshot of the repository’s local built game on 16 October 2026; WebP delivery copy.",
+    "width": 1280,
+    "height": 720,
+    "focus": [
+      {
+        "title": "Keyboard and mouse",
+        "detail": "The playable prototype is designed around desktop sailing, aiming and command controls."
+      },
+      {
+        "title": "Peer-to-peer scope",
+        "detail": "Rooms rely on a host and direct peer connections; solo AI-filled play remains a separate path."
+      }
+    ],
+    "details": [
+      {
+        "decision": 1,
+        "x": 14,
+        "y": 484,
+        "width": 270,
+        "height": 222,
+        "alt": "OhCaptain persistent corner map showing relays and fleet positions",
+        "caption": "The actual corner map keeps the wider objective available while the player sails."
+      }
+    ]
+  }
+}

@@ -13,6 +13,7 @@
   (function () {
     var SITE = window.SITE_DATA || { work: [], vibe: [], posters: [] };
     var PAGES = window.CASE_PAGES || {};
+    var STORIES = window.CASE_STUDIES || {};
 
     function esc(s) {
       return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
@@ -37,15 +38,24 @@
     // into the single lookup the case viewer / hover preview read from.
     window.CASE_DATA = {};
     (SITE.work || []).forEach(function (w) {
-      window.CASE_DATA[w.slug] = Object.assign({}, w, PAGES[w.slug]);
+      window.CASE_DATA[w.slug] = Object.assign({}, w, PAGES[w.slug], { story: STORIES[w.slug] });
+    });
+    (SITE.vibe || []).forEach(function (v) {
+      if (v.caseSlug && STORIES[v.caseSlug]) window.CASE_DATA[v.caseSlug] = {
+        title: v.name, tags: 'Product idea · UX direction · Interaction design', story: STORIES[v.caseSlug]
+      };
     });
 
     var cardsEl = document.getElementById('cards');
     if (cardsEl && SITE.work && SITE.work.length) {
       cardsEl.innerHTML = SITE.work.map(function (w, i) {
-        return '<a class="card" href="' + esc(w.pdf) + '" target="_blank" rel="noopener" data-case="' + esc(w.slug) + '">' +
-          '<div class="card-media"><span class="card-number">' + ('0' + (i + 1)).slice(-2) + ' / DESIGN STUDY</span><img src="' + esc(webp(w.thumb)) + '" alt="' + esc(w.title) + '"' +
-            ' width="1000" height="562" loading="lazy" decoding="async"' + fallback(w.thumb) + '></div>' +
+        var destination = STORIES[w.slug] ? 'case-studies/' + w.slug + '.html' : w.pdf;
+        var visual = STORIES[w.slug] && STORIES[w.slug].visual;
+        var screen = visual && visual.src && visual.presentation === 'spread' && visual.width / visual.height >= 1.3;
+        var preview = screen ? visual.src : webp(w.thumb);
+        return '<a class="card" href="' + esc(destination) + '" data-case="' + esc(w.slug) + '">' +
+          '<div class="card-media' + (screen ? ' card-media-evidence' : '') + '"><img src="' + esc(preview) + '" alt="' + esc(screen ? visual.alt : w.title) + '"' +
+            ' width="' + (screen ? visual.width : 1000) + '" height="' + (screen ? visual.height : 562) + '" loading="lazy" decoding="async"' + fallback(w.thumb) + '></div>' +
           '<div class="card-body">' +
             '<span class="card-tags">' + esc(w.tags) + '</span>' +
             '<h3>' + esc(w.title) + '</h3>' +
@@ -58,7 +68,7 @@
 
     var vibeEl = document.getElementById('playGrid');
     if (vibeEl && SITE.vibe && SITE.vibe.length) {
-      var priority = ['Arkitype', 'Earthlog', 'AppleCider', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
+      var priority = ['Forma', 'OhCaptain', 'Arkitype', 'AppleCider', 'PlanIt', 'DeckForge', 'Earthlog', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
       var products = SITE.vibe.slice().sort(function (a, b) {
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
@@ -66,14 +76,14 @@
       vibeEl.innerHTML = products.map(function (v) {
         var media = (window.PROJECT_MEDIA || {})[v.name];
         var starred = ['Arkitype', 'Earthlog', 'AppleCider'].includes(v.name);
-        var chips = (v.stack || []).map(function (tool) { return '<span class="vcard-chip">' + esc(tool) + '</span>'; }).join('');
         var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="1280" height="720"></div>' : '';
-        return '<a class="play-card" href="' + esc(v.href) + '" target="_blank" rel="noopener">' + preview +
+        var hasStory = v.caseSlug && STORIES[v.caseSlug];
+        return '<a class="play-card" href="' + esc(hasStory ? 'case-studies/' + v.caseSlug + '.html' : v.href) + '"' + (hasStory ? ' data-case="' + esc(v.caseSlug) + '"' : ' target="_blank" rel="noopener"') + '>' + preview +
           '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '') +
           (v.status === 'building' ? '<span class="product-building">In development</span>' : '') + '</div>' +
           '<div class="play-card-head"><h3>' + esc(v.name) + '</h3><span aria-hidden="true">↗</span></div>' +
-          '<p>' + esc(v.desc) + '</p><span class="play-stack">' + chips + '</span>' +
-          '<span class="play-card-cta">' + esc(v.cta) + ' <span aria-hidden="true">↗</span></span></a>';
+          '<p>' + esc(v.desc) + '</p>' +
+          '<span class="play-card-cta">' + esc(hasStory ? 'Read the case study' : v.cta) + ' <span aria-hidden="true">↗</span></span></a>';
       }).join('');
     }
 
@@ -82,7 +92,7 @@
       var sets = Array.prototype.map.call(rowEls, function (row) { return row.querySelector('.collage-set'); });
       sets.forEach(function (set) { if (set) set.innerHTML = ''; });
       var counts = sets.map(function () { return 0; });
-      SITE.posters.forEach(function (p) {
+      SITE.posters.forEach(function (p, posterIndex) {
         var rowIdx = (p.row >= 1 && p.row <= sets.length) ? p.row - 1
           : counts.indexOf(Math.min.apply(null, counts)); // no row given -> balance automatically
         var set = sets[rowIdx];
@@ -94,7 +104,7 @@
         // A <button>, not a <figure>: this opens the lightbox, so it has to be
         // reachable and operable from the keyboard like any other control.
         set.insertAdjacentHTML('beforeend',
-          '<button class="gi" type="button" aria-label="View ' + esc(p.alt || 'poster') + ' full size">' +
+          '<button class="gi" type="button" aria-label="View ' + esc(p.alt || 'Artwork') + ' ' + (posterIndex + 1) + ' full size">' +
           '<img src="' + esc(webp(p.src, '-t')) + '"' +
           ' data-full="' + esc(webp(p.src)) + '"' +
           ' alt="' + esc(p.alt || 'Poster') + '"' +
@@ -467,7 +477,7 @@
      of the page is inert — but that's a promise the browser doesn't keep on its
      own. Without this, Tab walks straight out of the dialog and into the work
      cards behind it while the overlay still covers the screen. */
-  var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, [tabindex]:not([tabindex="-1"])';
+  var FOCUSABLE = 'a[href], button:not([disabled]), input, select, textarea, summary, [tabindex]:not([tabindex="-1"])';
   function trapFocus(container) {
     return function (e) {
       if (e.key !== 'Tab') return;
@@ -535,6 +545,10 @@
     function pad(n) { return ('0' + n).slice(-2); }
 
     function build(c) {
+      if (c.story && window.CaseStudyRenderer) {
+        scroll.innerHTML = window.CaseStudyRenderer.render(c.story);
+        return;
+      }
       var stage = document.createElement('div');
       stage.className = 'cv-stage ' + (c.layout === 'page' ? 'is-page' : 'is-deck');
       c.pages.forEach(function (p, i) {
@@ -553,6 +567,10 @@
       var max = scroll.scrollHeight - scroll.clientHeight;
       var frac = max > 0 ? Math.min(1, Math.max(0, scroll.scrollTop / max)) : 0;
       fillEl.style.width = (frac * 100).toFixed(1) + '%';
+      if (scroll.querySelector('.case-study')) {
+        progressEl.textContent = Math.round(frac * 100) + '% read';
+        return;
+      }
       var readingLine = scroll.getBoundingClientRect().top + Math.min(240, scroll.clientHeight * 0.35);
       var images = scroll.querySelectorAll('.cv-stage img');
       var cur = total;
@@ -564,15 +582,17 @@
     }
     function openCase(slug) {
       var c = DATA[slug];
-      if (!c || !c.pages || !c.pages.length) return false;
+      if (!c || !(c.story || c.pages && c.pages.length)) return false;
       titleEl.textContent = c.title;
       tagsEl.textContent = c.tags;
-      pdfEl.href = c.pdf;
+      pdfEl.href = c.story ? 'assets/pdfs/case-studies/' + (c.story.kind === 'ux' ? 'ux-case-studies.pdf' : 'product-case-studies.pdf') + '#page=' + (c.story.pdfPage || 1) : c.pdf;
+      pdfEl.textContent = c.story ? 'Collection PDF ↗' : 'PDF ↓';
       if (protoEl) {
-        if (c.prototypeUrl) { protoEl.href = c.prototypeUrl; protoEl.hidden = false; }
+        var destination = c.story && c.story.liveUrl || c.prototypeUrl;
+        if (destination) { protoEl.href = destination; protoEl.textContent = c.story && c.story.liveUrl ? (c.story.productHeaderLabel || 'Explore product') + ' ↗' : 'View prototype ↗'; protoEl.hidden = false; }
         else { protoEl.hidden = true; protoEl.removeAttribute('href'); }
       }
-      total = c.pages.length;
+      total = c.pages ? c.pages.length : 1;
       build(c);
       lastFocus = document.activeElement;
       cv.classList.add('is-open');
@@ -592,6 +612,21 @@
       if (lastFocus && lastFocus.focus) lastFocus.focus();
     }
     scroll.addEventListener('scroll', updateProgress, { passive: true });
+    scroll.addEventListener('click', function (e) {
+      var link = e.target.closest('.cs-contents a, .cs-jump');
+      if (!link || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
+      var target = document.getElementById(link.getAttribute('href').slice(1));
+      if (target && scroll.contains(target)) {
+        e.preventDefault();
+        var readingOffset = 28;
+        scroll.scrollTo({top: target.getBoundingClientRect().top - scroll.getBoundingClientRect().top + scroll.scrollTop - readingOffset, behavior: reduceMotion ? 'instant' : 'smooth'});
+        if (!target.hasAttribute('tabindex')) {
+          target.setAttribute('tabindex', '-1');
+          target.addEventListener('blur', function () { target.removeAttribute('tabindex'); }, { once: true });
+        }
+        target.focus({preventScroll:true});
+      }
+    });
     window.addEventListener('resize', function () {
       if (cv.classList.contains('is-open')) updateProgress();
     });
@@ -602,17 +637,18 @@
     document.querySelectorAll('[data-open-case]').forEach(function (link) {
       link.addEventListener('click', function (e) {
         var c = DATA[link.getAttribute('data-open-case')];
-        if (!c || !c.pages || !c.pages.length) return;
+        if (!c || !(c.story || c.pages && c.pages.length) || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return;
         e.preventDefault();
         openCase(link.getAttribute('data-open-case'));
       });
     });
-    document.querySelectorAll('.card[data-case]').forEach(function (card) {
+    document.querySelectorAll('.card[data-case], .play-card[data-case]').forEach(function (card) {
       var entry = DATA[card.getAttribute('data-case')];
-      if (entry && entry.pages && entry.pages.length) card.setAttribute('aria-haspopup', 'dialog');
+      if (entry && (entry.story || entry.pages && entry.pages.length)) card.setAttribute('aria-haspopup', 'dialog');
       card.addEventListener('click', function (e) {
         var slug = card.getAttribute('data-case');
-        if (DATA[slug] && DATA[slug].pages && DATA[slug].pages.length) { e.preventDefault(); openCase(slug); }
+        if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || e.button !== 0) return;
+        if (DATA[slug] && (DATA[slug].story || DATA[slug].pages && DATA[slug].pages.length)) { e.preventDefault(); openCase(slug); }
         // no data for slug -> fall through to href (PDF) as graceful fallback
       });
     });

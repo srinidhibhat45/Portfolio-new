@@ -1,5 +1,13 @@
 /* Real interface captures, product wordmarks, and title artwork for app-only previews. */
 window.PROJECT_MEDIA = {
+  "Forma": {
+    "src": "assets/products/forma.webp", "kind": "screen",
+    "alt": "Two archived Forma native Android screens with sample activity and vital data"
+  },
+  "OhCaptain": {
+    "src": "assets/products/ohcaptain.webp", "kind": "screen",
+    "alt": "OhCaptain harbor interface and role selection, with cinematic menu artwork"
+  },
   "The Office Games": {
     "src": "assets/products/officegames.webp",
     "kind": "screen",

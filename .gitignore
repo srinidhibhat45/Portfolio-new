@@ -14,3 +14,6 @@ node_modules/
 
 # Generated local accessibility audit surface
 js/__audit__/
+
+# Intermediate PDF extraction, image caches, and visual QA renders.
+tmp/pdfs/

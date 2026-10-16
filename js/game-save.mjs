@@ -1,5 +1,5 @@
 /* Private, origin-scoped saves. This module never makes a network request. */
-export const GAME_IDS=['pens','chess','cards','rps','cricket','ultimate'];
+export const GAME_IDS=['pens','chess','cards','rps','cricket','ultimate','connect','dots','memory'];
 export const SAVE_VERSION=1;
 export function validSave(data){
  if(!data||data.version!==SAVE_VERSION||!GAME_IDS.includes(data.active)||!Number.isInteger(data.tokens)||data.tokens<0||data.tokens>999999||!data.games||!data.paid)return null;

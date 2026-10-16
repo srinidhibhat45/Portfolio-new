@@ -1,0 +1,58 @@
+/* Project identities share the same legible reading foundation. */
+.cs-custom h1,.cs-custom h2{font-weight:var(--cs-title-weight)}
+.cs-mode-dark{color-scheme:dark}
+.cs-page:has(.cs-mode-dark),.cv .cv-scroll:has(.cs-mode-dark){background:#0a0b10}
+.cs-page:has(.cs-mode-dark) .cs-page-header,.cs-page:has(.cs-mode-dark) .cs-page-footer{color:#e8e8ed}
+.cs-layout-system .cs-hero,.cs-layout-collaboration .cs-hero,.cs-layout-planner .cs-hero,.cs-layout-ledger .cs-hero,.cs-layout-rendezvous .cs-hero,.cs-layout-comparison .cs-hero,.cs-layout-service .cs-hero,.cs-layout-playroom .cs-hero{border-top:4px solid var(--cs-accent)}
+.cs-layout-archive .cs-hero{border-top:4px double var(--cs-accent)}
+.cs-layout-race .cs-hero{border-top:6px solid #e10600}
+.cs-layout-race h1{text-transform:uppercase;font-weight:700}
+.cs-layout-chapter .cs-hero,.cs-layout-departure .cs-hero{border-top:6px solid var(--cs-accent)}
+.cs-layout-portfolio h1{letter-spacing:-.055em}
+.cs-layout-portfolio mark{color:var(--cs-accent);background:none}
+.cs-layout-gallery h1,.cs-layout-constellation h1{font-size:clamp(42px,4.8vw,64px);font-weight:400}
+.cs-layout-gallery .cs-evidence-plate>a,.cs-layout-lesson .cs-evidence-plate>a,.cs-layout-cinema .cs-evidence-plate>a{border:0}
+.cs-layout-editorial .cs-body-copy{font-family:'Project Source Serif 4',Georgia,serif;font-size:20px}
+.cs-layout-sketchbook .cs-evidence-plate>a{background:#fffdf8}
+.cs-visual-portrait .cs-hero{display:grid;grid-template-columns:minmax(0,1fr) 290px;gap:40px;align-items:center}
+.cs-visual-portrait .cs-intro{margin:0}
+.cs-visual-portrait h1{font-size:clamp(38px,4vw,52px)}
+.cs-visual-portrait .cs-deck{font-size:18px}
+.cs-visual-portrait .cs-meta{grid-template-columns:1fr;gap:18px}
+.cs-visual-portrait .cs-evidence-plate{margin:0}
+.cs-visual-portrait .cs-evidence-plate>a{background:none;border:0}
+.cs-visual-portrait .cs-evidence-plate img{height:570px;width:auto;max-width:100%;margin:auto}
+.cs-visual-portrait .cs-evidence-plate figcaption{display:block;font-size:14px}
+.cs-visual-portrait figcaption>a{display:inline-flex;min-height:44px;align-items:center;margin-top:4px}
+.cs-visual-document .cs-evidence-plate{max-width:720px;margin-inline:auto}
+.cs-visual-document .cs-evidence-plate img{max-height:600px}
+.cs-visual-split .cs-evidence-plate{max-width:800px;margin-inline:auto}
+.cs-visual-split .cs-evidence-plate img{height:520px;object-fit:cover;object-position:top}
+.cs-study-card{background:var(--cs-paper);color:var(--cs-ink)!important;border-radius:0}
+.cs-study-card h3{font-weight:var(--cs-title-weight)}
+.cs-card-copy{font-family:var(--cs-sans)}
+.cs-study-card .cs-card-art{padding:0 0 27px;background:none}
+.cs-card-art img{border:0;border-radius:0;box-shadow:none}
+.cs-card-art>span{bottom:0;left:26px;font-size:14px}
+.cs-card-type{aspect-ratio:1.6;display:flex;flex-direction:column;justify-content:center;gap:12px;padding:30px;border-bottom:1px solid var(--cs-line)}
+.cs-card-type>span{font:500 13px/1.5 var(--cs-sans);color:var(--cs-accent)}
+.cs-card-type>strong{font:var(--cs-title-weight) clamp(30px,3vw,42px)/1.1 var(--cs-display)}
+.cs-card-type>p{font:400 16px/1.7 var(--cs-sans);color:var(--cs-dim)}
+.cs-library-index>ol{margin:20px 0 0;padding:0;list-style:none}
+.cs-library-index li{border-top:1px solid var(--cs-line)}
+.cs-library-index li:last-child{border-bottom:1px solid var(--cs-line)}
+.cs-library-index a{display:grid;grid-template-columns:25px 1fr 16px;gap:10px;padding:22px 0;text-decoration:none}
+.cs-library-index a>span{font-size:14px;color:var(--cs-accent)}
+.cs-library-index strong{font:500 19px/1.4 var(--cs-sans)}
+.cs-library-index li p{font-size:16px;color:var(--cs-dim);margin:6px 0 0;line-height:1.7}
+.cs-study-card p{font-size:16px}.cs-card-category{font-size:13px}.cs-card-action{font-size:15px}
+.cs-library-intro{font-size:18px}.cs-library-section-head>p{font-size:16px}.cs-library-nav{font-size:16px}.cs-library-downloads{font-size:15px}
+@media(max-width:760px){.cs-visual-portrait .cs-hero{display:block}.cs-visual-portrait h1,.cs-layout-gallery h1,.cs-layout-constellation h1{font-size:38px}.cs-visual-portrait .cs-evidence-plate{margin-top:28px}.cs-visual-portrait .cs-evidence-plate img{height:auto;max-height:540px}.cs-visual-split .cs-evidence-plate img{height:420px}.cs-layout-editorial .cs-body-copy{font-size:19px}}
+@media print{.cs-custom{--cs-paper:#fff;--cs-ink:#111;--cs-dim:#444;--cs-line:#aaa;--cs-accent:#333;--cs-wash:#eee;--cs-panel:#f6f6f6;--cs-soft:#fff}.cs-visual-portrait .cs-hero{display:block}.cs-visual-portrait .cs-evidence-plate img{height:350px}}
+
+/* New stories extend the reading system with their product palettes and type. */
+.cs-layout-health-record .cs-hero{border-top:4px solid var(--cs-accent)}
+.cs-layout-health-record h1{max-width:21ch}
+.cs-layout-fleet-command .cs-hero{border-top:4px solid var(--cs-accent)}
+.cs-layout-fleet-command h1{text-transform:uppercase;max-width:23ch;font-weight:700}
+.cs-layout-fleet-command mark{color:var(--cs-accent);background:none}

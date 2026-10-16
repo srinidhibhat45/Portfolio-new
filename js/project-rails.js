@@ -6,6 +6,8 @@
   var workControls=document.getElementById('workNavigation');
   var playControls=document.getElementById('playNavigation');
   function setup(controls,getPanel){
+    var panelId=getPanel().id;
+    var gridToggle=document.querySelector('[data-project-grid="'+panelId+'"]');
     var previous=controls.querySelector('[data-project-direction="-1"]');
     var next=controls.querySelector('[data-project-direction="1"]');
     var position=controls.querySelector('.project-position'),timer;
@@ -29,11 +31,21 @@
       panel.scrollBy({left:direction*step*count,behavior:preference.matches||staticMode?'instant':'smooth'});
     }
     previous.addEventListener('click',function(){move(-1);});next.addEventListener('click',function(){move(1);});
+    gridToggle.addEventListener('click',function(){
+      var panel=getPanel(),expanded=gridToggle.getAttribute('aria-pressed')!=='true';
+      panel.classList.toggle('is-grid',expanded);
+      gridToggle.setAttribute('aria-pressed',String(expanded));
+      gridToggle.textContent=expanded?'Carousel view':'Grid view';
+      panel.scrollTo({left:0,behavior:'instant'});
+      update();
+      document.dispatchEvent(new CustomEvent('portfolio:layout'));
+    });
     var panels=[getPanel()];
     panels.forEach(function(panel){
       window.enableProjectDrag(panel,function(){return preference.matches||staticMode;});
       panel.addEventListener('scroll',function(){clearTimeout(timer);timer=setTimeout(update,120);},{passive:true});
       panel.addEventListener('keydown',function(event){
+        if(panel.classList.contains('is-grid'))return;
         if(!['ArrowLeft','ArrowRight','Home','End'].includes(event.key)||event.altKey||event.ctrlKey||event.metaKey)return;
         var cards=items(panel),index=cards.indexOf(document.activeElement),target;
         if(event.key==='Home')target=cards[0];else if(event.key==='End')target=cards[cards.length-1];

@@ -1,0 +1,870 @@
+{
+  "onespace": {
+    "layout": "collaboration",
+    "mode": "light",
+    "paper": "#f7fbff",
+    "ink": "#173447",
+    "dim": "#53697d",
+    "line": "#cbdfe9",
+    "accent": "#087e88",
+    "wash": "#dcf3f4",
+    "bodyFont": "Poppins",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Class confusion",
+      "process": "What the research changed",
+      "decisions": "Designing a dependable home",
+      "outcome": "The communication concept",
+      "reflection": "The next research question"
+    },
+    "decisionHeading": "Keep class resources easy to find.",
+    "resultHeading": "A class, with a place for its resources."
+  },
+  "umatter": {
+    "layout": "care",
+    "mode": "light",
+    "paper": "#faf9ff",
+    "ink": "#242444",
+    "dim": "#62627c",
+    "line": "#dedced",
+    "accent": "#5356a8",
+    "wash": "#eeedfb",
+    "bodyFont": "Poppins",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Before asking for help",
+      "process": "Listening to the sample",
+      "decisions": "Designing for consideration",
+      "outcome": "The booking journey",
+      "reflection": "What trust needs next"
+    },
+    "decisionHeading": "Help people decide who to book.",
+    "resultHeading": "From considering support to choosing a time."
+  },
+  "mucoin": {
+    "layout": "ledger",
+    "mode": "light",
+    "paper": "#f4f8ff",
+    "ink": "#142d57",
+    "dim": "#536782",
+    "line": "#d0dded",
+    "accent": "#205bb7",
+    "wash": "#e1edff",
+    "bodyFont": "Poppins",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "The cost of setup",
+      "process": "A picture worth reviewing",
+      "decisions": "Five stages, one pattern",
+      "outcome": "The proposed onboarding",
+      "reflection": "Measuring understanding"
+    },
+    "decisionHeading": "Make each onboarding step useful.",
+    "resultHeading": "A financial picture that can be corrected."
+  },
+  "gmd": {
+    "layout": "inspector",
+    "mode": "light",
+    "paper": "#f6faff",
+    "ink": "#203146",
+    "dim": "#516984",
+    "line": "#cbdbee",
+    "accent": "#286cad",
+    "wash": "#e4effc",
+    "bodyFont": "Poppins",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A dense readout",
+      "process": "Two ways of reading",
+      "decisions": "Making inspection clearer",
+      "outcome": "The redesigned extension",
+      "reflection": "Testing the hierarchy"
+    },
+    "decisionHeading": "Help different users scan the same metadata.",
+    "resultHeading": "A more structured inspection surface."
+  },
+  "steve-wilson": {
+    "layout": "portfolio",
+    "mode": "dark",
+    "paper": "#101010",
+    "ink": "#f5f4ed",
+    "dim": "#c3c3b8",
+    "line": "#3f3f37",
+    "accent": "#f1d548",
+    "wash": "#343019",
+    "bodyFont": "Inter",
+    "displayFont": "Inter",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A first impression",
+      "process": "The useful signal",
+      "decisions": "Identity into evidence",
+      "outcome": "The portfolio concept",
+      "reflection": "Adding project depth"
+    },
+    "decisionHeading": "Lead from the work into the case study.",
+    "resultHeading": "A strong front door, with depth still to add."
+  },
+  "gloria-furniture": {
+    "layout": "catalogue",
+    "mode": "light",
+    "paper": "#fffaf8",
+    "ink": "#2b2320",
+    "dim": "#79615a",
+    "line": "#e8d9d1",
+    "accent": "#bc273a",
+    "wash": "#f9e2e2",
+    "bodyFont": "Poppins",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A room in mind",
+      "process": "Inspiration needs a route",
+      "decisions": "From room to product",
+      "outcome": "The storefront concept",
+      "reflection": "Beyond the first screen"
+    },
+    "decisionHeading": "Help shoppers compare a collection.",
+    "resultHeading": "A catalogue organised around the room."
+  },
+  "fun-cruises": {
+    "layout": "voyage",
+    "mode": "light",
+    "paper": "#fffcf6",
+    "ink": "#203c40",
+    "dim": "#5a7174",
+    "line": "#d6ded7",
+    "accent": "#866117",
+    "wash": "#faedcb",
+    "bodyFont": "Lato",
+    "displayFont": "Poppins",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Planning for a group",
+      "process": "The practical shortlist",
+      "decisions": "Designing the enquiry",
+      "outcome": "The fleet experience",
+      "reflection": "Questions before booking"
+    },
+    "decisionHeading": "Help a group compare the boats.",
+    "resultHeading": "A clearer route to a suitable enquiry."
+  },
+  "bni-website": {
+    "layout": "chapter",
+    "mode": "light",
+    "paper": "#fffefe",
+    "ink": "#32262a",
+    "dim": "#76636a",
+    "line": "#ead6dc",
+    "accent": "#b7213c",
+    "wash": "#fae5e9",
+    "bodyFont": "Inter",
+    "displayFont": "Inter",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A local membership question",
+      "process": "What a chapter must explain",
+      "decisions": "Designing participation",
+      "outcome": "The chapter concept",
+      "reflection": "Content before scale"
+    },
+    "decisionHeading": "Connect the chapter’s purpose to joining.",
+    "resultHeading": "A membership story with a next step."
+  },
+  "irctc": {
+    "layout": "departure",
+    "mode": "light",
+    "paper": "#f8faff",
+    "ink": "#162c50",
+    "dim": "#536785",
+    "line": "#d0dced",
+    "accent": "#253a96",
+    "wash": "#e5eafa",
+    "bodyFont": "Roboto",
+    "displayFont": "Roboto",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A journey to begin",
+      "process": "The task worth protecting",
+      "decisions": "Clearing the search path",
+      "outcome": "The homepage concept",
+      "reflection": "Testing the first search"
+    },
+    "decisionHeading": "Keep train booking at the centre.",
+    "resultHeading": "Search leads. Other services follow."
+  },
+  "nityananda": {
+    "layout": "gallery",
+    "mode": "dark",
+    "paper": "#101010",
+    "ink": "#f2eee8",
+    "dim": "#bcb5ac",
+    "line": "#3d3832",
+    "accent": "#d9c6a9",
+    "wash": "#342e26",
+    "bodyFont": "Inter",
+    "displayFont": "Cormorant Garamond",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Looking for a style",
+      "process": "Letting the work speak",
+      "decisions": "A portfolio with space",
+      "outcome": "The photography concept",
+      "reflection": "Making relevance clearer"
+    },
+    "decisionHeading": "Let visitors browse the photographs.",
+    "resultHeading": "A body of work before a sales pitch."
+  },
+  "arkitype": {
+    "layout": "system",
+    "mode": "light",
+    "paper": "#e8e8eb",
+    "ink": "#24242a",
+    "dim": "#5c5c68",
+    "line": "#bcbcc6",
+    "accent": "#4e3cad",
+    "wash": "#e1def2",
+    "bodyFont": "Instrument Sans",
+    "displayFont": "Space Grotesk",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A system in motion",
+      "process": "Relationships over inventory",
+      "decisions": "The workspace contract",
+      "outcome": "From decisions to handoff",
+      "reflection": "The first-use question"
+    },
+    "decisionHeading": "Keep design changes connected.",
+    "resultHeading": "One system, visible in several places."
+  },
+  "applecider": {
+    "layout": "sketchbook",
+    "mode": "light",
+    "paper": "#fffdf8",
+    "ink": "#2f2b25",
+    "dim": "#6c6256",
+    "line": "#d7cdbd",
+    "accent": "#a33a20",
+    "wash": "#f8e5d7",
+    "bodyFont": "Inter",
+    "displayFont": "Inter",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "An idea still in pencil",
+      "process": "Keep it changeable",
+      "decisions": "Rough on purpose",
+      "outcome": "A sketch you can discuss",
+      "reflection": "What I would try with designers"
+    },
+    "decisionHeading": "Keep early ideas easy to revise.",
+    "resultHeading": "Rough enough to revise. Real enough to discuss."
+  },
+  "planit": {
+    "layout": "planner",
+    "mode": "dark",
+    "paper": "#0d0f17",
+    "ink": "#edeff7",
+    "dim": "#a8b0c6",
+    "line": "#343e56",
+    "accent": "#ffb094",
+    "wash": "#35251f",
+    "bodyFont": "Instrument Sans",
+    "displayFont": "Instrument Sans",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "People with different plans",
+      "process": "Ideas are not commitments",
+      "decisions": "The scheduling contract",
+      "outcome": "The shared plan",
+      "reflection": "Where understanding can break"
+    },
+    "decisionHeading": "Separate ideas from confirmed plans.",
+    "resultHeading": "One plan, with room for different people."
+  },
+  "earthlog": {
+    "layout": "atlas",
+    "mode": "dark",
+    "paper": "#06080b",
+    "ink": "#ece9e3",
+    "dim": "#b6bac1",
+    "line": "#454b55",
+    "accent": "#f2a93b",
+    "wash": "#33271a",
+    "bodyFont": "Public Sans",
+    "displayFont": "Fraunces",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Start with a place",
+      "process": "Keep the date beside the answer",
+      "decisions": "Reading an uncertain world",
+      "outcome": "The local picture",
+      "reflection": "What the map implies"
+    },
+    "decisionHeading": "Three choices behind the exploration",
+    "resultHeading": "One place to explore several kinds of information"
+  },
+  "hexchess": {
+    "layout": "lesson",
+    "mode": "light",
+    "paper": "#f6f6f3",
+    "ink": "#32363b",
+    "dim": "#62696e",
+    "line": "#d2d5d6",
+    "accent": "#46584c",
+    "wash": "#e1e7db",
+    "bodyFont": "DM Sans",
+    "displayFont": "Libre Caslon Display",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A familiar piece, a new board",
+      "process": "Learning through a move",
+      "decisions": "From hint to understanding",
+      "outcome": "The first game",
+      "reflection": "What practice would reveal"
+    },
+    "decisionHeading": "Teach the board through the next move.",
+    "resultHeading": "From the first lesson into play."
+  },
+  "dashf1": {
+    "layout": "race",
+    "mode": "dark",
+    "paper": "#0b0e14",
+    "ink": "#eef1f6",
+    "dim": "#b3bccb",
+    "line": "#394454",
+    "accent": "#ff6a61",
+    "wash": "#3a1e24",
+    "bodyFont": "Inter",
+    "displayFont": "Space Grotesk",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A driver to follow",
+      "process": "One focus across panels",
+      "decisions": "The dashboard contract",
+      "outcome": "The race in context",
+      "reflection": "Knowing what is estimated"
+    },
+    "decisionHeading": "Keep one driver in focus across the dashboard.",
+    "resultHeading": "Follow the driver through the available data."
+  },
+  "hued": {
+    "layout": "photojournal",
+    "mode": "light",
+    "paper": "#fffaf6",
+    "ink": "#2f2927",
+    "dim": "#75615b",
+    "line": "#e8d5ca",
+    "accent": "#ad4b35",
+    "wash": "#f8e2d7",
+    "bodyFont": "Montserrat",
+    "displayFont": "Montserrat",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A colour in the everyday",
+      "process": "A constraint with room for you",
+      "decisions": "Designing the daily invitation",
+      "outcome": "Notice, photograph, reflect",
+      "reflection": "Creativity before streaks"
+    },
+    "decisionHeading": "Make the daily prompt easy to act on.",
+    "resultHeading": "A little colour, interpreted differently."
+  },
+  "yuva-panaji": {
+    "layout": "service",
+    "mode": "light",
+    "paper": "#fbfaf5",
+    "ink": "#22301f",
+    "dim": "#5c6855",
+    "line": "#d8ddce",
+    "accent": "#157a45",
+    "wash": "#e3eedc",
+    "bodyFont": "Inter",
+    "displayFont": "Fraunces",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Two sides of one event",
+      "process": "Registration continues at the desk",
+      "decisions": "Designing the whole service",
+      "outcome": "From public page to roster",
+      "reflection": "Following real event work"
+    },
+    "decisionHeading": "Connect public events to the work behind them.",
+    "resultHeading": "The public event and the work behind it."
+  },
+  "deckforge": {
+    "layout": "slides",
+    "mode": "dark",
+    "paper": "#17191c",
+    "ink": "#f7f8fa",
+    "dim": "#b2bac6",
+    "line": "#545c67",
+    "accent": "#b9aeff",
+    "wash": "#302b46",
+    "bodyFont": "Inter",
+    "displayFont": "Inter",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A deck that needs changing",
+      "process": "Objects should be recognisable",
+      "decisions": "Designing edit and present",
+      "outcome": "The recovered slide",
+      "reflection": "When a page stays an image"
+    },
+    "decisionHeading": "Make the PDF’s editable parts understandable.",
+    "resultHeading": "A slide that can keep moving."
+  },
+  "vansh-vriksha": {
+    "layout": "archive",
+    "mode": "light",
+    "paper": "#fbf6ec",
+    "ink": "#37271f",
+    "dim": "#78664e",
+    "line": "#ddcfb6",
+    "accent": "#a8322a",
+    "wash": "#f6e2dc",
+    "bodyFont": "Archivo",
+    "displayFont": "Newsreader",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Following a family connection",
+      "process": "A connection needs a source",
+      "decisions": "Designing a careful archive",
+      "outcome": "The record and its relationships",
+      "reflection": "What the archive leaves out"
+    },
+    "decisionHeading": "Keep the evidence behind a relationship visible.",
+    "resultHeading": "A family connection with its context intact."
+  },
+  "premoney": {
+    "layout": "statement",
+    "mode": "light",
+    "paper": "#f4f6f3",
+    "ink": "#161a18",
+    "dim": "#59665e",
+    "line": "#d4ded6",
+    "accent": "#16745f",
+    "wash": "#dcefe8",
+    "bodyFont": "Plus Jakarta Sans",
+    "displayFont": "Plus Jakarta Sans",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A record you need to trust",
+      "process": "Uncertainty should stay visible",
+      "decisions": "Review before confidence",
+      "outcome": "The transaction journey",
+      "reflection": "Evaluating the mistakes"
+    },
+    "decisionHeading": "Make uncertain transactions easy to review.",
+    "resultHeading": "A suggested transaction, open to review."
+  },
+  "soundbox": {
+    "layout": "practice",
+    "mode": "dark",
+    "paper": "#0f1017",
+    "ink": "#f2f3f8",
+    "dim": "#b8bfd1",
+    "line": "#42495f",
+    "accent": "#b8aaff",
+    "wash": "#302b4b",
+    "bodyFont": "Inter",
+    "displayFont": "Nunito",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A difficult passage",
+      "process": "The learner sets the pace",
+      "decisions": "Feedback without a race",
+      "outcome": "The practice loop",
+      "reflection": "Listening in real conditions"
+    },
+    "decisionHeading": "Let the learner set the pace.",
+    "resultHeading": "Stay with the passage. Continue when ready."
+  },
+  "wheelie": {
+    "layout": "rendezvous",
+    "mode": "light",
+    "paper": "#f7f9ff",
+    "ink": "#1d2a41",
+    "dim": "#5b6b84",
+    "line": "#d2dcee",
+    "accent": "#0b57b4",
+    "wash": "#e2ecff",
+    "bodyFont": "Roboto",
+    "displayFont": "Roboto",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Before the group sets off",
+      "process": "Coordination comes first",
+      "decisions": "Designing for the context",
+      "outcome": "A ride in three moments",
+      "reflection": "Controlled evaluation next"
+    },
+    "decisionHeading": "Change the interface around the ride.",
+    "resultHeading": "Prepare together. Coordinate clearly. Reflect later."
+  },
+  "matinee": {
+    "layout": "cinema",
+    "mode": "dark",
+    "paper": "#0a0a0c",
+    "ink": "#f3f4f6",
+    "dim": "#b1b3c0",
+    "line": "#3d3541",
+    "accent": "#ff8eb5",
+    "wash": "#3e2030",
+    "bodyFont": "Inter",
+    "displayFont": "Outfit",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "Something worth watching",
+      "process": "History without repetition",
+      "decisions": "Designing the next choice",
+      "outcome": "A personal discovery loop",
+      "reflection": "Finding relevance in practice"
+    },
+    "decisionHeading": "Help someone choose what to watch.",
+    "resultHeading": "A viewing history that leads somewhere new."
+  },
+  "birthsky": {
+    "layout": "constellation",
+    "mode": "dark",
+    "paper": "#030311",
+    "ink": "#e8e6f0",
+    "dim": "#b5b1ca",
+    "line": "#48415d",
+    "accent": "#d9bc73",
+    "wash": "#31291b",
+    "bodyFont": "Inter",
+    "displayFont": "Cormorant Garamond",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A moment that matters",
+      "process": "The reveal starts with the input",
+      "decisions": "Designing the keepsake",
+      "outcome": "A sky you can keep",
+      "reflection": "What an unknown time changes"
+    },
+    "decisionHeading": "Make the date, place and reveal understandable.",
+    "resultHeading": "A personal moment, made into a keepsake."
+  },
+  "scalesee": {
+    "layout": "comparison",
+    "mode": "light",
+    "paper": "#f2f1f0",
+    "ink": "#19181c",
+    "dim": "#625f68",
+    "line": "#d3d0d7",
+    "accent": "#8b3fa8",
+    "wash": "#eddff2",
+    "bodyFont": "Inter Tight",
+    "displayFont": "Inter Tight",
+    "order": [
+      "brief",
+      "process",
+      "outcome",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A difference hard to picture",
+      "process": "The reference does the explaining",
+      "decisions": "Designing an honest comparison",
+      "outcome": "The ratio, made visible",
+      "reflection": "Checking what the reader sees"
+    },
+    "decisionHeading": "Choose a reference people can understand.",
+    "resultHeading": "Two quantities. One understandable relationship."
+  },
+  "where-would-i-be": {
+    "layout": "deep-time",
+    "mode": "dark",
+    "paper": "#05050c",
+    "ink": "#efedf8",
+    "dim": "#b4b0cb",
+    "line": "#48435d",
+    "accent": "#3ddbff",
+    "wash": "#152f3b",
+    "bodyFont": "Space Grotesk",
+    "displayFont": "Bricolage Grotesque",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A familiar place, another time",
+      "process": "A personal anchor for deep time",
+      "decisions": "Designing the time journey",
+      "outcome": "The moving point",
+      "reflection": "Where the model stops"
+    },
+    "decisionHeading": "Keep each prediction’s limits visible.",
+    "resultHeading": "A point through time, with the model in view."
+  },
+  "the-blog": {
+    "layout": "editorial",
+    "mode": "light",
+    "paper": "#faf8f3",
+    "ink": "#14130f",
+    "dim": "#5a564c",
+    "line": "#d7d0c0",
+    "accent": "#6b3fa0",
+    "wash": "#eee5f5",
+    "bodyFont": "Inter",
+    "displayFont": "Fraunces",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A draft is not a release",
+      "process": "The form is part of the writing",
+      "decisions": "Designing reader and author journeys",
+      "outcome": "Writing with a place to live",
+      "reflection": "Making publication legible"
+    },
+    "decisionHeading": "Make it easy to find and continue reading.",
+    "resultHeading": "A home for drafts, poems, and continuing stories."
+  },
+  "office-games": {
+    "layout": "playroom",
+    "mode": "dark",
+    "paper": "#17181c",
+    "ink": "#f8f9fa",
+    "dim": "#bdc2ce",
+    "line": "#495160",
+    "accent": "#ff94b7",
+    "wash": "#422336",
+    "bodyFont": "Outfit",
+    "displayFont": "Fredoka",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A short break to play",
+      "process": "Someone needs the next turn",
+      "decisions": "Designing the social rhythm",
+      "outcome": "Inside the trivia round",
+      "reflection": "What waiting feels like"
+    },
+    "decisionHeading": "Make the next turn clear to everyone.",
+    "resultHeading": "A room with a shared social rhythm."
+  },
+  "forma": {
+    "layout": "health-record",
+    "mode": "dark",
+    "paper": "#101211",
+    "ink": "#f4f5ec",
+    "dim": "#b4c0b5",
+    "line": "#414c43",
+    "accent": "#d8fc70",
+    "wash": "#303d1e",
+    "bodyFont": "Plus Jakarta Sans",
+    "displayFont": "Plus Jakarta Sans",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A reading without its context",
+      "process": "Treat availability as part of the design",
+      "decisions": "From summary to explanation",
+      "outcome": "A native overview with inspectable detail",
+      "reflection": "An honest limit is useful information"
+    },
+    "decisionHeading": "Keep the context close to the reading.",
+    "resultHeading": "A daily overview with a route to the evidence."
+  },
+  "ohcaptain": {
+    "layout": "fleet-command",
+    "mode": "dark",
+    "paper": "#0b141b",
+    "ink": "#e9edf0",
+    "dim": "#afc1cc",
+    "line": "#405766",
+    "accent": "#e7c58c",
+    "wash": "#313021",
+    "bodyFont": "DM Sans",
+    "displayFont": "Archivo",
+    "order": [
+      "brief",
+      "outcome",
+      "process",
+      "decisions",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "A shared treasury in a live battle",
+      "process": "Give each information layer a place",
+      "decisions": "From combat awareness to command",
+      "outcome": "The sea stays in view",
+      "reflection": "The next action needs an owner"
+    },
+    "decisionHeading": "Keep combat clear and command within reach.",
+    "resultHeading": "One arena, three layers of information."
+  }
+}

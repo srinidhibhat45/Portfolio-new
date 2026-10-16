@@ -12,7 +12,7 @@
     'Yuva Panaji':'community','Matinee':'stories','BirthSky':'world','The Blog':'stories',
     'PreMoney':'design','Vansh Vriksha':'stories','Earthlog':'world','DeckForge':'design',
     'PlanIt':'world','ScaleSee':'world','Where Would I Be…?':'world','SoundBox':'world',
-    'Wheelie':'world','AppleCider':'design'
+    'Wheelie':'world','AppleCider':'design','Forma':'design','OhCaptain':'world'
   };
   var nodes = [{id:'me',name:'Srinidhi',kind:'person',desc:'I design at OneOcean, build independent products, write as अvinash, and volunteer with Yuva as an Executive Member.'}].concat(topics.map(function(t){return Object.assign({kind:'topic'},t);}));
   var links = [];
@@ -61,7 +61,9 @@
     ['PlanIt','Wheelie','Group travel, on trips and rides.'],
     ['SoundBox','The Office Games','Learning and multiplayer games.'],
     ['HexChess','The Office Games','Chess and multiplayer games.'],
-    ['HexChess','ScaleSee','Geometry and visual comparisons.']
+    ['HexChess','ScaleSee','Geometry and visual comparisons.'],
+    ['Forma','uMatter','Different approaches to making wellbeing information and support understandable.'],
+    ['OhCaptain','The Office Games','Role-based play and coordinating a shared game.']
   ].forEach(function(r){connect(byName(r[0]),byName(r[1]),r[2]);});
   connect('yuva-volunteer',byName('Yuva Panaji'),'The website I built for the organisation I volunteer with.');
   connect('goa','yuva-volunteer','Volunteering in Panaji.');

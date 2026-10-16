@@ -1,43 +1,43 @@
-/* Real work and full compositions replace generic service symbols. */
-.service-studio {gap:24px;}
-.service-offering {padding:22px;background:#fffcf6;border-color:#d7cbbd;box-shadow:none;}
-.service-offering:hover,.service-offering[open] {box-shadow:none;}
-.service-topline {font-size:11px;color:#806b58;}
-.service-specimen {position:relative;display:block;width:100%;aspect-ratio:3/2;margin:16px 0 24px;border-radius:4px;isolation:isolate;}
-.service-specimen img {display:block;max-width:none;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.22,1,.36,1);}
-.service-art-interface {background:#ece9e4;padding:16px;display:grid;place-items:center;}
-.service-art-interface img {height:auto;aspect-ratio:1272/716;object-fit:contain;border-radius:3px;box-shadow:0 8px 20px #352b2215;}
+/* Services read as an editorial index, illustrated with the owner's real work. */
+.service-studio {display:block;border-top:1px solid var(--line);}
+.services .service-offering {padding:0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;box-shadow:none;}
+.services .service-offering:hover,.services .service-offering[open] {background:none;box-shadow:none;transform:none;}
+.service-offering summary {position:relative;display:grid;grid-template-columns:130px minmax(0,1fr) minmax(0,1fr) 44px;align-items:center;gap:28px;min-height:132px;padding:22px 0;list-style:none;}
+.service-offering summary::-webkit-details-marker {display:none;}
+.services .service-specimen {position:relative;display:block;width:130px;height:94px;aspect-ratio:auto;margin:0;border-radius:6px;overflow:hidden;isolation:isolate;}
+.service-specimen img {display:block;width:100%;height:100%;object-fit:cover;}
+.service-art-interface {background:#ece9e4;padding:6px;}
+.service-art-interface img {object-fit:contain;}
 .service-art-identity {background:#3c3c3c;}
 .service-art-identity img {object-fit:contain;}
 .service-art-posters {background:#e3d5c4;}
-.service-art-posters img {position:absolute;width:auto;object-fit:contain;box-shadow:0 8px 14px #36241420;}
-.service-art-posters .service-poster-one {left:13%;top:10%;height:83%;transform:rotate(-7deg);}
+.service-art-posters img {position:absolute;width:auto;object-fit:contain;}
+.service-art-posters .service-poster-one {left:10%;top:8%;height:84%;transform:rotate(-7deg);}
 .service-art-posters .service-poster-two {left:42%;top:34%;width:54%;height:auto;transform:rotate(5deg);}
 .service-art-slides {background:#e0e5e3;}
-.service-art-slides img {position:absolute;left:10%;top:20%;width:80%;height:auto;aspect-ratio:16/9;object-fit:contain;border:4px solid #fffcf6;border-radius:2px;box-shadow:0 7px 18px #352b221c;}
-.service-art-slides .service-slide-back {top:10%;left:13%;transform:rotate(5deg);}
-.service-art-slides .service-slide-front {top:28%;left:7%;transform:rotate(-4deg);}
+.service-art-slides img {position:absolute;left:9%;top:20%;width:82%;height:auto;aspect-ratio:16/9;object-fit:contain;}
+.service-art-slides .service-slide-back {top:10%;left:12%;transform:rotate(5deg);}
+.service-art-slides .service-slide-front {top:28%;left:6%;transform:rotate(-4deg);}
 .service-art-portrait img {object-position:center 35%;}
-.service-name {min-height:0;font-size:25px;line-height:1.2;}
-.service-tag {min-height:3.4em;max-width:33ch;margin-top:9px;padding-right:26px;font-size:13px;}
-.service-toggle {bottom:7px;font-size:24px;line-height:1;}
-.service-offering summary {min-height:100%;}
-@media(hover:hover) and (prefers-reduced-motion:no-preference) {
- .service-art-mockup:hover img,.service-art-portrait:hover img,.service-art-identity:hover img {transform:scale(1.035);}
- .service-offering:hover .service-art-interface img {transform:translateY(-3px);}
- .service-offering:hover .service-poster-one {transform:rotate(-4deg) translateY(-3px);}
- .service-offering:hover .service-poster-two {transform:rotate(2deg) translateY(-3px);}
- .service-offering:hover .service-slide-front {transform:rotate(-1deg) translateY(-4px);}
+.services .service-name {min-height:0;font:500 clamp(24px,2.5vw,34px)/1.25 var(--sans);letter-spacing:-.025em;}
+.services .service-tag {min-height:0;margin:0;padding:0;font:400 17px/1.7 var(--sans);color:var(--bone-dim);}
+.services .service-toggle {position:static;display:grid;place-items:center;width:44px;height:44px;font:300 28px/1 var(--sans);border:1px solid var(--line);border-radius:50%;transition:background .2s;}
+.service-offering summary:hover .service-toggle {background:var(--accent-soft);}
+.services .service-inside {margin:0 0 24px 158px;padding:20px 0 0;border-top:1px solid var(--line);font:400 17px/1.8 var(--sans);color:var(--bone-dim);}
+.services .service-inside a {min-height:44px;display:inline-flex;align-items:center;margin-top:14px;font-size:16px;color:var(--accent);}
+@media(max-width:700px) {
+ .service-offering summary {grid-template-columns:88px minmax(0,1fr) 44px;gap:4px 18px;padding:20px 0;min-height:130px;}
+ .services .service-specimen {grid-row:1/3;width:88px;height:84px;}
+ .services .service-name {font-size:23px;align-self:end;}
+ .services .service-tag {grid-column:2;grid-row:2;font-size:15px;align-self:start;line-height:1.6;}
+ .services .service-toggle {grid-column:3;grid-row:1/3;}
+ .services .service-inside {margin-left:106px;font-size:16px;}
 }
-@media(max-width:900px) {.service-offering {padding:17px;}.service-name {font-size:22px;}.service-tag {min-height:3.4em;}.service-art-interface {padding:11px;}}
-@media(max-width:600px) {
- .service-studio {grid-template-columns:1fr;gap:18px;}
- .service-offering {padding:19px;}
- .service-specimen {margin:14px 0 21px;aspect-ratio:3/2;}
- .service-name {font-size:25px;}
- .service-tag {font-size:13px;min-height:0;padding-bottom:6px;}
- .service-inside {font-size:13px;}
- .service-topline {font-size:11px;}
- .service-art-interface {padding:16px;}
+@media(max-width:380px) {
+ .service-offering summary {grid-template-columns:68px minmax(0,1fr) 36px;gap:4px 12px;}
+ .services .service-specimen {width:68px;height:74px;}
+ .services .service-name {font-size:21px;}
+ .services .service-toggle {width:36px;height:36px;}
+ .services .service-inside {margin-left:0;}
 }
-@media(prefers-reduced-motion:reduce) {.service-specimen img {transition:none;}}
+@media(prefers-reduced-motion:reduce) {.services .service-toggle {transition:none;}}

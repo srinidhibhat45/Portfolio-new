@@ -1,0 +1,1523 @@
+{
+  "onespace": {
+    "headline": "The class starts soon. [[Where is that file?]]",
+    "scene": "Picture a student getting ready for an online class. The conversation is in one app, the link in another, and the assignment somewhere further back. Before learning can begin, there is a search to finish.",
+    "question": "Would putting everything into one app actually solve the problem?",
+    "insight": "More than half of the survey respondents were [[fine with using multiple apps]]. That changed the question: the stronger opportunity was making class resources easier to retrieve.",
+    "pivot": "I organised the concept around a dependable place to return to: the class, its conversations, and the resources attached to it.",
+    "takeaway": "A useful home for information matters more than an all-in-one promise.",
+    "journey": [
+      {
+        "title": "Find the class",
+        "detail": "A recognisable space becomes the starting point."
+      },
+      {
+        "title": "Find the context",
+        "detail": "Channels keep the conversation attached to its class."
+      },
+      {
+        "title": "Retrieve what matters",
+        "detail": "Files and announcements have their own destinations."
+      }
+    ],
+    "decisionLeads": [
+      "First, give the student somewhere to return.",
+      "Then, design for the moment after a message is sent.",
+      "Finally, decide how much the first release should do."
+    ],
+    "annotations": [
+      {
+        "title": "Files outlive the chat",
+        "detail": "A dedicated file store supports later retrieval."
+      },
+      {
+        "title": "Announcements deserve a signal",
+        "detail": "Important class information gets a destination of its own."
+      },
+      {
+        "title": "Preferences stay close",
+        "detail": "The prototype explores personal settings alongside the core flow."
+      }
+    ],
+    "evidenceTag": "Original survey · 127 responses",
+    "tone": "teal",
+    "audience": {
+      "basis": "Original research persona",
+      "label": "Vivek · student",
+      "context": "An engineering student attending online classes across tools chosen by different teachers.",
+      "need": "Retrieve class resources when they are needed.",
+      "friction": "Resources scattered across apps, limited phone storage, and difficulty asking for help.",
+      "implication": "Give the class and its resources a predictable home."
+    }
+  },
+  "umatter": {
+    "headline": "Asking for help starts [[before the appointment]].",
+    "scene": "Imagine being ready to explore professional support, but unsure who will see your details or what the first step involves. Every unclear commitment can make it easier to postpone the search.",
+    "question": "What should someone understand before being asked to book?",
+    "insight": "In our 65-response survey, almost half wanted professional help while remaining anonymous. [[Privacy expectations]] had to shape the journey before calendar and payment screens.",
+    "pivot": "Within a fourteen-hour challenge, I led the UX contribution toward a visible sequence: understand the provider, choose a time, then commit.",
+    "takeaway": "Trust begins with knowing what the next step asks of you.",
+    "journey": [
+      {
+        "title": "Explore",
+        "detail": "Start with providers and support information."
+      },
+      {
+        "title": "Understand",
+        "detail": "See the expert’s details before committing."
+      },
+      {
+        "title": "Book",
+        "detail": "Move through calendar selection and payment."
+      }
+    ],
+    "decisionLeads": [
+      "Make the service boundary clear.",
+      "Earn confidence before asking for commitment.",
+      "Leave room for someone who is still exploring."
+    ],
+    "annotations": [
+      {
+        "title": "Context before commitment",
+        "detail": "Expert details sit before the calendar and payment."
+      },
+      {
+        "title": "A visible sequence",
+        "detail": "The concept separates discovery, consideration, and booking."
+      },
+      {
+        "title": "A team outcome",
+        "detail": "I led UX research/design; Pratik and Nidhi contributed UI and graphic design."
+      }
+    ],
+    "evidenceTag": "Original research · 65 responses",
+    "tone": "violet",
+    "audience": {
+      "basis": "Original team research persona",
+      "label": "Shritija · student seeking support",
+      "context": "The original deck describes a medical student balancing studies with a need for professional support.",
+      "need": "Understand a provider and the first commitment before booking.",
+      "friction": "Limited time and a lack of support around seeking help.",
+      "implication": "Put provider information and privacy expectations before the appointment."
+    }
+  },
+  "mucoin": {
+    "headline": "Before the budget comes [[a lot of questions]].",
+    "scene": "Picture someone setting up a finance app. They are recalling income, estimating expenses, and deciding how much personal information to share—all before seeing whether the product is useful.",
+    "question": "How can the setup give something back before it is finished?",
+    "insight": "The flow already contained a useful idea: [[show the emerging financial picture]] while a person enters it. Each summary can become a chance to understand and correct the information.",
+    "pivot": "I structured the onboarding as a repeatable sequence with visible progress, immediate summaries, and an editable checkpoint.",
+    "takeaway": "A good onboarding flow helps someone trust the information they just entered.",
+    "journey": [
+      {
+        "title": "Enter",
+        "detail": "Ask for a small, repeatable unit of information."
+      },
+      {
+        "title": "See",
+        "detail": "Return a summary while the context is fresh."
+      },
+      {
+        "title": "Review",
+        "detail": "Make the complete picture editable before submission."
+      }
+    ],
+    "decisionLeads": [
+      "Start with one manageable question.",
+      "Give the input a visible consequence.",
+      "Let review become an act of control."
+    ],
+    "annotations": [
+      {
+        "title": "Five connected stages",
+        "detail": "Income, fixed expenses, variable expenses, goals, and review."
+      },
+      {
+        "title": "A measurement plan",
+        "detail": "The original percentages are targets for evaluation, not achieved results."
+      }
+    ],
+    "evidenceTag": "Original flow rationale · five stages",
+    "tone": "gold",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person setting up a budget",
+      "context": "Preparing a first picture of income, spending, and savings.",
+      "need": "Enter information accurately and understand what it adds up to.",
+      "friction": "Recall takes effort; mistakes are easy to make before the full picture is visible.",
+      "implication": "Give input an immediate summary and an editable review."
+    }
+  },
+  "gmd": {
+    "headline": "All the metadata. [[Which part needs attention?]]",
+    "scene": "Imagine opening an SEO extension to answer one question about a page. The tool has plenty of data, but finding the relevant item becomes another inspection task.",
+    "question": "What should stay visible when an inspector becomes easier to read?",
+    "insight": "The historical review found [[useful depth and export]] alongside small text, weak organisation, and duplicated output. A visual refresh needed to preserve the valuable workflow.",
+    "pivot": "I separated three concerns: finding information, interpreting it, and making sure the extraction itself is correct.",
+    "takeaway": "Information depth becomes useful when there is a clear route through it.",
+    "journey": [
+      {
+        "title": "Locate",
+        "detail": "Get to the relevant category."
+      },
+      {
+        "title": "Inspect",
+        "detail": "Read the page evidence in context."
+      },
+      {
+        "title": "Carry forward",
+        "detail": "Keep export useful in the wider workflow."
+      }
+    ],
+    "decisionLeads": [
+      "Give the data a reading order.",
+      "Hold the comparison context steady.",
+      "Keep correctness on its own checklist."
+    ],
+    "annotations": [
+      {
+        "title": "Grouped information",
+        "detail": "The high-fidelity prototype explores a clearer inspection hierarchy."
+      },
+      {
+        "title": "A usable work surface",
+        "detail": "Readability and navigation are part of the tool’s utility."
+      },
+      {
+        "title": "A separate acceptance criterion",
+        "detail": "The repeated-output bug needs an product behaviour fix beyond this prototype."
+      }
+    ],
+    "evidenceTag": "Historical review · three competitors",
+    "tone": "blue",
+    "audience": {
+      "basis": "Original persona framing · not interview-validated",
+      "label": "SEO specialist & small-business content owner",
+      "context": "Two personas in the original deck frame expert inspection and a less technical reading need.",
+      "need": "Find and understand relevant page information.",
+      "friction": "Dense lists make scanning difficult; unfamiliar terms make the same display harder for a novice.",
+      "implication": "Preserve depth while creating clearer groups and entry points."
+    }
+  },
+  "steve-wilson": {
+    "headline": "A portfolio earns [[a second minute]].",
+    "scene": "Picture a reviewer opening a designer’s portfolio between other applications. The first page has to establish what the designer does and make one relevant project easy to choose.",
+    "question": "What makes someone want to move from a first impression into the work?",
+    "insight": "The original concept already separates [[browsing from deep reading]]. Its project template creates room for a story, but that room still needs real decisions and evidence.",
+    "pivot": "I used the retrospective to connect the visual hierarchy to the reviewer’s sequence: orient, select, investigate, then make contact.",
+    "takeaway": "The layout earns attention; the evidence earns confidence.",
+    "journey": [
+      {
+        "title": "Orient",
+        "detail": "Understand the designer’s role."
+      },
+      {
+        "title": "Choose",
+        "detail": "Scan a focused work index."
+      },
+      {
+        "title": "Investigate",
+        "detail": "Open a project with room for contribution and process."
+      }
+    ],
+    "decisionLeads": [
+      "Establish a clear first impression.",
+      "Let browsing remain lightweight.",
+      "Give the detail page something real to say."
+    ],
+    "annotations": [
+      {
+        "title": "A type-led opening",
+        "detail": "The name treatment establishes the visual entry point."
+      },
+      {
+        "title": "A separate work index",
+        "detail": "Projects can be scanned before opening the longer story."
+      }
+    ],
+    "evidenceTag": "Original visual concept",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Prospective client reviewing a portfolio",
+      "context": "Scanning for relevant work before deciding whether to make contact.",
+      "need": "Understand the designer’s offer and inspect a suitable example.",
+      "friction": "A polished introduction alone does not explain the work.",
+      "implication": "Move quickly from identity to selected projects."
+    }
+  },
+  "gloria-furniture": {
+    "headline": "Inspiration gets a glance. [[Details make a shortlist]].",
+    "scene": "Imagine finding a piece of furniture you like, then asking whether it fits the room, the budget, and the practicalities of buying it. A storefront has to support both kinds of attention.",
+    "question": "How does visual browsing become a useful buying decision?",
+    "insight": "The concept moves from [[inspiration to categories to comparable products]]. That sequence is the useful foundation; dimensions and fulfilment would make the next step stronger.",
+    "pivot": "I organised the retrospective around how the page narrows a shopper’s options, then identified the information still needed to support a purchase.",
+    "takeaway": "A beautiful product card should help someone decide what to do next.",
+    "journey": [
+      {
+        "title": "Explore",
+        "detail": "Start from an image or a category."
+      },
+      {
+        "title": "Compare",
+        "detail": "Use a repeated card pattern to scan options."
+      },
+      {
+        "title": "Decide",
+        "detail": "Bring practical product and delivery information into the next step."
+      }
+    ],
+    "decisionLeads": [
+      "Give inspiration a direction.",
+      "Make comparison predictable.",
+      "Connect reassurance to real information."
+    ],
+    "annotations": [
+      {
+        "title": "Category-led discovery",
+        "detail": "The upper page offers ways into the catalogue."
+      },
+      {
+        "title": "Repeated product cards",
+        "detail": "The lower page carries names, prices, and actions in a consistent pattern."
+      }
+    ],
+    "evidenceTag": "Original storefront concept",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Furniture shopper making a shortlist",
+      "context": "Browsing room inspiration and comparing categories.",
+      "need": "Find a relevant collection and enough detail to continue.",
+      "friction": "A visual catalogue can leave practical questions unanswered.",
+      "implication": "Connect inspiration to categories and a next product decision."
+    }
+  },
+  "fun-cruises": {
+    "headline": "A beautiful boat. [[Does it fit the group?]]",
+    "scene": "Picture planning an outing with a group. Before an enquiry, the practical questions arrive: how many people fit, what does it cost, and which type of boat makes sense?",
+    "question": "Which questions can the fleet list answer before a visitor opens every option?",
+    "insight": "The strongest part of the concept is its [[comparable fleet information]]: seating, starting rate, and boat type accompany the photographs.",
+    "pivot": "I treated the landing page as a route into a suitable enquiry, with discovery criteria that narrow the choices.",
+    "takeaway": "Good discovery makes the next conversation more informed.",
+    "journey": [
+      {
+        "title": "Narrow",
+        "detail": "Use capacity, price, and type to find suitable options."
+      },
+      {
+        "title": "Compare",
+        "detail": "Read practical information alongside the experience."
+      },
+      {
+        "title": "Enquire",
+        "detail": "Confirm availability, inclusions, and the complete cost."
+      }
+    ],
+    "decisionLeads": [
+      "Answer the comparison questions early.",
+      "Support different levels of booking readiness.",
+      "Explain what the starting rate leaves to confirm."
+    ],
+    "annotations": [
+      {
+        "title": "Decision criteria near the fleet",
+        "detail": "Filters appear before the visitor scans individual boats."
+      },
+      {
+        "title": "Imagery with practical content",
+        "detail": "Listings pair the experience with capacity and price information."
+      }
+    ],
+    "evidenceTag": "Original fleet-discovery concept",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Group organiser considering a boat",
+      "context": "Comparing options for a group occasion in Goa.",
+      "need": "Identify a suitable boat before making an enquiry.",
+      "friction": "Capacity, starting price, and suitability must be read together.",
+      "implication": "Keep the practical comparison close to each listing."
+    }
+  },
+  "bni-website": {
+    "headline": "A network feels local [[when you can see its people]].",
+    "scene": "Imagine considering a business network for the first time. You want to understand who participates, why they meet, and whether you could take a first look without already knowing someone.",
+    "question": "What turns an organisation overview into an approachable first visit?",
+    "insight": "The chapter concept gives the visitor [[a purpose, people, and an invitation]]. Those pieces need accurate local content to become credible.",
+    "pivot": "I connected the page structure to a prospective member’s sequence of questions, keeping the invitation visible alongside the chapter story.",
+    "takeaway": "Community credibility comes from real people and a clear next step.",
+    "journey": [
+      {
+        "title": "Understand",
+        "detail": "Learn what the chapter is for."
+      },
+      {
+        "title": "Recognise",
+        "detail": "Meet the people and kinds of businesses represented."
+      },
+      {
+        "title": "Visit",
+        "detail": "Find out how an invitation works."
+      }
+    ],
+    "decisionLeads": [
+      "Make a first visit imaginable.",
+      "Give responsibility a human face.",
+      "Let useful local information carry the invitation."
+    ],
+    "annotations": [
+      {
+        "title": "A concrete invitation",
+        "detail": "The hero offers a first step into the organisation."
+      },
+      {
+        "title": "A purpose-led introduction",
+        "detail": "The overview and mission explain why the chapter exists."
+      }
+    ],
+    "evidenceTag": "Original chapter-site concept",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Business owner exploring a local chapter",
+      "context": "Considering whether the network is relevant and how to participate.",
+      "need": "Understand local people, purpose, and the next step.",
+      "friction": "Global organisation information does not answer local membership questions.",
+      "implication": "Bring the chapter’s people and participation path forward."
+    }
+  },
+  "irctc": {
+    "headline": "One journey to book. [[Many things competing for attention]].",
+    "scene": "Picture arriving at a railway homepage with a route and a date in mind. Other services matter, but the immediate task is to form a complete train search.",
+    "question": "How should a dense service homepage protect its primary task?",
+    "insight": "The concept gives the search [[one recognisable task area]], while retaining adjacent rail services and placing trip inspiration further down.",
+    "pivot": "I focused the redesign on hierarchy: group the journey inputs, preserve useful shortcuts, and make the difference between booking and browsing legible.",
+    "takeaway": "Hierarchy should make the common task clear without erasing important exceptions.",
+    "journey": [
+      {
+        "title": "Form the query",
+        "detail": "Keep route, date, class, and quota together."
+      },
+      {
+        "title": "Search",
+        "detail": "Give the completed query one clear action."
+      },
+      {
+        "title": "Continue",
+        "detail": "Carry the task into results and recovery states next."
+      }
+    ],
+    "decisionLeads": [
+      "Keep the primary inputs together.",
+      "Let inspiration follow the immediate task.",
+      "Preserve a route for people managing an existing journey."
+    ],
+    "annotations": [
+      {
+        "title": "A central task area",
+        "detail": "The booking panel groups the core journey inputs."
+      },
+      {
+        "title": "Adjacent rail tasks",
+        "detail": "PNR and vacancy entry points remain nearby."
+      }
+    ],
+    "evidenceTag": "Independent homepage concept",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Traveller starting a rail search",
+      "context": "Arriving with a route and a possible date in mind.",
+      "need": "Start a train search without losing the primary task.",
+      "friction": "Many services and promotions compete for attention.",
+      "implication": "Give journey inputs first priority."
+    }
+  },
+  "nityananda": {
+    "headline": "Let the work speak. [[Make the conversation easy]].",
+    "scene": "Imagine choosing a photographer. You want to see relevant work, get a feel for the person behind it, and know how to begin an enquiry.",
+    "question": "How much interface does an image-led portfolio actually need?",
+    "insight": "The concept uses [[three familiar destinations]] and two work groupings to keep the route through the photography understandable.",
+    "pivot": "I treated restraint as a structural choice: let the images carry the first impression, then give the visitor a practical endpoint.",
+    "takeaway": "A quiet interface still needs to give clear directions.",
+    "journey": [
+      {
+        "title": "See",
+        "detail": "Let images establish the first impression."
+      },
+      {
+        "title": "Explore",
+        "detail": "Choose a relevant collection."
+      },
+      {
+        "title": "Connect",
+        "detail": "Start an enquiry with clear expectations."
+      }
+    ],
+    "decisionLeads": [
+      "Keep orientation familiar.",
+      "Group the work around a useful distinction.",
+      "Give the visual journey a practical endpoint."
+    ],
+    "annotations": [
+      {
+        "title": "Images carry the story",
+        "detail": "The concept keeps the interface around a large body of work."
+      },
+      {
+        "title": "Contact closes the sequence",
+        "detail": "The enquiry form gives interest somewhere to go."
+      }
+    ],
+    "evidenceTag": "Original photography-portfolio concept",
+    "tone": "violet",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person considering a photographer",
+      "context": "Looking for a relevant style and a way to discuss a shoot.",
+      "need": "See a coherent body of work and begin an enquiry.",
+      "friction": "A broad gallery can make relevance hard to judge.",
+      "implication": "Use collections and a clear contact route."
+    }
+  },
+  "arkitype": {
+    "headline": "Change one token. [[Watch the system follow]].",
+    "scene": "Imagine changing a brand colour and then checking every place it appears: components, documentation, previews, and the handoff. The change is small; keeping all its consequences aligned is the real work.",
+    "question": "What if the different outputs all came from the same decision?",
+    "insight": "A system needs [[relationships between decisions]], not just an inventory of components. Arkitype’s shared model connects foundations to the things a team can inspect and use.",
+    "pivot": "I organised the workspace around dependencies, letting designers revisit decisions while keeping their consequences visible.",
+    "takeaway": "System quality lives in what stays connected when something changes.",
+    "journey": [
+      {
+        "title": "Define",
+        "detail": "Set colour, type, space, shape, and motion."
+      },
+      {
+        "title": "Bind",
+        "detail": "Connect component behaviour to system tokens."
+      },
+      {
+        "title": "Inspect",
+        "detail": "See the decisions in a real preview."
+      },
+      {
+        "title": "Ship",
+        "detail": "Generate artifacts from the same model."
+      }
+    ],
+    "decisionLeads": [
+      "Let the work move in more than one direction.",
+      "Make one change travel through the system.",
+      "Show both the specimen and the behaviour."
+    ],
+    "annotations": [
+      {
+        "title": "A working system",
+        "detail": "The archived capture introduces the actual product, rather than a speculative redesign."
+      },
+      {
+        "title": "Follow a change",
+        "detail": "The palette and contrast inspector keep a foundation choice beside the information needed to evaluate it."
+      }
+    ],
+    "evidenceTag": "Product artifact · shared model",
+    "tone": "violet",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Designer shaping a shared system",
+      "context": "Revisiting foundations and component decisions during an evolving project.",
+      "need": "Understand how one decision affects the rest of the system.",
+      "friction": "Disconnected screens and handoff artifacts can drift.",
+      "implication": "Show relationships, states, and consequences together."
+    }
+  },
+  "applecider": {
+    "headline": "Keep the idea rough. [[Make it real enough to discuss]].",
+    "scene": "Picture an early design review drifting into a discussion about colour and spacing. The underlying idea is still changing, but the polished screen already feels too finished to challenge.",
+    "question": "Can a deliberately unfinished interface still have useful structure?",
+    "insight": "[[Low visual fidelity can preserve room to change]]. Clickable connections and portable outputs let a rough idea move into the next design conversation.",
+    "pivot": "I kept the sketch-like visual language and gave it the capabilities of a working design tool: move, revise, link, and hand off.",
+    "takeaway": "Commit to the structure only as fast as the idea earns it.",
+    "journey": [
+      {
+        "title": "Sketch",
+        "detail": "Get an idea onto a movable canvas."
+      },
+      {
+        "title": "Revise",
+        "detail": "Change the structure while it still feels disposable."
+      },
+      {
+        "title": "Connect",
+        "detail": "Link the screens into a prototype."
+      },
+      {
+        "title": "Carry forward",
+        "detail": "Export the structure for the next conversation."
+      }
+    ],
+    "decisionLeads": [
+      "Make unfinished feel intentional.",
+      "Give the person ownership of the work.",
+      "Carry the structure into the next artifact."
+    ],
+    "annotations": [
+      {
+        "title": "The sketch is the point",
+        "detail": "The visual language makes the stage of the work clear."
+      },
+      {
+        "title": "Structure underneath",
+        "detail": "Editable components and exports give the rough screen a useful next step."
+      }
+    ],
+    "evidenceTag": "Product artifact · sketch and handoff workflow",
+    "tone": "gold",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Designer discussing an early idea",
+      "context": "Exploring structure before investing in final visual polish.",
+      "need": "Make an idea concrete while keeping it easy to change.",
+      "friction": "A finished-looking mockup can make tentative decisions feel settled.",
+      "implication": "Keep the drawing rough and the interactions usable."
+    }
+  },
+  "planit": {
+    "headline": "The group is travelling together. [[Their plans are not identical]].",
+    "scene": "Imagine one person at a conference session, another arriving later, and a shared dinner across town. Put it all into one simple list and the useful differences disappear.",
+    "question": "When should a loose idea become a scheduled commitment?",
+    "insight": "A board needs room for uncertainty. [[Scheduling should be an explicit decision]], with existing commitments protected.",
+    "pivot": "I separated thinking on the board from committing to the schedule, with clear UX rules for what automation is allowed to change.",
+    "takeaway": "Useful automation makes its changes predictable.",
+    "journey": [
+      {
+        "title": "Arrange",
+        "detail": "Use frames and connectors to express intent."
+      },
+      {
+        "title": "Protect",
+        "detail": "Keep pinned times as commitments."
+      },
+      {
+        "title": "Resolve",
+        "detail": "Translate the arrangement into a schedule deliberately."
+      },
+      {
+        "title": "Explain",
+        "detail": "Make remaining conflicts visible to the planner."
+      }
+    ],
+    "decisionLeads": [
+      "Let an idea stay an idea.",
+      "Make the moment of commitment visible.",
+      "Give automation a boundary it cannot cross."
+    ],
+    "annotations": [
+      {
+        "title": "Several views, one plan",
+        "detail": "The working product carries the same trip across planning surfaces."
+      },
+      {
+        "title": "An explicit contract",
+        "detail": "Pins, opt-in cards, and forward-only changes define the resolver."
+      }
+    ],
+    "evidenceTag": "Product artifact · scheduling rules",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person coordinating a group trip",
+      "context": "Combining people with different arrivals, activities, and commitments.",
+      "need": "Turn possibilities into a plan while protecting confirmed times.",
+      "friction": "A single list hides overlaps and treats ideas as promises.",
+      "implication": "Separate tentative cards from explicit scheduling."
+    }
+  },
+  "earthlog": {
+    "headline": "Pick a place. [[What has Earth been doing here?]]",
+    "scene": "Imagine looking at a place on a globe and wanting more than a pin: the latest quake, tonight’s sky, or the weather around it. Those answers arrive from different sources with different levels of certainty.",
+    "question": "What is happening here—and how current is the information?",
+    "insight": "An incident can remain open after the last observation. [[A status label is not enough]] to explain whether something is happening now.",
+    "pivot": "I kept dates, sources, and model limits alongside the result, so visitors can judge the information while exploring.",
+    "takeaway": "Make the answer easy to find and easy to question.",
+    "journey": [
+      {
+        "title": "Choose",
+        "detail": "Start with a place or an interesting event."
+      },
+      {
+        "title": "Explore",
+        "detail": "Read the local context across sources."
+      },
+      {
+        "title": "Interpret",
+        "detail": "See when the information was observed and how it was derived."
+      }
+    ],
+    "decisionLeads": [
+      "Offer a question as well as a place.",
+      "Make freshness more than a status label.",
+      "Keep uncertainty beside the answer."
+    ],
+    "annotations": [
+      {
+        "title": "A place-led dossier",
+        "detail": "The capture shows how the globe connects to local information."
+      },
+      {
+        "title": "An explanation with boundaries",
+        "detail": "Model limits remain part of the result."
+      }
+    ],
+    "evidenceTag": "Based on the documented freshness rules and source labels.",
+    "tone": "teal",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "People exploring a place or following an event",
+      "context": "Following an event or asking what is happening near a location.",
+      "need": "Find local context and understand how current it is.",
+      "friction": "Different observations and forecasts can appear equally certain on a map.",
+      "implication": "Keep timestamps, sources, and uncertainty beside the result."
+    }
+  },
+  "hexchess": {
+    "headline": "You know chess. [[The board has changed]].",
+    "scene": "Imagine recognising the pieces but no longer trusting your instinct for where they can move. A rules page can explain the geometry; a first move makes it tangible.",
+    "question": "How can the board become part of the teaching?",
+    "insight": "[[Practice makes a rule concrete]]. Six guided piece lessons lead into an untimed first game with move highlights.",
+    "pivot": "I brought explanation into the interaction: a target, an attempt, feedback, and a recoverable retry.",
+    "takeaway": "Teach the next useful action, then give someone room to try it.",
+    "journey": [
+      {
+        "title": "See",
+        "detail": "Give the lesson one clear target."
+      },
+      {
+        "title": "Try",
+        "detail": "Let the learner select and move."
+      },
+      {
+        "title": "Recover",
+        "detail": "Explain a wrong attempt without ending the lesson."
+      },
+      {
+        "title": "Play",
+        "detail": "Transfer the movement into beginner practice."
+      }
+    ],
+    "decisionLeads": [
+      "Make the rule visible where it is used.",
+      "Keep practice help appropriate to the game.",
+      "Describe what a shared game really is."
+    ],
+    "annotations": [
+      {
+        "title": "The board stays primary",
+        "detail": "The playing room keeps the central interaction prominent."
+      },
+      {
+        "title": "Progress survives interruption",
+        "detail": "Local saves and offline support belong to the game experience."
+      }
+    ],
+    "evidenceTag": "Product artifact · six guided lessons",
+    "tone": "teal",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Chess player learning a different board",
+      "context": "Recognising familiar pieces in an unfamiliar hexagonal geometry.",
+      "need": "Understand a movement rule and try it safely.",
+      "friction": "Abstract directions do not automatically translate into a playable move.",
+      "implication": "Teach on the board, then open guided practice."
+    }
+  },
+  "dashf1": {
+    "headline": "Follow the battle. [[Know what the feed knows]].",
+    "scene": "Imagine following two drivers through a race weekend. Timing, position, tyres, and telemetry compete for attention—and not every channel is available in every session.",
+    "question": "What should the dashboard do when its data coverage changes?",
+    "insight": "A smooth marker can still be an estimate. [[The mode should determine the promise]] the interface makes.",
+    "pivot": "I used one driver focus across the dashboard and separate live/replay modes that respect the available information.",
+    "takeaway": "A useful dashboard can say less when it knows less.",
+    "journey": [
+      {
+        "title": "Focus",
+        "detail": "Choose the driver once."
+      },
+      {
+        "title": "Connect",
+        "detail": "Carry that focus across panels."
+      },
+      {
+        "title": "Interpret",
+        "detail": "Distinguish measured channels from estimated positions."
+      }
+    ],
+    "decisionLeads": [
+      "Carry one question across the dashboard.",
+      "Let the available data set the scope.",
+      "Make a moving estimate visibly an estimate."
+    ],
+    "annotations": [
+      {
+        "title": "Shared focus",
+        "detail": "A selected driver carries across timing, track position and available detail."
+      },
+      {
+        "title": "Coverage has boundaries",
+        "detail": "The product distinguishes live estimates from richer replay data."
+      }
+    ],
+    "evidenceTag": "Product artifact · live and replay modes",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Race follower tracking a driver",
+      "context": "Moving between timing, track position, and available detail.",
+      "need": "Keep one driver in context while following the race.",
+      "friction": "Repeated selections and uneven data coverage disrupt the story.",
+      "implication": "Synchronise focus and explain each mode’s coverage."
+    }
+  },
+  "hued": {
+    "headline": "One colour. [[A reason to look a little closer]].",
+    "scene": "Imagine being asked to make something creative today. A blank prompt is wide open; one findable colour gives your attention somewhere specific to go.",
+    "question": "How much structure helps creativity begin?",
+    "insight": "[[A small shared constraint]] gives the day a common starting point without prescribing the photograph.",
+    "pivot": "I connected the daily colour to finding, photographing, and receiving feedback, while keeping the photographs central.",
+    "takeaway": "A good prompt opens possibilities by making the first step small.",
+    "journey": [
+      {
+        "title": "Notice",
+        "detail": "Find the shared colour in the world."
+      },
+      {
+        "title": "Capture",
+        "detail": "Make your own interpretation."
+      },
+      {
+        "title": "Reflect",
+        "detail": "Use the feedback as guidance, with its limits visible."
+      }
+    ],
+    "decisionLeads": [
+      "Make the invitation specific.",
+      "Keep the creative result in the foreground.",
+      "Let a score explain rather than overrule."
+    ],
+    "annotations": [
+      {
+        "title": "One daily invitation",
+        "detail": "The product identity anchors a shared colour challenge."
+      },
+      {
+        "title": "Interpretation stays personal",
+        "detail": "Local scoring is feedback, not a verdict on creativity."
+      }
+    ],
+    "evidenceTag": "Product artifact · daily prompt and scoring",
+    "tone": "gold",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person looking for a small creative prompt",
+      "context": "Noticing everyday surroundings through one daily colour.",
+      "need": "Find a subject and share a personal interpretation.",
+      "friction": "Scores and streaks can turn exploration into pressure.",
+      "implication": "Let the photograph lead and keep feedback supportive."
+    }
+  },
+  "yuva-panaji": {
+    "headline": "The event page is only [[the beginning of the work]].",
+    "scene": "Imagine someone finding an event and registering. Their next step is attendance. For the committee, that same action starts a chain of rosters, corrections, desk sheets, and follow-up.",
+    "question": "Can one action stay useful all the way to the event desk?",
+    "insight": "[[The public journey and the operational record]] are parts of the same service. The handoff matters as much as the page.",
+    "pivot": "I mapped how public discovery and registration continue into committee workflows, including the work that happens away from a screen.",
+    "takeaway": "Design the next person’s task into the current person’s action.",
+    "journey": [
+      {
+        "title": "Discover",
+        "detail": "Find the event and its details."
+      },
+      {
+        "title": "Register",
+        "detail": "Submit the information the event actually needs."
+      },
+      {
+        "title": "Prepare",
+        "detail": "Carry it into a usable committee roster."
+      },
+      {
+        "title": "Check in",
+        "detail": "Support attendance at the event desk."
+      }
+    ],
+    "decisionLeads": [
+      "Connect the action to the record behind it.",
+      "Give each responsibility its own surface.",
+      "Design for the handoff beyond the screen."
+    ],
+    "annotations": [
+      {
+        "title": "A public front door",
+        "detail": "The community website introduces the organisation and its work."
+      },
+      {
+        "title": "An operational continuation",
+        "detail": "The case follows the event into registration and committee tasks."
+      }
+    ],
+    "evidenceTag": "Product artifact · public and admin workflows",
+    "tone": "teal",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Event participant & committee volunteer",
+      "context": "One person registers; another prepares the roster and attendance desk.",
+      "need": "Carry the same event information from discovery into check-in.",
+      "friction": "Public sign-ups and operational lists can become disconnected.",
+      "implication": "Design the participant and volunteer journeys together."
+    }
+  },
+  "deckforge": {
+    "headline": "The deck is a PDF. [[The idea is still editable]].",
+    "scene": "Imagine needing to revise one text block or animate one diagram, but having only the exported PDF. The visual is preserved; the convenient objects are gone.",
+    "question": "What does it take to recover something a presenter can actually work with?",
+    "insight": "[[Recognisable objects make editability useful]]. Text, paths, and images need to become meaningful layers rather than a pile of drawing instructions.",
+    "pivot": "I framed the journey around recognising an object, revising it, and presenting it, with an explanation when recovered content cannot be edited.",
+    "takeaway": "Recover enough structure to make the next action possible.",
+    "journey": [
+      {
+        "title": "Recover",
+        "detail": "Read text, paths, and images from the PDF."
+      },
+      {
+        "title": "Group",
+        "detail": "Reassemble objects the person recognises."
+      },
+      {
+        "title": "Revise",
+        "detail": "Edit and sequence meaningful layers."
+      },
+      {
+        "title": "Present",
+        "detail": "Carry the same slide model into the talk."
+      }
+    ],
+    "decisionLeads": [
+      "Recover the object a person recognises.",
+      "Let the presenter control the pace.",
+      "Explain what stays local and what connects."
+    ],
+    "annotations": [
+      {
+        "title": "A working reconstruction tool",
+        "detail": "The capture introduces the actual editor workflow."
+      },
+      {
+        "title": "An honest fallback",
+        "detail": "Scanned or dense pages can remain usable raster layers."
+      }
+    ],
+    "evidenceTag": "Product artifact · slide editing journey",
+    "tone": "violet",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Presenter revising an existing PDF",
+      "context": "Making changes shortly before sharing or presenting a deck.",
+      "need": "Recognise editable content and control presentation pacing.",
+      "friction": "A recovered fragment may be selectable without being meaningful.",
+      "implication": "Expose recognisable objects and explain editing limits."
+    }
+  },
+  "vansh-vriksha": {
+    "headline": "A name is one record. [[A family is a set of connections]].",
+    "scene": "Imagine recognising a relative in an archive and wanting to know how the relationship was recorded. The diagram can show a connection, but it also needs a basis you can inspect.",
+    "question": "How can an archive invite contribution without pretending every claim is settled?",
+    "insight": "[[Provenance belongs with the relationship]]. A family graph, versioned records, and review make different parts of that promise concrete.",
+    "pivot": "I connected exploration with source-aware records and a contribution path that separates submitting from publishing.",
+    "takeaway": "An archive should show what it knows and how it came to know it.",
+    "journey": [
+      {
+        "title": "Explore",
+        "detail": "Follow the connections through the archive."
+      },
+      {
+        "title": "Inspect",
+        "detail": "Read the basis for a record."
+      },
+      {
+        "title": "Contribute",
+        "detail": "Submit a correction or a family link."
+      },
+      {
+        "title": "Review",
+        "detail": "Publish after a maintainer’s review."
+      }
+    ],
+    "decisionLeads": [
+      "Model the relationship faithfully.",
+      "Keep the basis of a claim close.",
+      "Let a contribution wait for review."
+    ],
+    "annotations": [
+      {
+        "title": "Multiple ways into a family history",
+        "detail": "The public experience offers search and relationship exploration."
+      },
+      {
+        "title": "Coverage stays conditional",
+        "detail": "Demonstration records and historical coverage limits need context."
+      }
+    ],
+    "evidenceTag": "Product artifact · graph and review model",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Family member exploring a connection",
+      "context": "Following names and relationships with incomplete historical information.",
+      "need": "Understand a relationship and the evidence behind it.",
+      "friction": "A convincing diagram can imply certainty or completeness.",
+      "implication": "Keep sources and contribution review near the record."
+    }
+  },
+  "premoney": {
+    "headline": "The app found a transaction. [[Can you trust the number?]]",
+    "scene": "Imagine an expense app reading a bank alert. Automation has saved an entry—but if it guessed the amount or merchant, the summary now looks more certain than its input.",
+    "question": "How should automatic tracking admit that it is unsure?",
+    "insight": "[[A reviewable uncertainty is useful information]]. Confidence, rejection reasons, and unresolved merchants give correction a place in the workflow.",
+    "pivot": "I framed the journey around inspecting and correcting a suggested transaction, with separate explanations for optional categorisation and sync.",
+    "takeaway": "Automation earns trust by making its uncertainty correctable.",
+    "journey": [
+      {
+        "title": "Read",
+        "detail": "Distinguish an account movement from other alerts."
+      },
+      {
+        "title": "Flag",
+        "detail": "Keep uncertainty in the transaction model."
+      },
+      {
+        "title": "Correct",
+        "detail": "Inspect the origin and improve the record."
+      }
+    ],
+    "decisionLeads": [
+      "Leave uncertainty visible.",
+      "Make a correction useful beyond one row.",
+      "Explain enrichment as its own data decision."
+    ],
+    "annotations": [
+      {
+        "title": "Confidence is a design input",
+        "detail": "Ambiguous transaction alerts need an explicit review path before a record feels trustworthy."
+      },
+      {
+        "title": "Correction has a home",
+        "detail": "The app includes transaction editing and review."
+      }
+    ],
+    "evidenceTag": "Product artifact · transaction confidence and review",
+    "tone": "gold",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person reviewing everyday spending",
+      "context": "Using transaction alerts to understand money movement.",
+      "need": "Trust the record enough to review and correct it.",
+      "friction": "An ambiguous alert can become a plausible but incorrect transaction.",
+      "implication": "Make uncertainty visible and correction recoverable."
+    }
+  },
+  "soundbox": {
+    "headline": "The next note can [[wait for you]].",
+    "scene": "Imagine knowing the song you want to play, but being unable to read a page of notation or keep up with a timed lesson. Finding the right key already takes attention.",
+    "question": "What changes when the lesson follows the learner’s pace?",
+    "insight": "[[Removing the clock changes the interaction]]. The default practice loop waits for the expected note or chord, with space to retry.",
+    "pivot": "I connected a visible keyboard, familiar songs, and listening-based progression to make the next musical action understandable.",
+    "takeaway": "A learning tool should make another attempt feel possible.",
+    "journey": [
+      {
+        "title": "See",
+        "detail": "Know which key or chord comes next."
+      },
+      {
+        "title": "Play",
+        "detail": "Try it without racing a timer."
+      },
+      {
+        "title": "Listen",
+        "detail": "Let the app recognise the input."
+      },
+      {
+        "title": "Repeat",
+        "detail": "Loop the difficult passage when useful."
+      }
+    ],
+    "decisionLeads": [
+      "Let readiness decide the next step.",
+      "Offer more than one way into the song.",
+      "Support repetition without punishment."
+    ],
+    "annotations": [
+      {
+        "title": "A paced practice loop",
+        "detail": "The current chord, visible keyboard and Wait for me control make the next attempt clear."
+      },
+      {
+        "title": "Recognition has limits",
+        "detail": "Real room and instrument conditions remain evaluation work."
+      }
+    ],
+    "evidenceTag": "Product artifact · wait-mode practice",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Beginner practising a song",
+      "context": "Repeating a difficult passage at a comfortable pace.",
+      "need": "Find the notes and continue when ready.",
+      "friction": "A fixed tempo or unclear listening feedback can interrupt practice.",
+      "implication": "Wait for the learner and make retry states clear."
+    }
+  },
+  "wheelie": {
+    "headline": "Before riding together, [[everyone has to meet]].",
+    "scene": "Imagine a group starting from different parts of a city. Sharing a destination does not yet answer where to meet or how to stay coordinated once the ride begins.",
+    "question": "Which coordination decisions belong before the group is moving?",
+    "insight": "[[The ride starts with a rendezvous]]. Planning, rider location, and helmet voice solve different moments of the same service.",
+    "pivot": "I connected those moments while treating attention, large controls, and clear connection states as design constraints.",
+    "takeaway": "Good coordination should ask for less attention at the busiest moment.",
+    "journey": [
+      {
+        "title": "Plan",
+        "detail": "Review a suitable meeting point while stopped."
+      },
+      {
+        "title": "Coordinate",
+        "detail": "Know who is where and whether the information is current."
+      },
+      {
+        "title": "Reflect",
+        "detail": "Tell the ride’s story after it is over."
+      }
+    ],
+    "decisionLeads": [
+      "Solve the meeting before the navigation.",
+      "Reduce the precision an action requires.",
+      "Keep the ride and its later story separate."
+    ],
+    "annotations": [
+      {
+        "title": "A connected service",
+        "detail": "The three pillars cover meeting, communication, and ride summaries."
+      },
+      {
+        "title": "A beta with evaluation ahead",
+        "detail": "Accessibility and glove polish remain in progress."
+      }
+    ],
+    "evidenceTag": "Beta artifact · controlled evaluation next",
+    "tone": "rust",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Ride organiser coordinating a group",
+      "context": "Preparing meeting points and keeping a group in contact.",
+      "need": "Review a rendezvous and understand group connection status.",
+      "friction": "Different starting places and physical interaction constraints complicate coordination.",
+      "implication": "Prioritise preparation, large targets, and clear connection feedback."
+    }
+  },
+  "matinee": {
+    "headline": "A long watchlist. [[What are you watching tonight?]]",
+    "scene": "Imagine having plenty of saved titles and still spending the evening deciding. Discovery only becomes useful when it helps a person make a choice that fits.",
+    "question": "How can personal history help without filling the feed with more of the same?",
+    "insight": "[[Preference and variety need to work together]]. Ratings can guide the next suggestions, while repetition and language choices deserve their own controls.",
+    "pivot": "I connected watching, rating, and discovery into a loop, with a layout that adapts to how much room the person has.",
+    "takeaway": "A recommendation earns its place by helping someone choose.",
+    "journey": [
+      {
+        "title": "Save",
+        "detail": "Keep the titles that interest you."
+      },
+      {
+        "title": "Watch & rate",
+        "detail": "Give your history useful preference signals."
+      },
+      {
+        "title": "Discover",
+        "detail": "Bring that context back into the next choice."
+      }
+    ],
+    "decisionLeads": [
+      "Make the commitment visible.",
+      "Let the history influence the next screen.",
+      "Use the screen’s space deliberately."
+    ],
+    "annotations": [
+      {
+        "title": "Discovery and tracking connect",
+        "detail": "The archived capture shows the browsing surface."
+      },
+      {
+        "title": "Relevance is an evaluation question",
+        "detail": "Local scoring makes the approach concrete without establishing accuracy."
+      }
+    ],
+    "evidenceTag": "Product artifact · history-to-discovery loop",
+    "tone": "violet",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Viewer deciding what to watch next",
+      "context": "Balancing a personal watch history with a desire for something different.",
+      "need": "Choose a relevant title without repeatedly seeing near-duplicates.",
+      "friction": "A large catalogue creates more browsing without necessarily creating confidence.",
+      "implication": "Connect history with language, variety, and title context."
+    }
+  },
+  "birthsky": {
+    "headline": "A moment in your life. [[A sky you can keep]].",
+    "scene": "Imagine choosing a meaningful date and place, then seeing the sky interpreted as something personal. The experience has to connect a precise-looking visual to understandable inputs.",
+    "question": "How can a technical chart become a meaningful personal object?",
+    "insight": "[[The reveal and the keepsake are one journey]]. Time and place shape the view; annotation and aspect ratio shape how it is kept.",
+    "pivot": "I connected the personal prompt to a customisable sky and wallpaper outputs.",
+    "takeaway": "Make the inputs understandable enough to trust the reveal.",
+    "journey": [
+      {
+        "title": "Choose",
+        "detail": "Enter the time and location."
+      },
+      {
+        "title": "Reveal",
+        "detail": "See the sky rendered from those inputs."
+      },
+      {
+        "title": "Make it yours",
+        "detail": "Choose labels and a visual mode."
+      },
+      {
+        "title": "Keep",
+        "detail": "Export for a phone or desktop."
+      }
+    ],
+    "decisionLeads": [
+      "Begin with a personal question.",
+      "Let annotation become a choice.",
+      "Design the output as part of the experience."
+    ],
+    "annotations": [
+      {
+        "title": "A personal opening",
+        "detail": "The original product connects a biographical prompt to a sky view."
+      },
+      {
+        "title": "A result beyond the page",
+        "detail": "Wallpaper exports give the reveal a place to live."
+      }
+    ],
+    "evidenceTag": "Product artifact · input, render, export",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person creating a personal sky keepsake",
+      "context": "Entering a meaningful date and place, then choosing a wallpaper.",
+      "need": "Understand the inputs and keep a result that feels personal.",
+      "friction": "Uncertain times can produce a precise-looking picture.",
+      "implication": "Explain uncertainty and make visual annotation optional."
+    }
+  },
+  "scalesee": {
+    "headline": "You can read the number. [[Can you picture the difference?]]",
+    "scene": "Imagine comparing a million with a billion. The arithmetic is simple; making the difference feel concrete is another task.",
+    "question": "When does making both quantities visible change the meaning of the picture?",
+    "insight": "[[Legibility and proportional truth can pull apart]]. True scale may make one quantity almost disappear; a logarithmic view needs to declare its transformation.",
+    "pivot": "I used category-specific scenes and explicit scale modes, with enough context to travel in a shared image.",
+    "takeaway": "An explanation should keep its assumptions visible when it leaves the tool.",
+    "journey": [
+      {
+        "title": "Compare",
+        "detail": "Choose quantities of the same kind."
+      },
+      {
+        "title": "See",
+        "detail": "Use a scene that fits the quantity."
+      },
+      {
+        "title": "Interpret",
+        "detail": "Understand the selected scale mode."
+      },
+      {
+        "title": "Share",
+        "detail": "Carry the labels and context into the output."
+      }
+    ],
+    "decisionLeads": [
+      "Let the quantity choose the picture.",
+      "Make a transformed scale explicit.",
+      "Keep the explanation intact when shared."
+    ],
+    "annotations": [
+      {
+        "title": "A scene for the quantity",
+        "detail": "The product gives a ratio a concrete visual reference."
+      },
+      {
+        "title": "Context travels with it",
+        "detail": "Scale, units, and assumptions matter in an exported comparison."
+      }
+    ],
+    "evidenceTag": "Product artifact · comparison and export",
+    "tone": "teal",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Person trying to explain a large difference",
+      "context": "Comparing two quantities for a conversation or illustration.",
+      "need": "Understand the ratio and share it without losing context.",
+      "friction": "Extreme differences make small values disappear or invite misleading compression.",
+      "implication": "Declare scale changes and preserve labels in exports."
+    }
+  },
+  "where-would-i-be": {
+    "headline": "Choose your ground. [[Let time move it]].",
+    "scene": "Imagine following the patch of crust beneath a familiar place over a time span you cannot experience. One personal point of reference gives deep time somewhere to begin.",
+    "question": "How can a compelling journey keep the model’s limits in view?",
+    "insight": "[[A smooth animation is still conditional]]. Holding present plate velocities constant creates an extrapolation whose limits grow with the horizon.",
+    "pivot": "I kept the globe clear, began with a place, and let the time control reveal a concise answer before offering deeper detail.",
+    "takeaway": "Let the story invite exploration without turning a model into a prediction.",
+    "journey": [
+      {
+        "title": "Anchor",
+        "detail": "Start from one familiar location."
+      },
+      {
+        "title": "Explore",
+        "detail": "Move the time control and follow its path."
+      },
+      {
+        "title": "Understand",
+        "detail": "Read the result alongside the model’s assumptions."
+      }
+    ],
+    "decisionLeads": [
+      "Give the first screen one useful question.",
+      "Protect the space where the answer is drawn.",
+      "Keep the scientific boundary near the result."
+    ],
+    "annotations": [
+      {
+        "title": "A personal anchor",
+        "detail": "The selected point connects a large timescale to a familiar location."
+      },
+      {
+        "title": "Details on demand",
+        "detail": "The interface leaves the globe room to explain the path."
+      }
+    ],
+    "evidenceTag": "Product artifact · model and interaction sequence",
+    "tone": "blue",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Curious visitor exploring deep time",
+      "context": "Using a familiar location to make plate movement tangible.",
+      "need": "Follow a place through time and understand what the model means.",
+      "friction": "A smooth moving globe can look more certain than an extrapolation is.",
+      "implication": "Keep the model qualification near the time result."
+    }
+  },
+  "the-blog": {
+    "headline": "A finished draft should [[feel close to publishing]].",
+    "scene": "Imagine finishing a poem and then having to switch from writing into a development workflow. The mechanics of publishing can become a reason to put the piece aside.",
+    "question": "What should the author have to think about after the writing is done?",
+    "insight": "[[Publishing state belongs in the editor]]. A draft, a save, and a live page are different moments that need clear feedback.",
+    "pivot": "I connected a browser editor with a content-aware reading experience, respecting verse and serial writing along the way.",
+    "takeaway": "The tool should respect the shape of the writing.",
+    "journey": [
+      {
+        "title": "Compose",
+        "detail": "Work through an editorial interface."
+      },
+      {
+        "title": "Review",
+        "detail": "Keep draft status and content choices visible."
+      },
+      {
+        "title": "Release",
+        "detail": "Carry the saved piece through the build into the reading experience."
+      }
+    ],
+    "decisionLeads": [
+      "Make publication a visible commitment.",
+      "Let the form of the writing matter.",
+      "Make the next piece easy to find."
+    ],
+    "annotations": [
+      {
+        "title": "An editorial front door",
+        "detail": "The site introduces the writing in its own visual voice."
+      },
+      {
+        "title": "A workflow behind it",
+        "detail": "The browser editor supports the ongoing publishing practice."
+      }
+    ],
+    "evidenceTag": "Product artifact · editorial workflow",
+    "tone": "violet",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Writer publishing & reader continuing a piece",
+      "context": "An author moves from draft to release; a reader moves between related writing.",
+      "need": "Preserve the form of the writing and a clear route to the next piece.",
+      "friction": "Publication states and implicit series conventions can be difficult to understand.",
+      "implication": "Give drafts, verse, and series explicit structure."
+    }
+  },
+  "office-games": {
+    "headline": "The room is ready. [[Whose turn is it?]]",
+    "scene": "Imagine a short team break being spent explaining how to join, who can answer, and why the game is waiting. The social rhythm depends on those transitions being obvious.",
+    "question": "What does the group need to understand at every handoff?",
+    "insight": "[[Shared state has to become shared understanding]]. Room entry, team roles, and the answering/stealing sequence all contribute to the pace.",
+    "pivot": "I focused the reviewed trivia module on a concise joining path and visible responsibility through each round.",
+    "takeaway": "A social game moves when everyone knows what happens next.",
+    "journey": [
+      {
+        "title": "Join",
+        "detail": "Use a short code and a player name."
+      },
+      {
+        "title": "Orient",
+        "detail": "See the teams and who can act."
+      },
+      {
+        "title": "Play",
+        "detail": "Follow the answering and stealing sequence."
+      },
+      {
+        "title": "Continue",
+        "detail": "Keep scores and waiting states understandable."
+      }
+    ],
+    "decisionLeads": [
+      "Make joining a small action.",
+      "Show why a round is waiting.",
+      "Keep the connection promise clear."
+    ],
+    "annotations": [
+      {
+        "title": "A social entry point",
+        "detail": "The product offers a quick route into a shared game."
+      },
+      {
+        "title": "Reviewed scope: trivia",
+        "detail": "Local demo and network-backed play make different connection promises."
+      }
+    ],
+    "evidenceTag": "Product artifact · reviewed trivia module",
+    "tone": "gold",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Colleague joining a short group game",
+      "context": "Entering a room and learning a team role during an office break.",
+      "need": "Join quickly and know whose turn it is.",
+      "friction": "Waiting and role changes become confusing when the interface is silent.",
+      "implication": "Make room, role, and next action visible."
+    }
+  },
+  "forma": {
+    "headline": "A health reading needs [[more than a number]].",
+    "scene": "Imagine opening a health dashboard after a watch sync. One measurement is recent, one was last recorded days ago, and another has not been shared. Similar-looking numbers can hide very different situations.",
+    "question": "How can a daily overview make the meaning of each reading clear?",
+    "insight": "[[Data quality is part of the experience]]. Source, measurement time, missing inputs and model coverage change how a reading should be interpreted.",
+    "pivot": "I focused the daily overview on readable measurements, with a clear route into history, source context and score explanations.",
+    "takeaway": "Clarity includes knowing what the app cannot tell you.",
+    "journey": [
+      {
+        "title": "Orient",
+        "detail": "See Today with explicit sample or source context."
+      },
+      {
+        "title": "Inspect",
+        "detail": "Open sleep, movement or a measurement history."
+      },
+      {
+        "title": "Understand",
+        "detail": "Read the contributors behind an experimental score."
+      },
+      {
+        "title": "Manage",
+        "detail": "Use Devices to connect and Your data to inspect coverage or export."
+      }
+    ],
+    "decisionLeads": [
+      "Keep provenance beside the reading.",
+      "Show the inputs behind the score.",
+      "Give connection and data tasks separate homes."
+    ],
+    "annotations": [
+      {
+        "title": "Native interface",
+        "detail": "The Android app uses native screens and charts; the web version is a design preview."
+      },
+      {
+        "title": "Inspectable estimates",
+        "detail": "Experimental wellness scores retain input and coverage limits."
+      }
+    ],
+    "evidenceTag": "Native artifacts and documented UX audit · sample data in captures",
+    "tone": "lime",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Android user reviewing Samsung-shared health records",
+      "context": "Moving between a daily summary, a specific measurement and a watch connection that may have partial permissions.",
+      "need": "Understand the reading and its source before comparing it with a personal pattern.",
+      "friction": "Missing, older and estimated values can look like equally reliable facts.",
+      "implication": "Keep time, source and availability visible, with deeper explanation one step away."
+    }
+  },
+  "ohcaptain": {
+    "headline": "Six vessels. [[One shared decision.]]",
+    "scene": "Imagine taking damage while an operator asks for repairs and an enemy crew captures a relay. The captain must decide where shared supplies go while still steering a ship.",
+    "question": "What needs to stay visible when sailing, fighting and command happen together?",
+    "insight": "[[Information needs a place and a priority]]. An urgent hull warning, a spending decision and a full fleet overview should not demand attention in the same way.",
+    "pivot": "I separated immediate combat awareness, role-specific fleet controls and deliberate tactical inspection.",
+    "takeaway": "A crew can coordinate when the next action has an owner.",
+    "journey": [
+      {
+        "title": "Choose a station",
+        "detail": "Understand captain spending or operator requests."
+      },
+      {
+        "title": "Deploy",
+        "detail": "Start with AI fill or assemble a crew through a room."
+      },
+      {
+        "title": "Read the battle",
+        "detail": "Keep hull, fleet status and the relay map available."
+      },
+      {
+        "title": "Coordinate",
+        "detail": "Open Fleet to spend or request; expand the overview to plan."
+      }
+    ],
+    "decisionLeads": [
+      "Assign responsibility before the battle.",
+      "Give each information layer a place.",
+      "Let urgent signals take precedence."
+    ],
+    "annotations": [
+      {
+        "title": "Keyboard and mouse",
+        "detail": "The playable prototype is designed around desktop sailing, aiming and command controls."
+      },
+      {
+        "title": "Peer-to-peer scope",
+        "detail": "Rooms rely on a host and direct peer connections; solo AI-filled play remains a separate path."
+      }
+    ],
+    "evidenceTag": "Playable prototype and documented Clear Deck revision · solo captures",
+    "tone": "navy",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Player joining a small naval crew",
+      "context": "Learning a captain or operator role while coordinating around a finite relay-control match.",
+      "need": "Know who can act, what is urgent and where the next objective is.",
+      "friction": "Combat, spending requests and tactical detail can overwhelm the same screen.",
+      "implication": "Preserve immediate awareness and reveal deliberate command detail when requested."
+    }
+  }
+}

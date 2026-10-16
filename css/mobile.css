@@ -1,0 +1,166 @@
+/* Phone layouts share the same state and controls as the wider site. */
+.play-game-picker,.pen-touch-help,.game-launch-icon{display:none}
+.board-tools button>.board-note-label{font:inherit;margin:0}
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .playroom-dialog{width:calc(100vw - 16px);max-width:calc(100vw - 16px);max-height:calc(100dvh - 16px);border-radius:12px}
+ .playroom-head{position:sticky;top:0;z-index:12;background-color:var(--play-paper);padding:22px 16px 12px;gap:12px}
+ .playroom-head h2{font-size:28px;line-height:1.2}
+ .playroom-head .play-eyebrow{font-size:10px;line-height:1.5}
+ .playroom-close{width:44px;height:44px;min-width:44px;flex-shrink:0}
+ .playroom-meta{padding:0 16px 12px;gap:12px;flex-wrap:wrap;font-size:12px;line-height:1.5}
+ .play-meta-tools{gap:16px;flex-wrap:wrap}
+ .play-turn,.play-help{font-size:12px}
+ .play-help summary{min-height:44px;display:inline-flex;align-items:center;border:0;padding:0}
+ .play-help>div{left:0;right:auto;width:270px;max-width:calc(100vw - 64px);padding:16px}
+ .play-help p{font-size:14px;line-height:1.65}
+ .play-tabs{display:none}
+ .play-game-picker{display:grid;grid-template-columns:auto minmax(0,1fr);gap:12px;align-items:center;padding:12px 16px;border-block:1px solid var(--play-line);background:#f1e8d7}
+ .play-game-picker>label{font:500 13px/1.5 var(--sans);color:var(--play-ink)}
+ .play-game-select{position:relative;min-width:0}
+ .play-game-select::after{content:'';position:absolute;right:17px;top:18px;width:7px;height:7px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);pointer-events:none}
+ #playGameSelect{appearance:none;-webkit-appearance:none;display:block;width:100%;min-width:0;min-height:48px;padding:10px 38px 10px 14px;border:1px solid #b99d79;border-radius:7px;background:var(--play-paper);color:var(--play-ink);font:500 16px/1.5 var(--sans);cursor:pointer}
+ #playGameSelect:focus-visible{outline:2px solid var(--play-ink);outline-offset:3px}
+ .playroom-body{display:flex;flex-direction:column-reverse;padding:16px;gap:16px}
+ .chess-layout,.ultimate-layout{display:flex;flex-direction:column;gap:18px}
+ .chess-board,.ultimate-board{width:100%;max-width:100%}
+ .chess-notes{display:grid;grid-template-columns:minmax(0,1fr) auto;width:100%;gap:12px}
+ .chess-notes h3,.chess-notes .game-hint,.chess-notes .game-status,.chess-notes ol,.chess-match-actions{grid-column:1/-1}
+ .shri-companion{grid-template-columns:42px minmax(0,1fr);gap:3px 14px;padding-bottom:12px}
+ .bot-picture{width:42px;height:42px;box-shadow:0 0 0 3px #f3e7d3;margin:3px 0}
+ .bot-name{font-size:14px}.bot-name span{font-size:9px}
+ .bot-line{font-size:17px;line-height:1.35}
+ .game-heading{gap:12px;align-items:start;margin-bottom:18px}
+ .game-heading>div{min-width:0}
+ .game-heading h3,.chess-notes h3,.ultimate-notes h3{font-size:25px;line-height:1.2}
+ .game-heading p{font-size:14px;line-height:1.65;margin-top:8px}
+ .game-reset{font:500 12px/1.5 var(--sans);min-height:44px;display:inline-flex;align-items:center;flex-shrink:0}
+ .pen-aim{flex-wrap:wrap;gap:12px;margin-top:16px;align-items:center}
+ .pen-aim label{font-size:13px;line-height:1.5;flex-basis:calc(50% - 6px)}
+ .pen-aim input{min-height:44px;margin:0}
+ .pen-aim button{width:100%;min-height:46px;padding:10px 16px;font-size:15px}
+ .game-hint,.chess-notes .game-hint{font:13px/1.6 var(--sans);margin-top:12px}
+ .pen-keyboard-help{display:none}.pen-touch-help{display:inline}
+ .game-status,.chess-notes .game-status{font-size:14px;line-height:1.6;padding-top:12px}
+ .card-actions button{min-height:46px;font-size:14px;padding:12px 18px;flex:1}
+ .card-player>p,.hand-contender>span{font-size:12px}
+ .rps-choices button{font-size:14px;min-height:44px}
+ .ultimate-notes p{font-size:14px;line-height:1.65}
+ .ultimate-key{font-size:13px}
+ .chess-level{font-size:12px;line-height:1.5}
+ .chess-match-actions button,.chess-confirm button,.chess-promotion button{min-height:44px;font-size:13px;padding:10px 14px}
+ .chess-notes ol{font-size:12px;line-height:1.7;max-height:96px}
+ .play-clock>span,#gameClockMode span,.clock-pause-note{font-size:11px;line-height:1.5}
+ .play-clockbar{padding-inline:16px;grid-template-columns:1fr 1fr 1fr}
+ .play-clock>strong{font-size:26px}.play-clock{padding:10px 6px}
+ #gameClockMode{min-height:44px;padding:4px;max-width:110px}
+ .clock-pause-note{padding:10px 16px 0}
+ .playroom-foot{display:grid;gap:4px;padding:12px 16px;font:11px/1.6 var(--sans)}
+ .playroom-foot span:last-child{text-align:left}
+ .game-result-card .result-detail{font-size:14px;line-height:1.6}
+ .result-rematch,.result-view{min-height:44px;font-size:14px}
+ .result-reopen{white-space:normal;text-align:center;min-height:44px;font-size:13px;width:max-content}
+ .nav{gap:4px}
+ .nav-logo{margin-right:auto;white-space:nowrap}
+ .recruiter-trigger{display:none}
+ .theme-toggle{width:44px;height:44px;min-width:44px}
+ .nav .playroom-launch{position:static;display:grid;place-items:center;flex-shrink:0;width:44px;height:44px;min-height:44px;padding:0;border:1px solid #f5e9d440;border-radius:50%;background:transparent;color:#f5e9d4;box-shadow:none;transform:none}
+ .nav .playroom-launch .edge-rosette,.nav .playroom-launch>span:last-child{display:none}
+ .nav .game-launch-icon{display:block;width:22px;height:22px}
+ .back-to-top{right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));min-width:44px;min-height:44px}
+ body:has(input:focus,textarea:focus,select:focus) .back-to-top{visibility:hidden;opacity:0}
+ .heritage-footer{padding-bottom:26px}
+ .heritage-path-desc{font-size:12px;line-height:1.5}
+ .heritage-role,.heritage-current{font-size:13px}
+ .heritage-footer,.heritage-about{font-size:12px}
+ .project-search input,#brainSearch,.note-dialog input,.note-dialog textarea,.contact-form input,.contact-form textarea,.contact-form select{font-size:16px}
+ .project-search label,.project-results,.play-meta,.card-tags{font-size:12px}
+ .work .card-blurb,.play-card>p{font-size:15px;line-height:1.7}
+ .work .card-cta,.play-card-cta{font-size:14px;min-height:44px;display:flex;align-items:center}
+ .play-stack .vcard-chip{font-size:12px}
+ .service-intro .text-button,.service-inside a{font-size:14px;min-height:44px;display:inline-flex;align-items:center}
+ .lightbox-close,.note-close,.recruiter-close{width:44px;height:44px;min-width:44px;min-height:44px}
+}
+@media(max-width:360px){
+ .playroom-head h2{font-size:25px}
+ .nav{padding-inline:16px}.nav-logo{font-size:18px}
+ .playroom-head .play-eyebrow{font-size:9px}
+ .game-heading{flex-direction:column;gap:4px}
+ .game-heading .game-reset{align-self:end}
+ .cricket-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+ .cricket-choices button{width:100%;min-height:44px}
+}
+
+@media(max-height:500px) and (max-width:1000px) and (orientation:landscape){
+ .playroom-head{padding:10px 16px;background-image:none;align-items:center}
+ .playroom-head h2{font-size:24px;margin:0}
+ .playroom-head .play-eyebrow,.playroom-meta,.shri-companion{display:none}
+ .play-game-picker{padding-block:8px}
+}
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .brain-topics{gap:6px}
+ .brain-topics button{font-size:13px;min-height:44px;padding:9px 10px;gap:7px}
+ .brain-topics button>span{font-size:12px}
+ .brain-search label{font-size:13px}
+ .brain-controls button{font-size:12px;min-width:44px;min-height:44px;height:auto;padding:10px}
+ .brain-selected p,.brain-selected li,.brain-detail p{font-size:15px;line-height:1.7}
+ .brain-status,.brain-instructions{font-size:12px;line-height:1.6}
+ .board-toolbar{padding:10px;gap:8px}
+ .board-toolbar .board-tools:first-child{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));width:100%;gap:4px}
+ .board-tools:first-child button{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;font-size:12px;line-height:1.4;min-width:0;min-height:64px;height:64px;padding:7px 2px;white-space:normal}
+ .board-tools:first-child button>span{font-size:21px;margin:0}
+ .board-toolbar .board-tool-divider{display:none}
+ .board-camera{width:100%;margin:0;gap:3px;justify-content:flex-end}
+ .board-camera button{width:44px;min-width:44px;height:44px;padding:0;font-size:19px}
+ .board-camera button:disabled{display:none}
+ .board-camera #boardFit{font-size:13px}
+ #boardZoomLabel{display:grid;place-items:center;min-width:32px;height:44px;font-size:12px}
+ .board-bottom,.visitor-section .board-status{font-size:12px;line-height:1.65}
+ .board-palette button{min-width:44px;min-height:44px}
+ .contact-form label,.cf-label{font-size:13px}
+ .cf-submit{min-height:48px;font-size:15px}
+ .note-tabs button{min-height:44px;font-size:14px}
+ .note-dialog input,.note-dialog textarea,.note-dialog select,.recruiter-dialog input{font-size:16px}
+ .note-colors label{min-width:44px;min-height:44px}
+ .test-flip-button{min-height:44px;font-size:14px}
+ .footer{padding-bottom:calc(76px + env(safe-area-inset-bottom,0px))}
+}
+
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .project-search-field button{min-width:44px;min-height:44px;font-size:13px}
+}
+
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .board-tools:first-child button>.board-note-label{font:inherit;margin:0}
+ .board-tools .board-tool-extra{display:none}
+ .mobile-menu{max-height:100dvh;overflow-y:auto;overscroll-behavior:contain}
+ .mobile-menu nav a{min-height:44px;display:flex;align-items:center}
+ .about-note,.xp-row .xp-note,.writing-description,.service-intro,.board-invitation>p{font-size:15px;line-height:1.75}
+ .entry-category,.writing-languages,.stat-label{font-size:12px}
+ .gallery-browse{min-height:44px;font-size:13px}
+ .note-dialog label,.note-colors legend,.note-dialog #noteStatus{font-size:13px}
+ .note-colors{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+ .note-colors label{min-width:0;margin-block:6px}
+ .note-colors label>span{display:flex;align-items:center;justify-content:center;min-height:44px;padding:8px 4px;font:12px/1.5 var(--sans)}
+ .footer,.footer>span:last-child{font-size:12px;line-height:1.6}
+}
+@media(max-height:500px) and (max-width:1000px) and (orientation:landscape){
+ .mobile-menu{padding:82px 24px 24px;justify-content:flex-start;overflow-y:auto}
+ .mobile-menu nav{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 24px}
+ .mobile-menu nav a{font-size:24px;line-height:1.3;min-height:44px;padding-block:8px}
+ .mobile-menu-foot{margin-top:20px}
+}
+
+@media(max-height:500px) and (max-width:1000px) and (orientation:landscape){
+ .play-game-picker{grid-template-columns:auto minmax(0,1fr) auto}
+ .play-game-picker>.play-help{grid-column:3}
+ .play-game-picker>.play-help>div{left:auto;right:0}
+ #penTable{height:clamp(140px,calc(100dvh - 180px),240px);width:auto;max-width:100%;margin-inline:auto}
+}
+
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .note-close,.recruiter-close{position:sticky;top:8px;right:auto;display:flex;align-items:center;justify-content:center;margin:-12px -8px -32px auto;z-index:5;border-radius:50%;background:var(--ink);color:var(--bone)}
+}
+@media(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape){
+ .recruiter-person>div,.recruiter-stats span{font-size:12px;line-height:1.5}
+ .recruiter-proof,.recruiter-lede{font-size:15px;line-height:1.7}
+}
