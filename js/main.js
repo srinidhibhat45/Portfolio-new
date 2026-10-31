@@ -68,7 +68,7 @@
 
     var vibeEl = document.getElementById('playGrid');
     if (vibeEl && SITE.vibe && SITE.vibe.length) {
-      var priority = ['Forma', 'OhCaptain', 'Arkitype', 'AppleCider', 'PlanIt', 'DeckForge', 'Earthlog', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
+      var priority = ['Forma', 'Halo', 'Binnder', 'PureEQ', 'OhCaptain', 'Hidden Identity Chess', '5 Dead', 'Alibi', 'Arkitype', 'AppleCider', 'PlanIt', 'DeckForge', 'Earthlog', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
       var products = SITE.vibe.slice().sort(function (a, b) {
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
@@ -76,7 +76,7 @@
       vibeEl.innerHTML = products.map(function (v) {
         var media = (window.PROJECT_MEDIA || {})[v.name];
         var starred = ['Arkitype', 'Earthlog', 'AppleCider'].includes(v.name);
-        var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="1280" height="720"></div>' : '';
+        var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + (media.portrait ? ' product-media-portrait' : '') + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="' + (media.width || 1280) + '" height="' + (media.height || 720) + '"></div>' : '';
         var hasStory = v.caseSlug && STORIES[v.caseSlug];
         return '<a class="play-card" href="' + esc(hasStory ? 'case-studies/' + v.caseSlug + '.html' : v.href) + '"' + (hasStory ? ' data-case="' + esc(v.caseSlug) + '"' : ' target="_blank" rel="noopener"') + '>' + preview +
           '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '') +
@@ -585,7 +585,7 @@
       if (!c || !(c.story || c.pages && c.pages.length)) return false;
       titleEl.textContent = c.title;
       tagsEl.textContent = c.tags;
-      pdfEl.href = c.story ? 'assets/pdfs/case-studies/' + (c.story.kind === 'ux' ? 'ux-case-studies.pdf' : 'product-case-studies.pdf') + '#page=' + (c.story.pdfPage || 1) : c.pdf;
+      pdfEl.href = c.story ? window.CaseStudyRenderer.collectionUrl(c.story) : c.pdf;
       pdfEl.textContent = c.story ? 'Collection PDF ↗' : 'PDF ↓';
       if (protoEl) {
         var destination = c.story && c.story.liveUrl || c.prototypeUrl;

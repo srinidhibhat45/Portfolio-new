@@ -14,6 +14,8 @@ from PIL import Image as PILImage
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.styles import ParagraphStyle
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
     BaseDocTemplate, Frame, Image, KeepTogether, PageBreak, PageTemplate,
     Paragraph, Spacer, Table, TableStyle,
@@ -30,6 +32,12 @@ LINE = colors.HexColor('#d5d9ce')
 W, H = 595.28, 841.89
 MARGIN = 48
 CW = W - MARGIN * 2
+# Preserve the single Devanagari initial in the writing identity when a suitable
+# local font is available. Other hosts use its readable Roman transliteration.
+DEVANAGARI_FONT = Path('/System/Library/Fonts/Supplemental/Arial Unicode.ttf')
+HAS_DEVANAGARI = DEVANAGARI_FONT.exists()
+if HAS_DEVANAGARI:
+    pdfmetrics.registerFont(TTFont('CaseDevanagari', str(DEVANAGARI_FONT)))
 
 
 def clean(s):
@@ -41,7 +49,9 @@ def clean(s):
 
 
 def text(s):
-    return escape(clean(s))
+    value = escape(clean(s))
+    return (value.replace('अ', '<font name="CaseDevanagari">अ</font>') if HAS_DEVANAGARI else
+            value.replace('अvinash', 'Avinash'))
 
 
 styles = {
@@ -138,8 +148,8 @@ def build_collection(cases, kind):
     story = [p('SELECTED WORK / RECRUITER READING COLLECTION', 'eyebrow'),
              p('From a problem to a considered product.', 'title'),
              p('Srinidhi Bhat / UX Designer', 'deck'),
-             p(('Ten design studies, rebuilt from original project artifacts.' if kind == 'ux' else
-                'Nineteen studies of product ideas, UX direction, and interaction decisions, grounded in product artifacts and documentation.'), 'deck'),
+             p(f'{len(selected)} ' + ('design studies with original research and interface concepts.' if kind == 'ux' else
+                'product stories about independent tools, games and the decisions behind them.'), 'deck'),
              p('I care about the decisions between a problem and an interface: what to prioritise, '
                'what a person needs to understand, and what the design asks of the system behind it.'),
              p('Reading this collection', 'heading'),
@@ -202,6 +212,11 @@ def build_collection(cases, kind):
 
 if __name__ == '__main__':
     cases = json.loads((ROOT / 'content/case-studies.json').read_text())
+    visuals = json.loads((ROOT / 'content/case-study-visuals.json').read_text())
+    for c in cases:
+        if not c['figures'] and visuals[c['slug']].get('src'):
+            visual = visuals[c['slug']]
+            c['figures'] = [dict(src=visual['src'], caption=visual['caption'])]
     manifest = {}
     for kind in ('ux', 'product'):
         manifest.update(build_collection(cases, kind))

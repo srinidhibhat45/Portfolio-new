@@ -1,6 +1,6 @@
 {
   "onespace": {
-    "headline": "The class starts soon. [[Where is that file?]]",
+    "headline": "Finding a class file [[should be straightforward.]]",
     "scene": "Picture a student getting ready for an online class. The conversation is in one app, the link in another, and the assignment somewhere further back. Before learning can begin, there is a search to finish.",
     "question": "Would putting everything into one app actually solve the problem?",
     "insight": "More than half of the survey respondents were [[fine with using multiple apps]]. That changed the question: the stronger opportunity was making class resources easier to retrieve.",
@@ -51,7 +51,7 @@
     }
   },
   "umatter": {
-    "headline": "Asking for help starts [[before the appointment]].",
+    "headline": "A clearer first step [[towards professional support.]]",
     "scene": "Imagine being ready to explore professional support, but unsure who will see your details or what the first step involves. Every unclear commitment can make it easier to postpone the search.",
     "question": "What should someone understand before being asked to book?",
     "insight": "In our 65-response survey, almost half wanted professional help while remaining anonymous. [[Privacy expectations]] had to shape the journey before calendar and payment screens.",
@@ -102,7 +102,7 @@
     }
   },
   "mucoin": {
-    "headline": "Before the budget comes [[a lot of questions]].",
+    "headline": "Making the first budget [[less of a form.]]",
     "scene": "Picture someone setting up a finance app. They are recalling income, estimating expenses, and deciding how much personal information to share—all before seeing whether the product is useful.",
     "question": "How can the setup give something back before it is finished?",
     "insight": "The flow already contained a useful idea: [[show the emerging financial picture]] while a person enters it. Each summary can become a chance to understand and correct the information.",
@@ -149,7 +149,7 @@
     }
   },
   "gmd": {
-    "headline": "All the metadata. [[Which part needs attention?]]",
+    "headline": "An SEO panel [[you can actually scan.]]",
     "scene": "Imagine opening an SEO extension to answer one question about a page. The tool has plenty of data, but finding the relevant item becomes another inspection task.",
     "question": "What should stay visible when an inspector becomes easier to read?",
     "insight": "The historical review found [[useful depth and export]] alongside small text, weak organisation, and duplicated output. A visual refresh needed to preserve the valuable workflow.",
@@ -200,7 +200,7 @@
     }
   },
   "steve-wilson": {
-    "headline": "A portfolio earns [[a second minute]].",
+    "headline": "Let the work [[lead the portfolio.]]",
     "scene": "Picture a reviewer opening a designer’s portfolio between other applications. The first page has to establish what the designer does and make one relevant project easy to choose.",
     "question": "What makes someone want to move from a first impression into the work?",
     "insight": "The original concept already separates [[browsing from deep reading]]. Its project template creates room for a story, but that room still needs real decisions and evidence.",
@@ -247,7 +247,7 @@
     }
   },
   "gloria-furniture": {
-    "headline": "Inspiration gets a glance. [[Details make a shortlist]].",
+    "headline": "A furniture shop [[organised around the room.]]",
     "scene": "Imagine finding a piece of furniture you like, then asking whether it fits the room, the budget, and the practicalities of buying it. A storefront has to support both kinds of attention.",
     "question": "How does visual browsing become a useful buying decision?",
     "insight": "The concept moves from [[inspiration to categories to comparable products]]. That sequence is the useful foundation; dimensions and fulfilment would make the next step stronger.",
@@ -294,7 +294,7 @@
     }
   },
   "fun-cruises": {
-    "headline": "A beautiful boat. [[Does it fit the group?]]",
+    "headline": "Choosing a boat [[before making an enquiry.]]",
     "scene": "Picture planning an outing with a group. Before an enquiry, the practical questions arrive: how many people fit, what does it cost, and which type of boat makes sense?",
     "question": "Which questions can the fleet list answer before a visitor opens every option?",
     "insight": "The strongest part of the concept is its [[comparable fleet information]]: seating, starting rate, and boat type accompany the photographs.",
@@ -341,7 +341,7 @@
     }
   },
   "bni-website": {
-    "headline": "A network feels local [[when you can see its people]].",
+    "headline": "Meet the chapter. [[Know how to take part.]]",
     "scene": "Imagine considering a business network for the first time. You want to understand who participates, why they meet, and whether you could take a first look without already knowing someone.",
     "question": "What turns an organisation overview into an approachable first visit?",
     "insight": "The chapter concept gives the visitor [[a purpose, people, and an invitation]]. Those pieces need accurate local content to become credible.",
@@ -388,7 +388,7 @@
     }
   },
   "irctc": {
-    "headline": "One journey to book. [[Many things competing for attention]].",
+    "headline": "The train search [[comes first.]]",
     "scene": "Picture arriving at a railway homepage with a route and a date in mind. Other services matter, but the immediate task is to form a complete train search.",
     "question": "How should a dense service homepage protect its primary task?",
     "insight": "The concept gives the search [[one recognisable task area]], while retaining adjacent rail services and placing trip inspiration further down.",
@@ -435,7 +435,7 @@
     }
   },
   "nityananda": {
-    "headline": "Let the work speak. [[Make the conversation easy]].",
+    "headline": "A photography site [[that leaves room for the photographs.]]",
     "scene": "Imagine choosing a photographer. You want to see relevant work, get a feel for the person behind it, and know how to begin an enquiry.",
     "question": "How much interface does an image-led portfolio actually need?",
     "insight": "The concept uses [[three familiar destinations]] and two work groupings to keep the route through the photography understandable.",
@@ -482,7 +482,7 @@
     }
   },
   "arkitype": {
-    "headline": "Change one token. [[Watch the system follow]].",
+    "headline": "Change a token. [[See what it changes.]]",
     "scene": "Imagine changing a brand colour and then checking every place it appears: components, documentation, previews, and the handoff. The change is small; keeping all its consequences aligned is the real work.",
     "question": "What if the different outputs all came from the same decision?",
     "insight": "A system needs [[relationships between decisions]], not just an inventory of components. Arkitype’s shared model connects foundations to the things a team can inspect and use.",
@@ -533,7 +533,7 @@
     }
   },
   "applecider": {
-    "headline": "Keep the idea rough. [[Make it real enough to discuss]].",
+    "headline": "Room to sketch [[before committing to a design.]]",
     "scene": "Picture an early design review drifting into a discussion about colour and spacing. The underlying idea is still changing, but the polished screen already feels too finished to challenge.",
     "question": "Can a deliberately unfinished interface still have useful structure?",
     "insight": "[[Low visual fidelity can preserve room to change]]. Clickable connections and portable outputs let a rough idea move into the next design conversation.",
@@ -584,7 +584,7 @@
     }
   },
   "planit": {
-    "headline": "The group is travelling together. [[Their plans are not identical]].",
+    "headline": "A trip plan [[that leaves room for people.]]",
     "scene": "Imagine one person at a conference session, another arriving later, and a shared dinner across town. Put it all into one simple list and the useful differences disappear.",
     "question": "When should a loose idea become a scheduled commitment?",
     "insight": "A board needs room for uncertainty. [[Scheduling should be an explicit decision]], with existing commitments protected.",
@@ -635,7 +635,7 @@
     }
   },
   "earthlog": {
-    "headline": "Pick a place. [[What has Earth been doing here?]]",
+    "headline": "What is happening [[around this place?]]",
     "scene": "Imagine looking at a place on a globe and wanting more than a pin: the latest quake, tonight’s sky, or the weather around it. Those answers arrive from different sources with different levels of certainty.",
     "question": "What is happening here—and how current is the information?",
     "insight": "An incident can remain open after the last observation. [[A status label is not enough]] to explain whether something is happening now.",
@@ -682,7 +682,7 @@
     }
   },
   "hexchess": {
-    "headline": "You know chess. [[The board has changed]].",
+    "headline": "Learning chess [[on a different board.]]",
     "scene": "Imagine recognising the pieces but no longer trusting your instinct for where they can move. A rules page can explain the geometry; a first move makes it tangible.",
     "question": "How can the board become part of the teaching?",
     "insight": "[[Practice makes a rule concrete]]. Six guided piece lessons lead into an untimed first game with move highlights.",
@@ -733,7 +733,7 @@
     }
   },
   "dashf1": {
-    "headline": "Follow the battle. [[Know what the feed knows]].",
+    "headline": "Follow the driver. [[Keep the race in view.]]",
     "scene": "Imagine following two drivers through a race weekend. Timing, position, tyres, and telemetry compete for attention—and not every channel is available in every session.",
     "question": "What should the dashboard do when its data coverage changes?",
     "insight": "A smooth marker can still be an estimate. [[The mode should determine the promise]] the interface makes.",
@@ -780,7 +780,7 @@
     }
   },
   "hued": {
-    "headline": "One colour. [[A reason to look a little closer]].",
+    "headline": "One colour. [[A reason to look closer.]]",
     "scene": "Imagine being asked to make something creative today. A blank prompt is wide open; one findable colour gives your attention somewhere specific to go.",
     "question": "How much structure helps creativity begin?",
     "insight": "[[A small shared constraint]] gives the day a common starting point without prescribing the photograph.",
@@ -827,7 +827,7 @@
     }
   },
   "yuva-panaji": {
-    "headline": "The event page is only [[the beginning of the work]].",
+    "headline": "An event page [[is only the beginning.]]",
     "scene": "Imagine someone finding an event and registering. Their next step is attendance. For the committee, that same action starts a chain of rosters, corrections, desk sheets, and follow-up.",
     "question": "Can one action stay useful all the way to the event desk?",
     "insight": "[[The public journey and the operational record]] are parts of the same service. The handoff matters as much as the page.",
@@ -878,7 +878,7 @@
     }
   },
   "deckforge": {
-    "headline": "The deck is a PDF. [[The idea is still editable]].",
+    "headline": "A PDF deck [[you can work with again.]]",
     "scene": "Imagine needing to revise one text block or animate one diagram, but having only the exported PDF. The visual is preserved; the convenient objects are gone.",
     "question": "What does it take to recover something a presenter can actually work with?",
     "insight": "[[Recognisable objects make editability useful]]. Text, paths, and images need to become meaningful layers rather than a pile of drawing instructions.",
@@ -929,7 +929,7 @@
     }
   },
   "vansh-vriksha": {
-    "headline": "A name is one record. [[A family is a set of connections]].",
+    "headline": "Family connections [[with a source to follow.]]",
     "scene": "Imagine recognising a relative in an archive and wanting to know how the relationship was recorded. The diagram can show a connection, but it also needs a basis you can inspect.",
     "question": "How can an archive invite contribution without pretending every claim is settled?",
     "insight": "[[Provenance belongs with the relationship]]. A family graph, versioned records, and review make different parts of that promise concrete.",
@@ -980,7 +980,7 @@
     }
   },
   "premoney": {
-    "headline": "The app found a transaction. [[Can you trust the number?]]",
+    "headline": "A bank message [[is not always a clean transaction.]]",
     "scene": "Imagine an expense app reading a bank alert. Automation has saved an entry—but if it guessed the amount or merchant, the summary now looks more certain than its input.",
     "question": "How should automatic tracking admit that it is unsure?",
     "insight": "[[A reviewable uncertainty is useful information]]. Confidence, rejection reasons, and unresolved merchants give correction a place in the workflow.",
@@ -1027,7 +1027,7 @@
     }
   },
   "soundbox": {
-    "headline": "The next note can [[wait for you]].",
+    "headline": "The song waits [[until you are ready.]]",
     "scene": "Imagine knowing the song you want to play, but being unable to read a page of notation or keep up with a timed lesson. Finding the right key already takes attention.",
     "question": "What changes when the lesson follows the learner’s pace?",
     "insight": "[[Removing the clock changes the interaction]]. The default practice loop waits for the expected note or chord, with space to retry.",
@@ -1078,7 +1078,7 @@
     }
   },
   "wheelie": {
-    "headline": "Before riding together, [[everyone has to meet]].",
+    "headline": "Different starting points. [[One place to meet.]]",
     "scene": "Imagine a group starting from different parts of a city. Sharing a destination does not yet answer where to meet or how to stay coordinated once the ride begins.",
     "question": "Which coordination decisions belong before the group is moving?",
     "insight": "[[The ride starts with a rendezvous]]. Planning, rider location, and helmet voice solve different moments of the same service.",
@@ -1125,7 +1125,7 @@
     }
   },
   "matinee": {
-    "headline": "A long watchlist. [[What are you watching tonight?]]",
+    "headline": "Less scrolling. [[A film worth saving.]]",
     "scene": "Imagine having plenty of saved titles and still spending the evening deciding. Discovery only becomes useful when it helps a person make a choice that fits.",
     "question": "How can personal history help without filling the feed with more of the same?",
     "insight": "[[Preference and variety need to work together]]. Ratings can guide the next suggestions, while repetition and language choices deserve their own controls.",
@@ -1172,7 +1172,7 @@
     }
   },
   "birthsky": {
-    "headline": "A moment in your life. [[A sky you can keep]].",
+    "headline": "Turn a time and place [[into a sky to keep.]]",
     "scene": "Imagine choosing a meaningful date and place, then seeing the sky interpreted as something personal. The experience has to connect a precise-looking visual to understandable inputs.",
     "question": "How can a technical chart become a meaningful personal object?",
     "insight": "[[The reveal and the keepsake are one journey]]. Time and place shape the view; annotation and aspect ratio shape how it is kept.",
@@ -1223,7 +1223,7 @@
     }
   },
   "scalesee": {
-    "headline": "You can read the number. [[Can you picture the difference?]]",
+    "headline": "How much bigger? [[Show the difference.]]",
     "scene": "Imagine comparing a million with a billion. The arithmetic is simple; making the difference feel concrete is another task.",
     "question": "When does making both quantities visible change the meaning of the picture?",
     "insight": "[[Legibility and proportional truth can pull apart]]. True scale may make one quantity almost disappear; a logarithmic view needs to declare its transformation.",
@@ -1274,7 +1274,7 @@
     }
   },
   "where-would-i-be": {
-    "headline": "Choose your ground. [[Let time move it]].",
+    "headline": "Where would this place be [[as the plates move?]]",
     "scene": "Imagine following the patch of crust beneath a familiar place over a time span you cannot experience. One personal point of reference gives deep time somewhere to begin.",
     "question": "How can a compelling journey keep the model’s limits in view?",
     "insight": "[[A smooth animation is still conditional]]. Holding present plate velocities constant creates an extrapolation whose limits grow with the horizon.",
@@ -1321,7 +1321,7 @@
     }
   },
   "the-blog": {
-    "headline": "A finished draft should [[feel close to publishing]].",
+    "headline": "A home for my writing, [[in the form it needs.]]",
     "scene": "Imagine finishing a poem and then having to switch from writing into a development workflow. The mechanics of publishing can become a reason to put the piece aside.",
     "question": "What should the author have to think about after the writing is done?",
     "insight": "[[Publishing state belongs in the editor]]. A draft, a save, and a live page are different moments that need clear feedback.",
@@ -1368,7 +1368,7 @@
     }
   },
   "office-games": {
-    "headline": "The room is ready. [[Whose turn is it?]]",
+    "headline": "Get everyone in. [[Keep the round moving.]]",
     "scene": "Imagine a short team break being spent explaining how to join, who can answer, and why the game is waiting. The social rhythm depends on those transitions being obvious.",
     "question": "What does the group need to understand at every handoff?",
     "insight": "[[Shared state has to become shared understanding]]. Room entry, team roles, and the answering/stealing sequence all contribute to the pace.",
@@ -1419,7 +1419,7 @@
     }
   },
   "forma": {
-    "headline": "A health reading needs [[more than a number]].",
+    "headline": "Health readings [[with the context attached.]]",
     "scene": "Imagine opening a health dashboard after a watch sync. One measurement is recent, one was last recorded days ago, and another has not been shared. Similar-looking numbers can hide very different situations.",
     "question": "How can a daily overview make the meaning of each reading clear?",
     "insight": "[[Data quality is part of the experience]]. Source, measurement time, missing inputs and model coverage change how a reading should be interpreted.",
@@ -1470,7 +1470,7 @@
     }
   },
   "ohcaptain": {
-    "headline": "Six vessels. [[One shared decision.]]",
+    "headline": "Sail your ship. [[Coordinate the fleet.]]",
     "scene": "Imagine taking damage while an operator asks for repairs and an enemy crew captures a relay. The captain must decide where shared supplies go while still steering a ship.",
     "question": "What needs to stay visible when sailing, fighting and command happen together?",
     "insight": "[[Information needs a place and a priority]]. An urgent hull warning, a spending decision and a full fleet overview should not demand attention in the same way.",
@@ -1518,6 +1518,288 @@
       "need": "Know who can act, what is urgent and where the next objective is.",
       "friction": "Combat, spending requests and tactical detail can overwhelm the same screen.",
       "implication": "Preserve immediate awareness and reveal deliberate command detail when requested."
+    }
+  },
+  "halo": {
+    "headline": "Keep the action [[close to the pointer.]]",
+    "scene": "Imagine selecting text, opening an app and returning to the same document several times. A small set of nearby actions could keep that sequence from becoming a tour of menus.",
+    "question": "How much can a shortcut tool offer without making its first choice slower?",
+    "insight": "[[A small first ring needs a clear way to grow]]. Stable directions, app-specific contexts and folders serve different levels of familiarity.",
+    "pivot": "I kept the first ring focused and made the editor use the same positions that appear around the pointer.",
+    "takeaway": "A shortcut is useful when returning to the task feels easy.",
+    "journey": [
+      {
+        "title": "Open",
+        "detail": "Invoke the ring near the current pointer."
+      },
+      {
+        "title": "Choose",
+        "detail": "Click a labelled action or use the hold-and-flick gesture."
+      },
+      {
+        "title": "Configure",
+        "detail": "Select the same slot in the editor and adjust its action."
+      }
+    ],
+    "decisionLeads": [
+      "Make the first choice spatial",
+      "Let the editor mirror the ring",
+      "Keep specialised actions out of the first layer"
+    ],
+    "annotations": [
+      {
+        "title": "Visual editor",
+        "detail": "The selected slot and its settings share one view."
+      },
+      {
+        "title": "Platform scope",
+        "detail": "Some actions depend on OS capabilities or granted permissions."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "halo",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Desktop user with a few repeated actions",
+      "context": "Switching between a document, apps and small utility tasks.",
+      "need": "Reach a familiar action without a long interruption.",
+      "friction": "Too many shortcuts and contexts become another thing to remember.",
+      "implication": "Keep the first ring small, stable and easy to edit."
+    }
+  },
+  "binnder": {
+    "headline": "Review the file. [[Keep a way back.]]",
+    "scene": "Imagine swiping through large downloads and realising that the last gesture targeted the wrong file. The interface needs to answer what happened and whether it can be reversed.",
+    "question": "How can a quick review still make destructive actions clear?",
+    "insight": "[[Keep, bin and permanent deletion are different decisions]]. Their consequences need different feedback, not just different swipe directions.",
+    "pivot": "I gave each action an explicit control and kept the file, consequence and recovery route close together.",
+    "takeaway": "The recovery path is part of the cleanup flow.",
+    "journey": [
+      {
+        "title": "Inspect",
+        "detail": "Preview the largest remaining file and check its details."
+      },
+      {
+        "title": "Decide",
+        "detail": "Keep it, bin it or confirm permanent deletion."
+      },
+      {
+        "title": "Recover",
+        "detail": "Use Undo while pending or restore from the bin."
+      }
+    ],
+    "decisionLeads": [
+      "Keep the file visible while deciding",
+      "Give permanent deletion its own commitment",
+      "Describe the bin honestly"
+    ],
+    "annotations": [
+      {
+        "title": "Sample files",
+        "detail": "The images show an isolated test queue, not personal storage."
+      },
+      {
+        "title": "Space accounting",
+        "detail": "Binned files remain on disk until permanently deleted."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "binnder",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Android user reviewing shared-storage files",
+      "context": "Working through a large-file queue and deciding what to keep.",
+      "need": "Understand the file and the consequence before committing.",
+      "friction": "Fast gestures can hide the difference between temporary and permanent removal.",
+      "implication": "Keep previews and fixed controls visible, with clear recovery states."
+    }
+  },
+  "pureeq": {
+    "headline": "Find a sound [[you can adjust and keep.]]",
+    "scene": "Imagine wanting clearer music but not knowing whether to change bass, treble or one particular band. A guided starting point needs to be understandable before the sliders become useful.",
+    "question": "How can sound tuning be guided without making its result feel final?",
+    "insight": "[[Audibility and preference answer different questions]]. The flow should explain that difference and leave the suggestion open to revision.",
+    "pivot": "I separated preparation, listening and taste, then kept comparison, adjustment and reset available around the result.",
+    "takeaway": "The person should understand the suggestion well enough to change it.",
+    "journey": [
+      {
+        "title": "Prepare",
+        "detail": "Check headphones, environment, volume and channels."
+      },
+      {
+        "title": "Listen and compare",
+        "detail": "Report tones, then choose between music treatments."
+      },
+      {
+        "title": "Adjust and keep",
+        "detail": "Compare, fine-tune, save or export the profile."
+      }
+    ],
+    "decisionLeads": [
+      "Explain the two kinds of input",
+      "Leave the suggestion editable",
+      "Carry context into export"
+    ],
+    "annotations": [
+      {
+        "title": "Actual setup",
+        "detail": "The screenshots show preparation, not fabricated test results."
+      },
+      {
+        "title": "Non-clinical scope",
+        "detail": "The personal tuning process is not a medical hearing assessment."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "pureeq",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Android listener tuning a pair of headphones",
+      "context": "Looking for a guided starting point rather than editing frequency bands unaided.",
+      "need": "Understand the inputs and retain control over the sound.",
+      "friction": "A generated curve can look like an objective verdict.",
+      "implication": "Explain the stages and keep comparison and reset close to adjustments."
+    }
+  },
+  "hidden-identity-chess": {
+    "headline": "Familiar chess. [[Very different information.]]",
+    "scene": "Imagine knowing how a knight moves but not knowing which enemy piece is a knight. The board is familiar; the information behind the decision is not.",
+    "question": "How do familiar controls explain a game with unfamiliar information?",
+    "insight": "[[The board alone cannot explain the rules]]. Setup, hidden identities and the three turn actions need to be visible in the interaction.",
+    "pivot": "I kept the board central and made the difference between moving, bluffing and challenging explicit.",
+    "takeaway": "Familiarity should help someone learn, not conceal a different rule.",
+    "journey": [
+      {
+        "title": "Arrange",
+        "detail": "Place an army privately before the game."
+      },
+      {
+        "title": "Play",
+        "detail": "Choose a move or a bluff with the visible information."
+      },
+      {
+        "title": "Investigate",
+        "detail": "Use history and a challenge when a move needs scrutiny."
+      }
+    ],
+    "decisionLeads": [
+      "Make hidden information explicit",
+      "Name the unusual actions",
+      "Give the board the space"
+    ],
+    "annotations": [
+      {
+        "title": "Independent adaptation",
+        "detail": "The original concept and rules are credited to Triple S Games."
+      },
+      {
+        "title": "Actual computer mode",
+        "detail": "The captures show the app, not a fabricated multiplayer session."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "hidden-identity-chess",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Chess player learning a hidden-information variant",
+      "context": "Recognising the board while learning different movement and challenge expectations.",
+      "need": "Understand which information is private and which action is available.",
+      "friction": "Ordinary chess habits can conceal the rules that changed.",
+      "implication": "Name the unusual actions and keep their consequences inspectable."
+    }
+  },
+  "five-dead": {
+    "headline": "Keep the table moving. [[Keep the turn clear.]]",
+    "scene": "Imagine a special card changing the direction of play just as an animation finishes. Everyone needs to know what changed and who acts next.",
+    "question": "What does the next player need to see before choosing a card?",
+    "insight": "[[The state change matters more than the effect]]. Total, turn and the selected card need to remain understandable through the animation.",
+    "pivot": "I gave the running total a stable place and kept card selection, commitment and turn feedback distinct.",
+    "takeaway": "An effect has done its job when the table knows what happens next.",
+    "journey": [
+      {
+        "title": "Choose a table",
+        "detail": "Select bots, shared-device play or an online room."
+      },
+      {
+        "title": "Read the turn",
+        "detail": "Check the total, discard and available hand."
+      },
+      {
+        "title": "Play and continue",
+        "detail": "Commit a card and follow its effect into the next turn."
+      }
+    ],
+    "decisionLeads": [
+      "Keep the running total central",
+      "Separate choosing from playing",
+      "Explain the mode before the table starts"
+    ],
+    "annotations": [
+      {
+        "title": "Actual game artwork",
+        "detail": "Generated arena and card art appear in the game itself and are identified as such."
+      },
+      {
+        "title": "Disclosed variant",
+        "detail": "More-than-six-player tables use documented house rules."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "five-dead",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Player joining a short card game",
+      "context": "Learning the digital table and special-card feedback, possibly on a phone.",
+      "need": "Know the current total, available action and next turn.",
+      "friction": "Crowded hands and effects can hide a simple decision.",
+      "implication": "Keep core state stable and use clear commitment feedback."
+    }
+  },
+  "alibi": {
+    "headline": "Watch privately. [[Give just enough away.]]",
+    "scene": "Imagine one person still watching while everyone else begins discussing their clue. The game needs to coordinate the phase without revealing which clip anyone received.",
+    "question": "How can a shared round protect information that belongs to one player?",
+    "insight": "[[Shared timing and private information need separate treatment]]. A visible phase can coordinate the room without exposing a clip or a vote.",
+    "pivot": "I made the round sequence explicit and kept solo practice visibly different from a room of real players.",
+    "takeaway": "A clear next step leaves more room for the conversation.",
+    "journey": [
+      {
+        "title": "Enter",
+        "detail": "Create or join a room, or choose labelled solo practice."
+      },
+      {
+        "title": "Watch and clue",
+        "detail": "See a private clip and submit one word."
+      },
+      {
+        "title": "Discuss and reveal",
+        "detail": "Compare shared clues, vote privately and see the result."
+      }
+    ],
+    "decisionLeads": [
+      "Keep private viewing separate from the group phase",
+      "Make practice an honest invitation",
+      "Explain waits and recovery"
+    ],
+    "annotations": [
+      {
+        "title": "Labelled practice",
+        "detail": "The capture includes simulated players rather than fabricated participation."
+      },
+      {
+        "title": "Playback dependency",
+        "detail": "Clips use the official YouTube player and can be unavailable."
+      }
+    ],
+    "evidenceTag": "Original project and interface captures · reviewed October 2026",
+    "tone": "alibi",
+    "audience": {
+      "basis": "Design assumption",
+      "label": "Friend joining a social video game",
+      "context": "Entering a room and learning the round while keeping a clip private.",
+      "need": "Understand the phase and what can safely be shared.",
+      "friction": "Playback delays and unclear waits interrupt the group.",
+      "implication": "Show readiness, private boundaries and the host’s next available action."
     }
   }
 }

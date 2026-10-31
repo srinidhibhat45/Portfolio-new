@@ -3,7 +3,7 @@
     "slug": "onespace",
     "name": "OneSpace",
     "kind": "ux",
-    "headline": "Make the next class easier to find.",
+    "headline": "Finding a class file should be straightforward.",
     "summary": "A research-led communication concept for students and teachers navigating classes, files, and announcements across disconnected apps.",
     "role": "UX research, problem framing, flows & interface design",
     "status": "Design challenge concept",
@@ -47,8 +47,8 @@
         "tradeoff": "The deck also explores watch support and parental controls. Today I would defer those until the core retrieval journey had been tested."
       }
     ],
-    "outcome": "I produced an end-to-end communication concept covering spaces, channels, chat, files, announcements, calls, and preferences. The clearest design result is the separation of time-sensitive announcements and retrievable resources from the conversation stream. The original project ended at prototype stage, with usability studies identified as the next step.",
-    "reflection": "My most useful takeaway is that willingness to try an all-in-one app is different from needing one. Revisiting the work, I would position the first release around finding class resources and acting on announcements, then earn the right to expand.",
+    "outcome": "I designed spaces for classes, channels for conversation, and separate places for files and announcements. The prototype covers the wider communication flow, but those two destinations are the part I would carry into a first release. The project stopped at a prototype; usability testing was the next step.",
+    "reflection": "The survey made me question my original all-in-one idea. Being willing to try a new app did not mean students needed every tool replaced. I would start with finding a file and catching an announcement, then test whether those tasks are enough to justify another app.",
     "nextSteps": [
       "Proposed study: ask students to retrieve an assignment, identify the latest announcement, and join the correct class; compare task success and recovery with their current workflow.",
       "Proposed scope: pilot one class before adding institution-wide migration, parental controls, or a second device. Include teacher setup effort in the evaluation."
@@ -67,12 +67,16 @@
       {
         "src": "assets/cases/onespace/p05.webp",
         "caption": "The original survey: a useful counterpoint to my initial assumption about app overload.",
-        "alt": "Original OneSpace survey slide with response charts."
+        "alt": "Original OneSpace survey slide with response charts.",
+        "width": 1600,
+        "height": 900
       },
       {
         "src": "assets/cases/onespace/p14.webp",
         "caption": "Files and announcements become explicit destinations instead of getting buried in chat.",
-        "alt": "Original OneSpace file store, announcements and profile screens."
+        "alt": "Original OneSpace file store, announcements and profile screens.",
+        "width": 1600,
+        "height": 900
       }
     ],
     "featured": true,
@@ -85,7 +89,7 @@
     "slug": "umatter",
     "name": "uMatter",
     "kind": "ux",
-    "headline": "Lower the threshold for asking for help.",
+    "headline": "A clearer first step towards professional support.",
     "summary": "A 14-hour team challenge exploring a more approachable route from mental-health awareness to finding and booking professional support.",
     "role": "Team lead · UX research & design",
     "status": "Team design challenge concept",
@@ -129,8 +133,8 @@
         "tradeoff": "More destinations can dilute the primary route to professional support; I would test whether they help or distract."
       }
     ],
-    "outcome": "Together, we completed a mobile concept spanning onboarding, expert discovery, provider details, booking, payment, and awareness content within the challenge window. I led the team and contributed UX research and design; Pratik and Nidhi contributed the UI and graphic-design work credited in the original deck. The deliverable was a research-informed prototype.",
-    "reflection": "The research surfaced an important unresolved tension: wanting anonymity and booking an accountable professional service are different requirements. Today I would define what information is visible at each step, explain its purpose, and make the service boundary explicit before expanding the feature set.",
+    "outcome": "We completed the mobile concept within the fourteen-hour challenge, from onboarding and expert profiles to appointment selection and payment. I led the team and the UX research and design. Pratik Manjrekar contributed UI design; Nidhi S Kamath contributed UI and graphic design. Our final artifact was a prototype, not a clinical service.",
+    "reflection": "The survey raised a question we could not resolve in the challenge: how does someone stay anonymous while booking an accountable professional service? I would work through what is shared at each step before adding more features to the concept.",
     "nextSteps": [
       "Proposed validation: test whether participants understand what is private, what a provider can see, and whether the product offers booking or diagnosis.",
       "Proposed iteration: add clear provider credentials, consent and cancellation information, then evaluate the booking journey with appropriate professional input."
@@ -149,12 +153,16 @@
       {
         "src": "assets/cases/umatter/p02.webp",
         "caption": "The original team slide preserves who contributed what.",
-        "alt": "Team Elementors slide naming Srinidhi Bhat, Pratik Manjrekar and Nidhi S Kamath."
+        "alt": "Team Elementors slide naming Srinidhi Bhat, Pratik Manjrekar and Nidhi S Kamath.",
+        "width": 1600,
+        "height": 900
       },
       {
         "src": "assets/cases/umatter/p17.webp",
         "caption": "The designed route from discovering an expert to viewing details, choosing a date, and payment.",
-        "alt": "Original expert list, feed, expert profile, calendar and payment screens."
+        "alt": "Original expert list, feed, expert profile, calendar and payment screens.",
+        "width": 1600,
+        "height": 900
       }
     ],
     "featured": true,
@@ -167,7 +175,7 @@
     "slug": "mucoin",
     "name": "MuCoin",
     "kind": "ux",
-    "headline": "Earn trust one financial detail at a time.",
+    "headline": "Making the first budget less of a form.",
     "summary": "A personal-finance onboarding concept that turns income, expenses, and savings goals into a reviewable starting picture.",
     "role": "Product framing, onboarding flow & interface rationale",
     "status": "Prototype & design rationale",
@@ -188,7 +196,7 @@
     ],
     "problem": "A useful financial picture depends on personal information that takes effort to recall and can feel uncomfortable to share. I structured MuCoin around a sequence that asks for income, fixed expenses, variable expenses, savings goals, and a final review. The design challenge was to make that effort understandable and correctable.",
     "process": [
-      "The original write-up explains the flow screen by screen, including privacy links, expense summaries, editable goals, and review behaviour. It also defines proposed KPIs for each stage. I have reorganised that material around the decisions behind the flow, rather than repeating general design laws.",
+      "The original write-up explains the flow screen by screen, including privacy links, expense summaries, editable goals, and review behaviour. It also defines proposed KPIs for each stage. The design centres on repeatable entry, useful summaries and a review that remains editable.",
       "The source mentions a small user subset when discussing the label Saving Goals, but gives no sample size, protocol, or measured comparison. I treat that as informal input. The numerical completion and drop-off figures in the appendix are targets, not results."
     ],
     "decisions": [
@@ -211,8 +219,8 @@
         "tradeoff": "The old rationale claims review ensures complete task success. That is a hypothesis to test; a confirmation screen cannot guarantee it."
       }
     ],
-    "outcome": "I turned a demanding setup task into a five-stage onboarding prototype with repeatable entry patterns, immediate summaries, and an editable review. The accompanying rationale defines how the flow could be measured. Its completion and drop-off figures are proposed targets rather than observed outcomes.",
-    "reflection": "I would now judge the flow by the quality of the starting financial picture and the person’s understanding of it. More time on a goal screen or more celebration triggers are not inherently better outcomes. Successful correction should count as useful behaviour, not friction to eliminate.",
+    "outcome": "I designed a five-stage setup flow for income, expenses, savings goals and review. The entry patterns repeat, the summaries give something back along the way, and the final review stays editable. The accompanying KPI figures describe targets for a future test, not measured completion or drop-off.",
+    "reflection": "A useful setup should leave someone with a financial picture they understand. I would pay close attention to corrections: noticing and fixing an amount can be a better outcome than finishing the form quickly with the wrong numbers.",
     "nextSteps": [
       "Proposed measures: completion per stage, time to a usable summary, errors noticed during review, and understanding of what happens to entered information.",
       "Proposed study: compare a short path with optional detail against the original sequence. Include irregular income and skipped estimates rather than testing only ideal inputs."
@@ -231,7 +239,9 @@
       {
         "src": "assets/cases/mucoin/p02.webp",
         "caption": "The source is a written design rationale. Its performance claims are reframed here as hypotheses.",
-        "alt": "Original MuCoin rationale for income and expense onboarding."
+        "alt": "Original MuCoin rationale for income and expense onboarding.",
+        "width": 1120,
+        "height": 1585
       }
     ],
     "featured": false,
@@ -244,7 +254,7 @@
     "slug": "gmd",
     "name": "GetMetaData",
     "kind": "ux",
-    "headline": "Turn a dense SEO readout into a usable inspection tool.",
+    "headline": "An SEO panel you can actually scan.",
     "summary": "A browser-extension redesign exploring information hierarchy for people with different levels of SEO experience.",
     "role": "Competitive review, information architecture, wireframes & UI",
     "status": "Redesign prototype",
@@ -288,8 +298,8 @@
         "tradeoff": "The prototype can demonstrate hierarchy and navigation; it cannot prove the extraction bug was resolved."
       }
     ],
-    "outcome": "I delivered a competitive review, persona framing, wireframes, and a linked high-fidelity prototype. The work makes the information-design problem more specific: preserve useful depth and export, improve the route to relevant information, and keep extraction correctness separate from visual presentation. The completed scope is a redesign prototype.",
-    "reflection": "This project sharpened the distinction between exposing more data and making the data useful. Today I would organise the evaluation around actual inspection tasks and preserve export as part of the workflow, rather than judge success from visual freshness alone.",
+    "outcome": "I completed the competitor review, wireframes and high-fidelity prototype. The redesign groups the extension’s information into clearer destinations while retaining its depth and export workflow. I recorded the repeated-output bug separately; an interface prototype could not establish whether extraction had been fixed.",
+    "reflection": "The next test should use real inspection tasks: find a missing description, check headings, compare related issues and export the findings. That would tell me more than asking whether the new panel looks cleaner.",
     "nextSteps": [
       "Proposed study: ask a novice and an experienced practitioner to locate a missing title, inspect image descriptions, and export their findings.",
       "Proposed acceptance criteria: correct extraction without duplication, clear reading order, and useful handling of a page with unusually long or missing values."
@@ -308,12 +318,16 @@
       {
         "src": "assets/cases/gmd/p08.webp",
         "caption": "The original review separates useful capabilities from readability and data-quality problems.",
-        "alt": "Original GetMetaData strengths and weaknesses slide."
+        "alt": "Original GetMetaData strengths and weaknesses slide.",
+        "width": 1600,
+        "height": 900
       },
       {
         "src": "assets/cases/gmd/p14.webp",
         "caption": "The final prototype provides the visual outcome; task-based validation remains the next step.",
-        "alt": "Original high-fidelity GetMetaData extension design."
+        "alt": "Original high-fidelity GetMetaData extension design.",
+        "width": 1600,
+        "height": 900
       }
     ],
     "featured": true,
@@ -326,7 +340,7 @@
     "slug": "steve-wilson",
     "name": "Steve Wilson",
     "kind": "ux",
-    "headline": "Give a designer’s work a clear reading order.",
+    "headline": "Let the work lead the portfolio.",
     "summary": "An early portfolio concept exploring typography, project browsing, and a repeatable case-study template.",
     "role": "Visual direction, page structure & interface concept",
     "status": "Independent visual concept",
@@ -348,7 +362,7 @@
     "problem": "A portfolio has to communicate what a designer does, offer a convincing sample of their work, and make contact straightforward. This early concept uses the fictional Steve Wilson identity to explore that sequence through a home page, work listing, project-detail template, and contact destination.",
     "process": [
       "The available evidence is a four-page visual artifact, including a long project-detail template. It contains sample copy, mock project names, placeholder results, and a sample client attribution. Those are layout content, not my client history or achieved results.",
-      "For this retrospective I evaluated the visible structure: the introduction establishes the designer’s role, the work listing exposes project categories and tools, and the detail template reserves space for the problem, process, outcome, and lessons. No original research or testing record accompanies it."
+      "I organised the pages so that the introduction establishes the designer’s role, the work listing exposes project categories and tools, and the detail template reserves space for the problem, process, outcome, and lessons. No original research or testing record accompanies it."
     ],
     "decisions": [
       {
@@ -370,8 +384,8 @@
         "tradeoff": "In the archive, much of that structure is empty sample content. A template is useful scaffolding, not evidence of a completed case study."
       }
     ],
-    "outcome": "I produced a visual portfolio concept with a work index, reusable project-detail structure, and contact destination. It demonstrates an early attempt to make a portfolio readable at both scanning and deep-reading levels. The fictional identity, sample client attribution, and numerical placeholders belong to the template, not my professional record.",
-    "reflection": "The retrospective lesson is directly relevant to my portfolio today: a convincing case study needs specific decisions and defensible evidence inside the layout. Attractive headings cannot do that work on their own.",
+    "outcome": "I designed a homepage, work index, project-detail template and contact page around the fictional Steve Wilson identity. The exercise helped me explore the difference between scanning a body of work and reading one project closely. Names, client credits and result figures in the original template are sample content.",
+    "reflection": "I would keep the clear browsing structure and rewrite the project pages around actual decisions. A well-proportioned template is useful, but the writing and evidence inside it are what make a portfolio convincing.",
     "nextSteps": [
       "Proposed iteration: replace the sample project with one real story, then test whether a reviewer can identify the role, central decision, and outcome in a short scan.",
       "Proposed UI review: verify contrast, keyboard navigation, responsive reading order, and a concise contact path before implementation."
@@ -386,12 +400,16 @@
       {
         "src": "assets/cases/steve-wilson/p01.webp",
         "caption": "Original home-page concept: identity, introduction, and services.",
-        "alt": "Dark Steve Wilson home-page concept with a yellow accent."
+        "alt": "Dark Steve Wilson home-page concept with a yellow accent.",
+        "width": 1600,
+        "height": 1800
       },
       {
         "src": "assets/cases/steve-wilson/p02.webp",
         "caption": "The work list keeps project browsing separate from the longer case-study template.",
-        "alt": "Original Steve Wilson project listing."
+        "alt": "Original Steve Wilson project listing.",
+        "width": 1600,
+        "height": 1800
       }
     ],
     "featured": false,
@@ -404,7 +422,7 @@
     "slug": "gloria-furniture",
     "name": "Gloria Furniture",
     "kind": "ux",
-    "headline": "Help a shopper move from inspiration to a shortlist.",
+    "headline": "A furniture shop organised around the room.",
     "summary": "A furniture storefront concept connecting room-led browsing, product comparison, and purchase actions.",
     "role": "Visual design & storefront information hierarchy",
     "status": "Storefront concept",
@@ -448,8 +466,8 @@
         "tradeoff": "Those claims need real policies and product information. The visual concept alone cannot establish quality or a working support service."
       }
     ],
-    "outcome": "I produced a complete storefront landing-page concept with category-led browsing and reusable product cards. The page connects an aspirational introduction to practical comparison and service information. Its contribution is visual merchandising and information hierarchy at concept stage.",
-    "reflection": "The next step is less about adding decoration and more about helping a person decide: dimensions, materials, delivery area, and stock status would make this design a more credible shopping tool. I would prioritise that information before increasing promotional content.",
+    "outcome": "I designed a storefront landing page that moves from room inspiration into categories and comparable product cards. Prices and service information sit alongside the imagery so browsing has a practical direction. The artifact is a visual concept; it does not include a working checkout.",
+    "reflection": "I would next add the details someone needs before buying furniture: dimensions, materials, stock and delivery coverage. Those are more useful at this stage than another promotional section.",
     "nextSteps": [
       "Proposed task: find a product within a budget, compare two options, and explain delivery expectations. Record missing information as well as completion.",
       "Proposed iteration: build a product-detail page and a narrow-screen catalogue, using real product data and one clearly prioritised action."
@@ -464,12 +482,16 @@
       {
         "src": "assets/cases/gloria-furniture/p01_01.webp",
         "caption": "The original hierarchy moves from an aspirational hero to category-led browsing.",
-        "alt": "Original Gloria Furniture hero and category layout."
+        "alt": "Original Gloria Furniture hero and category layout.",
+        "width": 1400,
+        "height": 1969
       },
       {
         "src": "assets/cases/gloria-furniture/p01_02.webp",
         "caption": "Repeated product cards carry the browsing pattern through to purchase actions.",
-        "alt": "Original Gloria Furniture featured product groups."
+        "alt": "Original Gloria Furniture featured product groups.",
+        "width": 1400,
+        "height": 1969
       }
     ],
     "featured": false,
@@ -482,7 +504,7 @@
     "slug": "fun-cruises",
     "name": "Fun Cruises Goa",
     "kind": "ux",
-    "headline": "Answer the questions that come before a booking.",
+    "headline": "Choosing a boat before making an enquiry.",
     "summary": "A yacht-rental landing-page concept organised around capacity, price, and the next enquiry.",
     "role": "Landing-page structure, fleet browsing & visual design",
     "status": "Website redesign concept",
@@ -526,8 +548,8 @@
         "tradeoff": "A starting hourly price does not communicate the full cost. Minimum duration, inclusions, fees, and availability would need to be explained next."
       }
     ],
-    "outcome": "I produced a website redesign concept connecting a booking invitation to fleet discovery and enquiry. Capacity, starting rate, and boat type give visitors concrete comparison points alongside the imagery. The delivered scope ends at the landing and fleet-browsing surface.",
-    "reflection": "The strongest part is the move from generic travel imagery to comparable fleet information. I would now make the boundary between enquiry and confirmed booking unmistakable, so the interface never promises inventory or pricing it cannot verify.",
+    "outcome": "I redesigned the landing and fleet-browsing page around boat type, capacity and starting rate. The imagery introduces the experience, while the listings give visitors something concrete to compare before enquiring. Availability and a completed reservation flow are outside the delivered concept.",
+    "reflection": "An enquiry should not look like a confirmed booking. I would make that distinction explicit, then add the inclusions, accessibility details and cancellation terms needed to discuss a trip. Prices in the original design are historical concept content.",
     "nextSteps": [
       "Proposed study: ask a visitor planning for a group to choose a suitable option, explain the expected cost, and identify what remains to confirm.",
       "Proposed extension: add a boat-detail page with availability, inclusions, accessibility information, cancellation terms, and a clear enquiry handoff."
@@ -542,12 +564,16 @@
       {
         "src": "assets/cases/fun-cruises/p01_01.webp",
         "caption": "The upper page connects the experience to a visible booking action and fleet filters.",
-        "alt": "Original Fun Cruises Goa hero, introduction and fleet filters."
+        "alt": "Original Fun Cruises Goa hero, introduction and fleet filters.",
+        "width": 1400,
+        "height": 2166
       },
       {
         "src": "assets/cases/fun-cruises/p01_02.webp",
         "caption": "Fleet listings surface practical information next to the experience imagery.",
-        "alt": "Original Fun Cruises boat listings with capacity and price content."
+        "alt": "Original Fun Cruises boat listings with capacity and price content.",
+        "width": 1400,
+        "height": 2166
       }
     ],
     "featured": false,
@@ -560,7 +586,7 @@
     "slug": "bni-website",
     "name": "BNI Goa",
     "kind": "ux",
-    "headline": "Make a local business network feel approachable.",
+    "headline": "Meet the chapter. Know how to take part.",
     "summary": "A chapter-website concept that connects the organisation’s purpose, the people behind it, and a first visit.",
     "role": "Information hierarchy & website visual design",
     "status": "Chapter website concept",
@@ -604,8 +630,8 @@
         "tradeoff": "The long single-page structure would benefit from a tighter summary and explicit links to meeting details."
       }
     ],
-    "outcome": "I produced a chapter-site concept with a reusable structure for purpose, people, and participation. The invitation gives prospective visitors a next step, while the leadership and member patterns make the network more tangible. The completed work is a visual concept with sample content.",
-    "reflection": "Revisiting the design, content readiness is the most important dependency. A convincing membership experience needs accurate local information and member consent before it needs a larger directory or more prominent global statistics.",
+    "outcome": "I designed a chapter-site concept that brings the organisation’s purpose, leadership, members and invitation into one sequence. Reusable member patterns give the page a structure that could grow with the chapter. The archived design contains sample biographies and is not a record of actual member results.",
+    "reflection": "Before expanding the directory, I would confirm the local chapter information, member permissions and visitor process. The people and meeting details need to be accurate for the invitation to be useful.",
     "nextSteps": [
       "Proposed iteration: replace all sample biographies with verified chapter content and explain the visitor-meeting process before the invitation action.",
       "Proposed evaluation: ask a prospective visitor what the chapter does, whether it is relevant to their business, and what will happen after they request an invitation."
@@ -620,7 +646,9 @@
       {
         "src": "assets/cases/bni-website/p01_01.webp",
         "caption": "The original chapter introduction connects the invitation to a purpose-led overview.",
-        "alt": "Original BNI Victory Goa hero and organisation overview."
+        "alt": "Original BNI Victory Goa hero and organisation overview.",
+        "width": 1400,
+        "height": 2411
       }
     ],
     "featured": false,
@@ -633,7 +661,7 @@
     "slug": "irctc",
     "name": "IRCTC",
     "kind": "ux",
-    "headline": "Put the train search back at the centre.",
+    "headline": "The train search comes first.",
     "summary": "An independent homepage concept exploring the hierarchy between a primary booking task and a large set of secondary services.",
     "role": "Task hierarchy & interface redesign concept",
     "status": "Independent redesign concept",
@@ -677,8 +705,8 @@
         "tradeoff": "The homepage only establishes entry points. It does not demonstrate those destination flows or their error handling."
       }
     ],
-    "outcome": "I produced an independent homepage concept that brings train search into a clear task area and groups secondary services around it. It demonstrates prioritisation within a dense public-service interface. The scope is the homepage concept, with results and booking states left for further development.",
-    "reflection": "A clearer first screen is only one part of booking. I would now carry the design into results, availability changes, fare explanation, and recovery from an unavailable route. Those states determine whether the apparent simplicity survives real use.",
+    "outcome": "I created an independent homepage concept with a clear train-search area and grouped entry points for secondary rail services. The work concentrates on the starting task. Search results, changing availability and the rest of the booking flow were not part of this concept.",
+    "reflection": "I would take the same hierarchy into a difficult journey: no seats available, a changed fare or an unsuitable route. A quieter homepage only helps if the following screens make those decisions understandable too.",
     "nextSteps": [
       "Proposed test: find a train, check an existing journey, and locate a concession option; compare discovery and mistakes without assuming that a shorter visual scan means a successful booking.",
       "Proposed extension: add no-results, changing availability, route correction, keyboard navigation, and narrow-screen form states."
@@ -693,7 +721,9 @@
       {
         "src": "assets/cases/irctc/p01_01.webp",
         "caption": "The concept makes the booking form the visual centre while retaining adjacent rail tasks.",
-        "alt": "Original independent IRCTC redesign with booking panel and service shortcuts."
+        "alt": "Original independent IRCTC redesign with booking panel and service shortcuts.",
+        "width": 1400,
+        "height": 1969
       }
     ],
     "featured": false,
@@ -706,7 +736,7 @@
     "slug": "nityananda",
     "name": "Nitya Nanda",
     "kind": "ux",
-    "headline": "Let the photographs lead, then make contact easy.",
+    "headline": "A photography site that leaves room for the photographs.",
     "summary": "A photography portfolio concept with a deliberately restrained interface and two clear ways into the work.",
     "role": "Portfolio structure & visual design",
     "status": "Independent portfolio concept",
@@ -750,8 +780,8 @@
         "tradeoff": "The concept stops at submission. A complete service needs clear expectations, error messages, and confirmation of what happens next."
       }
     ],
-    "outcome": "I produced an image-led portfolio concept with professional and freelance collections, a restrained navigation vocabulary, and a contact destination. The layout demonstrates how an interface can support a creative body of work without becoming its main subject. The photography credentials in the artifact are illustrative content.",
-    "reflection": "The main improvement I would make is editorial: fewer unsubstantiated biographical claims, stronger captions, and one clear enquiry path. For a photography site, useful image descriptions and fast loading would be part of the design brief from the start.",
+    "outcome": "I designed a restrained portfolio with professional and freelance collections, a small navigation system and a contact destination. The layout lets visitors browse images before deciding to make an enquiry. The biography and photography credentials in the concept are illustrative.",
+    "reflection": "I would spend the next pass on selecting images, writing useful captions and checking loading performance. The interface has already done enough when it helps someone understand the work and find a way to get in touch.",
     "nextSteps": [
       "Proposed study: ask visitors choosing a photographer to identify a relevant body of work and start an enquiry; observe which category language they expect.",
       "Proposed implementation: responsive image sizes, descriptive alternatives, keyboard access, and a complete form confirmation and error flow."
@@ -766,7 +796,9 @@
       {
         "src": "assets/cases/nityananda/p01.webp",
         "caption": "The original full-page concept: images carry the story and contact closes the sequence.",
-        "alt": "Original Nitya Nanda photography portfolio layout."
+        "alt": "Original Nitya Nanda photography portfolio layout.",
+        "width": 1400,
+        "height": 3557
       }
     ],
     "featured": false,
@@ -779,7 +811,7 @@
     "slug": "arkitype",
     "name": "Arkitype",
     "kind": "product",
-    "headline": "Make a design system a set of connected decisions.",
+    "headline": "Change a token. See what it changes.",
     "summary": "A working design-system studio that links foundations, component behaviour, previews, and exports through one model.",
     "role": "Product idea, design-system UX & interaction direction",
     "status": "Public beta",
@@ -823,8 +855,8 @@
         "tradeoff": "Interactive examples add state and complexity; the underlying specimen must remain predictable for documentation and export."
       }
     ],
-    "outcome": "The resulting beta connects editable foundations, a component studio, previews, contrast checks, and handoff. My case-study focus is the design continuity between those surfaces. The 90-component scope makes that direction tangible; first-use clarity remains to be evaluated.",
-    "reflection": "The central lesson is that system quality comes from relationships, not inventory. I would evaluate whether a new designer can make a coherent change, understand where it lands, and hand it off without a second interpretation step.",
+    "outcome": "I shaped Arkitype around the relationship between foundations, component states, previews and handoff. The beta brings those surfaces into one workspace, with a documented library of 90 components. The design question I still want to test is whether a new user can follow a change through the whole system.",
+    "reflection": "I would ask a designer to change a foundation, find the affected component states and prepare a handoff. If they need a second explanation at every step, the workspace is still making them carry too much of the system in their head.",
     "nextSteps": [
       "Proposed study: ask a designer to start from one brand colour, adjust a component, and produce a usable handoff. Record confusion, corrections, and output mismatches.",
       "Proposed measure: time to the first coherent system and the number of inconsistencies discovered after export, with a defined task and baseline."
@@ -850,7 +882,7 @@
     "slug": "applecider",
     "name": "AppleCider",
     "kind": "product",
-    "headline": "Keep early ideas easy to change.",
+    "headline": "Room to sketch before committing to a design.",
     "summary": "A sketch-like wireframing workspace that carries rough screens into clickable prototypes and editable handoff artifacts.",
     "role": "Product idea, sketching workflow & interaction design",
     "status": "Working product",
@@ -894,8 +926,8 @@
         "tradeoff": "Generated structure is a starting point. Placeholder copy and sketch styling should not be presented as finished product requirements."
       }
     ],
-    "outcome": "The resulting product connects a sketch canvas, files workspace, clickable prototypes, and handoff formats. The documented 250-component scope supports exploration, while the deliberately unfinished visual language leaves room for revision. My contribution centres on that idea and experience direction.",
-    "reflection": "The most valuable bridge is between fidelity and commitment. A rough interface can still have meaningful structure, and a useful handoff should preserve that structure without inventing design decisions the sketch never made.",
+    "outcome": "I used an intentionally rough visual language across the canvas, files workspace and prototype flow. The product includes 250 sketch components and editable handoff formats, so an early idea can move forward without pretending to be a finished interface.",
+    "reflection": "The roughness needs to make revision easier, not make the tool harder to use. I would test whether someone can change a screen, demonstrate its flow and hand it over without losing the decisions they already made.",
     "nextSteps": [
       "Proposed evaluation: give participants an early product idea, ask them to revise it after feedback, and then explain the exported prototype to someone else.",
       "Proposed measure: time to the first understandable screen, effort to revise its structure, and corrections needed after export."
@@ -921,7 +953,7 @@
     "slug": "planit",
     "name": "PlanIt",
     "kind": "product",
-    "headline": "Plan for the group without flattening everyone into one schedule.",
+    "headline": "A trip plan that leaves room for people.",
     "summary": "A browser-based itinerary workspace for overlapping plans, different travellers, and different time zones.",
     "role": "Product framing, group-planning journeys & interaction design",
     "status": "Working product",
@@ -965,8 +997,8 @@
         "tradeoff": "A conservative resolver may leave conflicts unresolved. The interface must help the person decide what to relax."
       }
     ],
-    "outcome": "The resulting product brings spatial planning, schedules, maps, and people into a shared trip. Its defining UX contract is deliberate scheduling, protected commitments, and visible conflicts. The next question is whether planners understand that contract when they first encounter it.",
-    "reflection": "The main design contribution is the contract around automation. The useful question is not simply whether the app can assign a time, but whether a planner can predict the change and recover when it conflicts with a real commitment.",
+    "outcome": "I designed the board, itinerary, timeline, map and people views as different ways of working with the same trip. Scheduling is deliberate, pinned commitments stay protected, and conflicts remain visible. That behaviour is the part of PlanIt I would explain first to a new group.",
+    "reflection": "I would try the planner with a late arrival, two parallel activities and a booking that cannot move. The useful test is whether people can predict what Resolve will change and spot a conflict before it becomes a problem on the trip.",
     "nextSteps": [
       "Proposed study: plan a trip with parallel sessions, a pinned departure, and travellers in two zones; ask participants to predict Resolve before using it.",
       "Proposed measure: unexpected schedule changes, correctly identified conflicts, and confidence explaining the final plan."
@@ -992,7 +1024,7 @@
     "slug": "earthlog",
     "name": "Earthlog",
     "kind": "product",
-    "headline": "Give a place a story, without hiding the uncertainty.",
+    "headline": "What is happening around this place?",
     "summary": "Explore earthquakes, weather, and the night sky from one place on a globe.",
     "role": "Experience framing, information hierarchy & map interactions",
     "status": "Working product",
@@ -1036,8 +1068,8 @@
         "tradeoff": "Caveats can overwhelm the visual story, so they belong beside the relevant result rather than only in documentation."
       }
     ],
-    "outcome": "The working globe supports both place search and event discovery. Dates, source links, and model limitations are part of the product direction. I would still need to test whether visitors understand those distinctions.",
-    "reflection": "I would judge this experience by whether someone can explain what a result means and where it came from, as well as whether they can find it.",
+    "outcome": "I brought place search and event discovery together on the globe. A visitor can start with a location or an event, then inspect dates, sources and the relevant model limits. I kept that context close to the result rather than making the globe’s appearance carry the explanation.",
+    "reflection": "I would ask someone to explain one result in their own words: what happened, when it was observed and where the information came from. Finding an event is only part of the task.",
     "nextSteps": [
       "Proposed evaluation: ask visitors to distinguish a recent observation from a modelled forecast and locate the source behind each result.",
       "Proposed measure: correct interpretation of freshness and uncertainty, alongside success finding a relevant local event."
@@ -1059,7 +1091,7 @@
     "slug": "hexchess",
     "name": "HexChess",
     "kind": "product",
-    "headline": "Teach the unfamiliar board through play.",
+    "headline": "Learning chess on a different board.",
     "summary": "A 91-cell chess variant designed around guided learning, readable interaction, and games that survive interruptions.",
     "role": "Learning journey, onboarding & game interactions",
     "status": "Working product",
@@ -1103,8 +1135,8 @@
         "tradeoff": "Long histories create long URLs, and a shared snapshot is readable by anyone given the link."
       }
     ],
-    "outcome": "The resulting game offers a 91-cell board, six guided lessons, practice, saved sessions, and correspondence sharing. The design contribution connects the first explanation to the first usable move; improved learning has not been measured.",
-    "reflection": "Good teaching interaction makes a wrong move recoverable. I would evaluate whether someone can transfer what they learned into a first game, rather than treating tutorial completion alone as success.",
+    "outcome": "I connected the 91-cell board to six guided lessons, practice, saved sessions and correspondence sharing. Legal-move feedback helps explain the unfamiliar geometry where the move happens. I have not measured whether the lessons improve learning.",
+    "reflection": "I would follow a new player from a lesson into their first game. A completed tutorial is less useful evidence than seeing them recognise a move, recover from a mistake and continue without an explanation.",
     "nextSteps": [
       "Proposed study: observe a new player complete a piece lesson and use the same movement unaided in practice.",
       "Proposed checks: reload during a game, resume offline, and exchange a correspondence reply while confirming both players understand the snapshot model."
@@ -1126,7 +1158,7 @@
     "slug": "dashf1",
     "name": "DashF1",
     "kind": "product",
-    "headline": "Keep the race understandable when the data is uneven.",
+    "headline": "Follow the driver. Keep the race in view.",
     "summary": "A race dashboard connecting timing, track context, and replay while distinguishing measured data from estimated positions.",
     "role": "Dashboard hierarchy, driver focus & information design",
     "status": "Working product",
@@ -1170,8 +1202,8 @@
         "tradeoff": "Race interruptions and stale timing can challenge the estimate; smooth motion must not conceal those limits."
       }
     ],
-    "outcome": "The dashboard brings driver focus, track context, timing, and replay together. The UX direction keeps related panels in context and makes differences in data coverage visible. It does not establish improved race comprehension or precision.",
-    "reflection": "The design lesson is that trust depends on making uneven coverage understandable. A useful dashboard can show less information when it knows less, while still helping a person follow the race.",
+    "outcome": "I organised timing, track position, telemetry and replay around one selected driver. The selection carries across panels, while session mode and data coverage explain what each view can show. Estimated positions need to stay visibly different from recorded data.",
+    "reflection": "I would check what someone believes when a feed is incomplete. An empty or estimated view should be understandable without making them leave the race to read a technical explanation.",
     "nextSteps": [
       "Proposed study: ask a viewer to follow a battle and explain which values are observed, historical, or estimated.",
       "Proposed checks: missing telemetry, stale updates, interrupted streams, safety-car periods, and the transition back to replay."
@@ -1180,20 +1212,32 @@
       {
         "label": "Repository README, What’s on screen and Race mode",
         "detail": "Layout, shared focus, data-source boundaries and position-estimation limitations. Reviewed 15 October 2026."
+      },
+      {
+        "label": "Interface capture · 31 October 2026",
+        "detail": "Local built F1DASH, captured 31 October 2026; historical replay, not a live session."
       }
     ],
-    "figures": [],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/dashf1-replay.webp",
+        "alt": "DashF1 actual Monaco 2025 historical replay with timing, track, telemetry and playback controls",
+        "caption": "Actual local dashboard replaying the 2025 Monaco race from OpenF1 data. The prediction panel labels its heuristic estimates.",
+        "width": 1280,
+        "height": 720
+      }
+    ],
     "featured": false,
     "liveUrl": "https://f1dash.srinidhibhat.com/",
-    "cover": "assets/products/f1dash-cover.svg",
-    "coverKind": "cover",
+    "cover": "assets/case-study-evidence/dashf1-replay.webp",
+    "coverKind": "screen",
     "readingMinutes": 2
   },
   {
     "slug": "hued",
     "name": "Hued",
     "kind": "product",
-    "headline": "Turn one colour into a reason to notice the world.",
+    "headline": "One colour. A reason to look closer.",
     "summary": "A daily photography prompt with a shared constraint, on-device scoring, and a warm visual language.",
     "role": "Product concept, creative loop & visual direction",
     "status": "Mobile beta",
@@ -1237,8 +1281,8 @@
         "tradeoff": "Lighting, camera processing, and scene composition affect colour. An unexplained penalty can feel arbitrary."
       }
     ],
-    "outcome": "The mobile beta makes the daily colour loop tangible through a prompt, photographs, feedback, and a shared feed. My contribution is the creative concept and experience direction. Repeat participation and perceived creative value remain to be evaluated.",
-    "reflection": "I would judge this product by whether it encourages satisfying acts of noticing, not just a streak count. The score should help explain the colour challenge without becoming an unquestionable verdict on creativity.",
+    "outcome": "I centred the app on a shared daily colour, a photograph and feedback on the attempt. The warm interface gives the photographs most of the attention; scores, the feed and streaks support the daily activity. Participation and the scoring experience still need user evaluation.",
+    "reflection": "I want the prompt to encourage noticing things, not just protecting a streak. I would ask people what they chose to photograph and how they interpreted the score before deciding whether to make the competitive features more prominent.",
     "nextSteps": [
       "Proposed study: compare how people interpret the prompt and score under different lighting conditions, including whether they understand a low score.",
       "Proposed measure: repeat participation with self-reported creative value; evaluate deadline understanding across time zones."
@@ -1251,20 +1295,32 @@
       {
         "label": "src/lib/scoring.ts and README limitations",
         "detail": "On-device colour evaluation and best-effort heuristics. Reviewed 15 October 2026."
+      },
+      {
+        "label": "Interface capture · 31 October 2026",
+        "detail": "Hued release APK, captured in an isolated Android emulator, 31 October 2026."
       }
     ],
-    "figures": [],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/hued-welcome.webp",
+        "alt": "Hued native Android sign-in screen with email, password and sign-up controls",
+        "caption": "Actual Android sign-in screen. The daily photography flow is described from the project documentation; no account or photographs were used for this capture.",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "featured": false,
     "liveUrl": "https://hued.srinidhibhat.com/",
-    "cover": "assets/products/hued-logo.png",
-    "coverKind": "logo",
+    "cover": "assets/case-study-evidence/hued-welcome.webp",
+    "coverKind": "screen",
     "readingMinutes": 2
   },
   {
     "slug": "yuva-panaji",
     "name": "Yuva Panaji",
     "kind": "product",
-    "headline": "Connect a community’s public story to the work behind it.",
+    "headline": "An event page is only the beginning.",
     "summary": "A community website and operations portal linking event discovery with registration and committee workflows.",
     "role": "Information architecture, registration & volunteer workflows",
     "status": "Working system",
@@ -1308,8 +1364,8 @@
         "tradeoff": "Exported files can become stale. The workflow should explain when a printout was produced and how corrections return to the system."
       }
     ],
-    "outcome": "The resulting service connects public information, event registration, and committee operations. The UX contribution follows information into rosters, corrections, exports, and attendance work, extending the journey beyond the public webpage.",
-    "reflection": "The strongest contribution is continuity between a visitor’s action and a committee member’s next task. I would measure that continuity at real event handoffs, where duplicate entry, missing information, and stale lists become visible.",
+    "outcome": "I connected public event information and registration with the committee’s follow-up work: rosters, corrections, exports and attendance. The public website and operations portal have different jobs, but the information needs to carry from one to the other.",
+    "reflection": "I would review the handoff at an actual event: who checks a registration, who corrects it and what the attendance desk receives. That is where duplicate entry and outdated lists become visible.",
     "nextSteps": [
       "Proposed evaluation: follow one event from discovery through registration, roster correction, and check-in with both participant and committee perspectives.",
       "Proposed measure: duplicate corrections, incomplete registrations, and handoff effort at the event desk, with a documented baseline."
@@ -1331,7 +1387,7 @@
     "slug": "deckforge",
     "name": "DeckForge",
     "kind": "product",
-    "headline": "Recover a deck’s structure, then make it useful again.",
+    "headline": "A PDF deck you can work with again.",
     "summary": "A browser presentation tool that turns PDF drawing instructions into editable objects, animation, and presenting workflows.",
     "role": "Product idea, editing experience & presentation flows",
     "status": "Working product",
@@ -1375,8 +1431,8 @@
         "tradeoff": "Phone pairing still uses signalling, and some remote features exchange preview frames. The privacy explanation should distinguish those paths."
       }
     ],
-    "outcome": "The product connects recovered slide objects with editing, sequencing, presentation, and export. My UX focus is what someone can recognise and do with the recovered content, including the explanation of content that remains an image.",
-    "reflection": "The useful boundary is between faithful recovery and an honest fallback. A tool that explains why part of a page remains an image can be more trustworthy than one that claims every object was successfully recovered.",
+    "outcome": "I organised recovered slide content into recognisable objects that can be edited, sequenced, presented and exported. Some content remains an image, so the interface needs to explain what was recovered and what can actually be changed.",
+    "reflection": "I would use a difficult deck to test the explanation, not just a clean example. Someone should be able to tell why one element is editable and another is not, then choose a workable next step.",
     "nextSteps": [
       "Proposed benchmark: import a defined set of native-text, scanned, multi-column, and dense-vector PDFs; record editability and visible fidelity separately.",
       "Proposed study: revise a real slide and present it, measuring manual corrections and surprises between editor, audience view, and exported output."
@@ -1402,7 +1458,7 @@
     "slug": "vansh-vriksha",
     "name": "Vansh Vriksha",
     "kind": "product",
-    "headline": "Make family connections explorable, and their sources visible.",
+    "headline": "Family connections with a source to follow.",
     "summary": "A community genealogy archive that treats relationships, provenance, and contribution review as parts of the same experience.",
     "role": "Archive concept, relationship exploration & contribution UX",
     "status": "Working archive",
@@ -1446,8 +1502,8 @@
         "tradeoff": "Moderation becomes an operational commitment; the interface should communicate what happens while a submission waits."
       }
     ],
-    "outcome": "The archive connects relationship exploration, sourced records, and contribution review. My UX focus is helping someone understand a connection and its basis. The demonstration dataset exercises the journey without establishing verified family claims.",
-    "reflection": "The design is strongest when it makes the limits of the archive legible. Missing branches and uneven historical coverage should be visible context, not silently mistaken for missing people or social importance.",
+    "outcome": "I designed relationship browsing, record context and contribution review as connected parts of the archive. A person can explore a connection and inspect the basis for it. The demonstration records show the interaction; they do not establish verified family histories.",
+    "reflection": "I would make gaps in the archive easier to recognise. A missing branch can mean incomplete records, so it should not quietly look like a statement about which families or people matter.",
     "nextSteps": [
       "Proposed evaluation: ask a family contributor to submit a relationship, inspect its provenance, and correct a disputed connection.",
       "Proposed review: distinguish demonstration records from sourced records in every public count and assess living-person privacy across search and sharing."
@@ -1469,7 +1525,7 @@
     "slug": "premoney",
     "name": "PreMoney",
     "kind": "product",
-    "headline": "Make automatic expense tracking correctable.",
+    "headline": "A bank message is not always a clean transaction.",
     "summary": "A personal-finance app that converts bank and UPI messages into reviewable transactions, categories, and summaries.",
     "role": "Product concept, transaction review & correction flows",
     "status": "Interactive app",
@@ -1513,8 +1569,8 @@
         "tradeoff": "The product documentation describes external processing paths; disclosures and controls need review before making privacy promises."
       }
     ],
-    "outcome": "The app connects message evidence, suggested transactions, review, correction, and reports. My UX focus is an inspectable financial record with a recoverable route for uncertainty. Transaction accuracy remains a question for a defined evaluation.",
-    "reflection": "The important design question is how gracefully automation admits uncertainty. I would prioritise correcting a wrong financial entry and understanding its origin before adding more summary charts.",
+    "outcome": "I designed a route from the original message to a suggested transaction, correction and summary. The important part is being able to inspect an entry’s origin and fix it when the interpretation is wrong. Accuracy needs to be evaluated against a defined set of messages.",
+    "reflection": "I would start with a wrong amount, a duplicate alert and a message that is not a transaction. If correcting those cases is difficult, adding more charts will not make the financial record more dependable.",
     "nextSteps": [
       "Proposed benchmark: use a consented, redacted alert corpus to measure false accepts, false rejects, duplicate errors, and corrections by bank format.",
       "Proposed release review: document the external-processing and sync paths, then test whether a person understands and controls them."
@@ -1527,20 +1583,32 @@
       {
         "label": "lib/domain/ai/groq_service.dart and lib/ui/settings/sms_sandbox_sheet.dart",
         "detail": "External enrichment payload and diagnostic review surface. Reviewed 15 October 2026."
+      },
+      {
+        "label": "Interface capture · 31 October 2026",
+        "detail": "PreMoney 1.13.0 release APK, captured in an isolated Android emulator, 31 October 2026. No bank messages or personal transactions."
       }
     ],
-    "figures": [],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/premoney-dashboard.webp",
+        "alt": "PreMoney actual Android dashboard showing its empty state and insufficient-data scores",
+        "caption": "Actual Android dashboard with no transactions. Scores stay unavailable until there is enough information; SMS access was skipped for this capture.",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "featured": false,
     "liveUrl": "https://github.com/srinidhibhat45/PreMoney-releases",
-    "cover": "assets/products/premoney.svg",
-    "coverKind": "title",
+    "cover": "assets/case-study-evidence/premoney-dashboard.webp",
+    "coverKind": "screen",
     "readingMinutes": 2
   },
   {
     "slug": "soundbox",
     "name": "SoundBox",
     "kind": "product",
-    "headline": "Let the song wait for the learner.",
+    "headline": "The song waits until you are ready.",
     "summary": "A piano-learning app that connects familiar songs, visible keys, and listening-based progression at the player’s pace.",
     "role": "Learning concept, practice flow & feedback design",
     "status": "Working app",
@@ -1584,8 +1652,8 @@
         "tradeoff": "Streaks and XP can distract from learning if they reward activity without meaningful progress."
       }
     ],
-    "outcome": "The app makes paced practice, alternative arrangements, repetition, and progress visible. My design focus is letting a learner stay with a difficult passage and continue when ready. Recognition reliability and learning outcomes remain to be evaluated.",
-    "reflection": "The strongest interaction is the absence of pressure from a clock. I would evaluate the complete loop—hear the song, locate a note, play, understand feedback, and retry—before judging the app from completion counts.",
+    "outcome": "I designed practice around visible keys, listening-based progression and repeatable passages. Different arrangements give learners more than one way into a song. The app lets them stay with a difficult note; recognition reliability and learning outcomes need separate evaluation.",
+    "reflection": "I would watch the full practice loop: listening, finding a key, playing it, interpreting the feedback and trying again. A passage-completion count would miss much of what makes that experience frustrating or useful.",
     "nextSteps": [
       "Proposed study: observe a beginner learning one short passage with the default wait mode, including how they recover from missed detections.",
       "Proposed benchmark: test recognised notes and chords under varied room noise, microphones, and keyboards; report false advances separately from missed inputs."
@@ -1607,7 +1675,7 @@
     "slug": "wheelie",
     "name": "Wheelie",
     "kind": "product",
-    "headline": "Coordinate the ride before adding more to the rider’s attention.",
+    "headline": "Different starting points. One place to meet.",
     "summary": "A group-riding beta that connects rendezvous planning, rider location, helmet voice, and ride summaries.",
     "role": "Service idea, coordination journeys & interaction constraints",
     "status": "Beta · accessibility polish in progress",
@@ -1651,8 +1719,8 @@
         "tradeoff": "Social summaries can create incentives around speed; the content priorities deserve review before wider use."
       }
     ],
-    "outcome": "The beta brings meeting points, group location, voice, and ride summaries into one service. My UX focus separates preparation, coordination, and reflection. Accessibility polish and controlled evaluation of interaction demands remain next steps.",
-    "reflection": "The next design decision is what to remove from the active-ride surface. Good coordination should reduce interaction demands, with planning and richer controls handled while stopped.",
+    "outcome": "I organised the beta around meeting before a ride, coordinating with the group and reviewing the ride afterwards. Meeting points, group location, helmet voice and summaries serve those different moments. Large controls are a design intention, not evidence that the app is safe to operate while moving.",
+    "reflection": "I would move as much setup as possible into the time before the ride. The next checks belong in a stationary or controlled setting, with particular attention to connection status and anything that asks the rider to look away.",
     "nextSteps": [
       "Proposed evaluation: test rendezvous planning and headset controls while stationary, then assess attention demands under an appropriately controlled protocol.",
       "Proposed checks: poor connectivity, location permission changes, unavailable voice, battery use, and clarity about whether rider positions are stale."
@@ -1661,20 +1729,32 @@
       {
         "label": "Repository README and design.md",
         "detail": "Product pillars, beta status, target-size intent and unfinished accessibility/glove review. Reviewed 15 October 2026."
+      },
+      {
+        "label": "Interface capture · 31 October 2026",
+        "detail": "Wheelie release APK, captured in an isolated Android emulator, 31 October 2026."
       }
     ],
-    "figures": [],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/wheelie-start.webp",
+        "alt": "Wheelie native Android sign-in screen with blank email and password fields",
+        "caption": "Actual Android sign-in screen. Ride planning and group features are described from the project documentation; no account or rider location was used.",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
     "featured": false,
     "liveUrl": "https://github.com/srinidhibhat45/wheelie",
-    "cover": "assets/products/wheelie.svg",
-    "coverKind": "title",
+    "cover": "assets/case-study-evidence/wheelie-start.webp",
+    "coverKind": "screen",
     "readingMinutes": 2
   },
   {
     "slug": "matinee",
     "name": "Matinee",
     "kind": "product",
-    "headline": "Help a film list become a choice.",
+    "headline": "Less scrolling. A film worth saving.",
     "summary": "A cinema-tracking product connecting discovery, a personal watchlist, ratings, and locally generated recommendations.",
     "role": "Discovery concept, browsing journeys & responsive UX",
     "status": "Interactive app",
@@ -1718,8 +1798,8 @@
         "tradeoff": "Density should still preserve readable text, meaningful focus order, and a clear selected title."
       }
     ],
-    "outcome": "The app connects discovery, saved titles, watch history, and ratings. My UX focus carries that personal context into the next choice while leaving room for language preferences and variety. Recommendation relevance has not been measured with a defined method.",
-    "reflection": "I would evaluate whether someone can make a satisfying choice, not whether a recommendation merely receives a click. Familiarity and diversity need to be judged together.",
+    "outcome": "I connected discovery, watchlists, history and ratings so previous choices can inform the next one. Film and series context, language preferences and variety all have a place in that flow. I have not established a measured recommendation-accuracy result.",
+    "reflection": "I would ask whether people found something they wanted to watch, not just something they clicked. I would also check whether suggestions become too familiar after a few ratings.",
     "nextSteps": [
       "Proposed study: compare a new profile with a rated-history profile and ask participants why each suggestion feels relevant or repetitive.",
       "Proposed measure: useful selections, unwanted repetition, and confidence choosing across preferred languages."
@@ -1741,7 +1821,7 @@
     "slug": "birthsky",
     "name": "BirthSky",
     "kind": "product",
-    "headline": "Turn a personal moment into a sky you can keep.",
+    "headline": "Turn a time and place into a sky to keep.",
     "summary": "An astronomy-inspired experience that turns a time and place into a customisable star-map wallpaper.",
     "role": "Experience concept, input journey & visual direction",
     "status": "Working browser project",
@@ -1785,8 +1865,8 @@
         "tradeoff": "Export must preserve legibility and composition across aspect ratios rather than just scale one screenshot."
       }
     ],
-    "outcome": "The browser experience connects personal inputs with a customisable sky and wallpaper exports. My UX focus carries someone from a familiar question to a result they can keep. Input uncertainty and data-handling explanations remain priorities for refinement.",
-    "reflection": "The emotional reveal works best when the inputs remain understandable. Today I would put birth-time uncertainty, time-zone handling, and any collection of personal inputs ahead of additional visual modes.",
+    "outcome": "I designed the journey from entering a time and place to adjusting a star map and exporting a wallpaper. Annotation and output choices let the person decide what belongs in the final image. Time uncertainty and data handling need to stay clear throughout.",
+    "reflection": "I would make it easier to work with an approximate birth time before adding another visual style. The result is personal, so the person should understand which inputs shaped it and what those inputs can reasonably tell them.",
     "nextSteps": [
       "Proposed validation: compare known dates and locations with an authoritative sky reference, including historical daylight-saving and time-zone cases.",
       "Proposed iteration: explain any logging before submission and make uncertain birth-time choices visible in the final result."
@@ -1812,7 +1892,7 @@
     "slug": "scalesee",
     "name": "ScaleSee",
     "kind": "product",
-    "headline": "Make a large number feel like a real difference.",
+    "headline": "How much bigger? Show the difference.",
     "summary": "A visual comparison tool that turns quantities into scenes while keeping the meaning of scale explicit.",
     "role": "Visual explanation, comparison journeys & interaction design",
     "status": "Working browser product",
@@ -1856,8 +1936,8 @@
         "tradeoff": "An exported image needs labels and scale context because it no longer has interactive controls beside it."
       }
     ],
-    "outcome": "The tool offers quantity-specific comparisons, explicit scale modes, sharing, and image export. My design focus makes a numerical relationship inspectable and portable. Correct interpretation of extreme ratios remains a question for user evaluation.",
-    "reflection": "The design lesson is that legibility and proportional truth sometimes pull in different directions. The interface should help the reader understand which trade-off a view makes.",
+    "outcome": "I matched comparison scenes to the quantity being explored and kept the scale mode explicit. Sharing and image export let a comparison leave the tool with its context. Extreme ratios still need testing for correct interpretation.",
+    "reflection": "Sometimes a proportional picture is too small to read and an adjusted view is easy to misread. I would check whether someone can identify the scale mode and explain what the picture does to the original numbers.",
     "nextSteps": [
       "Proposed study: ask readers to estimate the ratio before and after each view, including an extreme comparison and a logarithmic one.",
       "Proposed check: confirm labels, units, assumptions, and scale mode survive in every shared or exported artifact."
@@ -1879,7 +1959,7 @@
     "slug": "where-would-i-be",
     "name": "Where Would I Be…?",
     "kind": "product",
-    "headline": "Give deep time one personal point of reference.",
+    "headline": "Where would this place be as the plates move?",
     "summary": "An interactive globe that lets a chosen place move with a plate-motion model and makes the model’s limits part of the story.",
     "role": "Experience framing, interaction sequence & spatial explanation",
     "status": "Working browser product",
@@ -1923,8 +2003,8 @@
         "tradeoff": "A smooth animation can still imply certainty, so the qualification belongs near the time result."
       }
     ],
-    "outcome": "The globe connects location selection, time exploration, optional layers, and comparison. My UX direction gives deep time a personal entry point while keeping the model boundary near the result. Understanding that distinction still needs evaluation.",
-    "reflection": "The interaction succeeds as a question someone can explore, not as a forecast. I would test whether the person leaves understanding both plate motion and why the long-term path is conditional.",
+    "outcome": "I used a chosen location as the starting point for exploring time on the globe. Time controls, comparison and optional layers support the exploration, while the model limit stays near the result. The long-term path is an extrapolation, not a geological forecast.",
+    "reflection": "I would ask someone to explain why the point moves and why the long-term path is conditional. The interaction should leave them with a useful question about plate motion, not misplaced confidence in a prediction.",
     "nextSteps": [
       "Proposed study: ask a visitor to describe what changed and what assumptions the model makes after a short exploration.",
       "Proposed checks: narrow-screen globe visibility, reduced-motion behaviour, keyboard interaction, and whether uncertainty stays visible at extreme dates."
@@ -1946,7 +2026,7 @@
     "slug": "the-blog",
     "name": "The Blog",
     "kind": "product",
-    "headline": "Make publishing feel like writing.",
+    "headline": "A home for my writing, in the form it needs.",
     "summary": "An editorial site with a browser-based publishing workflow for poems, essays, fiction, and serial writing.",
     "role": "Editorial structure, reading experience & author workflow",
     "status": "Working publishing system",
@@ -1990,8 +2070,8 @@
         "tradeoff": "The documented title-based series matching is convenient but implicit; a visible series field would make mistakes easier to avoid."
       }
     ],
-    "outcome": "The site connects a reading experience with an editorial publishing path. The UX contribution makes room for poems, essays, series, drafts, and release feedback, so the author can focus on the writing and the reader can follow it.",
-    "reflection": "The important shift is from making content fit the tool to making the tool respect the writing. I would next make publishing status and series membership more visible to the author.",
+    "outcome": "I gave poems, essays and ongoing stories a reading structure suited to each form. The publishing flow separates drafts from release, while topics and series help a reader continue. Poetry keeps its line breaks instead of being squeezed into an ordinary article template.",
+    "reflection": "I would make draft status and series membership more explicit in the editor. Those small details affect whether I can publish the right version and whether someone can find the next part of a story.",
     "nextSteps": [
       "Proposed evaluation: publish a draft, update an existing post, and add a series instalment without using development tools.",
       "Proposed measure: accidental publication, broken links after slug edits, and clarity about whether the latest save is live."
@@ -2013,7 +2093,7 @@
     "slug": "office-games",
     "name": "The Office Games",
     "kind": "product",
-    "headline": "Make the next person’s turn obvious.",
+    "headline": "Get everyone in. Keep the round moving.",
     "summary": "A team-trivia experience exploring quick room entry, visible roles, and shared game state for a short social break.",
     "role": "Social game concept, room journey & turn-taking UX",
     "status": "Working project · trivia module",
@@ -2057,8 +2137,8 @@
         "tradeoff": "A connected game needs clear waiting, conflict, reconnection, and host-recovery states."
       }
     ],
-    "outcome": "The reviewed trivia module connects joining, teams, round state, scoring, and chat. My UX focus makes the social sequence and responsibility for the next action visible. Local demonstration and connected play need distinct expectations.",
-    "reflection": "The design opportunity is a shared understanding of what happens next. I would assess joining, waiting, and recovery as carefully as the answer-selection screen.",
+    "outcome": "For the trivia flow documented here, I focused on room entry, teams, scores and the answering-and-stealing sequence. The interface gives the group a shared view of who can act next. Local demo mode and connected play need different expectations.",
+    "reflection": "I would run a short session and pay attention to the pauses: joining, waiting for a team, recovering a connection and changing the host. The answer screen is only one part of whether the break feels easy to join.",
     "nextSteps": [
       "Proposed study: run a short trivia session with several participants and record setup explanations, confused turns, and waiting time.",
       "Proposed checks: separate-device joining, reconnection, duplicate actions, host departure, and a clearly labelled local demo mode."
@@ -2080,7 +2160,7 @@
     "slug": "forma",
     "name": "Forma",
     "kind": "product",
-    "headline": "Give every health reading its context.",
+    "headline": "Health readings with the context attached.",
     "summary": "A native Android health app that brings activity, sleep and personal trends together while making sources, missing data and experimental estimates visible.",
     "role": "Product concept, health-data journeys & interaction design",
     "status": "Native Android app · experimental wellness estimates",
@@ -2125,8 +2205,8 @@
         "tradeoff": "Separating the tasks adds destinations. Clear names and back paths matter, particularly when permissions are partial or a watch has not synced."
       }
     ],
-    "outcome": "Forma offers a native daily overview, dedicated sleep and movement views, inspectable histories and a searchable health library. The UX contribution is a hierarchy that connects an overview to the evidence behind it. The repository documents native and emulator checks; physical Samsung sharing remains device-dependent, and the score models are not clinically validated.",
-    "reflection": "The most useful simplification was giving each kind of detail a clear home. Connection help belongs with Devices; coverage belongs with Your data; a calculation belongs behind its score. I would next check whether people can explain an unavailable or older reading as confidently as a complete one.",
+    "outcome": "I organised the native app around a daily overview, dedicated sleep and movement views, histories and a searchable health library. A score opens into its contributors; device setup and data management have separate destinations. The estimates remain experimental, and Samsung sharing depends on the device and permissions.",
+    "reflection": "Separating Devices from Your data made the next action clearer. I would now check whether someone can explain an unavailable or older reading as readily as a complete one, and whether they can find the inputs behind a score.",
     "nextSteps": [
       "Proposed study: ask people to distinguish sample, shared, direct-watch, older and unavailable readings, then explain what an experimental recovery score does and does not mean.",
       "Proposed device checks: follow granted, denied and partial-permission journeys on a Samsung phone and watch, including delayed sync, expired direct readings and corrected history.",
@@ -2150,12 +2230,16 @@
       {
         "src": "assets/case-study-evidence/forma-today.webp",
         "alt": "Archived Forma native Today screen with demo activity rings and sample heart rate",
-        "caption": "Archived native Today screen with clearly marked demo values. This capture predates the later Health-tab and personal-tool cleanup."
+        "caption": "Archived native Today screen with clearly marked demo values. This capture predates the later Health-tab and personal-tool cleanup.",
+        "width": 1080,
+        "height": 2400
       },
       {
         "src": "assets/case-study-evidence/forma-data.webp",
         "alt": "Forma Your data screen showing sample coverage, export and separate data controls",
-        "caption": "The later Your data panel groups coverage and file controls separately from device setup. All values shown are sample data."
+        "caption": "The later Your data panel groups coverage and file controls separately from device setup. All values shown are sample data.",
+        "width": 1080,
+        "height": 2400
       }
     ],
     "featured": false,
@@ -2170,7 +2254,7 @@
     "slug": "ohcaptain",
     "name": "OhCaptain",
     "kind": "product",
-    "headline": "Make the next fleet decision clear.",
+    "headline": "Sail your ship. Coordinate the fleet.",
     "summary": "A 3-v-3 naval game exploring shared command, role-specific decisions and a combat interface that keeps the sea in view.",
     "role": "Game concept, captain/operator journeys & tactical interface design",
     "status": "Playable browser prototype · keyboard & mouse",
@@ -2215,8 +2299,8 @@
         "tradeoff": "A quieter interface can hide context that an experienced player wants. The map and overview must provide a dependable route to that detail, and the priority policy needs human playtesting."
       }
     ],
-    "outcome": "The prototype connects role selection, solo AI-filled matches, room-based crew play and a single capture-and-hold arena. Its combat interface separates immediate awareness, spending and tactical inspection. The portfolio captures show the actual local game, rather than presenting the cinematic menu artwork as gameplay. Multi-device reliability, competitive balance and player comprehension remain evaluation work.",
-    "reflection": "A fleet game needs coordination as much as combat. The clearest direction was to make responsibility explicit and reduce the number of things demanding attention at once. I would judge the next iteration by whether a new crew understands who can act, what is urgent and why control of a relay matters.",
+    "outcome": "I separated immediate battle awareness, fleet spending and tactical inspection across the combat view, Fleet drawer and overview. The prototype supports solo AI-filled matches and crew rooms in one capture-and-hold arena. The captures here show the actual game; the illustrated harbor is menu artwork.",
+    "reflection": "I would put a new crew through requesting a repair, spending supplies and choosing a relay without coaching. Missed requests and time spent searching the overview would help me decide what to simplify next.",
     "nextSteps": [
       "Proposed playtest: form two crews and ask players to explain their role, request or buy a repair, and identify the relay that matters next without coaching.",
       "Proposed checks: invitation and room entry, role reassignment, a guest disconnecting, restrictive peer-to-peer networks, and an honest explanation when a host leaves.",
@@ -2240,12 +2324,16 @@
       {
         "src": "assets/case-study-evidence/ohcaptain-combat.webp",
         "alt": "OhCaptain actual solo gameplay with compact battle score, hull status and persistent map",
-        "caption": "Actual local gameplay with an AI-filled crew: compact battle status, a persistent map, the Fleet control and the player’s hull."
+        "caption": "Actual local gameplay with an AI-filled crew: compact battle status, a persistent map, the Fleet control and the player’s hull.",
+        "width": 1280,
+        "height": 720
       },
       {
         "src": "assets/case-study-evidence/ohcaptain-map.webp",
         "alt": "OhCaptain expanded tactical map with both fleets, islands and eight labeled relays",
-        "caption": "A detail of the actual expanded tactical map. Both fronts, ship positions and relay ownership share the same view; the solo overview pauses play."
+        "caption": "A detail of the actual expanded tactical map. Both fronts, ship positions and relay ownership share the same view; the solo overview pauses play.",
+        "width": 643,
+        "height": 414
       }
     ],
     "featured": false,
@@ -2255,5 +2343,539 @@
     "coverKind": "screen",
     "readingMinutes": 5,
     "productHeaderLabel": "GitHub project"
+  },
+  {
+    "slug": "halo",
+    "name": "Halo",
+    "kind": "product",
+    "headline": "Keep the action close to the pointer.",
+    "summary": "A desktop action ring for frequently used shortcuts, with app-specific layouts and a visual editor.",
+    "role": "Interaction direction, action organisation & configuration UX",
+    "status": "Desktop utility · macOS and Windows",
+    "context": "Pointer-based shortcuts",
+    "facts": [
+      {
+        "value": "8",
+        "label": "slots in a ring"
+      },
+      {
+        "value": "Per app",
+        "label": "different action sets"
+      },
+      {
+        "value": "Click or flick",
+        "label": "two ways to choose"
+      }
+    ],
+    "problem": "A useful shortcut is one I can reach without breaking the task I am doing. Halo puts a ring of actions around the pointer, instead of asking me to hunt through menus or remember another keyboard combination. The design problem was keeping that first choice quick while still allowing the ring to grow.",
+    "process": [
+      "I organised the experience around opening the ring, choosing a direction and returning to the original task. Clicking supports a deliberate choice; holding the shortcut, moving towards an action and releasing supports a quicker gesture once the layout is familiar.",
+      "The editor exposes the same ring spatially. Selecting a slot opens its action, app behaviour, label and appearance settings. App-specific rings and folders hold more choices without putting every action into the first ring.",
+      "Halo is an independent project inspired by Logitech’s Actions Ring. I focused on the interaction and visual configuration. Comparing click and flick selection with familiar keyboard shortcuts is still a useful next test."
+    ],
+    "decisions": [
+      {
+        "title": "Make the first choice spatial",
+        "choice": "Keep actions in stable positions around the pointer, with labels available while choosing.",
+        "reason": "A direction can become familiar through use, while labels help someone who is still learning the layout.",
+        "tradeoff": "Moving actions frequently would work against that familiarity. Customisation needs to feel deliberate."
+      },
+      {
+        "title": "Let the editor mirror the ring",
+        "choice": "Select a slot in the ring and edit that action beside it.",
+        "reason": "The person can see which position they are changing instead of translating between a list and the final layout.",
+        "tradeoff": "A visual editor still needs clear names and keyboard access; position alone is not enough."
+      },
+      {
+        "title": "Keep specialised actions out of the first layer",
+        "choice": "Use app-specific rings and folders for actions that belong to a particular context.",
+        "reason": "A general ring can stay small while a specialist workflow has its own useful choices.",
+        "tradeoff": "Context changes and nested folders must remain predictable. More actions do not automatically make the tool faster."
+      }
+    ],
+    "outcome": "I gave the ring and its editor the same spatial model, with click and hold-and-flick selection, per-app configurations and nested action folders. The app supports actions such as app control, media, window management and snippets. Some actions depend on the operating system and the permissions available.",
+    "reflection": "I would start a comparison with a small, familiar task set rather than a ring full of possibilities. I want to know which positions people remember, when they hesitate and whether app-specific rings help or surprise them.",
+    "nextSteps": [
+      "Proposed study: configure three frequently used actions, repeat the task after a break and compare hesitation with an existing shortcut method.",
+      "Proposed checks: keyboard-only configuration, ring changes between apps, folder backtracking and permission-denied actions."
+    ],
+    "sources": [
+      {
+        "label": "Halo README · using and customising the ring",
+        "detail": "Click/flick selection, app-specific rings, folders, platform support and permission boundaries. Reviewed 31 October 2026."
+      },
+      {
+        "label": "Original editor and ring documentation images",
+        "detail": "Action-Ring/docs/images/editor.png and classic.png. Existing project graphics, not newly generated interface concepts. The ring example uses a neutral illustrated background."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/halo-editor.webp",
+        "alt": "Halo original ring editor with a selected Finder action and its settings",
+        "caption": "Original Halo editor capture from the project documentation. The action’s position and settings are visible together.",
+        "width": 1100,
+        "height": 740
+      },
+      {
+        "src": "assets/case-study-evidence/halo-ring.webp",
+        "alt": "Halo ring example with a labelled Play Pause action over a neutral illustrated page",
+        "caption": "Original ring example from the project documentation, shown over a neutral illustrated page rather than a live document.",
+        "width": 720,
+        "height": 720
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://github.com/srinidhibhat45/Halo",
+    "productActionLabel": "View Halo on GitHub",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/halo-editor.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "binnder",
+    "name": "Binnder",
+    "kind": "product",
+    "headline": "Review the file. Keep a way back.",
+    "summary": "A native Android file-review app that combines large previews with explicit keep, bin and permanent-delete actions.",
+    "role": "File-review flow, destructive-action UX & information hierarchy",
+    "status": "Native Android app · early release",
+    "context": "Storage review",
+    "facts": [
+      {
+        "value": "5 seconds",
+        "label": "undo window"
+      },
+      {
+        "value": "30 days",
+        "label": "bin retention"
+      },
+      {
+        "value": "7 days",
+        "label": "before kept files return"
+      }
+    ],
+    "problem": "Storage cleanup is easy to rush and difficult to undo. I wanted the file itself to be the main thing on screen, with a clear difference between keeping it, moving it to a bin and deleting it permanently. The interaction should make those consequences visible before a gesture becomes an operation.",
+    "process": [
+      "I put the largest files first and used a large preview with fixed actions. File-type filters help narrow the queue, while matching buttons and accessibility actions make swiping optional.",
+      "I separated reversible binning from permanent deletion. An upward swipe asks for confirmation, and every deletion action has a five-second Undo window before the operation begins. A kept file is hidden from review for seven days rather than treated as permanently resolved.",
+      "The bin reports its retention period and supports preview and restore. Moving a file there does not free storage, so the interface must not count those bytes as recovered space. The captures use sample portfolio files in a separate emulator, not a scan of someone’s phone."
+    ],
+    "decisions": [
+      {
+        "title": "Keep the file visible while deciding",
+        "choice": "Use a large preview, file name, size and fixed Keep, Bin and Delete forever controls.",
+        "reason": "The decision should be about a recognisable file, not an unfamiliar path in a long list.",
+        "tradeoff": "Some formats need another installed app. The preview must explain that limitation without implying a file is broken."
+      },
+      {
+        "title": "Give permanent deletion its own commitment",
+        "choice": "Ask for confirmation and name the file before queuing permanent deletion, then offer the individual Undo window.",
+        "reason": "A gesture alone is too easy to misinterpret when the result cannot be recovered through the app.",
+        "tradeoff": "Extra confirmation slows cleanup. It belongs to the more consequential action rather than every decision."
+      },
+      {
+        "title": "Describe the bin honestly",
+        "choice": "Show retention and restoration separately from bytes actually deleted.",
+        "reason": "A recoverable file still occupies storage. The person needs to understand both recovery and capacity.",
+        "tradeoff": "Retention depends on the device being able to run cleanup and reach the volume; it is not an exact deletion appointment."
+      }
+    ],
+    "outcome": "I designed one-file-at-a-time review with visible alternatives to gestures, a recoverable bin and an explicit permanent-delete path. The native app also accounts for interrupted operations and changed files. I still need to check those recovery paths across Android devices and removable storage.",
+    "reflection": "I would test a mistaken swipe, a removed storage volume and a restore destination that already exists. A cleanup tool earns trust when it explains what happened and preserves a way to recover, especially when it cannot finish an operation.",
+    "nextSteps": [
+      "Proposed study: review a small set of test files, undo an unintended action and restore a file without coaching.",
+      "Proposed checks: permission loss, app restart during a pending action, missing SD card and a file changed since scanning."
+    ],
+    "sources": [
+      {
+        "label": "Binnder README and ReviewPolicy/Storage/SafeDisk source",
+        "detail": "Documented five-second Undo, seven-day keep, thirty-day bin, delayed operations, file identity checks and storage-accounting limits. Reviewed 31 October 2026."
+      },
+      {
+        "label": "Native Android captures · isolated test files",
+        "detail": "Captured from Binnder 0.1.1 in a separate Android emulator. The displayed design deck is a sample copy of an existing portfolio PDF; no personal phone files were read."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/binnder-review.webp",
+        "alt": "Binnder native review screen showing a sample design PDF and keep bin and delete actions",
+        "caption": "Native Android capture using a sample portfolio PDF in an isolated emulator. Fixed controls provide the same actions as swiping.",
+        "width": 1080,
+        "height": 1920
+      },
+      {
+        "src": "assets/case-study-evidence/binnder-confirmation.webp",
+        "alt": "Binnder native permanent-deletion confirmation naming the sample file and Undo period",
+        "caption": "The actual confirmation names the sample file, explains that the bin is skipped and describes the five-second Undo window. No deletion was confirmed for this capture.",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://github.com/srinidhibhat45/Binnder",
+    "productActionLabel": "View Binnder on GitHub",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/binnder-review.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "pureeq",
+    "name": "PureEQ",
+    "kind": "product",
+    "headline": "Find a sound you can adjust and keep.",
+    "summary": "An Android sound-tuning app that combines a per-ear listening check, music preferences and editable EQ profiles.",
+    "role": "Setup journey, listening-test interaction & profile controls",
+    "status": "Native Android app",
+    "context": "Personal audio tuning",
+    "facts": [
+      {
+        "value": "Per ear",
+        "label": "separate listening input"
+      },
+      {
+        "value": "A/B",
+        "label": "music preference choices"
+      },
+      {
+        "value": "Export",
+        "label": "take the profile elsewhere"
+      }
+    ],
+    "problem": "A row of equaliser sliders assumes that someone already knows which frequencies they want to change. I approached PureEQ as a guided starting point: explain the setup, gather a few listening responses, compare music and leave the result open to adjustment.",
+    "process": [
+      "I separated the listening check from the taste test. The first asks whether a short tone is audible through the current headphones; the second asks which of two music treatments the person prefers. Neither needs to be presented as an expert diagnosis.",
+      "Preparation is part of the flow: a quiet environment, suitable headphones, stable volume and a left/right check. The result can then be adjusted with named controls, compared with EQ off and saved as a profile.",
+      "Export gives the profile a useful life beyond the setup. The documented formats have different capabilities, so a combined curve or per-ear adjustment needs explanation. The captures show the actual native starting flow, not a completed hearing test or a clinical result."
+    ],
+    "decisions": [
+      {
+        "title": "Explain the two kinds of input",
+        "choice": "Describe listening responses and music preferences as separate steps before asking for either.",
+        "reason": "A person should know whether they are reporting audibility or choosing a sound they like.",
+        "tradeoff": "A short explanation must not make the listening check sound like a calibrated audiogram."
+      },
+      {
+        "title": "Leave the suggestion editable",
+        "choice": "Offer named fine-tuning controls, an EQ on/off comparison and a way back to suggested settings.",
+        "reason": "The suggested curve is a starting point. People need to hear and revise it rather than accept it as an unquestionable result.",
+        "tradeoff": "Several controls can become confusing together. Reset and suggested-value feedback need to make changes traceable."
+      },
+      {
+        "title": "Carry context into export",
+        "choice": "Describe the target format and explain when an app combines left and right curves.",
+        "reason": "A technically valid export can still behave differently from the per-ear result shown in PureEQ.",
+        "tradeoff": "Compatibility depends on the receiving app and device. Exporting a file does not guarantee the same playback everywhere."
+      }
+    ],
+    "outcome": "I connected preparation, listening responses, A/B choices and an editable result into a profile flow. The app can apply the EQ or export it for another player, with limitations explained for each format. This is personal sound tuning, not a clinical hearing assessment.",
+    "reflection": "I would test whether people can tell what came from their listening responses, what came from preference choices and what they changed afterwards. If those differences are unclear, the final curve may look more certain than it should.",
+    "nextSteps": [
+      "Proposed study: complete setup with headphones, explain each stage and compare a saved result with EQ off at matched loudness.",
+      "Proposed checks: interrupted setup, a volume change, incorrect channel identification, resetting one adjustment and exporting a combined curve."
+    ],
+    "sources": [
+      {
+        "label": "PureEQ README and native UI/theme source",
+        "detail": "Listening and preference stages, preparation, editable profiles, reset behaviour and export limitations. Reviewed 31 October 2026."
+      },
+      {
+        "label": "Native Android captures · no listening result",
+        "detail": "Captured from PureEQ 1.5.2 in a separate Android emulator. The welcome and preparation screens are genuine app UI; no human listening responses or clinical measurements are represented."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/pureeq-start.webp",
+        "alt": "PureEQ native welcome screen explaining its listening and music preference flow",
+        "caption": "Actual native welcome screen from an isolated Android emulator. It explains the two inputs before a profile is created.",
+        "width": 1080,
+        "height": 1920
+      },
+      {
+        "src": "assets/case-study-evidence/pureeq-setup.webp",
+        "alt": "PureEQ native new-profile preparation screen explaining listening taste and export",
+        "caption": "The actual preparation screen separates listening, taste and the resulting EQ. No hearing-test result is shown.",
+        "width": 1080,
+        "height": 1920
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://github.com/srinidhibhat45/PureEQ",
+    "productActionLabel": "View PureEQ on GitHub",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/pureeq-start.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "hidden-identity-chess",
+    "name": "Hidden Identity Chess",
+    "kind": "product",
+    "headline": "Familiar chess. Very different information.",
+    "summary": "A digital adaptation of Hidden Identity Chess, with private setup, bluffing, challenges and a focused play surface.",
+    "role": "Digital adaptation, private setup & game interaction design",
+    "status": "Playable web game",
+    "context": "Independent adaptation · Triple S Games rules",
+    "facts": [
+      {
+        "value": "Private",
+        "label": "opponent identities stay hidden"
+      },
+      {
+        "value": "3 modes",
+        "label": "computer, shared device and online"
+      },
+      {
+        "value": "Move / bluff / challenge",
+        "label": "explicit turn actions"
+      }
+    ],
+    "problem": "A familiar chessboard is useful orientation, but it can also create the wrong expectations when piece identities are hidden and bluffing is allowed. I focused the adaptation on explaining what is private, what a player can do now and how a challenge changes the game.",
+    "process": [
+      "I separated arranging an army from playing it. In same-device mode, a covered handoff protects the next player’s view. Online play needs the same distinction in what each player receives, not just a visual cover over shared data.",
+      "Zen mode keeps the board, players, turn and Move, Bluff and Challenge controls in view. History, hints and secondary tools move into sheets so they can be inspected without permanently shrinking the board.",
+      "The rules and original game concept are credited to Triple S Games. This is an independent digital adaptation. I treated computer play, shared-device play and online rooms as separate flows because they have different privacy and connection requirements."
+    ],
+    "decisions": [
+      {
+        "title": "Make hidden information explicit",
+        "choice": "Show the player’s own identities and keep the opponent’s pieces visually hidden.",
+        "reason": "Someone should understand the information available to each side before making a move.",
+        "tradeoff": "Shared-device privacy depends on a clear handoff; it cannot stop someone looking at the screen at the wrong time."
+      },
+      {
+        "title": "Name the unusual actions",
+        "choice": "Keep Move, Bluff and Challenge as separate controls with rules available nearby.",
+        "reason": "The familiar board should not make a new player assume ordinary check-and-checkmate behaviour.",
+        "tradeoff": "A challenge can refer to earlier play, so its target and consequence need careful explanation."
+      },
+      {
+        "title": "Give the board the space",
+        "choice": "Use the focused play view and move history and secondary tools into deliberate inspection surfaces.",
+        "reason": "The board is easier to read when optional tools do not compete for its space.",
+        "tradeoff": "Hiding history can make challenges harder to investigate. The route back to a past move must remain obvious."
+      }
+    ],
+    "outcome": "I designed setup, private handoff and the focused game view around the information each player can use. The game supports computer, same-device and online play, with explicit challenge controls and local saving. I still want to test whether a new player understands the handoff and can investigate a challenge.",
+    "reflection": "I would watch where an experienced chess player applies an ordinary rule that does not belong here. Those moments would tell me where the adaptation needs a clearer explanation rather than another hint.",
+    "nextSteps": [
+      "Proposed study: arrange an army, make a bluff and investigate a past move with a first-time player.",
+      "Proposed checks: shared-device handoff, keyboard square navigation, a disconnected online player and restoring a local game."
+    ],
+    "sources": [
+      {
+        "label": "Project README and original rules credit",
+        "detail": "Private setup, computer/shared-device/online modes, focused play, challenge handling and credit to Triple S Games. Reviewed 31 October 2026."
+      },
+      {
+        "label": "Actual local game captures",
+        "detail": "Captured from the local built game under /game/ in computer mode. Positions illustrate interaction states; no human playtest result is represented."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/hidden-chess-board.webp",
+        "alt": "Hidden Identity Chess actual board with visible own pieces and hidden opponent identities",
+        "caption": "Actual local computer-mode interface. The opponent’s identities remain hidden while the player’s own army is visible.",
+        "width": 1275,
+        "height": 766
+      },
+      {
+        "src": "assets/case-study-evidence/hidden-chess-setup.webp",
+        "alt": "Hidden Identity Chess army arrangement screen and mode choices",
+        "caption": "Actual setup screen with army arrangement and the separate computer, online and shared-device modes.",
+        "width": 1275,
+        "height": 1102
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://hidden-identity-chess-club.soundmite3.chatgpt.site/game/",
+    "productActionLabel": "Play Hidden Identity Chess",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/hidden-chess-board.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "five-dead",
+    "name": "5 Dead",
+    "kind": "product",
+    "headline": "Keep the table moving. Keep the turn clear.",
+    "summary": "An independent digital card game with bot play, shared-device turns and online rooms, built around a visible running total and card actions.",
+    "role": "Game presentation, joining flow & turn feedback",
+    "status": "Playable card game",
+    "context": "Independent game inspired by 5 Alive",
+    "facts": [
+      {
+        "value": "21",
+        "label": "safe running-total limit"
+      },
+      {
+        "value": "3 modes",
+        "label": "bots, pass-and-play and online"
+      },
+      {
+        "value": "2–24",
+        "label": "extended party-table scope"
+      }
+    ],
+    "problem": "A card table has several things to explain at once: the current total, whose turn it is, what a card will do and who is still in the hand. I wanted the presentation to give each moment a clear focus without making players work through a rules panel on every turn.",
+    "process": [
+      "I kept the running total and current discard near the centre, opponents around the table and the local hand close to the player. Selection and a Play action help separate considering a card from committing it.",
+      "The three entry modes make different promises. Bot play and local pass-and-play can work offline after the app is ready; online rooms depend on a connection and wait for a disconnected player. Shared-device turns use a privacy screen between hands.",
+      "This is an independent game inspired by Hasbro’s 5 Alive. Larger tables use a disclosed house rule. The generated arena and card artwork are assets used in the game itself; I kept the running total, hand and turn feedback distinct from that background."
+    ],
+    "decisions": [
+      {
+        "title": "Keep the running total central",
+        "choice": "Place the total, discard and turn state where the next decision is made.",
+        "reason": "A player needs to connect the chosen card to the current state of the hand.",
+        "tradeoff": "Effects and animations can obscure that relationship if they linger or hide the next turn."
+      },
+      {
+        "title": "Separate choosing from playing",
+        "choice": "Show a selected card and an explicit Play action, alongside the supported drag interaction.",
+        "reason": "Considering a card should not accidentally commit it, especially on a crowded phone hand.",
+        "tradeoff": "An extra action can slow experienced play. Both methods need clear feedback and usable touch targets."
+      },
+      {
+        "title": "Explain the mode before the table starts",
+        "choice": "Distinguish bot, pass-and-play and connected rooms, including their waiting and privacy states.",
+        "reason": "A group should know whether it needs one device, several devices or a network before starting.",
+        "tradeoff": "Local privacy covers are a social convention; online connection loss can pause the table."
+      }
+    ],
+    "outcome": "I brought the hand, table, turn feedback and joining flow into one playable presentation. Bot and local play work separately from connected rooms. Larger tables follow the documented house rules, with waiting and privacy states suited to each mode.",
+    "reflection": "I would test the smallest phone hand and the largest table before adding more effects. The useful questions are whether the next player notices their turn and whether someone can tell what a special card just changed.",
+    "nextSteps": [
+      "Proposed study: start a bot hand, play a special card and explain the next action without opening the full rules.",
+      "Proposed checks: overlapping cards, shared-device handoff, a disconnected seat and the clarity of the extended-table rule."
+    ],
+    "sources": [
+      {
+        "label": "5 Dead README · modes, rules and extended tables",
+        "detail": "Mode boundaries, the 21 limit, hand privacy, online waiting and the disclosed larger-table variant. Reviewed 31 October 2026. Exact deck counts for a particular physical edition have not been verified."
+      },
+      {
+        "label": "Original game captures and DESIGN.md",
+        "detail": "Existing outputs/5dead-arena-v2.png and 5dead-card-faces-phone.png. These show the actual game presentation, including its generated arena, avatar and card art."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/five-dead-arena.webp",
+        "alt": "5 Dead actual game table with running total opponents and a selected card",
+        "caption": "Original game capture. The arena, avatars and skull card art are generated assets used by the playable game; labels and controls are part of the actual interface.",
+        "width": 844,
+        "height": 390
+      },
+      {
+        "src": "assets/case-study-evidence/five-dead-hand.webp",
+        "alt": "5 Dead original phone layout showing special cards and the Play control",
+        "caption": "Original game capture showing the phone hand, special cards and the Play control.",
+        "width": 915,
+        "height": 412
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://github.com/srinidhibhat45/5Dead",
+    "productActionLabel": "View 5 Dead on GitHub",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/five-dead-arena.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
+  },
+  {
+    "slug": "alibi",
+    "name": "Alibi",
+    "kind": "product",
+    "headline": "Watch privately. Give just enough away.",
+    "summary": "A social video-imposter game that takes a group through private clips, one-word clues, discussion, voting and a reveal.",
+    "role": "Game direction, private-viewing flow & group interaction design",
+    "status": "Playable browser game",
+    "context": "Social deduction · 3–8 players",
+    "facts": [
+      {
+        "value": "3–8",
+        "label": "players in a room"
+      },
+      {
+        "value": "One word",
+        "label": "clue from each player"
+      },
+      {
+        "value": "Private",
+        "label": "clips and votes before reveal"
+      }
+    ],
+    "problem": "A social-deduction game loses its rhythm when someone misses a step or sees information too soon. Alibi gives most players the same clip and one player a related alternative, then moves the group through clues, discussion and voting. The flow needs to protect the mystery without making the group wait without an explanation.",
+    "process": [
+      "I structured each round as private viewing, one-word submission, shared clues, discussion, a hidden vote and the reveal. Players need a shared phase and a private view at the same time.",
+      "I used a solo practice path with clearly labelled simulated opponents so the whole sequence can be tried before inviting friends. A practice lobby should not look like proof that other people are connected.",
+      "The project includes room chat and built-in calling, with external calls as another option. Playback depends on YouTube availability and embedding, and the server keeps room state in memory. Those limits make readiness, replacement clips and host recovery controls part of the design."
+    ],
+    "decisions": [
+      {
+        "title": "Keep private viewing separate from the group phase",
+        "choice": "Show each assigned clip privately and release clues together after submission or timeout.",
+        "reason": "Early clues or role information could change the game before everyone has had a chance to act.",
+        "tradeoff": "A shared phase still needs a clear explanation when a player is loading or has not submitted."
+      },
+      {
+        "title": "Make practice an honest invitation",
+        "choice": "Label simulated players throughout solo practice and let the person try the real sequence.",
+        "reason": "Someone can learn the rhythm without assembling a group or mistaking demo activity for real participants.",
+        "tradeoff": "Practice can explain controls but cannot reproduce the conversation and hesitation of a group."
+      },
+      {
+        "title": "Explain waits and recovery",
+        "choice": "Keep the current phase, readiness and host controls visible when playback or connection needs attention.",
+        "reason": "The group needs a next action rather than an unexplained delay.",
+        "tradeoff": "A replacement clip or returning player can affect the round. The interface needs to say when play restarts instead of hiding that change."
+      }
+    ],
+    "outcome": "I connected the lobby, private watching, clues, discussion, votes and reveal into one group flow. Solo practice explains the steps with simulated opponents; connected rooms support real players. A study with a real group is the next step for evaluating the social experience.",
+    "reflection": "I would watch a real group through a failed clip and a late player, not just a successful reveal. Those pauses would show whether the instructions preserve the social rhythm or turn the host into technical support.",
+    "nextSteps": [
+      "Proposed study: run a short group session and observe phase explanations, accidental information sharing and waiting time.",
+      "Proposed checks: a blocked YouTube embed, a reconnecting player, a departing host and switching between built-in and external calling."
+    ],
+    "sources": [
+      {
+        "label": "Alibi README and round-state source",
+        "detail": "Private assignments, simultaneous clues, secret votes, practice labelling, playback and connection limits. Reviewed 31 October 2026."
+      },
+      {
+        "label": "Actual browser captures · solo practice",
+        "detail": "Captured from the local VideoImposter application. The practice capture uses its clearly labelled simulated opponents, with no camera, microphone or personal-call recording."
+      }
+    ],
+    "figures": [
+      {
+        "src": "assets/case-study-evidence/alibi-home.webp",
+        "alt": "Alibi actual landing interface explaining its video-imposter game",
+        "caption": "Actual local browser interface. The five-player diagram explains the rules before a room starts.",
+        "width": 1275,
+        "height": 717
+      },
+      {
+        "src": "assets/case-study-evidence/alibi-practice.webp",
+        "alt": "Alibi actual solo-practice lobby with clearly labelled simulated players",
+        "caption": "Actual solo-practice lobby with clearly labelled simulated opponents.",
+        "width": 1275,
+        "height": 717
+      }
+    ],
+    "featured": false,
+    "liveUrl": "https://github.com/srinidhibhat45/VideoImposter",
+    "productActionLabel": "View Alibi on GitHub",
+    "productHeaderLabel": "View project",
+    "cover": "assets/case-study-evidence/alibi-home.webp",
+    "coverKind": "screen",
+    "readingMinutes": 5
   }
 ]

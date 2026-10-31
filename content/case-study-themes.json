@@ -866,5 +866,173 @@
     },
     "decisionHeading": "Keep combat clear and command within reach.",
     "resultHeading": "One arena, three layers of information."
+  },
+  "halo": {
+    "layout": "halo",
+    "mode": "light",
+    "paper": "#f8f9fb",
+    "ink": "#202630",
+    "dim": "#596373",
+    "line": "#d4dae3",
+    "accent": "#315a9c",
+    "wash": "#e6edfa",
+    "bodyFont": "Instrument Sans",
+    "displayFont": "Instrument Sans",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "How much can a shortcut tool offer without making its first choice slower?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind Halo",
+    "resultHeading": "A ring that stays connected to its editor."
+  },
+  "binnder": {
+    "layout": "binnder",
+    "mode": "light",
+    "paper": "#f9f8ff",
+    "ink": "#20212c",
+    "dim": "#5b5c6e",
+    "line": "#d8d7e6",
+    "accent": "#4c5f98",
+    "wash": "#e7e9fa",
+    "bodyFont": "Roboto",
+    "displayFont": "Roboto",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "How can a quick review still make destructive actions clear?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind Binnder",
+    "resultHeading": "A review flow with an explicit recovery path."
+  },
+  "pureeq": {
+    "layout": "pureeq",
+    "mode": "light",
+    "paper": "#f7f7fd",
+    "ink": "#181b28",
+    "dim": "#575d70",
+    "line": "#d9dcea",
+    "accent": "#5545c5",
+    "wash": "#e9e6fb",
+    "bodyFont": "Roboto",
+    "displayFont": "Roboto",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "How can sound tuning be guided without making its result feel final?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind PureEQ",
+    "resultHeading": "A guided suggestion that stays open to adjustment."
+  },
+  "hidden-identity-chess": {
+    "layout": "hidden-identity-chess",
+    "mode": "light",
+    "paper": "#f6f7f2",
+    "ink": "#193b35",
+    "dim": "#586e66",
+    "line": "#dce2d8",
+    "accent": "#265b4d",
+    "wash": "#e8ead3",
+    "bodyFont": "Manrope",
+    "displayFont": "Manrope",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "How do familiar controls explain a game with unfamiliar information?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind Hidden Identity Chess",
+    "resultHeading": "A familiar board with clear private information."
+  },
+  "five-dead": {
+    "layout": "five-dead",
+    "mode": "dark",
+    "paper": "#101d31",
+    "ink": "#f6f4ec",
+    "dim": "#b9c6dc",
+    "line": "#435675",
+    "accent": "#ffd084",
+    "wash": "#3b3021",
+    "bodyFont": "DM Sans",
+    "displayFont": "Barlow Condensed",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "What does the next player need to see before choosing a card?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind 5 Dead",
+    "resultHeading": "A table with a clear total and a clear next turn."
+  },
+  "alibi": {
+    "layout": "alibi",
+    "mode": "dark",
+    "paper": "#12141b",
+    "ink": "#f4f5fa",
+    "dim": "#b4c4da",
+    "line": "#3b4557",
+    "accent": "#b9f64a",
+    "wash": "#2b381e",
+    "bodyFont": "Manrope",
+    "displayFont": "Barlow Condensed",
+    "order": [
+      "brief",
+      "process",
+      "decisions",
+      "outcome",
+      "reflection"
+    ],
+    "chapters": {
+      "brief": "How can a shared round protect information that belongs to one player?",
+      "process": "What shaped the design",
+      "decisions": "The decisions",
+      "outcome": "The resulting experience",
+      "reflection": "What I would take forward"
+    },
+    "decisionHeading": "The choices behind Alibi",
+    "resultHeading": "A private clip inside a shared round."
   }
 }

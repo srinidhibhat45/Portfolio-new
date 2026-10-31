@@ -82,6 +82,13 @@ window.SITE_DATA = {
   ],
 
   vibe: [
+    {"path": "~/projects/halo", "status": "building", "cmd": "", "name": "Halo", "caseSlug": "halo", "desc": "A desktop action ring for frequently used shortcuts, with app-specific layouts and a visual editor.", "stack": ["Desktop utility", "macOS & Windows"], "href": "https://github.com/srinidhibhat45/Halo", "cta": "View Halo on GitHub"},
+    {"path": "~/projects/binnder", "status": "building", "cmd": "", "name": "Binnder", "caseSlug": "binnder", "desc": "A native Android file-review app that combines large previews with explicit keep, bin and permanent-delete actions.", "stack": ["Android", "File review"], "href": "https://github.com/srinidhibhat45/Binnder", "cta": "View Binnder on GitHub"},
+    {"path": "~/projects/pureeq", "status": "live", "cmd": "", "name": "PureEQ", "caseSlug": "pureeq", "desc": "An Android sound-tuning app that combines a per-ear listening check, music preferences and editable EQ profiles.", "stack": ["Android", "Audio profiles"], "href": "https://github.com/srinidhibhat45/PureEQ", "cta": "View PureEQ on GitHub"},
+    {"path": "~/projects/hidden-identity-chess", "status": "live", "cmd": "", "name": "Hidden Identity Chess", "caseSlug": "hidden-identity-chess", "desc": "A digital adaptation of Hidden Identity Chess, with private setup, bluffing, challenges and a focused play surface.", "stack": ["Browser game", "Hidden information"], "href": "https://hidden-identity-chess-club.soundmite3.chatgpt.site/game/", "cta": "Play Hidden Identity Chess"},
+    {"path": "~/projects/five-dead", "status": "live", "cmd": "", "name": "5 Dead", "caseSlug": "five-dead", "desc": "An independent digital card game with bot play, shared-device turns and online rooms, built around a visible running total and card actions.", "stack": ["Card game", "Offline & online"], "href": "https://github.com/srinidhibhat45/5Dead", "cta": "View 5 Dead on GitHub"},
+    {"path": "~/projects/alibi", "status": "live", "cmd": "", "name": "Alibi", "caseSlug": "alibi", "desc": "A social video-imposter game that takes a group through private clips, one-word clues, discussion, voting and a reveal.", "stack": ["Browser game", "Social deduction"], "href": "https://github.com/srinidhibhat45/VideoImposter", "cta": "View Alibi on GitHub"},
+
     { path: "~/projects/forma", status: "live", cmd: "./gradlew :app:assembleRelease",
       name: "Forma", caseSlug: "forma", desc: "Activity, sleep, and personal health trends in a native Android app, with sources and score explanations in view.",
       stack: ["Android", "Health Connect", "Wear OS"], href: "https://github.com/srinidhibhat45/forma/releases/latest", cta: "Get Forma for Android" },

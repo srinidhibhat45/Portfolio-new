@@ -17,6 +17,11 @@
     return result + esc(text.slice(end));
   }
   function paragraphs(items) { return items.map(function (p) { return '<p>' + esc(p) + '</p>'; }).join(''); }
+  function collectionUrl(c, prefix) {
+    var file = c.kind === 'ux' ? 'ux-case-studies.pdf' : 'product-case-studies.pdf';
+    return (prefix || '') + 'assets/pdfs/case-studies/' + file +
+      (c.pdfVersion ? '?v=' + encodeURIComponent(c.pdfVersion) : '') + '#page=' + (c.pdfPage || 1);
+  }
   function render(c, prefix) {
     prefix = prefix || '';
     var n = c.narrative, t = c.theme || {}, v = c.visual, base = c.slug + '-';
@@ -26,7 +31,8 @@
     var figure = c.figures[1] || c.figures[0];
     function local(url) { return /^https:\/\//.test(url) ? esc(url) : prefix + esc(url); }
     function sourceFigure(f) {
-      return '<figure class="cs-source-figure"><a href="'+local(f.src)+'" target="_blank" rel="noopener" aria-label="Open '+esc(f.alt)+' at full size"><img src="'+local(f.src)+'" alt="'+esc(f.alt)+'" loading="lazy" decoding="async"></a><figcaption>'+esc(f.caption)+'</figcaption></figure>';
+      var size = f.width && f.height ? ' width="'+f.width+'" height="'+f.height+'"' : '';
+      return '<figure class="cs-source-figure"><a href="'+local(f.src)+'" target="_blank" rel="noopener" aria-label="Open '+esc(f.alt)+' at full size"><img src="'+local(f.src)+'" alt="'+esc(f.alt)+'"'+size+' loading="lazy" decoding="async"></a><figcaption>'+esc(f.caption)+'</figcaption></figure>';
     }
     function chapter(key, content) {
       var number = ('0' + (order.indexOf(key)+1)).slice(-2);
@@ -42,8 +48,7 @@
     var actionUrl = c.liveUrl || c.prototypeUrl || c.originalPdf;
     var actionLabel = c.liveUrl ? (c.productActionLabel || 'Explore the product') : c.prototypeUrl ? 'Try the prototype' : 'View the original design';
     var action = actionUrl ? '<a class="cs-action" href="'+local(actionUrl)+'" target="_blank" rel="noopener">'+actionLabel+' <span aria-hidden="true">↗</span></a>' : '';
-    var pdf = 'assets/pdfs/case-studies/'+(c.kind==='ux'?'ux-case-studies.pdf':'product-case-studies.pdf');
-    var links = '<a href="'+prefix+pdf+'#page='+(c.pdfPage||1)+'" target="_blank" rel="noopener">Download '+(c.kind==='ux'?'design':'product')+' collection PDF ↗</a>';
+    var links = '<a href="'+esc(collectionUrl(c, prefix))+'" target="_blank" rel="noopener">Download '+(c.kind==='ux'?'design':'product')+' collection PDF ↗</a>';
     if (c.originalPdf) links += '<a href="'+prefix+esc(c.originalPdf)+'" target="_blank" rel="noopener">Original artifact ↗</a>';
     if (!prefix) links += '<a href="case-studies/'+esc(c.slug)+'.html">Open shareable page ↗</a>';
     var facts = '<dl class="cs-facts">'+c.facts.map(function(f){return '<div><dt>'+esc(f.value)+'</dt><dd>'+esc(f.label)+'</dd></div>';}).join('')+'</dl>';
@@ -59,13 +64,13 @@
     chapters.decisions = chapter('decisions', heading('decisions', t.decisionHeading || 'The choices behind the experience')+'<p class="cs-section-intro">Open a decision to see the reasoning and trade-off.</p><div class="cs-decisions">'+c.decisions.map(function(d,i){return '<details class="cs-decision" name="'+base+'decisions"'+(i===0?' open':'')+'><summary><span class="cs-decision-number">'+('0'+(i+1)).slice(-2)+'</span><h3>'+esc(d.title)+'</h3><span class="cs-disclosure-icon" aria-hidden="true">+</span></summary><div class="cs-decision-content">'+decisionVisual(i)+'<p>'+esc(d.choice)+'</p><p><strong>Why this matters.</strong> '+esc(d.reason)+'</p><p class="cs-tradeoff"><strong>The trade-off.</strong> '+esc(d.tradeoff)+'</p></div></details>';}).join('')+'</div>');
     var annotations = v.focus || n.annotations;
     var artifact = figure && figure.src !== v.src ? sourceFigure(figure) : '';
-    var artifactDetails = '<details class="cs-detail"><summary>'+(artifact?'Inspect the supporting design':'More about the experience')+'</summary><div>'+artifact+'<ul class="cs-annotations">'+annotations.map(function(a){return '<li><strong>'+esc(a.title)+'.</strong> '+esc(a.detail)+'</li>';}).join('')+'</ul></div></details>';
+    var artifactDetails = artifact+'<details class="cs-detail"><summary>More about the experience</summary><div><ul class="cs-annotations">'+annotations.map(function(a){return '<li><strong>'+esc(a.title)+'.</strong> '+esc(a.detail)+'</li>';}).join('')+'</ul></div></details>';
     chapters.outcome = chapter('outcome', heading('outcome', t.resultHeading || 'The resulting experience')+'<p class="cs-body-copy">'+esc(c.outcome)+'</p>'+artifactDetails+'<div class="cs-result-action">'+action+'</div>');
     chapters.reflection = chapter('reflection', heading('reflection', n.takeaway)+'<p class="cs-body-copy">'+esc(c.reflection)+'</p><details class="cs-detail"><summary>What I would evaluate next <span>proposed work</span></summary><div><ul class="cs-next">'+c.nextSteps.map(function(s){return '<li>'+esc(s.replace(/^Proposed (study|scope|measures|iteration|validation|acceptance criteria|evaluation|measure|checks|benchmark|review|release review|UI review|extension|test|implementation):\s*/i,''))+'</li>';}).join('')+'</ul></div></details>');
-    var sources = '<footer class="cs-sources"><details class="cs-detail"><summary>Sources & project scope</summary><div><p>This retrospective was refreshed in October 2026 from '+(c.kind==='ux'?'my original design artifacts':'the product artifacts and project documentation')+'. Audience hypotheses are distinguished from personas in the original research. The example situation is illustrative; proposed studies describe future work. Product stories focus on my UX direction, not code authorship. Scope counts are not adoption or impact metrics.</p><ul>'+c.sources.map(function(s){return '<li><strong>'+esc(s.label)+'</strong><p>'+esc(s.detail)+'</p></li>';}).join('')+'</ul>'+(c.figures.length>1?sourceFigure(c.figures[0]):'')+'</div></details><div class="cs-links">'+links+'</div></footer>';
+    var sources = '<footer class="cs-sources"><details class="cs-detail"><summary>Sources & project scope</summary><div><p>This account draws on '+(c.kind==='ux'?'my original designs and research notes':'the project and its documentation')+'. Research personas and design assumptions are labelled separately. The example situation is illustrative; proposed studies are future work. Product stories describe my design contribution; feature counts are not impact measures.</p><ul>'+c.sources.map(function(s){return '<li><strong>'+esc(s.label)+'</strong><p>'+esc(s.detail)+'</p></li>';}).join('')+'</ul>'+'</div></details><div class="cs-links">'+links+'</div></footer>';
     var next = c.nextStory ? '<a class="cs-next-story" href="'+prefix+'case-studies/'+esc(c.nextStory.slug)+'.html"><span>Next case study</span><strong>'+esc(c.nextStory.name)+' <span aria-hidden="true">↗</span></strong><p>'+esc(c.nextStory.headline)+'</p></a>' : '';
     return '<article class="case-study cs-custom cs-project-'+esc(c.slug)+' cs-layout-'+esc(t.layout || 'editorial')+' cs-mode-'+esc(t.mode || 'light')+' cs-tone-'+esc(n.tone)+' cs-visual-'+esc(v.presentation)+'" aria-labelledby="'+base+'title">'+hero+'<div class="cs-reader">'+nav+'<div class="cs-body">'+order.map(function(key){return chapters[key];}).join('')+sources+next+'</div></div></article>';
   }
-  var api = {render:render,escape:esc,rich:rich};
+  var api = {render:render,escape:esc,rich:rich,collectionUrl:collectionUrl};
   if(typeof module!=='undefined'&&module.exports) module.exports=api; else root.CaseStudyRenderer=api;
 })(typeof window!=='undefined'?window:globalThis);

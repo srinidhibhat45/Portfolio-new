@@ -239,22 +239,30 @@
     "height": 949
   },
   "dashf1": {
-    "presentation": "type",
-    "label": "Product direction",
-    "caption": "A race dashboard connecting timing, track context, and replay while distinguishing measured data from estimated positions.",
-    "source": "Product scope and project documentation"
+    "src": "assets/case-study-evidence/dashf1-replay.webp",
+    "presentation": "spread",
+    "alt": "DashF1 actual Monaco 2025 historical replay with timing, track, telemetry and playback controls",
+    "caption": "Actual local dashboard replaying the 2025 Monaco race from OpenF1 data. The prediction panel labels its heuristic estimates.",
+    "label": "Actual project interface",
+    "source": "Local built F1DASH, captured 31 October 2026; historical replay, not a live session.",
+    "width": 1280,
+    "height": 720
   },
   "hued": {
-    "presentation": "type",
-    "label": "Product direction",
-    "caption": "A daily photography prompt with a shared constraint, on-device scoring, and a warm visual language.",
-    "source": "Product scope and project documentation"
+    "src": "assets/case-study-evidence/hued-welcome.webp",
+    "presentation": "portrait",
+    "alt": "Hued native Android sign-in screen with email, password and sign-up controls",
+    "caption": "Actual Android sign-in screen. The daily photography flow is described from the project documentation; no account or photographs were used for this capture.",
+    "label": "Actual project interface",
+    "source": "Hued release APK, captured in an isolated Android emulator, 31 October 2026.",
+    "width": 1080,
+    "height": 1920
   },
   "yuva-panaji": {
     "presentation": "spread",
     "src": "assets/products/yuva.webp",
     "alt": "Yuva Panaji — archived product interface",
-    "caption": "An archived view of Yuva Panaji. The case study examines the UX direction behind the experience.",
+    "caption": "Original public homepage for Yuva Panaji. Community activity introduces the organisation before visitors enter its event and registration routes.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1265,
@@ -264,7 +272,7 @@
     "presentation": "spread",
     "src": "assets/products/deckforge.webp",
     "alt": "DeckForge — archived product interface",
-    "caption": "An archived view of DeckForge. The case study examines the UX direction behind the experience.",
+    "caption": "Original DeckForge starting screen for opening a PDF presentation. Editing and animation begin with an existing deck.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1269,
@@ -281,10 +289,14 @@
     "height": 712
   },
   "premoney": {
-    "presentation": "type",
-    "label": "Product direction",
-    "caption": "A personal-finance app that converts bank and UPI messages into reviewable transactions, categories, and summaries.",
-    "source": "Product scope and project documentation"
+    "src": "assets/case-study-evidence/premoney-dashboard.webp",
+    "presentation": "portrait",
+    "alt": "PreMoney actual Android dashboard showing its empty state and insufficient-data scores",
+    "caption": "Actual Android dashboard with no transactions. Scores stay unavailable until there is enough information; SMS access was skipped for this capture.",
+    "label": "Actual project interface",
+    "source": "PreMoney 1.13.0 release APK, captured in an isolated Android emulator, 31 October 2026. No bank messages or personal transactions.",
+    "width": 1080,
+    "height": 1920
   },
   "soundbox": {
     "presentation": "portrait",
@@ -322,16 +334,20 @@
     ]
   },
   "wheelie": {
-    "presentation": "type",
-    "label": "Product direction",
-    "caption": "A group-riding beta that connects rendezvous planning, rider location, helmet voice, and ride summaries.",
-    "source": "Product scope and project documentation"
+    "src": "assets/case-study-evidence/wheelie-start.webp",
+    "presentation": "portrait",
+    "alt": "Wheelie native Android sign-in screen with blank email and password fields",
+    "caption": "Actual Android sign-in screen. Ride planning and group features are described from the project documentation; no account or rider location was used.",
+    "label": "Actual project interface",
+    "source": "Wheelie release APK, captured in an isolated Android emulator, 31 October 2026.",
+    "width": 1080,
+    "height": 1920
   },
   "matinee": {
     "presentation": "spread",
     "src": "assets/products/matinee.webp",
     "alt": "Matinee — archived product interface",
-    "caption": "An archived view of Matinee. The case study examines the UX direction behind the experience.",
+    "caption": "Original Matinee discovery screen. Posters and titles provide the starting point for browsing films and series.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1280,
@@ -341,7 +357,7 @@
     "presentation": "spread",
     "src": "assets/products/birthsky.webp",
     "alt": "BirthSky — archived product interface",
-    "caption": "An archived view of BirthSky. The case study examines the UX direction behind the experience.",
+    "caption": "Original BirthSky interface for entering a birth date, time and place to explore the sky.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1265,
@@ -351,7 +367,7 @@
     "presentation": "spread",
     "src": "assets/products/scalesee.webp",
     "alt": "ScaleSee — archived product interface",
-    "caption": "An archived view of ScaleSee. The case study examines the UX direction behind the experience.",
+    "caption": "Original ScaleSee comparison surface, with two quantities drawn against the same scale.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1265,
@@ -361,7 +377,7 @@
     "presentation": "spread",
     "src": "assets/products/wherewouldibe.webp",
     "alt": "Where Would I Be…? — archived product interface",
-    "caption": "An archived view of Where Would I Be…?. The case study examines the UX direction behind the experience.",
+    "caption": "Original location entry screen. Choosing a place starts the exploration of plate motion through time.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1280,
@@ -371,7 +387,7 @@
     "presentation": "spread",
     "src": "assets/products/blogs.webp",
     "alt": "The Blog — archived product interface",
-    "caption": "An archived view of The Blog. The case study examines the UX direction behind the experience.",
+    "caption": "Original writing homepage under the name अvinash, with poems, essays, fiction and a written podcast.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1265,
@@ -381,7 +397,7 @@
     "presentation": "spread",
     "src": "assets/products/officegames.webp",
     "alt": "The Office Games — archived product interface",
-    "caption": "An archived view of The Office Games. The case study examines the UX direction behind the experience.",
+    "caption": "Original Office Games entry screen. A group chooses a game before joining a shared room.",
     "label": "Product interface",
     "source": "Existing portfolio product capture",
     "width": 1265,
@@ -448,5 +464,65 @@
         "caption": "The actual corner map keeps the wider objective available while the player sails."
       }
     ]
+  },
+  "halo": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/halo-editor.webp",
+    "alt": "Halo original ring editor with a selected Finder action and its settings",
+    "caption": "Original Halo editor capture from the project documentation. The action’s position and settings are visible together.",
+    "label": "Original project interface",
+    "source": "Action-Ring/docs/images/editor.png and classic.png. Existing project graphics, not newly generated interface concepts. The ring example uses a neutral illustrated background.",
+    "width": 1100,
+    "height": 740
+  },
+  "binnder": {
+    "presentation": "portrait",
+    "src": "assets/case-study-evidence/binnder-review.webp",
+    "alt": "Binnder native review screen showing a sample design PDF and keep bin and delete actions",
+    "caption": "Native Android capture using a sample portfolio PDF in an isolated emulator. Fixed controls provide the same actions as swiping.",
+    "label": "Original project interface",
+    "source": "Captured from Binnder 0.1.1 in a separate Android emulator. The displayed design deck is a sample copy of an existing portfolio PDF; no personal phone files were read.",
+    "width": 1080,
+    "height": 1920
+  },
+  "pureeq": {
+    "presentation": "portrait",
+    "src": "assets/case-study-evidence/pureeq-start.webp",
+    "alt": "PureEQ native welcome screen explaining its listening and music preference flow",
+    "caption": "Actual native welcome screen from an isolated Android emulator. It explains the two inputs before a profile is created.",
+    "label": "Original project interface",
+    "source": "Captured from PureEQ 1.5.2 in a separate Android emulator. The welcome and preparation screens are genuine app UI; no human listening responses or clinical measurements are represented.",
+    "width": 1080,
+    "height": 1920
+  },
+  "hidden-identity-chess": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/hidden-chess-board.webp",
+    "alt": "Hidden Identity Chess actual board with visible own pieces and hidden opponent identities",
+    "caption": "Actual local computer-mode interface. The opponent’s identities remain hidden while the player’s own army is visible.",
+    "label": "Original project interface",
+    "source": "Captured from the local built game under /game/ in computer mode. Positions illustrate interaction states; no human playtest result is represented.",
+    "width": 1275,
+    "height": 766
+  },
+  "five-dead": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/five-dead-arena.webp",
+    "alt": "5 Dead actual game table with running total opponents and a selected card",
+    "caption": "Original game capture. The arena, avatars and skull card art are generated assets used by the playable game; labels and controls are part of the actual interface.",
+    "label": "Original project interface",
+    "source": "Existing outputs/5dead-arena-v2.png and 5dead-card-faces-phone.png. These show the actual game presentation, including its generated arena, avatar and card art.",
+    "width": 844,
+    "height": 390
+  },
+  "alibi": {
+    "presentation": "spread",
+    "src": "assets/case-study-evidence/alibi-home.webp",
+    "alt": "Alibi actual landing interface explaining its video-imposter game",
+    "caption": "Actual local browser interface. The five-player diagram explains the rules before a room starts.",
+    "label": "Original project interface",
+    "source": "Captured from the local VideoImposter application. The practice capture uses its clearly labelled simulated opponents, with no camera, microphone or personal-call recording.",
+    "width": 1275,
+    "height": 717
   }
 }

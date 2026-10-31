@@ -56,3 +56,28 @@
 .cs-layout-fleet-command .cs-hero{border-top:4px solid var(--cs-accent)}
 .cs-layout-fleet-command h1{text-transform:uppercase;max-width:23ch;font-weight:700}
 .cs-layout-fleet-command mark{color:var(--cs-accent);background:none}
+
+/* Recruiter reading pass: put the original work beside the introduction. */
+@media(min-width:1000px){
+ .cs-visual-spread .cs-hero,.cs-visual-split .cs-hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;align-items:start;padding:40px 36px}
+ .cs-visual-spread .cs-intro,.cs-visual-split .cs-intro{margin:0;min-width:0}
+ .cs-visual-spread h1,.cs-visual-split h1{font-size:clamp(36px,3.5vw,48px);line-height:1.12;margin-block:16px 20px}
+ .cs-visual-spread .cs-deck,.cs-visual-split .cs-deck{font-size:18px;line-height:1.65}
+ .cs-visual-spread .cs-meta,.cs-visual-split .cs-meta{grid-template-columns:1fr;gap:12px;margin-top:22px}
+ .cs-visual-spread .cs-evidence-plate,.cs-visual-split .cs-evidence-plate{margin:0}
+ .cs-visual-spread .cs-evidence-plate img{max-height:560px}
+ .cs-visual-split .cs-evidence-plate img{height:auto;max-height:560px;object-fit:contain}
+}
+.cs-visual-portrait .cs-hero{align-items:start}
+.case-study h1 mark{background:none;color:var(--cs-accent)}
+.case-study ::selection{background:var(--cs-accent);color:var(--cs-paper)}
+
+.cs-outcome>.cs-source-figure{margin-top:28px}
+.cs-card-portrait{background:var(--cs-wash)!important}
+.cs-card-portrait img{object-fit:contain;object-position:center}
+.cs-project-five-dead,.cs-project-alibi{--cs-title-weight:900}
+.cs-project-five-dead h1,.cs-project-alibi h1{letter-spacing:.02em;text-transform:uppercase}
+.case-study.cs-project-five-dead h2,.case-study.cs-project-five-dead h3,.case-study.cs-project-alibi h2,.case-study.cs-project-alibi h3{font-family:var(--cs-sans);font-weight:600;letter-spacing:-.01em}
+.cs-project-five-dead .cs-card-copy h3,.cs-project-alibi .cs-card-copy h3{font-family:var(--cs-display);font-weight:900;letter-spacing:.015em;text-transform:uppercase}
+@media(max-width:760px){.case-study .cs-body-copy,.case-study .cs-decision-content,.case-study .cs-pivot{font-size:18px}}
+@media(max-width:360px){.case-study h1{font-size:34px;overflow-wrap:anywhere}}

@@ -3,8 +3,9 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import { createRequire } from 'node:module';
 import vm from 'node:vm';
+import { createHash } from 'node:crypto';
 const require = createRequire(import.meta.url);
-const { render, rich } = require('../js/case-study-renderer.js');
+const { render, rich, collectionUrl } = require('../js/case-study-renderer.js');
 const studies = JSON.parse(readFileSync('content/case-studies.json', 'utf8'));
 const narratives = JSON.parse(readFileSync('content/case-study-stories.json', 'utf8'));
 const visuals = JSON.parse(readFileSync('content/case-study-visuals.json', 'utf8'));
@@ -13,6 +14,22 @@ for (const study of studies) { study.narrative = narratives[study.slug]; study.t
 const pageMap = JSON.parse(readFileSync('content/case-study-pdf-pages.json', 'utf8'));
 const context = vm.createContext({ window: {} });
 vm.runInContext(readFileSync('js/site-data.js', 'utf8'), context);
+vm.runInContext(readFileSync('js/case-studies-data.js', 'utf8'), context);
+
+test('PDF links change with the collection contents and retain the correct chapter', () => {
+  const versions = Object.fromEntries(['ux', 'product'].map(kind => [kind,
+    createHash('sha256').update(readFileSync(`assets/pdfs/case-studies/${kind}-case-studies.pdf`)).digest('hex').slice(0, 12)
+  ]));
+  for (const study of studies) {
+    const generated = context.window.CASE_STUDIES[study.slug];
+    assert.equal(generated.pdfVersion, versions[study.kind], study.slug);
+    const link = collectionUrl(generated, '../');
+    const url = new URL(link, 'https://srinidhibhat.com/case-studies/');
+    assert.equal(url.searchParams.get('v'), versions[study.kind], study.slug);
+    assert.equal(url.hash, '#page=' + pageMap[study.slug], study.slug);
+    assert.ok(readFileSync(`case-studies/${study.slug}.html`, 'utf8').includes(link), study.slug);
+  }
+});
 
 test('every portfolio project has one readable story and its correct supporting destination', () => {
   const { work, vibe } = context.window.SITE_DATA;

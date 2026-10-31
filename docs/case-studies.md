@@ -1,5 +1,9 @@
 # Case-study editorial refresh
 
+Current launch refinement: **37 studies (10 design, 27 product)**. See
+[the 31 October launch review](launch-review/README.md) for the six additions,
+genuine captures and current verification. The notes below record the earlier edition.
+
 Prepared 15 October 2026 for UX Designer and Design Engineer applications, with
 senior-level emphasis on framing, prioritisation, systems, constraints, and critique.
 The user clarified that the apps should demonstrate product ideation, UX direction,
