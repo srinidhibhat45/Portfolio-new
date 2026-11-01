@@ -33,7 +33,7 @@
 :root[data-theme="dark"] .brain-edge.connected {stroke:#e0b7c3;}
 @media(max-width:600px) {
  .brain-topics {gap:4px;}
- .brain-topics button {font-size:11px;padding:8px 10px;}
+ .brain-topics button {font-size:14px;padding:8px 10px;}
  .brain-node text {font-size:20px;}
  .brain-node.is-cluster .node-name {font-size:26px;}
  .brain-node.is-cluster .node-count {font-size:15px;}

@@ -1,0 +1,132 @@
+{
+  "violations": [],
+  "incomplete": [
+    {
+      "id": "aria-valid-attr-value",
+      "count": 2,
+      "nodes": [
+        {
+          "target": [
+            "#playroomOpen"
+          ],
+          "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"playroomDialog\""
+        },
+        {
+          "target": [
+            "#surpriseProject"
+          ],
+          "summary": "Fix all of the following:\n  Unable to determine if aria-controls referenced ID exists on the page while using aria-haspopup: aria-controls=\"caseViewer\""
+        }
+      ]
+    },
+    {
+      "id": "color-contrast",
+      "count": 333,
+      "nodes": [
+        {
+          "target": [
+            ".heritage-greeting"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "target": [
+            "#heroTitle > span"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "target": [
+            "#heroTitle > em"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "target": [
+            ".heritage-role"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+        },
+        {
+          "target": [
+            ".heritage-intro > p:nth-child(1)"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+        },
+        {
+          "target": [
+            ".heritage-current"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+        },
+        {
+          "target": [
+            ".heritage-current > strong"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+        },
+        {
+          "target": [
+            ".heritage-work"
+          ],
+          "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+        }
+      ]
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "count": 15,
+      "nodes": [
+        {
+          "target": [
+            "button[aria-label=\"Previous projects\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "button[aria-label=\"Next projects\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "button[aria-label=\"Previous built products\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "button[aria-label=\"Next built products\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "#boardZoomOut"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "#boardZoomIn"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "div[data-note-id=\"starter-smile\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        },
+        {
+          "target": [
+            "div[data-note-id=\"starter-lotus\"]"
+          ],
+          "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+        }
+      ]
+    }
+  ],
+  "passes": 52
+}

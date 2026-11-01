@@ -16,19 +16,19 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 
 /* A little lotus blooms around the two menu strokes. */
 .nav-burger {position:relative;}
-.nav-burger>span {transition:transform .35s var(--ease),width .35s var(--ease),opacity .3s;}
+.nav-burger>span {transition:transform .35s var(--ease),scale .35s var(--ease),opacity .3s;}
 .burger-flower {position:absolute;width:50px;height:50px;left:50%;top:50%;pointer-events:none;color:#d3b683;opacity:0;transform:translate(-50%,-50%) scale(.84) rotate(-22.5deg);transition:opacity .4s,transform .6s cubic-bezier(.22,1,.36,1);}
 .burger-flower path {stroke-dasharray:80;stroke-dashoffset:80;transition:stroke-dashoffset .65s cubic-bezier(.22,1,.36,1);}
 .nav-burger:hover .burger-flower,.nav-burger:focus-visible .burger-flower,.nav-burger[aria-expanded="true"] .burger-flower {opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0);}
 .nav-burger:hover .burger-flower path,.nav-burger:focus-visible .burger-flower path,.nav-burger[aria-expanded="true"] .burger-flower path {stroke-dashoffset:0;}
-.nav-burger[aria-expanded="false"]:hover>span:first-child,.nav-burger[aria-expanded="false"]:focus-visible>span:first-child {width:17px;}
-.nav-burger[aria-expanded="false"]:hover>span:nth-child(2),.nav-burger[aria-expanded="false"]:focus-visible>span:nth-child(2) {width:25px;}
+.nav-burger[aria-expanded="false"]:hover>span:first-child,.nav-burger[aria-expanded="false"]:focus-visible>span:first-child {scale:.68 1;}
+.nav-burger[aria-expanded="false"]:hover>span:nth-child(2),.nav-burger[aria-expanded="false"]:focus-visible>span:nth-child(2) {scale:1 1;}
 .mobile-menu {isolation:isolate;overflow:hidden;}
 .mobile-menu::before {content:none;}
-.mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 0;font-size:clamp(28px,7vw,46px);transition:padding .4s cubic-bezier(.22,1,.36,1),color .3s;}
+.mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 36px;font-size:clamp(28px,7vw,46px);transition:color .3s;}
 .mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
 .mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
-.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:36px;color:#754651;}
+.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {color:#754651;}
 .mobile-menu nav a:hover::before,.mobile-menu nav a:focus-visible::before {opacity:1;transform:translateY(-50%) rotate(0) scale(1);}
 .mobile-menu nav a:hover::after,.mobile-menu nav a:focus-visible::after {opacity:1;transform:translate(0,-50%);}
 .mobile-menu-foot {position:relative;z-index:1;}
@@ -36,7 +36,6 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
  .portrait-mandala {opacity:.25;}
  .mobile-menu nav a {padding-right:30px;}
  .mobile-menu nav a::before {width:22px;height:22px;}
- .mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {padding-left:29px;}
 }
 @media(prefers-reduced-motion:reduce) {
  .burger-flower,.burger-flower path,.nav-burger>span,.mobile-menu nav a,.mobile-menu nav a::before,.mobile-menu nav a::after {transition:none;}
@@ -56,7 +55,6 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .work .card-body h3,.work .vcard-name,.play-card h3 {background:linear-gradient(currentColor,currentColor) left bottom/0% 1px no-repeat;padding-bottom:3px;transition:background-size .4s cubic-bezier(.22,1,.36,1),color .3s;}
 .play-product-preview img {transition:transform .6s cubic-bezier(.22,1,.36,1);}
 .xp-row,.svc-row {position:relative;transition:background .3s;}
-.xp-row::before,.svc-row::before {content:'';position:absolute;left:-12px;top:20px;bottom:20px;width:2px;background:#a88656;transform:scaleY(0);transform-origin:center;transition:transform .35s cubic-bezier(.22,1,.36,1);}
 .xp-row:hover {padding-left:0;}
 .test-item {transition:border-color .35s;}
 .gi img {transition:transform .6s cubic-bezier(.22,1,.36,1);}
@@ -73,7 +71,6 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
  .writing-link:hover::after {transform:scaleX(1);}
  .work .card:hover h3,.work .vcard:hover .vcard-name,.play-card:hover h3 {background-size:100% 1px;}
  .play-card:hover .play-product-preview img {transform:scale(1.025);}
- .xp-row:hover::before,.svc-row:hover::before {transform:scaleY(1);}
  .svc-row:hover {background:var(--paper);}
  .test-item:hover {border-color:#a88656;}
  .pinned-note:hover {transform:translateY(-3px) rotate(0deg);box-shadow:2px 9px 16px #20201e18;}

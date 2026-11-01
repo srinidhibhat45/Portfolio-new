@@ -86,10 +86,17 @@ test('new games share private persistence while legacy six-game saves remain val
  assert.deepEqual(restored.games.chess,legacy.games.chess);assert.equal(restored.tokens,8);for(const id of TABLE_GAME_IDS){assert.ok(GAME_IDS.includes(id));assert.ok(validTableGame(id,restored.games[id]));}
  assert.equal(await createGameStore(new IDBFactory()).read(),null);
 });
-test('every new game is reachable in both choosers with rules, reset, status and honest results',()=>{
+test('all games share one labelled chooser, with reachable panels and game controls',()=>{
  const html=readFileSync('index.html','utf8');
+ const chooser=html.match(/<select id="playGameSelect"[^>]*>([\s\S]*?)<\/select>/g);
+ assert.equal(chooser.length,1);
+ assert.deepEqual([...chooser[0].matchAll(/option value="([^"]+)"/g)].map(m=>m[1]),GAME_IDS);
+ for(const id of GAME_IDS){
+  const panelId='panel'+id[0].toUpperCase()+id.slice(1);
+  assert.match(html,new RegExp('role="region"[^>]*id="'+panelId+'" aria-label="[^"]+"'));
+ }
  for(const id of TABLE_GAME_IDS){
-  assert.ok(html.includes(`data-game="${id}"`));assert.ok(html.includes(`option value="${id}"`));assert.ok(html.includes(`id="panel${id[0].toUpperCase()+id.slice(1)}"`));assert.ok(html.includes(`data-reset="${id}"`));assert.ok(html.includes(`id="${id}Status"`));assert.ok(GAME_GUIDES[id].rules.length>60);
+  assert.ok(html.includes(`option value="${id}"`));assert.ok(html.includes(`id="panel${id[0].toUpperCase()+id.slice(1)}"`));assert.ok(html.includes(`data-reset="${id}"`));assert.ok(html.includes(`id="${id}Status"`));assert.ok(GAME_GUIDES[id].rules.length>60);
  }
  assert.match(outcomeCopy('memory','you',{turns:9}).score,/9 turns/);
  assert.equal(outcomeCopy('dots','you',{boxes:['you','bot','you']}).score,'You 2 — 1 Shri');

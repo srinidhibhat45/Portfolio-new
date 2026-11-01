@@ -1,0 +1,417 @@
+{
+  "gameLayouts": [
+    {
+      "game": "pens",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "chess",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "0px",
+          "text": "✳"
+        },
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "cards",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "0px",
+          "text": "✳"
+        },
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "rps",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "cricket",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "0px",
+          "text": "✳"
+        },
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "ultimate",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "0px",
+          "text": "✳"
+        },
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "connect",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "dots",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "memory",
+      "viewport": 390,
+      "scrollWidth": 372,
+      "smallLabels": [
+        {
+          "size": "8px",
+          "text": "Run accessibility audit"
+        }
+      ],
+      "width": 372
+    },
+    {
+      "game": "pens",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "chess",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "cards",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "rps",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "cricket",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "ultimate",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "connect",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "dots",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "memory",
+      "viewport": 1280,
+      "scrollWidth": 1178,
+      "smallLabels": [],
+      "width": 1178
+    },
+    {
+      "game": "pens",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "chess",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "cards",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "rps",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "cricket",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "ultimate",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "connect",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "dots",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "memory",
+      "viewport": 320,
+      "scrollWidth": 302,
+      "width": 302
+    }
+  ],
+  "chessAudit": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "count": 4,
+        "nodes": [
+          {
+            "target": [
+              ".playroom-head > div > .play-eyebrow"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle > em"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "count": 8,
+        "nodes": [
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"b1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"c1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"d1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"e1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"f1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"g1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          },
+          {
+            "target": [
+              "button[data-square=\"h1\"]"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "passes": 33
+  },
+  "cricketAudit": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "color-contrast",
+        "count": 9,
+        "nodes": [
+          {
+            "target": [
+              ".playroom-head > div > .play-eyebrow"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle > em"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+          },
+          {
+            "target": [
+              "#gameHelp > summary > span[aria-hidden=\"true\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+          },
+          {
+            "target": [
+              ".cricket-score > div:nth-child(1) > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              "#cricketYou"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          },
+          {
+            "target": [
+              ".cricket-score > div:nth-child(3) > span"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined because it is overlapped by another element"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "count": 1,
+        "nodes": [
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "passes": 29
+  },
+  "caseProgress": {
+    "transform": "scaleX(1)",
+    "text": "100% read"
+  },
+  "chessKeyboardScroll": {
+    "focused": true,
+    "scrollTop": 47,
+    "scrollHeight": 143,
+    "clientHeight": 96
+  }
+}

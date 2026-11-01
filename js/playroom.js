@@ -1,4 +1,4 @@
-import {createTableGames} from './table-games-ui.mjs';
+import {createTableGames} from './table-games-ui.mjs?v=20261101-compact-chooser-2';
 import {Chess} from './vendor/chess.mjs';
 import {newDeck,handValue,cardResult,newPens,TABLE,stepPens,pensMoving,shootPen,chessChoice,CHESS_PROFILE} from './game-core.mjs';
 import {GAME_IDS,SAVE_VERSION,createGameStore,validSave} from './game-save.mjs';
@@ -28,7 +28,6 @@ open.addEventListener('click',()=>{document.dispatchEvent(new CustomEvent('portf
 $('playroomClose').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',e=>{if(e.target!==dialog)return;const r=dialog.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)dialog.close();});
 dialog.addEventListener('close',()=>{clockLast=0;save();cancelPending();cancelAnimationFrame(penRaf);penRaf=0;penLast=0;aim=null;document.body.style.overflow=priorOverflow;document.dispatchEvent(new CustomEvent('portfolio:dialog',{detail:{open:false}}));open.focus({preventScroll:true});});
-const tabs=[...dialog.querySelectorAll('[data-game]')];
 const gameSelect=$('playGameSelect'),compactGames=matchMedia('(max-width:760px), (max-width:1000px) and (max-height:500px) and (orientation:landscape)');
 const landscapeGames=matchMedia('(max-width:1000px) and (max-height:500px) and (orientation:landscape)'),gameHelp=$('gameHelp');
 const launchHome=document.createComment('Game launcher home'),helpHome=document.createComment('Game help home');open.before(launchHome);gameHelp.before(helpHome);
@@ -42,16 +41,10 @@ function positionGameControls(){
 }
 positionGameControls();
 landscapeGames.addEventListener('change',positionGameControls);
-function switchGame(game){if(!GAME_IDS.includes(game))return;settleClock();cancelPending();cancelAnimationFrame(penRaf);penRaf=0;penLast=0;aim=null;active=game;gameSelect.value=game;clockLast=performance.now();$('gameHelp').open=false;$('gameHelpTitle').textContent=GAME_GUIDES[game].name;$('gameHelpBody').textContent=GAME_GUIDES[game].rules;tabs.forEach(b=>{const chosen=b.dataset.game===game;b.setAttribute('aria-selected',chosen);b.tabIndex=chosen?0:-1;});GAME_IDS.forEach(g=>$('panel'+g[0].toUpperCase()+g.slice(1)).hidden=g!==game);say('greeting');resume();save();}
+function switchGame(game){if(!GAME_IDS.includes(game))return;settleClock();cancelPending();cancelAnimationFrame(penRaf);penRaf=0;penLast=0;aim=null;active=game;gameSelect.value=game;clockLast=performance.now();$('gameHelp').open=false;$('gameHelpTitle').textContent=GAME_GUIDES[game].name;$('gameHelpBody').textContent=GAME_GUIDES[game].rules;gameSelect.setAttribute('aria-controls','panel'+game[0].toUpperCase()+game.slice(1));GAME_IDS.forEach(g=>$('panel'+g[0].toUpperCase()+g.slice(1)).hidden=g!==game);say('greeting');resume();save();}
 gameSelect.addEventListener('change',()=>switchGame(gameSelect.value));
-compactGames.addEventListener('change',()=>{
- positionGameControls();
- if(!dialog.open)return;
- const focused=document.activeElement;
- if(compactGames.matches&&tabs.includes(focused))gameSelect.focus({preventScroll:true});
- else if(!compactGames.matches&&focused===gameSelect)tabs.find(tab=>tab.dataset.game===active)?.focus({preventScroll:true});
-});
-tabs.forEach((b,i)=>{b.addEventListener('click',()=>switchGame(b.dataset.game));b.addEventListener('keydown',e=>{let next;if(e.key==='ArrowRight')next=(i+1)%tabs.length;else if(e.key==='ArrowLeft')next=(i+tabs.length-1)%tabs.length;else if(e.key==='Home')next=0;else if(e.key==='End')next=tabs.length-1;if(next!==undefined){e.preventDefault();switchGame(tabs[next].dataset.game);tabs[next].focus();}});});
+$('playGameCount').textContent=gameSelect.options.length+' games';
+compactGames.addEventListener('change',positionGameControls);
 dialog.querySelectorAll('[data-reset]').forEach(b=>b.addEventListener('click',e=>{cancelPending();const g=b.dataset.reset;clearResult(g);roundPaid[g]=false;if(g==='pens')resetPens();if(g==='chess')resetChess();if(g==='cards')resetCards();if(g==='rps')resetRps();if(g==='cricket')resetCricket();if(g==='ultimate')resetUltimate();if(tableGames.has(g))tableGames.reset(g);say('rematch');save();if(e.detail) $('panel'+g[0].toUpperCase()+g.slice(1)).querySelector('canvas,button:not(:disabled):not([data-reset])')?.focus({preventScroll:true});}));
 function resume(){clockLast=performance.now();if(settlements[active]){renderSavedGame(active);finish(active,settlements[active].result,settlements[active].reason);updateTurn();return;}if(active==='pens'){drawPens();if(penPhase==='over')finish('pens',penResult);if(penPhase==='moving')animatePens();else if(penTurn==='bot'&&penPhase!=='over')botFlick();}if(active==='chess'){renderChess();if(chess.turn()==='b'&&!chess.isGameOver())botChess();}if(active==='cards'){renderCards();if(cardPhase==='over')finish('cards',cardResult(yourHand,botHand));if(cardPhase==='bot')botCards();}if(active==='rps'){renderRps();if(rps.phase==='reveal')resolveRps();}if(active==='cricket'){renderCricket();if(cricket.phase==='ball')resolveCricket();}if(active==='ultimate'){renderUltimate();if(ultimate.turn==='O'&&!ultimate.winner)botUltimate();}if(tableGames.has(active))tableGames.resume(active);updateTurn();}
 /* Chess: the rules library validates every move; the bot searches legal replies. */

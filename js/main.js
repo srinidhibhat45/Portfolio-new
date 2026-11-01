@@ -566,7 +566,7 @@
     function updateProgress() {
       var max = scroll.scrollHeight - scroll.clientHeight;
       var frac = max > 0 ? Math.min(1, Math.max(0, scroll.scrollTop / max)) : 0;
-      fillEl.style.width = (frac * 100).toFixed(1) + '%';
+      fillEl.style.transform = 'scaleX(' + frac.toFixed(4) + ')';
       if (scroll.querySelector('.case-study')) {
         progressEl.textContent = Math.round(frac * 100) + '% read';
         return;
@@ -631,6 +631,18 @@
       if (cv.classList.contains('is-open')) updateProgress();
     });
     closeEl.addEventListener('click', closeCase);
+    var surprise = document.getElementById('surpriseProject'), lastDiscovery = '';
+    if (surprise) {
+      surprise.setAttribute('aria-haspopup', 'dialog');
+      surprise.setAttribute('aria-controls', 'caseViewer');
+      surprise.addEventListener('click', function (event) {
+        if (event.ctrlKey || event.metaKey || event.shiftKey || event.altKey || event.button !== 0) return;
+        var slugs = Object.keys(DATA).filter(function (slug) { return DATA[slug].story && slug !== lastDiscovery; });
+        if (!slugs.length) return;
+        var slug = slugs[Math.floor(Math.random() * slugs.length)];
+        if (openCase(slug)) { event.preventDefault(); lastDiscovery = slug; }
+      });
+    }
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && cv.classList.contains('is-open')) closeCase();
     });

@@ -77,6 +77,14 @@
   (function () {
     var photo = document.querySelector('.heritage-photo');
     if (!photo) return;
+    var turn = document.getElementById('portraitTurn'), quarterTurns = 0;
+    if (turn) {
+      turn.hidden = false;
+      turn.addEventListener('click', function () {
+        quarterTurns++;
+        photo.style.setProperty('--portrait-turn', (quarterTurns * 90) + 'deg');
+      });
+    }
     var motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
     var inView = false;
     function syncOrbit() {

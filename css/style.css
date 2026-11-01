@@ -265,11 +265,7 @@ html.js .preloader { display: flex; }
   transition: border-color 0.3s;
 }
 .nav-status:hover { border-color: #fff; }
-.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: pulse 2s infinite; }
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(77,132,255,0.5); }
-  50% { box-shadow: 0 0 0 6px rgba(77,132,255,0); }
-}
+.status-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
 .nav-burger { min-width: 44px; min-height: 44px; align-items: center; justify-content: center; display: none; flex-direction: column; gap: 6px; background: none; border: 0; cursor: pointer; padding: 8px; }
 .nav-burger span { width: 26px; height: 2px; background: #fff; transition: transform 0.35s var(--ease), opacity 0.3s; }
 
@@ -389,38 +385,11 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   flex-direction: column;
   justify-content: center;
 }
-/* Cool aurora + blueprint mesh backdrop */
+/* Legacy hero layout primitives. */
 .hero-bg {
   position: absolute; inset: 0;
   z-index: 0; overflow: hidden;
   pointer-events: none;
-}
-.hero-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.55;
-  will-change: transform;
-}
-.hero-orb-1 {
-  width: 52vw; height: 52vw; max-width: 720px; max-height: 720px;
-  right: -6%; top: 8%;
-  background: radial-gradient(circle at 35% 35%, rgba(77,132,255,0.55), rgba(77,132,255,0) 68%);
-  animation: orbFloat1 18s ease-in-out infinite;
-}
-.hero-orb-2 {
-  width: 40vw; height: 40vw; max-width: 540px; max-height: 540px;
-  left: -8%; bottom: -6%;
-  background: radial-gradient(circle at 50% 50%, rgba(56,189,248,0.42), rgba(56,189,248,0) 66%);
-  animation: orbFloat2 22s ease-in-out infinite;
-}
-@keyframes orbFloat1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(-5%, 6%) scale(1.08); }
-}
-@keyframes orbFloat2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(6%, -5%) scale(1.1); }
 }
 /* faint blueprint grid, faded out toward edges */
 .hero-mesh {
@@ -687,21 +656,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   .note-arrow { display: none; }
 }
 
-/* ===== Ticker ===== */
-.ticker {
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  overflow: hidden; white-space: nowrap;
-  padding: 1.1rem 0;
-}
-.ticker-track { display: inline-flex; will-change: transform; animation: marquee 26s linear infinite; }
-.ticker-track span {
-  font-family: var(--serif); font-weight: 400; font-style: italic;
-  font-size: clamp(1.4rem, 3vw, 2.4rem);
-  color: var(--bone); display: inline-flex; align-items: center;
-}
-.ticker-track i { color: var(--accent); font-style: normal; margin: 0 0.9rem; font-size: 0.6em; }
-@keyframes marquee { to { transform: translateX(-50%); } }
 
 /* ===== About (cream panel) ===== */
 .about {
@@ -731,17 +685,6 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   align-items: flex-end;
   justify-content: center;
   pointer-events: none;
-}
-.about-portrait-glow {
-  position: absolute;
-  z-index: -1;
-  width: 150%; height: 68%;
-  left: 50%; bottom: 4%;
-  transform: translateX(-50%);
-  background: radial-gradient(circle, var(--accent) 0%, transparent 70%);
-  opacity: 0.4;
-  filter: blur(46px);
-  border-radius: 50%;
 }
 .about-portrait-ast {
   position: absolute;
@@ -825,7 +768,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 }
 .card:hover {
   border-color: var(--accent); transform: translateY(-8px) rotate(var(--tilt, 0deg)); background: var(--ink-3);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.04), 0 32px 54px -24px rgba(49,99,230,0.32);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.04), 0 32px 54px -24px rgba(0,0,0,0.20);
 }
 .card:nth-child(odd) { --tilt: -0.6deg; }
 .card:nth-child(even) { --tilt: 0.6deg; }
@@ -876,7 +819,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   padding: 0.48rem 0.85rem;
   transition: background-color 0.35s, color 0.35s, border-color 0.35s, box-shadow 0.35s;
 }
-.card:hover .card-cta { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 8px 18px -6px rgba(49,99,230,0.5); }
+.card:hover .card-cta { background: var(--accent); color: #fff; border-color: var(--accent); box-shadow: 0 8px 18px -6px rgba(0,0,0,0.20); }
 
 /* ===== Work view switcher ===== */
 .work-tabs {
@@ -903,12 +846,12 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 .work-tab:hover { color: var(--bone); }
 .work-tab.is-active {
   background: var(--accent); border-color: var(--accent); color: #fff;
-  box-shadow: 0 10px 24px -8px rgba(49,99,230,0.55);
+  box-shadow: 0 10px 24px -8px rgba(0,0,0,0.20);
   transform: translateY(-1px);
 }
 .work-tab[data-tab="vibe"].is-active {
   background: var(--note-bg); border-color: var(--note-bg); color: var(--note-ink);
-  box-shadow: 0 10px 24px -8px rgba(255,207,134,0.55);
+  box-shadow: 0 10px 24px -8px rgba(0,0,0,0.20);
 }
 .project-tools { display: flex; align-items: flex-end; justify-content: space-between; gap: 1rem; margin: -1rem 0 2rem; }
 .project-search { width: min(100%, 460px); }
@@ -943,7 +886,7 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 }
 .vcard:hover {
   transform: translateY(-8px) rotate(var(--tilt, 0deg)); border-color: var(--note-bg);
-  box-shadow: 0 2px 0 rgba(0,0,0,0.15), 0 32px 54px -22px rgba(255,207,134,0.35);
+  box-shadow: 0 2px 0 rgba(0,0,0,0.15), 0 32px 54px -22px rgba(0,0,0,0.20);
 }
 .vcard:nth-child(odd) { --tilt: -0.5deg; }
 .vcard:nth-child(even) { --tilt: 0.5deg; }
@@ -1007,9 +950,9 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   gap: clamp(1rem, 3vw, 3rem);
   padding: clamp(1.5rem, 3.5vh, 2.25rem) 0.5rem;
   border-top: 1px solid var(--line);
-  transition: background-color 0.3s, padding-left 0.35s var(--ease);
+  transition: background-color 0.3s;
 }
-.xp-row:hover { background: var(--ink-2); padding-left: 1.25rem; }
+.xp-row:hover { background: var(--ink-2); }
 .xp-when { font-size: 0.82rem; color: var(--accent); letter-spacing: 0.06em; text-transform: uppercase; padding-top: 0.4rem; }
 .xp-what { display: flex; flex-direction: column; gap: 0.25rem; }
 .xp-what strong {
@@ -1074,9 +1017,9 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   align-items: center; gap: clamp(1rem, 3vw, 3rem);
   padding: clamp(1.3rem, 3vh, 2rem) 0.5rem;
   border-top: 1px solid var(--line);
-  transition: padding-left 0.35s var(--ease);
+  transition: color 0.3s;
 }
-.svc-row:hover { padding-left: 1.25rem; }
+
 .svc-idx { font-size: 0.8rem; color: var(--bone-dim); letter-spacing: 0.08em; }
 .svc-name {
   font-family: var(--serif); font-weight: 400;
@@ -1233,10 +1176,11 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 .cf-field input:focus,
 .cf-field select:focus,
 .cf-field textarea:focus {
-  outline: none;
+  outline: 2px solid var(--focus-ring, var(--accent));
+  outline-offset: 2px;
   border-color: var(--accent);
-  background: rgba(77,132,255,0.06);
-  box-shadow: 0 0 0 3px rgba(77,132,255,0.14);
+  background: var(--ink-2);
+  box-shadow: none;
 }
 .cf-actions {
   display: flex; align-items: center; justify-content: space-between;
@@ -1252,9 +1196,9 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
   border-radius: 99px;
   padding: 0.95rem 1.9rem;
   transition: background-color 0.3s, transform 0.3s var(--ease), box-shadow 0.3s;
-  box-shadow: 0 10px 30px rgba(77,132,255,0.28);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.18);
 }
-.cf-submit:hover { background: #3f79ff; box-shadow: 0 14px 40px rgba(77,132,255,0.4); }
+.cf-submit:hover { background: var(--accent); box-shadow: 0 14px 40px rgba(0,0,0,0.22); }
 .cf-submit:disabled { opacity: 0.55; cursor: default; box-shadow: none; }
 .cf-submit-ico { transition: transform 0.35s var(--ease); }
 .cf-submit:hover .cf-submit-ico { transform: translate(3px,-3px); }
@@ -1424,9 +1368,10 @@ section { padding: clamp(5rem, 13vh, 9rem) var(--pad-x); position: relative; }
 .cv-close:hover { transform: rotate(90deg); background: #3f79ff; }
 .cv-bar-fill {
   position: relative; z-index: 2; flex-shrink: 0;
-  height: 2px; width: 0%;
+  height: 2px; width: 100%;
+  transform: scaleX(0); transform-origin: left;
   background: linear-gradient(90deg, var(--accent), var(--accent-2));
-  transition: width 0.1s linear;
+  transition: transform 0.1s linear;
 }
 .cv-scroll {
   min-height: 0; overscroll-behavior: contain;

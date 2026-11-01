@@ -1,0 +1,259 @@
+{
+  "layouts": [
+    {
+      "game": "pens",
+      "viewport": 1280,
+      "controls": "panelPens",
+      "pickerHeight": 74,
+      "regions": [
+        "panelPens"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "chess",
+      "viewport": 1280,
+      "controls": "panelChess",
+      "pickerHeight": 74,
+      "regions": [
+        "panelChess"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "cards",
+      "viewport": 1280,
+      "controls": "panelCards",
+      "pickerHeight": 74,
+      "regions": [
+        "panelCards"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "rps",
+      "viewport": 1280,
+      "controls": "panelRps",
+      "pickerHeight": 74,
+      "regions": [
+        "panelRps"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "cricket",
+      "viewport": 1280,
+      "controls": "panelCricket",
+      "pickerHeight": 74,
+      "regions": [
+        "panelCricket"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "ultimate",
+      "viewport": 1280,
+      "controls": "panelUltimate",
+      "pickerHeight": 74,
+      "regions": [
+        "panelUltimate"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "connect",
+      "viewport": 1280,
+      "controls": "panelConnect",
+      "pickerHeight": 74,
+      "regions": [
+        "panelConnect"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "dots",
+      "viewport": 1280,
+      "controls": "panelDots",
+      "pickerHeight": 74,
+      "regions": [
+        "panelDots"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "memory",
+      "viewport": 1280,
+      "controls": "panelMemory",
+      "pickerHeight": 74,
+      "regions": [
+        "panelMemory"
+      ],
+      "scrollWidth": 1178,
+      "width": 1178
+    },
+    {
+      "game": "pens",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelPens"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "chess",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelChess"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "cards",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelCards"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "rps",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelRps"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "cricket",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelCricket"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "ultimate",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelUltimate"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "connect",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelConnect"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "dots",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelDots"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    },
+    {
+      "game": "memory",
+      "viewport": 320,
+      "pickerHeight": 74,
+      "regions": [
+        "panelMemory"
+      ],
+      "scrollWidth": 302,
+      "width": 302
+    }
+  ],
+  "audit": {
+    "violations": [],
+    "incomplete": [
+      {
+        "id": "aria-prohibited-attr",
+        "count": 1,
+        "nodes": [
+          {
+            "target": [
+              "div[aria-label=\"Boxes claimed\"]"
+            ],
+            "summary": "Fix all of the following:\n  aria-label attribute is not well supported on \"div\" elements with no valid role attribute."
+          }
+        ]
+      },
+      {
+        "id": "color-contrast",
+        "count": 5,
+        "nodes": [
+          {
+            "target": [
+              ".playroom-head > div > .play-eyebrow"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomTitle > em"
+            ],
+            "summary": "Fix any of the following:\n  Element's background color could not be determined due to a background image"
+          },
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+          },
+          {
+            "target": [
+              "#gameHelp > summary > span[aria-hidden=\"true\"]"
+            ],
+            "summary": "Fix any of the following:\n  Element content contains only non-text characters"
+          }
+        ]
+      },
+      {
+        "id": "label-content-name-mismatch",
+        "count": 1,
+        "nodes": [
+          {
+            "target": [
+              "#playroomClose"
+            ],
+            "summary": "Fix any of the following:\n  Unable to determine if the visible text is part of the accessible name"
+          }
+        ]
+      }
+    ],
+    "passes": 31
+  }
+}

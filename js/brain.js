@@ -18,7 +18,7 @@
   var defs=svg('defs',{}),clip=svg('clipPath',{id:'brainFaceClip'});clip.append(svg('circle',{r:42}));defs.append(clip);graph.append(defs);
   var scene=svg('g',{}),edgeLayer=svg('g',{'aria-hidden':'true'});scene.append(edgeLayer);graph.append(scene);
   nodes.forEach(function(n){
-    var g=svg('g',{class:'brain-node','data-node':n.id,role:'button',tabindex:'0','aria-label':'Explore '+n.name,'aria-pressed':'false'});
+    var g=svg('g',{class:'brain-node','data-node':n.id,role:'button',tabindex:'0','aria-label':'Explore '+n.name+(n.kind==='topic'?' '+n.count+' connections':''),'aria-pressed':'false'});
     var color=n.color||(n.topic?byID.get(n.topic).color:'#794758');g.style.setProperty('--node-color',color);
     if(n.id==='me'){
       g.append(svg('circle',{r:51,class:'brain-self-ring'}));
@@ -28,7 +28,7 @@
     }else{
       g.append(svg('rect',{rx:n.kind==='topic'?16:10,class:'node-paper'}));
       var label=svg('text',{'text-anchor':'middle',class:'node-name'});label.textContent=n.name;g.append(label);
-      if(n.kind==='topic'){var count=svg('text',{'text-anchor':'middle',class:'node-count'});count.textContent=n.count+' connections';g.append(count);}
+      if(n.kind==='topic'){var count=svg('text',{'text-anchor':'middle',class:'node-count'});count.textContent=' '+n.count+' connections';g.append(count);}
     }
     g.setAttribute('aria-description',n.desc);scene.append(g);elements.set(n.id,g);
     g.addEventListener('click',function(e){if(e.detail===0)choose(n.id);});
@@ -57,7 +57,7 @@
       var lines=[''];label.replaceChildren();var probe=svg('tspan',{});label.append(probe);
       n.name.split(' ').forEach(function(word){var i=lines.length-1,value=(lines[i]+' '+word).trim();probe.textContent=value;if(probe.getComputedTextLength()>maxWidth-34&&lines[i])lines.push(word);else lines[i]=value;});
       label.replaceChildren();var textWidth=0,lineHeight=mobile?22:23;
-      lines.forEach(function(line,i){var span=svg('tspan',{x:0,dy:i?lineHeight:0});span.textContent=line;label.append(span);textWidth=Math.max(textWidth,span.getComputedTextLength());});
+      lines.forEach(function(line,i){var span=svg('tspan',{x:0,dy:i?lineHeight:0});span.textContent=(i?' ':'')+line;label.append(span);textWidth=Math.max(textWidth,span.getComputedTextLength());});
       var boxWidth=Math.max(n.kind==='topic'?maxWidth:116,Math.min(maxWidth,textWidth+36));
       var boxHeight=n.kind==='topic'?Math.max(mobile?96:65,lines.length*lineHeight+42):Math.max(mobile?84:47,lines.length*lineHeight+24);
       label.setAttribute('y',n.kind==='topic'?-((lines.length-1)*lineHeight)/2-5:6-((lines.length-1)*lineHeight)/2);

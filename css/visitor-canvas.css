@@ -9,6 +9,7 @@
 .board-tools button>span {font:400 20px var(--sans);margin-right:6px;vertical-align:middle;}
 .board-tools button:hover:not(:disabled) {background:#efe6dd;}
 .board-tools button[aria-pressed="true"] {background:#6c3d4d;color:#fff8e9;}
+.board-tools button[aria-pressed="true"]:hover {background:#532d3a;}
 .board-tools button:disabled {opacity:.3;cursor:default;}
 .board-tool-divider {height:22px;width:1px;background:#ddd0c1;margin-inline:5px;}
 .board-camera {gap:2px;}

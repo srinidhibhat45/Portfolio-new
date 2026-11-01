@@ -44,7 +44,7 @@ export function createTableGames({root, schedule, onSave, onFinish, onMood, canP
       if (!(x % 2) && !(y % 2)) { html += '<span class="dots-dot" aria-hidden="true"></span>'; continue; }
       if (x % 2 && y % 2) {
         const box = Math.floor(y / 2) * 3 + Math.floor(x / 2), owner = state.boxes[box];
-        html += `<span class="dots-box ${owner ? 'is-' + owner : ''}" aria-label="Box ${box + 1}: ${owner ? sideName(owner) : 'unclaimed'}">${owner ? owner === 'you' ? 'Y' : 'S' : ''}</span>`;
+        html += `<span role="img" class="dots-box ${owner ? 'is-' + owner : ''}" aria-label="Box ${box + 1}: ${owner ? sideName(owner) : 'unclaimed'}">${owner ? owner === 'you' ? 'Y' : 'S' : ''}</span>`;
       } else {
         const horizontal = !(y % 2), row = Math.floor(y / 2), col = Math.floor(x / 2);
         const edge = horizontal ? row * 3 + col : 12 + row * 4 + col, owner = state.edges[edge];

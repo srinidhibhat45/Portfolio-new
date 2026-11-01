@@ -66,7 +66,7 @@
     {id:'starter-smile',sticker:'🙂',label:'Starter smile',position:{x:455,y:130,rotation:-8}},
     {id:'starter-lotus',sticker:'🪷',label:'Starter lotus',position:{x:995,y:170,rotation:8}},
     {id:'starter-heart',sticker:'💛',label:'Starter heart',position:{x:785,y:460,rotation:-12}},
-    {id:'starter-sparkles',sticker:'✨',label:'Starter sparkles',position:{x:690,y:630,rotation:6}},
+    {id:'starter-sparkles',sticker:'✨',label:'Starter sparkles',position:{x:720,y:790,rotation:6}},
     {id:'starter-palm',sticker:'🌴',label:'Starter palm',position:{x:155,y:565,rotation:-5}},
     {id:'starter-flower',sticker:'🌻',label:'Starter sunflower',position:{x:430,y:625,rotation:5}},
     {id:'starter-stamp',stamp:true,position:{x:1100,y:330,rotation:-8}}

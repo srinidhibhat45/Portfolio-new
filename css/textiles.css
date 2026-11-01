@@ -46,7 +46,7 @@
 .xp-chapter {background-image:none;}
 .xp-chapter::before {content:'';position:absolute;inset:-8px;background:url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;mask-image:radial-gradient(circle,transparent 35%,#000 40%);opacity:.65;pointer-events:none;}
 .music-record span {background:#d0b27e url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;font-size:0;}
-.rps-arena {background-image:linear-gradient(#f2e8d4ed,#f2e8d4ed),url('../assets/img/textiles/portrait-filigree-v2.webp');background-size:100% 100%,350px 350px;background-position:center;background-repeat:no-repeat;}
+.rps-arena {background-image:linear-gradient(#f2e8d4c7,#f2e8d4c7),url('../assets/img/textiles/portrait-filigree-v2.webp');background-size:100% 100%,350px 350px;background-position:center;background-repeat:no-repeat;}
 
 /* Tactile paper sits below the content; its strength stays quiet in both themes. */
 .heritage-weave {background:url('../assets/img/textiles/cotton-paper-texture.webp') center/640px repeat;opacity:.25;mix-blend-mode:multiply;}

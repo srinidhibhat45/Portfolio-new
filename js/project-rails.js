@@ -11,6 +11,9 @@
     var previous=controls.querySelector('[data-project-direction="-1"]');
     var next=controls.querySelector('[data-project-direction="1"]');
     var position=controls.querySelector('.project-position'),timer;
+    var hint=document.createElement('span');
+    hint.className='project-swipe-hint';hint.textContent='Swipe to explore';
+    controls.insertBefore(hint,controls.querySelector('.project-arrows'));
     function items(panel){return Array.from(panel.children).filter(function(card){return !card.hidden;});}
     function update(){
       var panel=getPanel(),cards=items(panel),bounds=panel.getBoundingClientRect();
