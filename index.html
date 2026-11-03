@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="css/service-art.css?v=20261016-restored-scale">
   <link rel="stylesheet" href="css/brain-map.css?v=20261101-phone-delight-2">
   <link rel="stylesheet" href="css/table-games.css?v=20261101-compact-chooser-2">
+<link rel="stylesheet" href="css/quiet.css?v=20261103-neural-3">
 </head>
 <body>
 
@@ -195,10 +196,9 @@
         </div>
         <figure class="heritage-photo">
           <div class="heritage-composition">
-            <div class="regal-motif portrait-mandala" aria-hidden="true"></div>
+            <div class="regal-motif portrait-mandala" role="slider" tabindex="0" aria-label="Spin the jaali. Drag or flick, or use left and right arrow keys." aria-valuemin="0" aria-valuemax="360" aria-valuenow="0"></div>
             <img class="heritage-portrait" src="assets/img/about-portrait.webp" width="880" height="811" alt="Srinidhi Bhat, smiling" fetchpriority="high">
           </div>
-          <button type="button" class="portrait-turn" id="portraitTurn" aria-label="Turn the jaali medallion" hidden><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 11a8 8 0 1 0-2.4 6.7M20 5v6h-6"/></svg><span>Turn the jaali</span></button>
         </figure>
         <nav class="heritage-paths" aria-label="Explore my work and interests">
           <a href="#work"><span class="heritage-path-name">Design</span><span class="heritage-path-desc">Product design</span><span class="heritage-path-arrow" aria-hidden="true">↗</span></a>
@@ -440,8 +440,8 @@
           <nav class="brain-trail" id="brainTrail" aria-label="Exploration trail"></nav>
           <details class="brain-map-options"><summary>Map controls &amp; list view</summary><div class="brain-controls"><button type="button" id="brainBack" aria-label="Back to previous connection" disabled>←</button><button type="button" id="brainZoomOut" aria-label="Zoom out of graph">−</button><button type="button" id="brainZoomIn" aria-label="Zoom into graph">+</button><button type="button" id="brainReset">Reset map</button><button type="button" id="brainMotion" aria-pressed="false">Pause motion</button><button type="button" id="brainView" aria-pressed="false">Browse list</button></div></details>
         </div>
-        <div class="brain-canvas"><svg id="brainGraph" viewBox="0 0 1000 620" role="group" aria-label="Interactive map of Srinidhi’s projects, interests, and community work" aria-describedby="brainHint"></svg><div id="brainTooltip" class="brain-tooltip" hidden></div><p id="brainEmpty" class="brain-empty" hidden>No connections found. Try a project name, an interest, or a tool.</p><div id="brainList" class="brain-list" hidden></div></div>
-        <div class="brain-map-foot"><p id="brainStatus" role="status" aria-live="polite"></p><p id="brainHint">Choose a theme or a project. Drag the map; use + / − to zoom.</p></div>
+        <div class="brain-canvas"><svg data-lenis-prevent id="brainGraph" viewBox="0 0 1000 620" role="group" aria-label="Interactive map of Srinidhi’s projects, interests, and community work" aria-describedby="brainHint"></svg><div id="brainTooltip" class="brain-tooltip" hidden></div><p id="brainEmpty" class="brain-empty" hidden>No connections found. Try a project name, an interest, or a tool.</p><div id="brainList" class="brain-list" hidden></div></div>
+        <div class="brain-map-foot"><p id="brainStatus" role="status" aria-live="polite"></p><p id="brainHint">Choose a theme or a project. Drag to rotate. Pinch to zoom, or use the map controls.</p></div>
         <aside class="brain-detail" id="brainDetail" aria-live="polite"></aside>
       </div>
     </section>
@@ -783,12 +783,12 @@
   <script src="js/project-media.js?v=20261031-case-refinement-4"></script>
   <script src="js/main.js?v=20261101-legacy-cleanup-2"></script>
   <script type="module" src="js/contact-form.mjs?v=20261010-copy-2"></script>
-  <script src="js/studio.js?v=20261101-phone-delight-2"></script>
+  <script src="js/studio.js?v=20261103-fidget"></script>
   <script src="js/project-drag.js?v=20261008-build-rail-1"></script>
   <script src="js/project-rails.js?v=20261101-phone-delight-2"></script>
   <script src="js/brain-data.js?v=20261031-case-refinement-4"></script>
   <script src="js/brain-layout.js?v=20261010-1"></script>
-  <script src="js/brain.js?v=20261101-phone-delight-3"></script>
+  <script src="js/brain.js?v=20261103-neural-2"></script>
   <script src="js/visitor-canvas.js?v=20261101-phone-delight-2"></script>
   <script src="js/atelier.js?v=20261008-canvas-4"></script>
   <script src="js/editorial.js?v=20261016-restored-scale"></script>

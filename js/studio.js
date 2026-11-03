@@ -73,31 +73,79 @@
     document.dispatchEvent(new CustomEvent('portfolio:layout'));
   });
 
-  /* The portrait's slow orbit rests when off screen or the tab is hidden. */
+  /* Direct angular dragging with frame-rate-independent friction. */
   (function () {
-    var photo = document.querySelector('.heritage-photo');
-    if (!photo) return;
-    var turn = document.getElementById('portraitTurn'), quarterTurns = 0;
-    if (turn) {
-      turn.hidden = false;
-      turn.addEventListener('click', function () {
-        quarterTurns++;
-        photo.style.setProperty('--portrait-turn', (quarterTurns * 90) + 'deg');
-      });
+    const jaali = document.querySelector('.portrait-mandala');
+    if (!jaali) return;
+    const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let angle = 0, speed = 0, pointer = null, previousAngle = 0;
+    let previousTime = 0, lastMove = 0, frame = 0, frameTime = 0;
+    const fullTurn = Math.PI * 2;
+    function paint() {
+      jaali.style.setProperty('--jaali-angle', angle + 'rad');
+      jaali.setAttribute('aria-valuenow', Math.round(((angle % fullTurn + fullTurn) % fullTurn) / fullTurn * 360));
     }
-    var motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var inView = false;
-    function syncOrbit() {
-      photo.classList.toggle('is-rotating', inView && !document.hidden && !motionPreference.matches && !/[?&]static/.test(location.search));
+    function stop() {
+      cancelAnimationFrame(frame); frame = 0; speed = 0;
     }
-    if ('IntersectionObserver' in window) {
-      var orbitObserver = new IntersectionObserver(function (entries) {
-        inView = entries[0].isIntersecting;
-        syncOrbit();
-      });
-      orbitObserver.observe(photo);
-    } else { inView = true; syncOrbit(); }
-    document.addEventListener('visibilitychange', syncOrbit);
-    motionPreference.addEventListener('change', syncOrbit);
+    function tick(now) {
+      frame = 0;
+      const seconds = Math.min((now - frameTime) / 1000, .05);
+      frameTime = now;
+      angle += speed * seconds;
+      speed *= Math.exp(-seconds * (preference.matches ? 7 : .8));
+      paint();
+      if (Math.abs(speed) > .015) frame = requestAnimationFrame(tick);
+    }
+    function coast() {
+      if (frame) cancelAnimationFrame(frame);
+      frameTime = performance.now();
+      frame = requestAnimationFrame(tick);
+    }
+    function pointerAngle(event) {
+      const rect = jaali.getBoundingClientRect();
+      return Math.atan2(event.clientY - rect.top - rect.height / 2, event.clientX - rect.left - rect.width / 2);
+    }
+    jaali.addEventListener('pointerdown', function (event) {
+      if (event.button !== 0 || pointer !== null) return;
+      stop(); pointer = event.pointerId;
+      previousAngle = pointerAngle(event);
+      previousTime = lastMove = performance.now();
+      jaali.setPointerCapture(pointer);
+      jaali.classList.add('is-spinning');
+    });
+    jaali.addEventListener('pointermove', function (event) {
+      if (event.pointerId !== pointer) return;
+      const next = pointerAngle(event), now = performance.now();
+      let delta = next - previousAngle;
+      delta = Math.atan2(Math.sin(delta), Math.cos(delta));
+      const seconds = Math.max((now - previousTime) / 1000, .008);
+      angle += delta;
+      speed = speed * .25 + Math.max(-24, Math.min(24, delta / seconds)) * .75;
+      previousAngle = next; previousTime = lastMove = now;
+      paint();
+    });
+    function release(event) {
+      if (event.pointerId !== pointer) return;
+      const id = pointer; pointer = null;
+      jaali.classList.remove('is-spinning');
+      if (jaali.hasPointerCapture(id)) jaali.releasePointerCapture(id);
+      if (event.type !== 'pointerup' || performance.now() - lastMove > 100) speed = 0;
+      if (speed) coast();
+    }
+    jaali.addEventListener('pointerup', release);
+    jaali.addEventListener('pointercancel', release);
+    jaali.addEventListener('lostpointercapture', release);
+    jaali.addEventListener('dragstart', event => event.preventDefault());
+    jaali.addEventListener('keydown', function (event) {
+      if (event.key === 'ArrowRight' || event.key === 'ArrowLeft') {
+        event.preventDefault(); speed += event.key === 'ArrowRight' ? 5 : -5; coast();
+      }
+      if (event.key === 'Escape') stop();
+    });
+    document.addEventListener('visibilitychange', function () { if (document.hidden) stop(); });
+    new IntersectionObserver(function (entries) { if (!entries[0].isIntersecting) stop(); }).observe(jaali);
+    preference.addEventListener('change', stop);
+    paint();
   })();
 })();

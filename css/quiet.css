@@ -1,0 +1,98 @@
+:root { --serif:Georgia,'Times New Roman',serif; --mono:var(--sans); }
+body .heritage-hero {--hero-paper:#f6f4ed;--hero-wine:#262d32;}
+body .heritage-title, body .section-title, body .section-title em, body .heritage-title em {font-family:var(--serif);letter-spacing:-.055em;font-weight:400;}
+body .heritage-title {font-size:clamp(58px,10vw,150px);}
+body :is(p,button,input,textarea,select,small,figcaption,.heritage-path-name,.section-note) {font-family:var(--sans);}
+body .heritage-weave,body .textile-panel,body .heritage-hero::before,body .heritage-hero::after {display:none;}
+body .heritage-path-desc {display:none;}
+body .heritage-stage {row-gap:2rem;}
+body #brainGraph {touch-action:none;cursor:grab;max-height:68vh;}
+body #brainGraph.is-dragging {cursor:grabbing;}
+body .brain-canvas {background:#edf1eb;}
+.brain-globe {pointer-events:none;}
+
+/* The jaali is the control surface. */
+.heritage-photo .portrait-mandala {pointer-events:auto;cursor:grab;touch-action:none;user-select:none;opacity:.4;}
+.heritage-photo .portrait-mandala::before {animation:none;transition:none;rotate:var(--jaali-angle,0rad);}
+.heritage-photo .portrait-mandala:focus-visible {outline:2px solid var(--hero-wine);outline-offset:5px;border-radius:50%;}
+.heritage-photo .portrait-mandala.is-spinning {cursor:grabbing;}
+.heritage-photo .heritage-portrait {pointer-events:none;user-select:none;-webkit-user-drag:none;}
+
+/* A dark observatory gives fine connections and depth room to breathe. */
+body .brain-section {--brain-paper:#10191e;--bone:#f2eee5;--bone-dim:#aab7b9;--line:#33434a;--accent:#e4ad91;--focus-ring:#e4ad91;background:var(--brain-paper);color:var(--bone);padding-block:85px;}
+body .brain-section .section-note {color:var(--bone-dim);}
+body .brain-section .brain-space {display:grid;grid-template-columns:minmax(0,1fr) 290px;column-gap:40px;}
+body .brain-navigation,body .brain-map-head {grid-column:1/-1;}
+body .brain-navigation {align-items:center;gap:20px;}
+body .brain-topics {gap:6px;}
+body .brain-topics button {border-radius:4px;color:#b4c1c3;font-size:12px;padding:10px 12px;}
+body .brain-topics button[aria-pressed="true"] {color:#f2eee5;background:#24333a;border-color:#52616a;}
+body .brain-topics button>span {color:#aab7b9;}
+body .brain-map-head {margin-top:24px;}
+body .brain-map-options>summary {color:#b4c1c3;}
+body .brain-controls button {background:#1a282f;color:#f2eee5;border-color:#52616a;}
+body .brain-controls {display:flex;}
+body .brain-search {width:250px;}
+body .brain-search input {color:#f2eee5;}
+body .brain-canvas {grid-column:1;grid-row:3;background:radial-gradient(ellipse at 50% 50%,#1f303b 0%,#10191e 65%);margin-top:0;align-self:center;}
+body #brainGraph {height:auto;min-height:0;max-height:none;overflow:hidden;touch-action:none;}
+body .brain-detail {grid-column:2;grid-row:3;align-self:center;display:block;padding:24px 0;margin:0;border:0;min-width:0;}
+body .brain-detail .detail-index {font:400 11px/1.6 var(--sans);color:#c5b5a5;letter-spacing:0;margin-bottom:14px;}
+body .brain-detail h3 {font:400 32px/1.15 var(--serif);color:#f2eee5;}
+body .brain-selected>p {font:400 14px/1.8 var(--sans);color:#b4c1c3;margin-top:16px;}
+body .brain-detail .brain-project-meta {font-size:12px;color:#c4c3b5;}
+body .brain-related {margin-top:26px;}
+body .brain-related h4 {font:500 12px var(--sans);color:#d6ddd9;}
+body .brain-detail .detail-links button {font:400 13px var(--sans);color:#e5e7dd;padding:11px 0;}
+body .brain-detail .detail-links small {display:none;}
+body .brain-project-action {color:#e4ad91;}
+body .brain-project-image {width:100%;height:130px;object-fit:contain;}
+body .brain-map-foot {grid-column:1/-1;font-size:12px;color:#aab7b9;margin-top:10px;}
+body .brain-map-foot p {font-size:12px;}
+body .brain-node {transition:opacity .25s;outline:none;}
+body .brain-node .node-hit {r:22;stroke:none;}
+body .brain-node .node-core {fill:var(--node-color);stroke:#f6eee5;stroke-width:.6;}
+body .brain-node .node-aura {fill:var(--node-color);fill-opacity:.08;stroke:var(--node-color);stroke-opacity:.45;stroke-width:.7;}
+body .brain-node:hover .node-aura,body .brain-node.is-active .node-aura,body .brain-node:focus-visible .node-aura {fill-opacity:.2;stroke-opacity:1;stroke-width:1.5;}
+body .brain-node .node-name {font:400 12px var(--sans);fill:#e5e9e6;stroke:#10191e;stroke-width:4px;paint-order:stroke;pointer-events:none;opacity:0;}
+body .brain-node.is-labelled .node-name {opacity:1;}
+body .brain-node:focus-visible .node-name {opacity:1;fill:#fff;}
+body .brain-edge {fill:none;stroke-width:.8;stroke-dasharray:none;pointer-events:none;}
+body .brain-edge.connected {stroke-width:1.25;}
+body .neural-orbits path {stroke:#9faec7;stroke-width:.7;opacity:.2;}
+body .neural-orbits path:nth-child(2) {stroke:#e4ad91;opacity:.3;}
+body .brain-tooltip {background:#24333a;border:1px solid #52616a;color:#f2eee5;box-shadow:0 12px 32px #0005;pointer-events:none;font-family:var(--sans);}
+body .brain-tooltip span,body .brain-tooltip p {color:#c3cecb;}
+body .brain-list-group h3 {color:#f2eee5;}
+body .brain-list button {background:#18262d;color:#e5e9e6;}
+body .brain-empty {background:#18262d;color:#f2eee5;}
+@media(max-width:1000px) {
+ body .brain-section .brain-space {grid-template-columns:minmax(0,1fr) 250px;column-gap:20px;}
+ body .brain-topics {flex:1;}
+ body .brain-search {width:210px;}
+}
+@media(max-width:700px) {
+ body .brain-section .brain-space {display:flex;flex-direction:column;gap:0;}
+ body .brain-navigation {align-items:start;}
+ body .brain-search {width:100%;}
+ body .brain-topics {gap:4px;}
+ body .brain-topics button {font-size:12px;padding:9px;}
+ body .brain-canvas {width:100%;margin-block:10px;}
+ body .brain-detail {width:100%;display:grid;grid-template-columns:1fr 1fr;gap:24px;padding-top:22px;border-top:1px solid var(--line);}
+ body .brain-detail h3 {font-size:27px;}
+ body .brain-detail .brain-selected>p {font-size:14px;}
+ body .brain-related {margin-top:0;}
+ body .brain-map-foot {order:4;}
+}
+@media(max-width:400px) {body .brain-detail {grid-template-columns:1fr;}body .brain-related {margin-top:10px;}}
+
+/* The hidden tree no longer occupies a third grid track. */
+body .writing-inner {grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,80px);}
+body .writing-copy,body .writing-desk {min-width:0;}
+body .writing-desk {width:100%;}
+body .writing-entry {min-width:0;}
+@media(max-width:700px) {body .writing-inner {grid-template-columns:minmax(0,1fr);gap:35px;}}
+@media(max-width:600px) {
+ body .brain-node .node-hit {r:38;}
+ body .brain-node .node-name {font-size:18px;}
+}
