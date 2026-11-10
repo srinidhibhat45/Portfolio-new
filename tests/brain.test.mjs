@@ -4,7 +4,7 @@ import { readFileSync, existsSync } from 'node:fs';
 import vm from 'node:vm';
 
 const context = vm.createContext({ window: {} });
-for (const file of ['js/site-data.js', 'js/project-media.js']) {
+for (const file of ['js/site-data.js']) {
   vm.runInContext(readFileSync(file, 'utf8'), context);
 }
 const original = JSON.stringify(context.window.SITE_DATA);

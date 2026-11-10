@@ -1,0 +1,64 @@
+/* Page structure: one heading voice, one vertical rhythm and two paper tones,
+   so every chapter reads as part of the same page. Loaded last. */
+
+/* ---- Chapters are numbered in Devanagari numerals: ०१, ०२ … ---- */
+@counter-style chapter-numerals {
+  system: extends devanagari;
+  pad: 2 "०";
+}
+main { counter-reset: chapter; }
+main > section:not(#hero) { counter-increment: chapter; }
+
+/* ---- One heading voice: sans for the words, italic serif for the accent ---- */
+main > section:not(#hero) :is(.section-title, .about-statement, .writing-title),
+main > section .play-heading h2 {
+  font-family: var(--sans);
+  font-size: clamp(40px, 5.2vw, 68px);
+  font-weight: 500;
+  letter-spacing: -.035em;
+  line-height: 1.08;
+}
+main > section:not(#hero) :is(.section-title, .about-statement, .writing-title, .contact-title) em,
+main > section .play-heading h2 em {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -.02em;
+}
+main > section:not(#hero) :is(.section-title, .about-statement, .writing-title, .contact-title)::before,
+main > section .play-heading h2::before {
+  content: counter(chapter, chapter-numerals);
+  content: counter(chapter, chapter-numerals) / "";
+  display: block;
+  margin-bottom: clamp(14px, 1.6vw, 22px);
+  padding-top: 14px;
+  border-top: 1px solid currentColor;
+  width: 2.6em;
+  font: 500 15px/1 var(--sans);
+  letter-spacing: .08em;
+  opacity: .72;
+}
+
+/* ---- One vertical rhythm ---- */
+main > section:not(#hero):not(#contact) {
+  padding-top: clamp(72px, 8vw, 112px);
+  padding-bottom: clamp(72px, 8vw, 112px);
+}
+
+/* ---- Two paper tones, alternating by chapter group. Dark chapters keep their own ground. ---- */
+main > :is(#work, #services, #testimonials, #board) { background-color: var(--ink); }
+main > :is(#playground, #about, #experience, #writing) { background-color: var(--ink-3); }
+
+/* ---- The floating player rests as a small pill and opens on hover or keyboard focus ---- */
+@media (hover: hover) and (min-width: 761px) {
+  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: auto;
+    padding: 8px;
+    border-radius: 999px;
+  }
+  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) :is(.music-heading-copy, .music-dock-volume, #musicNext, #musicMute, #musicExpand) { display: none; }
+  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) .music-dock-controls { margin-top: 0; }
+}

@@ -137,6 +137,8 @@
   <link rel="stylesheet" href="css/brain-map.css?v=20261101-phone-delight-2">
   <link rel="stylesheet" href="css/table-games.css?v=20261101-compact-chooser-2">
 <link rel="stylesheet" href="css/quiet.css?v=20261103-neural-3">
+<link rel="stylesheet" href="css/covers.css?v=20261110-covers-1">
+<link rel="stylesheet" href="css/structure.css?v=20261110-structure-1">
 </head>
 <body>
 
@@ -148,8 +150,8 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="#work"><span>Design work</span></a>
       <a href="#playground"><span>Built products</span></a>
-      <a href="#brain"><span>My brain</span></a>
       <a href="#about"><span>About</span></a>
+      <a href="#brain"><span>My brain</span></a>
       <a href="#contact"><span>Contact</span></a>
     </nav>
     <button type="button" class="recruiter-trigger" data-recruiter-open>Quick introduction <span aria-hidden="true">↗</span></button>
@@ -169,9 +171,9 @@
     <nav aria-label="Mobile">
       <a href="#work">Design work</a>
       <a href="#playground">Built products</a>
+      <a href="#about">About</a>
       <a href="#brain">My brain</a>
       <a href="#board">Visitor board</a>
-      <a href="#about">About</a>
       <a href="#contact">Contact</a>
     </nav>
     <div class="mobile-menu-foot">
@@ -227,15 +229,10 @@
             <button id="projectSearchClear" type="button" hidden>Clear</button>
           </div></details>
         <p class="project-results" id="projectResults" role="status" aria-live="polite" aria-atomic="true"></p>
-      <button type="button" class="project-grid-toggle" data-project-grid="cards" aria-controls="cards" aria-pressed="false">Grid view</button>
-        <div class="project-navigation" id="workNavigation" role="group" aria-label="Browse selected work">
-        <span class="project-position" role="status" aria-live="polite" aria-atomic="true"></span>
-        <div class="project-arrows"><button type="button" data-project-direction="-1" aria-label="Previous projects" aria-controls="cards">←</button><button type="button" data-project-direction="1" aria-label="Next projects" aria-controls="cards">→</button></div>
-      </div>
       </div>
       <p class="project-empty" id="projectEmpty" hidden>No projects match this search. Try another word or clear the search to see everything.</p>
 
-      <div class="cards work-panel" id="cards" tabindex="0" role="region" aria-label="Design case studies">
+      <div class="cover-grid" id="cards" role="region" aria-label="Design case studies">
       </div>
 
 
@@ -249,92 +246,12 @@
           <label for="builtSearch">Find a built product</label>
           <div class="project-search-field"><input id="builtSearch" type="search" placeholder="Search by name, topic, or tool…" autocomplete="off" aria-controls="playGrid"><button id="builtSearchClear" type="button" hidden>Clear</button></div></details>
         <p class="project-results" id="builtResults" role="status" aria-live="polite" aria-atomic="true"></p>
-        <button type="button" class="project-grid-toggle" data-project-grid="playGrid" aria-controls="playGrid" aria-pressed="false">Grid view</button>
-        <div class="project-navigation" id="playNavigation" role="group" aria-label="Browse built products">
-          <span class="project-position" role="status" aria-live="polite" aria-atomic="true"></span>
-          <div class="project-arrows"><button type="button" data-project-direction="-1" aria-label="Previous built products" aria-controls="playGrid">←</button><button type="button" data-project-direction="1" aria-label="Next built products" aria-controls="playGrid">→</button></div>
-        </div>
       </div>
       <p class="project-empty" id="builtEmpty" hidden>No products match this search. Try another word or clear the search to see everything.</p>
-      <div class="play-grid work-panel" id="playGrid" tabindex="0" role="region" aria-label="Built products"></div>
+      <div class="cover-grid cover-grid-products" id="playGrid" role="region" aria-label="Built products" data-collapsed="true"></div>
+      <button type="button" class="cover-more" id="builtMore" aria-controls="playGrid" aria-expanded="false" hidden></button>
       <div class="project-discovery"><p>Something you weren’t looking for.</p><a href="case-studies/" id="surpriseProject"><img src="assets/img/textiles/blockprint-seal.webp" alt="" width="24" height="24">Surprise me<span aria-hidden="true">↗</span></a></div>
       <a class="now-building" href="https://arkitype.srinidhibhat.com/" target="_blank" rel="noopener"><span class="live-dot"></span> In progress <strong>Arkitype</strong><span> Design systems, built in the browser.</span><span aria-hidden="true">↗</span></a>
-    </section>
-
-    <!-- ===== About ===== -->
-    <section class="about" id="about" aria-labelledby="aboutTitle">
-      <div class="textile-panel print-paisley" aria-hidden="true"><span class="textile-ink"></span></div>
-      <div class="about-inner">
-        <div class="about-top">
-          <div class="about-portrait-wrap" aria-hidden="true">
-            <span class="about-portrait-glow"></span>
-            <span class="about-portrait-ast">✻</span>
-            <img class="about-portrait" src="assets/img/about-portrait.webp" alt=""
-                 width="880" height="811" loading="lazy" decoding="async">
-          </div>
-          <h2 class="about-statement" id="aboutTitle" data-reveal>
-            Srinidhi.<br><em>Shri, for short.</em>
-          </h2>
-        </div>
-        <div class="about-foot">
-          <div class="stats">
-            <div class="stat"><span class="stat-num" data-count="30">30</span><span class="stat-plus">+</span><span class="stat-label">Projects &amp; concepts</span></div>
-            <div class="stat"><span class="stat-num" data-count="4">4</span><span class="stat-plus">+</span><span class="stat-label">Years designing</span></div>
-          </div>
-          <div class="about-copy"><p class="about-note" data-reveal>I’m a design engineer based in Goa, India. At <em>OneOcean</em>, I design maritime software and contribute to the Caspian Design System, working across research, interfaces, and prototypes.</p><p class="about-note" data-reveal>Outside work, I’m usually building something of my own, writing as अvinash, or volunteering with Yuva as an Executive Member.</p></div>
-        </div>
-        <aside class="showreel" id="showreel" aria-labelledby="showreelTitle" data-state="ready">
-          <div class="showreel-copy" data-reveal>
-            <h3 id="showreelTitle">Shri,<br><em>in motion.</em></h3>
-            <noscript><a class="text-button" href="https://youtu.be/YmEOMID3vVM" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a></noscript>
-          </div>
-          <div class="showreel-poster" id="showreelPoster" data-reveal>
-            <div class="showreel-slate" aria-hidden="true"><span class="slate-title">Meet<br><em>Shri.</em></span><span class="slate-sign">Srinidhi Bhat</span></div>
-            <span class="showreel-status" id="showreelStatus">Showreel</span>
-            <button class="showreel-play" type="button" id="showreelPlay" hidden><span aria-hidden="true">▶</span> Watch the showreel</button>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <!-- ===== Experience ===== -->
-    <section class="xp" id="experience">
-      <div class="textile-panel print-stitch" aria-hidden="true"><span class="textile-ink"></span></div>
-      <div class="section-head">
-        <div>
-          <h2 class="section-title" data-reveal>Where I've been.</h2>
-        </div>
-        <div class="xp-head-right" data-reveal>
-          <a class="xp-resume" href="assets/pdfs/srinidhi-bhat-resume.pdf?v=20261008-location-1" download="Srinidhi-Bhat-Resume.pdf">Download Résumé <span aria-hidden="true">↓</span></a>
-        </div>
-      </div>
-      <p class="xp-timeline-caption">Now → 2021</p>
-      <ol class="xp-list" aria-label="Work history, most recent role first">
-        <li class="xp-row xp-current" data-reveal>
-          <span class="xp-chapter" aria-hidden="true"></span>
-          <span class="xp-when">2025 — Now</span>
-          <span class="xp-what"><strong>UX Designer</strong><em>OneOcean</em></span>
-          <span class="xp-note">Designing maritime products and contributing to the Caspian Design System.</span>
-        </li>
-        <li class="xp-row" data-reveal>
-          <span class="xp-chapter" aria-hidden="true"></span>
-          <span class="xp-when">2024 — 2025</span>
-          <span class="xp-what"><strong>UI/UX Designer</strong><em>Genora Infotech</em></span>
-          <span class="xp-note">Led UI/UX design for Genora and Goan Narrative, from early concepts to developer handoff.</span>
-        </li>
-        <li class="xp-row" data-reveal>
-          <span class="xp-chapter" aria-hidden="true"></span>
-          <span class="xp-when">2022</span>
-          <span class="xp-what"><strong>Software Intern</strong><em>Persistent Systems</em></span>
-          <span class="xp-note">Built chatbots with Python, Java, and Azure pipelines; trained in QA automation.</span>
-        </li>
-        <li class="xp-row" data-reveal>
-          <span class="xp-chapter" aria-hidden="true"></span>
-          <span class="xp-when">2021 — 2024</span>
-          <span class="xp-what"><strong>UI/UX Designer &amp; Outreach Lead</strong><em>Linktopus</em></span>
-          <span class="xp-note">Designed products and led outreach, contributing to a 25%+ increase in engagement and sales.</span>
-        </li>
-      </ol>
     </section>
 
     <!-- ===== Gallery collage ===== -->
@@ -428,45 +345,80 @@
       <div class="service-foot"><span>Based in Goa, India. <span aria-hidden="true">✳</span></span></div>
     </section>
 
-    <!-- ===== Writing / Blog ===== -->
-    <section class="brain-section" id="brain" aria-labelledby="brainTitle">
-      <div class="section-head"><div><h2 class="section-title" id="brainTitle">My <em>brain.</em></h2></div><p class="section-note">What I’m working on, interested in, and part of.</p></div>
-      <div class="brain-space">
-        <div class="brain-navigation">
-          <nav class="brain-topics" id="brainTopics" aria-label="Explore a theme"></nav>
-          <div class="brain-search"><label for="brainSearch">Find a connection</label><div><input id="brainSearch" type="search" placeholder="Project, interest, or community…" autocomplete="off" aria-controls="brainGraph brainList"><button type="button" id="brainClear" hidden>Clear</button></div></div>
+    <!-- ===== About ===== -->
+    <section class="about" id="about" aria-labelledby="aboutTitle">
+      <div class="textile-panel print-paisley" aria-hidden="true"><span class="textile-ink"></span></div>
+      <div class="about-inner">
+        <div class="about-top">
+          <div class="about-portrait-wrap" aria-hidden="true">
+            <span class="about-portrait-glow"></span>
+            <span class="about-portrait-ast">✻</span>
+            <img class="about-portrait" src="assets/img/about-portrait.webp" alt=""
+                 width="880" height="811" loading="lazy" decoding="async">
+          </div>
+          <h2 class="about-statement" id="aboutTitle" data-reveal>
+            Srinidhi.<br><em>Shri, for short.</em>
+          </h2>
         </div>
-        <div class="brain-map-head">
-          <nav class="brain-trail" id="brainTrail" aria-label="Exploration trail"></nav>
-          <details class="brain-map-options"><summary>Map controls &amp; list view</summary><div class="brain-controls"><button type="button" id="brainBack" aria-label="Back to previous connection" disabled>←</button><button type="button" id="brainZoomOut" aria-label="Zoom out of graph">−</button><button type="button" id="brainZoomIn" aria-label="Zoom into graph">+</button><button type="button" id="brainReset">Reset map</button><button type="button" id="brainMotion" aria-pressed="false">Pause motion</button><button type="button" id="brainView" aria-pressed="false">Browse list</button></div></details>
+        <div class="about-foot">
+          <div class="stats">
+            <div class="stat"><span class="stat-num" data-count="30">30</span><span class="stat-plus">+</span><span class="stat-label">Projects &amp; concepts</span></div>
+            <div class="stat"><span class="stat-num" data-count="4">4</span><span class="stat-plus">+</span><span class="stat-label">Years designing</span></div>
+          </div>
+          <div class="about-copy"><p class="about-note" data-reveal>I’m a design engineer based in Goa, India. At <em>OneOcean</em>, I design maritime software and contribute to the Caspian Design System, working across research, interfaces, and prototypes.</p><p class="about-note" data-reveal>Outside work, I’m usually building something of my own, writing as अvinash, or volunteering with Yuva as an Executive Member.</p></div>
         </div>
-        <div class="brain-canvas"><svg data-lenis-prevent id="brainGraph" viewBox="0 0 1000 620" role="group" aria-label="Interactive map of Srinidhi’s projects, interests, and community work" aria-describedby="brainHint"></svg><div id="brainTooltip" class="brain-tooltip" hidden></div><p id="brainEmpty" class="brain-empty" hidden>No connections found. Try a project name, an interest, or a tool.</p><div id="brainList" class="brain-list" hidden></div></div>
-        <div class="brain-map-foot"><p id="brainStatus" role="status" aria-live="polite"></p><p id="brainHint">Choose a theme or a project. Drag to rotate. Pinch to zoom, or use the map controls.</p></div>
-        <aside class="brain-detail" id="brainDetail" aria-live="polite"></aside>
+        <aside class="showreel" id="showreel" aria-labelledby="showreelTitle" data-state="ready">
+          <div class="showreel-copy" data-reveal>
+            <h3 id="showreelTitle">Shri,<br><em>in motion.</em></h3>
+            <noscript><a class="text-button" href="https://youtu.be/YmEOMID3vVM" target="_blank" rel="noopener">Watch on YouTube <span aria-hidden="true">↗</span></a></noscript>
+          </div>
+          <div class="showreel-poster" id="showreelPoster" data-reveal>
+            <div class="showreel-slate" aria-hidden="true"><span class="slate-title">Meet<br><em>Shri.</em></span><span class="slate-sign">Srinidhi Bhat</span></div>
+            <span class="showreel-status" id="showreelStatus">Showreel</span>
+            <button class="showreel-play" type="button" id="showreelPlay" hidden><span aria-hidden="true">▶</span> Watch the showreel</button>
+          </div>
+        </aside>
       </div>
     </section>
 
-    <section class="writing" id="writing" aria-labelledby="writingTitle">
-      <div class="writing-inner">
-        <div class="writing-copy" data-reveal>
-          <h2 class="writing-title" id="writingTitle">Writing as<br><em>अvinash.</em></h2>
-          <p class="writing-description">Poems, essays, fiction, and a written podcast.</p>
-          <a class="writing-link" href="https://blogs.srinidhibhat.com/" target="_blank" rel="noopener"><span>Read the blog</span><span class="writing-link-ico" aria-hidden="true">↗</span></a>
-          <p class="writing-languages">In English, Hindi &amp; Konkani.</p>
+    <!-- ===== Experience ===== -->
+    <section class="xp" id="experience">
+      <div class="textile-panel print-stitch" aria-hidden="true"><span class="textile-ink"></span></div>
+      <div class="section-head">
+        <div>
+          <h2 class="section-title" data-reveal>Where I've been.</h2>
         </div>
-        <div class="writing-tree textile-panel print-tree" aria-hidden="true"><span class="textile-ink"></span></div>
-        <div class="writing-desk">
-          <div class="writing-notebook" data-reveal>
-            <div class="notebook-heading"><span>SELECTED WRITING</span><span aria-hidden="true">✳</span></div>
-            <a class="writing-entry" href="https://blogs.srinidhibhat.com/p/have-your-own-internet-space/" target="_blank" rel="noopener"><span class="entry-category">ESSAY · 2 MIN READ</span><h3>Have your own<br>internet space!</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
-            <a class="writing-entry" href="https://blogs.srinidhibhat.com/p/poem-5/" target="_blank" rel="noopener"><span class="entry-category">A POEM · ENGLISH</span><h3>Senses</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
-            <a class="writing-entry" href="https://blogs.srinidhibhat.com/series/murder-in-classroom-10/" target="_blank" rel="noopener"><span class="entry-category">SERIALISED FICTION · 3 PARTS</span><h3>The Murder in<br>Classroom 10</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
-            <span class="notebook-sign" aria-hidden="true">अvinash.</span>
-          </div>
-          <button class="writing-pen" id="writingPen" type="button" aria-label="Play with the fountain pen"><img src="assets/img/fountain-pen.svg" alt="" width="88" height="410" draggable="false"></button><svg class="pen-ink" viewBox="0 0 330 90" aria-hidden="true"><path d="M10 57Q50 5 59 39T89 42Q109 5 116 45Q120 73 151 41T170 42Q188 6 196 43Q200 64 224 42Q240 16 255 47Q273 71 317 33"/></svg><p class="pen-whisper" id="penWhisper" role="status"></p>
+        <div class="xp-head-right" data-reveal>
+          <a class="xp-resume" href="assets/pdfs/srinidhi-bhat-resume.pdf?v=20261008-location-1" download="Srinidhi-Bhat-Resume.pdf">Download Résumé <span aria-hidden="true">↓</span></a>
         </div>
       </div>
-
+      <p class="xp-timeline-caption">Now → 2021</p>
+      <ol class="xp-list" aria-label="Work history, most recent role first">
+        <li class="xp-row xp-current" data-reveal>
+          <span class="xp-chapter" aria-hidden="true"></span>
+          <span class="xp-when">2025 — Now</span>
+          <span class="xp-what"><strong>UX Designer</strong><em>OneOcean</em></span>
+          <span class="xp-note">Designing maritime products and contributing to the Caspian Design System.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-chapter" aria-hidden="true"></span>
+          <span class="xp-when">2024 — 2025</span>
+          <span class="xp-what"><strong>UI/UX Designer</strong><em>Genora Infotech</em></span>
+          <span class="xp-note">Led UI/UX design for Genora and Goan Narrative, from early concepts to developer handoff.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-chapter" aria-hidden="true"></span>
+          <span class="xp-when">2022</span>
+          <span class="xp-what"><strong>Software Intern</strong><em>Persistent Systems</em></span>
+          <span class="xp-note">Built chatbots with Python, Java, and Azure pipelines; trained in QA automation.</span>
+        </li>
+        <li class="xp-row" data-reveal>
+          <span class="xp-chapter" aria-hidden="true"></span>
+          <span class="xp-when">2021 — 2024</span>
+          <span class="xp-what"><strong>UI/UX Designer &amp; Outreach Lead</strong><em>Linktopus</em></span>
+          <span class="xp-note">Designed products and led outreach, contributing to a 25%+ increase in engagement and sales.</span>
+        </li>
+      </ol>
     </section>
 
     <!-- ===== Testimonials ===== -->
@@ -521,6 +473,47 @@
           <noscript><blockquote class="test-fallback">"I fell in awe of the persona of Shri during his SOTP camp, during the closing of the camp, he delivered a feedback address and I instantly knew, I got this man. He has this charisma of Viv Richards in him. Cool, composed and determined. And when he walks to the pitch, he knows he's there for a big knock. Qx Oct-Dec 2020 was one such great knock by Shri. There is a long way to go for you Shri, remember, there are souls on the sidewalk who take great pride in your stride. Keep walking."</blockquote></noscript>
         </article>
       </div>
+    </section>
+
+    <!-- ===== Writing / Blog ===== -->
+    <section class="brain-section" id="brain" aria-labelledby="brainTitle">
+      <div class="section-head"><div><h2 class="section-title" id="brainTitle">My <em>brain.</em></h2></div><p class="section-note">What I’m working on, interested in, and part of.</p></div>
+      <div class="brain-space">
+        <div class="brain-navigation">
+          <nav class="brain-topics" id="brainTopics" aria-label="Explore a theme"></nav>
+          <div class="brain-search"><label for="brainSearch">Find a connection</label><div><input id="brainSearch" type="search" placeholder="Project, interest, or community…" autocomplete="off" aria-controls="brainGraph brainList"><button type="button" id="brainClear" hidden>Clear</button></div></div>
+        </div>
+        <div class="brain-map-head">
+          <nav class="brain-trail" id="brainTrail" aria-label="Exploration trail"></nav>
+          <details class="brain-map-options"><summary>Map controls &amp; list view</summary><div class="brain-controls"><button type="button" id="brainBack" aria-label="Back to previous connection" disabled>←</button><button type="button" id="brainZoomOut" aria-label="Zoom out of graph">−</button><button type="button" id="brainZoomIn" aria-label="Zoom into graph">+</button><button type="button" id="brainReset">Reset map</button><button type="button" id="brainMotion" aria-pressed="false">Pause motion</button><button type="button" id="brainView" aria-pressed="false">Browse list</button></div></details>
+        </div>
+        <div class="brain-canvas"><svg data-lenis-prevent id="brainGraph" viewBox="0 0 1000 620" role="group" aria-label="Interactive map of Srinidhi’s projects, interests, and community work" aria-describedby="brainHint"></svg><div id="brainTooltip" class="brain-tooltip" hidden></div><p id="brainEmpty" class="brain-empty" hidden>No connections found. Try a project name, an interest, or a tool.</p><div id="brainList" class="brain-list" hidden></div></div>
+        <div class="brain-map-foot"><p id="brainStatus" role="status" aria-live="polite"></p><p id="brainHint">Choose a theme or a project. Drag to rotate. Pinch to zoom, or use the map controls.</p></div>
+        <aside class="brain-detail" id="brainDetail" aria-live="polite"></aside>
+      </div>
+    </section>
+
+    <section class="writing" id="writing" aria-labelledby="writingTitle">
+      <div class="writing-inner">
+        <div class="writing-copy" data-reveal>
+          <h2 class="writing-title" id="writingTitle">Writing as<br><em>अvinash.</em></h2>
+          <p class="writing-description">Poems, essays, fiction, and a written podcast.</p>
+          <a class="writing-link" href="https://blogs.srinidhibhat.com/" target="_blank" rel="noopener"><span>Read the blog</span><span class="writing-link-ico" aria-hidden="true">↗</span></a>
+          <p class="writing-languages">In English, Hindi &amp; Konkani.</p>
+        </div>
+        <div class="writing-tree textile-panel print-tree" aria-hidden="true"><span class="textile-ink"></span></div>
+        <div class="writing-desk">
+          <div class="writing-notebook" data-reveal>
+            <div class="notebook-heading"><span>SELECTED WRITING</span><span aria-hidden="true">✳</span></div>
+            <a class="writing-entry" href="https://blogs.srinidhibhat.com/p/have-your-own-internet-space/" target="_blank" rel="noopener"><span class="entry-category">ESSAY · 2 MIN READ</span><h3>Have your own<br>internet space!</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
+            <a class="writing-entry" href="https://blogs.srinidhibhat.com/p/poem-5/" target="_blank" rel="noopener"><span class="entry-category">A POEM · ENGLISH</span><h3>Senses</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
+            <a class="writing-entry" href="https://blogs.srinidhibhat.com/series/murder-in-classroom-10/" target="_blank" rel="noopener"><span class="entry-category">SERIALISED FICTION · 3 PARTS</span><h3>The Murder in<br>Classroom 10</h3><span class="entry-arrow" aria-hidden="true">↗</span></a>
+            <span class="notebook-sign" aria-hidden="true">अvinash.</span>
+          </div>
+          <button class="writing-pen" id="writingPen" type="button" aria-label="Play with the fountain pen"><img src="assets/img/fountain-pen.svg" alt="" width="88" height="410" draggable="false"></button><svg class="pen-ink" viewBox="0 0 330 90" aria-hidden="true"><path d="M10 57Q50 5 59 39T89 42Q109 5 116 45Q120 73 151 41T170 42Q188 6 196 43Q200 64 224 42Q240 16 255 47Q273 71 317 33"/></svg><p class="pen-whisper" id="penWhisper" role="status"></p>
+        </div>
+      </div>
+
     </section>
 
     <section class="visitor-section" id="board" aria-labelledby="boardTitle">
@@ -780,15 +773,12 @@
   <script src="js/cases-data.js"></script>
   <script src="js/case-studies-data.js?v=20261031-pdf-version-1"></script>
   <script src="js/case-study-renderer.js?v=20261031-pdf-version-1"></script>
-  <script src="js/project-media.js?v=20261031-case-refinement-4"></script>
-  <script src="js/main.js?v=20261101-legacy-cleanup-2"></script>
+  <script src="js/main.js?v=20261110-covers-1"></script>
   <script type="module" src="js/contact-form.mjs?v=20261110-form-name"></script>
   <script src="js/studio.js?v=20261103-fidget"></script>
-  <script src="js/project-drag.js?v=20261008-build-rail-1"></script>
-  <script src="js/project-rails.js?v=20261101-phone-delight-2"></script>
-  <script src="js/brain-data.js?v=20261031-case-refinement-4"></script>
+  <script src="js/brain-data.js?v=20261110-covers-1"></script>
   <script src="js/brain-layout.js?v=20261010-1"></script>
-  <script src="js/brain.js?v=20261103-neural-2"></script>
+  <script src="js/brain.js?v=20261110-covers-1"></script>
   <script src="js/visitor-canvas.js?v=20261101-phone-delight-2"></script>
   <script src="js/atelier.js?v=20261008-canvas-4"></script>
   <script src="js/editorial.js?v=20261016-restored-scale"></script>

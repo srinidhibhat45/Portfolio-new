@@ -46,23 +46,38 @@
       };
     });
 
+    // Both project sections share one rhythm: the first four are shown large, the rest
+    // follow as a denser index. Built products also start collapsed after ten.
+    var FEATURED = 4, COLLAPSED = 10;
+
+    // One card for every project: a 3:2 cover, a status pill, the name, one line and its tags.
+    // Covers live at assets/covers/<slug>.webp (1280w) with a <slug>-800.webp for small screens.
+    function coverCard(p) {
+      var cover = 'assets/covers/' + p.slug;
+      return '<a class="cover-card' + (p.compact ? ' is-compact' : '') + '" href="' + esc(p.href) + '"' +
+        (p.caseSlug ? ' data-case="' + esc(p.caseSlug) + '"' : ' target="_blank" rel="noopener"') + '>' +
+        '<div class="cover-media"><img src="' + esc(cover) + '.webp" srcset="' + esc(cover) + '-800.webp 800w, ' + esc(cover) + '.webp 1280w"' +
+          ' sizes="' + (p.compact ? '(min-width: 900px) 30vw, 46vw' : '(min-width: 900px) 46vw, 92vw') + '"' +
+          ' alt="' + esc(p.name) + ' cover artwork" width="1280" height="853" loading="lazy" decoding="async">' +
+          (p.pill ? '<span class="cover-pill' + (p.pillTone ? ' is-' + p.pillTone : '') + '">' + esc(p.pill) + '</span>' : '') + '</div>' +
+        '<div class="cover-body">' +
+          '<div class="cover-head"><h3>' + esc(p.name) + '</h3><span class="cover-arrow" aria-hidden="true">↗</span></div>' +
+          '<p class="cover-blurb">' + esc(p.blurb) + '</p>' +
+          '<ul class="cover-tags">' + p.tags.map(function (tag) { return '<li>' + esc(tag) + '</li>'; }).join('') + '</ul>' +
+          '<span class="cover-cta">' + esc(p.cta) + '</span>' +
+        '</div>' +
+      '</a>';
+    }
+
     var cardsEl = document.getElementById('cards');
     if (cardsEl && SITE.work && SITE.work.length) {
       cardsEl.innerHTML = SITE.work.map(function (w, i) {
-        var destination = STORIES[w.slug] ? 'case-studies/' + w.slug + '.html' : w.pdf;
-        var visual = STORIES[w.slug] && STORIES[w.slug].visual;
-        var screen = visual && visual.src && visual.presentation === 'spread' && visual.width / visual.height >= 1.3;
-        var preview = screen ? visual.src : webp(w.thumb);
-        return '<a class="card" href="' + esc(destination) + '" data-case="' + esc(w.slug) + '">' +
-          '<div class="card-media' + (screen ? ' card-media-evidence' : '') + '"><img src="' + esc(preview) + '" alt="' + esc(screen ? visual.alt : w.title) + '"' +
-            ' width="' + (screen ? visual.width : 1000) + '" height="' + (screen ? visual.height : 562) + '" loading="lazy" decoding="async"' + fallback(w.thumb) + '></div>' +
-          '<div class="card-body">' +
-            '<span class="card-tags">' + esc(w.tags) + '</span>' +
-            '<h3>' + esc(w.title) + '</h3>' +
-            '<p class="card-blurb">' + esc(w.blurb) + '</p>' +
-            '<span class="card-cta">View case study <span aria-hidden="true">↗</span></span>' +
-          '</div>' +
-        '</a>';
+        var tags = String(w.tags).split(' · ');
+        return coverCard({
+          slug: w.slug, caseSlug: w.slug, name: w.title, blurb: w.blurb,
+          href: STORIES[w.slug] ? 'case-studies/' + w.slug + '.html' : w.pdf,
+          pill: tags[0], tags: tags.slice(1), cta: 'View case study', compact: i >= FEATURED
+        });
       }).join('');
     }
 
@@ -73,18 +88,36 @@
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
       });
-      vibeEl.innerHTML = products.map(function (v) {
-        var media = (window.PROJECT_MEDIA || {})[v.name];
+      vibeEl.innerHTML = products.map(function (v, i) {
         var starred = ['Arkitype', 'Earthlog', 'AppleCider'].includes(v.name);
-        var preview = media ? '<div class="play-product-preview product-media-' + esc(media.kind) + (media.portrait ? ' product-media-portrait' : '') + '"><img src="' + esc(media.src) + '" alt="' + esc(media.alt) + '" loading="lazy" decoding="async" width="' + (media.width || 1280) + '" height="' + (media.height || 720) + '"></div>' : '';
         var hasStory = v.caseSlug && STORIES[v.caseSlug];
-        return '<a class="play-card" href="' + esc(hasStory ? 'case-studies/' + v.caseSlug + '.html' : v.href) + '"' + (hasStory ? ' data-case="' + esc(v.caseSlug) + '"' : ' target="_blank" rel="noopener"') + '>' + preview +
-          '<div class="play-meta">' + (starred ? '<span class="starred-label"><span aria-hidden="true">✦</span> Starred</span>' : '') +
-          (v.status === 'building' ? '<span class="product-building">In development</span>' : '') + '</div>' +
-          '<div class="play-card-head"><h3>' + esc(v.name) + '</h3><span aria-hidden="true">↗</span></div>' +
-          '<p>' + esc(v.desc) + '</p>' +
-          '<span class="play-card-cta">' + esc(hasStory ? 'Read the case study' : v.cta) + ' <span aria-hidden="true">↗</span></span></a>';
+        return coverCard({
+          slug: v.caseSlug, caseSlug: hasStory ? v.caseSlug : '', name: v.name, blurb: v.desc,
+          href: hasStory ? 'case-studies/' + v.caseSlug + '.html' : v.href,
+          pill: v.status === 'building' ? 'In development' : 'Live', pillTone: v.status === 'building' ? 'building' : 'live',
+          tags: (starred ? ['✦ Starred'] : []).concat(v.stack || []),
+          cta: hasStory ? 'Read the case study' : v.cta, compact: i >= FEATURED
+        });
       }).join('');
+      var more = document.getElementById('builtMore');
+      if (more && products.length > COLLAPSED) {
+        more.hidden = false;
+        var label = function () {
+          var open = vibeEl.getAttribute('data-collapsed') !== 'true';
+          more.setAttribute('aria-expanded', String(open));
+          more.textContent = open ? 'Show fewer products' : 'Show all ' + products.length + ' products';
+        };
+        more.addEventListener('click', function () {
+          var open = vibeEl.getAttribute('data-collapsed') !== 'true';
+          vibeEl.setAttribute('data-collapsed', String(open));
+          label();
+          if (open) more.scrollIntoView({ block: 'center' });
+          document.dispatchEvent(new CustomEvent('portfolio:layout'));
+        });
+        label();
+      } else {
+        vibeEl.removeAttribute('data-collapsed');
+      }
     }
 
     var rowEls = document.querySelectorAll('.collage-row');
@@ -654,7 +687,7 @@
         openCase(link.getAttribute('data-open-case'));
       });
     });
-    document.querySelectorAll('.card[data-case], .play-card[data-case]').forEach(function (card) {
+    document.querySelectorAll('.cover-card[data-case]').forEach(function (card) {
       var entry = DATA[card.getAttribute('data-case')];
       if (entry && (entry.story || entry.pages && entry.pages.length)) card.setAttribute('aria-haspopup', 'dialog');
       card.addEventListener('click', function (e) {
@@ -672,11 +705,12 @@
       var panel=document.getElementById(panelID),search=document.getElementById(searchID);
       var clear=document.getElementById(clearID),results=document.getElementById(resultsID),empty=document.getElementById(emptyID);
       function filterProjects() {
-        var query=search.value.trim().toLocaleLowerCase(),cards=panel.querySelectorAll('.card,.play-card'),visible=0;
+        var query=search.value.trim().toLocaleLowerCase(),cards=panel.querySelectorAll('.cover-card'),visible=0;
         cards.forEach(function(card){card.hidden=!card.textContent.toLocaleLowerCase().includes(query);if(!card.hidden)visible++;});
         clear.hidden=!search.value;empty.hidden=visible>0;
         results.textContent=visible+' of '+cards.length+' '+label;
-        document.dispatchEvent(new CustomEvent('portfolio:projects-filtered',{detail:{panel:panelID}}));
+        // A search looks through every project, including those behind "Show all".
+        panel.toggleAttribute('data-searching',!!query);
         if(hasST)ScrollTrigger.refresh();
       }
       search.addEventListener('input',filterProjects);

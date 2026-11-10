@@ -23,13 +23,12 @@
   window.SITE_DATA.vibe.forEach(function(p) {
     var topic=assignments[p.name]||'design';
     var id='build-'+p.path.split('/').pop();
-    var media=window.PROJECT_MEDIA&&window.PROJECT_MEDIA[p.name];
-    nodes.push({id:id,name:p.name,kind:'product',topic:topic,desc:p.desc,stack:p.stack,href:p.href,cta:p.cta,thumb:media&&media.src});
+    nodes.push({id:id,name:p.name,kind:'product',topic:topic,desc:p.desc,stack:p.stack,href:p.href,cta:p.cta,thumb:'assets/covers/'+p.caseSlug+'-800.webp'});
     connect(topic,id,'A built product exploring '+topics.find(function(t){return t.id===topic;}).name.toLowerCase()+'.');
   });
   window.SITE_DATA.work.forEach(function(p) {
     var id='case-'+p.slug;
-    nodes.push({id:id,name:p.title,kind:'case',topic:'design',desc:p.blurb,tags:p.tags,caseSlug:p.slug,thumb:p.thumb.replace(/\.(png|jpg|jpeg)$/i,'.webp')});
+    nodes.push({id:id,name:p.title,kind:'case',topic:'design',desc:p.blurb,tags:p.tags,caseSlug:p.slug,thumb:'assets/covers/'+p.slug+'-800.webp'});
     connect('design',id,'A design study in '+p.tags.toLowerCase()+'.');
   });
   var personal = [
