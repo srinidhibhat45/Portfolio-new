@@ -59,8 +59,6 @@ body .brain-node.is-labelled .node-name {opacity:1;}
 body .brain-node:focus-visible .node-name {opacity:1;fill:#fff;}
 body .brain-edge {fill:none;stroke-width:.8;stroke-dasharray:none;pointer-events:none;}
 body .brain-edge.connected {stroke-width:1.25;}
-body .neural-orbits path {stroke:#9faec7;stroke-width:.7;opacity:.2;}
-body .neural-orbits path:nth-child(2) {stroke:#e4ad91;opacity:.3;}
 body .brain-tooltip {background:#24333a;border:1px solid #52616a;color:#f2eee5;box-shadow:0 12px 32px #0005;pointer-events:none;font-family:var(--sans);}
 body .brain-tooltip span,body .brain-tooltip p {color:#c3cecb;}
 body .brain-list-group h3 {color:#f2eee5;}

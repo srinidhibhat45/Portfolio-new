@@ -1,4 +1,4 @@
-/* A perspective-projected neural atlas. Geometry stays stable while visitors explore. */
+/* A flat network graph. Every dot is a real project, interest or role and every line a real connection. */
 (function(){
   'use strict';
   var map=window.BRAIN_MAP,graph=document.getElementById('brainGraph');if(!map||!graph)return;
@@ -17,67 +17,65 @@
   function items(){return nodes.filter(function(n){return n.topic&&(!scope||n.topic===scope)&&(!query||[n.name,n.desc,n.tags,(n.stack||[]).join(' '),byID.get(n.topic).name].join(' ').toLowerCase().includes(query.toLowerCase()));});}
   var defs=svg('defs',{}),clip=svg('clipPath',{id:'brainFaceClip'});clip.append(svg('circle',{r:42}));defs.append(clip);graph.append(defs);
   var scene=svg('g',{}),edgeLayer=svg('g',{'aria-hidden':'true'});scene.append(edgeLayer);graph.append(scene);
-  let yaw = -.3, pitch = -.12, velocity = 0, targetRotation = null;
+  // The layout is settled once, inside a circle, and then stays put; dragging turns the whole disc.
+  let yaw = 0, pitch = 0, velocity = 0, targetRotation = null;
   const palette = ['#e4ad91','#a99edf','#81c6bc','#e3c889'];
   const vectors = new Map(), projected = new Map();
-  function surface(i, count) {
-    const y = 1 - 2 * (i + .5) / count;
-    const ring = Math.sqrt(1 - y*y), angle = i * 2.399963;
-    return [ring*Math.cos(angle), y, ring*Math.sin(angle)];
-  }
-  function rotate([x,y,z]) {
-    const side = x*Math.cos(yaw) + z*Math.sin(yaw);
-    const depth = z*Math.cos(yaw) - x*Math.sin(yaw);
-    return [side, y*Math.cos(pitch)-depth*Math.sin(pitch), depth*Math.cos(pitch)+y*Math.sin(pitch)];
+  const degree = new Map(nodes.map(n=>[n.id,0]));
+  links.forEach(l=>{degree.set(l.from,degree.get(l.from)+1);degree.set(l.to,degree.get(l.to)+1);});
+  // Dots grow with their number of connections, as in a notes graph.
+  function size(n){return n.id==='me'?9:n.kind==='topic'?6.5:2.6+Math.min(3.4,Math.sqrt(degree.get(n.id))*.9);}
+  function rotate([x,y]) {
+    const c=Math.cos(yaw), s=Math.sin(yaw);
+    return [x*c-y*s, x*s+y*c];
   }
   function project(point) {
-    const [x,y,z] = rotate(point), perspective = 3.8/(3.8-z);
-    const radius = mobile ? 220 : 260;
-    return {x:width/2+x*radius*perspective,y:height/2+y*radius*perspective,z:z,scale:perspective};
+    const [x,y] = rotate(point), radius = Math.min(width,height)/2 - (mobile?52:58);
+    return {x:width/2+x*radius,y:height/2+y*radius,z:0,scale:1};
   }
-  // Two softly folded hemispheres give the cloud an organic, cerebral silhouette.
-  const particles = Array.from({length:1550}, (_,i) => {
-    const [x,y,z] = surface(i,1550);
-    const fold = 1 + .035*Math.sin(y*26+z*12)*Math.cos(x*23);
-    return [x*1.12*fold, y*.92*fold, z*.91*fold];
-  });
-  const cloud = svg('g',{'aria-hidden':'true',class:'neural-cloud'});
-  scene.insertBefore(cloud,edgeLayer);
-  const pointPaths = Array.from({length:8},(_,i)=>{
-    const path=svg('path',{fill:'none',stroke:i<4?'#92bcb5':'#c1cddd','stroke-linecap':'round'});
-    cloud.append(path);return path;
-  });
-  const meshPath=svg('path',{fill:'none',stroke:'#8faac4','stroke-width':.55});
-  cloud.prepend(meshPath);
-  const mesh=[];
-  particles.forEach((a,i)=>{
-    if(i%3)return;
-    for(let j=i+1;j<particles.length;j++){
-      const b=particles[j],distance=Math.hypot(a[0]-b[0],a[1]-b[1],a[2]-b[2]);
-      if(distance<.13)mesh.push([i,j]);
-    }
-  });
-  const arcs=svg('g',{'aria-hidden':'true',class:'neural-orbits'});
-  cloud.prepend(arcs);
-  const orbitPaths=Array.from({length:3},()=>{const path=svg('path',{fill:'none'});arcs.append(path);return path;});
-  vectors.set('me',[0,0,0]);
+  // Seed each theme in its own quarter, then let connected dots pull together and all dots push apart.
+  vectors.set('me',[0,0]);
   topics.forEach((topic,index)=>{
-    const angle=index*Math.PI/2+.5;
-    const center=[Math.cos(angle)*.75,Math.sin(angle)*.72,.38];
-    vectors.set(topic.id,center);
+    const angle=index*Math.PI/2+.6;
+    vectors.set(topic.id,[Math.cos(angle)*.42,Math.sin(angle)*.42]);
     nodes.filter(n=>n.topic===topic.id).forEach((node,i,group)=>{
-      const point=surface(i,group.length);
-      vectors.set(node.id,center.map((value,axis)=>value*.85+point[axis]*.43));
+      const spread=angle+(i-(group.length-1)/2)*(1.35/Math.max(1,group.length)), reach=.62+.3*((i*7)%5)/5;
+      vectors.set(node.id,[Math.cos(spread)*reach,Math.sin(spread)*reach]);
     });
   });
+  for(let step=0;step<320;step++){
+    const push=new Map(nodes.map(n=>[n.id,[0,0]])), cool=.05*(1-step/320)+.004;
+    nodes.forEach((a,i)=>{
+      for(let k=i+1;k<nodes.length;k++){
+        const b=nodes[k],p=vectors.get(a.id),q=vectors.get(b.id);
+        let dx=p[0]-q[0],dy=p[1]-q[1];const d=Math.hypot(dx,dy)||.001,f=.012/(d*d);
+        dx=dx/d*f;dy=dy/d*f;
+        push.get(a.id)[0]+=dx;push.get(a.id)[1]+=dy;push.get(b.id)[0]-=dx;push.get(b.id)[1]-=dy;
+      }
+    });
+    links.forEach(l=>{
+      const p=vectors.get(l.from),q=vectors.get(l.to),dx=q[0]-p[0],dy=q[1]-p[1],d=Math.hypot(dx,dy)||.001,f=(d-.26)*.9;
+      push.get(l.from)[0]+=dx/d*f;push.get(l.from)[1]+=dy/d*f;push.get(l.to)[0]-=dx/d*f;push.get(l.to)[1]-=dy/d*f;
+    });
+    nodes.forEach(n=>{
+      if(n.id==='me')return;
+      const p=vectors.get(n.id),m=push.get(n.id),len=Math.hypot(m[0],m[1])||1,move=Math.min(cool,len);
+      p[0]+=m[0]/len*move-p[0]*.004;p[1]+=m[1]/len*move-p[1]*.004;
+    });
+  }
+  // Fit the settled network inside a unit circle.
+  const reach=Math.max(...nodes.map(n=>Math.hypot(...vectors.get(n.id))));
+  nodes.forEach(n=>{const p=vectors.get(n.id);p[0]/=reach;p[1]/=reach;});
+  const ring=svg('circle',{class:'brain-ring',fill:'none','aria-hidden':'true'});
+  scene.insertBefore(ring,edgeLayer);
   nodes.forEach(function(n){
     var g=svg('g',{class:'brain-node','data-node':n.id,role:'button',tabindex:'0','aria-label':'Explore '+n.name+(n.kind==='topic'?' '+n.count+' connections':''),'aria-pressed':'false'});
     var color=n.color||(n.topic?byID.get(n.topic).color:'#794758');g.style.setProperty('--node-color',color);
     const topicIndex=topics.findIndex(t=>t.id===(n.topic||n.id));
     g.style.setProperty('--node-color',palette[Math.max(0,topicIndex)]);
     g.append(svg('circle',{r:22,fill:'transparent',class:'node-hit'}));
-    g.append(svg('circle',{r:n.id==='me'?16:n.kind==='topic'?10:4,class:'node-aura'}));
-    g.append(svg('circle',{r:n.id==='me'?6:n.kind==='topic'?4:2.6,class:'node-core'}));
+    g.append(svg('circle',{r:size(n)+(n.id==='me'?9:n.kind==='topic'?6:3),class:'node-aura'}));
+    g.append(svg('circle',{r:size(n),class:'node-core'}));
     const label=svg('text',{x:15,y:-12,class:'node-name'});label.textContent=n.id==='me'?'Srinidhi':n.name;g.append(label);
     g.setAttribute('aria-description',n.desc);scene.append(g);elements.set(n.id,g);
     g.addEventListener('click',function(e){if(e.detail===0)choose(n.id);});
@@ -114,7 +112,7 @@
     document.getElementById('brainClear').hidden=!query;
     document.getElementById('brainEmpty').hidden=!query||found.length>0||listMode;
     status.textContent=query?found.length+' connections found':nodes.length+' nodes · '+links.length+' connections';
-    document.getElementById('brainHint').textContent='Drag to orbit · Pinch or scroll to zoom · Select a node';
+    document.getElementById('brainHint').textContent='Drag to turn · Pinch or scroll to zoom · Select a dot';
     highlight();paint();renderList(found);syncMotion();
     document.dispatchEvent(new CustomEvent('portfolio:layout'));
   }
@@ -132,30 +130,9 @@
     }else if(delta && !gesture && !hovered && !focused){
       yaw+=velocity;
       velocity*=.94;
-      if(shouldMove())yaw+=delta*.000045;
     }
-    const projectedParticles=particles.map(project), buckets=Array.from({length:8},()=>[]);
-    projectedParticles.forEach(p=>{
-      const bucket=Math.max(0,Math.min(7,Math.floor((p.z+1.1)*3.5)));
-      buckets[bucket].push('M'+p.x.toFixed(1)+' '+p.y.toFixed(1)+'h.01');
-    });
-    pointPaths.forEach((path,i)=>{
-      path.setAttribute('d',buckets[i].join(''));
-      path.setAttribute('stroke-width',.65+i*.2);
-      path.setAttribute('opacity',.08+i*.08);
-    });
-    meshPath.setAttribute('d',mesh.filter(([i,j])=>projectedParticles[i].z>-.2 && projectedParticles[j].z>-.2).map(([i,j])=>{
-      const a=projectedParticles[i],b=projectedParticles[j];return 'M'+a.x.toFixed(1)+' '+a.y.toFixed(1)+'L'+b.x.toFixed(1)+' '+b.y.toFixed(1);
-    }).join(''));
-    meshPath.setAttribute('opacity',.15);
-    orbitPaths.forEach((path,index)=>{
-      const points=Array.from({length:101},(_,i)=>{
-        const angle=i*Math.PI/50,point=[Math.cos(angle)*1.27,Math.sin(angle)*.92,Math.sin(angle)*.55];
-        if(index===1)[point[0],point[2]]=[point[2],point[0]];
-        if(index===2)[point[1],point[2]]=[point[2],point[1]];
-        const p=project(point);return (i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1);
-      });path.setAttribute('d',points.join(''));
-    });
+    ring.setAttribute('cx',width/2);ring.setAttribute('cy',height/2);ring.setAttribute('r',Math.min(width,height)/2-(mobile?22:26));
+    const activeID=hovered||focused||selected,near=new Set(activeID==='me'?[]:related(activeID).map(r=>r.node.id));
     const matching=new Set(items().map(n=>n.id));
     nodes.forEach(n=>{
       const p=project(vectors.get(n.id)),el=elements.get(n.id);
@@ -163,20 +140,16 @@
       const relevant=(!scope||n.id===scope||n.topic===scope||n.id==='me')&&(!query||matching.has(n.id));
       el.setAttribute('transform','translate('+p.x+' '+p.y+') scale('+p.scale+')');
       el.style.opacity=relevant?(p.z<-.15?.45:1):.13;
-      const labelled=n.kind==='topic'||n.id===selected||n.id===hovered||n.id===focused||(query&&matching.has(n.id));
+      const labelled=n.kind==='topic'||n.id==='me'||n.id===selected||n.id===hovered||n.id===focused||near.has(n.id)||(query&&matching.has(n.id));
       el.classList.toggle('is-labelled',labelled);
       const label=el.querySelector('text');
       label.setAttribute('x',p.x>width*.7?-15:15);label.setAttribute('text-anchor',p.x>width*.7?'end':'start');
     });
     edges.forEach(({el,link})=>{
-      const from=vectors.get(link.from),to=vectors.get(link.to);
-      const active=[hovered||focused||selected].some(id=>link.from===id||link.to===id);
-      const points=Array.from({length:25},(_,i)=>{
-        const t=i/24,point=from.map((v,axis)=>v*(1-t)+to[axis]*t);
-        point[2]+=Math.sin(t*Math.PI)*.25;
-        const p=project(point);return(i?'L':'M')+p.x.toFixed(1)+' '+p.y.toFixed(1);
-      });
-      el.setAttribute('d',points.join(''));el.style.opacity=active?.8:.12;
+      const a=projected.get(link.from),b=projected.get(link.to);
+      const active=link.from===activeID||link.to===activeID;
+      el.setAttribute('d','M'+a.x.toFixed(1)+' '+a.y.toFixed(1)+'L'+b.x.toFixed(1)+' '+b.y.toFixed(1));
+      el.style.opacity=active?.85:.24;
       el.style.stroke=palette[Math.max(0,topics.findIndex(t=>t.id===(byID.get(link.to).topic||link.to)))];
     });
     scene.setAttribute('transform','translate('+camera.x+' '+camera.y+') scale('+camera.scale+')');
@@ -199,13 +172,13 @@
     if(id!==selected&&remember!==false)history.push({id:selected,scope:scope,camera:{x:camera.x,y:camera.y,scale:camera.scale}});selected=id;
     if(id==='me')scope='';else if(n.kind==='topic')scope=id;else scope=n.topic;
     query='';search.value='';if(remember!==false)camera={x:0,y:0,scale:1};
-    if(id!=='me'){const [x,y,z]=vectors.get(id);let angle=-Math.atan2(x,z);while(angle-yaw>Math.PI)angle-=2*Math.PI;while(angle-yaw<-Math.PI)angle+=2*Math.PI;targetRotation={yaw:angle,pitch:Math.atan2(y,Math.hypot(x,z))};if(!shouldMove()){yaw=targetRotation.yaw;pitch=targetRotation.pitch;targetRotation=null;}}tip.hidden=true;hovered='';focused='';renderDetail();layout(true);
+    tip.hidden=true;hovered='';focused='';renderDetail();layout(true);
     if(graph.contains(active)){var destination=elements.get(id);destination.focus({preventScroll:true});}
     if(fromPanel)detail.querySelector('h3').focus({preventScroll:true});
   }
   function ensureVisible(id){var p=positions.get(id);if(!p)return;var x=p.x*camera.scale+camera.x,y=p.y*camera.scale+camera.y;if(x<100||x>width-100||y<65||y>height-80){camera.x=width/2-p.x*camera.scale;camera.y=height/2-p.y*camera.scale;paint();}}
   function zoom(factor){var next=Math.max(.65,Math.min(2.5,camera.scale*factor));camera.x=width/2-(width/2-camera.x)*next/camera.scale;camera.y=height/2-(height/2-camera.y)*next/camera.scale;camera.scale=next;paint();}
-  plus.addEventListener('click',function(){zoom(1.2);});minus.addEventListener('click',function(){zoom(1/1.2);});reset.addEventListener('click',function(){yaw=-.3;pitch=-.12;velocity=0;targetRotation=null;positions.clear();camera={x:0,y:0,scale:1};layout(true);});
+  plus.addEventListener('click',function(){zoom(1.2);});minus.addEventListener('click',function(){zoom(1/1.2);});reset.addEventListener('click',function(){yaw=0;pitch=0;velocity=0;targetRotation=null;positions.clear();camera={x:0,y:0,scale:1};layout(true);});
   back.addEventListener('click',function(){if(!history.length)return;var previous=history.pop();scope=previous.scope;camera=previous.camera;choose(previous.id,false);});search.addEventListener('input',function(){scope='';query=search.value.trim();selected='me';camera={x:0,y:0,scale:1};renderDetail();layout(true);});
   document.getElementById('brainClear').addEventListener('click',function(){choose('me');search.focus();});
   search.addEventListener('keydown',function(e){if(e.key==='Escape')choose('me');});
@@ -246,7 +219,7 @@
   function syncMotion(){motion.disabled=preference.matches||staticMode;motion.setAttribute('aria-pressed',String(!motionEnabled||motion.disabled));motion.textContent=motion.disabled?'Motion off':motionEnabled?'Pause motion':'Resume motion';if(shouldMove()){if(!raf)raf=requestAnimationFrame(frame);}else{if(raf)cancelAnimationFrame(raf);raf=0;paint();}}
   motion.addEventListener('click',function(){motionEnabled=!motionEnabled;syncMotion();});document.addEventListener('visibilitychange',syncMotion);preference.addEventListener('change',syncMotion);
   new IntersectionObserver(function(entries){inView=entries[0].isIntersecting;syncMotion();}).observe(graph);
-  window.addEventListener('resize',function(){if(mobile!==(window.innerWidth<=600)){yaw=-.3;pitch=-.12;velocity=0;targetRotation=null;positions.clear();camera={x:0,y:0,scale:1};layout(true);}});
+  window.addEventListener('resize',function(){if(mobile!==(window.innerWidth<=600)){yaw=0;pitch=0;velocity=0;targetRotation=null;positions.clear();camera={x:0,y:0,scale:1};layout(true);}});
   renderDetail();layout(true);
   document.fonts.ready.then(function(){paint();});
 })();

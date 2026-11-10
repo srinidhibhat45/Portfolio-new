@@ -1,0 +1,171 @@
+/* Brand layer: the print identity of the project covers, carried quietly across the site.
+   The covers are the colour. Everything around them stays calm paper: fine grain,
+   one small accent per chapter from the cover palette, cut-out shadows and ticket-shaped
+   buttons. Loaded after structure.css. */
+
+:root {
+  /* The ten cover grounds. */
+  --b-turmeric: #F2B705;
+  --b-teal: #0E7C7B;
+  --b-green: #1E5B3A;
+  --b-sindoor: #C8281E;
+  --b-indigo: #23357A;
+  --b-marigold: #EF6C1A;
+  --b-lotus: #E5527A;
+  --b-ivory: #F3ECDF;
+  --b-kohl: #1B1A17;
+  --b-wine: #532D3A;
+
+  /* Fine paper grain, the texture every cover is printed on. */
+  --b-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.2'/%3E%3C/svg%3E");
+}
+
+/* ---- Each chapter has one accent, taken from the cover palette ---- */
+#work { --sec: var(--b-sindoor); }
+#playground { --sec: var(--b-teal); }
+#gallery { --sec: var(--b-turmeric); }
+#services { --sec: var(--b-indigo); }
+#about { --sec: var(--b-marigold); }
+#experience { --sec: var(--b-green); }
+#testimonials { --sec: var(--b-lotus); }
+#brain { --sec: var(--b-turmeric); }
+#writing { --sec: var(--b-sindoor); }
+#board { --sec: var(--b-teal); }
+#contact { --sec: var(--b-turmeric); }
+
+/* ---- Every chapter is printed on grained paper ---- */
+main > section,
+.footer { background-image: var(--b-grain); background-size: 240px 240px; }
+
+/* ---- The chapter number is a small sticker in the chapter's colour ---- */
+main > section:not(#hero) :is(.section-title, .about-statement, .writing-title, .contact-title)::before,
+main > section .play-heading h2::before {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: var(--sec);
+  color: #FFFBF2;
+  font: 600 13px/1 var(--sans);
+  letter-spacing: .03em;
+  opacity: 1;
+  transform: rotate(-8deg);
+}
+:is(#gallery, #brain, #contact) :is(.section-title, .contact-title)::before { color: var(--b-kohl); }
+
+/* ---- One serif voice for the name and every italic accent ---- */
+:root { --serif: 'Instrument Serif', Georgia, 'Times New Roman', serif; }
+
+/* ---- Hero ---- */
+#hero .heritage-title,
+#hero .heritage-title span,
+#hero .heritage-title em { font-family: var(--serif); font-weight: 400; }
+#hero .heritage-title {
+  font-size: clamp(76px, 14vw, 216px);
+  letter-spacing: -.035em;
+  line-height: .92;
+}
+#hero .heritage-intro p:first-child { font-family: var(--serif); font-size: clamp(28px, 2.6vw, 38px); line-height: 1.08; letter-spacing: -.01em; }
+
+/* The portrait stands in front of a rangoli in the cover colours. The whole circle is in view
+   and turns slowly; only the portrait's soft lower edge is trimmed, at the foot of the stage. */
+#hero .heritage-photo { display: grid; place-items: center; }
+#hero .heritage-composition {
+  position: relative;
+  width: min(100%, 540px);
+  height: auto;
+  aspect-ratio: 1;
+  margin-inline: auto;
+  -webkit-mask: none;
+  mask: none;
+  clip-path: inset(-10% -10% 0 -10%);
+}
+#hero .portrait-mandala {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: auto;
+  height: auto;
+  margin: 0;
+  opacity: 1;
+  transform: none;
+}
+#hero .portrait-mandala::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('../assets/img/rangoli.webp?v=3') center / contain no-repeat;
+  animation: rangoli-turn 140s linear infinite;
+}
+@keyframes rangoli-turn { to { transform: rotate(360deg); } }
+#hero .heritage-portrait {
+  position: absolute;
+  inset: auto auto -9% 50%;
+  z-index: 1;
+  width: 92%;
+  max-width: none;
+  height: auto;
+  filter: grayscale(1) contrast(1.06) drop-shadow(0 6px 10px rgba(27, 26, 23, .16));
+  transform: translateX(-50%);
+}
+@media (prefers-reduced-motion: reduce) {
+  #hero .portrait-mandala::before { animation: none; }
+}
+
+/* A slow ribbon of built-product covers along the foot of the hero. */
+.hero-ribbon {
+  margin: clamp(28px, 4vw, 56px) calc(-1 * var(--pad-x)) 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.hero-ribbon-track {
+  display: flex;
+  gap: 18px;
+  width: max-content;
+  padding: 12px 18px 22px 0;
+  animation: hero-ribbon 80s linear infinite;
+}
+/* With script, the strip is moved directly so it can be dragged; the animation is the fallback. */
+.hero-ribbon { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.hero-ribbon.is-dragging { cursor: grabbing; }
+.hero-ribbon.is-live .hero-ribbon-track { animation: none; will-change: transform; }
+.hero-ribbon img {
+  display: block;
+  pointer-events: none;
+  width: clamp(140px, 15vw, 220px);
+  height: auto;
+  aspect-ratio: 3 / 2;
+  border-radius: 12px;
+  box-shadow: 0 12px 22px -16px rgba(67, 45, 50, .7);
+}
+.hero-ribbon img:nth-child(odd) { transform: rotate(-1.5deg); }
+.hero-ribbon img:nth-child(even) { transform: translateY(5px) rotate(1.5deg); }
+@keyframes hero-ribbon { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .hero-ribbon-track { animation: none; }
+}
+
+/* ---- Tickets: the primary button, shaped like a stub ---- */
+#hero .heritage-work {
+  border-radius: 3px;
+  -webkit-mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+  mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+}
+#hero .heritage-work { padding-inline: 26px; }
+
+/* ---- Cover cards: the pill is a small label stuck on the print ---- */
+.cover-pill { transform: rotate(-1.5deg); box-shadow: 0 1px 0 rgba(27, 26, 23, .18); }
+@media (hover: hover) {
+  .cover-card:hover { border-color: color-mix(in srgb, var(--sec, var(--accent)) 60%, var(--line)); }
+  .cover-card:hover .cover-arrow {
+    border-color: var(--sec, var(--accent));
+    background: var(--sec, var(--accent));
+    color: #FFFBF2;
+  }
+}

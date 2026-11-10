@@ -18,7 +18,6 @@
 .service-art-slides img {position:absolute;left:9%;top:20%;width:82%;height:auto;aspect-ratio:16/9;object-fit:contain;}
 .service-art-slides .service-slide-back {top:10%;left:12%;transform:rotate(5deg);}
 .service-art-slides .service-slide-front {top:28%;left:6%;transform:rotate(-4deg);}
-.service-art-portrait img {object-position:center 35%;}
 .services .service-name {min-height:0;font:500 clamp(24px,2.5vw,34px)/1.25 var(--sans);letter-spacing:-.025em;}
 .services .service-tag {min-height:0;margin:0;padding:0;font:400 17px/1.7 var(--sans);color:var(--bone-dim);}
 .services .service-toggle {position:static;display:grid;place-items:center;width:44px;height:44px;font:300 28px/1 var(--sans);border:1px solid var(--line);border-radius:50%;transition:background .2s;}

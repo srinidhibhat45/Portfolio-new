@@ -1,6 +1,6 @@
 /* ============================================================
    SRINIDHI BHAT — Portfolio interactions
-   GSAP + ScrollTrigger + Lenis (progressive enhancement)
+   GSAP + ScrollTrigger (progressive enhancement)
    ============================================================ */
 (function () {
   'use strict';
@@ -46,18 +46,15 @@
       };
     });
 
-    // Both project sections share one rhythm: the first four are shown large, the rest
-    // follow as a denser index. Built products also start collapsed after ten.
-    var FEATURED = 4, COLLAPSED = 10;
-
-    // One card for every project: a 3:2 cover, a status pill, the name, one line and its tags.
+    // One card for every project: a 3:2 cover, a status pill, the name and one line.
+    // The tags are kept in the card for search but are not drawn.
     // Covers live at assets/covers/<slug>.webp (1280w) with a <slug>-800.webp for small screens.
     function coverCard(p) {
       var cover = 'assets/covers/' + p.slug;
-      return '<a class="cover-card' + (p.compact ? ' is-compact' : '') + '" href="' + esc(p.href) + '"' +
+      return '<a class="cover-card" href="' + esc(p.href) + '"' +
         (p.caseSlug ? ' data-case="' + esc(p.caseSlug) + '"' : ' target="_blank" rel="noopener"') + '>' +
         '<div class="cover-media"><img src="' + esc(cover) + '.webp" srcset="' + esc(cover) + '-800.webp 800w, ' + esc(cover) + '.webp 1280w"' +
-          ' sizes="' + (p.compact ? '(min-width: 900px) 30vw, 46vw' : '(min-width: 900px) 46vw, 92vw') + '"' +
+          ' sizes="(min-width: 1100px) 30vw, 46vw"' +
           ' alt="' + esc(p.name) + ' cover artwork" width="1280" height="853" loading="lazy" decoding="async">' +
           (p.pill ? '<span class="cover-pill' + (p.pillTone ? ' is-' + p.pillTone : '') + '">' + esc(p.pill) + '</span>' : '') + '</div>' +
         '<div class="cover-body">' +
@@ -71,12 +68,12 @@
 
     var cardsEl = document.getElementById('cards');
     if (cardsEl && SITE.work && SITE.work.length) {
-      cardsEl.innerHTML = SITE.work.map(function (w, i) {
+      cardsEl.innerHTML = SITE.work.map(function (w) {
         var tags = String(w.tags).split(' · ');
         return coverCard({
           slug: w.slug, caseSlug: w.slug, name: w.title, blurb: w.blurb,
           href: STORIES[w.slug] ? 'case-studies/' + w.slug + '.html' : w.pdf,
-          pill: tags[0], tags: tags.slice(1), cta: 'View case study', compact: i >= FEATURED
+          pill: tags[0], tags: tags.slice(1), cta: 'View case study'
         });
       }).join('');
     }
@@ -88,7 +85,7 @@
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
       });
-      vibeEl.innerHTML = products.map(function (v, i) {
+      vibeEl.innerHTML = products.map(function (v) {
         var starred = ['Arkitype', 'Earthlog', 'AppleCider'].includes(v.name);
         var hasStory = v.caseSlug && STORIES[v.caseSlug];
         return coverCard({
@@ -96,28 +93,9 @@
           href: hasStory ? 'case-studies/' + v.caseSlug + '.html' : v.href,
           pill: v.status === 'building' ? 'In development' : 'Live', pillTone: v.status === 'building' ? 'building' : 'live',
           tags: (starred ? ['✦ Starred'] : []).concat(v.stack || []),
-          cta: hasStory ? 'Read the case study' : v.cta, compact: i >= FEATURED
+          cta: hasStory ? 'Read the case study' : v.cta
         });
       }).join('');
-      var more = document.getElementById('builtMore');
-      if (more && products.length > COLLAPSED) {
-        more.hidden = false;
-        var label = function () {
-          var open = vibeEl.getAttribute('data-collapsed') !== 'true';
-          more.setAttribute('aria-expanded', String(open));
-          more.textContent = open ? 'Show fewer products' : 'Show all ' + products.length + ' products';
-        };
-        more.addEventListener('click', function () {
-          var open = vibeEl.getAttribute('data-collapsed') !== 'true';
-          vibeEl.setAttribute('data-collapsed', String(open));
-          label();
-          if (open) more.scrollIntoView({ block: 'center' });
-          document.dispatchEvent(new CustomEvent('portfolio:layout'));
-        });
-        label();
-      } else {
-        vibeEl.removeAttribute('data-collapsed');
-      }
     }
 
     var rowEls = document.querySelectorAll('.collage-row');
@@ -151,7 +129,6 @@
   var staticMode = /[?&]static/.test(location.search);
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches || staticMode;
   var isTouch = window.matchMedia('(hover: none), (pointer: coarse)').matches;
-  var isMobile = window.matchMedia('(max-width: 900px)').matches;
 
   if (hasST) {
     gsap.registerPlugin(ScrollTrigger);
@@ -162,20 +139,8 @@
     ScrollTrigger.config({ ignoreMobileResize: true });
   }
 
-  /* ---------- Smooth scroll (Lenis) ---------- */
-  var lenis = null;
-  if (typeof Lenis !== 'undefined' && !reduceMotion && !isTouch && !isMobile) {
-    lenis = new Lenis({ duration: 1.1, smoothWheel: true });
-    (function raf(t) { if (lenis) lenis.raf(t); requestAnimationFrame(raf); })();
-    window.matchMedia('(max-width: 900px)').addEventListener('change', function(event) { if(event.matches && lenis) {lenis.destroy();lenis=null;} });
-    if (hasST) lenis.on('scroll', ScrollTrigger.update);
-  }
-
   /* Keep overlays isolated for keyboard, touch and assistive technology. */
   document.addEventListener('portfolio:before-dialog', function () { closeMenu(); });
-  document.addEventListener('portfolio:dialog', function (event) {
-    if (lenis) { if (event.detail.open) lenis.stop(); else lenis.start(); }
-  });
   document.addEventListener('portfolio:layout', function () { if (hasST) ScrollTrigger.refresh(); });
   var activeOverlay = null, inertSiblings = [], previousOverflow = '';
   function lockOverlay(overlay, exceptions) {
@@ -190,7 +155,6 @@
     });
     overlay.inert = false;
     document.body.style.overflow = 'hidden';
-    if (lenis) lenis.stop();
   }
   function unlockOverlay(overlay) {
     if (activeOverlay !== overlay) return;
@@ -199,7 +163,6 @@
     inertSiblings = [];
     activeOverlay = null;
     document.body.style.overflow = previousOverflow;
-    if (lenis) lenis.start();
   }
   function focusOverlay(overlay, control) {
     // Focus synchronously: background tabs may suspend animation frames.
@@ -214,8 +177,7 @@
       if (!target) return;
       e.preventDefault();
       closeMenu();
-      if (lenis) lenis.scrollTo(target, { offset: -document.getElementById('nav').offsetHeight - 24 });
-      else window.scrollTo({
+      window.scrollTo({
         top: Math.max(0, target.getBoundingClientRect().top + window.scrollY - document.getElementById('nav').offsetHeight - 24),
         behavior: reduceMotion ? 'auto' : 'smooth'
       });
@@ -709,8 +671,8 @@
         cards.forEach(function(card){card.hidden=!card.textContent.toLocaleLowerCase().includes(query);if(!card.hidden)visible++;});
         clear.hidden=!search.value;empty.hidden=visible>0;
         results.textContent=visible+' of '+cards.length+' '+label;
-        // A search looks through every project, including those behind "Show all".
-        panel.toggleAttribute('data-searching',!!query);
+        // A new search starts from the beginning of the rail.
+        panel.scrollLeft=0;panel.dispatchEvent(new Event('scroll'));
         if(hasST)ScrollTrigger.refresh();
       }
       search.addEventListener('input',filterProjects);
@@ -719,6 +681,30 @@
     }
     setup('cards','projectSearch','projectSearchClear','projectResults','projectEmpty','design case studies');
     setup('playGrid','builtSearch','builtSearchClear','builtResults','builtEmpty','built products');
+    // Opening a search puts the cursor straight in its box.
+    document.querySelectorAll('details.project-search').forEach(function (details) {
+      details.addEventListener('toggle', function () {
+        var input = details.querySelector('input');
+        if (details.open && input) input.focus({preventScroll: true});
+      });
+    });
+
+    // The arrows step a rail one view at a time; touch and trackpads scroll it directly.
+    document.querySelectorAll('[data-rail]').forEach(function (group) {
+      var rail=document.getElementById(group.getAttribute('data-rail'));
+      var previous=group.querySelector('[data-rail-dir="-1"]'),next=group.querySelector('[data-rail-dir="1"]');
+      function update() {
+        var max=rail.scrollWidth-rail.clientWidth;
+        previous.disabled=rail.scrollLeft<=2;next.disabled=rail.scrollLeft>=max-2;
+        group.hidden=max<=2;
+      }
+      function step(direction) { rail.scrollBy({left:direction*rail.clientWidth*.85,behavior:reduceMotion?'auto':'smooth'}); }
+      previous.addEventListener('click',function(){step(-1);});
+      next.addEventListener('click',function(){step(1);});
+      rail.addEventListener('scroll',update,{passive:true});
+      window.addEventListener('resize',update);
+      update();
+    });
 
   })();
 

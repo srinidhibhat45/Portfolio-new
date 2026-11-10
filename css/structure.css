@@ -49,9 +49,10 @@ main > section:not(#hero):not(#contact) {
 main > :is(#work, #services, #testimonials, #board) { background-color: var(--ink); }
 main > :is(#playground, #about, #experience, #writing) { background-color: var(--ink-3); }
 
-/* ---- The floating player rests as a small pill and opens on hover or keyboard focus ---- */
+/* ---- The floating player rests as a small pill and opens on hover or keyboard focus.
+   With a video on show it stays a card, because the video has to remain visible. ---- */
 @media (hover: hover) and (min-width: 761px) {
-  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) {
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -59,6 +60,6 @@ main > :is(#playground, #about, #experience, #writing) { background-color: var(-
     padding: 8px;
     border-radius: 999px;
   }
-  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) :is(.music-heading-copy, .music-dock-volume, #musicNext, #musicMute, #musicExpand) { display: none; }
-  .music-widget[data-size="mini"]:not(:hover):not(:focus-within) .music-dock-controls { margin-top: 0; }
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) :is(.music-heading-copy, .music-dock-volume, #musicNext, #musicMute, #musicExpand) { display: none; }
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) .music-dock-controls { margin-top: 0; }
 }

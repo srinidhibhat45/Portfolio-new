@@ -1,20 +1,58 @@
 /* Cover cards: one system for design case studies and built products.
-   Every project gets the same card: a 3:2 cover, a pill, the name, one line, its tags. */
+   Each section is a single row that scrolls sideways and runs off the right edge
+   of the page, so the next card is always in view as a cue to keep going. */
 
 .cover-grid {
   display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: clamp(18px, 2.2vw, 32px);
-  margin-top: clamp(24px, 3vw, 40px);
+  grid-auto-columns: clamp(300px, 36vw, 520px);
+  grid-auto-flow: column;
+  gap: clamp(14px, 1.6vw, 24px);
+  /* Bleed to the page edges while the first card stays on the content margin. */
+  margin: clamp(24px, 3vw, 40px) calc(-1 * var(--pad-x)) 0;
+  padding: 6px var(--pad-x) 22px;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-padding-inline: var(--pad-x);
+  scroll-snap-type: x proximity;
+  /* The arrows and the card running off the edge show the way; the bar itself is not drawn. */
+  scrollbar-width: none;
 }
+.cover-grid::-webkit-scrollbar { display: none; }
+/* A mouse can drag the rail; snapping waits until the drag ends. */
+@media (hover: hover) {
+  .cover-grid { cursor: grab; }
+  .cover-grid.is-dragging { cursor: grabbing; scroll-snap-type: none; user-select: none; -webkit-user-select: none; }
+  .cover-grid.is-dragging .cover-card { pointer-events: none; }
+}
+.cover-grid:focus-visible { outline: 3px solid var(--accent); outline-offset: -3px; }
+
+/* Arrows for stepping through a rail with a mouse. */
+.rail-arrows { display: flex; gap: 8px; margin-left: auto; }
+.rail-arrows[hidden] { display: none; }
+.rail-arrows button {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bone);
+  font: 400 18px/1 var(--sans);
+  cursor: pointer;
+  transition: background-color .25s ease, color .25s ease, border-color .25s ease, opacity .25s ease;
+}
+.rail-arrows button:hover:not(:disabled) { border-color: var(--bone); background: var(--bone); color: var(--ink); }
+.rail-arrows button:disabled { cursor: default; opacity: .35; }
+.rail-arrows button:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
 
 .cover-card {
-  grid-column: span 3;
   display: flex;
   flex-direction: column;
-  padding: 10px 10px 22px;
+  scroll-snap-align: start;
+  padding: 8px 8px 18px;
   border: 1px solid var(--line);
-  border-radius: 24px;
+  border-radius: 20px;
   background: var(--ink-2);
   color: var(--bone);
   text-decoration: none;
@@ -26,7 +64,7 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 3 / 2;
-  border-radius: 16px;
+  border-radius: 13px;
   background: var(--ink-3);
 }
 .cover-media img {
@@ -39,16 +77,16 @@
 
 .cover-pill {
   position: absolute;
-  top: 14px;
-  left: 14px;
+  top: 10px;
+  left: 10px;
   display: inline-flex;
   align-items: center;
   gap: 7px;
-  padding: 7px 12px;
+  padding: 6px 10px;
   border-radius: 999px;
   background: rgba(255, 252, 246, .94);
   color: #2e2927;
-  font: 500 13px/1 var(--sans);
+  font: 500 12px/1 var(--sans);
   letter-spacing: .01em;
 }
 .cover-pill.is-live::before,
@@ -65,8 +103,8 @@
   display: flex;
   flex: 1;
   flex-direction: column;
-  gap: 10px;
-  padding: 20px 14px 0;
+  gap: 8px;
+  padding: 16px 10px 0;
 }
 .cover-head {
   display: flex;
@@ -77,43 +115,34 @@
 .cover-head h3 {
   margin: 0;
   color: var(--bone);
-  font: 500 clamp(22px, 1.9vw, 28px)/1.15 var(--sans);
+  font: 500 clamp(20px, 1.7vw, 24px)/1.15 var(--sans);
   letter-spacing: -.02em;
 }
 .cover-arrow {
   display: grid;
   flex: none;
   place-items: center;
-  width: 36px;
-  height: 36px;
+  width: 30px;
+  height: 30px;
   border: 1px solid var(--line);
   border-radius: 50%;
   color: var(--bone);
-  font-size: 16px;
+  font-size: 14px;
   line-height: 1;
   transition: background-color .3s ease, color .3s ease, border-color .3s ease, transform .5s var(--ease);
 }
 .cover-blurb {
-  max-width: 48ch;
+  display: -webkit-box;
+  overflow: hidden;
   margin: 0;
   color: var(--bone-dim);
-  font: 400 17px/1.5 var(--sans);
+  font: 400 16px/1.5 var(--sans);
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
-.cover-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin: 6px 0 0;
-  padding: 0;
-  list-style: none;
-}
-.cover-tags li {
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: var(--ink-3);
-  color: var(--bone-dim);
-  font: 500 13px/1 var(--sans);
-}
+/* Tags stay in the card so search can find them, but are not drawn. */
+.cover-tags { display: none; }
 /* The whole card is the link; the call to action is read out but not drawn. */
 .cover-cta {
   position: absolute;
@@ -126,81 +155,20 @@
 
 .cover-card:focus-visible {
   outline: 3px solid var(--accent);
-  outline-offset: 4px;
+  outline-offset: 3px;
 }
 @media (hover: hover) {
   .cover-card:hover {
-    border-color: color-mix(in srgb, var(--accent) 45%, var(--line));
-    box-shadow: 0 28px 48px -30px rgba(67, 45, 50, .5);
-    transform: translateY(-4px);
+    box-shadow: 0 22px 36px -26px rgba(67, 45, 50, .5);
+    transform: translateY(-3px);
   }
   .cover-card:hover .cover-media img { transform: scale(1.03); }
-  .cover-card:hover .cover-arrow {
-    border-color: var(--accent);
-    background: var(--accent);
-    color: var(--ink-2);
-    transform: rotate(45deg);
-  }
+  .cover-card:hover .cover-arrow { transform: rotate(45deg); }
 }
-
-/* The denser index that follows the featured products. */
-.cover-card.is-compact {
-  grid-column: span 2;
-  padding: 8px 8px 18px;
-  border-radius: 20px;
-}
-.cover-card.is-compact .cover-media { border-radius: 13px; }
-.cover-card.is-compact .cover-pill { top: 10px; left: 10px; padding: 6px 10px; font-size: 12px; }
-.cover-card.is-compact .cover-body { gap: 8px; padding: 16px 10px 0; }
-.cover-card.is-compact .cover-head h3 { font-size: clamp(18px, 1.5vw, 21px); }
-.cover-card.is-compact .cover-arrow { width: 30px; height: 30px; font-size: 14px; }
-.cover-card.is-compact .cover-blurb {
-  display: -webkit-box;
-  overflow: hidden;
-  font-size: 15px;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
-}
-.cover-card.is-compact .cover-tags { display: none; }
-
-/* Collapsed: the four featured products and the first two rows of the index. */
-.cover-grid[data-collapsed="true"]:not([data-searching]) .cover-card:nth-child(n+11) { display: none; }
-
-.cover-more {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 52px;
-  margin: clamp(24px, 3vw, 36px) auto 0;
-  padding: 0 28px;
-  border: 1px solid var(--bone);
-  border-radius: 999px;
-  background: transparent;
-  color: var(--bone);
-  font: 500 16px/1 var(--sans);
-  cursor: pointer;
-  transition: background-color .3s ease, color .3s ease;
-}
-.cover-more[hidden] { display: none; }
-.cover-more:hover { background: var(--bone); color: var(--ink); }
-.cover-more:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
-.cover-grid[data-searching] + .cover-more { display: none; }
 
 @media (max-width: 760px) {
-  .cover-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
-  .cover-card { grid-column: span 2; padding: 8px 8px 20px; border-radius: 20px; }
-  .cover-media { border-radius: 13px; }
-  .cover-body { padding: 16px 10px 0; }
-  .cover-blurb { font-size: 16px; }
-  .cover-card.is-compact { grid-column: span 1; padding: 6px 6px 14px; border-radius: 16px; }
-  .cover-card.is-compact .cover-media { border-radius: 11px; }
-  .cover-card.is-compact .cover-body { padding: 12px 6px 0; }
-  .cover-card.is-compact .cover-head h3 { font-size: 17px; }
-  .cover-card.is-compact .cover-arrow,
-  .cover-card.is-compact .cover-pill { display: none; }
-  .cover-card.is-compact .cover-blurb { font-size: 14px; }
-  .cover-more { width: 100%; }
+  .cover-grid { grid-auto-columns: 78vw; gap: 12px; }
+  .cover-arrow { display: none; }
 }
 
 @media (prefers-reduced-motion: reduce) {

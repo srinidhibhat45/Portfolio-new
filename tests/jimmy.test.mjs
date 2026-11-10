@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {freshJimmy,restoreJimmy,giveTreat,treatWait,chooseTrick,strokeDistance,TREAT_INTERVAL} from '../js/jimmy-state.mjs';
+import {freshJimmy,restoreJimmy,giveTreat,treatWait,chooseTrick,strokeDistance,TREAT_INTERVAL,TRICKS} from '../js/jimmy-state.mjs';
 
 test('Jimmy remembers affection and rest locally, and restores malformed memories safely',()=>{
   const saved={...freshJimmy(),pets:7,treats:2,lastTreat:1000,resting:true};
@@ -18,9 +18,11 @@ test('treats have a persistent cooldown that repeated clicks and reloads cannot 
   assert.equal(giveTreat(restored,1000+TREAT_INTERVAL),true);
   assert.equal(restored.treats,2);
 });
-test('random tricks cover paw, spin, stretch, and a playful hop; stroke distance is independent of direction',()=>{
-  assert.deepEqual([0,.3,.5,.7,.9].map(value=>chooseTrick(()=>value)),['paw','paw','spin','stretch','hop']);
-  assert.equal(chooseTrick(()=>1),'hop');
+test('random tricks cover all seven tricks evenly; stroke distance is independent of direction',()=>{
+  assert.deepEqual(TRICKS,['paw','spin','stretch','hop','roll','beg','speak']);
+  assert.deepEqual(TRICKS.map((_,i)=>chooseTrick(()=>(i+.5)/TRICKS.length)),TRICKS);
+  assert.equal(chooseTrick(()=>0),'paw');
+  assert.equal(chooseTrick(()=>1),'speak');
   assert.equal(strokeDistance({x:0,y:0},{x:3,y:4}),5);
   assert.equal(strokeDistance({x:3,y:4},{x:0,y:0}),5);
 });

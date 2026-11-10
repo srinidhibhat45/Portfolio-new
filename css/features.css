@@ -1,0 +1,797 @@
+/* Feature polish: the music player and the companions share one small kit:
+   one panel style, one label size, one icon button, line icons instead of glyphs. Loaded last. */
+
+:root {
+  --f-panel: #FFFCF6;
+  --f-ink: #2B2523;
+  --f-dim: #6F635B;
+  --f-line: #DCCFBC;
+  --f-wine: #532D3A;
+  --f-shadow: 0 18px 40px -24px rgba(27, 26, 23, .5);
+  /* Line icons, drawn as masks so they take the button's colour. */
+  --i-play: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M8 5.2v13.6a.8.8 0 0 0 1.2.7l11-6.8a.8.8 0 0 0 0-1.4l-11-6.8A.8.8 0 0 0 8 5.200z'/%3E%3C/svg%3E");
+  --i-pause: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6.5' y='5' width='4' height='14' rx='1'/%3E%3Crect x='13.5' y='5' width='4' height='14' rx='1'/%3E%3C/svg%3E");
+  --i-dots: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='6' cy='12' r='2'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3Ccircle cx='18' cy='12' r='2'/%3E%3C/svg%3E");
+  --i-next: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M5 5.800v12.400a.8.8 0 0 0 1.300.6L15 12.600a.8.8 0 0 0 0-1.200L6.300 5.200A.8.8 0 0 0 5 5.800z'/%3E%3Crect x='16.500' y='5' width='2.500' height='14' rx='1'/%3E%3C/svg%3E");
+  --i-volume: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.500v5h3.500l4.500 4v-13l-4.500 4z' fill='black'/%3E%3Cpath d='M15.500 9a4.200 4.200 0 0 1 0 6M18 6.500a7.800 7.800 0 0 1 0 11'/%3E%3C/svg%3E");
+  --i-muted: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9.500v5h3.500l4.500 4v-13l-4.500 4z' fill='black'/%3E%3Cpath d='m16 9.500 5 5m0-5-5 5'/%3E%3C/svg%3E");
+  --i-up: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 14.500 6-6 6 6'/%3E%3C/svg%3E");
+  --i-down: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9.500 6 6 6-6'/%3E%3C/svg%3E");
+  --i-stop: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect x='6' y='6' width='12' height='12' rx='2'/%3E%3C/svg%3E");
+  --i-out: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 16 17 7m-7 0h7v7'/%3E%3C/svg%3E");
+}
+
+/* ================= Music player ================= */
+.music-widget {
+  left: 18px;
+  bottom: 18px;
+  width: 340px;
+  padding: 14px;
+  border: 1px solid var(--f-line);
+  border-radius: 18px;
+  background: var(--f-panel);
+  color: var(--f-ink);
+  box-shadow: var(--f-shadow);
+}
+.music-widget-head { align-items: center; gap: 12px; }
+.music-record { flex: 0 0 48px; width: 48px; height: 48px; }
+.music-heading-copy > p:first-child {
+  color: var(--f-dim);
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.music-heading-copy h2 {
+  margin: 2px 0 1px;
+  color: var(--f-ink);
+  font: 600 17px/1.25 var(--sans);
+  letter-spacing: -.01em;
+}
+.music-heading-copy #musicTrack { color: var(--f-dim); font: 400 13px/1.4 var(--sans); }
+
+/* Every control is the same round button; the icon is a mask in the button's colour. */
+.music-dock-controls > button,
+.music-widget-head button {
+  position: relative;
+  display: grid;
+  place-items: center;
+  flex: 0 0 36px;
+  width: 36px;
+  height: 36px;
+  padding: 0;
+  border: 1px solid var(--f-line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--f-ink);
+  font-size: 0;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.music-widget-head button { align-self: center; }
+.music-dock-controls > button > span { display: none; }
+.music-dock-controls > button::before,
+.music-widget-head button::before,
+#musicClose::before,
+#musicPlaylistLink::after {
+  content: '';
+  width: 18px;
+  height: 18px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.music-dock-controls > button:hover:not(:disabled),
+.music-widget-head button:hover { border-color: var(--f-wine); background: var(--f-wine); color: #FFFBF2; }
+.music-dock-controls > button:disabled { cursor: default; opacity: .38; }
+.music-widget button:focus-visible,
+.music-widget a:focus-visible { outline: 2px solid var(--f-wine); outline-offset: 3px; }
+
+.music-dock-controls { gap: 8px; margin-top: 14px; }
+.music-dock-controls #musicPlay {
+  flex-basis: 44px;
+  width: 44px;
+  height: 44px;
+  border-color: var(--f-wine);
+  background: var(--f-wine);
+  color: #FFFBF2;
+  --icon: var(--i-play);
+}
+.music-dock-controls #musicPlay::before { width: 20px; height: 20px; }
+.music-dock-controls #musicPlay[aria-label^="Pause"] { --icon: var(--i-pause); }
+.music-dock-controls #musicPlay[aria-label^="Loading"] { --icon: var(--i-dots); }
+.music-dock-controls #musicPlay:hover:not(:disabled) { background: #3D2029; }
+#musicNext { --icon: var(--i-next); }
+#musicMute { --icon: var(--i-volume); }
+#musicMute[aria-label^="Unmute"] { --icon: var(--i-muted); }
+#musicExpand { --icon: var(--i-up); margin-left: auto; }
+#musicMinimize { --icon: var(--i-down); }
+
+.music-dock-volume { gap: 8px; }
+.music-dock-volume input {
+  height: 4px;
+  border-radius: 2px;
+  background: var(--f-line);
+  accent-color: var(--f-wine);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.music-dock-volume input::-webkit-slider-thumb {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  border-radius: 50%;
+  background: var(--f-wine);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.music-dock-volume input::-moz-range-thumb { width: 14px; height: 14px; border: 0; border-radius: 50%; background: var(--f-wine); }
+.music-dock-volume output { min-width: 30px; color: var(--f-dim); font: 500 12px/1 var(--sans); text-align: right; }
+
+.music-extra { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--f-line); }
+.music-status { color: var(--f-dim); font: 400 13px/1.4 var(--sans); }
+.music-extra-foot { margin-top: 10px; font: 500 13px/1 var(--sans); }
+#musicPlaylistLink,
+#musicClose {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--f-ink);
+  font: 500 13px/1 var(--sans);
+  text-decoration: none;
+}
+#musicPlaylistLink { --icon: var(--i-out); }
+#musicPlaylistLink::after { width: 15px; height: 15px; }
+#musicClose { --icon: var(--i-stop); color: var(--f-dim); }
+#musicClose::before { width: 14px; height: 14px; }
+#musicPlaylistLink:hover,
+#musicClose:hover { color: var(--f-wine); }
+
+/* Resting state: a small pill with the record and the play button. While a video is on show
+   the player stays a card, because the video has to remain visible. */
+@media (hover: hover) and (min-width: 761px) {
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) { padding: 7px; gap: 8px; }
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) .music-record { flex-basis: 40px; width: 40px; height: 40px; }
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) #musicPlay { flex-basis: 40px; width: 40px; height: 40px; }
+}
+
+/* ================= Jimmy =================
+   A rendered dog with fourteen poses. Each mood or trick has its own pose and a small movement. */
+.jimmy-dock { right: 22px; bottom: 14px; width: 118px; }
+/* Only the dog himself takes clicks, so links that scroll past his corner stay reachable. */
+.jimmy-pet { position: relative; width: 84px; height: 100px; margin: 24px auto 0; }
+/* A soft patch of ground under him. */
+.jimmy-pet::before {
+  content: '';
+  position: absolute;
+  inset: auto 6% 0;
+  height: 14px;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgba(27, 26, 23, .26), transparent);
+}
+/* The picture is wider than the dock so stretched-out poses stay the same size as upright ones. */
+.jimmy-photo {
+  --pose: url('../assets/img/jimmy/sit.webp');
+  position: absolute;
+  inset: -24px -43px 5px;
+  background: var(--pose) center bottom / contain no-repeat;
+  transform-origin: 50% 100%;
+  animation: jimmy-breathe 4.5s ease-in-out infinite;
+  pointer-events: none;
+}
+/* Every pose is fetched up front so a mood never flashes blank. */
+.jimmy-photo::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  background: url('../assets/img/jimmy/look.webp'), url('../assets/img/jimmy/sniff.webp'), url('../assets/img/jimmy/happy.webp'),
+    url('../assets/img/jimmy/paw.webp'), url('../assets/img/jimmy/beg.webp'), url('../assets/img/jimmy/hop.webp'),
+    url('../assets/img/jimmy/speak.webp'), url('../assets/img/jimmy/stretch.webp'), url('../assets/img/jimmy/spin.webp'),
+    url('../assets/img/jimmy/roll.webp'), url('../assets/img/jimmy/treat.webp'), url('../assets/img/jimmy/bliss.webp'),
+    url('../assets/img/jimmy/nap.webp');
+}
+.jimmy-dock[data-state="look"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-settle .5s ease-out both; }
+.jimmy-dock[data-state="sniff"] .jimmy-photo { --pose: url('../assets/img/jimmy/sniff.webp'); animation: jimmy-nod 1.9s ease-in-out both; }
+.jimmy-dock[data-state="boop"] .jimmy-photo { --pose: url('../assets/img/jimmy/happy.webp'); animation: jimmy-bounce .8s cubic-bezier(.2, 1.1, .3, 1) both; }
+.jimmy-dock[data-state="paw"] .jimmy-photo { --pose: url('../assets/img/jimmy/paw.webp'); animation: jimmy-bounce .9s cubic-bezier(.2, 1.1, .3, 1) both; }
+.jimmy-dock[data-state="beg"] .jimmy-photo { --pose: url('../assets/img/jimmy/beg.webp'); animation: jimmy-bob 1s ease-in-out 2; }
+.jimmy-dock[data-state="hop"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-jump 1s ease-out 2; }
+.jimmy-dock[data-state="speak"] .jimmy-photo { --pose: url('../assets/img/jimmy/speak.webp'); animation: jimmy-bark .45s ease-in-out 4; }
+.jimmy-dock[data-state="stretch"] .jimmy-photo { --pose: url('../assets/img/jimmy/stretch.webp'); animation: jimmy-stretch 2.4s ease-in-out both; }
+.jimmy-dock[data-state="spin"] .jimmy-photo { --pose: url('../assets/img/jimmy/spin.webp'); animation: jimmy-turn 1.1s ease-in-out 2; }
+.jimmy-dock[data-state="roll"] .jimmy-photo { --pose: url('../assets/img/jimmy/roll.webp'); animation: jimmy-wiggle .8s ease-in-out infinite; }
+.jimmy-dock[data-state="treat"] .jimmy-photo { --pose: url('../assets/img/jimmy/treat.webp'); animation: jimmy-munch .5s ease-in-out 4; }
+.jimmy-dock[data-state="petting"] .jimmy-photo { --pose: url('../assets/img/jimmy/bliss.webp'); animation: jimmy-sway 1.4s ease-in-out infinite; }
+.jimmy-dock[data-state="nap"] .jimmy-photo { --pose: url('../assets/img/jimmy/nap.webp'); animation-duration: 6s; }
+@keyframes jimmy-breathe { 50% { transform: scaleY(1.018); } }
+@keyframes jimmy-settle { from { transform: scale(.97); } }
+@keyframes jimmy-nod { 20%, 60% { transform: translateY(3px) rotate(2deg); } 40%, 80% { transform: translateY(0); } }
+@keyframes jimmy-bounce { 35% { transform: translateY(-9px) scale(.98, 1.03); } 70% { transform: translateY(0) scale(1.02, .98); } }
+@keyframes jimmy-bob { 50% { transform: translateY(-5px); } }
+@keyframes jimmy-jump { 40% { transform: translateY(-22px); } 75% { transform: translateY(0) scale(1.03, .97); } }
+@keyframes jimmy-bark { 50% { transform: translateY(-3px) rotate(-3deg); } }
+@keyframes jimmy-stretch { 50% { transform: scale(1.05, .95); } }
+@keyframes jimmy-turn { 50% { transform: scaleX(-1); } }
+@keyframes jimmy-wiggle { 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
+@keyframes jimmy-munch { 50% { transform: scale(1.03, .97); } }
+@keyframes jimmy-sway { 50% { transform: rotate(-3deg); } }
+.jimmy-name { font: 600 13px/1 var(--sans); letter-spacing: .01em; }
+/* The hint sits above the name tag, clear of it. */
+.jimmy-hint { bottom: 40px; font: 500 12px/1.3 var(--sans); box-shadow: 0 6px 14px -10px rgba(27, 26, 23, .5); }
+.jimmy-bubble { border-color: var(--f-line); border-radius: 14px; background: var(--f-panel); color: var(--f-ink); box-shadow: var(--f-shadow); }
+/* Treat, Trick and Pet: three matching buttons that appear when you reach for him. */
+.jimmy-actions button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 34px;
+  padding: 0 12px 0 10px;
+  border: 1px solid var(--f-line);
+  border-radius: 999px;
+  background: var(--f-panel);
+  color: var(--f-ink);
+  font: 600 12px/1 var(--sans);
+  box-shadow: 0 8px 18px -12px rgba(27, 26, 23, .5);
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.jimmy-actions button svg { width: 16px; height: 16px; }
+.jimmy-actions button:hover:not(:disabled) { border-color: var(--f-wine); background: var(--f-wine); color: #FFFBF2; }
+.jimmy-actions button:disabled,
+.jimmy-actions button[aria-disabled="true"] { opacity: .5; }
+.jimmy-actions button[aria-disabled="true"]:hover { border-color: var(--f-line); background: var(--f-panel); color: var(--f-ink); }
+
+/* The corner widgets: back-to-top stands beside Jimmy, and the footer keeps its words clear of
+   him and the music player. Phones have neither, so the button goes to the corner. */
+.back-to-top { right: 154px; bottom: 22px; }
+@media (min-width: 601px) {
+  .footer { padding-right: max(var(--pad-x), 190px); padding-bottom: 108px; }
+}
+@media (max-width: 600px) {
+  .back-to-top { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom, 0px)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .jimmy-photo,
+  .jimmy-dock[data-state] .jimmy-photo { animation: none; }
+}
+
+@media (max-width: 760px) {
+  .music-widget { left: 12px; bottom: 12px; width: min(340px, calc(100vw - 24px)); }
+}
+
+/* ================= Visitor board =================
+   A guestbook first: "Add a note" leads, the canvas tools follow as quiet icon buttons.
+   Uses the site's own tokens so it follows light and dark themes. */
+:root {
+  --i-plus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E");
+  --i-minus: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='M5 12h14'/%3E%3C/svg%3E");
+  --i-smile: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M8.500 14.500a4.500 4.500 0 0 0 7 0M9 9.500h.01M15 9.500h.01'/%3E%3C/svg%3E");
+  --i-cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linejoin='round'%3E%3Cpath d='M5 3.500 19 10l-6 2-2 6z'/%3E%3C/svg%3E");
+  --i-hand: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M8 12V5.500a1.500 1.500 0 0 1 3 0V11m0-6.500a1.500 1.500 0 0 1 3 0V11m0-5a1.500 1.500 0 0 1 3 0v8a6 6 0 0 1-6 6h-1a6 6 0 0 1-5-2.700L4.500 13.500a1.500 1.500 0 0 1 2.500-1.700L8 13'/%3E%3C/svg%3E");
+  --i-undo: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 14 4 9l5-5'/%3E%3Cpath d='M4 9h10a6 6 0 0 1 0 12h-3'/%3E%3C/svg%3E");
+  --i-turn-left: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M3 4v6h6'/%3E%3Cpath d='M3.500 10A9 9 0 1 1 6 18.400'/%3E%3C/svg%3E");
+  --i-turn-right: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 4v6h-6'/%3E%3Cpath d='M20.500 10A9 9 0 1 0 18 18.400'/%3E%3C/svg%3E");
+  --i-fit: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5'/%3E%3C/svg%3E");
+  --i-x: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round'%3E%3Cpath d='m6 6 12 12M18 6 6 18'/%3E%3C/svg%3E");
+  --i-pen: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m4 20 1-4L16.500 4.500a2.100 2.100 0 0 1 3 3L8 19z'/%3E%3C/svg%3E");
+  --i-text: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Cpath d='M5 6h14M12 6v13M9 19h6'/%3E%3C/svg%3E");
+  --i-globe: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.7'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18'/%3E%3C/svg%3E");
+}
+
+#board .board-frame {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  background: var(--ink-2);
+  box-shadow: 0 30px 60px -44px rgba(27, 26, 23, .55);
+}
+#board .board-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 12px;
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  background: var(--ink-2);
+}
+#board .board-tools { display: flex; align-items: center; gap: 4px; }
+#board .board-tool-divider { width: 1px; height: 22px; margin: 0 6px; background: var(--line); }
+#board .board-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  height: 38px;
+  min-height: 0;
+  padding: 0 13px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone);
+  font: 500 13px/1 var(--sans);
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+#board .board-toolbar button::before {
+  content: '';
+  flex: none;
+  width: 17px;
+  height: 17px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+#board .board-toolbar button:hover:not(:disabled) { background: color-mix(in srgb, var(--accent) 10%, transparent); }
+#board .board-toolbar button[aria-pressed="true"] { background: color-mix(in srgb, var(--accent) 14%, transparent); color: var(--accent); }
+#board .board-toolbar button:disabled { cursor: default; opacity: .3; }
+#board .board-toolbar button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* The one filled button: what the board is for. */
+#board #noteOpen { --icon: var(--i-plus); padding: 0 16px 0 12px; background: var(--accent); color: var(--ink-2); font-weight: 600; }
+#board #noteOpen:hover { background: color-mix(in srgb, var(--accent) 86%, #000); }
+#board #boardSticker { --icon: var(--i-smile); border-color: var(--line); }
+#board [data-board-tool="move"] { --icon: var(--i-cursor); }
+#board [data-board-tool="hand"] { --icon: var(--i-hand); }
+
+/* Canvas tools are icons only. */
+#board .board-camera button { width: 38px; padding: 0; font-size: 0; }
+#board #boardUndo { --icon: var(--i-undo); }
+#board [data-board-rotate="-5"] { --icon: var(--i-turn-left); }
+#board [data-board-rotate="5"] { --icon: var(--i-turn-right); }
+#board #boardZoomOut { --icon: var(--i-minus); }
+#board #boardZoomIn { --icon: var(--i-plus); }
+#board #boardFit { --icon: var(--i-fit); width: auto; padding: 0 13px; font-size: 13px; }
+#board #boardZoomLabel { min-width: 46px; color: var(--bone-dim); font: 500 13px/1 var(--sans); text-align: center; font-variant-numeric: tabular-nums; }
+
+#board .board-palette { padding: 10px 12px; border-bottom: 1px solid var(--line); background: var(--ink-2); }
+#board .board-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px 16px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--line);
+  color: var(--bone-dim);
+  font: 400 13px/1.4 var(--sans);
+}
+#board .board-bottom p { margin: 0; }
+#board .board-public { display: inline-flex; align-items: center; gap: 6px; }
+#board .board-public::before,
+#noteDialog .note-public::before {
+  content: '';
+  flex: none;
+  width: 15px;
+  height: 15px;
+  background: currentColor;
+  -webkit-mask: var(--i-globe) center / contain no-repeat;
+  mask: var(--i-globe) center / contain no-repeat;
+}
+#board .board-status { margin-top: 12px; color: var(--bone-dim); font: 400 13px/1.4 var(--sans); }
+
+/* ---- The note composer: you write on the paper you pick ---- */
+#noteDialog {
+  width: min(520px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 28px;
+  overflow: auto;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--ink-2);
+  color: var(--bone);
+  box-shadow: 0 40px 80px -40px rgba(0, 0, 0, .65);
+}
+#noteDialog::backdrop { background: rgba(27, 26, 23, .5); backdrop-filter: blur(3px); }
+#noteDialog h2 { margin: 0 0 20px; color: var(--bone); font: 600 24px/1.2 var(--sans); letter-spacing: -.02em; }
+#noteDialog .note-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bone);
+  font-size: 0;
+  cursor: pointer;
+}
+#noteDialog .note-close::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--i-x) center / contain no-repeat;
+  mask: var(--i-x) center / contain no-repeat;
+}
+#noteDialog .note-close:hover { background: var(--accent); border-color: var(--accent); color: var(--ink-2); }
+#noteForm { --paper: #f4e6a7; display: block; }
+#noteForm:has(input[value="blue"]:checked) { --paper: #d9e3f9; }
+#noteForm:has(input[value="rose"]:checked) { --paper: #efd5d0; }
+#noteForm:has(input[value="sage"]:checked) { --paper: #dce9db; }
+#noteForm label[for="noteName"],
+#noteForm .note-colors legend {
+  color: var(--bone-dim);
+  font: 600 12px/1.3 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#noteForm label[for="noteName"] span { font-weight: 400; letter-spacing: .02em; text-transform: none; }
+#noteName {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
+  border: 0;
+  border-bottom: 1.5px solid var(--line);
+  border-radius: 0;
+  background: transparent;
+  color: var(--bone);
+  font: 400 16px/1.4 var(--sans);
+}
+#noteName:focus { outline: none; border-bottom-color: var(--accent); box-shadow: 0 1.5px 0 var(--accent); }
+#noteForm .note-tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+  margin: 22px 0 14px;
+  padding: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+#noteForm .note-tabs button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone-dim);
+  font: 500 14px/1 var(--sans);
+  cursor: pointer;
+}
+#noteForm .note-tabs button::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+#noteForm .note-tabs [data-note-mode="write"] { --icon: var(--i-text); }
+#noteForm .note-tabs [data-note-mode="draw"] { --icon: var(--i-pen); }
+#noteForm .note-tabs button[aria-pressed="true"] { background: var(--accent); color: var(--ink-2); }
+#noteText,
+#noteCanvas {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: 4px;
+  background: var(--paper);
+  box-shadow: 0 14px 22px -16px rgba(27, 26, 23, .55);
+  transition: background-color .25s ease;
+}
+#noteText {
+  min-height: 168px;
+  padding: 20px;
+  color: #2B2523;
+  font: 400 19px/1.4 var(--serif);
+  resize: none;
+}
+#noteText::placeholder { color: rgba(43, 37, 35, .68); }
+#noteName::placeholder { color: var(--bone-dim); opacity: 1; }
+#noteText:focus { outline: 2px solid var(--accent); outline-offset: 3px; }
+#noteCanvas { height: auto; aspect-ratio: 520 / 320; touch-action: none; cursor: crosshair; }
+#noteForm .note-count { margin: 8px 0 0; color: var(--bone-dim); font: 500 12px/1 var(--sans); text-align: right; font-variant-numeric: tabular-nums; }
+#noteForm #noteClear { margin-top: 8px; font: 500 13px/1 var(--sans); }
+#noteForm .note-colors { display: flex; align-items: center; gap: 10px; margin: 18px 0 0; padding: 0; border: 0; }
+#noteForm .note-colors legend { float: left; margin-right: 6px; padding: 0; }
+#noteForm .note-colors label {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  padding: 0;
+  border: 1px solid rgba(27, 26, 23, .16);
+  border-radius: 50%;
+  background: var(--note-color);
+  cursor: pointer;
+}
+#noteForm .note-colors input { position: absolute; inset: 0; width: 100%; height: 100%; margin: 0; opacity: 0; cursor: pointer; }
+#noteForm .note-colors label span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+#noteForm .note-colors label:has(input:checked) { box-shadow: 0 0 0 2px var(--ink-2), 0 0 0 4px var(--accent); }
+#noteForm .note-colors label:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 5px; }
+#noteDialog .note-public { display: flex; align-items: center; gap: 6px; margin: 18px 0 12px; color: var(--bone-dim); font: 400 13px/1.4 var(--sans); }
+#noteSubmit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 52px;
+  padding: 0;
+  border: 0;
+  border-radius: 3px;
+  background: var(--accent);
+  color: var(--ink-2);
+  font: 600 15px/1 var(--sans);
+  cursor: pointer;
+  -webkit-mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+  mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+}
+#noteSubmit:hover { background: color-mix(in srgb, var(--accent) 86%, #000); }
+#noteSubmit:disabled { cursor: default; opacity: .55; }
+#noteDialog #noteStatus { margin: 10px 0 0; color: var(--bone-dim); font: 400 13px/1.4 var(--sans); }
+
+@media (max-width: 760px) {
+  /* Finger-sized tools, and "Add a note" stays one line with its plus beside it. */
+  #board .board-toolbar { justify-content: flex-start; }
+  #board .board-toolbar button { height: 44px; }
+  #board .board-toolbar button:not(#noteOpen):not(#boardFit) { width: 44px; padding: 0; font-size: 0; }
+  #board #noteOpen { flex-direction: row; white-space: nowrap; }
+  #board #boardSticker { border-color: transparent; }
+  #board #boardZoomLabel { display: none; }
+  #board .board-tool-divider { margin: 0 2px; }
+  #noteDialog { padding: 22px 18px; }
+  /* Paper swatches stay round; the tap area grows around them instead. */
+  #noteForm .note-colors { gap: 16px; }
+  #noteForm .note-colors label { min-width: 0; min-height: 0; margin-block: 7px; }
+  #noteForm .note-colors label::after { content: ''; position: absolute; inset: -8px; }
+}
+
+/* ================= Games room =================
+   One compact header, every game on a visible row of chips, one button style. */
+:root {
+  --i-refresh: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 5v5h-5'/%3E%3Cpath d='M19.500 10A8 8 0 1 0 20 14'/%3E%3C/svg%3E");
+  --i-help: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.8' stroke-linecap='round'%3E%3Ccircle cx='12' cy='12' r='9'/%3E%3Cpath d='M9.500 9.500a2.500 2.500 0 1 1 3.500 2.300c-.700.300-1 .800-1 1.700M12 17h.01'/%3E%3C/svg%3E");
+}
+.playroom-dialog {
+  /* The room scrolls as one sheet when a game is taller than the window. */
+  overflow: hidden auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  background: var(--ink-2);
+  color: var(--bone);
+  box-shadow: 0 40px 90px -40px rgba(0, 0, 0, .7);
+}
+.playroom-dialog::backdrop { background: rgba(27, 26, 23, .55); backdrop-filter: blur(3px); }
+
+/* The title and the close button stay in reach while the room scrolls. */
+.playroom-dialog .playroom-head {
+  position: sticky;
+  top: 0;
+  z-index: 12;
+  align-items: center;
+  padding: 18px 24px 6px;
+  background: var(--ink-2);
+}
+.playroom-dialog .play-eyebrow {
+  margin: 0 0 2px;
+  color: var(--bone-dim);
+  font: 600 11px/1.3 var(--sans);
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+.playroom-dialog #playroomTitle { margin: 0; color: var(--bone); font: 500 26px/1.15 var(--sans); letter-spacing: -.02em; }
+.playroom-dialog #playroomTitle em { font-family: var(--serif); font-style: italic; font-weight: 400; }
+.playroom-dialog .playroom-close {
+  display: grid;
+  flex: none;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--bone);
+  font-size: 0;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.playroom-dialog .playroom-close::before {
+  content: '';
+  width: 16px;
+  height: 16px;
+  background: currentColor;
+  -webkit-mask: var(--i-x) center / contain no-repeat;
+  mask: var(--i-x) center / contain no-repeat;
+}
+.playroom-dialog .playroom-close:hover { border-color: var(--accent); background: var(--accent); color: var(--ink-2); }
+
+/* Whose turn it is, the rules and the tokens share one quiet line. */
+.playroom-dialog .playroom-meta { align-items: center; padding: 4px 24px 12px; color: var(--bone-dim); font: 500 13px/1.3 var(--sans); }
+.playroom-dialog .play-turn { color: var(--bone); font-weight: 600; }
+.playroom-dialog .play-help summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  border: 0;
+  color: var(--bone-dim);
+  font: 500 13px/1.3 var(--sans);
+  cursor: pointer;
+}
+.playroom-dialog .play-help summary::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: currentColor;
+  -webkit-mask: var(--i-help) center / contain no-repeat;
+  mask: var(--i-help) center / contain no-repeat;
+}
+.playroom-dialog .play-help summary:hover { color: var(--accent); }
+.playroom-dialog #playTokens {
+  padding: 6px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--bone);
+  font: 500 13px/1 var(--sans);
+}
+
+/* Every game is on show; the dropdown is kept only for narrow screens. */
+.playroom-dialog .play-game-picker {
+  display: block;
+  padding: 10px 24px;
+  border-block: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bone) 4%, transparent);
+}
+.playroom-dialog .play-game-picker > label,
+.playroom-dialog .play-game-select,
+.playroom-dialog .play-game-count { display: none; }
+.play-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; }
+.play-chips::-webkit-scrollbar { display: none; }
+.play-chip {
+  flex: none;
+  height: 38px;
+  padding: 0 14px;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone-dim);
+  font: 500 14px/1 var(--sans);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.play-chip:hover { border-color: var(--line); color: var(--bone); }
+.play-chip[aria-pressed="true"] { background: var(--accent); color: var(--ink-2); font-weight: 600; }
+.play-chip:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* One button style for every game's actions. The hand keys of stone-paper-scissors and
+   hand cricket keep their own shape, set further down. */
+.playroom-dialog .game-reset,
+.playroom-dialog .play-game-area :is(.pen-aim, .card-actions, .connect-mobile, .chess-match-actions, .chess-confirm, .chess-promotion) button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: 38px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bone);
+  font: 500 13px/1 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+.playroom-dialog .game-reset::before {
+  content: '';
+  width: 15px;
+  height: 15px;
+  background: currentColor;
+  -webkit-mask: var(--i-refresh) center / contain no-repeat;
+  mask: var(--i-refresh) center / contain no-repeat;
+}
+.playroom-dialog .game-reset:hover,
+.playroom-dialog .play-game-area :is(.pen-aim, .card-actions, .connect-mobile, .chess-match-actions, .chess-confirm, .chess-promotion) button:hover:not(:disabled) {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: var(--ink-2);
+}
+.playroom-dialog .game-heading h3 { font: 400 28px/1.15 var(--serif); letter-spacing: -.01em; }
+.playroom-dialog .game-heading p { color: var(--bone-dim); font: 400 15px/1.5 var(--sans); }
+.playroom-dialog .game-status { color: var(--bone); font: 500 14px/1.5 var(--sans); }
+
+/* Shri, the opponent, in a calm side column. */
+.playroom-dialog .shri-companion { border-left: 1px solid var(--line); }
+
+/* Colour. Words printed on the room follow the theme; the boards keep their own paper,
+   so anything on a board keeps its own ink. */
+.playroom-dialog { --play-muted: var(--bone-dim); --play-line: var(--line); }
+.playroom-dialog :is(.rps-arena, .game-result-card) { color: #532d3a; }
+.playroom-dialog .table-game-score { color: var(--bone-dim); }
+.playroom-dialog .table-game-score strong { color: var(--bone); }
+.playroom-dialog :is(.clock-pause-note, .chess-level) { color: var(--bone-dim); }
+.playroom-dialog .connect-columns button { color: var(--bone); }
+.playroom-dialog .connect-columns button:hover:not(:disabled) { background: color-mix(in srgb, var(--bone) 10%, transparent); }
+.playroom-dialog .chess-square small { color: #3d2a1e; }
+.playroom-dialog .ultimate-number { color: #4a3526; }
+.playroom-dialog .cricket-hand > span { color: #dbe5d5; }
+
+/* The rules open as a small card in the room's own colours. */
+.playroom-dialog .play-help > div {
+  border-color: var(--line);
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--bone);
+  box-shadow: 0 18px 40px -22px rgba(0, 0, 0, .6);
+}
+.playroom-dialog .play-help h3 { color: var(--bone); }
+.playroom-dialog .play-help p { color: var(--bone-dim); }
+
+/* The chess clock setting is a button, so it looks like one. */
+.playroom-dialog #gameClockMode {
+  padding: 6px 14px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--bone-dim);
+  cursor: pointer;
+  transition: border-color .2s ease, color .2s ease;
+}
+.playroom-dialog #gameClockMode strong { color: var(--bone); }
+.playroom-dialog #gameClockMode:hover { border-color: var(--accent); color: var(--bone); }
+
+/* The back of a memory tile is a small rangoli medallion. */
+.playroom-dialog .memory-tile .memory-back { border-radius: 50%; }
+
+/* A finished match never spills past its board. */
+.playroom-dialog .game-result { overflow: hidden; }
+.playroom-dialog .game-result-card { max-height: 100%; overflow-y: auto; scrollbar-width: none; }
+.playroom-dialog .game-stage--rps .game-result-card { padding: 16px 22px 12px; }
+.playroom-dialog .game-stage--rps :is(.result-flower, .result-eyebrow) { display: none; }
+.playroom-dialog .game-stage--rps .result-reward { margin: 8px 0 10px; }
+.playroom-dialog .game-stage--rps .result-detail { margin-top: 6px; }
+
+/* In a desktop window each board shrinks to the height on offer, so its controls stay in view. */
+@media (min-width: 761px) {
+  .playroom-dialog #penTable { max-width: clamp(480px, calc((100dvh - 490px) * 1.52), 800px); }
+  .playroom-dialog .game-stage--chess { max-width: clamp(300px, calc(100dvh - 380px), 600px); }
+  .playroom-dialog .game-stage--ultimate { max-width: clamp(300px, calc(100dvh - 295px), 600px); }
+  .playroom-dialog .game-stage--connect { max-width: clamp(340px, calc(100dvh - 450px), 480px); }
+  .playroom-dialog .game-stage--memory { max-width: clamp(400px, calc(100dvh - 410px), 480px); }
+}
+@media (min-width: 761px) and (max-height: 900px) {
+  .playroom-dialog .card-table { min-height: 0; padding-block: 18px; }
+  .playroom-dialog .card-table-flower { height: 44px; }
+}
+
+@media (max-width: 760px) {
+  .playroom-dialog { border-radius: 18px; }
+  .playroom-dialog .playroom-head { padding: 14px 16px 4px; }
+  .playroom-dialog .play-game-picker { padding: 8px 16px; }
+  .playroom-dialog #playroomTitle { font-size: 22px; }
+
+  /* One steady line: whose turn, the rules as an icon, the tokens. */
+  .playroom-dialog .playroom-meta { position: relative; flex-wrap: nowrap; padding: 4px 16px 10px; }
+  .playroom-dialog .play-meta-tools { flex-wrap: nowrap; gap: 6px; min-width: 0; }
+  .playroom-dialog .play-turn { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .playroom-dialog #playTokens { flex: none; white-space: nowrap; }
+  .playroom-dialog .play-help { position: static; }
+  .playroom-dialog .play-help summary { justify-content: center; min-width: 44px; font-size: 0; }
+  .playroom-dialog .play-help summary::before { width: 18px; height: 18px; }
+  .playroom-dialog .play-help > div { top: calc(100% - 4px); right: 16px; left: 16px; width: auto; max-width: none; }
+
+  /* Shri sits in a strip above the game; his line keeps two lines of room so nothing jumps. */
+  .playroom-dialog .shri-companion { padding-left: 0; border-left: 0; border-bottom: 1px solid var(--line); }
+  .playroom-dialog .bot-line { min-height: 2.7em; }
+  /* Room for the whole result card over the two hands. */
+  .playroom-dialog .rps-arena { min-height: 268px; }
+  .playroom-dialog .ultimate-number { font-size: 9px; }
+}
