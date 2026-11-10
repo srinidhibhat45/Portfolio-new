@@ -19,10 +19,10 @@
 .cs-library,
 .cs-page-header,
 .cs-page-footer {
-  --cs-ground: #532D3A;
+  --cs-ground: #842B22;
   --cs-on-ground: #FFFBF2;
-  --cs-accent: #532D3A;
-  --cs-wash: #EEE0E2;
+  --cs-accent: #842B22;
+  --cs-wash: #EEE2E0;
 }
 
 .cs-page {

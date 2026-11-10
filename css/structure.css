@@ -25,19 +25,6 @@ main > section .play-heading h2 em {
   font-weight: 400;
   letter-spacing: -.02em;
 }
-main > section:not(#hero) :is(.section-title, .about-statement, .writing-title, .contact-title)::before,
-main > section .play-heading h2::before {
-  content: counter(chapter, chapter-numerals);
-  content: counter(chapter, chapter-numerals) / "";
-  display: block;
-  margin-bottom: clamp(14px, 1.6vw, 22px);
-  padding-top: 14px;
-  border-top: 1px solid currentColor;
-  width: 2.6em;
-  font: 500 15px/1 var(--sans);
-  letter-spacing: .08em;
-  opacity: .72;
-}
 
 /* ---- One vertical rhythm ---- */
 main > section:not(#hero):not(#contact) {
@@ -60,6 +47,6 @@ main > :is(#playground, #about, #experience, #writing) { background-color: var(-
     padding: 8px;
     border-radius: 999px;
   }
-  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) :is(.music-heading-copy, .music-dock-volume, #musicNext, #musicMute, #musicExpand) { display: none; }
+  .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) :is(.music-heading-copy, .music-dock-volume, #musicNext, #musicMute, #musicExpand, #musicHide) { display: none; }
   .music-widget[data-size="mini"]:has(.music-player-wrap[hidden]):not(:hover):not(:focus-within) .music-dock-controls { margin-top: 0; }
 }

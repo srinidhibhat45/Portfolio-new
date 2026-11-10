@@ -7,11 +7,11 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .heritage-photo.is-rotating .portrait-mandala::before {animation-play-state:running;}
 @keyframes portrait-orbit {to {transform:rotate(360deg);}}
 .gallery {background:#292521;--ink:#292521;--bone-dim:#c2b6a8;}
-.contact {background:#532d3a;--ink:#532d3a;--paper:#532d3a;--bone:#faf2e5;--bone-dim:#e0cabb;--line:#d3b68350;--accent:#f2dfbe;--focus-ring:#f2dfbe;}
-.cf-submit,.cf-submit:hover {color:#532d3a;}
-.footer {background:#38252c;color:#d2bda9;border-top:1px solid #d3b68335;--accent:#ead2b2;}
+.contact {background:#842b22;--ink:#842b22;--paper:#842b22;--bone:#faf2e5;--bone-dim:#e0cabb;--line:#d3b68350;--accent:#f2dfbe;--focus-ring:#f2dfbe;}
+.cf-submit,.cf-submit:hover {color:#842b22;}
+.footer {background:#3f231e;color:#d2bda9;border-top:1px solid #d3b68335;--accent:#ead2b2;}
 .footer-status {color:#faf2e5;}
-.note-pin {background:#6c3d4d;}
+.note-pin {background:#aa3d30;}
 .play-card:first-child .play-product-preview img {width:92%;}
 
 /* A little lotus blooms around the two menu strokes. */
@@ -28,7 +28,7 @@ main>section {position:relative;isolation:isolate;overflow:clip;}
 .mobile-menu nav a {position:relative;width:max-content;max-width:100%;padding:5px 40px 5px 36px;font-size:clamp(28px,7vw,46px);transition:color .3s;}
 .mobile-menu nav a::before {content:'';position:absolute;left:0;top:50%;width:26px;height:26px;background:url('../assets/img/textiles/blockprint-seal.webp') center/contain no-repeat;opacity:0;transform:translateY(-50%) rotate(-45deg) scale(.7);transition:opacity .3s,transform .55s cubic-bezier(.22,1,.36,1);}
 .mobile-menu nav a::after {content:'↗';position:absolute;right:0;top:50%;font:400 24px var(--sans);opacity:0;transform:translate(-8px,-35%);transition:opacity .3s,transform .4s;}
-.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {color:#754651;}
+.mobile-menu nav a:hover,.mobile-menu nav a:focus-visible {color:#b5483c;}
 .mobile-menu nav a:hover::before,.mobile-menu nav a:focus-visible::before {opacity:1;transform:translateY(-50%) rotate(0) scale(1);}
 .mobile-menu nav a:hover::after,.mobile-menu nav a:focus-visible::after {opacity:1;transform:translate(0,-50%);}
 .mobile-menu-foot {position:relative;z-index:1;}
