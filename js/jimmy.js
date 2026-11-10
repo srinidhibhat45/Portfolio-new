@@ -1,4 +1,4 @@
-import {freshJimmy,restoreJimmy,giveTreat,treatWait,chooseTrick,strokeDistance} from './jimmy-state.mjs';
+import {freshJimmy,restoreJimmy,giveTreat,treatWait,chooseTrick,strokeDistance} from './jimmy-state.mjs?v=20261111-tricks-1';
 
 const dock=document.getElementById('jimmyDock'),pet=document.getElementById('jimmyPet');
 const treat=document.getElementById('jimmyTreat'),trick=document.getElementById('jimmyTrick'),rest=document.getElementById('jimmyRest');
@@ -18,7 +18,8 @@ function controls(){
   rest.setAttribute('aria-pressed',String(memory.resting));
   rest.setAttribute('aria-label',memory.resting?'Wake Jimmy up':'Let Jimmy nap');
   const wait=treatWait(memory);
-  treat.disabled=wait>0;
+  // Not disabled, so a second biscuit too soon still gets an answer.
+  treat.setAttribute('aria-disabled',String(wait>0));
   treat.title=wait?'Jimmy is still enjoying his biscuit. Another treat in a little while.':'Give Jimmy a little biscuit';
   treat.setAttribute('aria-label',wait?'Treat, Jimmy is still enjoying his last biscuit':'Treat, give Jimmy a biscuit');
   clearTimeout(treatTimer);
@@ -52,13 +53,18 @@ function cuddle(){
   wake();memory.pets=Math.min(999999,memory.pets+1);save();
   action('petting',['That’s the spot.','Head scratches? Excellent.','I like you, human.','More of that, please.'][Math.floor(Math.random()*4)],2300);
 }
+let lastTrick='';
 function perform(){
   wake();save();
-  const state=chooseTrick(),lines={paw:'A paw. For you.',spin:'One tiny victory lap.',stretch:'Long dog. Good stretch.',hop:'Ta-da. Jimmy style.'};
-  action(state,lines[state],state==='stretch'?2900:state==='hop'?2700:2500);
+  // Never the same trick twice in a row.
+  let state=chooseTrick();
+  for(let tries=0;state===lastTrick&&tries<4;tries++)state=chooseTrick();
+  lastTrick=state;
+  const lines={paw:'A paw. For you.',spin:'One tiny victory lap.',stretch:'Long dog. Good stretch.',hop:'Ta-da. Jimmy style.',roll:'Roll over? Done. Belly rubs now.',beg:'Sitting pretty. Treat, please?',speak:'Woof. That was my whole speech.'};
+  action(state,lines[state],state==='stretch'||state==='roll'?2900:state==='hop'?2700:2500);
 }
 treat.addEventListener('click',()=>{
-  if(!giveTreat(memory))return;
+  if(!giveTreat(memory)){if(available())speak(['Still crunching the last one.','One biscuit at a time, human.'][Math.floor(Math.random()*2)]);return;}
   save();controls();
   action('treat','Crunch. Worth it.',1900,()=>{
     if(Math.random()<.45)action('paw','Thank you. Here’s a paw.',2500);else schedule();

@@ -1,0 +1,156 @@
+/* Case studies in the site's print identity: calm paper, one type voice, and each
+   project accented with the colour of its cover. Loaded after case-studies.css,
+   the generated case-study-themes.css and brand.css. */
+
+.case-study,
+.cs-library,
+.cs-page-header,
+.cs-page-footer {
+  --cs-paper: #FBF7EE;
+  --cs-panel: #FFFCF6;
+  --cs-ink: #2B2523;
+  --cs-dim: #6F635B;
+  --cs-line: #DCCFBC;
+  --cs-sans: 'Case Sans', 'DM Sans', Arial, sans-serif;
+  --cs-display: 'Case Sans', 'DM Sans', Arial, sans-serif;
+  --cs-title-weight: 500;
+}
+/* Pages without a project of their own are accented in the house wine. */
+.cs-library,
+.cs-page-header,
+.cs-page-footer {
+  --cs-ground: #532D3A;
+  --cs-on-ground: #FFFBF2;
+  --cs-accent: #532D3A;
+  --cs-wash: #EEE0E2;
+}
+
+.cs-page {
+  background: #F6F0E3 var(--b-grain);
+  background-size: 240px 240px;
+  color: #2B2523;
+}
+/* The header, the story and the footer share one column and one gutter. */
+.cs-page-header,
+.cs-page-footer { width: min(1240px, 100% - 48px); max-width: none; margin-inline: auto; }
+.cs-page-header { border-bottom: 1px solid var(--cs-line); }
+.cs-page-header a:first-child { letter-spacing: -.02em; }
+.cs-page main { padding-inline: 24px; }
+.cs-page .case-study,
+.cs-page .cs-library { max-width: 1240px; margin-inline: auto; background: transparent; }
+.cs-page .cs-library { padding-inline: 0; }
+
+/* ---- Hero: the story on the left, the project's cover on the right ---- */
+.case-study .cs-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(28px, 4.5vw, 72px);
+  align-items: center;
+  padding: clamp(40px, 6vw, 88px) 0 clamp(40px, 5vw, 72px);
+  border-bottom: 1px solid var(--cs-line);
+}
+.case-study .cs-intro { max-width: none; margin: 0; }
+/* The project name is a small label in the cover's colour. */
+.case-study .cs-eyebrow strong {
+  padding: 7px 13px;
+  border-radius: 999px;
+  background: var(--cs-ground);
+  color: var(--cs-on-ground);
+  font-size: 13px;
+  letter-spacing: .03em;
+  transform: rotate(-2deg);
+}
+.case-study h1 {
+  max-width: 18ch;
+  font-size: clamp(36px, 4.4vw, 60px);
+  font-weight: 500;
+  letter-spacing: -.04em;
+  line-height: 1.06;
+}
+.case-study .cs-cover {
+  margin: 0;
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 34px 60px -42px color-mix(in srgb, var(--cs-ground) 65%, #1B1A17);
+}
+.case-study .cs-cover img { display: block; width: 100%; height: auto; }
+/* The real product capture follows the cover, full width. */
+.case-study .cs-evidence-plate { grid-column: 1 / -1; margin-top: clamp(8px, 2vw, 24px); }
+.case-study .cs-evidence-plate > a { overflow: hidden; border-radius: 16px; }
+
+.case-study .cs-reader { padding-inline: 0; }
+
+/* ---- Library: every story is shown by its cover ---- */
+.cs-library .cs-study-card {
+  padding: 10px 10px 4px;
+  border-radius: 22px;
+  background: var(--cs-panel);
+  transition: transform .5s cubic-bezier(.22, 1, .36, 1), box-shadow .5s cubic-bezier(.22, 1, .36, 1), border-color .3s ease;
+}
+.cs-library .cs-study-card:hover {
+  border-color: var(--cs-accent);
+  box-shadow: 0 28px 48px -32px color-mix(in srgb, var(--cs-ground) 55%, #1B1A17);
+  transform: translateY(-4px);
+}
+.cs-library .cs-card-art {
+  padding: 0;
+  aspect-ratio: 3 / 2;
+  border-radius: 14px;
+  background: var(--cs-wash);
+}
+.cs-library .cs-card-art img {
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  object-position: center;
+}
+.cs-library .cs-card-copy { padding: 22px 14px 20px; }
+.cs-library .cs-study-card h3 { font-size: clamp(22px, 2vw, 28px); font-weight: 500; letter-spacing: -.03em; }
+.cs-library .cs-card-category { font-size: 12px; }
+.cs-library .cs-study-card p { font-size: 15px; line-height: 1.6; }
+.cs-library .cs-card-action { font-size: 14px; }
+.cs-library h1 { font-weight: 500; letter-spacing: -.045em; }
+.cs-library h1 em { font-family: Georgia, 'Times New Roman', serif; font-weight: 400; letter-spacing: -.02em; }
+.cs-library-hero::after { display: none; }
+
+/* A short reading list beside the library title. */
+.cs-library-index .cs-eyebrow { margin: 0 0 6px; }
+.cs-library-index ol { margin: 0; padding: 0; list-style: none; }
+.cs-library-index li { border-top: 1px solid var(--cs-line); }
+.cs-library-index li:last-child { border-bottom: 1px solid var(--cs-line); }
+.cs-library-index a {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: center;
+  padding: 16px 4px;
+  color: var(--cs-ink);
+  text-decoration: none;
+}
+.cs-library-index a > span:first-child {
+  color: var(--cs-dim);
+  font: 500 13px/1 var(--cs-sans);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: .04em;
+}
+.cs-library-index strong { display: block; font-size: 18px; font-weight: 500; letter-spacing: -.02em; line-height: 1.3; }
+.cs-library-index a p { margin: 2px 0 0; color: var(--cs-dim); font-size: 14px; line-height: 1.5; }
+.cs-library-index a > span:last-child { color: var(--cs-dim); transition: transform .3s ease, color .3s ease; }
+.cs-library-index a:hover strong,
+.cs-library-index a:hover > span:last-child { color: var(--cs-accent); }
+.cs-library-index a:hover > span:last-child { transform: translate(2px, -2px); }
+.cs-library-index a:focus-visible { outline: 2px solid var(--cs-accent); outline-offset: 2px; border-radius: 6px; }
+
+@media (max-width: 900px) {
+  .case-study .cs-hero { grid-template-columns: 1fr; padding-inline: 0; }
+  .cs-page main { padding-block: 0; }
+}
+/* Inside the on-page viewer the story keeps a gutter on phones. */
+@media (max-width: 760px) {
+  .cv .cv-scroll .case-study { padding-inline: 20px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cs-library .cs-study-card,
+  .cs-library-index a > span:last-child { transition: none; }
+  .cs-library .cs-study-card:hover { transform: none; }
+}

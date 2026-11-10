@@ -78,7 +78,7 @@ export function createTableGames({root, schedule, onSave, onFinish, onMood, canP
     const state = states.memory, locked = state.open.length === 2 || !!state.result;
     const html = state.deck.map((pattern, tile) => {
       const matched = state.matched.includes(tile), revealed = matched || state.open.includes(tile), item = MEMORY_PATTERNS[pattern];
-      return `<button type="button" data-memory="${tile}" class="memory-tile ${revealed ? 'is-revealed' : ''} ${matched ? 'is-matched' : ''}" aria-label="${revealed ? item.name + ', ' : 'Reveal '}tile ${tile + 1}${matched ? ', matched' : ''}" ${matched || state.open.includes(tile) || locked ? 'disabled' : ''}>${revealed ? `<img src="assets/img/textiles/${item.src}" alt="" width="96" height="96"><span>${item.name}</span>` : '<img class="memory-back" src="assets/img/textiles/blockprint-seal.webp" alt="" width="64" height="64">'}</button>`;
+      return `<button type="button" data-memory="${tile}" class="memory-tile ${revealed ? 'is-revealed' : ''} ${matched ? 'is-matched' : ''}" aria-label="${revealed ? item.name + ', ' : 'Reveal '}tile ${tile + 1}${matched ? ', matched' : ''}" ${matched || state.open.includes(tile) || locked ? 'disabled' : ''}>${revealed ? `<img src="assets/img/textiles/${item.src}" alt="" width="96" height="96"><span>${item.name}</span>` : '<img class="memory-back" src="assets/img/crafts/rangoli.webp" alt="" width="64" height="64">'}</button>`;
     }).join('');
     keepBoardFocus($('memoryBoard'), 'data-memory', html);
     $('memoryPairs').textContent = `${state.matched.length / 2} / 6`;

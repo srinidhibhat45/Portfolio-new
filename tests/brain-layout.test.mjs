@@ -4,7 +4,7 @@ import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 
 const context=vm.createContext({window:{}});
-for(const path of ['js/site-data.js','js/project-media.js','js/brain-data.js','js/brain-layout.js']) vm.runInContext(readFileSync(path,'utf8'),context);
+for(const path of ['js/site-data.js','js/brain-data.js','js/brain-layout.js']) vm.runInContext(readFileSync(path,'utf8'),context);
 const map=context.window.BRAIN_MAP;
 const create=context.window.createBrainLayout;
 const members=scope=>map.nodes.filter(n=>n.topic&&(!scope||n.topic===scope));

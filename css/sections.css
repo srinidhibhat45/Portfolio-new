@@ -1,0 +1,427 @@
+/* Section redesigns in the print identity: plates, tickets, postcards and stamps on calm paper.
+   Loaded last. Colours come from brand.css; each section's accent is --sec. */
+
+/* ================= Services: five Warli drawings, one line each =================
+   Always symmetric: five across, then three over two, then two over two over one,
+   with the short rows centred. */
+.service-tiles {
+  display: grid;
+  grid-template-columns: repeat(10, minmax(0, 1fr));
+  gap: clamp(28px, 3vw, 44px) clamp(16px, 1.8vw, 28px);
+  margin-top: clamp(32px, 4vw, 56px);
+}
+.service-tile { grid-column: span 2; text-align: center; }
+.tile-plate {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 2;
+  border-radius: 14px;
+  background: var(--b-wine);
+}
+.tile-plate img { display: block; width: 100%; height: 100%; object-fit: cover; }
+/* A saree's temple border along the foot of each drawing. */
+.tile-plate::after {
+  content: '';
+  position: absolute;
+  inset: auto 0 0;
+  height: 9px;
+  background: conic-gradient(from -45deg at 50% 0, transparent 90deg, #EFE3CD 0) center bottom / 18px 9px repeat-x;
+  opacity: .9;
+}
+.tile-name {
+  margin: 18px 0 4px;
+  color: var(--bone);
+  font: 500 clamp(18px, 1.5vw, 22px)/1.2 var(--sans);
+  letter-spacing: -.02em;
+}
+.tile-tag { max-width: 24ch; margin: 0 auto; color: var(--bone-dim); font: 400 15px/1.5 var(--sans); }
+#services .service-foot { margin-top: clamp(28px, 3vw, 44px); }
+
+/* ================= About: a portrait plate beside the words ================= */
+#about .about-inner {
+  display: grid;
+  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  gap: clamp(20px, 2.4vw, 36px) clamp(32px, 5vw, 88px);
+  align-items: start;
+}
+#about .about-top { display: contents; }
+#about .about-portrait-wrap {
+  position: relative;
+  inset: auto;
+  display: block;
+  justify-self: stretch;
+  grid-column: 1;
+  grid-row: 1 / span 2;
+  overflow: hidden;
+  width: auto;
+  height: auto;
+  aspect-ratio: 4 / 5;
+  margin: 0;
+  border-radius: 24px;
+  background: var(--b-marigold) var(--b-grain);
+  background-size: auto, 240px 240px;
+  opacity: 1;
+  transform: none;
+}
+/* A sunburst behind the cut-out, as on the covers. */
+#about .about-portrait-wrap::before {
+  content: '';
+  position: absolute;
+  inset: 4% -30% -30%;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, rgba(27, 26, 23, .8) 0 .5deg, transparent .5deg 7deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 0 30%, #000 31% 92%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 0 30%, #000 31% 92%, transparent 100%);
+}
+#about .about-portrait-glow,
+#about .about-portrait-ast { display: none; }
+#about .about-portrait {
+  position: absolute;
+  /* Sits low so the photo's soft lower edge falls outside the plate. */
+  inset: auto 0 -9% 50%;
+  width: 104%;
+  max-width: none;
+  height: auto;
+  filter: grayscale(1) contrast(1.1)
+    drop-shadow(3px 0 0 #FFFBF2) drop-shadow(-3px 0 0 #FFFBF2) drop-shadow(0 -3px 0 #FFFBF2)
+    drop-shadow(0 10px 14px rgba(27, 26, 23, .3));
+  opacity: 1;
+  transform: translateX(-50%);
+}
+#about .about-statement { grid-column: 2; align-self: end; margin: 0; }
+/* The bio, then the two figures beneath it. */
+#about .about-foot {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(24px, 3vw, 40px);
+  margin: 0;
+  padding: clamp(20px, 2.4vw, 32px) 0 0;
+  border-top: 1px solid var(--line);
+}
+#about .about-copy { order: 1; width: auto; max-width: 62ch; margin: 0; }
+#about .stats { position: static; order: 2; display: flex; flex-wrap: wrap; align-self: flex-start; justify-content: flex-start; gap: 16px clamp(32px, 5vw, 72px); width: auto; margin: 0; padding: 0; border: 0; transform: none; }
+#about .stat { position: static; margin: 0; }
+#about .showreel { grid-column: 1 / -1; margin-top: clamp(24px, 4vw, 56px); }
+#about .stat-num,
+#about .stat-plus { color: var(--sec); }
+
+/* ================= Experience: each role is a ticket ================= */
+#experience .xp-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0; padding: 0; border: 0; list-style: none; }
+#experience .xp-row {
+  --stub: clamp(132px, 15vw, 196px);
+  position: relative;
+  display: grid;
+  grid-template-columns: var(--stub) minmax(0, 1fr) minmax(0, 1.25fr);
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--ink-2);
+  /* Two notches where the stub tears off. */
+  -webkit-mask: radial-gradient(circle 9px at var(--stub) 0, transparent 97%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle 9px at var(--stub) 100%, transparent 97%, #000) bottom / 100% 51% no-repeat;
+  mask: radial-gradient(circle 9px at var(--stub) 0, transparent 97%, #000) top / 100% 51% no-repeat,
+    radial-gradient(circle 9px at var(--stub) 100%, transparent 97%, #000) bottom / 100% 51% no-repeat;
+}
+/* Older rules place these by column and row; here they simply follow in order. */
+#experience .xp-row > * { grid-column: auto; grid-row: auto; }
+#experience .xp-row::before,
+#experience .xp-row::after { display: none; }
+#experience .xp-chapter { display: none; }
+#experience .xp-when {
+  align-self: stretch;
+  display: grid;
+  align-content: center;
+  padding: 22px clamp(16px, 2vw, 28px);
+  border-right: 2px dashed var(--line);
+  color: var(--bone-dim);
+  font: 500 13px/1.4 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#experience .xp-current .xp-when { color: var(--sec); }
+#experience .xp-what { display: grid; gap: 4px; padding: 22px clamp(18px, 2.4vw, 36px); }
+#experience .xp-what strong { color: var(--bone); font: 500 clamp(19px, 1.7vw, 24px)/1.2 var(--sans); letter-spacing: -.02em; }
+#experience .xp-what em { color: var(--bone-dim); font: 400 15px/1.4 var(--sans); font-style: normal; }
+#experience .xp-note { padding: 22px clamp(18px, 2.4vw, 36px) 22px 0; color: var(--bone-dim); font: 400 16px/1.55 var(--sans); }
+#experience .xp-timeline-caption { margin-bottom: 18px; }
+
+/* ================= Testimonials: postcards with a stamp ================= */
+#testimonials .test-face {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--ink-2);
+}
+#testimonials .test-polaroid {
+  padding: 7px;
+  border: 0;
+  border-radius: 0;
+  background: #FFFBF2;
+  box-shadow: 0 6px 14px -8px rgba(27, 26, 23, .45);
+  /* A perforated edge: a solid middle plus a row of punched holes all round. */
+  -webkit-mask: linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px) no-repeat,
+    radial-gradient(circle 3.2px, transparent 97%, #000) -5px -5px / 10px 10px;
+  mask: linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px) no-repeat,
+    radial-gradient(circle 3.2px, transparent 97%, #000) -5px -5px / 10px 10px;
+  transform: rotate(3deg);
+}
+#testimonials .test-polaroid img { display: block; border-radius: 0; filter: grayscale(1) contrast(1.05); }
+#testimonials .test-pullquote { color: var(--bone); }
+#testimonials .test-name { letter-spacing: -.01em; }
+
+/* ================= Contact: the invitation on the left, a postcard to fill in on the right ================= */
+@media (min-width: 901px) {
+  #contact {
+    display: grid;
+    grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
+    grid-template-rows: auto auto auto 1fr;
+    column-gap: clamp(32px, 5vw, 88px);
+    align-items: start;
+  }
+  #contact .contact-title { grid-column: 1; grid-row: 1; }
+  #contact .contact-direct { grid-column: 1; grid-row: 2; }
+  #contact .copy-status { grid-column: 1; grid-row: 3; }
+  #contact .contact-links { grid-column: 1; grid-row: 4; align-self: end; }
+  #contact .contact-brief { grid-column: 2; grid-row: 1 / span 4; }
+}
+#contact .contact-brief {
+  position: relative;
+  max-width: none;
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: 18px;
+  background: #FBF7EE var(--b-grain);
+  background-size: auto, 240px 240px;
+  box-shadow: 0 34px 60px -40px rgba(0, 0, 0, .6);
+  color: #2B2523;
+}
+/* The stamp in the corner. */
+#contact .contact-brief::after {
+  content: '✳';
+  position: absolute;
+  top: clamp(18px, 2.4vw, 30px);
+  right: clamp(18px, 2.4vw, 30px);
+  display: grid;
+  place-items: center;
+  width: 58px;
+  height: 70px;
+  background: var(--b-turmeric);
+  color: var(--b-kohl);
+  font: 400 24px/1 var(--sans);
+  -webkit-mask: linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px) no-repeat,
+    radial-gradient(circle 3.2px, transparent 97%, #000) -5px -5px / 10px 10px;
+  mask: linear-gradient(#000 0 0) center / calc(100% - 10px) calc(100% - 10px) no-repeat,
+    radial-gradient(circle 3.2px, transparent 97%, #000) -5px -5px / 10px 10px;
+  transform: rotate(4deg);
+}
+#contact .contact-brief .brief-heading {
+  max-width: calc(100% - 90px);
+  margin: 0 0 22px;
+  color: #2B2523;
+  font: 500 clamp(20px, 1.8vw, 26px)/1.2 var(--sans);
+  letter-spacing: -.02em;
+}
+#contact .contact-brief label,
+#contact .contact-brief label span {
+  color: #6F635B;
+  font: 600 12px/1.3 var(--sans);
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+#contact .contact-brief :is(input, select, textarea) {
+  border: 0;
+  border-bottom: 1.5px solid #CDBEA8;
+  border-radius: 0;
+  background: transparent;
+  color: #2B2523;
+  box-shadow: none;
+}
+#contact .contact-brief :is(input, select, textarea):focus {
+  outline: none;
+  border-bottom-color: var(--b-wine);
+  box-shadow: 0 1.5px 0 var(--b-wine);
+}
+#contact .contact-brief :is(input, textarea)::placeholder { color: #9A8D82; }
+#contact .contact-brief .cf-submit {
+  border: 0;
+  border-radius: 3px;
+  background: var(--b-wine);
+  color: #FFFBF2;
+  -webkit-mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+  mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
+    radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
+  padding-inline: 26px;
+}
+#contact .contact-brief .cf-submit:hover { background: var(--b-kohl); }
+#contact .contact-brief .cf-alt,
+#contact .contact-brief .cf-alt a,
+#contact .contact-brief .cf-status { color: #6F635B; }
+#contact .contact-brief .cf-status.is-ok { color: #1E5B3A; }
+#contact .contact-brief .cf-status.is-err { color: #C8281E; }
+
+/* Contact details as icons. */
+#contact :is(.contact-direct, .contact-links) svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+}
+#contact .contact-direct { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 14px; }
+#contact .contact-direct a { display: inline-flex; align-items: center; gap: 10px; }
+#contact #copyEmail,
+#contact .contact-links a {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  min-height: 0;
+  padding: 0;
+  border: 1px solid rgba(255, 251, 242, .34);
+  border-radius: 50%;
+  background: transparent;
+  color: #FFFBF2;
+  text-decoration: none;
+  transition: background-color .25s ease, color .25s ease;
+}
+#contact #copyEmail:hover,
+#contact .contact-links a:hover { background: #FFFBF2; color: var(--b-wine); }
+#contact #copyEmail .icon-check,
+#contact #copyEmail.is-copied .icon-copy { display: none; }
+#contact #copyEmail.is-copied .icon-check { display: block; }
+#contact .contact-links { display: flex; flex-wrap: wrap; gap: 10px; }
+/* Fields sit flush with their labels, and a select never cuts its text. */
+#contact .contact-brief :is(input, select, textarea) { width: 100%; padding-inline: 0; font-size: 17px; }
+#contact .contact-brief select { padding-right: 26px; text-overflow: ellipsis; }
+
+/* ================= Brain: a flat network inside a circle ================= */
+#brain .brain-ring { stroke: rgba(233, 236, 245, .16); stroke-width: 1; }
+#brain .brain-edge { stroke-width: 1; }
+
+/* ================= Craft labels: each chapter credits one Indian artform ================= */
+.craft-tag {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  /* Centred, like a colophon, so the floating dog and music player never sit on top of it. */
+  justify-content: center;
+  gap: 12px;
+  margin: clamp(32px, 4vw, 56px) 0 0;
+  color: inherit;
+}
+.craft-tag img {
+  flex: none;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: #FBF7EE;
+  object-fit: cover;
+  box-shadow: 0 8px 16px -10px rgba(27, 26, 23, .6);
+}
+.craft-tag p { display: grid; gap: 2px; margin: 0; font: 400 13px/1.25 var(--sans); text-align: left; }
+.craft-tag span { font: 600 10px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; opacity: .62; }
+.craft-tag strong { font: 600 14px/1.2 var(--sans); }
+.craft-tag em { font-style: normal; opacity: .72; }
+#hero .craft-tag { margin: 0; padding: 0 0 18px; }
+/* A band of zari along the top of the postcard. */
+#contact .contact-brief::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 7px;
+  border-radius: 18px 18px 0 0;
+  background: repeating-linear-gradient(90deg, #C9A227 0 9px, #8F6600 9px 11px, #E9CB6B 11px 14px, #8F6600 14px 16px);
+}
+
+/* ================= Footer: the printer's colour bar ================= */
+.footer { position: relative; }
+.footer::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 5px;
+  background: linear-gradient(90deg,
+    var(--b-sindoor) 0 10%, var(--b-marigold) 0 20%, var(--b-turmeric) 0 30%, var(--b-green) 0 40%, var(--b-teal) 0 50%,
+    var(--b-indigo) 0 60%, var(--b-lotus) 0 70%, var(--b-wine) 0 80%, var(--b-kohl) 0 90%, var(--b-ivory) 0 100%);
+}
+
+@media (max-width: 1100px) {
+  /* Three over two, the pair centred. */
+  .service-tiles { grid-template-columns: repeat(6, minmax(0, 1fr)); }
+  .service-tile:nth-child(4) { grid-column: 2 / span 2; }
+}
+@media (max-width: 640px) {
+  /* Two, two, then one centred. */
+  .service-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .service-tile:nth-child(4) { grid-column: span 2; }
+  .service-tile:nth-child(5) { grid-column: 2 / span 2; }
+}
+@media (max-width: 900px) {
+  #about .about-inner { grid-template-columns: 1fr; }
+  #about .about-portrait-wrap { grid-column: 1; grid-row: auto; max-width: 320px; }
+  #about .about-statement,
+  #about .about-foot { grid-column: 1; }
+  #experience .xp-row { --stub: 100%; grid-template-columns: 1fr; -webkit-mask: none; mask: none; }
+  #experience .xp-when { padding: 14px 18px; border-right: 0; border-bottom: 2px dashed var(--line); }
+  #experience .xp-what { padding: 16px 18px 6px; }
+  #experience .xp-note { padding: 0 18px 18px; }
+}
+
+/* ================= Fit and finish =================
+   Small corrections found by testing every width and both themes. */
+
+/* When the links fold into the menu, the header's buttons stay together on the right. */
+@media (max-width: 1000px) {
+  .nav .nav-logo { margin-right: auto; }
+}
+/* The hero's ticket never breaks its label over two lines. */
+#hero .heritage-work { white-space: nowrap; }
+/* The fountain pen rests on the notebook's edge, clear of the arrows. */
+@media (min-width: 1001px) {
+  #writing .writing-pen { right: -24px; }
+}
+/* Large orange numerals need a little more weight against pale paper. */
+:root:not([data-theme="dark"]) #about :is(.stat-num, .stat-plus) { color: color-mix(in srgb, var(--sec) 80%, #1B1A17); }
+.craft-tag span { font-size: 11px; opacity: .8; }
+.craft-tag em { opacity: .82; }
+
+/* ---- Dark theme ---- */
+/* The phone menu follows the theme instead of staying a light sheet. */
+:root[data-theme="dark"] .mobile-menu {
+  --bone: #f3e6d6;
+  --accent: #f3e6d6;
+  --focus-ring: #f3e6d6;
+  background: var(--ink);
+  color: #f3e6d6;
+}
+:root[data-theme="dark"] .mobile-menu nav a,
+:root[data-theme="dark"] .mobile-menu-foot a { color: #f3e6d6; }
+:root[data-theme="dark"] .mobile-menu nav a:hover,
+:root[data-theme="dark"] .mobile-menu nav a:focus-visible { color: #e9c9a0; }
+/* Words that sit on dark paper take the light ink. */
+:root[data-theme="dark"] #writing .craft-tag { color: var(--bone); }
+:root[data-theme="dark"] #experience .xp-current .xp-when { color: #8fd0a8; }
+
+/* ---- Phones ---- */
+@media (max-width: 760px) {
+  /* Room between the chapter title and the résumé button. */
+  #experience .section-head { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  /* Small links grow to a finger-sized target without changing how they look. */
+  .nav .nav-logo,
+  .footer .footer-status,
+  .service-intro a,
+  #contact .contact-direct > a,
+  .brain-trail button { display: inline-flex; align-items: center; min-height: 44px; }
+}
+
+/* Search boxes have their own Clear button, so the browser's second one is hidden. */
+:is(.project-search, .brain-search) input[type="search"]::-webkit-search-cancel-button { display: none; -webkit-appearance: none; appearance: none; }
+/* The copy confirmation is readable and sits quietly under the address. */
+#contact .copy-status { font-size: 13px; line-height: 1.5; }
+/* The brain's list view keeps its words off the edge of the dark panel. */
+#brain .brain-list { padding: 30px clamp(18px, 2.4vw, 32px) 24px; }

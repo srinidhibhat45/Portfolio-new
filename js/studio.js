@@ -41,15 +41,23 @@
   });
 
   var copyButton = document.getElementById('copyEmail');
-  var copyStatus = document.getElementById('copyStatus');
+  var copyStatus = document.getElementById('copyStatus'), copyTimer;
+  // The message is a passing confirmation, not a fixture: it clears itself.
+  function say(text, hold) {
+    copyStatus.textContent = text;
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(function () { copyStatus.textContent = ''; }, hold);
+  }
   copyButton.addEventListener('click', async function () {
     var email = document.querySelector('.contact-direct a').getAttribute('href').slice(7);
     try {
       await navigator.clipboard.writeText(email);
-      copyButton.textContent = 'Copied ✓';
-      copyStatus.textContent = 'Email address copied.';
+      // The button is an icon: swap it for a tick for a moment.
+      copyButton.classList.add('is-copied');
+      setTimeout(function () { copyButton.classList.remove('is-copied'); }, 2000);
+      say('Email address copied.', 4000);
     } catch (_) {
-      copyStatus.textContent = 'You can select the email address above, or click it to open your email app.';
+      say('Copying is blocked here. Select the address, or click it to open your email app.', 8000);
     }
   });
 

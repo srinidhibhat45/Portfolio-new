@@ -30,25 +30,36 @@ const bySlug = Object.fromEntries(cases.map(c => [c.slug, c]));
 const designCount = cases.filter(c => c.kind === 'ux').length;
 const productCount = cases.filter(c => c.kind === 'product').length;
 const base = new URL('../', import.meta.url);
-const font = name => ['DM Sans', 'Libre Caslon Display'].includes(name) ? (name === 'DM Sans' ? "'Case Sans'" : "'Case Display'") : `"Project ${name}"`;
-const themeCss = Object.entries(themes).map(([slug,t]) => `.cs-project-${slug}{--cs-paper:${t.paper};--cs-ink:${t.ink};--cs-dim:${t.dim};--cs-line:${t.line};--cs-accent:${t.accent};--cs-wash:${t.wash};--cs-sans:${font(t.bodyFont)},Arial,sans-serif;--cs-display:${font(t.displayFont)},Georgia,serif;--cs-title-weight:${/Fraunces|Newsreader|Cormorant|Caslon|Architects/.test(t.displayFont)?400:600}}`).join('\n');
-await writeFile(new URL('css/case-study-themes.css', base), '/* Generated from content/case-study-themes.json. */\n' + themeCss + '\n');
+const grounds = JSON.parse(await readFile(new URL('../content/cover-grounds.json', import.meta.url), 'utf8'));
+// Each cover ground gives its case study four colours: the ground itself, the text that sits on it,
+// an ink that reads on paper, and a pale wash.
+const GROUNDS = {
+  turmeric: ['#F2B705', '#1B1A17', '#8F6600', '#F7EBC6'], teal: ['#0E7C7B', '#FFFBF2', '#0E7C7B', '#DCEEEA'],
+  green: ['#1E5B3A', '#FFFBF2', '#1E5B3A', '#DEEADF'], sindoor: ['#C8281E', '#FFFBF2', '#C8281E', '#F7DFDA'],
+  indigo: ['#23357A', '#FFFBF2', '#23357A', '#E0E4F2'], marigold: ['#EF6C1A', '#1B1A17', '#C9500A', '#FAE3D0'],
+  lotus: ['#E5527A', '#1B1A17', '#CC3562', '#F9DFE6'], ivory: ['#C8281E', '#FFFBF2', '#C8281E', '#F4E4DA'],
+  kohl: ['#1B1A17', '#F2B705', '#8F6600', '#EFE6D2'], wine: ['#532D3A', '#FFFBF2', '#532D3A', '#EEE0E2']
+};
+const themeCss = Object.keys(themes).map(slug => {
+  const g = GROUNDS[grounds[slug]];
+  if (!g) throw new Error('Missing cover ground: ' + slug);
+  return `.cs-project-${slug}{--cs-ground:${g[0]};--cs-on-ground:${g[1]};--cs-accent:${g[2]};--cs-wash:${g[3]}}`;
+}).join('\n');
+await writeFile(new URL('css/case-study-themes.css', base), '/* Generated from content/cover-grounds.json: each case study is accented with its cover colour. */\n' + themeCss + '\n');
 await mkdir(new URL('case-studies/', base), { recursive: true });
 await writeFile(new URL('js/case-studies-data.js', base), '/* Generated from content/case-studies.json and content/case-study-stories.json. */\nwindow.CASE_STUDIES = ' + JSON.stringify(bySlug) + ';\n');
 function document(title, description, body, slug = '') {
   return `<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>${esc(title)} | Srinidhi Bhat</title><meta name="description" content="${esc(description)}">
-<link rel="canonical" href="https://srinidhibhat.com/case-studies/${slug}"><meta property="og:title" content="${esc(title)} | Srinidhi Bhat"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="article"><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="../css/project-fonts.css?v=20261031-case-refinement-4"><link rel="stylesheet" href="../css/case-studies.css?v=20261016-impeccable"><link rel="stylesheet" href="../css/case-study-themes.css?v=20261031-case-refinement-4"><link rel="stylesheet" href="../css/case-study-projects.css?v=20261031-case-refinement-4">
+<link rel="canonical" href="https://srinidhibhat.com/case-studies/${slug}"><meta property="og:title" content="${esc(title)} | Srinidhi Bhat"><meta property="og:description" content="${esc(description)}"><meta property="og:type" content="article"><link rel="icon" href="../favicon.ico"><link rel="stylesheet" href="../css/case-studies.css?v=20261016-impeccable"><link rel="stylesheet" href="../css/case-study-themes.css?v=20261111-brand-1"><link rel="stylesheet" href="../css/brand.css?v=20261111-brand-2"><link rel="stylesheet" href="../css/case-brand.css?v=20261111-brand-2">
 </head><body class="cs-page"><header class="cs-page-header"><a href="../index.html">Srinidhi Bhat<span aria-hidden="true">.</span></a><a href="./">All case studies ↗</a></header><main>${body}</main><footer class="cs-page-footer"><span>Product thinking, made tangible.</span><a href="../index.html#contact">Let’s talk ↗</a></footer></body></html>\n`;
 }
 for (const c of cases) {
   await writeFile(new URL(`case-studies/${c.slug}.html`, base), document(c.name + ' — ' + c.headline, c.summary, render(c, '../'), c.slug + '.html'));
 }
 function card(c) {
-  const art = c.visual.presentation === 'type'
-    ? `<div class="cs-card-type"><span>Product direction</span><strong>${esc(c.name)}</strong><p>${esc(c.context)}</p></div>`
-    : `<div class="cs-card-art${c.visual.presentation === 'portrait' ? ' cs-card-portrait' : ''}"><img src="../${esc(c.visual.src)}" alt="${esc(c.visual.alt)}" loading="lazy" decoding="async" width="${c.visual.width}" height="${c.visual.height}"><span>${esc(c.name)}</span></div>`;
+  const art = `<div class="cs-card-art"><img src="../assets/covers/${c.slug}-800.webp" alt="${esc(c.name)} cover artwork" loading="lazy" decoding="async" width="800" height="533"></div>`;
   return `<a class="cs-study-card cs-project-${c.slug}" href="${c.slug}.html">${art}<div class="cs-card-copy"><span class="cs-card-category">${c.kind === 'ux' ? 'Design story' : 'Product story'} · ${c.readingMinutes} min read</span><h3>${esc(c.narrative.headline.replace(/\[\[|\]\]/g,''))}</h3><p>${esc(c.summary)}</p><span class="cs-card-action">Follow the story <span aria-hidden="true">↗</span></span></div></a>`;
 }
 const starters = ['arkitype','onespace','applecider','planit','umatter','deckforge'].map(slug => bySlug[slug]);

@@ -14,8 +14,10 @@ export function giveTreat(state, now = Date.now()) {
   state.lastTreat=now;state.treats=Math.min(999999,state.treats+1);state.resting=false;
   return true;
 }
+/* Every trick Jimmy knows; each has its own pose. */
+export const TRICKS = ['paw','spin','stretch','hop','roll','beg','speak'];
 export function chooseTrick(random = Math.random) {
-  const choices=['paw','paw','spin','stretch','hop'];
+  const choices=TRICKS;
   return choices[Math.min(choices.length-1,Math.max(0,Math.floor(random()*choices.length)))];
 }
 export function strokeDistance(previous, next) { return Math.hypot(next.x-previous.x,next.y-previous.y); }

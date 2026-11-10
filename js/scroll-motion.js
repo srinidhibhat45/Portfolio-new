@@ -80,7 +80,7 @@
     // Details settle after their frame. Off-rail cards remain immediately usable.
     if (element.id === 'cards' || element.id === 'playGrid') {
       Array.from(element.children).slice(0, 3).forEach(function (card, index) {
-        var detail = card.querySelector('.card-body, .play-card-head');
+        var detail = card.querySelector('.cover-body');
         if (!detail) return;
         var motion = detail.animate([
           {opacity: .25, translate: '0 12px'}, {opacity: 1, translate: '0 0'}
