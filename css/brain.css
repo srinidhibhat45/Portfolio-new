@@ -1,5 +1,5 @@
 /* An open constellation, with the explanations outside the map. */
-.brain-section {--brain-paper:#f6f0e5;--bone:#532d3a;--bone-dim:#78685d;--line:#cdbda750;--accent:#794758;--accent-soft:#eee3e5;--focus-ring:#794758;background:var(--brain-paper);padding-block:90px;border-bottom:1px solid var(--line);}
+.brain-section {--brain-paper:#f6f0e5;--bone:#842b22;--bone-dim:#78685d;--line:#cdbda750;--accent:#bc483b;--accent-soft:#eee5e3;--focus-ring:#bc483b;background:var(--brain-paper);padding-block:90px;border-bottom:1px solid var(--line);}
 .brain-section .section-head {margin-bottom:35px;}
 .brain-section .section-note {font:400 15px/1.75 var(--sans);max-width:35ch;}
 .brain-space {border:0;background:none;box-shadow:none;}
@@ -80,7 +80,7 @@
 .brain-list button:hover,.brain-list button[aria-pressed="true"] {background:none;color:var(--accent);}
 .brain-empty {position:absolute;top:45%;left:10%;right:10%;text-align:center;color:var(--bone-dim);font:400 15px/1.8 var(--sans);}
 .brain-no-results {grid-column:1/-1;padding-block:50px;color:var(--bone-dim);font:400 16px var(--sans);}
-:root[data-theme="dark"] .brain-section {--brain-paper:#2c2726;--bone:#efdfd1;--bone-dim:#c1ad9d;--line:#ac967850;--accent:#ddb8bd;--accent-soft:#493b40;--focus-ring:#ddb8bd;}
+:root[data-theme="dark"] .brain-section {--brain-paper:#2c2726;--bone:#efdfd1;--bone-dim:#c1ad9d;--line:#ac967850;--accent:#ddbeb8;--accent-soft:#4e3936;--focus-ring:#ddbeb8;}
 :root[data-theme="dark"] .brain-node .node-dot {filter:brightness(1.45);}
 @media(max-width:900px) {
  .brain-navigation {gap:22px;}

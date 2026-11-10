@@ -15,20 +15,12 @@
     record.el.style.left=record.position.x+'px';record.el.style.top=record.position.y+'px';record.el.style.setProperty('--note-angle',record.position.rotation+'deg');
   }
   function paint(){viewport.dataset.cameraReady='true';world.style.setProperty('--board-target-size',26/camera.scale+'px');world.style.transform='translate('+camera.x+'px,'+camera.y+'px) scale('+camera.scale+')';document.getElementById('boardZoomLabel').textContent=Math.round(camera.scale*100)+'%';document.getElementById('boardFit').setAttribute('aria-pressed',String(isFit));}
-  // A wide window shows the whole board. A tall, narrow one fills its height instead, so notes stay
-  // readable, and opens on the visitors' marks; the rest is a sideways drag away.
+  // The whole board is always in view. On narrow screens the canvas takes the board's own shape
+  // (see features.css), so the board fills it edge to edge.
   function fit(){
     isFit=true;
-    var vw=viewport.clientWidth,vh=viewport.clientHeight,tall=vh>vw;
-    var scale=(tall?vh/H:Math.min(vw/W,vh/H))*.96,x=(vw-W*scale)/2;
-    if(tall){
-      var sum=0,count=0;
-      records.forEach(function(r){if(!r.seed){sum+=r.position.x+r.el.offsetWidth/2;count++;}});
-      // With no visitor marks yet, open on the host's "your turn" note.
-      var centre=count?sum/count:1010;
-      x=Math.min(8,Math.max(vw-W*scale-8,vw/2-centre*scale));
-    }
-    camera={scale:scale,x:x,y:(vh-H*scale)/2};paint();
+    var vw=viewport.clientWidth,vh=viewport.clientHeight,scale=Math.min(vw/W,vh/H)*.96;
+    camera={scale:scale,x:(vw-W*scale)/2,y:(vh-H*scale)/2};paint();
   }
   function focusMark(record){isFit=false;var scale=Math.max(camera.scale,.85);camera={scale:scale,x:viewport.clientWidth/2-(record.position.x+record.el.offsetWidth/2)*scale,y:viewport.clientHeight/2-(record.position.y+record.el.offsetHeight/2)*scale};paint();}
   function zoom(factor){isFit=false;var scale=Math.max(.2,Math.min(2,camera.scale*factor)),cx=viewport.clientWidth/2,cy=viewport.clientHeight/2;camera.x=cx-(cx-camera.x)*scale/camera.scale;camera.y=cy-(cy-camera.y)*scale/camera.scale;camera.scale=scale;paint();}
@@ -90,7 +82,6 @@
     try{var response=await fetch('/api/notes');if(!response.ok)throw Error();var data=await response.json();if(gesture||pending.size||keyTimers.size||posting)return;
       data.notes.forEach(function(note,i){render(note,i);});
       Object.keys(data.layout||{}).forEach(function(id){var r=records.get(id);if(r)place(r,data.layout[id]);});
-      if(isFit)fit();
       status.textContent=data.notes.length+' visitor '+(data.notes.length===1?'mark':'marks')+' · a shared canvas, open to everyone.';
     }catch(_){status.textContent='The shared board is resting. Your existing marks are safe; try again shortly.';}
   }

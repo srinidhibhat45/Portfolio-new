@@ -1,7 +1,7 @@
 /* A quiet textile border, a personal name, an unobstructed portrait. */
 .heritage-hero {
   --hero-paper:#f0e9dd;
-  --hero-wine:#532d3a;
+  --hero-wine:#842b22;
   --hero-muted:#75665f;
   --hero-gold:#a88656;
   --focus-ring:var(--hero-wine);
@@ -47,7 +47,7 @@
 .heritage-current strong {display:block;font-weight:600;color:var(--hero-wine);font-size:13px;}
 .heritage-actions {display:flex;flex-direction:column;align-items:start;gap:17px;margin-top:28px;}
 .heritage-work {display:inline-flex;align-items:center;gap:28px;min-height:48px;padding:12px 20px;border:1px solid var(--hero-wine);background:var(--hero-wine);color:var(--hero-paper);font:500 12px var(--sans);transition:background .25s,transform .25s;}
-.heritage-work:hover {background:#714252;transform:translateY(-3px);}
+.heritage-work:hover {background:#b04337;transform:translateY(-3px);}
 .heritage-work>span {font-size:19px;}
 .heritage-about {display:inline-flex;align-items:center;justify-content:space-between;gap:20px;min-height:44px;padding:6px 0;background:none;border:0;border-bottom:1px solid #a8865660;color:var(--hero-wine);font:400 11px var(--sans);cursor:pointer;transition:border-color .25s;}
 .heritage-about:hover {border-color:var(--hero-wine);}

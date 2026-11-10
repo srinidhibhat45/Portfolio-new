@@ -14,12 +14,12 @@
 .brain-node.is-cluster .node-paper {fill:#efe4d3;stroke:#b49d82;stroke-width:1.2;stroke-opacity:1;}
 .brain-node.is-person .node-name {font:500 21px var(--sans);stroke:none;fill:var(--bone);}
 .brain-self-ring {stroke:#b49d82;stroke-dasharray:none;stroke-width:1.2;}
-.brain-node.is-active .node-paper,.brain-node:hover .node-paper,.brain-node:focus-visible .node-paper {fill:#f0e3d2;stroke:#794758;stroke-width:1.8;}
+.brain-node.is-active .node-paper,.brain-node:hover .node-paper,.brain-node:focus-visible .node-paper {fill:#f0e3d2;stroke:#bc483b;stroke-width:1.8;}
 .brain-node.is-active text {font-weight:500;}
 .brain-node.is-cluster.is-active .node-name {font-weight:400;}
 .brain-node.is-dim {opacity:.76;}
 .brain-edge {stroke:#b69b7d;stroke-width:1.15;stroke-dasharray:none;stroke-linecap:round;stroke-linejoin:round;opacity:.8;}
-.brain-edge.connected {stroke:#875565;stroke-width:1.45;opacity:1;}
+.brain-edge.connected {stroke:#c1655a;stroke-width:1.45;opacity:1;}
 .brain-edge.is-muted {opacity:.25;}
 .brain-controls button {min-height:44px;border-radius:6px;font-size:11px;}
 .brain-map-foot {margin-top:14px;}
@@ -28,9 +28,9 @@
 :root[data-theme="dark"] .brain-topics button>span {color:#d4baa3;}
 :root[data-theme="dark"] .brain-node .node-paper {fill:#342c28;stroke:#796451;}
 :root[data-theme="dark"] .brain-node.is-cluster .node-paper {fill:#43352e;stroke:#a28a71;}
-:root[data-theme="dark"] .brain-node.is-active .node-paper,:root[data-theme="dark"] .brain-node:hover .node-paper,:root[data-theme="dark"] .brain-node:focus-visible .node-paper {fill:#4a3933;stroke:#ddbdc6;}
+:root[data-theme="dark"] .brain-node.is-active .node-paper,:root[data-theme="dark"] .brain-node:hover .node-paper,:root[data-theme="dark"] .brain-node:focus-visible .node-paper {fill:#4a3933;stroke:#ddc2bd;}
 :root[data-theme="dark"] .brain-edge {stroke:#bea183;}
-:root[data-theme="dark"] .brain-edge.connected {stroke:#e0b7c3;}
+:root[data-theme="dark"] .brain-edge.connected {stroke:#e0beb7;}
 @media(max-width:600px) {
  .brain-topics {gap:4px;}
  .brain-topics button {font-size:14px;padding:8px 10px;}

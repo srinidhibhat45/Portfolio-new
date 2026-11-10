@@ -24,7 +24,7 @@ export function createTableGames({root, schedule, onSave, onFinish, onMood, canP
     [...select.options].forEach(option => option.disabled = !moves.includes(Number(option.value)));
     if (!moves.includes(Number(select.value)) && moves.length) select.value = String(moves[0]);
     select.disabled = $('connectDrop').disabled = locked || !moves.length;
-    $('connectStatus').textContent = state.result ? state.result === 'draw' ? 'The board is full. A draw.' : `${sideName(state.result)} connected four.` : state.turn === 'bot' ? 'Shri is choosing a column…' : 'Your turn. Drop a wine counter into an open column.';
+    $('connectStatus').textContent = state.result ? state.result === 'draw' ? 'The board is full. A draw.' : `${sideName(state.result)} connected four.` : state.turn === 'bot' ? 'Shri is choosing a column…' : 'Your turn. Drop a red counter into an open column.';
     if (state.result) onFinish('connect', state.result);
   }
   function playConnect(col) {

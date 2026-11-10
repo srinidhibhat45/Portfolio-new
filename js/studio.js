@@ -156,4 +156,20 @@
     preference.addEventListener('change', stop);
     paint();
   })();
+  // A service tile opens the project brief with that service already chosen. The link itself
+  // does the travelling (main.js scrolls to the form); this fills the field and says so.
+  document.querySelectorAll('[data-service]').forEach(function (link) {
+    link.addEventListener('click', function () {
+      var select = document.getElementById('cf-type'), name = document.getElementById('cf-name');
+      if (!select) return;
+      select.value = link.getAttribute('data-service');
+      select.dispatchEvent(new Event('change', {bubbles: true}));
+      select.classList.remove('is-prefilled');
+      void select.offsetWidth;
+      select.classList.add('is-prefilled');
+      setTimeout(function () { select.classList.remove('is-prefilled'); }, 1700);
+      // Once the page has arrived, the cursor waits in the first field.
+      if (name) setTimeout(function () { name.focus({preventScroll: true}); }, 700);
+    });
+  });
 })();

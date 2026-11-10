@@ -28,7 +28,7 @@
 
 :root:not([data-theme="dark"]) .about-sign{color:#605b53;}
 .gallery .gallery-motion{color:#e5d6bd;border-color:#ab9472;}
-.gallery .gallery-motion[aria-pressed="true"]{background:#f0ddbc;color:#532d3a;}
+.gallery .gallery-motion[aria-pressed="true"]{background:#f0ddbc;color:#842b22;}
 
 .brain-node.is-cluster .node-count{fill:#69523e;}
 .brain-node.is-dim{opacity:.88;}
@@ -39,6 +39,6 @@
 
 .cf-field label>span{opacity:.8;}
 
-:root[data-theme="dark"] .xp-timeline-caption{color:#dfb8c3;}
+:root[data-theme="dark"] .xp-timeline-caption{color:#dfbeb8;}
 :root[data-theme="dark"] .xp-timeline-caption>span{color:#ccb49b;}
 .notebook-heading>span,.entry-category,.notebook-sign{color:#76573e;}

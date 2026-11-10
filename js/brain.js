@@ -70,7 +70,7 @@
   scene.insertBefore(ring,edgeLayer);
   nodes.forEach(function(n){
     var g=svg('g',{class:'brain-node','data-node':n.id,role:'button',tabindex:'0','aria-label':'Explore '+n.name+(n.kind==='topic'?' '+n.count+' connections':''),'aria-pressed':'false'});
-    var color=n.color||(n.topic?byID.get(n.topic).color:'#794758');g.style.setProperty('--node-color',color);
+    var color=n.color||(n.topic?byID.get(n.topic).color:'#bc483b');g.style.setProperty('--node-color',color);
     const topicIndex=topics.findIndex(t=>t.id===(n.topic||n.id));
     g.style.setProperty('--node-color',palette[Math.max(0,topicIndex)]);
     g.append(svg('circle',{r:22,fill:'transparent',class:'node-hit'}));

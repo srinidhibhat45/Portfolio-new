@@ -17,7 +17,7 @@
 .test-flip-button {position:relative;display:flex;align-items:center;justify-content:center;gap:18px;width:100%;flex-shrink:0;min-height:46px;padding:12px 4px 0;margin-top:auto;border:0;border-top:1px solid #dfceb8;background:none;color:#7d594a;font:500 12px var(--sans);cursor:pointer;}
 .test-flip-button span {font-size:20px;transition:transform .4s;}
 .test-flip-button:hover span {transform:rotate(-30deg);}
-.test-flip-button:focus-visible {outline:2px solid #794758;outline-offset:4px;border-radius:3px;}
+.test-flip-button:focus-visible {outline:2px solid #bc483b;outline-offset:4px;border-radius:3px;}
 .test-flip-card:not(.is-ready) .test-flip-button {display:none;}
 .test-back {transform:rotateY(180deg);gap:7px;}
 .test-back-kicker {margin:0 0 9px;font:400 9px var(--mono);letter-spacing:.1em;color:#876a50;}
@@ -26,7 +26,7 @@
 .test-back-title:focus {outline:none;}
 .test-note-scroll {position:relative;min-height:0;flex:1;width:100%;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b9976b transparent;text-align:left;margin:12px 0;padding:0 8px 0 0;}
 .test-note-scroll .test-quote {margin:0;padding:0;color:#725842;font:400 13px/1.85 var(--sans);}
-.test-note-scroll:focus-visible {outline:2px solid #794758;outline-offset:4px;border-radius:3px;}
+.test-note-scroll:focus-visible {outline:2px solid #bc483b;outline-offset:4px;border-radius:3px;}
 .test-fallback {padding:25px;color:#725842;font:400 13px/1.85 var(--sans);}
 :root[data-theme="dark"] .test-flip-card {background:none;border:0;}
 :root[data-theme="dark"] .test-face {background:#352c28;border-color:#78604d;}

@@ -36,6 +36,17 @@ function create(){loading=true;play.disabled=true;message('Loading YouTube · st
  api().then(()=>{player=new window.YT.Player('musicPlayer',{width:'100%',height:'200',host:'https://www.youtube-nocookie.com',playerVars:{listType:'playlist',list:id,autoplay:0,playsinline:1,controls:1,origin:location.origin},events:{onReady(){ready=true;loading=false;clearTimeout(loadTimer);player.setVolume(5);[play,mute,next,volume].forEach(b=>b.disabled=false);message('Ready · 5% volume.');if(wanted&&!wrap.hidden&&!document.hidden)startMusic();controls();},onStateChange(e){playing=e.data===window.YT.PlayerState.PLAYING;if(playing&&(wrap.hidden||document.hidden||document.querySelector('dialog[open]'))){pause();return;}if(playing){if(!shuffled){shuffled=true;const video=player.getVideoData()?.video_id;if(video)rememberOpener(video);player.setShuffle(true);}$('musicTrack').textContent=player.getVideoData()?.title||'Playing from my playlist';$('musicStatus').textContent='Shuffle on.';}else if(e.data===window.YT.PlayerState.PAUSED)status('Paused.');controls();},onAutoplayBlocked(){wanted=false;playing=false;message('Press Play again to start.');controls();},onError(){wanted=false;playing=false;loading=false;play.disabled=false;message('Track unavailable · try Next or the playlist.');controls();}}});}).catch(()=>{clearTimeout(loadTimer);loading=false;wanted=false;play.disabled=false;message('YouTube couldn’t load. Open the playlist ↗');size(true);controls();});}
 play.addEventListener('click',()=>{if(!id||loading)return;if(playing){pause();return;}wrap.hidden=false;controls();wanted=true;if(ready){player.setVolume(Number(volume.value));startMusic();}else create();});
 mute.addEventListener('click',()=>{if(!ready)return;muted=!muted;muted?player.mute():player.unMute();controls();});next.addEventListener('click',()=>{if(!ready||loading)return;wrap.hidden=false;wanted=true;if(openingStarted)player.nextVideo();else startMusic();});volume.addEventListener('input',()=>{$('musicVolumeValue').value=volume.value+'%';if(ready){player.setVolume(Number(volume.value));if(muted&&Number(volume.value)>0){muted=false;player.unMute();controls();}}});
+// The player can be tucked away to a small tab at the screen's edge, and brought back.
+// Tucking it away stops the music, because the video may not play out of sight.
+const hideKey='portfolio-music-hidden',showButton=$('musicShow');
+function tuck(away,focus){
+ if(away){pause();wrap.hidden=true;size(false);}
+ panel.hidden=away;showButton.hidden=!away;
+ try{localStorage.setItem(hideKey,away?'1':'0');}catch{}
+ if(focus)(away?showButton:play).focus({preventScroll:true});
+}
+$('musicHide').addEventListener('click',()=>tuck(true,true));showButton.addEventListener('click',()=>tuck(false,true));
+try{if(localStorage.getItem(hideKey)==='1')tuck(true,false);}catch{}
 const phone=matchMedia('(max-width:600px)');
 phone.addEventListener('change',event=>{if(event.matches){pause();wrap.hidden=true;size(false);}});
 document.addEventListener('visibilitychange',()=>{if(document.hidden)pause();});document.addEventListener('portfolio:dialog',e=>{if(e.detail.open)pause();});controls();

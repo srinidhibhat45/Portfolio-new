@@ -1,6 +1,31 @@
 /* Section redesigns in the print identity: plates, tickets, postcards and stamps on calm paper.
    Loaded last. Colours come from brand.css; each section's accent is --sec. */
 
+/* ================= Chapter borders =================
+   Every chapter that is named after an Indian artform opens with a slim border drawn in that
+   art, like the selvedge of a cloth. It is the one place the art shows, so it stays small. */
+.chapter-border {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: clamp(20px, 2.1vw, 28px);
+  background: var(--border-ground, transparent) var(--border-art) left center / auto 100% repeat-x;
+  pointer-events: none;
+}
+#gallery { --border-art: url('../assets/img/borders/pichwai.webp'); --border-ground: #121A2E; }
+#services { --border-art: url('../assets/img/borders/warli.webp'); --border-ground: #744D31; }
+#about { --border-art: url('../assets/img/borders/kaavi.webp'); --border-ground: #842B22; }
+#experience { --border-art: url('../assets/img/borders/ajrakh.webp'); --border-ground: #202F52; }
+#testimonials { --border-art: url('../assets/img/borders/bandhani.webp'); --border-ground: #972D25; }
+#brain { --border-art: url('../assets/img/borders/kolam.webp'); --border-ground: #121C20; }
+#writing { --border-art: url('../assets/img/borders/kalamkari.webp'); --border-ground: #ECE1CC; }
+#board { --border-art: url('../assets/img/borders/gond.webp'); --border-ground: #F2ECDF; }
+/* Contact is zari: a band of gold thread. */
+#contact .chapter-border {
+  height: 10px;
+  background: repeating-linear-gradient(90deg, #C9A227 0 9px, #8F6600 9px 11px, #E9CB6B 11px 14px, #8F6600 14px 16px);
+}
+
 /* ================= Services: five Warli drawings, one line each =================
    Always symmetric: five across, then three over two, then two over two over one,
    with the short rows centred. */
@@ -10,13 +35,57 @@
   gap: clamp(28px, 3vw, 44px) clamp(16px, 1.8vw, 28px);
   margin-top: clamp(32px, 4vw, 56px);
 }
-.service-tile { grid-column: span 2; text-align: center; }
+.service-tile { position: relative; grid-column: span 2; text-align: center; }
+/* Warli is painted in white on mud walls, so the tiles are mud brown. */
 .tile-plate {
   position: relative;
   overflow: hidden;
   aspect-ratio: 3 / 2;
   border-radius: 14px;
-  background: var(--b-wine);
+  background: var(--mud);
+  transition: transform .45s cubic-bezier(.22, 1, .36, 1), box-shadow .45s cubic-bezier(.22, 1, .36, 1);
+}
+/* Each tile is a link: it opens the project brief with that service already chosen. */
+.tile-name a { color: inherit; text-decoration: none; }
+.tile-name a::after { content: ''; position: absolute; inset: 0; z-index: 2; border-radius: 14px; }
+.tile-name a:focus-visible { outline: none; }
+.tile-arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #FFFBF2;
+  color: var(--mud);
+  font: 500 15px/1 var(--sans);
+  opacity: 0;
+  transform: translate(-4px, 4px) scale(.9);
+  transition: opacity .25s ease, transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+@media (hover: hover) {
+  .service-tile:hover .tile-plate { transform: translateY(-5px); box-shadow: 0 22px 34px -22px rgba(64, 38, 22, .8); }
+  .service-tile:hover .tile-arrow { opacity: 1; transform: none; }
+  .service-tile:hover .tile-name { color: var(--mud); }
+}
+.service-tile:has(a:focus-visible) .tile-plate { outline: 2px solid var(--mud); outline-offset: 4px; }
+.service-tile:has(a:focus-visible) .tile-arrow { opacity: 1; transform: none; }
+.service-tile:active .tile-plate { transform: translateY(-1px) scale(.985); transition-duration: .1s; }
+/* The chosen service lights up for a moment in the brief. */
+#contact .contact-brief select.is-prefilled { animation: brief-prefill 1.6s ease; }
+@keyframes brief-prefill {
+  0%, 55% { background-color: color-mix(in srgb, var(--b-turmeric) 30%, transparent); box-shadow: 0 2px 0 var(--kaavi); }
+  100% { background-color: transparent; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tile-plate,
+  .tile-arrow { transition: none; }
+  .service-tile:hover .tile-plate,
+  .service-tile:active .tile-plate { transform: none; }
+  #contact .contact-brief select.is-prefilled { animation: none; }
 }
 .tile-plate img { display: block; width: 100%; height: 100%; object-fit: cover; }
 /* A saree's temple border along the foot of each drawing. */
@@ -31,65 +100,26 @@
 .tile-name {
   margin: 18px 0 4px;
   color: var(--bone);
+  transition: color .25s ease;
   font: 500 clamp(18px, 1.5vw, 22px)/1.2 var(--sans);
   letter-spacing: -.02em;
 }
 .tile-tag { max-width: 24ch; margin: 0 auto; color: var(--bone-dim); font: 400 15px/1.5 var(--sans); }
 #services .service-foot { margin-top: clamp(28px, 3vw, 44px); }
 
-/* ================= About: a portrait plate beside the words ================= */
+/* ================= About: the Kaavi chapter =================
+   Kaavi is the mural art of the owner's home, Goa and the Konkan coast. The chapter opens
+   with a Kaavi border and is otherwise left to the words: the name on the left, the story
+   and the two figures on the right. */
 #about .about-inner {
   display: grid;
-  grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr);
+  grid-template-columns: minmax(0, .82fr) minmax(0, 1.18fr);
   gap: clamp(20px, 2.4vw, 36px) clamp(32px, 5vw, 88px);
   align-items: start;
 }
 #about .about-top { display: contents; }
-#about .about-portrait-wrap {
-  position: relative;
-  inset: auto;
-  display: block;
-  justify-self: stretch;
-  grid-column: 1;
-  grid-row: 1 / span 2;
-  overflow: hidden;
-  width: auto;
-  height: auto;
-  aspect-ratio: 4 / 5;
-  margin: 0;
-  border-radius: 24px;
-  background: var(--b-marigold) var(--b-grain);
-  background-size: auto, 240px 240px;
-  opacity: 1;
-  transform: none;
-}
-/* A sunburst behind the cut-out, as on the covers. */
-#about .about-portrait-wrap::before {
-  content: '';
-  position: absolute;
-  inset: 4% -30% -30%;
-  border-radius: 50%;
-  background: repeating-conic-gradient(from 0deg, rgba(27, 26, 23, .8) 0 .5deg, transparent .5deg 7deg);
-  -webkit-mask: radial-gradient(closest-side, transparent 0 30%, #000 31% 92%, transparent 100%);
-  mask: radial-gradient(closest-side, transparent 0 30%, #000 31% 92%, transparent 100%);
-}
-#about .about-portrait-glow,
-#about .about-portrait-ast { display: none; }
-#about .about-portrait {
-  position: absolute;
-  /* Sits low so the photo's soft lower edge falls outside the plate. */
-  inset: auto 0 -9% 50%;
-  width: 104%;
-  max-width: none;
-  height: auto;
-  filter: grayscale(1) contrast(1.1)
-    drop-shadow(3px 0 0 #FFFBF2) drop-shadow(-3px 0 0 #FFFBF2) drop-shadow(0 -3px 0 #FFFBF2)
-    drop-shadow(0 10px 14px rgba(27, 26, 23, .3));
-  opacity: 1;
-  transform: translateX(-50%);
-}
-#about .about-statement { grid-column: 2; align-self: end; margin: 0; }
-/* The bio, then the two figures beneath it. */
+#about .about-statement { grid-column: 1; margin: 0; }
+/* The story starts level with the name, below the chapter number. */
 #about .about-foot {
   grid-column: 2;
   display: flex;
@@ -97,15 +127,15 @@
   align-items: stretch;
   gap: clamp(24px, 3vw, 40px);
   margin: 0;
-  padding: clamp(20px, 2.4vw, 32px) 0 0;
-  border-top: 1px solid var(--line);
+  padding: calc(38px + clamp(14px, 1.6vw, 22px) + .4em) 0 0;
+  border-top: 0;
 }
 #about .about-copy { order: 1; width: auto; max-width: 62ch; margin: 0; }
 #about .stats { position: static; order: 2; display: flex; flex-wrap: wrap; align-self: flex-start; justify-content: flex-start; gap: 16px clamp(32px, 5vw, 72px); width: auto; margin: 0; padding: 0; border: 0; transform: none; }
 #about .stat { position: static; margin: 0; }
 #about .showreel { grid-column: 1 / -1; margin-top: clamp(24px, 4vw, 56px); }
 #about .stat-num,
-#about .stat-plus { color: var(--sec); }
+#about .stat-plus { color: var(--kaavi-ink); }
 
 /* ================= Experience: each role is a ticket ================= */
 #experience .xp-list { display: grid; grid-template-columns: minmax(0, 1fr); gap: 14px; margin: 0; padding: 0; border: 0; list-style: none; }
@@ -142,7 +172,7 @@
   letter-spacing: .08em;
   text-transform: uppercase;
 }
-#experience .xp-current .xp-when { color: var(--sec); }
+#experience .xp-current .xp-when { color: var(--kaavi-ink); }
 #experience .xp-what { display: grid; gap: 4px; padding: 22px clamp(18px, 2.4vw, 36px); }
 #experience .xp-what strong { color: var(--bone); font: 500 clamp(19px, 1.7vw, 24px)/1.2 var(--sans); letter-spacing: -.02em; }
 #experience .xp-what em { color: var(--bone-dim); font: 400 15px/1.4 var(--sans); font-style: normal; }
@@ -240,14 +270,14 @@
 }
 #contact .contact-brief :is(input, select, textarea):focus {
   outline: none;
-  border-bottom-color: var(--b-wine);
-  box-shadow: 0 1.5px 0 var(--b-wine);
+  border-bottom-color: var(--kaavi);
+  box-shadow: 0 1.5px 0 var(--kaavi);
 }
 #contact .contact-brief :is(input, textarea)::placeholder { color: #9A8D82; }
 #contact .contact-brief .cf-submit {
   border: 0;
   border-radius: 3px;
-  background: var(--b-wine);
+  background: var(--kaavi);
   color: #FFFBF2;
   -webkit-mask: radial-gradient(circle 7px at 0 50%, transparent 97%, #000) 0 0 / 51% 100% no-repeat,
     radial-gradient(circle 7px at 100% 50%, transparent 97%, #000) 100% 0 / 51% 100% no-repeat;
@@ -290,7 +320,7 @@
   transition: background-color .25s ease, color .25s ease;
 }
 #contact #copyEmail:hover,
-#contact .contact-links a:hover { background: #FFFBF2; color: var(--b-wine); }
+#contact .contact-links a:hover { background: #FFFBF2; color: var(--kaavi); }
 #contact #copyEmail .icon-check,
 #contact #copyEmail.is-copied .icon-copy { display: none; }
 #contact #copyEmail.is-copied .icon-check { display: block; }
@@ -303,31 +333,6 @@
 #brain .brain-ring { stroke: rgba(233, 236, 245, .16); stroke-width: 1; }
 #brain .brain-edge { stroke-width: 1; }
 
-/* ================= Craft labels: each chapter credits one Indian artform ================= */
-.craft-tag {
-  grid-column: 1 / -1;
-  display: flex;
-  align-items: center;
-  /* Centred, like a colophon, so the floating dog and music player never sit on top of it. */
-  justify-content: center;
-  gap: 12px;
-  margin: clamp(32px, 4vw, 56px) 0 0;
-  color: inherit;
-}
-.craft-tag img {
-  flex: none;
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: #FBF7EE;
-  object-fit: cover;
-  box-shadow: 0 8px 16px -10px rgba(27, 26, 23, .6);
-}
-.craft-tag p { display: grid; gap: 2px; margin: 0; font: 400 13px/1.25 var(--sans); text-align: left; }
-.craft-tag span { font: 600 10px/1.2 var(--sans); letter-spacing: .1em; text-transform: uppercase; opacity: .62; }
-.craft-tag strong { font: 600 14px/1.2 var(--sans); }
-.craft-tag em { font-style: normal; opacity: .72; }
-#hero .craft-tag { margin: 0; padding: 0 0 18px; }
 /* A band of zari along the top of the postcard. */
 #contact .contact-brief::before {
   content: '';
@@ -363,9 +368,9 @@
 }
 @media (max-width: 900px) {
   #about .about-inner { grid-template-columns: 1fr; }
-  #about .about-portrait-wrap { grid-column: 1; grid-row: auto; max-width: 320px; }
   #about .about-statement,
   #about .about-foot { grid-column: 1; }
+  #about .about-foot { padding-top: 0; }
   #experience .xp-row { --stub: 100%; grid-template-columns: 1fr; -webkit-mask: none; mask: none; }
   #experience .xp-when { padding: 14px 18px; border-right: 0; border-bottom: 2px dashed var(--line); }
   #experience .xp-what { padding: 16px 18px 6px; }
@@ -385,10 +390,6 @@
 @media (min-width: 1001px) {
   #writing .writing-pen { right: -24px; }
 }
-/* Large orange numerals need a little more weight against pale paper. */
-:root:not([data-theme="dark"]) #about :is(.stat-num, .stat-plus) { color: color-mix(in srgb, var(--sec) 80%, #1B1A17); }
-.craft-tag span { font-size: 11px; opacity: .8; }
-.craft-tag em { opacity: .82; }
 
 /* ---- Dark theme ---- */
 /* The phone menu follows the theme instead of staying a light sheet. */
@@ -404,8 +405,6 @@
 :root[data-theme="dark"] .mobile-menu nav a:hover,
 :root[data-theme="dark"] .mobile-menu nav a:focus-visible { color: #e9c9a0; }
 /* Words that sit on dark paper take the light ink. */
-:root[data-theme="dark"] #writing .craft-tag { color: var(--bone); }
-:root[data-theme="dark"] #experience .xp-current .xp-when { color: #8fd0a8; }
 
 /* ---- Phones ---- */
 @media (max-width: 760px) {

@@ -110,7 +110,7 @@
 .cs-next-story>strong{display:flex;justify-content:space-between;gap:20px;font:var(--cs-title-weight,500) 28px/1.4 var(--cs-display);margin-top:10px}
 .cs-next-story>p{font-size:16px;color:var(--cs-dim);margin-top:8px}
 .cs-next-story:hover{text-decoration:underline}
-.cs-page{margin:0;background:#f3ecdf;color:#532d3a;font:16px/1.7 'Case Sans',Arial,sans-serif}
+.cs-page{margin:0;background:#f3ecdf;color:#842b22;font:16px/1.7 'Case Sans',Arial,sans-serif}
 .cs-page main{padding:0 24px}
 .cs-page-header,.cs-page-footer{max-width:1120px;margin:auto;padding:24px 0;display:flex;justify-content:space-between;align-items:baseline;gap:24px;font-size:15px}
 .cs-page-header a:first-child{font-weight:600;text-decoration:none;font-size:18px}
@@ -135,7 +135,7 @@
  .cs-library-hero{grid-template-columns:1fr!important;gap:24px!important}.cs-library-grid{grid-template-columns:1fr!important}.cs-library-section-head{display:block!important}.cs-library-section-head>p{margin-top:16px!important}.cs-library h1{font-size:48px!important}.cs-library-downloads>span{width:100%}
 }
 @media print{.cs-page-header,.cs-page-footer,.cs-contents,.cs-start,.cs-links,.cs-next-story,.cs-result-action{display:none}.cs-page,.case-study{background:#fff}.cs-page main{padding:0}.cs-hero{padding:0}.cs-reader{display:block;padding:30px 0}.case-study h1{font-size:36px}.case-study .cs-scene{padding-block:24px;margin:0}.cs-evidence-plate img{max-height:400px}.cs-detail>div,.cs-decision-content{display:block!important}.cs-decision{break-inside:avoid}.cs-decision>summary{padding-block:16px}.cs-decision-content{padding-left:0}}
-.cs-library{--cs-paper:#fcf8ef;--cs-ink:#532d3a;--cs-dim:#6c5b50;--cs-line:#d8c9b6;--cs-accent:#794758;--cs-wash:#eee3d3;max-width:1240px;margin:auto;background:var(--cs-paper);padding:clamp(28px,5vw,70px);border:1px solid var(--cs-line);border-radius:8px}
+.cs-library{--cs-paper:#fcf8ef;--cs-ink:#842b22;--cs-dim:#6c5b50;--cs-line:#d8c9b6;--cs-accent:#bc483b;--cs-wash:#eee3d3;max-width:1240px;margin:auto;background:var(--cs-paper);padding:clamp(28px,5vw,70px);border:1px solid var(--cs-line);border-radius:8px}
 .cs-library-hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:70px;align-items:center;border-bottom:1px solid var(--cs-line);padding-bottom:48px}
 .cs-library h1{font:400 clamp(48px,6.4vw,88px)/1.03 var(--cs-display);letter-spacing:-.035em;margin:22px 0 26px;max-width:16ch}
 .cs-library h1 em{font:inherit;font-style:italic;color:var(--cs-accent)}
@@ -162,7 +162,7 @@
 .cs-library-downloads a{padding:10px 14px;border:1px solid var(--cs-line);min-height:44px;border-radius:4px}
 
 /* Shared furniture belongs to the portfolio; each article keeps its own world. */
-.cs-page-header,.cs-page-footer{--cs-ink:#532d3a;--cs-dim:#6c5b50;--cs-accent:#794758}
+.cs-page-header,.cs-page-footer{--cs-ink:#842b22;--cs-dim:#6c5b50;--cs-accent:#bc483b}
 .cs-page-header{border-bottom:1px solid #d8c9b6;margin-bottom:24px}
 .cs-page-header a,.cs-page-footer a{display:inline-flex;align-items:center;min-height:44px}
 .cs-library{border:0;border-radius:0;background:#fcf8ef}
@@ -172,4 +172,4 @@
 .cs-library-section-head h2{margin-top:0}
 .cs-library .cs-eyebrow{display:none}
 .cs-library .cs-study-card{box-shadow:none}
-.cs-library ::selection{background:#6c3d4d;color:#fff6e8}
+.cs-library ::selection{background:#aa3d30;color:#fff6e8}

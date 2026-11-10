@@ -117,6 +117,19 @@ function sync(){
   else schedule();
   controls();
 }
+// Jimmy can be sent to the edge of the screen, where a small tab brings him back.
+const awayKey='portfolio-jimmy-away',showButton=document.getElementById('jimmyShow');
+function send(away,focus){
+  dock.hidden=away;dock.inert=away;showButton.hidden=!away;
+  try{localStorage.setItem(awayKey,away?'1':'0');}catch{}
+  if(focus){
+    (away?showButton:pet).focus({preventScroll:true});
+    if(!away)setTimeout(()=>speak('Back. Did you miss me?'),150);
+  }
+}
+document.getElementById('jimmyHide').addEventListener('click',()=>send(true,true));
+showButton.addEventListener('click',()=>send(false,true));
+try{if(localStorage.getItem(awayKey)==='1')send(true,false);}catch{}
 document.addEventListener('visibilitychange',sync);
 document.addEventListener('portfolio:dialog',event=>{overlay=!!event.detail.open;sync();});
 new MutationObserver(sync).observe(dock,{attributes:true,attributeFilter:['inert']});
