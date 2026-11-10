@@ -7,11 +7,13 @@ function setup(fetchImpl, entries = {}) {
   const status = {}, button = {disabled:false}, label = {textContent:'Send message'}, attrs = {};
   let handler, resets = 0;
   const values = {'name':'Test visitor', email:'test@example.com', message:'Design & build a café site', budget:'₹25k – ₹75k', 'bot-field':'', ...entries};
+  /* As in the browser, the "name" field shadows form.name, so only the attribute holds "contact". */
+  const formAttrs = {name:'contact', action:'/thank-you.html'};
   const form = {
-    name:'contact', reportValidity:()=>true,
+    name:{toString:()=>'[object HTMLInputElement]'}, reportValidity:()=>true,
     addEventListener:(_, fn)=>handler=fn,
     querySelector:selector=>selector === '.cf-submit' ? button : label,
-    getAttribute:()=>'/thank-you.html', setAttribute:(key,value)=>attrs[key]=value,
+    getAttribute:key=>formAttrs[key], setAttribute:(key,value)=>attrs[key]=value,
     reset:()=>resets++
   };
   class Data extends Map {constructor(){super(Object.entries(values));}}

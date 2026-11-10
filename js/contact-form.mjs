@@ -16,7 +16,8 @@ export function initContactForm(doc, {fetchImpl = globalThis.fetch, FormDataImpl
     if (sending || !form.reportValidity()) return;
     const data = new FormDataImpl(form);
     if (data.get('bot-field')) return;
-    data.set('form-name', form.name);
+    /* form.name is the <input name="name"> element here, not the form's own name. */
+    data.set('form-name', form.getAttribute('name'));
     sending = true;
     button.disabled = true;
     label.textContent = 'Sending…';
