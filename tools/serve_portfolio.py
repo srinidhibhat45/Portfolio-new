@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Local preview with a persistent, shared visitor board. Run: python3 tools/serve_portfolio.py"""
+"""Local preview with a persistent, shared visitor board and the Sunday Ride leaderboard. Run: python3 tools/serve_portfolio.py"""
 import argparse
 import json
 import math
 import sqlite3
+import subprocess
+import threading
 import time
 import uuid
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
@@ -44,8 +46,23 @@ def validate(data):
     if data.get('position') is not None: note['position'] = validate_position(data['position'])
     return note
 
+RIDE_LOCK = threading.Lock()
+
 class Handler(SimpleHTTPRequestHandler):
     database = None
+    ride_file = None
+    def ride_api(self, method):
+        # The leaderboard runs the real Netlify function through Node, with a JSON file standing in for Blobs.
+        length = int(self.headers.get('Content-Length','0') or 0)
+        if length > 4000: return self.json_response({'error':'Please send a valid time.'},413)
+        body = self.rfile.read(length).decode('utf-8','replace') if method == 'POST' else ''
+        host = self.headers.get('Host', 'localhost')
+        payload = {'method':method,'url':f'http://{host}{self.path}','origin':self.headers.get('Origin') or '','contentType':self.headers.get('Content-Type') or '','body':body,'ip':self.client_address[0],'file':self.ride_file}
+        with RIDE_LOCK:
+            out = subprocess.run(['node', str(ROOT/'tools'/'local_ride_api.mjs')], input=json.dumps(payload), capture_output=True, text=True, timeout=20)
+        if out.returncode: return self.json_response({'error':'The local board failed: '+out.stderr[-300:]},500)
+        result = json.loads(out.stdout)
+        return self.json_response(json.loads(result['body']), result['status'])
     def __init__(self, *args, **kwargs):
         super().__init__(*args, directory=str(ROOT), **kwargs)
     def json_response(self, data, status=200):
@@ -61,6 +78,7 @@ class Handler(SimpleHTTPRequestHandler):
         path = unquote(urlsplit(self.path).path)
         return path in ('/', '/index.html', '/thank-you.html', '/ride.html', '/404.html', '/llms.txt', '/favicon.ico', '/site.webmanifest', '/robots.txt', '/sitemap.xml', '/case-studies') or any(path.startswith('/'+folder+'/') for folder in ('assets', 'css', 'js', 'case-studies')) and '..' not in path
     def do_GET(self):
+        if urlsplit(self.path).path == '/api/ride': return self.ride_api('GET')
         if urlsplit(self.path).path == '/api/notes':
             with sqlite3.connect(self.database) as db:
                 notes = [json.loads(row[0]) for row in db.execute('SELECT payload FROM notes ORDER BY created DESC')]
@@ -95,6 +113,7 @@ class Handler(SimpleHTTPRequestHandler):
             db.execute('INSERT OR REPLACE INTO layout VALUES(?,?)',(identity,json.dumps(position)))
         self.json_response({'id':identity,'position':position})
     def do_POST(self):
+        if urlsplit(self.path).path == '/api/ride': return self.ride_api('POST')
         if urlsplit(self.path).path != '/api/notes':
             return self.json_response({'error':'Not found.'},404)
         origin = self.headers.get('Origin')
@@ -126,6 +145,7 @@ def main():
     parser=argparse.ArgumentParser();parser.add_argument('--port',type=int,default=8000);parser.add_argument('--db',type=Path,default=ROOT/'.local'/'visitor-notes.sqlite3');args=parser.parse_args()
     args.db.parent.mkdir(parents=True,exist_ok=True)
     Handler.database=str(args.db)
+    Handler.ride_file=str(args.db.parent/'ride-board.json')
     with sqlite3.connect(args.db) as db:
         db.execute('CREATE TABLE IF NOT EXISTS notes(id TEXT PRIMARY KEY,created REAL,payload TEXT)')
         db.execute('CREATE TABLE IF NOT EXISTS rate(client TEXT PRIMARY KEY,last REAL)')

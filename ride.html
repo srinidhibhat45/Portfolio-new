@@ -8,7 +8,7 @@
   <title>Sunday Ride · Srinidhi Bhat</title>
   <meta name="description" content="A small pixel race through the Western Ghats, tucked away in Srinidhi Bhat's portfolio. Beat Shri to the top.">
   <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-4">
+  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-8">
 </head>
 <body class="ride" data-mode="title">
   <header class="ride-bar">
@@ -70,11 +70,14 @@
             <input class="ride-input" id="ridePlate" name="plate" type="text" inputmode="text" maxlength="4" pattern="[A-Za-z0-9]{4}" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="ABCD" aria-describedby="ridePlateHelp ridePlateError" required>
             <button type="submit" class="ride-btn" id="rideStart" data-first>Start the ride</button>
           </div>
-          <p class="ride-help" id="ridePlateHelp">4 letters or numbers. It goes on your bike and stays in this browser.</p>
+          <p class="ride-help" id="ridePlateHelp">4 letters or numbers. It goes on your bike, and on the leaderboard if you post your time.</p>
           <p class="ride-error" id="ridePlateError" role="alert" hidden></p>
         </form>
         <p class="ride-best" id="rideBest"></p>
-        <button type="button" class="ride-link ride-link--btn" id="rideBackToIntro">Meet Shri and Sky again</button>
+        <div class="ride-links">
+          <button type="button" class="ride-link ride-link--btn" data-board>Leaderboard</button>
+          <button type="button" class="ride-link ride-link--btn" id="rideBackToIntro">Meet Shri and Sky again</button>
+        </div>
       </div>
     </section>
 
@@ -97,9 +100,38 @@
         <p class="ride-time"><span class="ride-time-label">Time</span> <span id="rideTime"></span></p>
         <p class="ride-best" id="rideRecord"></p>
         <p class="ride-blurb" id="rideVerdict"></p>
+        <form class="ride-post" id="ridePost" novalidate hidden>
+          <label class="ride-label" for="rideName">Put your time on the board</label>
+          <div class="ride-form-row">
+            <input class="ride-input ride-input--name" id="rideName" name="name" type="text" maxlength="20" autocomplete="nickname" autocapitalize="words" spellcheck="false" enterkeyhint="send" placeholder="Your name" aria-describedby="ridePostHelp ridePostError" required>
+            <span class="ride-chip" id="ridePostPlate" title="Your plate"></span>
+          </div>
+          <button type="submit" class="ride-btn ride-btn--gold" id="ridePostBtn">Post my time</button>
+          <p class="ride-help" id="ridePostHelp">Your name, plate and time go on the public board. Up to 20 characters.</p>
+          <p class="ride-error" id="ridePostError" role="alert" hidden></p>
+        </form>
+        <p class="ride-help ride-post-note" id="ridePostNote" role="status" hidden></p>
         <div class="ride-row">
           <button type="button" class="ride-btn" id="rideAgain" data-first>Ride again</button>
-          <a class="ride-btn ride-btn--quiet" href="index.html#contact">Back to the portfolio</a>
+          <button type="button" class="ride-btn ride-btn--quiet" data-board>Leaderboard</button>
+        </div>
+        <a class="ride-link" href="index.html#contact">Back to the portfolio</a>
+      </div>
+    </section>
+
+    <section class="ride-panel" id="rideBoard" aria-labelledby="rideBoardTitle" hidden>
+      <div class="ride-card ride-card--board">
+        <p class="ride-tag">High scores</p>
+        <h2 class="ride-head" id="rideBoardTitle">Fastest to the viewpoint</h2>
+        <table class="ride-scores">
+          <caption class="sr-only">The ten fastest rides, with Shri's best run as the time to beat</caption>
+          <thead><tr><th scope="col">Rank</th><th scope="col">Rider</th><th scope="col">Plate</th><th scope="col">Time</th></tr></thead>
+          <tbody id="rideScores"></tbody>
+        </table>
+        <p class="ride-help ride-board-status" id="rideBoardStatus" role="status"></p>
+        <div class="ride-row">
+          <button type="button" class="ride-btn" id="rideBoardRide" data-first>Ride</button>
+          <button type="button" class="ride-btn ride-btn--quiet" id="rideBoardBack">Back</button>
         </div>
       </div>
     </section>
@@ -107,6 +139,6 @@
 
   <p class="sr-only" id="rideLive" aria-live="polite"></p>
   <noscript><p class="ride-noscript">This little game needs JavaScript. <a href="index.html#contact">Back to the portfolio</a></p></noscript>
-  <script type="module" src="js/ride/main.js?v=20261112-ride-3"></script>
+  <script type="module" src="js/ride/main.js?v=20261112-ride-4"></script>
 </body>
 </html>

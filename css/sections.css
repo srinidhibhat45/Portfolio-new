@@ -321,6 +321,8 @@
 }
 #contact #copyEmail:hover,
 #contact .contact-links a:hover { background: #FFFBF2; color: var(--kaavi); }
+/* The round icons fill on hover, so the old text-link underline under them goes. */
+#contact .contact-links a::after { content: none; }
 #contact #copyEmail .icon-check,
 #contact #copyEmail.is-copied .icon-copy { display: none; }
 #contact #copyEmail.is-copied .icon-check { display: block; }
@@ -330,7 +332,6 @@
 #contact .contact-brief select { padding-right: 26px; text-overflow: ellipsis; }
 
 /* ================= Brain: a flat network inside a circle ================= */
-#brain .brain-ring { stroke: rgba(233, 236, 245, .16); stroke-width: 1; }
 #brain .brain-edge { stroke-width: 1; }
 
 /* A band of zari along the top of the postcard. */
