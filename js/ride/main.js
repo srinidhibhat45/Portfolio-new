@@ -5,6 +5,7 @@ import { buildArt, drawSheet, drawPortrait } from './sprites.js?v=20261112-ride-
 import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261112-ride-3';
 import { createAudio, auditEngine } from './audio.js?v=20261112-ride-3';
 import { drawText, textWidth } from './font.js?v=20261112-ride-3';
+import { createBoard } from './board.js?v=20261112-ride-4';
 
 const BEST = 'portfolio-ride-best', PLATE = 'portfolio-ride-plate';
 // The plate is four characters, A to Z and 0 to 9. It is kept in this browser only.
@@ -17,7 +18,7 @@ const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 // Debug flags, all harmless: ?debug=1 shows errors on the page, ?shot=sprites draws the sprite sheet,
 // ?autostart=1 skips the title, ?demo=1 lets the autopilot ride, ?t=40 jumps that many seconds into the ride,
 // ?freeze=1 stops after the first frame, ?touch=1 shows the touch pad, ?screen=finish|pause opens that panel
-// (?beat=1 with screen=finish shows the winning version), ?plate=ABCD fills in the number plate.
+// (?beat=1 with screen=finish shows the winning version), ?plate=ABCD fills in the number plate, ?screen=board opens the leaderboard.
 if (flag('debug')) {
   const box = document.createElement('pre');
   box.className = 'ride-debug';
@@ -43,9 +44,12 @@ function run() {
   const audio = createAudio();
   const g = createGame();
   const main = $('rideMain'), pad = $('ridePad');
-  const panels = { intro: $('rideIntro'), title: $('rideTitle'), paused: $('ridePaused'), finish: $('rideFinish') };
+  const panels = { intro: $('rideIntro'), title: $('rideTitle'), paused: $('ridePaused'), finish: $('rideFinish'), board: $('rideBoard') };
   const live = $('rideLive'), muteBtn = $('rideMute'), pauseBtn = $('ridePause');
   const demo = flag('demo');
+  const skip = Math.max(0, Math.min(600, parseFloat(q.get('t')) || 0));
+  // Rides with a helping hand (the autopilot, a jump ahead, a skipped title) never go on the public board.
+  const assisted = demo || skip > 0 || flag('autostart');
   let mode = 'title';            // title (the intro and the pre-race card) | ride | paused | finish
   let attract = true;            // the autopilot rides behind the title
   let acc = 0, lastNow = 0, shake = 0, finishAt = 0, stopped = false, hudTop = 0;
@@ -66,6 +70,13 @@ function run() {
   });
   function tryStart() {
     plate = cleanPlate(plateInput.value);
+    if (plate === 'SHRI') {
+      plateError.textContent = "That's Shri's plate. Pick your own 4 letters or numbers.";
+      plateError.hidden = false;
+      plateInput.setAttribute('aria-invalid', 'true');
+      plateInput.focus();
+      return;
+    }
     if (plate.length !== 4) {
       plateError.textContent = plate.length ? `That is ${plate.length}. The plate needs exactly 4 letters or numbers.` : 'Type 4 letters or numbers for your plate first.';
       plateError.hidden = false;
@@ -97,6 +108,7 @@ function run() {
       return;
     }
     if (e.repeat) return;
+    if (!panels.board.hidden) { if (e.code === 'Escape') board.close(); else if (e.code === 'KeyM') setMuted(!audio.muted); return; }
     if (e.code === 'KeyP' || e.code === 'Escape') { if (mode === 'ride') pause(); else if (mode === 'paused') resume(); }
     else if (e.code === 'KeyM') setMuted(!audio.muted);
     else if (e.code === 'Enter' && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
@@ -165,7 +177,7 @@ function run() {
   }
 
   function readBest() { try { const v = parseFloat(localStorage.getItem(BEST)); return Number.isFinite(v) && v > 0 ? v : 0; } catch { return 0; } }
-  function showBest() { const b = readBest(); $('rideBest').textContent = b ? `Best run ${formatTime(b)}` : 'No run on the board yet'; }
+  function showBest() { const b = readBest(); $('rideBest').textContent = b ? `Your best ${formatTime(b)}` : 'No ride finished yet'; }
 
   function startRide() {
     audio.start(); audio.resume();
@@ -173,6 +185,7 @@ function run() {
     renderer.clear();
     attract = false; mode = 'ride'; acc = 0; shake = 0; finishAt = 0;
     for (const k in keys) keys[k] = false;
+    board.startRun(!assisted);
     audio.beep(false);
     show(null);
     renderer.say('CATCH SHRI', 2.6, 2, 0.2);
@@ -201,9 +214,11 @@ function run() {
     if (fresh) { try { localStorage.setItem(BEST, time.toFixed(2)); } catch { /* ignore */ } }
     $('ridePlace').textContent = `${ordinal(place).toLowerCase()} of ${RIDERS}`;
     $('rideTime').textContent = formatTime(time);
-    $('rideRecord').textContent = fresh ? (best ? 'New best run.' : 'First run on the board.') : `Best run ${formatTime(best)}`;
+    $('rideRecord').textContent = fresh ? (best ? 'New best run.' : 'Your first finish.') : `Your best ${formatTime(best)}`;
     $('rideVerdict').textContent = beat ? 'The chai at the viewpoint is on him.' : margin < 4 ? 'That was close. Brake early for the hairpins and go again.' : 'Honk at the lorries, brake early for the hairpins, and go again.';
+    const canPost = board.finishRun(time, plate, { assisted });
     show('finish');
+    if (canPost && !coarse && !flag('freeze')) board.focusName();
     live.textContent = `${result} You finished ${ordinal(place).toLowerCase()} of ${RIDERS} in ${formatTime(time)}.`;
     showBest();
   }
@@ -216,6 +231,8 @@ function run() {
   }
 
   $('rideAgain').addEventListener('click', startRide);
+  const board = createBoard({ $, onRide: startRide, onBack: { show } });
+  for (const b of document.querySelectorAll('[data-board]')) b.addEventListener('click', () => board.open(mode === 'finish' ? 'finish' : 'title'));
   $('rideResume').addEventListener('click', resume);
   $('rideRestart').addEventListener('click', startRide);
   pauseBtn.addEventListener('click', () => (mode === 'paused' ? resume() : pause()));
@@ -292,7 +309,6 @@ function run() {
   $('rideBackToIntro').addEventListener('click', () => show('intro'));
   show(flag('autostart') || q.get('screen') || q.get('intro') === '0' ? 'title' : 'intro');
   if (flag('autostart')) { if (plate.length !== 4) { plate = 'RIDR'; art.setPlate(plate); } startRide(); }
-  const skip = Math.max(0, Math.min(600, parseFloat(q.get('t')) || 0));
   if (skip) {
     const drive = attract || demo || true;
     for (let k = 0; k < skip * 60; k++) { step(g, drive ? autopilot(g) : keys); g.events.length = 0; }
@@ -304,6 +320,7 @@ function run() {
     if (!g.finish) g.finish = flag('beat') ? { time: 166.2, place: 1, beat: true, margin: 2.4 } : { time: 172.4, place: 2, beat: false, margin: 3.1 };
     mode = 'ride'; attract = false; finish();
   }
+  if (q.get('screen') === 'board') board.open('title');
   if (flag('freeze')) stopped = true;
   requestAnimationFrame(frame);
 }
