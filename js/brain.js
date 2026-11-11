@@ -17,7 +17,7 @@
   function items(){return nodes.filter(function(n){return n.topic&&(!scope||n.topic===scope)&&(!query||[n.name,n.desc,n.tags,(n.stack||[]).join(' '),byID.get(n.topic).name].join(' ').toLowerCase().includes(query.toLowerCase()));});}
   var defs=svg('defs',{}),clip=svg('clipPath',{id:'brainFaceClip'});clip.append(svg('circle',{r:42}));defs.append(clip);graph.append(defs);
   var scene=svg('g',{}),edgeLayer=svg('g',{'aria-hidden':'true'});scene.append(edgeLayer);graph.append(scene);
-  // The layout is settled once, inside a circle, and then stays put; dragging turns the whole disc.
+  // The layout is settled once, inside an unseen circle, and then stays put; dragging turns the whole disc.
   let yaw = 0, pitch = 0, velocity = 0, targetRotation = null;
   const palette = ['#e4ad91','#a99edf','#81c6bc','#e3c889'];
   const vectors = new Map(), projected = new Map();
@@ -30,7 +30,7 @@
     return [x*c-y*s, x*s+y*c];
   }
   function project(point) {
-    const [x,y] = rotate(point), radius = Math.min(width,height)/2 - (mobile?52:58);
+    const [x,y] = rotate(point), radius = Math.min(width,height)/2 - (mobile?30:24);
     return {x:width/2+x*radius,y:height/2+y*radius,z:0,scale:1};
   }
   // Seed each theme in its own quarter, then let connected dots pull together and all dots push apart.
@@ -66,8 +66,6 @@
   // Fit the settled network inside a unit circle.
   const reach=Math.max(...nodes.map(n=>Math.hypot(...vectors.get(n.id))));
   nodes.forEach(n=>{const p=vectors.get(n.id);p[0]/=reach;p[1]/=reach;});
-  const ring=svg('circle',{class:'brain-ring',fill:'none','aria-hidden':'true'});
-  scene.insertBefore(ring,edgeLayer);
   nodes.forEach(function(n){
     var g=svg('g',{class:'brain-node','data-node':n.id,role:'button',tabindex:'0','aria-label':'Explore '+n.name+(n.kind==='topic'?' '+n.count+' connections':''),'aria-pressed':'false'});
     var color=n.color||(n.topic?byID.get(n.topic).color:'#bc483b');g.style.setProperty('--node-color',color);
@@ -131,7 +129,7 @@
       yaw+=velocity;
       velocity*=.94;
     }
-    ring.setAttribute('cx',width/2);ring.setAttribute('cy',height/2);ring.setAttribute('r',Math.min(width,height)/2-(mobile?22:26));
+    
     const activeID=hovered||focused||selected,near=new Set(activeID==='me'?[]:related(activeID).map(r=>r.node.id));
     const matching=new Set(items().map(n=>n.id));
     nodes.forEach(n=>{

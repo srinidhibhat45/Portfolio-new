@@ -1,0 +1,149 @@
+/* Chapter art: each chapter named after an Indian artform shows a little of that art, and each in its own way,
+   so no two chapters look alike. Loaded after dark.css and before access.css (access mode hides all of it).
+   Sources (generated, then cut): assets/_src/chapter-art/. Served files: assets/img/chapter-art/.
+
+   Pichwai    visual work   a faded lotus pond under the poster wall
+   Kaavi      about         a large kalash etched faintly into the wall behind the story
+   Ajrakh     experience    block-printed cloth fading in from the right edge
+   Bandhani   testimonials  tie-dye dots in ochre and sage, fading down from the top of each card
+   Kalamkari  writing       the notebook laid on a hand-painted cloth
+   Gond       board         a Gond peacock perched on the board's corner, its tail hanging down
+   Zari       contact       a fine gold jaal (diamond lattice) woven across the red, like Banarasi brocade
+   Warli (services) is already drawn into its tiles. Brain (Kolam) keeps only its border: the map is the picture. */
+
+/* ---- Pichwai: the lotus pond --------------------------------------------- */
+#gallery { isolation: isolate; padding-bottom: clamp(130px, 12vw, 190px); }
+.pichwai-pond {
+  position: absolute;
+  inset: auto 0 0;
+  z-index: -1;
+  height: clamp(190px, 19vw, 290px);
+  background: url('../assets/img/chapter-art/pichwai-pond.webp') center 78% / cover no-repeat;
+  /* Faded into the ground, so the posters stay the subject. */
+  opacity: .28;
+  filter: saturate(.75);
+  -webkit-mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  mask-image: linear-gradient(to bottom, transparent, #000 70%);
+  pointer-events: none;
+}
+:root[data-theme="dark"] .pichwai-pond { opacity: .24; }
+@media (max-width: 960px) {
+  .pichwai-pond { background-image: url('../assets/img/chapter-art/pichwai-pond-960.webp'); }
+}
+
+/* ---- Kaavi: a kalash etched faintly into the wall behind the story ----------- */
+#about { isolation: isolate; }
+.kaavi-etch {
+  position: absolute;
+  top: clamp(56px, 7vw, 110px);
+  right: clamp(-60px, -2vw, -10px);
+  z-index: -1;
+  width: clamp(190px, 21vw, 290px);
+  aspect-ratio: 295 / 720;
+  background: var(--kaavi-ink);
+  -webkit-mask: url('../assets/img/chapter-art/kaavi-kalash.webp') center / contain no-repeat;
+  mask: url('../assets/img/chapter-art/kaavi-kalash.webp') center / contain no-repeat;
+  opacity: .09;
+  pointer-events: none;
+}
+
+/* ---- Ajrakh: block-printed cloth, faded in from the right edge ---------------- */
+#experience { isolation: isolate; }
+#experience .ajrakh-fade {
+  position: absolute;
+  inset: 0 0 0 auto;
+  z-index: -1;
+  width: min(46%, 620px);
+  background: url('../assets/img/chapter-art/ajrakh-tile.svg') 0 0 / 56px 56px repeat;
+  -webkit-mask-image: linear-gradient(to left, #000, transparent);
+  mask-image: linear-gradient(to left, #000, transparent);
+  opacity: .1;
+  pointer-events: none;
+}
+:root[data-theme="dark"] #experience .ajrakh-fade { opacity: .12; }
+
+/* ---- Bandhani: tie-dyed cloth behind the portraits ------------------------------ */
+/* Tie-dye dots in ochre and sage across the top of each card, fading into the card. */
+#testimonials .test-front { --face: #FFFCF6; }
+:root[data-theme="dark"] #testimonials .test-front { --face: var(--card, #241A16); }
+#testimonials .test-front {
+  background-image:
+    linear-gradient(to bottom, color-mix(in srgb, var(--face) 35%, transparent), var(--face) 92px),
+    url('../assets/img/chapter-art/bandhani-band.svg');
+  background-position: center top, center 8px;
+  background-size: 100% 100%, 40px 80px;
+  background-repeat: no-repeat, repeat-x;
+}
+#testimonials .test-item + .test-item .test-front { background-position: center top, 20px 8px; }
+
+/* ---- Kalamkari: the notebook laid on painted cloth ------------------------------ */
+.writing-desk { isolation: isolate; }
+.writing-desk::before {
+  content: '';
+  position: absolute;
+  left: -46px;
+  top: -14px;
+  z-index: -1;
+  width: min(62%, 340px);
+  height: calc(100% + 18px);
+  border-radius: 3px;
+  background: #EFE3CB url('../assets/img/chapter-art/kalamkari-cloth.webp') center / cover no-repeat;
+  box-shadow: 0 18px 34px -18px rgba(60, 30, 15, .45);
+  transform: rotate(-4.5deg);
+  pointer-events: none;
+}
+.writing-notebook { z-index: 1; }
+
+/* ---- Gond: a peacock perched on the board's top-right corner ---------------------
+   In the picture its feet are 31% across and 36.5% down, and the tail hangs to the right of them.
+   On wide screens the feet sit on the corner and the tail drapes down outside the board, in the page margin. */
+#board .board-frame { overflow: visible; }
+.gond-perch {
+  --pw: 112px;
+  position: absolute;
+  left: calc(100% - 4px - .31 * var(--pw));
+  top: calc(-.365 * var(--pw) * 760 / 324);
+  z-index: 3;
+  width: var(--pw);
+  height: auto;
+  pointer-events: none;
+  filter: drop-shadow(0 3px 2px rgba(35, 20, 10, .16));
+}
+/* Not enough margin for the tail: it perches just inside the corner and the tail fades away. */
+@media (max-width: 1180px) {
+  .gond-perch {
+    --pw: 96px;
+    left: auto;
+    right: 26px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 42%, transparent 62%);
+    mask-image: linear-gradient(to bottom, #000 42%, transparent 62%);
+  }
+}
+
+/* ---- Zari: a gold jaal across the red -------------------------------------------- */
+#contact { isolation: isolate; }
+#contact .zari-weave {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url('../assets/img/chapter-art/zari-jaal.svg') 0 0 / 48px 48px repeat;
+  opacity: .14;
+  pointer-events: none;
+}
+
+/* ---- Dark theme ------------------------------------------------------------------ */
+:root[data-theme="dark"] .kaavi-etch { background: #E3A48F; opacity: .07; }
+:root[data-theme="dark"] .writing-desk::before { filter: brightness(.82) saturate(.9); box-shadow: 0 18px 34px -16px rgba(0, 0, 0, .7); }
+:root[data-theme="dark"] .gond-perch { filter: brightness(.92) drop-shadow(0 3px 0 rgba(0, 0, 0, .35)); }
+:root[data-theme="dark"] #contact .zari-weave { opacity: .12; }
+
+/* ---- Smaller screens -------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .writing-desk::before { left: -18px; width: 58%; }
+  /* The heading and note stack here, so the peacock gets its own room above the board. */
+  #board .board-frame { margin-top: 72px; }
+}
+@media (max-width: 600px) {
+  .kaavi-etch { width: 150px; right: -40px; }
+  .writing-desk::before { left: -10px; top: -10px; transform: rotate(-3deg); }
+}

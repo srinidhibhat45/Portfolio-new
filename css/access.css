@@ -523,3 +523,7 @@ html[data-access="on"][data-access] body [hidden][hidden] { display: none !impor
 @media print {
   html[data-access="on"] body :is(.access-bar, .access-tab) { display: none !important; }
 }
+
+/* Chapter art (css/chapter-art.css): the decorative pieces drawn with pseudo-elements and backgrounds. */
+html[data-access="on"] body .writing-desk::before { display: none !important; }
+html[data-access="on"] body #testimonials .test-front { background-image: none !important; }
