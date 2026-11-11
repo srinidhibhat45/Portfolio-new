@@ -1,7 +1,7 @@
 // Sunday Ride: every picture in the game, drawn in code onto small canvases.
 // Nothing here loads a file. Sprites are built once at start-up and scaled by the renderer.
 
-import { drawText, drawPlate, textWidth } from './font.js?v=20261112-ride-2';
+import { drawText, drawPlate, textWidth } from './font.js?v=20261112-ride-3';
 
 function blank(w, h) {
   const c = document.createElement('canvas');
@@ -446,6 +446,87 @@ function wisp() {
   P.ell(60, 11, 58, 9, '#ffffff');
   const g = P.g;
   for (let y = 0; y < 22; y++) for (let x = 0; x < 120; x++) if ((x + y) & 1 || Math.abs(y - 11) > 6 && (x & 3)) g.clearRect(x, y, 1, 1);
+  return P.c;
+}
+
+// ---- The intro picture: Shri standing beside Sky, his Honda CB350 H'ness Legacy Edition, by a lake. ----
+export function drawPortrait() {
+  const W = 150, H = 74, P = new Pen(W, H), g = P.g;
+  const SKY = { tank: '#1d2f66', tankHi: '#3d5fb8', panel: '#6f9bea', seat: '#6b3f26', seatHi: '#91603c' };
+  // sky, far hills, trees, the lake, grass and red laterite
+  P.r(0, 0, W, 9, '#8fc6e6').r(0, 9, W, 8, '#a9d4ec').r(0, 17, W, 8, '#c6e3f1');
+  for (let x = 0; x < W; x++) { const h = 22 + Math.round(3 * Math.sin(x / 13) + 2 * Math.sin(x / 5.3)); P.r(x, h, 1, 31 - h, '#4f8a5a'); }
+  for (let x = 0; x < W; x++) { const h = 28 + Math.round(1.5 * Math.sin(x / 3.1) + Math.sin(x / 7.7)); P.r(x, h, 1, 35 - h, '#2f6a3c'); }
+  P.dither(0, 28, W, 6, '#3c7d47', 1);
+  P.r(0, 35, W, 7, '#5e8fa3');
+  for (let k = 0; k < 14; k++) P.r((k * 37) % (W - 8), 36 + (k * 3) % 5, 6 + (k % 3) * 2, 1, '#8db6c6');
+  P.r(0, 42, W, 3, '#6f9a3a');
+  for (let x = 1; x < W; x += 3) P.r(x, 40 + (x % 2), 1, 2, '#88b24a');
+  P.r(0, 45, W, H - 45, '#b0532e').dither(0, 45, W, H - 45, '#c4693f', 0);
+  P.r(0, 45, W, 1, '#8f4125');
+  // soft shadow under the bike and the rider
+  P.ell(62, 68, 44, 3, '#8f4125').ell(118, 69, 12, 2, '#8f4125');
+
+  // ---- Sky, facing right ----
+  const ring = (cx, cy, r0, r1, col, from = -Math.PI, to = Math.PI) => {
+    for (let y = cy - r1 - 1; y <= cy + r1 + 1; y++) for (let x = cx - r1 - 1; x <= cx + r1 + 1; x++) {
+      const d = Math.hypot(x - cx, y - cy), a = Math.atan2(cy - y, x - cx);
+      if (d > r0 && d <= r1 + 0.4 && a >= from && a <= to) P.p(x, y, col);
+    }
+  };
+  const wheel = (cx, cy) => {
+    ring(cx, cy, 8.4, 11, C.tyre);
+    ring(cx, cy, 7.4, 8.4, C.chrome);
+    for (let k = 0; k < 10; k++) { const a = k * Math.PI / 5; P.line(cx, cy, Math.round(cx + Math.cos(a) * 7), Math.round(cy + Math.sin(a) * 7), '#2a2a30'); }
+    P.disc(cx, cy, 2, C.chromeLo).p(cx, cy, C.chromeHi);
+  };
+  wheel(32, 56); wheel(92, 56);
+  ring(32, 56, 11.5, 13, C.chrome, Math.PI * 0.42, Math.PI * 0.98);          // rear fender
+  ring(92, 56, 11.5, 13, C.chrome, Math.PI * 0.12, Math.PI * 0.82);          // front fender
+  P.line(32, 56, 54, 52, '#2a2a30').line(32, 55, 54, 51, '#2a2a30');        // swingarm
+  P.line(41, 37, 36, 52, C.chromeLo).line(42, 37, 37, 52, C.chrome);        // rear shock
+  P.line(80, 31, 70, 52, '#2a2a30').line(81, 31, 71, 52, '#2a2a30');        // down tube
+  // engine: crankcase, finned cylinder, round chrome cover
+  P.r(52, 42, 18, 13, '#2a2a30');
+  for (let y = 33; y < 44; y += 2) P.r(58, y, 12, 1, C.chrome).r(58, y + 1, 12, 1, '#4a4a54');
+  P.disc(57, 50, 4, C.chrome).disc(57, 50, 2, C.chromeHi);
+  // exhaust, all the way back
+  P.r(20, 57, 46, 3, C.chrome).r(20, 57, 46, 1, C.chromeHi).r(20, 59, 46, 1, C.chromeLo).r(64, 50, 3, 8, C.chrome);
+  P.r(18, 56, 14, 5, C.chrome).r(18, 56, 14, 1, C.chromeHi).r(18, 60, 14, 1, C.chromeLo);
+  // side panel, brown seat, grab rail, tail lamp
+  P.r(42, 34, 13, 8, SKY.tank).r(44, 36, 8, 3, SKY.tankHi);
+  P.r(24, 29, 30, 4, SKY.seat).r(25, 28, 28, 1, SKY.seatHi).cut(24, 29).cut(53, 32);
+  P.r(22, 33, 20, 2, '#2a2a30').r(17, 32, 8, 1, C.chrome);
+  P.r(16, 33, 4, 3, C.lamp).p(16, 33, C.lampOn);
+  // the tank, in deep blue with the lighter blue panel
+  P.r(52, 22, 28, 11, SKY.tank).cut(52, 22, 2, 1).cut(78, 22, 2, 1).cut(52, 32, 1, 1);
+  P.r(54, 21, 24, 1, SKY.tankHi).r(60, 25, 14, 5, SKY.panel).r(60, 25, 14, 1, '#a9c4f2').r(73, 25, 1, 5, SKY.tankHi);
+  // fork, round headlamp, bars and a round mirror
+  P.line(92, 56, 85, 24, C.chrome).line(93, 56, 86, 24, C.chromeLo);
+  P.disc(90, 24, 5, C.chrome).disc(91, 24, 3, '#fff3b0').p(92, 23, '#fffdf0');
+  P.line(78, 19, 87, 17, '#2a2a30').r(76, 19, 3, 2, '#2a2a30');
+  P.disc(84, 20, 2, '#2a2a30').p(84, 20, C.glass);
+  P.line(81, 18, 79, 11, C.chromeLo).disc(79, 9, 2, C.chrome).p(79, 9, C.glass);
+
+  // ---- Shri, standing beside her ----
+  const skin = '#8d5a3b', skinLo = '#73472d', hair = '#1b1613', navy = '#1c2748', white = '#f2f0ea', red = '#d8322a';
+  // shoes and jeans
+  P.r(109, 66, 7, 3, '#2b2b31').r(119, 66, 7, 3, '#2b2b31').r(109, 68, 7, 1, '#cfcfcf').r(119, 68, 7, 1, '#cfcfcf');
+  P.r(110, 44, 6, 22, '#646b76').r(119, 44, 6, 22, '#646b76').r(110, 44, 1, 22, '#484e58').r(124, 44, 1, 22, '#484e58').r(115, 46, 4, 6, '#565c66');
+  // striped polo: navy with thin white stripes and one red band across the chest
+  P.r(108, 25, 19, 20, navy);
+  for (let y = 27; y < 45; y += 3) P.r(108, y, 19, 1, white);
+  P.r(108, 29, 19, 2, red).r(108, 31, 19, 1, white);
+  P.r(105, 26, 4, 7, navy).r(126, 26, 4, 7, navy).r(105, 28, 4, 1, white).r(126, 28, 4, 1, white);
+  P.r(114, 24, 7, 2, navy).r(116, 24, 3, 3, skin);                         // collar and neck
+  // arms; the left hand rests on the bar end
+  P.r(105, 33, 3, 9, skin).r(127, 33, 3, 11, skin).r(105, 33, 1, 9, skinLo);
+  P.r(127, 41, 3, 2, '#1b1b20');                                           // a watch
+  // head: short black hair, beard, a smile
+  P.ell(117, 16, 5, 6, skin);
+  P.r(112, 9, 11, 4, hair).r(111, 11, 2, 5, hair).r(122, 11, 2, 4, hair).p(113, 8, hair).r(115, 8, 6, 1, hair);
+  P.r(112, 18, 11, 4, '#2a211c').r(113, 22, 9, 1, '#2a211c').r(114, 23, 7, 1, '#2a211c');
+  P.p(114, 15, hair).p(120, 15, hair).r(115, 19, 5, 1, white);
   return P.c;
 }
 

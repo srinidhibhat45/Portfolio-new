@@ -139,6 +139,7 @@ body.ride {
   z-index: 4;
   touch-action: pan-y;
   display: grid;
+  grid-template-columns: minmax(0, 1fr);   /* the card can never be wider than the screen */
   place-items: center;
   padding: 16px;
   overflow: auto;
@@ -293,3 +294,17 @@ body.ride {
 @media (prefers-reduced-motion: reduce) {
   .ride-btn:active, .pad-btn.is-down, .pad-btn:active { transform: none; }
 }
+
+/* ---- intro: Shri and Sky ---- */
+.ride-portrait { display: block; width: min(450px, 100%); height: auto; margin: 0 auto 14px; border: 3px solid var(--cream); image-rendering: pixelated; }
+.ride-card--intro { width: min(500px, 100%); }
+.ride-card--intro .ride-blurb { text-align: left; }
+.ride-card--intro .ride-head { margin-bottom: 10px; }
+.ride-link--btn { display: block; margin: 10px auto 0; padding: 6px 8px; border: 0; background: none; color: rgba(246, 240, 228, .78); font: inherit; font-size: 12px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.ride-link--btn:hover { color: var(--cream); }
+.ride-link--btn:focus-visible { outline: 2px solid var(--cream); outline-offset: 2px; }
+.is-portrait .ride-portrait { margin-bottom: 10px; }
+.is-portrait .ride-card--intro .ride-blurb { font-size: 12.5px; }
+.is-short .ride-card--intro .ride-blurb + .ride-blurb { display: none; }
+.is-short .ride-portrait { width: min(300px, 100%); }
+
