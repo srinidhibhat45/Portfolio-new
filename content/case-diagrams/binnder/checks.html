@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x800">
+<style>.two{display:grid;grid-template-columns:1fr 1fr;gap:50px;margin-top:30px}.two h2{font-size:26px;font-weight:600;margin-bottom:6px}.two .sub2{font-size:20px;color:var(--dim);margin-bottom:22px}.bar{--label:300px;grid-template-columns:var(--label) 1fr 60px;font-size:21px}.bar i{width:calc(var(--v) * 1%)}.bar b{text-align:right}.tot{margin-top:18px;padding-top:14px;border-top:2px solid var(--line);display:flex;justify-content:space-between;font-size:22px;font-weight:600}.todo{display:grid;grid-template-columns:1fr 1fr;gap:10px 18px}.todo div{padding:10px 14px;border:1.5px dashed var(--warn);border-radius:10px;font-size:18px;line-height:1.35;color:var(--ink);background:#fff}.big{font:400 64px/1 'Case Display',Georgia,serif;color:var(--warn)}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">What has been checked, and what has not</p><h1>The rules are tested in code. The phone checks are still to do</h1>
+<div class="grow two">
+<div><h2>In code: 23 automated tests</h2><p class="sub2">They check the rules on a computer, without a phone.</p>
+<div class="bars">
+<div class="bar"><span>Timing and review rules</span><i style="--v:100"></i><b>7</b></div>
+<div class="bar"><span>Safe moves and deletes</span><i style="--v:86"></i><b>6</b></div>
+<div class="bar"><span>What counts as a bin</span><i style="--v:86"></i><b>6</b></div>
+<div class="bar"><span>Update rules</span><i style="--v:57"></i><b>4</b></div>
+</div>
+<div class="tot"><span>Plus 6 tests for the publishing script</span><span>29</span></div></div>
+<div><h2>Not done yet: 14 checks on a real phone</h2><p class="sub2">Written down, to run on throwaway files first. Some of them:</p>
+<div class="todo">
+<div>Deny, grant and take away file access</div><div>Hidden, empty, Unicode and 4 GB files</div>
+<div>Files in Samsung and Gallery trash stay out</div><div>Undo just before the five seconds end</div>
+<div>Restore when a new file sits in the old place</div><div>Pull the SD card while an action waits</div>
+<div>Kill the app at every step of an action</div><div>Large text, TalkBack, rotation, dark mode</div>
+</div></div>
+</div>
+<p class="note">Counts from the project's test files and its written device checklist.</p>

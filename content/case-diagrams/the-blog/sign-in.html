@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.box{flex:1;display:flex;flex-direction:column;gap:14px}.box>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.steps{display:flex;align-items:center;gap:10px}.s{flex:1;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:16px;font-size:21px;line-height:1.35;text-align:center}.s.bad{background:var(--warn-wash);border-color:var(--warn)}.s.good{background:var(--good-wash);border-color:var(--good)}.steps .arrow{font-size:26px}.card p{font-size:20px}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">Signing in to write</p><h1>Signing in went from a GitHub account to one password on the page</h1>
+<div class="grow" style="display:flex;flex-direction:column;gap:26px">
+<div class="box"><p>The editor's first version, 27 July 2026</p><div class="steps"><div class="s bad">Sign in with GitHub: a GitHub session on the device, or a key pasted in by hand</div></div></div>
+<div class="box"><p>Later that night: a password, behind a button and a popup</p><div class="steps"><div class="s bad">Press "Sign In with GitHub"</div><span class="arrow">→</span><div class="s bad">A popup opens</div><span class="arrow">→</span><div class="s bad">Type the password</div></div></div>
+<div class="box"><p>Now, from 28 July 2026</p><div class="steps"><div class="s good">Type the password on the page. The editor opens signed in and stays signed in on that browser.</div></div></div>
+<div class="row" style="gap:18px"><div class="card" style="flex:1"><h2>Why the button existed</h2><p>A browser will not open a popup without a click. Moving the password form into the page removed the need for both.</p></div><div class="card" style="flex:1"><h2>What guards it</h2><p>The password is checked on the server, slowly on purpose, with a one-second wait after every wrong try. The GitHub key it unlocks can only change this one repository.</p></div></div>
+</div>

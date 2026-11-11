@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x780">
+<style>.step{flex:1;display:flex;flex-direction:column;gap:10px}.card{flex:1}.card h2{font-size:25px}.card p{font-size:20px;margin-top:8px}.ex{margin-top:12px;padding:10px 14px;border-radius:10px;background:var(--wash);font-size:19px;line-height:1.4}.ex code{font-family:inherit;font-weight:600;color:var(--accent)}.out{display:flex;gap:22px;margin-top:24px}.out .card{flex:1}.ok{border-color:var(--good);background:var(--good-wash)}.no{border-color:var(--warn);background:var(--warn-wash)}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">Collision, inside the host</p><h1>Every answer is matched to a known answer before it can count</h1>
+<div class="grow">
+<div class="row" style="gap:14px;align-items:stretch">
+<div class="step"><div class="card"><span class="num">1</span><h2 style="margin-top:12px">Clean it up</h2><p>Lower case, drop punctuation, squeeze spaces.</p><p class="ex"><code>" New  York! "</code> becomes <code>new york</code></p></div></div>
+<span class="arrow">→</span>
+<div class="step"><div class="card"><span class="num">2</span><h2 style="margin-top:12px">Known nicknames</h2><p>Each question can list other names for an answer.</p><p class="ex"><code>ny</code> counts as <code>new york</code></p></div></div>
+<span class="arrow">→</span>
+<div class="step"><div class="card"><span class="num">3</span><h2 style="margin-top:12px">Exact answer</h2><p>Is it on the question's own list of answers?</p><p class="ex">44 questions, each with its own list</p></div></div>
+<span class="arrow">→</span>
+<div class="step"><div class="card"><span class="num">4</span><h2 style="margin-top:12px">Close spelling</h2><p>Allow a few typing slips, more for longer words. None for words of 3 letters or fewer.</p><p class="ex">up to 1 slip at 4 to 5 letters, 2 at 6 to 9, 3 above</p></div></div>
+</div>
+<div class="out">
+<div class="card ok"><h2>Matched</h2><p>The answer is stored with its matched form. When half the team or more (and at least two people) share a matched form, the team takes a strike.</p></div>
+<div class="card no"><h2>No match</h2><p>Rejected on the spot with a message, so the player can try again before the 30 seconds run out.</p></div>
+</div>
+</div>
+</body>

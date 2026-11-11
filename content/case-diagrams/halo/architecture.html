@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:18px 20px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:5px;line-height:1.4}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:26px;line-height:.7}.arrow{font-size:38px}</style>
+<body style="--accent:#0E7C7B;--wash:#DCEEEA">
+<p class="kicker">How it is put together</p><h1>Two native apps around one shared description of a ring</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm"><p>Mac app · Swift</p>
+<div class="card"><h2>Core logic, no interface</h2><p>Slot maths, the tap-or-hold rules, rings and settings. Tested on its own.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>The ring window</h2><p>Floats over every app and every desktop, and never takes focus.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Actions</h2><p>Keys, media, windows and in-app actions, through Accessibility.</p></div>
+<div class="card"><h2>Settings and editor</h2><p>SwiftUI inside AppKit windows.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Shared</p>
+<div class="card hi"><h2>One settings file</h2><p>Readable JSON in the same shape on both systems. A ring exported on a Mac opens on Windows.</p></div>
+<div class="card hi"><h2>One list of in-app actions</h2><p>369 actions for 30 apps, with sources and keys for both systems. One script writes the list and the Mac code.</p></div>
+<div class="card hi"><h2>One spec</h2><p>Behaviour, sizes, colours and motion timings, written down for both.</p></div>
+<div class="card"><h2>GitHub Releases</h2><p>Both apps check once a day and ask before installing.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Windows app · C#</p>
+<div class="card"><h2>Core logic, no Windows code</h2><p>Every Mac core test ported, plus more. Runs on any system.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>The ring window</h2><p>Keyboard and mouse hooks on their own thread, so a busy screen never slows typing.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Actions</h2><p>Windows' own equivalents. Mac-only kinds show as unavailable.</p></div>
+<div class="card"><h2>Settings and installer</h2><p>WPF with the Fluent theme. Velopack for install and updates.</p></div></div>
+</div>
+<p class="note">No third-party code on the Mac. Two small packages on Windows: Velopack for updates and one for laptop screen brightness.</p>

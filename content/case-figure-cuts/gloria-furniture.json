@@ -1,0 +1,101 @@
+{
+  "pdf": "assets/pdfs/gloria-furniture.pdf",
+  "cuts": [
+    {
+      "name": "page",
+      "page": 1,
+      "box": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 800,
+      "blank": [
+        [
+          0.755,
+          0.9148,
+          0.974,
+          0.9583
+        ]
+      ]
+    },
+    {
+      "name": "hero",
+      "page": 1,
+      "box": [
+        0,
+        0,
+        1,
+        0.2
+      ],
+      "width": 1920
+    },
+    {
+      "name": "categories",
+      "page": 1,
+      "box": [
+        0,
+        0.2019,
+        1,
+        0.3981
+      ],
+      "width": 1500
+    },
+    {
+      "name": "quality",
+      "page": 1,
+      "box": [
+        0,
+        0.4037,
+        1,
+        0.5741
+      ],
+      "width": 1500
+    },
+    {
+      "name": "home-decor",
+      "page": 1,
+      "box": [
+        0,
+        0.6019,
+        1,
+        0.7315
+      ],
+      "width": 1600
+    },
+    {
+      "name": "card",
+      "page": 1,
+      "box": [
+        0.01875,
+        0.6291,
+        0.201,
+        0.727
+      ],
+      "width": 700
+    },
+    {
+      "name": "furniture",
+      "page": 1,
+      "box": [
+        0,
+        0.7352,
+        1,
+        0.8889
+      ],
+      "width": 1600
+    },
+    {
+      "name": "footer",
+      "page": 1,
+      "box": [
+        0,
+        0.8915,
+        0.74,
+        1
+      ],
+      "width": 1400
+    }
+  ]
+}

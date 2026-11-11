@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}</style>
+<body style="--accent:#0E7C7B;--wash:#DCEEEA">
+<p class="kicker">How it is put together</p><h1>One file in the middle, and everything else is compiled from it</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>In the browser</p>
+<div class="card hi"><h2>The design file</h2><p>Colours, type, spacing, shape, motion, component settings and written pages, held in one store.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Token compiler</h2><p>Turns the file into CSS variables, for light and dark.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Canvas</h2><p>90 components that read only those variables, so a change shows without redrawing by hand.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Compiled from the file</p>
+<div class="card"><h2>17 export formats</h2><p>Each one is generated when it is picked. None is edited by hand.</p></div>
+<div class="card"><h2>Published styleguide</h2><p>A frozen copy at its own link. Edits stay private until it is republished.</p></div>
+<div class="card"><h2>Figma plugin</h2><p>Reads the same bundle and builds or updates a Figma file in place. It is released separately from the web app.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>On the server</p>
+<div class="card"><h2>Supabase (Postgres)</h2><p>Accounts, saved files, collaboration and published copies.</p></div>
+<div class="card"><h2>Rules in the database</h2><p>Who can read or edit a file, and each plan's limits, are enforced there and not in the browser.</p></div>
+<div class="card"><h2>Stripe</h2><p>Billing. Optional: with no keys set, every account is on the free plan.</p></div></div>
+</div>
+<p class="note">The tool's own interface and the design system being built use two separate sets of variables that never mix.</p>

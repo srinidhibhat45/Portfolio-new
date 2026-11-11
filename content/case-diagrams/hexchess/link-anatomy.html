@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.stage{display:grid;grid-template-columns:1fr 1fr;gap:40px}.url{font:500 22px/1.5 ui-monospace,Menlo,monospace;padding:20px 24px;border-radius:14px;background:#fff;border:1.5px solid var(--line);word-break:break-all;color:var(--dim)}.url b{color:var(--accent);font-weight:700}pre{font:500 21px/1.5 ui-monospace,Menlo,monospace;padding:22px 26px;border-radius:14px;background:#fff;border:1.5px solid var(--line);color:var(--ink);margin:0}pre i{font-style:normal;color:var(--accent)}.legend{display:grid;gap:14px}.legend .card{padding:16px 20px}.legend .card h2{font-size:23px}.legend .card p{font-size:20px;margin-top:4px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Inside a game link</p><h1>A short record of the game, not a picture of the board</h1>
+<div class="grow col" style="gap:22px">
+<div class="url">https://hexchess.srinidhibhat.com/<b>#game=</b>eyJ2IjoxLCJpZCI6ImM4ZGVkNDhhLWJkZTEtNDZi…</div>
+<div class="stage"><pre>{
+  <i>"v"</i>: 1,
+  <i>"id"</i>: "c8ded48a-…",
+  <i>"sender"</i>: "white",
+  <i>"settings"</i>: { "mode": "correspondence",
+     "minutes": 0, "increment": 0,
+     "whiteName": "White", "blackName": "Black" },
+  <i>"moves"</i>: [ { "from": "f5", "to": "f6" } ],
+  <i>"drawOffer"</i>: null,
+  <i>"result"</i>: null
+}</pre>
+<div class="legend">
+<div class="card"><h2>moves</h2><p>Only the moves, never the board. The receiving app replays them through the rules, so a made-up position cannot be slipped in.</p></div>
+<div class="card"><h2>id and sender</h2><p>Which game this is and who sent it. That is how the app knows an old link, or your own, when it sees one.</p></div>
+<div class="card"><h2>drawOffer and result</h2><p>A draw needs an offer in one link and an acceptance in the reply.</p></div>
+<div class="card"><h2>The size</h2><p>Encoded as base64 text. The app refuses anything over 90,000 characters.</p></div>
+</div></div></div>
+<p class="note">Decoded from a real link after one move, made on a local copy of the app. The domain is shown as it would be on the live site. Some fields are left out.</p>

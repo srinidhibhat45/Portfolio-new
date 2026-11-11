@@ -1,0 +1,55 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1080">
+<style>
+.stage{display:grid;grid-template-columns:auto auto 1fr;gap:56px;align-items:start}
+.shot{position:relative}
+.opt{display:flex;align-items:center;gap:12px;padding:7px 4px}
+.sw{width:42px;height:24px;border-radius:99px;background:var(--brand);position:relative;flex:none}
+.sw::after{content:'';position:absolute;right:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+.dlg{position:absolute;left:22px;right:22px;top:210px;background:var(--surface);border-radius:24px;padding:22px;display:flex;flex-direction:column;gap:12px;z-index:2}
+.cb{flex:none;width:22px;height:22px;border-radius:5px;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:15px;font-weight:800}
+.lab{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.legend>div{font-size:22px}.phone{height:660px}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker"><span class="schem">Schematic, not a screenshot</span>&nbsp; Drawn from the app's code · made-up entries</p>
+<h1>Two places where one correction fixes many entries</h1>
+<div class="grow stage">
+ <div><p class="lab">Change category</p><div class="shot">
+  <div class="phone"><div class="bar"><span>9:12</span><span>●●●</span></div>
+   <div class="scrim"></div>
+   <div class="sheet" style="top:90px;padding-bottom:0">
+    <div class="grab"></div>
+    <p class="h" style="font-size:22px">Pick a category</p><p class="s" style="margin-top:-8px">for Kettle House Cafe</p>
+    <div class="opt"><span class="av" style="background:#EB6834">F</span><div><p class="t">Food &amp; Dining</p><p class="s">Want</p></div></div>
+    <div class="opt"><span class="av" style="background:#008300">G</span><div><p class="t">Groceries</p><p class="s">Need</p></div></div>
+    <div class="opt"><span class="av" style="background:#2A78D6">T</span><div><p class="t">Transport</p><p class="s">Need</p></div></div>
+    <div class="opt"><span class="av" style="background:#E87BA4">S</span><div><p class="t">Shopping</p><p class="s">Want</p></div></div>
+    <div class="opt" style="opacity:.5"><span class="av" style="background:#EDA100">B</span><div><p class="t">Bills &amp; Utilities</p></div></div>
+    <div class="row" style="margin:6px -18px 0;padding:14px 18px 22px;background:var(--alt);border-top:1px solid var(--outline)"><p class="grow1" style="font-size:16px">Remember this for Kettle House Cafe</p><span class="sw"></span></div>
+   </div>
+
+  </div>
+  <span class="num mk" style="left:100%;top:84%">1</span>
+ </div>
+ <div class="toastbox" style="margin-top:16px;background:#2A302D;color:#F4F6F3;border-radius:10px;padding:12px 16px;font:500 16px/1.4 'Jakarta';width:400px">Filed, and everything from Kettle House Cafe will follow</div>
+ </div>
+ <div><p class="lab">Delete</p><div class="shot">
+  <div class="phone"><div class="bar"><span>9:13</span><span>●●●</span></div>
+   <div class="scrim"></div>
+   <div class="dlg">
+    <p class="h" style="font-size:22px">Delete this entry?</p>
+    <p style="font-size:16px">Card Payment · ₹2,999. This cannot be undone.</p>
+    <div class="row" style="align-items:flex-start"><span class="cb">✓</span><div><p class="t" style="font-size:16px">This wasn't a real transaction</p><p class="s">Ignore messages like this in future, and remove 4 other entries from it</p></div></div>
+    <div class="row" style="justify-content:flex-end;gap:26px;margin-top:6px"><span style="color:var(--brand);font-weight:600">Keep</span><span style="color:var(--spend);font-weight:600">Delete</span></div>
+   </div>
+  </div>
+  <span class="num mk" style="left:0;top:53.5%">2</span>
+ </div>
+ <div class="toastbox" style="margin-top:16px;background:#2A302D;color:#F4F6F3;border-radius:10px;padding:12px 16px;font:500 16px/1.4 'Jakarta';width:400px">Removed 5 entries. Messages like this will be ignored.</div>
+ </div>
+ <div class="legend" style="align-self:center">
+  <div><span class="num">1</span><span>The switch is on by default. Picking a category writes a rule for this merchant and refiles every past entry from it. Future ones follow.</span></div>
+  <div><span class="num">2</span><span>Deleting an entry made from a message asks one more question. Ticking it blocks that kind of message and removes the earlier entries it made.</span></div>
+  <div><span class="num">↺</span><span>Both are undoable. Each rule can be removed from Settings, under learned rules.</span></div>
+ </div>
+</div>

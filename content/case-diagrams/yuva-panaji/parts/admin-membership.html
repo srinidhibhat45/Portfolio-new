@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../yuva.css">
+<style>html,body{margin:0;width:1280px;height:860px;overflow:hidden}
+.hdr{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;margin-bottom:12px}.hdr p{font-size:13px;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:6px;flex-wrap:wrap;justify-content:flex-end;max-width:520px}
+.chkline{padding:9px 12px;border:1px solid var(--line);border-radius:8px;background:#fff;font-size:13px;font-weight:600;color:var(--ink2);margin-bottom:10px}.chkline::before{content:'▸ ';color:var(--muted)}
+.ctl{display:flex;justify-content:space-between;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px;font-size:13px}
+.live{display:inline-block;padding:2px 9px;border-radius:999px;background:#dcfce7;color:#166534;font-weight:700;font-size:11.5px}
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:10px}.st{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 12px}.st b{display:block;font-size:22px;line-height:1.1}.st span{font-size:12px;color:var(--muted)}
+.tool{display:flex;gap:10px;align-items:center;padding:10px 12px;border:1px solid var(--line);border-radius:10px;background:#fff;margin-bottom:10px}
+.tool .in{flex:1;height:32px;line-height:30px;font-size:12.5px}
+.sts{display:flex;gap:3px}.sts span{padding:5px 9px;border-radius:6px;font-size:12px;font-weight:600;color:var(--ink2);background:var(--bg2)}.sts span.on{background:var(--p);color:#fff}
+.tbl td,.tbl th{padding:8px 8px;font-size:12px}
+.ph0{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--bg2);color:var(--muted);font-size:10px;font-weight:700}
+</style>
+<body class="ui adm"><div class="admin-frame">
+<div class="ahead"><span class="mn">‹</span><span class="lg">Yuva Admin</span><span class="muted">Welcome, <b style="color:var(--ink)">Administrator</b></span><span class="btn sec sm">Sign out</span></div>
+<div class="shell"><nav class="side">
+<a><i></i>Dashboard</a><a><i></i>Manage Events</a><a class="on"><i></i>Membership Drive</a><a><i></i>Manage Team</a><a><i></i>Accounting Ledger</a><a><i></i>All Participants</a><a><i></i>Certificates</a><a><i></i>Recognitions</a><a><i></i>Reports &amp; Records</a>
+<span class="btn out sm" style="margin-top:auto">‹ Back to Main Site</span></nav>
+<main class="main" style="padding:18px 22px">
+<div class="hdr"><div><h1>Membership applications</h1><p>Review applications, record interviews and export your calling list.</p></div>
+<div class="acts"><span class="btn sec sm">Install admin shortcut</span><span class="btn sec sm">Start next campaign</span><span class="btn out sm">Open Application Page</span><span class="btn sec sm">Refresh Applicants</span></div></div>
+<div class="chkline">Campaign system checks</div>
+<div class="ctl"><div><b>Homepage Status:</b> <span class="live">● ACTIVE (LIVE ON HOMEPAGE)</span><div class="muted" style="font-size:12px;margin-top:2px">Active Batch: <b>2026</b> · Annual Membership Drive</div></div>
+<div style="display:flex;gap:8px;align-items:center"><span style="font-size:12px;font-weight:600;color:var(--ink2)">Batch:</span><span class="in sel" style="height:30px;line-height:28px;width:130px;font-size:12.5px">Current (2026)</span><span class="btn out sm">Edit Banner</span><span class="btn sm" style="background:var(--danger)">Close / Disable Drive</span></div></div>
+<div class="stats"><div class="st"><b>6</b><span>Total Applicants (2026)</span></div><div class="st"><b style="color:#d97706">3</b><span>Pending Review</span></div><div class="st"><b style="color:#0284c7">1</b><span>Interview Scheduled</span></div><div class="st"><b style="color:#16a34a">1</b><span>Accepted</span></div><div class="st"><b style="color:#dc2626">1</b><span>Declined</span></div></div>
+<div class="tool"><div class="in ph">Search by candidate name, email, phone, occupation or village/city…</div><div class="sts"><span class="on">All (6)</span><span>Pending (3)</span><span>Called (1)</span><span>Accepted (1)</span><span>Declined (1)</span></div><span class="btn sec sm">Copy Phones</span><span class="btn sec sm">Copy Emails</span></div>
+<div class="card" style="padding:0;overflow:hidden"><table class="tbl"><thead><tr><th>#</th><th>Batch</th><th>Applicant Name</th><th>Photo</th><th>Contact</th><th>Age &amp; Status</th><th>Location</th><th>Applied On</th><th>Status</th><th>Action</th></tr></thead><tbody>
+<tr><td class="muted">1</td><td><span class="badge">2026</span></td><td><b>Volunteer A</b></td><td><span class="ph0">A</span></td><td>98xxx xxx11</td><td><b>19 yrs</b> <span class="muted">Student</span></td><td>Sample village</td><td class="muted">29/10/2026</td><td><span class="badge warn">Pending</span></td><td><span class="btn out sm">View &amp; Call</span></td></tr>
+<tr><td class="muted">2</td><td><span class="badge">2026</span></td><td><b>Volunteer B</b></td><td><span class="ph0">B</span></td><td>98xxx xxx12</td><td><b>23 yrs</b> <span class="muted">Working Professional</span></td><td>Sample town</td><td class="muted">29/10/2026</td><td><span class="badge info">Called / Interview</span></td><td><span class="btn out sm">View &amp; Call</span></td></tr>
+<tr><td class="muted">3</td><td><span class="badge">2026</span></td><td><b>Volunteer C</b></td><td><span class="ph0">C</span></td><td>98xxx xxx13</td><td><b>21 yrs</b> <span class="muted">Student</span></td><td>Sample village</td><td class="muted">30/10/2026</td><td><span class="badge ok">Accepted</span></td><td><span class="btn out sm">View &amp; Call</span></td></tr>
+</tbody></table></div>
+</main></div></div>
+</body></html>

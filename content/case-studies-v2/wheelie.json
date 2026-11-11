@@ -1,0 +1,609 @@
+{
+ "title": "Three riders start in three towns. The app works out [[where they meet]].",
+ "hook": "Wheelie is a free Android and web app I designed and built on my own for motorcyclists who ride in groups. It finds a meeting point on the way, keeps the group talking, and turns each ride into a card to share.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "For",
+   "value": "Motorcyclists who ride in groups"
+  },
+  {
+   "label": "Timeline",
+   "value": "July 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Android and web, from one Flutter codebase"
+  },
+  {
+   "label": "Stack",
+   "value": "Flutter, Riverpod, flutter_map with OpenStreetMap, Valhalla, Photon, Supabase, WebRTC"
+  },
+  {
+   "label": "Status",
+   "value": "Beta. Accessibility and glove polish in progress. Not yet tested with riders"
+  }
+ ],
+ "links": [
+  {
+   "label": "See the code on GitHub",
+   "url": "https://github.com/srinidhibhat45/wheelie"
+  }
+ ],
+ "linksHeading": "See the code",
+ "summary": [
+  "The problem: a group ride starts before anyone is on the same road. Riders leave from different places, need a fair spot to meet, and then need to stay in touch with gloves on.",
+  "What I built: a map that works out a meeting point from every rider's own route, group voice through each rider's helmet headset, and a shareable card for every finished ride.",
+  "The key idea: first look for a road everyone already takes. Only if there is none, compromise, and never by more than 15% extra riding for anyone.",
+  "Where it stands: a beta. All three parts are built and run end to end on the app's stand-in backend. It has not been tested with riders, gloves or real roads, and I have no usage numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/wheelie/lead.webp",
+  "alt": "Four phone schematics and a ride card: a route preview, turn-by-turn riding with other riders on the map, the meeting point reached card, the voice tab, and a ride summary card",
+  "caption": "Four moments of a group ride and the card it leaves behind. These are schematics I drew from the app's layout code at its own sizes, not screenshots. Values and rider names are placeholders.",
+  "width": 2400,
+  "height": 1080
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A group ride starts before anyone is on the same road",
+   "blocks": [
+    {
+     "p": "Riding in a group has three parts. First the group has to meet, and the riders often start in different places. Then they ride and need to stay in touch. Afterwards, they want something to show for it."
+    },
+    {
+     "p": "The person using the app is wearing gloves. They glance at the screen for a second at a time, and the phone sits on a handlebar mount that shakes. I designed for that first and for a desk second."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/problem.webp",
+       "alt": "Schematic map of Goa: three riders start in Madgaon, Ponda and Old Goa and head for Mapusa. Their routes merge at the Mandovi crossing",
+       "caption": "The problem in one picture, using the app's own demo scenario. Look at the gold dot: every rider's fastest route already passes it, so meeting there costs nobody anything.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "I set two rules before writing any code. Every service had to be free, with no billing keys. And every screen had to work with gloves on."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I have no interviews with riders and no tests on a bike. The needs on this page come from a brief I set myself, not from research."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Three moments, three tabs, and the map never closes",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/moments.webp",
+       "alt": "Diagram of three columns, before, during and after a ride, mapped to the Map tab, the Map and Voice tabs, and the Rides tab",
+       "caption": "The three moments of a ride and where each one lives in the app. The top card in each column is the main job of that moment.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The map is the home screen. Groups, the meeting point and the other riders all sit on top of it. Voice and Rides are separate tabs, but switching to them does not close the map or cut the audio."
+    },
+    {
+     "p": "Here is one ride with a meeting point, from the preview to the stop."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/phone-preview.webp",
+       "alt": "Phone schematic of the route preview: 38 min travel time, the destination, a line saying it meets your group on the way, and a Start ride button",
+       "caption": "The preview puts travel time first, because that is the decision. The second line says the route goes to the meeting point.",
+       "width": 470,
+       "height": 930,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/wheelie/phone-nav.webp",
+       "alt": "Phone schematic while riding: a blue next-turn banner, the route to a purple meeting point marker, two other riders and a bar with arrival time, distance, speed and End",
+       "caption": "Riding. The solid line goes to the meeting point. The dotted line shows the second leg to the destination.",
+       "width": 470,
+       "height": 930,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/wheelie/phone-meet.webp",
+       "alt": "Phone schematic at the meeting point: a card says meeting point reached, 2 of 3 riders here, with Continue and End ride buttons",
+       "caption": "At the meeting point the ride stops and counts who has arrived. It waits for a tap to go on.",
+       "width": 470,
+       "height": 930,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "aside": {
+      "title": "Why these are drawings.",
+      "detail": "I have no screenshots of these states yet. The schematics follow the layout code, sizes and wording, but they are not captures of the running app."
+     }
+    }
+   ]
+  },
+  {
+   "id": "meet",
+   "label": "Decision 1",
+   "nav": "Where to meet",
+   "heading": "Meet where the roads already merge, or not at all",
+   "blocks": [
+    {
+     "p": "What you see: in a group, you search for a destination. The app shares it with everyone and, if it finds one, routes you to a meeting point first. The preview says \"Meets your group on the way\"."
+    },
+    {
+     "p": "In the build: the app does not average everyone's positions. It routes every rider to the destination and looks for where those routes join, so riding to the meeting point adds no distance for anyone."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/meeting-logic.webp",
+       "alt": "Five numbered steps: route every rider, look for where the routes merge, keep it only if it is far enough from the destination, otherwise try where routes pass closest with a 15% detour cap, otherwise no meeting point",
+       "caption": "How the point is chosen. The rules on the right are the actual numbers in the code. Step 5 matters most: no meeting point beats a forced detour.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "I checked it against a fixed scenario: riders in Madgaon, Old Goa and Ponda, heading for Mapusa. Against the live public router, every route merged at the Mandovi crossing, with 0.0% added to anyone's ride."
+    },
+    {
+     "p": "The tests passed. Running the same scenario as a live demo inside the app still found three bugs."
+    },
+    {
+     "table": {
+      "head": [
+       "Bug",
+       "What went wrong",
+       "What I changed"
+      ],
+      "rows": [
+       [
+        "Old position",
+        "The point was worked out from my own position as last sent to the group. That is sent at most every 2 seconds, and a parked phone sends nothing.",
+        "It now uses the live location."
+       ],
+       [
+        "Too close",
+        "\"Worth stopping for\" was a fixed 300 m. On a 44 km ride it accepted a point that was really the destination.",
+        "Now 5% of the longest route, with 500 m as the floor, and the rule covers fallback points too."
+       ],
+       [
+        "Drifting",
+        "Where two routes share a long stretch, the closest point drifted to a random spot along it, often the destination.",
+        "A 5 m tolerance keeps the earliest place the roads meet."
+       ]
+      ]
+     }
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A merge point is a spot on a road, not a checked place to stop. The app does not look for a lay-by or a fuel station, so riders still need to judge it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "wait",
+   "label": "Decision 2",
+   "nav": "Wait for the group",
+   "heading": "The ride waits at the meeting point until someone taps",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/ride-states.webp",
+       "alt": "Flow of a ride: idle, preview, riding leg 1, at the meeting point, riding leg 2, arrived, saved. Below, three side cases: off the route, no meeting point, ended early",
+       "caption": "One ride as the app sees it. The highlighted step is the one I added for groups.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "What you see: when you reach the meeting point, a card says how many riders are there, such as \"2 of 3 riders here\". The route on to the destination starts only when you tap Continue."
+    },
+    {
+     "p": "In the build: arriving at the meeting point is its own state, not the end of the ride. Continue fetches a fresh route from where you are standing. The ride recording carries on through the stop, so the card covers the whole trip. A test checks that."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Carrying on by itself. It saves a tap, but it would send the first rider off alone while the group is still gathering."
+     }
+    }
+   ]
+  },
+  {
+   "id": "gloves",
+   "label": "Decision 3",
+   "nav": "Built for gloves",
+   "heading": "Glove sizes were rules before they were screens",
+   "blocks": [
+    {
+     "p": "What you see: large buttons everywhere, and no gesture that needs two fingers or a precise drag. Zoom is two buttons instead of a pinch."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/glove-sizes.webp",
+       "alt": "Squares drawn to scale from 24px to a 128px circle, with what each size is used for, and four rule cards: 8px apart, tap or a straight drag, never colour alone, feel every tap",
+       "caption": "The sizes side by side. The dashed 24px square is the WCAG minimum. Wheelie's smallest target is twice that.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "p": "In the build: the sizes live in one small set of constants, and the app theme gives every standard button those minimums. A new screen gets them without anyone remembering."
+    },
+    {
+     "p": "Two shared buttons do the rest. Each one gives a vibration on tap. The icon button cannot be created without a spoken name, so no button is a bare icon to a screen reader. Tests check the heights and the labels."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/annotated-signin.webp",
+       "alt": "The real Android sign-in screen with five numbered notes on the title, the fields, the show password button, the Sign in button and the create account button",
+       "caption": "The one screen I have a real capture of, from the Android release build. Note 4: the main action is the biggest target on the screen.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/annotated-map.webp",
+       "alt": "Map screen schematic with seven numbered notes on the search pill, settings, other riders, the group button, zoom buttons, follow button and map credit",
+       "caption": "The map at rest. Look at note 3: other riders are told apart by name and arrow as well as colour.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Big targets take space. A column of four 64px buttons uses the right edge of the map, and the turn banner covers the top while you ride."
+     }
+    }
+   ]
+  },
+  {
+   "id": "groups",
+   "label": "Decision 4",
+   "nav": "Sharing positions",
+   "heading": "Riders see each other live, and nothing is kept",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/phone-idle.webp",
+       "alt": "Phone schematic of the map with two other riders shown as coloured arrows with name labels, and the group button showing a count of 3",
+       "caption": "The group on the map. Each rider has a colour, an arrow for their heading and a name.",
+       "width": 470,
+       "height": 930,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/wheelie/phone-group.webp",
+       "alt": "Phone schematic of the group sheet: a large invite code with copy code and copy link buttons, the destination, three riders with online or offline, and a Leave group button",
+       "caption": "The group sheet. The code is set in large, spaced letters. Online and offline are words, not just a dot.",
+       "width": 470,
+       "height": 930,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "What you see: create a group and share a 6-letter code or a link. Everyone in it appears on the map with their name."
+    },
+    {
+     "p": "In the build: positions travel as live presence messages and are never written to the database, so no location history is stored. Only members can read a group. Joining goes through one database function that checks the code and adds you in one step, so a stranger cannot list codes and watch a ride."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The live channel is named after the group's id and is public by default. The id is hard to guess and you only learn it by joining, but a stricter channel setting would close the gap. I have not turned it on yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "routing",
+   "label": "Decision 5",
+   "nav": "Motorcycle routing",
+   "heading": "A route for a car can break the rules for a motorcycle",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/routing-ban.webp",
+       "alt": "Illustration of Bandra and Worli: the car route crosses the Sea Link over the water, the motorcycle route goes around on land, with four cards on what was wrong, what I ruled out, what I changed and the limit",
+       "caption": "The case that changed the router. The red line is legal for a car and banned for a motorcycle.",
+       "width": 1600,
+       "height": 990
+      }
+     ]
+    },
+    {
+     "p": "What you see: nothing new on screen. The turn-by-turn guidance looks the same, which was the point."
+    },
+    {
+     "p": "In the build: the first router had no motorcycle profile, so I added a second free router that has a motorcycle setting. I translated its turn instructions into the words the screens already used, and kept the first router as a fallback. Tests check the translation."
+    }
+   ]
+  },
+  {
+   "id": "voice",
+   "label": "Voice",
+   "nav": "Group voice",
+   "heading": "Group voice goes phone to phone, through each rider's own headset",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/annotated-voice.webp",
+       "alt": "Voice tab schematic with six numbered notes on the mode label, the two mode buttons, the hold to talk button, deafen, the riders list with mute buttons and Leave voice",
+       "caption": "The voice tab. Note 3 is why open mic exists: holding is the only gesture here, and design rules say nothing may depend on a hold alone.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "The voice room is the ride group. There is nothing separate to join or pair. If you leave the group, you leave voice too."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/voice-mesh.webp",
+       "alt": "Diagram of four phones each linked to the other three, with cards on how audio, connection setup, relays and headsets work",
+       "caption": "With no server in the middle, each phone sends audio to every other phone. That is why it is planned for groups of up to 6.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "Not tested yet.",
+      "detail": "The voice logic and screen are covered by tests against a stand-in. Live audio between two real devices has not been tried, and I have no figures for delay or data use."
+     }
+    }
+   ]
+  },
+  {
+   "id": "cards",
+   "label": "Ride cards",
+   "nav": "Ride cards",
+   "heading": "A card for every ride, and the bug it made obvious",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/phone-card.webp",
+       "alt": "Schematic of a ride card: the Wheelie name, the destination and date, the route drawn as a line, and four numbers for distance, time, average speed and top speed",
+       "caption": "The share card at its fixed size of 360 by 480. The route is drawn from the ride's own points, so it needs no map and works offline. Values are placeholders.",
+       "width": 440,
+       "height": 580,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "Every finished ride is saved on the phone and shown on the Rides tab. A ride ended before arriving is not kept. Share turns the card into an image and opens the phone's share sheet."
+    },
+    {
+     "p": "For saving rides I ruled out a full on-device database. Simple key-value storage had already worked on the web version of this app, and a list of rides did not need more."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/top-speed.webp",
+       "alt": "Bar chart: top speed before the fix 4,475 km/h, after the fix 103.3 km/h, with cards on the cause and the new rule",
+       "caption": "One jump between two location fixes made the top speed absurd. Both numbers are from simulated rides.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "An open question.",
+      "detail": "Putting top speed on a share card could reward riding fast. I kept it for this beta, but it deserves a second look before wider use."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Free services, each behind a part I can swap",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/architecture.webp",
+       "alt": "Diagram in four columns: the Flutter app on the phone, free public map, search and routing services, Supabase for sign-in, groups, live positions and voice setup, and WebRTC between riders",
+       "caption": "What runs where. The two highlighted cards are the ones that carry the design: one app on the phone, and live positions that are never stored.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Flutter, for Android and the web"
+       ],
+       [
+        "State",
+        "Riverpod"
+       ],
+       [
+        "Map",
+        "flutter_map with OpenStreetMap tiles"
+       ],
+       [
+        "Search and routing",
+        "Photon, and Valhalla with OSRM as fallback"
+       ],
+       [
+        "Accounts, groups and live positions",
+        "Supabase free tier"
+       ],
+       [
+        "Voice",
+        "WebRTC between phones"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Without backend keys, the app swaps in a pretend group with moving riders, pretend voice and simulated GPS. That let me build and demo every feature at a desk. A built-in Goa scenario sets up three riders in their real towns and fast-forwards the ride."
+    },
+    {
+     "stats": [
+      {
+       "value": "18",
+       "label": "commits over four days, 16 to 19 July 2026"
+      },
+      {
+       "value": "About 7,300",
+       "label": "lines of app code"
+      },
+      {
+       "value": "60",
+       "label": "tests passing at the last run I recorded"
+      },
+      {
+       "value": "15",
+       "label": "test files, plus one manual check against the live router"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/wheelie/timeline.webp",
+       "alt": "Timeline of four days with commit counts: 16 July 6, 17 July 8, 18 July 2, 19 July 2, and what was built each day",
+       "caption": "The build by day. Most of the product went in on 17 July. The last two days redesigned the navigation screens and fixed what the demo and a live route check showed.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "The rules are written down, and the audit is still to do",
+   "blocks": [
+    {
+     "p": "The target is WCAG 2.2 level AA, the common standard for accessible apps. The design rules name the parts that matter most on a bike: target size, a tap-only way to do anything that needs a drag, and consistent help."
+    },
+    {
+     "list": [
+      "Targets of 64px for main actions and never under 48px, checked by tests.",
+      "State is never shown by colour alone. Online, offline, speaking and errors have an icon or words.",
+      "Every icon button has a spoken name.",
+      "Body text at 16px or more, and big numbers for distance and speed.",
+      "A tap-only way to do anything that otherwise needs a hold or a drag."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "This is a beta, and the accessibility and glove pass is still in progress. The target sizes are a design intent. They are not proof that the app is safe to use on the road, or that it meets WCAG. There has been no glove, sunlight or screen-reader testing yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "A working beta that has not been on a ride yet",
+   "blocks": [
+    {
+     "p": "There is an Android release build with email sign-in, and the web version can run in demo mode with the stand-in backend. Both are betas."
+    },
+    {
+     "p": "These are not done yet:"
+    },
+    {
+     "list": [
+      "No ride with real riders, and no trial with gloves or in sunlight.",
+      "Live voice between two real phones has not been tested.",
+      "No installs or usage numbers to report.",
+      "No screenshots of the main screens. The ones on this page are drawings."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Test standing still before testing on the move",
+   "blocks": [
+    {
+     "list": [
+      "Finish the accessibility and glove pass, including a screen-reader check.",
+      "Test with riders while stopped first: forming a group, checking a meeting point and using the headset controls. Anything used while moving needs a controlled setting after that.",
+      "Check what happens with poor signal, a location permission turned off, voice unavailable, and battery use.",
+      "Show clearly when a rider's position is old, so nobody trusts a stale dot."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Run the real scenario, not only the tests",
+   "blocks": [
+    {
+     "p": "The meeting point passed its tests and still had three bugs. I found them only by running a real place, with real towns, inside the app. The share card did the same for top speed: a number nobody looked at in a test was impossible to miss on a card."
+    },
+    {
+     "p": "The free-only rule also shaped the product more than I expected. It decided the router, the voice design and where positions live. When a free tool was wrong for motorcycles, I had to find another free one rather than pay my way out."
+    }
+   ]
+  }
+ ]
+}

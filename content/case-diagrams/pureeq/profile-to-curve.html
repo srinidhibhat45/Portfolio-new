@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1120">
+<style>.colm{display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:16px 20px}.card h2{font-size:22px}.card p{font-size:18px;line-height:1.38;margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.chain .card{display:grid;grid-template-columns:36px 1fr;gap:4px 14px;align-items:start}.chain .num{width:34px;height:34px;font-size:17px;grid-row:span 2}.arrow{font-size:38px}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">From a profile to a curve</p><h1>The profile keeps answers. The curve is worked out fresh every time.</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm" style="flex:.9"><p>What a profile stores</p>
+<div class="card hi"><h2>Listening check</h2><p>Every answer, not only the result.</p></div>
+<div class="card hi"><h2>Taste test</h2><p>The bass and treble it settled on.</p></div>
+<div class="card hi"><h2>Headphones</h2><p>In-ear or over-ear, and the model if you picked one.</p></div>
+<div class="card hi"><h2>Your changes</h2><p>Fine-tune sliders, Ear tuning strength, balance, mode.</p></div>
+<div class="card hi"><h2>Volume</h2><p>The level you tuned at.</p></div>
+</div>
+<span class="arrow">→</span>
+<div class="colm chain" style="flex:1.55"><p>Worked out from it, for each ear</p>
+<div class="card"><span class="num">1</span><h2>Headphone correction</h2><p>The model's lab measurement brought to the Harman target, a curve most listeners prefer. Boosts at most +6 dB, half strength in the high treble.</p></div>
+<div class="card"><span class="num">2</span><h2>Ear tuning</h2><p>The smooth trend of the check, with 500 Hz to 1.5 kHz as the zero line. Small gaps get the chosen strength, large ones less. Both ears share broad filters; a real left/right difference is added on top.</p></div>
+<div class="card"><span class="num">3</span><h2>Taste</h2><p>A bass shelf at 105 Hz and a broad treble shelf from 2.5 kHz, set by the taste test.</p></div>
+<div class="card"><span class="num">4</span><h2>Mode and volume</h2><p>The mode's own filters. On the phone-wide EQ, bass is added back as you turn down below the tuned volume.</p></div>
+<div class="card"><span class="num">5</span><h2>Bass guard and preamp</h2><p>Limits on deep bass, then an overall level set for real music, so the EQ does not clip.</p></div>
+</div>
+<span class="arrow">→</span>
+<div class="colm" style="flex:.95"><p>Where it goes</p>
+<div class="card"><h2>All audio on the phone</h2><p>Android's own equaliser effect, a separate curve per ear in 107 bands.</p></div>
+<div class="card"><h2>Exports</h2><p>Files and settings for other equaliser apps, on the phone or a computer.</p></div>
+<div class="card"><h2>Previews</h2><p>EQ on and off in the app, matched in loudness.</p></div>
+</div>
+</div>
+<p class="note">Because only answers and choices are stored, a better fitting rule can refit every saved profile. Version 1.5 did exactly that, with no new test.</p>

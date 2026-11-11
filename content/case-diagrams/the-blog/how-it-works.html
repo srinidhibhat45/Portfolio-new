@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x760">
+<style>.lane{display:flex;align-items:stretch;gap:12px}.lane .card{flex:1;padding:18px 18px}.lane .card h2{font-size:22px}.lane .card p{font-size:18px;margin-top:6px}.lab{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:0 0 12px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:28px}.mid{display:flex;justify-content:flex-end;padding-right:150px;color:var(--accent);font-size:30px;height:44px;align-items:center}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">How it works</p><h1>Writing goes in through the browser. Readers get plain pages.</h1>
+<div class="grow" style="display:flex;flex-direction:column;gap:6px">
+<p class="lab">When I write</p>
+<div class="lane">
+<div class="card"><h2>Any browser</h2><p>Phone or laptop. Open the editor and type one password.</p></div><span class="arrow">→</span>
+<div class="card"><h2>Sign-in function</h2><p>Checks the password on Netlify and hands back a GitHub key stored there.</p></div><span class="arrow">→</span>
+<div class="card hi"><h2>The editor</h2><p>Sveltia CMS. A form for each post, with Draft on or off.</p></div><span class="arrow">→</span>
+<div class="card"><h2>Save</h2><p>Each save is a commit to the private repository.</p></div></div>
+<div class="mid">↓</div>
+<p class="lab">What happens next</p>
+<div class="lane">
+<div class="card"><h2>Netlify build</h2><p>Astro turns the posts into static pages.</p></div><span class="arrow">→</span>
+<div class="card"><h2>Search index</h2><p>Pagefind reads the built pages and writes a search index.</p></div><span class="arrow">→</span>
+<div class="card hi"><h2>Live site</h2><p>The post is up in a minute or two. Drafts are left out.</p></div><span class="arrow">→</span>
+<div class="card"><h2>Reader</h2><p>Static pages. Search runs in the browser. Comments load only when reached.</p></div></div>
+</div>
+<p class="note">There is no server or database behind the editor. The repository is the only store.</p>

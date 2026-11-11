@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:18px 40px;position:relative}.st{position:relative}.st .card{height:100%}.st h2{display:flex;gap:12px;align-items:center;font-size:24px}.st p{font-size:20px;margin-top:8px}.st:not(.end)::after{content:'→';position:absolute;right:-33px;top:42%;color:var(--accent);font-size:30px}.hi{border-color:var(--accent)!important;background:var(--wash)!important}.warn{margin-top:22px;border:1.5px solid var(--warn);background:var(--warn-wash);border-radius:14px;padding:18px 24px;font-size:21px;line-height:1.45}.warn b{color:var(--warn)}.turn{grid-column:1/-1;text-align:right;color:var(--accent);font-size:20px;margin:-6px 12px -6px 0}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">How it works</p><h1>From four answers to a picture you can keep</h1>
+<div class="grow"><div class="flow">
+<div class="st"><div class="card hi"><h2><span class="num">1</span>Four answers</h2><p>Name, birth date, birth time and birth place. Time is optional and starts at midnight.</p></div></div>
+<div class="st"><div class="card"><h2><span class="num">2</span>Find the place</h2><p>OpenStreetMap's place search turns the typed place into a latitude and a longitude.</p></div></div>
+<div class="st"><div class="card"><h2><span class="num">3</span>Find the moment</h2><p>Local time becomes world time (UTC). The offset is guessed from longitude: one hour per 15°.</p></div></div>
+<div class="st end"><div class="card"><h2><span class="num">4</span>Set the sky clock</h2><p>That moment becomes a day count and a "star time" for the spot on Earth (Julian date and sidereal time).</p></div></div>
+<p class="turn">↓ then</p>
+<div class="st"><div class="card"><h2><span class="num">5</span>Place every object</h2><p>416 stars, 21 nebulae, galaxies and clusters, the Milky Way, the Sun, the Moon and 5 planets get a height and a direction.</p></div></div>
+<div class="st"><div class="card"><h2><span class="num">6</span>Flatten the dome</h2><p>A stereographic projection lays the curved sky flat, the way a map flattens the globe.</p></div></div>
+<div class="st"><div class="card"><h2><span class="num">7</span>Paint in layers</h2><p>Up to 11 layers on one canvas, chosen by the mode and four switches.</p></div></div>
+<div class="st end"><div class="card hi"><h2><span class="num">8</span>Keep it</h2><p>The same painter runs again at 2160×3840 or 3840×2160 and saves a PNG.</p></div></div>
+</div>
+<div class="warn"><b>Also on every reveal, in the current version:</b> the name, birth date, birth time, place, latitude and longitude are sent to a Google Sheet. The page does not say so today.</div></div>
+<p class="note">Steps 3 to 8 run in the browser in plain JavaScript, with no libraries.</p>

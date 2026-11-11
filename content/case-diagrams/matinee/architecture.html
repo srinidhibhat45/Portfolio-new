@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x940">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.opt{border-style:dashed}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">How it is put together</p><h1>Everything lives on the phone first</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>Screens</p>
+<div class="card"><h2>Four tabs and a title page</h2><p>File-based routes with Expo Router. The same code runs on Android and the web.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Material 3 parts</h2><p>Buttons, chips, fields, sheets and navigation, all reading one set of colour, type and spacing tokens.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>On the phone</p>
+<div class="card hi"><h2>Library in SQLite</h2><p>Logs, ratings, bookmarks, diary, collections and episode progress. Backups and restores run from here.</p></div>
+<div class="card"><h2>Recommendation engine</h2><p>Runs on the phone and keeps each feed until the library changes.</p></div>
+<div class="card"><h2>Reminders and keys</h2><p>Local notifications for releases. API keys kept in the phone's secure storage.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Outside the phone</p>
+<div class="card"><h2>TMDB</h2><p>The film and series database. Each person adds their own key.</p></div>
+<div class="card opt"><h2>Firebase, optional</h2><p>Email sign-in and a cloud copy of the library, for a second device.</p></div>
+<div class="card opt"><h2>Gemini, optional</h2><p>Re-ranks the feed and powers mood picks, only with a key.</p></div>
+<div class="card"><h2>EAS Build and Update</h2><p>Builds the Android app and sends small updates to installed copies.</p></div></div>
+</div>
+<p class="note">Dashed boxes are optional. With neither, the app still works fully on one device.</p>

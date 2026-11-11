@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.card{padding:15px 18px}.card h2{font-size:22px}.card p{font-size:18.5px;margin-top:4px}
+.hi{border-color:var(--accent);background:var(--wash)}
+.v{text-align:center;color:var(--accent);font-size:26px;line-height:.7}
+.states{display:grid;grid-template-columns:1fr;gap:8px}
+.s{display:flex;align-items:center;gap:12px;padding:10px 14px;border-radius:12px;border:1.5px solid var(--line);background:#fff;font-size:20px;font-weight:600}
+.s i{width:14px;height:14px;border-radius:50%;flex:none}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">The membership workflow</p><h1>From a phone form to a phone call, with nothing lost on the way</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>Applicant, on a phone</p>
+<div class="card"><h2>Fills in the form</h2><p>Details, date of birth, areas of interest, an optional photo.</p></div><p class="v">↓</p>
+<div class="card"><h2>A draft is kept</h2><p>The answers stay in that browser tab for up to 24 hours if the signal drops.</p></div><p class="v">↓</p>
+<div class="card"><h2>Submits once</h2><p>Repeat taps are blocked. A retry with unchanged answers carries the same key, so it cannot make a second copy.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Server</p>
+<div class="card hi"><h2>Checks the drive</h2><p>Is it open, and for which year's batch? Checked again at the moment of saving, so a stale page cannot post to a closed drive.</p></div><p class="v">↓</p>
+<div class="card"><h2>Checks the answers</h2><p>Size limits, a real past date of birth, only offered areas, Instagram and Facebook links only.</p></div><p class="v">↓</p>
+<div class="card"><h2>Gives a receipt</h2><p style="font-size:24px;font-weight:700;color:var(--accent)">YUVA-M57</p><p>If the reply is lost, the retry gets the same receipt back.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Committee</p>
+<div class="states">
+<div class="s"><i style="background:#d97706"></i>Pending review</div>
+<div class="s"><i style="background:#0284c7"></i>Called / interview</div>
+<div class="split"><div class="s"><i style="background:#16a34a"></i>Accepted</div><div class="s"><i style="background:#dc2626"></i>Declined</div></div></div>
+<div class="card" style="margin-top:6px"><h2>Interview notes</h2><p>Typed in after each call. If two people edit the same notes, the later save is stopped and the person is asked to copy their notes and refresh.</p></div>
+<div class="card"><h2>Batches and exports</h2><p>One batch per year. Excel export by date range in India time, and one tap to copy all phone numbers for the calling list.</p></div></div>
+</div>
+<p class="note">Receipt and names are samples. Status names are the ones on the admin screen.</p>

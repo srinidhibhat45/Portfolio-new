@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1000">
+<style>.stage{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}.holder{position:relative;width:780px}.big{border-radius:18px;overflow:hidden;border:1.5px solid var(--line);background:#F6F4F8}.big .acts{padding:22px 40px 18px;font-size:18px}.big .acts i{width:64px;height:64px}.big .acts .del i{width:56px;height:56px}.big .strip{padding:20px 0 22px}.row2{display:flex;gap:22px;padding:0 24px;overflow:hidden}.row2 .it{flex:none;width:620px}.big .strip .item{font-size:21px}.big .strip .item b{font-size:27px;margin-top:4px}.big .strip .item span.u{font-size:25px;padding-right:8px}.big .strip .line{margin-top:18px;height:5px}.big .strip .line i{height:5px}.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #fff}.legend{display:grid;gap:22px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:start;font-size:23px;line-height:1.4}.top{height:150px;background:repeating-linear-gradient(135deg,#D9D6E0 0 12px,#E4E1EA 12px 24px);margin:16px 16px 0;border-radius:14px 14px 0 0;display:grid;place-items:center;color:#6B6A75;font-weight:600;font-size:18px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Drawn from the code</p><h1>The Undo strip, with two actions waiting</h1>
+<div class="grow stage">
+<div class="holder"><div class="big">
+<div class="top">bottom of the file card</div>
+<div class="acts"><div><i></i>Keep</div><div class="del"><i></i>Delete forever</div><div class="bin"><i></i>Bin</div></div>
+<div class="strip"><div class="row2">
+<div class="it"><div class="item"><span>Delete forever in 4s<b>example-video.mp4</b></span><span class="u">Undo</span></div><div class="line"><i style="width:72%"></i></div></div>
+<div class="it"><div class="item"><span>Move to bin in 2s<b>example-archive.zip</b></span><span class="u">Undo</span></div><div class="line"><i style="width:38%"></i></div></div>
+</div></div></div>
+<span class="num dot" style="left:0;top:69.5%">1</span><span class="num dot" style="left:0;top:80%">2</span><span class="num dot" style="left:0;top:92.5%">4</span><span class="num dot" style="left:77%;top:100%">3</span><span class="num dot" style="left:100%;top:80%">5</span>
+</div>
+<div class="legend">
+<div><span class="num">1</span><span>Each item says what will happen and when: "Move to bin in 2s" or "Delete forever in 4s".</span></div>
+<div><span class="num">2</span><span>The file's name, so you undo the right one.</span></div>
+<div><span class="num">3</span><span>Every action has its own Undo. Undoing one leaves the others alone.</span></div>
+<div><span class="num">4</span><span>A thin line drains over five seconds. At zero the item reads "Finishing…" and Undo turns off.</span></div>
+<div><span class="num">5</span><span>The newest action comes first. Older ones scroll sideways, so a run of quick swipes never pushes the preview up.</span></div>
+</div></div>
+<p class="note"><span class="schem">Schematic</span>&nbsp; Labels and layout from the app's code. The file names are examples. There is no screenshot of this strip yet.</p>

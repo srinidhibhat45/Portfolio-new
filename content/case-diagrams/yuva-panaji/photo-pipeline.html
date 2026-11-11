@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.stp{flex:1;display:flex;flex-direction:column;gap:10px}.stp .card{flex:1}.card h2{font-size:23px}.card ul{margin-top:8px}.card li{font-size:19px}
+.size{font-size:40px;font-weight:700;color:var(--accent);line-height:1}.size small{font-size:20px;font-weight:600;color:var(--dim)}
+.bars{margin-top:30px}.bar{grid-template-columns:330px 1fr 130px;font-size:21px}.bar i{height:26px}
+</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">One optional photo, four limits</p><h1>A phone photo goes in at up to 10 MB and is stored at 160 KB or less</h1>
+<div class="grow col" style="gap:0">
+<div class="row" style="gap:16px;align-items:stretch">
+<div class="stp"><p class="size">10 MiB <small>at most</small></p><div class="card"><h2>Chosen on the phone</h2><ul><li>JPEG, PNG or WebP</li><li>HEIC only if the browser can open it, otherwise a clear request for another format</li></ul></div></div>
+<span class="arrow">→</span>
+<div class="stp"><p class="size">300 KiB <small>sent</small></p><div class="card"><h2>Shrunk in the browser</h2><ul><li>At most 800px on the long side</li><li>Saved as JPEG before it is sent, so a weak signal carries less</li></ul></div></div>
+<span class="arrow">→</span>
+<div class="stp"><p class="size">160 KiB <small>stored</small></p><div class="card"><h2>Rebuilt on the server</h2><ul><li>Read as an image, not trusted by its label</li><li>Turned upright, cut to 640px</li><li>Location and camera details removed</li><li>Saved as WebP</li></ul></div></div>
+<span class="arrow">→</span>
+<div class="stp"><p class="size">1 hour <small>per link</small></p><div class="card"><h2>Seen by the committee only</h2><ul><li>Kept in private storage</li><li>Shown through a signed link that expires</li><li>No original camera file is kept</li></ul></div></div>
+</div>
+<div class="bars">
+<div class="bar"><span>Largest photo accepted</span><i style="--v:100"></i><b>10,240 KiB</b></div>
+<div class="bar soft"><span>Most the browser sends</span><i style="--v:2.93"></i><b>300 KiB</b></div>
+<div class="bar"><span>Most that is stored</span><i style="--v:1.56"></i><b>160 KiB</b></div>
+</div></div>
+<p class="note">Limits as set in the site's code. Bars are drawn to scale.</p>

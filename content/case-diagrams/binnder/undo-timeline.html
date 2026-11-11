@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.axis{position:relative;height:90px;margin:10px 30px 0}.axis .ln{position:absolute;left:0;right:0;top:40px;height:4px;background:var(--line)}.axis .win{position:absolute;left:0;width:52%;top:34px;height:16px;border-radius:8px;background:var(--accent)}.axis .t{position:absolute;top:62px;transform:translateX(-50%);font-size:20px;font-weight:600}.axis .tk{position:absolute;top:26px;width:4px;height:32px;background:var(--ink);transform:translateX(-50%)}.cols{display:grid;grid-template-columns:52% 1fr;gap:26px;margin-top:20px}.card h2{font-size:24px}.card p{font-size:20px;margin-top:8px}.hi{border-color:var(--accent);background:var(--wash)}.checks{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}.ok{border-color:var(--good)}.ok h2{color:var(--good)}.no{border-color:var(--warn)}.no h2{color:var(--warn)}.foot{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:22px}.foot .card p{color:var(--dim)}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">What happens after a swipe right or up</p><h1>Nothing touches the file for five seconds</h1>
+<div class="axis"><div class="ln"></div><div class="win"></div><span class="tk" style="left:0"></span><span class="tk" style="left:52%"></span><span class="t" style="left:0;transform:none">0 s, you swipe</span><span class="t" style="left:52%">5 s</span><span class="t" style="left:100%;transform:translateX(-100%)">then</span></div>
+<div class="cols">
+<div class="card hi"><h2>The choice is written down, not carried out</h2><p>It is saved as "pending" in a small database on the phone. The file stays exactly where it was. Undo deletes the record and nothing else. If the app closes, the record is still there when it opens.</p></div>
+<div class="col" style="gap:0"><div class="card"><h2>Checks run first, then the action</h2><p>Is the file still the same file? Has Android or another app already put it in a bin?</p></div>
+<div class="checks"><div class="card ok"><h2>Yes, unchanged</h2><p>Move it to the bin, or delete it.</p></div><div class="card no"><h2>No, or unsure</h2><p>Cancel, keep the file and say why.</p></div></div></div>
+</div>
+<div class="foot">
+<div class="card"><p>The countdown runs on the phone's uptime clock, not the time of day, so changing the clock cannot cut it short.</p></div>
+<div class="card"><p>Leaving the app does not cancel a pending action. It finishes when Android lets background work run.</p></div>
+</div>
+<p class="note">Drawn from the app's rules and its storage code. The same five seconds apply when you empty a single file from the bin.</p>

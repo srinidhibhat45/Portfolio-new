@@ -111,8 +111,8 @@
     nav.querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.brainTopic===(scope||'me'))));
     document.getElementById('brainClear').hidden=!query;
     document.getElementById('brainEmpty').hidden=!query||found.length>0||listMode;
-    status.textContent=query?found.length+' connections found':nodes.length+' nodes · '+links.length+' connections';
-    document.getElementById('brainHint').textContent='Drag to turn · Pinch or scroll to zoom · Select a dot';
+    status.textContent=query?found.length+(found.length===1?' match':' matches'):nodes.length+' dots · '+links.length+' links between them';
+    document.getElementById('brainHint').textContent='Tap a dot to open it · Drag to turn · Pinch or scroll to zoom';
     highlight();paint();renderList(found);syncMotion();
     document.dispatchEvent(new CustomEvent('portfolio:layout'));
   }
@@ -159,8 +159,8 @@
   function renderDetail(){
     var n=byID.get(selected),topic=n.topic&&byID.get(n.topic),connections=related(n.id).filter(function(r){return r.node.id!=='me'&&r.node.id!==n.topic;});
     if(n.kind==='topic')connections=connections.slice(0,5);
-    var title=n.id==='me'?'Srinidhi Bhat':n.name,meta=n.tags||(n.stack||[]).join(' · ');
-    detail.innerHTML='<div class="brain-selected"><span class="detail-index">'+esc(n.id==='me'?'THE PERSON BEHIND THE PROJECTS':kind(n)+(topic?' · '+topic.name:''))+'</span><h3 tabindex="-1">'+esc(title)+'</h3>'+(n.thumb?'<img class="brain-project-image" src="'+esc(n.thumb)+'" alt="'+esc(n.name)+' preview" loading="lazy">':'')+'<p>'+esc(n.desc)+'</p>'+(meta?'<p class="brain-project-meta">'+esc(meta)+'</p>':'')+(n.href?'<a class="text-button brain-project-action" href="'+esc(n.href)+'" target="_blank" rel="noopener">'+esc(n.cta)+' <span aria-hidden="true">↗</span></a>':n.caseSlug?'<button type="button" class="text-button brain-project-action" id="brainCase">Explore case study <span aria-hidden="true">↗</span></button>':'')+'</div><div class="brain-related"><h4>'+(n.id==='me'?'Four parts of me':n.id==='yuva-volunteer'?'Yuva & its six pillars':'Follow a connection')+'</h4><div class="detail-links">'+connections.map(function(r){return'<button type="button" data-connection="'+r.node.id+'"><span><strong>'+esc(r.node.name)+'</strong><small>'+esc(r.reason)+'</small></span><span aria-hidden="true">↗</span></button>';}).join('')+'</div>'+(n.kind==='topic'?'<button type="button" class="brain-browse-topic">Browse all '+n.count+' connections <span aria-hidden="true">↗</span></button>':'')+'</div>';
+    var title=n.id==='me'?'Everything here links back to me':n.name,desc=n.id==='me'?'Each dot is something I make, care about or belong to, and each line shows how one led to another. Start with one of the four areas, or tap any dot on the map.':n.desc,meta=n.tags||(n.stack||[]).join(' · ');
+    detail.innerHTML='<div class="brain-selected"><span class="detail-index">'+esc(n.id==='me'?'START HERE':kind(n)+(topic?' · '+topic.name:''))+'</span><h3 tabindex="-1">'+esc(title)+'</h3>'+(n.thumb?'<img class="brain-project-image" src="'+esc(n.thumb)+'" alt="'+esc(n.name)+' preview" loading="lazy">':'')+'<p>'+esc(desc)+'</p>'+(meta?'<p class="brain-project-meta">'+esc(meta)+'</p>':'')+(n.href?'<a class="text-button brain-project-action" href="'+esc(n.href)+'" target="_blank" rel="noopener">'+esc(n.cta)+' <span aria-hidden="true">↗</span></a>':n.caseSlug?'<button type="button" class="text-button brain-project-action" id="brainCase">Explore case study <span aria-hidden="true">↗</span></button>':'')+'</div><div class="brain-related"><h4>'+(n.id==='me'?'Four areas to explore':n.id==='yuva-volunteer'?'Yuva & its six pillars':'Connected to')+'</h4><div class="detail-links">'+connections.map(function(r){return'<button type="button" data-connection="'+r.node.id+'"><span><strong>'+esc(r.node.name)+'</strong><small>'+esc(r.reason)+'</small></span><span aria-hidden="true">↗</span></button>';}).join('')+'</div>'+(n.kind==='topic'?'<button type="button" class="brain-browse-topic">See all '+n.count+' as a list <span aria-hidden="true">↗</span></button>':'')+'</div>';
     detail.querySelectorAll('[data-connection]').forEach(function(b){b.addEventListener('click',function(){choose(b.dataset.connection);});});
     var caseButton=document.getElementById('brainCase');if(caseButton)caseButton.addEventListener('click',function(){document.querySelector('.cover-card[data-case="'+n.caseSlug+'"]').click();});
     var browse=detail.querySelector('.brain-browse-topic');if(browse)browse.addEventListener('click',function(){if(!listMode)toggleList();var b=list.querySelector('button');if(b)b.focus();});
@@ -182,7 +182,7 @@
   back.addEventListener('click',function(){if(!history.length)return;var previous=history.pop();scope=previous.scope;camera=previous.camera;choose(previous.id,false);});search.addEventListener('input',function(){scope='';query=search.value.trim();selected='me';camera={x:0,y:0,scale:1};renderDetail();layout(true);});
   document.getElementById('brainClear').addEventListener('click',function(){choose('me');search.focus();});
   search.addEventListener('keydown',function(e){if(e.key==='Escape')choose('me');});
-  function toggleList(){listMode=!listMode;list.hidden=!listMode;graph.hidden=listMode;graph.style.display=listMode?'none':'';view.setAttribute('aria-pressed',String(listMode));view.textContent=listMode?'Show map':'Browse list';document.getElementById('brainHint').hidden=listMode;[plus,minus,motion,reset].forEach(function(b){b.hidden=listMode;});layout();}
+  function toggleList(){listMode=!listMode;list.hidden=!listMode;graph.hidden=listMode;graph.style.display=listMode?'none':'';view.setAttribute('aria-pressed',String(listMode));view.textContent=listMode?'Show as a map':'Show as a list';document.getElementById('brainHint').hidden=listMode;[plus,minus,motion,reset].forEach(function(b){b.hidden=listMode;});layout();}
   view.addEventListener('click',toggleList);graph.addEventListener('wheel',function(e){e.preventDefault();zoom(Math.exp(-e.deltaY*.0015));},{passive:false});
   const touches = new Map();
   let pinchDistance = 0;

@@ -1,0 +1,577 @@
+{
+ "title": "A five-year-old blog, rebuilt so I can [[publish from any browser]].",
+ "hook": "The Blog is where I publish as अvinash, in English, Hindi and Konkani. I designed and built it on my own: first on a ready-made theme in 2021, then as my own site with a writing interface in 2026.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A home for my own poems, essays, serial fiction and a written podcast"
+  },
+  {
+   "label": "Timeline",
+   "value": "May 2021 to July 2026. Rebuilt in July 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on phones and desktops"
+  },
+  {
+   "label": "Stack",
+   "value": "Astro 5, Sveltia CMS, Pagefind, Netlify"
+  },
+  {
+   "label": "Status",
+   "value": "Live, with 32 posts. No reader numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Read the blog",
+   "url": "https://blogs.srinidhibhat.com/"
+  },
+  {
+   "label": "Read Senses, a poem",
+   "url": "https://blogs.srinidhibhat.com/p/poem-5/"
+  },
+  {
+   "label": "Read The Murder in Classroom 10",
+   "url": "https://blogs.srinidhibhat.com/series/murder-in-classroom-10/"
+  }
+ ],
+ "linksHeading": "Read it yourself",
+ "summary": [
+  "The problem: my blog ran on a borrowed theme. A new post meant a Markdown file, a terminal and a commit, and my poems were stored as code.",
+  "What I did: in July 2026 I rebuilt it in Astro with my own design, moved all 32 posts without breaking a link, and added a writing interface I can open from any browser.",
+  "The key idea: let the form of the writing shape the page. Poems keep their lines, serials keep their order, and Hindi and Konkani get a proper Devanagari typeface.",
+  "Where it stands: live, with 32 posts. I have no reader numbers to share."
+ ],
+ "lead": {
+  "src": "assets/cases/the-blog/lead.webp",
+  "alt": "The blog's home page on a desktop, beside two phone screens: an essay page in the light theme and a poem in the dark theme",
+  "caption": "The rebuilt blog. On the left, the home page with the pen name set in Devanagari. On the right, an essay and a poem on a phone. Body text is blurred after the first line.",
+  "width": 2398,
+  "height": 866
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I rebuilt it",
+   "nav": "Why I rebuilt it",
+   "heading": "The blog had outgrown a theme I borrowed in 2021",
+   "blocks": [
+    {
+     "p": "I started the blog in May 2021 on Stack, a free theme for Hugo. Hugo is a tool that turns plain text files into a website. On the first day the site held 22 posts, some dated as far back as 2017."
+    },
+    {
+     "quote": {
+      "text": "My own Blog site (srinidhi-blogs.netlify.app) is built on a HUGO theme!",
+      "by": "From my 2021 essay, Have your own internet space!"
+     }
+    },
+    {
+     "p": "It worked, but the theme made most of the choices. It was dark by default and came with its own sidebar and widgets. Publishing a post meant a Markdown file, a terminal and a commit. Markdown is plain text with a few marks for headings and links."
+    },
+    {
+     "p": "Two things fitted my writing badly. Poems sat in code blocks, which kept their line breaks but set them like code. And a serial story was filed under a topic like any other post, with nothing to say which part came first."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/before-after.webp",
+       "alt": "Two cards compared: the 2021 blog on a ready-made Hugo theme, and the 2026 blog in Astro with its own design",
+       "caption": "The same blog in May 2021 and July 2026. Look at the last line of each card: 22 posts on day one, all 32 moved across with their links intact.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "history",
+   "label": "Five years",
+   "nav": "Five years in one view",
+   "heading": "Most of the work came in three bursts",
+   "blocks": [
+    {
+     "p": "The project history has 75 commits. A commit is one saved change to the project. They bunch up around three moments: setting the site up in May 2021, a five-part Formula 1 primer in January 2022, and the rebuild in July 2026."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/timeline.webp",
+       "alt": "Bar chart of commits by year: 42 in 2021, 20 in 2022, none in 2023 and 2024, 3 in 2025 and 10 in 2026, with the main events of each year",
+       "caption": "Commits by year, redrawn from the project history. The quiet middle is real: no changes at all in 2023 or 2024.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "After January 2022 the blog went quiet. There were two small edits that December, then nothing until a film review in October 2025. The rebuild landed in ten commits over 27 and 28 July 2026."
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "I write in a browser, and readers get plain pages",
+   "blocks": [
+    {
+     "p": "The site is static. Every page is built ahead of time as a finished file, so a reader's browser only has to download it. The writing side is a CMS, a content management system: a form in the browser where I write and publish posts."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/how-it-works.webp",
+       "alt": "Flow diagram in two rows: browser, sign-in function, editor and save on the writing side; Netlify build, search index, live site and reader on the reading side",
+       "caption": "The two halves of the system. The top row is me writing. The bottom row is what happens after I press Save.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "There is no server or database behind the editor. Each save becomes a commit in the project's private repository, and Netlify rebuilds the site from it. A post is live a minute or two later."
+    },
+    {
+     "p": "The home page is the front door, so I built it as a set of shelves, one for each kind of writing."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/annotated-home.webp",
+       "alt": "The full home page with six numbered notes: masthead, newest post, series shelf, poems, essays and topics",
+       "caption": "The home page from top to bottom. Note 3 is the series shelf, the part the old theme had no place for.",
+       "width": 1600,
+       "height": 1760
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/annotated-post.webp",
+       "alt": "A post page with six numbered notes: breadcrumb, topics, title and summary, byline, drop cap and the header controls",
+       "caption": "An essay page. Note 5: the body sits in a narrow column made for reading, opened with a drop cap.",
+       "width": 1600,
+       "height": 1420
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "verse",
+   "label": "Decision 1",
+   "nav": "Poems as verse",
+   "heading": "A poem keeps its lines, and I did not have to learn a new mark",
+   "blocks": [
+    {
+     "p": "What you see: a poem is set in serif italic beside a thin violet rule. Every line break and every gap between stanzas is kept as written."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/verse-desktop.webp",
+       "alt": "The poem Senses on its page, set in italic beside a violet rule, with only the first line readable",
+       "caption": "Senses, one of my poems. Only the first line is readable here, but the shape is the point: the breaks and stanza gaps survive.",
+       "width": 1200,
+       "height": 1410,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: I kept the habit my old posts already had. All seven poems were already in code fences, the marks Markdown uses for code. A small plugin now reads any fence with no language named as a poem. So the text of the poems moved across without a single edit."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/verse-rule.webp",
+       "alt": "Diagram: on the left, placeholder lines typed between two fence marks; on the right, the same lines shown as verse in italic with a violet rule",
+       "caption": "The rule in one picture, with placeholder lines. A fence that names a language still shows as code, so writing about code later still works.",
+       "width": 1600,
+       "height": 660
+      }
+     ]
+    },
+    {
+     "p": "The Hindi and Konkani poems needed a real Devanagari typeface, so every font stack includes Noto Serif Devanagari. That had a cost. The pen name in the footer put one Devanagari letter on every English page, which pulled in the whole 124KB Hindi font. Now that letter comes from its own 1.4KB file, and the full font loads only on pages that use it."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The rule is invisible. A writer has to know that a plain fence means a poem. The hint under the editor's Body field says so, but it is a convention, not a button."
+     }
+    }
+   ]
+  },
+  {
+   "id": "series",
+   "label": "Decision 2",
+   "nav": "Serials in order",
+   "heading": "A serial is read in order, so its title carries the part number",
+   "blocks": [
+    {
+     "p": "What you see: each serial has its own page that lists the parts in order and says they are meant to be read that way. There are three: a murder mystery in three parts, a written podcast in nine episodes and a Formula 1 primer in five parts."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/series-page.webp",
+       "alt": "The series page for The Murder in Classroom 10, listing Part 1, Part 2 and Part 3 with dates and reading times, summaries blurred",
+       "caption": "The page for my three-part mystery. The large red numbers set the order. The part summaries are blurred here.",
+       "width": 1600,
+       "height": 1167
+      }
+     ]
+    },
+    {
+     "p": "In the build: there is no series field on a post. Each series has a rule that looks at the end of a post's title, such as \"(Part 2)\". The rule decides which series a post joins and where it sits."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/series-rule.webp",
+       "alt": "Diagram: three real post titles ending in Part 1, 2 and 3 pass through a rule that matches the ending, producing an ordered list under the series name",
+       "caption": "Look at the first two titles: they spell the name with a hyphen and the third does not. Matching only the ending keeps all three together.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "I ruled out a series field on every post. It would have meant editing every old part by hand, and the titles already carried the numbers. The rules are edited in the editor's settings. A rule with a typo is skipped with a warning, so it cannot stop the site from building."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Membership is hidden in the title. A new part with a slightly different ending would quietly fall out of its series. A visible series field would make that mistake easier to catch."
+     }
+    }
+   ]
+  },
+  {
+   "id": "publishing",
+   "label": "Decision 3",
+   "nav": "Publishing from a browser",
+   "heading": "Publishing takes a password and a Draft switch, not a terminal",
+   "blocks": [
+    {
+     "p": "What you see: one form per post. Each field has a short hint under it, written for the moment I would need it, such as the warning that changing a published post's address breaks every link to it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/editor-fields.webp",
+       "alt": "Drawing of the editor form: title, summary, publish date, URL slug, cover image, topics and tags, draft, feature and fact panel, and body, each with its hint",
+       "caption": "A drawing of the editor's fields and hints, made from its settings. I have no screenshot of the editor to show. The shaded fields carry the rules worth knowing: the address, the Draft switch and the poem fence.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "In the build: the editor is Sveltia CMS, an open-source editor that saves straight into the repository. I ruled out its review mode, which sends every post through a separate branch and a pull request. That is the git ceremony I was trying to remove. Instead, Save always commits, and the Draft switch decides whether a post appears on the site."
+    },
+    {
+     "p": "Signing in took three forms in two days. The first version needed a GitHub account on the device. That made writing from a phone, or from someone else's laptop, more trouble than it was worth."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/sign-in.webp",
+       "alt": "Three stages of signing in: GitHub sign-in, then a password behind a button and a popup, then a password typed on the page",
+       "caption": "From a GitHub account to one password on the page. The middle row is why: a browser will not open a popup without a click, so the button had to go too.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "Now a small function on Netlify checks the password and hands the editor a GitHub key that is stored there, never in the code. The key can only change this one repository's files."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Whoever knows the password can publish from anywhere. That is the point of it, and it is also the whole of its security. The password and the key can each be changed without touching the other."
+     }
+    }
+   ]
+  },
+  {
+   "id": "light",
+   "label": "Decision 4",
+   "nav": "Light first, and readable",
+   "heading": "Light by default, and every small grey passes contrast",
+   "blocks": [
+    {
+     "p": "What you see: warm paper and dark ink, with a violet accent taken from the feather in the logo. Dark mode is there, but only when a reader switches it on, and the site remembers the choice."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/hero-light.webp",
+       "alt": "The home page masthead in the light theme: cream paper, black and violet headline",
+       "caption": "The default. Every reader starts here, whatever their phone is set to.",
+       "width": 1600,
+       "height": 796
+      },
+      {
+       "src": "assets/cases/the-blog/hero-dark.webp",
+       "alt": "The same masthead in the dark theme: charcoal paper, cream and lilac headline",
+       "caption": "Dark, after the reader presses the moon in the header. The violet lifts to lilac so it stays readable.",
+       "width": 1600,
+       "height": 796
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: the old theme was dark by default, and the first Astro version followed the device's setting. I removed that. The site is a paper-coloured thing, so I made dark a choice the reader makes, not one the phone makes for them."
+    },
+    {
+     "p": "Then I measured contrast. A contrast ratio says how far apart two colours are in brightness, and small text needs at least 4.5 to 1. The faint grey under every caption, byline and date was 3.5 to 1. It is now 5.2 to 1 on the page background. The topic colours were worse."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/contrast-chart.webp",
+       "alt": "Paired bar chart of fifteen topic colours, before and after: eleven sat below the 4.5 to 1 line and all fifteen now sit above it",
+       "caption": "Each topic's colour before and after. Politics was the faintest. Every new colour clears the line on all three light backgrounds.",
+       "width": 1600,
+       "height": 1010
+      }
+     ]
+    },
+    {
+     "p": "The topic colours were picked for cream paper and turn muddy on charcoal. In the dark theme, any colour used as text is mixed part of the way toward the light ink first. Dots and backgrounds keep the colour as picked."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "When I finished, the axe-core checker reported no problems against WCAG 2.2 A and AA on every type of page, in both themes. I did not keep those reports, and no screen-reader user has tried the site."
+     }
+    }
+   ]
+  },
+  {
+   "id": "reading",
+   "label": "Reading it",
+   "nav": "On a phone, and search",
+   "heading": "The same pages on a phone, with search that needs no server",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/phone-essay.webp",
+       "alt": "An essay page on a phone: breadcrumb, topics, title, summary, byline, cover and the drop cap",
+       "caption": "An essay on a phone. The header keeps search and the theme switch in reach.",
+       "width": 780,
+       "height": 1688
+      },
+      {
+       "src": "assets/cases/the-blog/phone-menu.webp",
+       "alt": "The phone menu open as a sheet over the page, listing Writing, Series, About, Connect and Search",
+       "caption": "The menu opens as a sheet over the page with a dimmed backdrop. Escape closes it and returns focus to the button.",
+       "width": 780,
+       "height": 1688
+      },
+      {
+       "src": "assets/cases/the-blog/phone-poem-dark.webp",
+       "alt": "A poem on a phone in the dark theme, with only its first line readable",
+       "caption": "A poem in the dark theme. The violet rule and the line breaks carry over to the small screen.",
+       "width": 780,
+       "height": 1688
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "On a phone the header controls are at least 44 pixels square, the size a thumb can hit reliably. The reading progress bar and the scroll effects were reworked so they do less work on every scroll."
+    },
+    {
+     "p": "Search is built by Pagefind after the pages exist. It writes a small index that the reader's browser searches on its own, so nothing has to run on a server."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/search.webp",
+       "alt": "The search page with the word internet typed in and one result: Have your own internet space!",
+       "caption": "One word, one result, with the match highlighted. The index covers the full text of every post.",
+       "width": 1440,
+       "height": 780
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Five years of Markdown, cleaned up on the way to the page",
+   "blocks": [
+    {
+     "p": "The posts were written over five years with no house rules. Rather than edit 32 posts by hand, I added small steps that fix them while the site is built."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/the-blog/pipeline.webp",
+       "alt": "Diagram of a post passing through three steps, verse, heading levels and figures, from a Markdown file to a static page",
+       "caption": "What happens to every post at build time. Step 2 exists because some posts skipped heading levels, which confuses screen readers.",
+       "width": 1600,
+       "height": 600
+      }
+     ]
+    },
+    {
+     "p": "Every old address still works. Posts stay at the same paths they had on Hugo, and the old feed and page addresses are redirected to their new homes."
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Site",
+        "Astro 5 with MDX, building static pages"
+       ],
+       [
+        "Writing interface",
+        "Sveltia CMS, saving to a private GitHub repository"
+       ],
+       [
+        "Sign-in",
+        "One Netlify Function that checks the password"
+       ],
+       [
+        "Search",
+        "Pagefind, built after the pages"
+       ],
+       [
+        "Type",
+        "Fraunces, Source Serif 4, Inter and Noto Serif Devanagari, served by the site itself"
+       ],
+       [
+        "Hosting",
+        "Netlify, rebuilt on every save"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "75",
+       "label": "commits, May 2021 to July 2026"
+      },
+      {
+       "value": "32",
+       "label": "posts moved, every address kept"
+      },
+      {
+       "value": "168",
+       "label": "pages in the last build, 107 of them tag pages"
+      },
+      {
+       "value": "67KB",
+       "label": "headline font, down from 121KB with no visible change"
+      }
+     ]
+    },
+    {
+     "p": "There are no automated tests and no checks that run on each save."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Heading levels",
+        "Posts started their headings wherever felt right. The F1 primer opens at level 3 and one mystery part uses a single level 5. Every post skipped a level. A build step now renumbers them in order and keeps the old size for styling."
+       ],
+       [
+        "Comments",
+        "The comment service was set to its dark style on its own dashboard. On cream paper that put pale grey on pale cream, and threads looked empty. I moved comments onto the dark band, where they read in both themes."
+       ],
+       [
+        "Page load",
+        "A timer loaded the comments four seconds into every post, read or not, bringing most of a megabyte of third-party script. It is gone. Comments now load when the reader reaches them, and analytics waits until the page has loaded."
+       ],
+       [
+        "Hindi font",
+        "The Devanagari font was declared with an outdated format name. Outside Chrome and Safari the browser ignored it, and the poems fell back to a system font. One word fixed it."
+       ],
+       [
+        "Search engines",
+        "The sitemap told search engines that every post had changed on the day of the build. Each post now carries its own date."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with 32 posts and no reader numbers",
+   "blocks": [
+    {
+     "p": "The blog is live at blogs.srinidhibhat.com. It holds 32 posts: seven poems, essays, a three-part mystery, a nine-episode written podcast, a five-part Formula 1 primer and a film review. The newest is from October 2025."
+    },
+    {
+     "p": "The site has analytics, but I have no reader numbers or feedback to share. Three gaps remain:"
+    },
+    {
+     "list": [
+      "I have nothing on record from readers: no test sessions and no feedback.",
+      "The accessibility results were not saved, so I cannot show them.",
+      "There are no automated tests, so a change could break a page without warning."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Make the hidden rules visible in the editor",
+   "blocks": [
+    {
+     "list": [
+      "Show in the editor which series a post will join, before it is saved, so a mistyped title cannot drop a part.",
+      "Make it clearer whether the latest save is live or still building.",
+      "Then test the writing side with three tasks done without any developer tools: publish a draft, update an old post, and add a new part to a series. Count accidental publishing and links broken by a changed address."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "The best rules were habits I already had",
+   "blocks": [
+    {
+     "p": "The two rules that made the move easy were not new. My poems were already in fences and my serials already had part numbers in their titles. Reading those habits as rules let the poems and the serials move across without being rewritten."
+    },
+    {
+     "p": "The same choice is the weak spot. A rule nobody can see is easy to break. If I built it again, I would keep the habits and add one line in the editor that says what the habit will do."
+    }
+   ]
+  }
+ ]
+}

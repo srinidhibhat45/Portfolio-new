@@ -59,7 +59,7 @@ class Handler(SimpleHTTPRequestHandler):
         self.wfile.write(content)
     def public_path(self):
         path = unquote(urlsplit(self.path).path)
-        return path in ('/', '/index.html', '/thank-you.html', '/favicon.ico', '/site.webmanifest', '/robots.txt', '/sitemap.xml', '/case-studies') or any(path.startswith('/'+folder+'/') for folder in ('assets', 'css', 'js', 'case-studies')) and '..' not in path
+        return path in ('/', '/index.html', '/thank-you.html', '/ride.html', '/404.html', '/llms.txt', '/favicon.ico', '/site.webmanifest', '/robots.txt', '/sitemap.xml', '/case-studies') or any(path.startswith('/'+folder+'/') for folder in ('assets', 'css', 'js', 'case-studies')) and '..' not in path
     def do_GET(self):
         if urlsplit(self.path).path == '/api/notes':
             with sqlite3.connect(self.database) as db:

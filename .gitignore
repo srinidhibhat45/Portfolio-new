@@ -17,3 +17,7 @@ js/__audit__/
 
 # Intermediate PDF extraction, image caches, and visual QA renders.
 tmp/pdfs/
+
+# Unblurred working cuts for case-study figures. They can show real people's faces and names,
+# so they stay on this machine only (the site build also leaves them out).
+assets/cases/**/raw-*

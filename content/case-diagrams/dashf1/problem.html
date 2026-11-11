@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x820">
+<style>.src{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:stretch}.card h2{font-size:25px}.card p{font-size:20px;margin-top:6px}.gap{color:var(--warn);font-weight:600}.has{color:var(--good);font-weight:600}.end{display:grid;place-items:center;text-align:center;padding:24px;border-radius:14px;background:var(--wash);border:1.5px solid var(--accent)}.end h2{font-size:30px}.end p{font-size:21px;color:var(--dim);margin-top:8px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">The problem in one picture</p><h1>The race data is free, but it sits in three places and each one has a gap</h1>
+<div class="grow row" style="gap:26px;align-items:stretch">
+<div class="col" style="flex:2.2;gap:16px">
+<div class="card"><h2>OpenF1, a public data service</h2><p><span class="has">Has:</span> timing, GPS positions, car telemetry, laps, tyres, pit stops, race control, team radio, weather.</p><p><span class="gap">Gap:</span> a free user may make about 3 requests a second, and is locked out while a session is live.</p></div>
+<div class="card"><h2>The official F1 live-timing feed</h2><p><span class="has">Has:</span> timing, gaps, sectors, tyres, flags, race control and radio, during the session.</p><p><span class="gap">Gap:</span> no GPS and no car telemetry for free, and a web page cannot open it directly.</p></div>
+<div class="card"><h2>Jolpica, a public results archive</h2><p><span class="has">Has:</span> championship standings and season results.</p><p><span class="gap">Gap:</span> nothing about the race in progress.</p></div>
+</div>
+<span class="arrow">→</span>
+<div class="end" style="flex:1"><div><h2>DashF1</h2><p>One screen that reads all three, picks the right one for the moment, and says what it cannot know.</p></div></div>
+</div>
+<p class="note">What each source carries, as the product's own notes describe it.</p>

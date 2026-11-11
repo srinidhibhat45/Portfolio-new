@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../yuva.css">
+<style>html,body{margin:0;width:720px;height:744px;overflow:hidden}
+body.ui{padding:26px 28px;background:#fff}
+.hd{display:flex;justify-content:space-between;align-items:flex-start;padding-bottom:14px;border-bottom:1px solid var(--line)}
+.hd h3{font-size:19px;font-weight:700}.hd p{font-size:13px;color:var(--muted);margin-top:3px}.x{font-size:24px;color:var(--muted);line-height:1}
+h4{font-size:12px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);margin:18px 0 8px}
+.fr{display:grid;grid-template-columns:150px 80px 1fr;align-items:center;gap:10px;padding:9px 12px;border:1px solid var(--line);border-radius:8px;margin-bottom:6px;font-size:13.5px}
+.fr b{font-weight:600}.ty{font-size:12px;color:var(--muted);background:var(--bg2);border-radius:5px;padding:2px 7px;justify-self:start}
+.lock{font-size:12px;color:var(--muted)}.tg{display:flex;gap:18px;font-size:13px;justify-content:flex-end}
+.fr.off{opacity:.5}
+.cr{border:1px solid var(--line);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.cm{display:grid;grid-template-columns:1fr 170px;gap:8px}.ca{display:flex;align-items:center;gap:10px;margin-top:8px;font-size:13px}
+.ro{display:inline-flex;gap:4px;margin-left:auto}.ro span{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--line);border-radius:6px;color:var(--ink2)}
+.add{border:1.5px dashed var(--line);border-radius:8px;padding:10px 12px;background:var(--bg)}
+.ft{display:flex;justify-content:flex-end;gap:8px;margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+.in{height:34px;line-height:32px;font-size:13.5px}
+</style>
+<body class="ui adm">
+<div class="hd"><div><h3>Registration Form Builder</h3><p>Exactly what participants see, in this order. Changes apply when you save the event.</p></div><span class="x">×</span></div>
+<h4>Standard fields</h4>
+<div class="fr"><b>Full Name</b><span class="ty">text</span><span class="lock">always included &amp; required</span></div>
+<div class="fr"><b>Phone Number</b><span class="ty">tel</span><span class="lock">always included &amp; required, used to detect duplicate entries</span></div>
+<div class="fr"><b>Email Address</b><span class="ty">email</span><span class="tg"><span><i class="chk on"></i>Include</span><span><i class="chk"></i>Required</span></span></div>
+<div class="fr"><b>Age</b><span class="ty">number</span><span class="tg"><span><i class="chk on"></i>Include</span><span><i class="chk"></i>Required</span></span></div>
+<div class="fr"><b>Gender</b><span class="ty">dropdown</span><span class="tg"><span><i class="chk on"></i>Include</span><span><i class="chk"></i>Required</span></span></div>
+<div class="fr off"><b>Address</b><span class="ty">paragraph</span><span class="tg"><span><i class="chk"></i>Include</span><span><i class="chk"></i>Required</span></span></div>
+<h4>Custom fields</h4>
+<div class="cr"><div class="cm"><div class="in">T-shirt size</div><div class="in sel">Dropdown</div></div><div class="in" style="margin-top:8px">S, M, L, XL</div>
+<div class="ca"><span><i class="chk on"></i>Required</span><span class="ro"><span>↑</span><span>↓</span></span><span class="btn dng sm">Remove</span></div></div>
+<div class="add"><div class="cm"><div class="in ph">New field label (e.g. T-Shirt Size)</div><div class="in sel">File Upload (Image/PDF)</div></div>
+<div class="ca"><span><i class="chk on"></i>Required</span><span class="btn sec sm" style="margin-left:auto">+ Add Field</span></div></div>
+<div class="ft"><span class="btn sec">Cancel</span><span class="btn">Apply Changes</span></div>
+</body></html>

@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.stage{display:grid;grid-template-columns:560px 1fr;padding-left:40px;gap:64px;align-items:start}.sheet{background:#151816;color:#F4F5EC;border-radius:30px;padding:26px 36px 30px;font-size:21px;position:relative}.grab{width:60px;height:6px;border-radius:3px;background:#3B403C;margin:0 auto 22px}.sheet h3{font-size:22px;font-weight:600}.big{font-size:84px;font-weight:700;line-height:1.05;margin-top:8px}.big span{font-size:20px;font-weight:400;color:#AEB4AC}.mut{color:#AEB4AC;font-size:18px}.f{margin-top:16px}.f div{display:flex;justify-content:space-between;font-size:19px;font-weight:600}.f div span{color:#B8C77C;font-weight:400}.f i{display:block;height:4px;margin-top:10px;border-radius:2px;background:#2E332F}.f i b{display:block;height:4px;border-radius:2px;background:#B8C77C}.dis{display:flex;justify-content:space-between;align-items:center;border-top:1px solid #2E332F;margin-top:20px;padding-top:16px;font-size:19px;font-weight:600}.mk{position:absolute;left:-56px;top:50%;transform:translateY(-50%);box-shadow:0 0 0 5px #fff}.rel{position:relative}.legend{display:grid;gap:24px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:start;font-size:24px;line-height:1.42}.legend b{font-weight:600}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Redrawn from the app's code</p><h1>A score opens in three layers</h1>
+<div class="grow stage">
+<div class="sheet"><div class="grab"></div>
+<h3>Recovery score</h3>
+<div class="rel"><span class="num mk">1</span><p class="big">NN<span> / 100</span></p>
+<p class="mut">Estimate · Moderate inputs</p></div>
+<div class="f"><div>Last night's sleep<span>NN/100</span></div><i><b style="width:80%"></b></i></div>
+<div class="f rel"><span class="num mk">2</span><div>Heart rate variability<span>NN/100</span></div><i><b style="width:70%"></b></i></div>
+<div class="f"><div>Resting heart rate<span>NN/100</span></div><i><b style="width:76%"></b></i></div>
+<div class="dis rel"><span class="num mk">3</span>How this score works<span>⌄</span></div>
+<div class="dis rel"><span class="num mk">4</span>Calculation details<span>⌄</span></div>
+</div>
+<div class="legend">
+<div><span class="num">1</span><span><b>The score, and how complete its inputs are.</b> For sleep and recovery the best label is "Moderate". There is no "High": complete inputs do not make a model proven. Body energy is always marked experimental.</span></div>
+<div><span class="num">2</span><span><b>What fed it.</b> One row per input, each with its own part-score. A missing input has no row. It is not shown as zero.</span></div>
+<div><span class="num">3</span><span><b>One tap: the rule in words.</b> "Sleep contributes 60%, HRV 25%, and resting or sleeping heart rate 15%."</span></div>
+<div><span class="num">4</span><span><b>Another tap: the working.</b> The exact inputs, the value before rounding, why two scores can match, and a button that copies the details to the clipboard.</span></div>
+</div></div>
+<p class="note">A schematic, not a screen capture: I have no capture of this sheet. The labels are the app's own; NN marks a value left out.</p>

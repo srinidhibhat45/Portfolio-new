@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.wrap{display:grid;grid-template-columns:1fr 430px;gap:50px;align-items:center}
+.plot{position:relative;width:820px;height:660px;margin:0 auto}
+.plot::before,.plot::after{content:'';position:absolute;background:var(--ink)}
+.plot::before{left:50%;top:0;bottom:0;width:2.5px;transform:translateX(-50%)}.plot::after{top:50%;left:0;right:0;height:2.5px;transform:translateY(-50%)}
+.q{position:absolute;inset:0;background:linear-gradient(var(--good-wash),var(--good-wash)) right top/50% 50% no-repeat,linear-gradient(var(--warn-wash),var(--warn-wash)) left bottom/50% 50% no-repeat;border-radius:14px}
+.ax{position:absolute;font-size:20px;font-weight:600;color:var(--dim);white-space:nowrap}
+.pt{position:absolute;transform:translate(-50%,-50%);width:30px;height:30px;border-radius:50%;background:var(--ink);box-shadow:0 0 0 5px #fff;z-index:2}
+.pt.me{background:var(--accent);width:36px;height:36px}
+.lb{position:absolute;font-size:21px;font-weight:600;line-height:1.2;white-space:nowrap;z-index:2}
+.aim{position:absolute;left:29%;top:22%;height:44%;border-left:3.5px dashed var(--accent);z-index:1}
+.aim::before{content:'';position:absolute;left:-12.5px;top:-6px;border:10px solid transparent;border-bottom:18px solid var(--accent);border-top:0}
+.side h2{font-size:25px;font-weight:600;margin-bottom:8px}.side p{font-size:22px;line-height:1.45;color:var(--dim);margin-bottom:24px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Competitive review · the map</p><h1>Where the four tools sat</h1>
+<div class="grow wrap">
+<div class="plot"><div class="q"></div>
+<span class="ax" style="left:50%;top:-34px;transform:translateX(-50%)">Better to use</span><span class="ax" style="left:50%;bottom:-34px;transform:translateX(-50%)">Harder to use</span>
+<span class="ax" style="left:-8px;top:50%;transform:translate(-100%,-50%)">Fewer<br>features</span><span class="ax" style="right:-8px;top:50%;transform:translate(100%,-50%)">More<br>features</span>
+<span class="pt" style="left:97%;top:5%"></span><span class="lb" style="left:97%;top:5%;transform:translate(-100%,-50%);padding-right:30px">Detailed SEO Extension</span>
+<span class="pt" style="left:97.5%;top:24.5%"></span><span class="lb" style="left:97.5%;top:24.5%;transform:translate(-100%,-50%);padding-right:30px">All in One SEO Analyzer</span>
+<span class="pt" style="left:70%;top:34%"></span><span class="lb" style="left:70%;top:34%;transform:translate(-50%,26px)">SEO META in 1 CLICK</span>
+<span class="pt me" style="left:29%;top:73%"></span><span class="lb" style="left:29%;top:73%;transform:translate(-50%,28px);color:var(--accent)">getMetaData</span>
+<span class="aim"></span><span class="lb" style="left:29%;top:40%;transform:translate(-100%,-50%);padding-right:18px;font-weight:500;font-size:19px;color:var(--accent);text-align:right">where the redesign<br>is meant to take it</span>
+</div>
+<div class="side"><h2>Top right: the three competitors</h2><p>All three offered more features and were easier to use. Detailed SEO Extension sat highest.</p><h2>Bottom left: getMetaData</h2><p>Fewer features, and harder to use because of the small text and weak grouping.</p><h2>The dashed arrow</h2><p>The redesign changes the interface, not the feature list. So the aim is to move up, not across.</p></div>
+</div>
+<p class="note">Redrawn from the map in my deck. The positions are my judgement after the review, not scores. The dashed arrow is the aim, not a result.</p>

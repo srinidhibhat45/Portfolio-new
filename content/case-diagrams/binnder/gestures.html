@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1300">
+<style>.stage{display:grid;grid-template-columns:1fr 300px 1fr;grid-template-rows:auto auto;align-content:start;gap:26px 50px;align-items:center}.up{grid-column:2;text-align:center}.left{text-align:right}.card h2{font-size:25px}.card p{font-size:20px;margin-top:6px}.card .tag{margin-bottom:10px}.bad{border-color:var(--warn)}.bad h2,.bad .tag{color:var(--warn)}.bad .tag{background:var(--warn-wash)}.ar{font-size:44px;color:var(--accent);line-height:1}.wrap{display:flex;align-items:center;gap:18px}.foot{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}.foot .card{padding:16px 20px}.foot p{font-size:19px;color:var(--dim)}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Three directions, three consequences</p><h1>Where each swipe sends a file</h1>
+<div class="stage" style="margin-top:30px">
+<div class="up" style="grid-row:1;grid-column:1 / 4;display:flex;flex-direction:column;align-items:center;gap:8px"><div class="card bad" style="max-width:640px;text-align:center"><span class="tag">Swipe up</span><h2>Delete forever</h2><p>Asks first and names the file. Then five seconds to undo, and it is gone.</p></div><span class="ar">↑</span></div>
+<div class="wrap" style="grid-row:2;justify-content:flex-end"><div class="card left" style="max-width:380px"><span class="tag">Swipe left</span><h2>Keep</h2><p>Hidden from review for seven days. Comes back sooner if the file changes.</p></div><span class="ar">←</span></div>
+<div class="phone" style="grid-row:2;grid-column:2;justify-self:center">
+<div class="tb">Binnder<span><i></i><i></i><i></i></span></div>
+<div class="chips"><span>All files</span><span>Images</span><span>Videos</span><span>Audio</span></div>
+<div class="meta-row"><span>Largest first</span><span>6 to review</span></div>
+<div class="fcard"><div class="prev">preview</div><div class="fmeta"><b>file name</b><small>size · location</small></div></div>
+<div class="acts"><div><i></i>Keep</div><div class="del"><i></i>Delete forever</div><div class="bin"><i></i>Bin</div></div>
+<div class="hint">Left: Keep · Up: Delete forever · Right: Bin</div>
+</div>
+<div class="wrap" style="grid-row:2;grid-column:3"><span class="ar">→</span><div class="card" style="max-width:380px"><span class="tag">Swipe right</span><h2>Move to bin</h2><p>Five seconds to undo. Then it waits in the bin for 30 days and can be restored.</p></div></div>
+</div>
+<div class="foot">
+<div class="card"><p>A label with the action appears after about a third of the distance, so you see the choice before you make it.</p></div>
+<div class="card"><p>The choice counts at 96 dp, roughly 15 mm of travel. Up only counts when the drag is clearly more up than sideways.</p></div>
+<div class="card"><p>Each swipe has a matching button below the card, and a named action for screen readers.</p></div>
+</div>
+<p class="note"><span class="schem">Schematic</span>&nbsp; Drawn from the app's code and design notes. Not a screenshot.</p>

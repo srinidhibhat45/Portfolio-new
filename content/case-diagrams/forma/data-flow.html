@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x800">
+<style>.flow{display:grid;grid-template-columns:1fr 46px 1fr 46px 1.15fr 46px 1fr;align-items:stretch}.card h2{font-size:24px}.card p{font-size:19px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:36px;align-self:center;text-align:center}.side{margin-top:26px;display:grid;grid-template-columns:1fr 46px 1fr 46px 2.2fr;align-items:stretch}.dash{border-style:dashed}.lane{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:10px}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How it works</p><h1>Forma reads what Samsung Health shares, and nothing else</h1>
+<div class="grow">
+<p class="lane">The main path: history and scores</p>
+<div class="flow">
+<div class="card"><h2>Galaxy watch</h2><p>Measures steps, heart rate, sleep and more. Syncs to the phone through Samsung's own app.</p></div>
+<span class="arrow">→</span>
+<div class="card"><h2>Samsung Health</h2><p>Decides which records it publishes to Health Connect, and when.</p></div>
+<span class="arrow">→</span>
+<div class="card"><h2>Health Connect</h2><p>Android's shared store for health records. The person grants Forma each type of record, one by one. Some or none is fine.</p></div>
+<span class="arrow">→</span>
+<div class="card hi"><h2>Forma on the phone</h2><p>Reads only Samsung Health's records. Totals come from Android's own adding-up, so the same steps are not added twice. Saved in private storage.</p></div>
+</div>
+<div class="side">
+<div class="card dash"><h2>Forma on the watch</h2><p>Optional. A 60-second heart check, and batched daily activity.</p></div>
+<span class="arrow">→</span>
+<div class="card dash"><h2>Wear OS link</h2><p>Encrypted. Can pass through Google's relay, which the setup screen says.</p></div>
+<span class="arrow">→</span>
+<div class="card dash"><h2>A separate short-lived store</h2><p>Heart rate is called "live" for 30 seconds at most. Watch steps can lead the step ring for 5 minutes. These readings never enter history, exports or scores.</p></div>
+</div>
+</div>
+<p class="note">No account, no Forma server, no advertising and no analytics. Updates come from signed releases on GitHub.</p>

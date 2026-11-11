@@ -1,0 +1,681 @@
+{
+ "title": "An equaliser you set by [[listening]], not by guessing at sliders.",
+ "hook": "PureEQ is an Android app I designed and built on my own. A two-minute listening check and a few blind A/B rounds on music become one EQ curve for each ear, played on everything the phone plays.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "My own idea: sound tuned to the listener and the headphones, on any Android phone"
+  },
+  {
+   "label": "Platform",
+   "value": "Android 9 and later, native app"
+  },
+  {
+   "label": "Stack",
+   "value": "Kotlin, Jetpack Compose, Material 3, Android's DynamicsProcessing audio effect"
+  },
+  {
+   "label": "Timeline",
+   "value": "29 October to 3 November 2026"
+  },
+  {
+   "label": "Status",
+   "value": "Version 1.7.3, a download that updates itself. Accuracy shown only in simulation. Not a medical device"
+  }
+ ],
+ "links": [
+  {
+   "label": "PureEQ download page",
+   "url": "https://github.com/srinidhibhat45/pureeq-updates"
+  }
+ ],
+ "linksHeading": "Try it on an Android phone",
+ "summary": [
+  "The problem: an equaliser gives you ten sliders and asks which to move. Most people cannot answer that, and the right answer depends on their ears and their headphones.",
+  "What I built: an Android app that asks two easier questions, \"did you hear that beep?\" and \"which of these do you prefer?\", and turns the answers into one EQ curve per ear for all audio on the phone.",
+  "The key idea: keep the answers, not the curve. Every curve is worked out again from stored answers, so when I improved the maths, saved profiles got better with no new test.",
+  "Where it stands: version 1.7.3, built in six days, with 141 automated tests. Its accuracy figures come from simulated listeners. I have no listening tests with other people and no install numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/pureeq/lead.webp",
+  "alt": "Four PureEQ screens side by side: the home screen with a curve for each ear, the listening check, a taste-test round with A and B, and Fine-tune with the curve and an EQ on and off switch",
+  "caption": "From left: home, the listening check, one round of the taste test, and Fine-tune. The blue and red lines are the left and right ears.",
+  "width": 2400,
+  "height": 1240
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Ten sliders ask a question most people cannot answer",
+   "blocks": [
+    {
+     "p": "An equaliser, or EQ, changes how loud each part of the sound is, from deep bass to high treble. The usual EQ app on a phone is a row of sliders, each for one range of pitches."
+    },
+    {
+     "p": "It assumes you already know which pitches to change. The right setting depends on two things the sliders cannot see. One is your ears, which may hear some pitches less well than others, and differently on the left and right. The other is your headphones, which all colour the sound in their own way."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/problem.webp",
+       "alt": "Diagram comparing a generic ten-band equaliser, with the question of which slider to move, against PureEQ's two questions: did you hear that beep, and which do you enjoy more, A or B",
+       "caption": "The problem in one picture. On the left, the person has to know the answer. On the right, they only have to report what they hear and what they like.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "Some phone makers build a feature like this into their own phones and earbuds. I wanted it on any Android phone from Android 9 on, with any headphones."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "This started from my own wish, not from user research. I have no interviews, surveys or listening sessions with other people, so this page quotes none."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Two questions, about five minutes, one curve per ear",
+   "blocks": [
+    {
+     "p": "A profile is made for one pair of headphones. Five setup steps make the answers trustworthy. Then come the two questions, and then the result."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/flow.webp",
+       "alt": "Diagram of the eight steps of a new profile: headphones, room check, mode, volume, left and right, then the listening check and taste test, then your sound",
+       "caption": "The whole flow. Steps 6 and 7 are the two questions; everything before them is there so the answers mean something.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "The setup steps each guard against a known way for the result to go wrong. A noisy room hides quiet beeps. A volume change halfway shifts every answer. Swapped earbuds flip the two ears."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/screen-start.webp",
+       "alt": "PureEQ welcome screen titled Find your sound, explaining the listening check and the A/B rounds, with a Start button",
+       "caption": "The first screen says what will happen in three sentences, before anything plays.",
+       "width": 1080,
+       "height": 1920,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/pureeq/screen-setup.webp",
+       "alt": "New profile screen titled Let's find your sound, listing three steps: listening check, taste and your EQ, then Before you start",
+       "caption": "The new-profile screen splits the two kinds of input: what you hear, then what you like.",
+       "width": 1080,
+       "height": 1920,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "These two captures come from version 1.5.2 in an Android emulator. The rest of the screens on this page are the Play Store screenshots I made for version 1.6."
+    }
+   ]
+  },
+  {
+   "id": "check",
+   "label": "Decision 1",
+   "nav": "A check that picks each beep",
+   "heading": "A check that picks each beep finishes in about two minutes",
+   "blocks": [
+    {
+     "p": "What you see: one beep at a time, in one ear, and a big Yes button. You never see how loud the beep is."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/annotated-check.webp",
+       "alt": "The listening check screen with six numbered notes: progress, pause, the pulsing rings, the Yes button, the dimmed No button and Play that beep again",
+       "caption": "The check screen. Look at notes 5 and 6: both keep timing and replays from skewing a band.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "p": "In the build: version 1.1 used a staircase, the classic method. It turns the beep down after a Yes and up after a No, over and over. It needed about 150 answers and over six minutes."
+    },
+    {
+     "p": "In 1.2 I replaced it with a Bayesian test. That means it keeps a running best guess of your ears, with how sure it is, and updates the guess after every answer. Each next beep is the one expected to teach it the most. All seven pitches and both ears share one guess, so an answer at 2 kHz also says something about 3 kHz."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/check-loop.webp",
+       "alt": "Loop diagram of the listening check: best guess so far, pick the next beep, play it, answer, update the guess, with the rule for when a pitch is finished",
+       "caption": "One turn of the check. The silent turns in step 4 measure how often a person says Yes to nothing.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "Small details carry a lot of the accuracy. The beeps waver slightly in pitch, so a narrow peak in an earbud cannot pass for a weak band. The No button waits for Bluetooth delay, which can be a quarter of a second or more."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/check-speed.webp",
+       "alt": "Bar chart: answers needed fell from about 150 to 64, check time from 6.3 to about 1.8 minutes, and a whole new profile from 13 to 15 minutes to 5 to 6",
+       "caption": "Version 1.1 against the current check. These numbers come from simulated listeners in the app's own tests, not from people.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The result mixes your ears with your headphones' own sound. That is on purpose, because the EQ corrects both. It also means the result is relative and cannot be read as a measure of anyone's hearing. The check starts at 500 Hz because deep-bass answers depend too much on how well earbuds seal."
+     }
+    }
+   ]
+  },
+  {
+   "id": "fit",
+   "label": "Decision 2",
+   "nav": "Lift big gaps only partly",
+   "heading": "The curve follows the trend and lifts big gaps only partly",
+   "blocks": [
+    {
+     "p": "What you see: at the end of the check, a chart of the seven pitches for each ear. Lower on the chart means that band gets more help. Then the profile shows the curve made from it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/screen-profile.webp",
+       "alt": "Listening profile screen titled Done. Here's your listening profile, with a chart of seven points per ear from 500 Hz to 8 kHz",
+       "caption": "The listening profile. The text says what the zero line is, and that the EQ follows the smooth trend, not every point.",
+       "width": 1080,
+       "height": 1500,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/pureeq/screen-your-eq.webp",
+       "alt": "Fine-tune screen with a profile name, a chart of two EQ curves, blue and red, a preamp of minus 4.1 dB and Play, EQ on and Off buttons",
+       "caption": "A saved profile's curve, one line per ear. The two lines part only where the ears differ.",
+       "width": 1080,
+       "height": 2160,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "In the build: the profile never stores a curve. It stores answers and choices. Every curve, for the phone, for exports and for previews, is worked out from them each time."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/profile-to-curve.webp",
+       "alt": "Diagram with three columns: what a profile stores, five steps that work out the curve for each ear, and where it goes: all audio, exports and previews",
+       "caption": "How a profile becomes a curve. Step 2 is the listening check; steps 1 and 3 can exist without it.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "p": "That choice paid off after version 1.4. I put the design through an evidence review in four parts: how the check measures, how results turn into sound, what headphone sound people prefer, and what similar products and regulators do."
+    },
+    {
+     "p": "The review found real faults. The fit took 500 Hz to 4 kHz as its zero line, so a result that slopes towards the treble was split around its own middle. That roughly doubled the treble tilt compared with NAL-R, a published fitting rule. A real difference between the two ears came through at only about half its size."
+    },
+    {
+     "p": "Version 1.5 changed the rule and refit every saved profile from its stored answers."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/gain-rule.webp",
+       "alt": "Line chart of the ear-tuning rule: boost rises 0.75 dB per dB up to a 6 dB gap, then about 0.35 dB per dB, capped at plus 8 dB, beside a dashed line for full correction",
+       "caption": "The rule since 1.5, drawn from its formula. It shows the rule, not a measured result.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Simulated case",
+       "Version 1.4",
+       "Now"
+      ],
+      "rows": [
+       [
+        "Normal listener: colour the EQ added by mistake",
+        "0.42 dB",
+        "0.34 dB"
+       ],
+       [
+        "Normal listener: false difference between the ears",
+        "0.39 dB",
+        "0.14 dB"
+       ],
+       [
+        "Listener hearing less treble (10 dB at 1 kHz to 35 dB at 4 kHz): treble tilt added",
+        "11.3 dB",
+        "8.0 dB"
+       ],
+       [
+        "A real 15 dB difference between the ears: how far short it was read",
+        "6.0 dB",
+        "3.3 dB"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The table comes from the app's whole-pipeline tests, which run the full check with simulated listeners and compare the curve that comes out."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A listener with a large real gap gets less than a full lift. I chose that because a full lift sounds harsh, and in one study people tuning for themselves chose about 0.29 dB per dB (Sabin et al. 2020)."
+     }
+    }
+   ]
+  },
+  {
+   "id": "taste",
+   "label": "Decision 3",
+   "nav": "Taste by blind pairs",
+   "heading": "Taste is asked with blind pairs, starting from what most people like",
+   "blocks": [
+    {
+     "p": "What you see: A and B, the same music with two settings. You tap between them as often as you like, then pick A, B or Same. You never see what either setting is."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/taste-start.webp",
+       "alt": "Bar chart of three listener groups, 64 percent who like the target, 15 percent who want more bass and 21 percent who want less bass and a little more treble, with the four steps of each round",
+       "caption": "Where the test begins. The groups come from published research, not from my own testing.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/annotated-taste.webp",
+       "alt": "The taste test screen with five numbered notes: the expected number of rounds, the A and B cards, the Heard label, the song choice and the answer buttons",
+       "caption": "One round. Note 5 is the fix described below: the answers wait until both sides have been heard.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "p": "In the build: both settings in a pair are matched in loudness, measured on the song that is playing. Then you compare balance, not volume. The test learns two things only, bass and treble, and picks each next pair to leave the least doubt."
+    },
+    {
+     "p": "Version 1.1 halved its way through 12 rounds. Since 1.2 it usually needs 5 to 7. In 1.5 the treble control moved from a narrow shelf at 8 kHz to a broad one from 2.5 kHz, the shape real listeners adjusted in the research. The old one had no population data behind it."
+    },
+    {
+     "p": "I also fixed a problem in the flow. Before 1.5, rounds could get mixed up. Now each new pair is clearly marked, and the answer buttons wait until both sides have played."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Two controls mean few rounds. Warmth, vocals and air are left at zero for the person to set by hand in Fine-tune."
+     }
+    }
+   ]
+  },
+  {
+   "id": "edit",
+   "label": "Decision 4",
+   "nav": "Hear it, change it, put it back",
+   "heading": "Every suggestion can be heard, changed and put back",
+   "blocks": [
+    {
+     "p": "What you see: the result opens in Fine-tune, with EQ on and off, a song of your choice and named sliders. A slider you move shows the suggested value under it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/annotated-fine-tune.webp",
+       "alt": "The Fine-tune screen with six numbered notes: EQ on and off, the song choice, Reset, the measured correction button, Ear tuning at 75 percent and the Bass slider",
+       "caption": "Fine-tune. Start at note 1: the comparison is fair because both sides play at the same loudness.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "p": "In the build: Reset needs something to return to. Version 1.0 did not keep the taste result, so its profiles had nothing to reset to. From 1.1 the profile keeps what the tests suggested, Reset returns there with Undo, and Redo taste test runs only the A/B part again while keeping the listening result."
+    },
+    {
+     "p": "Matching loudness took real work. An EQ that boosts makes music louder, so the app has to turn the whole sound down to keep the comparison fair and avoid clipping. PureEQ sets its overall level for real music, where one band at a time is loud, instead of for the curve's single highest point. A +6 dB treble lift then costs about 2 dB of level instead of 6."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Many controls are a lot to read. In 1.7.1 I cut the text on every screen to a line or two. The screenshots here are from 1.6, before that cut."
+     }
+    }
+   ]
+  },
+  {
+   "id": "outputs",
+   "label": "Decision 5",
+   "nav": "Profiles follow headphones",
+   "heading": "Profiles follow the headphones, and the phone speaker stays untouched",
+   "blocks": [
+    {
+     "p": "What you see: one profile per pair of headphones, and a switch for each output: the phone speaker, each pair by name, a car."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/annotated-home.webp",
+       "alt": "The home screen with six numbered notes: the output playing now, the active profile, its two curves, Apply to all audio, Fine-tune and Export, and other profiles",
+       "caption": "Home. Note 1 matters most: everything on the screen is about the output playing right now.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/where-on-card.webp",
+       "alt": "Settings section Where it's on, with switches for wireless earbuds (on, playing now), the phone speaker (off) and wired headphones (on), above the Quick Settings tile section",
+       "caption": "Where it is on, in Settings. The phone speaker starts off, because profiles are tuned for headphones.",
+       "width": 1080,
+       "height": 1175,
+       "kind": "plain"
+      }
+     ]
+    },
+    {
+     "p": "In the build: until 1.5.2 there was one switch. Unplugging your headphones left the phone speaker playing a headphone curve, quieter and duller. In 1.5.3 PureEQ started keeping on or off for each output, with the profile last used there. It re-reads the output when a device connects or playback starts."
+    },
+    {
+     "p": "A Quick Settings tile, in the swipe-down panel, turns it on or off. A long press opens a small menu to switch profile or open Fine-tune. In 1.7 profiles gained a mode for what the headphones are mostly used for."
+    },
+    {
+     "table": {
+      "head": [
+       "Mode",
+       "What it changes"
+      ],
+      "rows": [
+       [
+        "Music",
+        "Nothing. The profile exactly as tuned."
+       ],
+       [
+        "General",
+        "A small lift for voices and a slow leveller that eases only very loud sound."
+       ],
+       [
+        "Gaming",
+        "Bass held down so explosions do not bury footsteps, +2 dB around footsteps, treble kept for direction, and half the delay, about 21 ms."
+       ],
+       [
+        "Voice",
+        "Less boom, clearer voices, Ear tuning at full strength and a leveller for loud and quiet talkers."
+       ],
+       [
+        "Auto",
+        "Follows what is playing: music as Music, speech as Voice, films as General, games as Gaming. It waits 3 seconds before switching."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Every mode plays as loud as Music, so switching changes the balance and not the volume."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "A Calls mode. Android does not let any app's equaliser reach phone or app calls, so the mode is named Voice and covers podcasts, audiobooks and talk videos."
+     }
+    }
+   ]
+  },
+  {
+   "id": "words",
+   "label": "Decision 6",
+   "nav": "Words that fit",
+   "heading": "It is called a listening check, because it is not a hearing test",
+   "blocks": [
+    {
+     "p": "Until 1.5 the screens said \"Hearing check\" and \"Hearing correction\". The evidence review showed that those words make an app sound like a medical device, which PureEQ is not. Its results are relative: they shape the sound and do not measure hearing."
+    },
+    {
+     "p": "So in 1.5 the check became the Listening check and the correction became Ear tuning. The store listing, screenshots and release notes leave out words such as \"hearing test\" and \"audiogram\". The app says plainly that it is not a medical device, and no translation calls the check a hearing test."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/feature-graphic.webp",
+       "alt": "PureEQ store graphic: the app icon, headphones over five bars, beside the name PureEQ and the line Your headphones, tuned to your ears and your taste",
+       "caption": "The store graphic I made for the Play listing. The line promises a sound, not a diagnosis.",
+       "width": 1024,
+       "height": 500
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Store the answers, work out everything else",
+   "blocks": [
+    {
+     "p": "Everything runs on the phone. There is no account, no analytics and no server of my own."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/architecture.webp",
+       "alt": "Diagram in three columns: screens, test sessions and audio engine inside the app; the profile, the curve maker and exporters in the core; the background service, Quick Settings tile and two trips online on the Android side",
+       "caption": "What runs where. The profile in the middle holds only answers and choices.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Kotlin and Jetpack Compose with Material 3. No libraries beyond AndroidX at run time"
+       ],
+       [
+        "Sound for the tests",
+        "Android's low-level audio player, with its own thread for beeps and A/B music"
+       ],
+       [
+        "Sound for all apps",
+        "Android's DynamicsProcessing effect, a separate curve per ear, held by a background service"
+       ],
+       [
+        "Headphone data",
+        "AutoEq, an open database of over 6,000 measured headphones, fetched on the phone, never bundled"
+       ],
+       [
+        "Updates",
+        "A GitHub build that checks size, checksum, package, version and signing key before it installs"
+       ],
+       [
+        "Checks",
+        "141 automated tests in 19 files, including whole-pipeline simulations"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "67",
+       "label": "commits, 29 October to 3 November 2026"
+      },
+      {
+       "value": "15",
+       "label": "versions in that history, 1.1 to 1.7.3"
+      },
+      {
+       "value": "141",
+       "label": "automated tests"
+      },
+      {
+       "value": "8",
+       "label": "kinds of export, from slider values to impulse-response files"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/pureeq/timeline.webp",
+       "alt": "Timeline of six days with commit counts: 29 October 5, 30 October 27, 31 October 26, 2 November 4, 3 November 5, with the versions and main changes each day",
+       "caption": "The build day by day. Most of the work, including the evidence review and the 1.5 rebuild, landed on 30 and 31 October.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were in the sound path, not on the screens."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Muffled music",
+        "I noticed lossless music sounded muffled with PureEQ on. An audit found three causes. The tuning cut treble when room noise hid the low beeps, or when someone's treble hearing was keener than average: in 30 simulated checks of each case, the cut passed 2 dB in 13 and in 22. General's leveller turned a loud modern track down about 7 dB. The deepest band dropped in a steep step. Version 1.7.3 halved cuts the two ears share and fixed the other two."
+       ],
+       [
+        "Android's equaliser",
+        "It applies one gain per narrow slice of frequencies, with no smoothing between them. I gave every slice its own band below about 530 Hz and used 107 bands in all. Gaming's shorter frames have wider slices, so it needed its own layout, or each bass slice took its neighbour's gain."
+       ],
+       [
+        "Auto mode",
+        "Android tells an app only what kind of sound each player says it plays, nothing about which app it is. Most games say \"music\", so most games play as Music. The release notes tell people to pick Gaming for those."
+       ],
+       [
+        "Two ways to ship",
+        "The GitHub build updates itself, which Google Play forbids. The same app now builds twice, with and without the updater."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Charts that speak, and buttons that stack at large text",
+   "blocks": [
+    {
+     "p": "A chart of curves means nothing to someone who cannot see it. In 1.6 each chart started describing itself to TalkBack, Android's screen reader, as the level for each ear at 100 Hz, 1 kHz, 4 kHz and 10 kHz."
+    },
+    {
+     "list": [
+      "A row with a switch is one control that reads its own label, not a label and a separate switch.",
+      "Sliders announce their name and value. Screen titles are headings, so a screen reader can jump between them.",
+      "At large text, side-by-side buttons stack whenever a label would not fit, instead of breaking words. I checked the screens at 200% text.",
+      "The app ships in English, Spanish, German, French, Portuguese (Brazil) and Hindi."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "I have no captures of these states yet, and no one who uses TalkBack daily has tried the app."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Version 1.7.3, with its accuracy shown only in simulation",
+   "blocks": [
+    {
+     "p": "PureEQ is at version 1.7.3. The first install is a download from its public page, and after that it updates itself. I wrote a Google Play launch checklist and store listing for a November 2026 release."
+    },
+    {
+     "p": "I use PureEQ every day myself."
+    },
+    {
+     "p": "These are not there yet:"
+    },
+    {
+     "list": [
+      "Every accuracy figure on this page comes from simulated listeners. The model's settings were tuned in simulation, not fitted to real people.",
+      "No listening tests with other people, no measurements of the sound that reaches the ear, and no install or rating numbers.",
+      "The system-wide EQ depends on the phone maker, and Auto mode has not been checked against what real apps report."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Test with real listeners and real phones",
+   "blocks": [
+    {
+     "list": [
+      "Run the check twice on the same people to see how far results move, and compare the curve's shape with a calibrated booth test, ideally with an audiology research group.",
+      "Watch room noise during the check, not only before it, and drop a beep that noise may have hidden.",
+      "Play 50 or more modern tracks through typical profiles to confirm the level never clips.",
+      "Ship the Play build and capture the 1.7 screens, TalkBack and large-text states for this page."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Keep the answers, not the result",
+   "blocks": [
+    {
+     "p": "Storing every answer instead of a finished curve was the decision that kept paying. The 1.5 refit and the 1.7.3 treble fix both reached every saved profile without anyone redoing a test."
+    },
+    {
+     "p": "Simulation let me compare versions in numbers before I listened. It still missed the muffled sound until I heard it on a real phone, and then simulation showed why. I needed both."
+    }
+   ]
+  }
+ ]
+}

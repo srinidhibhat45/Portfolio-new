@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x960">
+<style>.flow{display:grid;grid-template-columns:1fr 60px 1fr;gap:16px 0;align-items:center}.q{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:18px 22px}.q h2{font-size:24px;font-weight:600}.q p{font-size:20px;color:var(--dim);margin-top:4px}.b{border:1.5px solid var(--warn);background:var(--warn-wash);border-radius:14px;padding:16px 20px;font-size:20px;line-height:1.4}.b b{color:var(--warn)}.ok{border-color:var(--good);background:var(--good-wash)}.ok b{color:var(--good)}.a{text-align:center;color:var(--accent);font-size:30px}.dn{color:var(--accent);font-size:30px;padding-left:40px;line-height:1}.lbl{font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);display:block;text-align:center}.side{width:520px}.side .card{border-color:var(--accent);background:var(--wash)}.side h2{font-size:26px}.side p{margin-top:10px;font-size:21px;color:var(--ink)}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">The checks before a photo can be shared, in the order the code runs them</p><h1>Hard stops for cheats, soft notes for weak photos</h1>
+<div class="grow row" style="gap:50px;align-items:flex-start">
+<div style="flex:1"><div class="flow">
+<div class="q"><h2>1. Is it a flat wall of colour?</h2><p>Very little colour variety and almost no edges.</p></div><span class="a"><span class="lbl">yes</span>→</span><div class="b"><b>Blocked.</b> "Find the colour inside a real scene."</div>
+<div class="dn">↓ <span style="font-size:16px;font-weight:600;color:var(--dim);letter-spacing:.06em">NO</span></div><span></span><span></span>
+<div class="q"><h2>2. Is the camera data missing?</h2><p>It needs a camera make or model and at least one exposure detail, such as aperture or shutter speed.</p></div><span class="a"><span class="lbl">yes</span>→</span><div class="b"><b>Blocked.</b> It looks like a screenshot or a photo of a photo.</div>
+<div class="dn">↓ <span style="font-size:16px;font-weight:600;color:var(--dim);letter-spacing:.06em">NO</span></div><span></span><span></span>
+<div class="q"><h2>3. Real-photo guess above 85%?</h2><p>A last stop for very high suspicion.</p></div><span class="a"><span class="lbl">yes</span>→</span><div class="b"><b>Blocked.</b> It looks generated or heavily edited.</div>
+<div class="dn">↓ <span style="font-size:16px;font-weight:600;color:var(--dim);letter-spacing:.06em">NO</span></div><span></span><span></span>
+<div class="b ok" style="grid-column:1/4"><b>Can be shared.</b> Low detail lowers the score and turns the Detail check into a warning. Less than 2% of the frame in the colour turns the Colour check into a warning and adds a tip.</div>
+</div></div>
+<div class="side"><div class="card"><h2>What the real-photo guess can and cannot do</h2><p>It mixes two signals: how smooth the image is, and whether camera data is missing. Missing data already stops a photo at step 2.</p><p>So for a photo that passes step 2, the guess is at most 55%. It can lower the score by about 12% at most, and it can never block it.</p><p><b>It is a tentative heuristic, not a reliable detector of AI images.</b></p></div></div>
+</div>

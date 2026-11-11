@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>.colm{display:flex;flex-direction:column;gap:14px}.colm>p.l{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:25px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.lnk{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-size:18px;color:var(--dim);text-align:center;width:150px}.lnk b{color:var(--accent);font-size:38px;line-height:1}.side{border-style:dashed}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">How a room works</p><h1>The host's browser is the game server</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm" style="flex:1.15"><p class="l">Host player</p>
+<div class="card hi"><h2>Host's browser tab</h2><p>Makes the room code. Holds the room in memory: players, scores, the word or question, the timer.</p><p>Checks every move against the rules, then sends the whole room to everyone.</p></div>
+<div class="card"><h2>The host plays too</h2><p>Its own moves go straight to the rules, with no network in between.</p></div></div>
+<div class="lnk"><b>⇄</b>direct link<br>(WebRTC)</div>
+<div class="colm" style="flex:1"><p class="l">Other players</p>
+<div class="card"><h2>Player's browser</h2><p>Sends moves: a key, an answer, a line, a vote.</p></div>
+<div class="card"><h2>Player's browser</h2><p>Draws the screen from the room it receives.</p></div>
+<div class="card"><h2>…up to the whole group</h2><p>Each one joins with the code while the room is still in its lobby.</p></div></div>
+<div class="colm" style="flex:1.1"><p class="l">Only to get connected</p>
+<div class="card side"><h2>Introduction service</h2><p>The PeerJS broker. It finds the host by its code. No game data passes through it.</p></div>
+<div class="card side"><h2>Address and relay servers</h2><p>STUN tells a browser its public address. TURN relays traffic when a firewall blocks a direct link.</p></div>
+<div class="card side"><h2>One server function</h2><p>Hands out short-lived TURN passwords, so the account secret never ships to the browser.</p></div></div>
+</div>
+<p class="note">If the host closes the tab, the room ends. There is no hand-over to another player and no saved state.</p>
+</body>

@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x700">
+<style>.flow{display:grid;grid-template-columns:1fr 50px 1.2fr 50px 1fr 50px 1fr;align-items:stretch}.flow .arrow{align-self:center;text-align:center}.card h2{font-size:24px;margin-top:10px}.card p{font-size:19px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.warn{border-color:var(--warn);background:var(--warn-wash)}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Privacy</p><h1>A photo of a grandmother should not publish the family's address</h1>
+<div class="grow flow">
+<div class="card warn"><span class="num" style="background:var(--warn)">1</span><h2>A phone photo</h2><p>Carries hidden details, including the place it was taken.</p></div>
+<span class="arrow">→</span>
+<div class="card hi"><span class="num">2</span><h2>Redrawn in the browser</h2><p>1600px on the long edge, about 340 KB, plus a 400px thumbnail. Redrawing drops the hidden details, location included.</p></div>
+<span class="arrow">→</span>
+<div class="card"><span class="num">3</span><h2>Stored</h2><p>At an address owned by the archive, so storage can change in a decade without rewriting records.</p></div>
+<span class="arrow">→</span>
+<div class="card"><span class="num">4</span><h2>Attached on approval</h2><p>The photo joins a record only when a maintainer approves the submission it came with.</p></div>
+</div>
+<p class="note">From the photo upload code. Photos are optional everywhere. Uploads are limited to 30 in 10 minutes from one address.</p>

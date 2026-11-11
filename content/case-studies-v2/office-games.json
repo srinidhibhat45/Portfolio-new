@@ -1,0 +1,617 @@
+{
+ "title": "Three party games where [[one player's browser]] is the game server.",
+ "hook": "The Office Games is a small web site of three quick multiplayer games that I designed and built on my own. One player opens a room, shares a six-character code, and their browser runs the game for everyone.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "July 2026. A separate first attempt, Game of Lies, dates from June 2026"
+  },
+  {
+   "label": "For",
+   "value": "Groups of friends or colleagues who want a short game in the browser, with no sign-up"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, played in desktop browsers. Keyboard Scramble needs a physical keyboard"
+  },
+  {
+   "label": "Stack",
+   "value": "React 19, Vite, PeerJS over WebRTC, one Vercel server function"
+  },
+  {
+   "label": "Status",
+   "value": "Live. I have no usage numbers or playtest records to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Play The Office Games",
+   "url": "https://officegames.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: a quick group game in the browser still needs a place where the game runs and everyone can reach it. My first version needed a Node server and a host for it.",
+  "What I built: a hub of three games, Keyboard Scramble, Collision and The Forger. The host player's browser holds the room and checks the rules. Other browsers connect to it directly.",
+  "The key idea: keep the server out of the game. The only server code left hands out passwords for a relay that helps browsers behind firewalls connect.",
+  "Where it stands: live since July 2026, built in 34 commits over eight days. An earlier one-game prototype with the same name, Game of Lies, is a separate product and is not the live site."
+ ],
+ "lead": {
+  "src": "assets/cases/office-games/lead-strip.webp",
+  "alt": "Three game screens side by side: a scrambled on-screen keyboard with some keys revealed, a Collision round result reading Collision, and a Forger drawing canvas with a secret word",
+  "caption": "One round from each game: Keyboard Scramble, Collision and The Forger. Player names are blurred.",
+  "width": 2400,
+  "height": 551
+ },
+ "sections": [
+  {
+   "id": "what",
+   "label": "What it is",
+   "nav": "What it is",
+   "heading": "Three short games behind one room code",
+   "blocks": [
+    {
+     "p": "The Office Games is a home page with three games on it. Each one is short and needs no account. The home page invites you to \"choose a game to play with your friends\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/hub.webp",
+       "alt": "The home page with three game cards: Keyboard Scramble in orange, Collision in blue and The Forger in pink, each with a short rule and a Play now button",
+       "caption": "The home page. Each card gives the rule in two or three sentences, so nobody has to read a manual before the first round.",
+       "width": 1600,
+       "height": 856
+      }
+     ]
+    },
+    {
+     "list": [
+      "Keyboard Scramble: type the word on screen while every key on your keyboard types a different letter.",
+      "Collision: two teams answer prompts like \"Name a big cat\". If too many people on a team give the same answer, the team takes a strike.",
+      "The Forger: everyone draws a secret word one line at a time, except the Forger, who only knows the category."
+     ]
+    },
+    {
+     "p": "Every game starts the same way. You type a name and create a private room. You share the room code, and the others type it in to join."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/ks-home.webp",
+       "alt": "Keyboard Scramble start screen with a name field, a Create private room button, a room code field and a Join room button",
+       "caption": "The start screen. Two paths only: make a room or join one.",
+       "width": 1290,
+       "height": 1155
+      },
+      {
+       "src": "assets/cases/office-games/ks-lobby.webp",
+       "alt": "The Keyboard Scramble lobby with a room code, three player badges and game settings for mode, difficulty, rounds, time and hints",
+       "caption": "The lobby. The host picks the settings. The others mark themselves ready, and their badges turn green.",
+       "width": 1600,
+       "height": 1195
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "aside": {
+      "title": "How these screens were made.",
+      "detail": "I captured every game screen on this page from the built site on one computer, with several browser tabs as players. The network link between players was replaced by a local stand-in, so the screens are the real interface but not a real game across devices."
+     }
+    }
+   ]
+  },
+  {
+   "id": "two",
+   "label": "Two products",
+   "nav": "Two products",
+   "heading": "The name was used twice, and the live link is the second product",
+   "blocks": [
+    {
+     "p": "There are two separate code bases called The Office Games. They share a name and a wordmark. They share no code."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/two-products.webp",
+       "alt": "A comparison table of Game of Lies from June 2026 and The Office Games hub from July 2026, covering games, how players connect, room code, history and hosting",
+       "caption": "The two products side by side. The pink column is what the live link shows.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "The first, in June 2026, was one game called Game of Lies. Its rooms only work across tabs of one browser, unless each player sets up a database connection by hand. It has no hosting set up."
+    },
+    {
+     "p": "The second started in July 2026 as Keyboard Scramble on its own. The same morning I turned it into a hub for several games and gave it the old name. That hub is the live site, and most of this page is about it. Game of Lies has its own section near the end."
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How a room works",
+   "nav": "How a room works",
+   "heading": "One player's browser runs the game for everyone",
+   "blocks": [
+    {
+     "p": "There is no game server. Whoever creates the room becomes the host. Their browser tab holds the room in memory and checks every move against the rules. Then it sends the whole room to every player, and each screen redraws from it."
+    },
+    {
+     "p": "The browsers talk to each other directly through WebRTC, a browser feature for direct connections. To find each other, they use PeerJS's public introduction service. The room code is part of the host's address there, so typing the code is how you find the host."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/room-architecture.webp",
+       "alt": "Diagram in three columns: the host's browser tab holding the room and checking rules, other players' browsers linked to it directly, and the services used only to connect: the PeerJS broker, STUN and TURN servers, and one server function",
+       "caption": "Who does what in a room. Everything in the right column helps browsers find each other. None of it holds game data.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "Some networks block direct links. For those, a relay called a TURN server passes the traffic along. The relay needs a password, and a password in the page would be public. So one small server function asks the relay provider for a short-lived password and passes it on."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "With no server, the room lives only in the host's tab. If the host closes it, the room ends, and there is no hand-over to another player. And because the whole room goes to every browser, hidden things like the Forger's secret word can be read by anyone who opens the browser's developer tools. I accepted that for a game among friends. It is not cheat-proof."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scramble",
+   "label": "Decision 1",
+   "nav": "Keyboard Scramble",
+   "heading": "Everyone fights the same scrambled keyboard",
+   "blocks": [
+    {
+     "p": "What you see: a word to type and a picture of a keyboard. Every key types the wrong letter. As the clock runs down, a few keys at a time flip to show what they really type."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/annotated-scramble.webp",
+       "alt": "A Keyboard Scramble round with five numbered notes: the leaderboard, the timer, the word with a wrong key shown under it, revealed keys on the keyboard, and the keyboard itself",
+       "caption": "Look at note 4: four keys have flipped after the first hint. With the default medium setting, each hint reveals four keys.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "p": "In the build: at the start of each round the host shuffles 47 keys into a new order and picks the order the hints will appear in. It sends both to every player once. Each browser then translates your key presses itself, so a round needs no messages until you finish or make a mistake."
+    },
+    {
+     "p": "A finished word scores 100 points, plus 10 for each second left, minus 5 for each mistake, and never less than 10. The host can change the mode (words, phrases, sentences, or a chaos mode that reverses the word), the difficulty, rounds, time and hints."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/ks-results.webp",
+       "alt": "Results screen ranking three blurred players by points with their mistakes, and the full scrambled keyboard for the round",
+       "caption": "After the round the whole scrambled keyboard is shown. The heading says \"Final results!\" even though this was round 1 of 3, a bug I come back to below.",
+       "width": 1260,
+       "height": 1308,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "There is no backspace. A wrong key just counts as a mistake. And the time left is reported by each player's own browser, which the host trusts."
+     }
+    }
+   ]
+  },
+  {
+   "id": "collision",
+   "label": "Decision 2",
+   "nav": "Collision",
+   "heading": "In Collision, matching meaning counts, not matching spelling",
+   "blocks": [
+    {
+     "p": "What you see: two teams. Each round one team gets a prompt and 30 seconds. Every member answers alone. If half the team or more give the same answer, the team takes a strike. Three strikes and that team loses."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/col-lobby.webp",
+       "alt": "Collision lobby with a six-character room code, two team boxes of two blurred players each, Move buttons, and Randomize teams and Start game buttons",
+       "caption": "New players are spread across the two teams. The host can move people or shuffle the teams. The game needs at least two on each side.",
+       "width": 1544,
+       "height": 738
+      },
+      {
+       "src": "assets/cases/office-games/annotated-collision.webp",
+       "alt": "A Collision round with four numbered notes: the strike counts, whose turn it is, a 27-second timer, and the waiting team's view of answers arriving",
+       "caption": "The waiting team's screen. Note 4 is what makes the wait fun: you watch the other team's answers arrive.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "In the build: the first rule compared answers letter for letter, ignoring only capitals and outer spaces, and a strike needed more than half the team. So \"NY\" and \"New York\" did not match, and a made-up word was accepted. On 17 July I rebuilt it, and changed the strike to half the team or more. Each question now carries its own list of accepted answers and nicknames, and each answer is matched before it counts."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/answer-matching.webp",
+       "alt": "Four steps in a row: clean the answer up, check known nicknames, check the exact answer list, allow close spelling; then two outcomes, matched or rejected",
+       "caption": "The four checks, in order. A rejected answer can be fixed straight away.",
+       "width": 1600,
+       "height": 780
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/col-invalid.webp",
+       "alt": "A Collision answer box containing qwxz, with a red message saying it does not answer the prompt",
+       "caption": "A made-up answer is turned away with a reason, and the clock keeps running.",
+       "width": 1544,
+       "height": 897
+      },
+      {
+       "src": "assets/cases/office-games/col-collision.webp",
+       "alt": "Round results showing Collision, with both blurred players on the team having answered cake",
+       "caption": "Both players said \"cake\", so Team A takes its first strike.",
+       "width": 1544,
+       "height": 897
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "The question bank went the same way. On 10 July it grew past 500 questions. I then cut it back to 44 hand-picked prompts, each with a list of answers that can be checked."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/col-safe.webp",
+       "alt": "Round results showing Safe, with two different blurred answers: iron man and captain america",
+       "caption": "Two different heroes, so Team B is safe.",
+       "width": 1544,
+       "height": 897
+      },
+      {
+       "src": "assets/cases/office-games/col-results.webp",
+       "alt": "Game over screen: Team B wins, with Team A on 3 of 3 collisions and Team B on 1 of 3",
+       "caption": "The end screen counts strikes, not points.",
+       "width": 1260,
+       "height": 840
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A checked list cuts both ways. An answer that is right but missing from my list is rejected too. And six of the 44 questions list fewer than 8 answers, so the question picker never chooses them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "forger",
+   "label": "Decision 3",
+   "nav": "The Forger",
+   "heading": "In The Forger, one secret is shown to everyone but one player",
+   "blocks": [
+    {
+     "p": "What you see: the same screen, with one line different. Artists see the secret word. The Forger sees only the category and is told to blend in. Each player draws one unbroken line per turn, twice around the table."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/forger-artist.webp",
+       "alt": "The Forger game for an artist: Category Food, Secret word Watermelon, turn order with blurred names, and a canvas with a half circle and two loose lines",
+       "caption": "An artist's turn. The secret word is at the top.",
+       "width": 1544,
+       "height": 1002
+      },
+      {
+       "src": "assets/cases/office-games/forger-forger.webp",
+       "alt": "The same moment for the Forger: Category Food and the words You are The Forger! Blend in, with the same drawing",
+       "caption": "The same moment for the Forger, who has to guess what everyone is drawing.",
+       "width": 1544,
+       "height": 1002
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: a line is a list of points on a 600 by 400 canvas. It is sent when you lift the pen, and the host only accepts it from the player whose turn it is. That rule is what keeps \"one line per turn\" honest."
+    },
+    {
+     "p": "After everyone has drawn twice, everyone votes. A tie, or the wrong person accused, and the Forger wins. If the Forger is caught, they get one guess at the word to steal the win."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/forger-vote.webp",
+       "alt": "Voting screen over the faded drawing, asking Who is The Forger? with two vote buttons whose names are blurred",
+       "caption": "The vote. You cannot vote for yourself.",
+       "width": 1544,
+       "height": 1002
+      },
+      {
+       "src": "assets/cases/office-games/forger-guess.webp",
+       "alt": "The Forger was caught, with a One last chance box and a field to guess the word",
+       "caption": "Caught, but one guess left.",
+       "width": 1230,
+       "height": 870
+      },
+      {
+       "src": "assets/cases/office-games/forger-end.webp",
+       "alt": "The artists win screen showing the guess was wrong, the secret word Watermelon and the blurred name of the Forger",
+       "caption": "The guess was wrong, so the artists win.",
+       "width": 1230,
+       "height": 848
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "It needs at least three players. And as with the other games, the secret word and the Forger's identity travel to every browser. Only the screen hides them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "The games came quickly, and the connections took the work",
+   "blocks": [
+    {
+     "p": "I started with a Node server and prepared it for two hosts, Render and Hugging Face Spaces. Before the morning was out I rewrote it so the host's browser runs the game, and deleted the server. Much of the history after that is about getting browsers to connect."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/hosting-journey.webp",
+       "alt": "Timeline of commits on 10, 13 and 17 July 2026, from a Node server to a serverless rewrite, the hub, connection fixes, a TURN password function and the Collision rebuild",
+       "caption": "The history in one picture. Hollow dots are the server version that I dropped.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Interface",
+        "React 19 and Vite, plain CSS"
+       ],
+       [
+        "Pages",
+        "React Router with hash links (#/collision), one page per game"
+       ],
+       [
+        "Connections",
+        "PeerJS over WebRTC, with Google's public STUN servers as a fallback"
+       ],
+       [
+        "Relay passwords",
+        "One Vercel server function that asks the TURN provider, Xirsys, for short-lived credentials"
+       ],
+       [
+        "Hosting",
+        "Vercel, serving the built site"
+       ],
+       [
+        "Checks",
+        "oxlint for code style. No automated test suite"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "34",
+       "label": "commits, 10 to 17 July 2026"
+      },
+      {
+       "value": "15",
+       "label": "of them about hosting or connections"
+      },
+      {
+       "value": "44",
+       "label": "Collision prompts, each with its own answer list"
+      },
+      {
+       "value": "102",
+       "label": "Forger words in 10 categories"
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were the ones I could not see on one computer."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Joining",
+        "A player could try to connect before their own connection was ready. A short wait before connecting fixed the race. Old connections left open when you went back were also closed."
+       ],
+       [
+        "Errors",
+        "A timeout message was replacing the real reason a join failed. Now the real error is kept."
+       ],
+       [
+        "Firewalls",
+        "The free public relay I used stopped working, so joins timed out behind firewalls. I replaced it with the password function."
+       ],
+       [
+        "The fix's fix",
+        "The function's reply had the wrong shape for the browser, and browsers then kept the bad reply in their cache. Two more commits fixed both."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "There are no automated tests. One script plays ten made-up players through the Collision rules without a network. It dates from the first day and has not been updated since the answer checks arrived."
+    }
+   ]
+  },
+  {
+   "id": "lies",
+   "label": "The first attempt",
+   "nav": "Game of Lies",
+   "heading": "Game of Lies came first, with a demo mode that never leaves one browser",
+   "blocks": [
+    {
+     "p": "Game of Lies is the June 2026 product. Two teams, Team Stapler and Team Paperclip, take turns with office trivia. One player answers for the team and may lie. The other team's decider sees only that an answer is locked in, and chooses to steal it or pass."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/gol-home.webp",
+       "alt": "Game of Lies home page in a dark theme: Welcome to the Game Room, Host new game and Join game room buttons, and one game card for Game of Lies",
+       "caption": "The home page was built for many games but holds one. Top right: \"Local Storage Sync\", the mode it is running in.",
+       "width": 1600,
+       "height": 1147
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "The other team",
+       "Answer was right",
+       "Answer was a lie"
+      ],
+      "rows": [
+       [
+        "Passes",
+        "Answering team +1",
+        "Nobody scores"
+       ],
+       [
+        "Steals",
+        "Stealing team +2",
+        "Stealing team −2"
+       ]
+      ]
+     }
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/annotated-lies.webp",
+       "alt": "The answering player's screen with five numbered notes: the mode badge, scores and goal, the answering player prompt, the answer options, and the team chat",
+       "caption": "Note 4 is a real flaw. The first option is always the right one, which gives the bluff away once players notice.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/gol-steal.webp",
+       "alt": "The stealing team's decider sees that Team A has locked in, with two large cards: Steal, plus or minus 2, and Pass, 0 points",
+       "caption": "The decider's choice. The two cards spell out what each one risks.",
+       "width": 1600,
+       "height": 1147
+      },
+      {
+       "src": "assets/cases/office-games/gol-reveal.webp",
+       "alt": "The reveal: the correct answer next to Team A's chosen answer, and the message Failed steal, Team B fell for the lie, minus 2 points",
+       "caption": "The reveal. Team A lied, Team B stole, and Team B lost 2 points.",
+       "width": 1600,
+       "height": 1213
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "It has two ways to share a room. In \"Local Storage Sync\" the room is saved in the browser, and other tabs of that same browser see each change. To play on separate devices, each player has to paste the settings of a Firebase database into the game first."
+    },
+    {
+     "p": "To try a round alone, the host can add up to nine simulated players. On its turn, a simulated player waits four seconds. Then it answers correctly 70% of the time, or, as the decider, steals half the time."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/office-games/gol-lobby.webp",
+       "alt": "The Game of Lies lobby with a four-letter room code, a grid of nine office characters, team buttons, two team lists with blurred names, a lobby chat and host buttons including Add simulated player",
+       "caption": "The lobby: pick a character and a team. Two of the four players here are simulated.",
+       "width": 1600,
+       "height": 1573,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What the demo mode does not show.",
+      "detail": "Local mode is not network play between devices. It only links tabs of one browser on one computer. The screens above were made that way. I have no record that the Firebase mode was ever used for a real game, and the project has no hosting set up."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no usage numbers and a short list of known problems",
+   "blocks": [
+    {
+     "p": "The hub is live at the link above. The last commit was on 17 July 2026. I have no player counts or notes from real sessions to report."
+    },
+    {
+     "p": "These problems are known and still open:"
+    },
+    {
+     "list": [
+      "When the host leaves, the room ends for everyone. Other players are not told why.",
+      "Keyboard Scramble's results heading says \"Final results!\" after every round, because the screen checks a copy of the round number that is not updated during play.",
+      "The Forger's header reads \"Round 3 / 2\" while people vote.",
+      "The Collision card on the home page still describes the old rule: more than half, and the exact same answer.",
+      "Hidden information reaches every browser, and the ten-player script is out of date."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Test the connection before the game",
+   "blocks": [
+    {
+     "p": "Collision and The Forger were each added within hours on 10 July. Connections took 15 of the 34 commits, and the worst failures, like a relay that quietly stopped working, could not be seen from one computer. The lesson I take from it: try joining from two different networks early, before adding the next game."
+    },
+    {
+     "p": "Collision taught me that a fair rule has to be one the host can check. \"The same answer\" sounded clear until \"NY\" and \"New York\" disagreed. Writing down the accepted answers made the rule real, and it also showed me where my lists were too short."
+    }
+   ]
+  }
+ ]
+}

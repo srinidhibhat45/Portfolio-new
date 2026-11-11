@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:19px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}.net{border-style:dashed}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">How it is put together</p><h1>Everything runs on the phone. Only updates use the internet</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>On screen</p>
+<div class="card"><h2>Review, Recycle bin, Settings</h2><p>Jetpack Compose and Material 3. Follows the phone's light or dark theme and wallpaper colours.</p></div>
+<div class="card"><h2>Previews</h2><p>Images and every PDF page with pinch zoom, video, audio and text. The next files are drawn ahead, in a 24 MB memory cache.</p></div>
+<div class="card"><h2>Swipe and buttons</h2><p>One drag handler, three buttons and three named screen-reader actions, all calling the same functions.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>The app's logic</p>
+<div class="card hi"><h2>Review queue</h2><p>Largest first, filtered by kind. Holds the waiting actions and drives each countdown.</p></div>
+<div class="card"><h2>Rules</h2><p>Five seconds to undo, seven days for a kept file, thirty days in the bin. What counts as someone else's bin.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>On the phone's storage</p>
+<div class="card hi"><h2>Storage</h2><p>Scans each volume, records each file's five facts, keeps the history of kept files and the record of every action in SQLite.</p></div>
+<div class="card"><h2>Safe disk</h2><p>Moves a file only if it is unchanged and nothing is at the destination. Deletes one file, never a folder.</p></div>
+<div class="card"><h2>A hidden bin folder</h2><p>One on each volume, so a move to the bin never copies the file.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>In the background</p>
+<div class="card"><h2>Hourly cleanup</h2><p>WorkManager finishes waiting actions and empties expired bin files, when Android allows.</p></div>
+<div class="card net"><h2>Update check</h2><p>Reads public GitHub releases. Checks the file's SHA-256, package name, a higher version and the exact signing certificate before offering to install.</p></div></div>
+</div>
+<p class="note">No accounts, no analytics, no uploads. The update check is the only part that uses the network.</p>

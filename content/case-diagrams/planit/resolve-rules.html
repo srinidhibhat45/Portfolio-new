@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>
+.dir{display:grid;grid-template-columns:1fr auto 1fr;gap:26px;align-items:center;margin-top:30px}
+.dir .card{text-align:center;padding:18px}
+.dir .mid{display:grid;gap:10px;font-size:22px;font-weight:600;color:var(--accent);text-align:center}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:28px}
+.r{display:grid;grid-template-columns:40px 1fr 330px;gap:18px;align-items:start;border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:20px 22px}
+.r h2{font-size:24px;font-weight:600;line-height:1.3}
+.r p{font-size:19px;color:var(--dim);line-height:1.4;margin-top:4px}
+.mini{display:grid;grid-template-columns:1fr 24px 1fr;gap:6px;align-items:center;font-size:15px}
+.mini .s{display:grid;gap:5px}
+.mini b{display:block;font-size:13px;color:var(--dim);font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+.k{border:1.5px solid var(--accent);border-radius:6px;padding:3px 7px;background:var(--wash);white-space:nowrap;overflow:hidden}
+.k.l{border-style:dashed;border-color:#8C989B;background:#fff;color:var(--dim)}
+.k.p{border-color:var(--ink);background:#fff;font-weight:600}
+.k.w{border-color:var(--warn);background:var(--warn-wash)}
+.mini .ar{color:var(--accent);font-weight:700;text-align:center}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Board and calendar</p><h1>Two buttons, one in each direction, and four rules for Resolve</h1>
+<div class="dir"><div class="card"><h2>The plan in time</h2><p>Timeline, Day, Trip, Agenda, Map</p></div>
+<div class="mid"><span>Tidy →</span><span>← Resolve</span></div>
+<div class="card"><h2>The board</h2><p>Frames, columns, connectors, pins</p></div></div>
+<div class="rules">
+<div class="r"><span class="num">1</span><div><h2>A card opts in</h2><p>Only cards in a day frame or wired to another card get a time. A loose card stays exactly as it is.</p></div>
+<div class="mini"><div class="s"><b>Before</b><span class="k l">Cricket match?</span><span class="k">Lunch 12:30</span></div><span class="ar">→</span><div class="s"><b>After</b><span class="k l">Cricket match?</span><span class="k">Lunch 12:30</span></div></div></div>
+<div class="r"><span class="num">2</span><div><h2>It only pushes forward</h2><p>A card on the wrong day changes date and keeps its hour. Nothing is pulled earlier, and no time is made up.</p></div>
+<div class="mini"><div class="s"><b>Before</b><span class="k">Fri 18:00 dinner</span><span style="font-size:13px;color:var(--dim)">sitting in Sat frame</span></div><span class="ar">→</span><div class="s"><b>After</b><span class="k">Sat 18:00 dinner</span></div></div></div>
+<div class="r"><span class="num">3</span><div><h2>Reordering swaps times</h2><p>Drag a card above another and the column's times are dealt back out in the new order, lengths kept.</p></div>
+<div class="mini"><div class="s"><b>Before</b><span class="k">Lunch 1 h</span><span class="k">Session 3 h</span></div><span class="ar">→</span><div class="s"><b>After</b><span class="k">Session 3 h</span><span class="k">Lunch 1 h, after it</span></div></div></div>
+<div class="r"><span class="num">4</span><div><h2>Pins win</h2><p>A pinned card never moves. If something runs into it, you are told instead of quietly overruled.</p></div>
+<div class="mini"><div class="s"><b>Before</b><span class="k">Transfer runs long</span><span class="k p">Pinned flight</span></div><span class="ar">→</span><div class="s"><b>After</b><span class="k w">Transfer, flagged</span><span class="k p">Pinned flight</span></div></div></div>
+</div>
+<p class="note">Rules as built. The before and after cards are drawn to explain each rule, not taken from the app. On a freshly tidied board, Resolve changes nothing, and a test checks that.</p>

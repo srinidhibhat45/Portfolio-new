@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>.lane{display:flex;gap:14px;align-items:stretch}.lane>p{flex:none;width:150px;font-size:18px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);padding-top:16px}
+.card{flex:1;padding:16px 18px}.card h2{font-size:23px;display:flex;gap:10px;align-items:center}.card .num{width:32px;height:32px;font-size:16px}
+.card p{font-size:19px;margin-top:6px}.card ul{gap:5px}.card li{font-size:18.5px}
+.hi{border-color:var(--accent);background:var(--wash)}
+.ref{font-size:26px;font-weight:700;letter-spacing:.02em;color:var(--accent);margin-top:6px}
+.arrow{font-size:30px}.down{display:flex;gap:14px;padding-left:164px;color:var(--accent);font-size:28px;line-height:1;margin:6px 0}
+</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">The registration workflow</p><h1>From the form to the desk, one record all the way</h1>
+<div class="grow col" style="gap:0">
+<div class="lane"><p>Participant</p>
+<div class="card"><h2><span class="num">1</span>Event page</h2><p>Opens the event. On a phone, a Register button stays at the bottom and opens the form as a sheet.</p></div><span class="arrow">→</span>
+<div class="card"><h2><span class="num">2</span>The form</h2><p>Name and phone always. Email, age, gender, address and custom questions only if the event asks. A UPI box if there is a fee.</p></div><span class="arrow">→</span>
+<div class="card hi" style="flex:1.25"><h2><span class="num">3</span>Checks on the server</h2><ul><li>Registration open, deadline not passed (Goa time)</li><li>Phone not already used, unless the event allows several entries</li><li>Places left, required answers present</li><li>Files checked before anything is stored</li></ul></div><span class="arrow">→</span>
+<div class="card"><h2><span class="num">4</span>Reference</h2><p class="ref">YUVA-E12-00047</p><p>Event 12, entry 47. Made from the database's own row number, so it is never reused.</p></div></div>
+<div class="down"><span>↓</span></div>
+<div class="lane"><p>Committee</p>
+<div class="card hi"><h2><span class="num">5</span>Registrants list</h2><p>Every answer gets its own column. Payment is marked pending, paid or waived. A tick marks the entry verified.</p></div><span class="arrow">→</span>
+<div class="card"><h2><span class="num">6</span>Desk sheet</h2><p>Names A to Z with phone, a Present column and room to sign. Blank numbered rows for people who walk in.</p></div>
+<div class="card"><h2><span class="num">7</span>Excel export</h2><p>The full list, every page of it, for anyone who needs it offline.</p></div>
+<div class="card"><h2><span class="num">8</span>After the event</h2><p>The event's ledger, certificates and a drafted report draw on the same event.</p></div></div>
+</div>
+<p class="note">If the committee allows it for an event, a participant can come back with the same phone number and correct their own entry (step 2 again, minus the phone).</p>

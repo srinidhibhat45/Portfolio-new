@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x940">
+<style>.pair{display:grid;grid-template-columns:1fr 50px 1fr;gap:14px;align-items:stretch}.pair .card{padding:16px 22px;display:flex;flex-direction:column;justify-content:center}.pair h2{font-size:23.5px}.pair p{font-size:20px}.from{font-size:16.5px!important;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--accent)!important;margin-bottom:3px}
+.head{display:grid;grid-template-columns:1fr 50px 1fr;gap:14px;font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}
+.pair.bug .card{background:var(--warn-wash);border-color:color-mix(in srgb,var(--warn) 40%,#fff)}.pair.bug .arrow,.pair.bug .from{color:var(--warn)!important}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">From the review to the design</p><h1>Five findings the design answers, and one it cannot</h1>
+<div class="grow col" style="gap:11px;margin-top:26px">
+<div class="head"><span>What the review found</span><span></span><span>What the prototype does about it</span></div>
+<div class="pair"><div class="card"><p class="from">getMetaData</p><h2>Poor organisation of information</h2></div><div class="arrow">→</div><div class="card"><h2>Eight named sections in a side menu</h2><p>One kind of data on each screen.</p></div></div>
+<div class="pair"><div class="card"><p class="from">getMetaData</p><h2>Very small text, hard to read</h2></div><div class="arrow">→</div><div class="card"><h2>Large labels with the value underneath</h2><p>Each group sits on its own white card.</p></div></div>
+<div class="pair"><div class="card"><p class="from">getMetaData and SEO META in 1 CLICK</p><h2>An outdated look</h2></div><div class="arrow">→</div><div class="card"><h2>A plain, light interface</h2><p>White cards, one blue for actions, an icon beside each label.</p></div></div>
+<div class="pair"><div class="card"><p class="from">SEO META in 1 CLICK · the beginner persona</p><h2>Hard going for a beginner</h2></div><div class="arrow">→</div><div class="card"><h2>Pass and fail chips, and a help tooltip on every label</h2><p>All three competitors had tooltips. They were a strength each time.</p></div></div>
+<div class="pair"><div class="card"><p class="from">Two competitors</p><h2>No export, or copy only</h2></div><div class="arrow">→</div><div class="card"><h2>Export and Copy on every panel</h2><p>Easy export was a strength of the old tool, so it stays and copy joins it.</p></div></div>
+<div class="pair bug"><div class="card"><p class="from">getMetaData</p><h2>The data is shown twice each time it opens</h2></div><div class="arrow">→</div><div class="card"><h2>Not answered by the design</h2><p>This is a fault in the extension’s code, not in its layout. It needs a code fix and its own check.</p></div></div>
+</div>

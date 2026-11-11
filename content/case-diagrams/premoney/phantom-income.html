@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>
+.two{display:grid;grid-template-columns:1fr 1fr;gap:36px}
+.side{display:flex;flex-direction:column;gap:14px}
+.side>p.lab{font-size:19px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.msg{font-size:21px;line-height:1.5;background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px}
+.msg s{text-decoration:none;background:#E4E8E5;color:#8C9894;border-radius:4px;padding:0 3px;letter-spacing:.06em}
+.msg u{text-decoration:none;border-bottom:3px solid var(--warn)}
+.msg i{font-style:normal;background:var(--wash);border-radius:4px;padding:0 3px}
+.step{display:grid;grid-template-columns:40px 1fr;gap:14px;align-items:start;font-size:21px;line-height:1.4}
+.out{margin-top:auto;padding:18px 20px;border-radius:14px;font-size:24px;font-weight:600}
+.bad{background:var(--warn-wash);color:var(--warn)}
+.ok{background:var(--good-wash);color:var(--good)}
+.before .num{background:var(--warn)}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">What went wrong, and the fix in version 1.17</p>
+<h1>Adverts were being saved as income</h1>
+<div class="grow two">
+ <div class="side before"><p class="lab" style="color:var(--warn)">Before: accept anything a block list misses</p>
+  <p class="msg">Get cover of <u>Rs.50,00,000</u> for your family. Pay the premium with your <u>credit</u> card.</p>
+  <div class="step"><span class="num">1</span><span>The word "credit" matched the rule for money coming in.</span></div>
+  <div class="step"><span class="num">2</span><span>The only number in it was read as the amount.</span></div>
+  <div class="step"><span class="num">3</span><span>No keyword on the block list matched this wording, so it was saved.</span></div>
+  <p class="out bad">+ ₹50,00,000 income, from an advert</p>
+ </div>
+ <div class="side"><p class="lab" style="color:var(--good)">After: ask for proof that money moved</p>
+  <p class="msg">Get <i>cover of Rs.50,00,000</i> for your family. Pay the premium with your <s>###########</s>.</p>
+  <div class="step"><span class="num">1</span><span>Card names are blanked out before direction is read. "Credit card" is a product, not a payment.</span></div>
+  <div class="step"><span class="num">2</span><span>A number framed as an offer ("cover of", "up to", "get") is not an amount.</span></div>
+  <div class="step"><span class="num">3</span><span>Nothing says money moved, and there are no account digits, reference, balance or time. A real alert carries several of these.</span></div>
+  <p class="out ok">Not saved</p>
+ </div>
+</div>
+<p class="note">The insurance example is the one recorded in the project notes. The message wording here is made up to match it. ₹50,00,000 is ₹50 lakh.</p>

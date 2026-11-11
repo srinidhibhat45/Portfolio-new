@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x680">
+<style>.side{flex:1;display:flex;flex-direction:column;gap:14px;padding:26px 28px;border-radius:14px}.bad{background:var(--warn-wash);border:1.5px solid color-mix(in srgb,var(--warn) 40%,#fff)}.good{background:var(--good-wash);border:1.5px solid color-mix(in srgb,var(--good) 35%,#fff)}.side h2{font-size:30px;font-weight:600}.side .d{font-size:20px;font-weight:600;letter-spacing:.08em;text-transform:uppercase}.bad .d{color:var(--warn)}.good .d{color:var(--good)}.side ul{list-style:none;display:grid;gap:12px}.side li{position:relative;padding-left:24px;font-size:22px;line-height:1.42}.side li::before{content:'';position:absolute;left:0;top:.62em;width:11px;height:3px;background:currentColor}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">A decision I reversed</p><h1>From estimated numbers for everything to estimates only where they are labelled</h1>
+<div class="grow row" style="gap:26px;align-items:stretch">
+<div class="side bad"><p class="d">22 July 2026</p><h2>Live mode filled every panel</h2><ul>
+<li>Speed, gear, rpm, throttle and brake for every car, worked out from a per-circuit profile and the driver's pace.</li>
+<li>Each value carried a small "(est)" tag.</li>
+<li>Cars moved on the map four times a second by dead reckoning, a guess from pace between timing points.</li></ul></div>
+<span class="arrow">→</span>
+<div class="side good"><p class="d">26 July 2026</p><h2>Race mode leaves those panels out</h2><ul>
+<li>No dashes or invented numbers stand in for channels the free feed does not carry.</li>
+<li>One thing is still estimated, the car's place on track, from a new model that learns from the timing lines.</li>
+<li>It is labelled in three places: under the map, on the driver card and in the bottom bar.</li></ul></div>
+</div>
+<p class="note">Both versions are in the project history. Full telemetry stays available in replay after the session.</p>

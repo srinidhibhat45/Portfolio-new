@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x960">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">How it is put together</p><h1>Music maths at the bottom, the screens on top, nothing leaves the phone</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>Pure music</p>
+<div class="card hi"><h2>Music theory and detection maths</h2><p>Notes, chords, chord shapes, the five gates, matching a step, reading chords out of a score. No React and no audio, so all of it can be tested on its own.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Sound in and out</p>
+<div class="card"><h2>One listener, two inputs</h2><p>Microphone and USB MIDI merged into one “what is sounding now” signal.</p></div>
+<div class="card"><h2>Basic Pitch model</h2><p>Loaded the first time you press Listen. Weights ship with the app.</p></div>
+<div class="card"><h2>Practice synth</h2><p>A simple piano voice for Hear it and the metronome.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Screens and storage</p>
+<div class="card"><h2>Six screens</h2><p>Library, Play, Zen, Progress, Editor and Settings, drawn with my own small set of controls.</p></div>
+<div class="card"><h2>On-device storage</h2><p>Your songs, progress and rewards, kept in separate stores in the browser's storage.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Where it runs</p>
+<div class="card"><h2>Android app</h2><p>The same web build inside a thin Capacitor shell.</p></div>
+<div class="card"><h2>Any browser</h2><p>A laptop propped on the piano is a real use.</p></div>
+<div class="card"><h2>Live updates</h2><p>Each push runs the types and tests, then publishes a new web bundle that installed apps pick up.</p></div></div>
+</div>
+<p class="note">Lower layers never import upper ones. The only network request is the Android app asking whether a newer bundle exists, and it sends nothing about you.</p>

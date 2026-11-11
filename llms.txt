@@ -1,0 +1,93 @@
+# Srinidhi Bhat
+
+> Srinidhi Bhat (Shri) is a design engineer based in Goa, India. He designs maritime software at OneOcean and takes freelance work in UI/UX and product design, brand identity, posters and print, presentations and mock-ups. This site is his portfolio: 37 case studies, the services he offers, his experience and how to reach him.
+
+Key facts:
+
+- Name: Srinidhi Bhat. Goes by Shri. Writes poems, essays and fiction as अvinash, in English, Hindi and Konkani.
+- Role: design engineer. He designs digital products and also builds them.
+- Location: Goa, India.
+- Current work: UX Designer at OneOcean since 2025, designing maritime products and contributing to the Caspian Design System, across research, interfaces and prototypes.
+- Experience: 4+ years designing, 30+ projects and concepts.
+- Availability: open for freelance project work and ongoing collaborations.
+
+Services:
+
+- UI/UX design: web and mobile products.
+- Brand and logo: visual identity systems.
+- Posters and print: campaigns, events and print.
+- Presentations: pitch decks and company presentations.
+- Mock-ups: launch visuals and product previews.
+
+Experience:
+
+- 2025 to now: UX Designer, OneOcean. Designing maritime products and contributing to the Caspian Design System.
+- 2024 to 2025: UI/UX Designer, Genora Infotech. Led UI/UX design for Genora and Goan Narrative, from early concepts to developer handoff.
+- 2022: Software Intern, Persistent Systems. Built chatbots with Python, Java and Azure pipelines; trained in QA automation.
+- 2021 to 2024: UI/UX Designer and Outreach Lead, Linktopus. Designed products and led outreach, contributing to a 25%+ increase in engagement and sales.
+
+To hire or contact him, use the project brief form at https://srinidhibhat.com/#contact.
+
+## Site
+
+- [Portfolio home](https://srinidhibhat.com/): profile, services, experience, testimonials and contact
+- [Services](https://srinidhibhat.com/#services): the freelance work he takes on
+- [Contact](https://srinidhibhat.com/#contact): project brief form for new work
+- [Case study library](https://srinidhibhat.com/case-studies/): every design and product case study in one place
+
+## Design case studies
+
+- [OneSpace](https://srinidhibhat.com/case-studies/onespace.html): Finding a class file should be straightforward. OneSpace is a college communication app I designed for the Microsoft Design Challenge. It gives every class one home for its conversations, files and notices. Status: Design challenge concept.
+- [uMatter](https://srinidhibhat.com/case-studies/umatter.html): In our survey, the first thing in the way of therapy was privacy, not price. uMatter is a phone app concept for finding a mental-health professional and booking a session. A team of three designed it in a 14-hour design challenge, and I led the team. Status: Team design challenge concept.
+- [MuCoin](https://srinidhibhat.com/case-studies/mucoin.html): Setting up a budget should give something back along the way. MuCoin is a personal-finance app concept, and this is its setup: five steps that take a person from their income to a first budget they have checked themselves. Status: Prototype & design rationale.
+- [GetMetaData](https://srinidhibhat.com/case-studies/gmd.html): An SEO panel you can read at a glance. I compared GetMetaData, a Chrome extension that lists the details search engines read on a web page, with three rival tools, then redesigned its panel so the data is easier to find and read. Status: Redesign prototype.
+- [Steve Wilson](https://srinidhibhat.com/case-studies/steve-wilson.html): A designer's portfolio site, worked out in four pages. Steve Wilson is a made-up designer. I used him to design a portfolio site concept: a home page, a list of work, a project page and a contact form. Status: Independent visual concept.
+- [Gloria Furniture](https://srinidhibhat.com/case-studies/gloria-furniture.html): One long page that takes a furniture shopper from looking to choosing. Gloria Furniture is a storefront concept: a single long page that opens with photos of furniture and ends with ten products, their prices and a place to ask for help. Status: Storefront concept.
+- [Fun Cruises Goa](https://srinidhibhat.com/case-studies/fun-cruises.html): Choose a boat before you enquire. Fun Cruises Goa is a landing-page concept for a yacht-hire business. I designed one long page that shows each boat's seats and starting rate before a visitor has to ask. Status: Website redesign concept.
+- [BNI Goa](https://srinidhibhat.com/case-studies/bni-website.html): Meet the chapter. Know how to take part. A one-page website concept for BNI Victory, a business-networking chapter in Goa. The page moves from what the chapter is for, to who is in it, to how to ask for an invitation. Status: Chapter website concept.
+- [IRCTC](https://srinidhibhat.com/case-studies/irctc.html): The train search comes first. A redesign concept for the IRCTC rail-booking homepage. I set the brief myself: make searching for a train the first thing the page asks of you. Status: Independent redesign concept.
+- [Nitya Nanda](https://srinidhibhat.com/case-studies/nityananda.html): A photography site that leaves room for the photographs. A one-page portfolio concept for a photographer. Three words run the whole site: About, Work and Contact. Status: Independent portfolio concept.
+
+## Built products
+
+- [Arkitype](https://srinidhibhat.com/case-studies/arkitype.html): A design system built from one file, so nothing has to be copied by hand. Arkitype is a web tool I designed and built on my own. You decide the colour, type, spacing, shape and motion. It turns those decisions into 90 working components and 17 export formats. Status: Public beta. Live at https://arkitype.srinidhibhat.com/
+- [AppleCider](https://srinidhibhat.com/case-studies/applecider.html): A wireframe tool that looks like a sketch and works like a real canvas AppleCider is a web tool I designed and built on my own for the first hour of a design, when the idea is still changing. It draws like a pen sketch, keeps your work in your own browser, and turns rough screens into a clickable flow or starter code. Status: Working product. Live at https://applecider.srinidhibhat.com/
+- [PlanIt](https://srinidhibhat.com/case-studies/planit.html): A group trip planner that catches the flight that lands too late. PlanIt is a web app I designed and built on my own. It plans trips where people arrive, attend and leave at different times, in different time zones, and it reads the plan back to say what cannot work. Status: Working product. Live at https://planit.srinidhibhat.com/
+- [Earthlog](https://srinidhibhat.com/case-studies/earthlog.html): A globe that tells you what happened here, and how sure it is. EarthLog is a web app I designed and built on my own. Click anywhere on Earth and it shows the quakes, NASA events, weather, night sky and landmark disasters around that point, each with its source, its age and its limits. Status: Working product. Live at https://earthlog.srinidhibhat.com/
+- [HexChess](https://srinidhibhat.com/case-studies/hexchess.html): Hexagonal chess you learn by making the moves. HexChess is a web app I designed and built on my own. It teaches Gliński’s hexagonal chess in six one-move lessons, then lets you play the computer, a friend on the same device, or a friend by link. Status: Working product. Live at https://hexchess.srinidhibhat.com/
+- [DashF1](https://srinidhibhat.com/case-studies/dashf1.html): Follow a Formula 1 race on one screen, and know which numbers are estimates. DashF1 is a free web dashboard I designed and built on my own. It puts the timing, the track map, the car's data and the race messages of a Formula 1 session on one screen, as a replay or live. Status: Working product. Live at https://f1dash.srinidhibhat.com/
+- [Hued](https://srinidhibhat.com/case-studies/hued.html): One colour a day, found in the real world and scored on your phone. Hued is a phone app I designed and built on my own. Everyone gets the same colour each day, goes out to find it, and the phone scores how well the photo caught it. Status: Mobile beta. Live at https://hued.srinidhibhat.com/
+- [Yuva Panaji](https://srinidhibhat.com/case-studies/yuva-panaji.html): One sign-up, carried all the way to the registration desk. I designed and built the website for Yuva, a youth service group in Goa. The public side lists events and takes sign-ups. The private side helps the committee check payments, print the desk list and run its membership drive. Status: Working system. Live at https://yuva-website.netlify.app/
+- [DeckForge](https://srinidhibhat.com/case-studies/deckforge.html): A flat PDF deck, rebuilt as layers you can edit and animate. DeckForge is a web app I designed and built on my own that takes a PDF of a slide deck apart into text, shapes and images you can edit, animate and present, without uploading the file. Status: Working product. Live at https://deckforge.srinidhibhat.com/
+- [Vansh Vriksha](https://srinidhibhat.com/case-studies/vansh-vriksha.html): An open family tree where every record says where it came from. Vansh Vriksha is a free public family-tree archive that I designed and built on my own, where anyone can add a whole family without an account and every record says what it rests on. Status: Working archive. Live at https://vanshvriksha.srinidhibhat.com/
+- [PreMoney](https://srinidhibhat.com/case-studies/premoney.html): Bank texts turned into a spending list that says when it is unsure. PreMoney is an Android app I designed and built on my own. It reads the bank alerts already on my phone and turns them into a list of payments I can check and correct. Status: Interactive app. Live at https://github.com/srinidhibhat45/PreMoney-releases
+- [SoundBox](https://srinidhibhat.com/case-studies/soundbox.html): A piano app that waits until you play it, so you can learn a song without reading music. SoundBox is a free piano app I designed and built on my own. It lights up the keys to press, listens through the microphone, and does not move on until it hears the right notes. Status: Working app. Live at https://github.com/srinidhibhat45/soundbox
+- [Wheelie](https://srinidhibhat.com/case-studies/wheelie.html): Three riders start in three towns. The app works out where they meet. Wheelie is a free Android and web app I designed and built on my own for motorcyclists who ride in groups. It finds a meeting point on the way, keeps the group talking, and turns each ride into a card to share. Status: Beta · accessibility polish in progress. Live at https://github.com/srinidhibhat45/wheelie
+- [Matinee](https://srinidhibhat.com/case-studies/matinee.html): A film diary that turns my ratings into what to watch next Matinee is an Android app I designed and built on my own. It keeps a record of the films and series I watch, and every suggestion it makes says why it is there. Status: Interactive app. Live at https://matinee.srinidhibhat.com/
+- [BirthSky](https://srinidhibhat.com/case-studies/birthsky.html): A star map of the night you were born, drawn in the browser and kept as a wallpaper. BirthSky is a web page I designed and built on my own. You give it a name, a birth date, a time and a place. It works out the sky over that spot at that moment and lets you save it for a phone or a desktop. Status: Working browser project. Live at https://birthsky.srinidhibhat.com/
+- [ScaleSee](https://srinidhibhat.com/case-studies/scalesee.html): A billion is easy to write and hard to picture, so I drew it to scale. ScaleSee is a web tool I designed and built on my own. Pick two amounts of the same kind, and it draws them side by side at the same scale. Status: Working browser product. Live at https://scalesee.srinidhibhat.com/
+- [Where Would I Be…?](https://srinidhibhat.com/case-studies/where-would-i-be.html): Plate motion is too slow to see, so I built a globe that fast-forwards it. Where Would I Be…? is a 3D globe I designed and built on my own. Pick a place, drag the clock, and watch the ground under it ride its tectonic plate for up to 500 million years. Status: Working browser product. Live at https://wherewouldibe.srinidhibhat.com/
+- [The Blog](https://srinidhibhat.com/case-studies/the-blog.html): A five-year-old blog, rebuilt so I can publish from any browser. The Blog is where I publish as अvinash, in English, Hindi and Konkani. I designed and built it on my own: first on a ready-made theme in 2021, then as my own site with a writing interface in 2026. Status: Working publishing system. Live at https://blogs.srinidhibhat.com/
+- [The Office Games](https://srinidhibhat.com/case-studies/office-games.html): Three party games where one player's browser is the game server. The Office Games is a small web site of three quick multiplayer games that I designed and built on my own. One player opens a room, shares a six-character code, and their browser runs the game for everyone. Status: Working project · trivia module. Live at https://officegames.srinidhibhat.com/
+- [Forma](https://srinidhibhat.com/case-studies/forma.html): A health app where every number says how sure it is. Forma is an Android app I designed and built on my own. It reads the activity, sleep and heart records a Galaxy watch shares, and labels each one with when it was measured, where it came from and whether it is only an estimate. Status: Native Android app · experimental wellness estimates. Live at https://github.com/srinidhibhat45/forma/releases/latest
+- [OhCaptain](https://srinidhibhat.com/case-studies/ohcaptain.html): A naval game for crews of three, where every decision has an owner OhCaptain is a three-against-three naval game for the browser that I designed and built on my own. Each crew has one captain who spends and two operators who ask, and the screen is built around the next move each of them can make. Status: Playable browser prototype · keyboard & mouse. Live at https://github.com/srinidhibhat45/OhCaptain
+- [Halo](https://srinidhibhat.com/case-studies/halo.html): Your most used actions in a ring around the pointer, one shortcut away. Halo is a desktop app I designed and built on my own, for macOS and Windows. Press one shortcut, or a mouse button, and a ring of your actions opens wherever the pointer is. Status: Desktop utility · macOS and Windows. Live at https://github.com/srinidhibhat45/Halo
+- [Binnder](https://srinidhibhat.com/case-studies/binnder.html): A phone cleaner where nothing is deleted the moment you swipe. Binnder is an Android app I designed and built on my own. It shows your largest files one at a time, and you swipe to keep each one, move it to a bin or delete it for good. Status: Native Android app · early release. Live at https://github.com/srinidhibhat45/Binnder
+- [PureEQ](https://srinidhibhat.com/case-studies/pureeq.html): An equaliser you set by listening, not by guessing at sliders. PureEQ is an Android app I designed and built on my own. A two-minute listening check and a few blind A/B rounds on music become one EQ curve for each ear, played on everything the phone plays. Status: Native Android app. Live at https://github.com/srinidhibhat45/PureEQ
+- [Hidden Identity Chess](https://srinidhibhat.com/case-studies/hidden-identity-chess.html): Chess where you can bluff, and your opponent can call it. Hidden Identity Chess is a web game I designed and built on my own. It turns a published board game, where you cannot see what the enemy pieces are, into something you can play on a phone, offline or with a friend online. Status: Playable web game. Live at https://hidden-identity-chess-club.soundmite3.chatgpt.site/game/
+- [5 Dead](https://srinidhibhat.com/case-studies/five-dead.html): A party card game where one number runs every turn 5 Dead is a web card game I designed and built on my own. You can play against bots, pass one phone round a table of up to 24 people, or open an online room. Every turn comes down to keeping a shared total at 21 or under. Status: Playable card game. Live at https://github.com/srinidhibhat45/5Dead
+- [Alibi](https://srinidhibhat.com/case-studies/alibi.html): A video party game that keeps one player's secret while the whole room plays together. Alibi is a browser game I designed and built on my own. Everyone watches the same short clip except one player, who gets a different one without being told, and the group has to work out who. Status: Playable browser game. Live at https://github.com/srinidhibhat45/VideoImposter
+
+## Writing and profiles
+
+- [Blog](https://blogs.srinidhibhat.com/): poems, essays, fiction and a written podcast, published as अvinash
+- [LinkedIn](https://www.linkedin.com/in/bhatsrinidhi): professional profile
+- [GitHub](https://www.github.com/srinidhibhat45): source code and releases for the built products
+- [Instagram](https://www.instagram.com/shrxnxdhx): visual work
+- [Showreel](https://youtu.be/YmEOMID3vVM): a short video introduction
+
+## Optional
+
+- [Résumé (PDF)](https://srinidhibhat.com/assets/pdfs/srinidhi-bhat-resume.pdf): one-page work history
+- [Design case studies (PDF)](https://srinidhibhat.com/assets/pdfs/case-studies/ux-case-studies.pdf): the design case studies as one document
+- [Product case studies (PDF)](https://srinidhibhat.com/assets/pdfs/case-studies/product-case-studies.pdf): the built-product case studies as one document

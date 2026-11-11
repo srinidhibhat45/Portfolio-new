@@ -1,0 +1,36 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>
+.top{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.card{padding:16px 18px}
+.card h2{font-size:23px}
+.card ul{margin-top:8px;gap:6px}
+.card li{font-size:20px}
+.hi{border-color:var(--accent);background:var(--wash)}
+.lab{font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}
+.bottom{display:grid;grid-template-columns:1.1fr 1.6fr;gap:16px;margin-top:22px}
+.flow{display:flex;gap:10px;align-items:center}
+.flow .card{flex:1;padding:12px 14px}
+.flow .card h2{font-size:19px}
+.flow .arrow{font-size:26px}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Structure</p>
+<h1>Four tabs for everyday use, and the tools behind Settings</h1>
+<div class="grow">
+ <p class="lab">Bottom navigation</p>
+ <div class="top">
+  <div class="card"><h2>Home</h2><ul><li>This period's spending and income</li><li>Money health: the two scores</li><li>Review nudge</li><li>Subscriptions and bills</li></ul></div>
+  <div class="card hi"><h2>Activity</h2><ul><li>Every entry, grouped by day</li><li>Spending, income and "Needs a category" filters</li><li>Entry detail, edit, delete</li></ul></div>
+  <div class="card"><h2>Insights</h2><ul><li>Money in and out, what I kept</li><li>Needs against wants</li><li>Spending calendar, costly weekdays</li><li>Biggest merchants, things that repeat</li></ul></div>
+  <div class="card"><h2>Goals</h2><ul><li>Savings goals</li><li>Budgets by category</li></ul></div>
+ </div>
+ <div class="bottom">
+  <div><p class="lab">First run</p><div class="flow"><div class="card"><h2>Welcome</h2></div><span class="arrow">→</span><div class="card"><h2>Name</h2></div><span class="arrow">→</span><div class="card"><h2>SMS access, explained first</h2></div><span class="arrow">→</span><div class="card"><h2>Scan result</h2></div></div></div>
+  <div><p class="lab">Settings</p><div class="top" style="grid-template-columns:repeat(3,1fr)">
+   <div class="card"><h2>Reading messages</h2><ul><li>Scan, rescan</li><li>Keep capture running</li></ul></div>
+   <div class="card hi"><h2>Tools</h2><ul><li>Message tester</li><li>Learned category rules</li><li>Learned message rules</li></ul></div>
+   <div class="card"><h2>Data and account</h2><ul><li>CSV export</li><li>Sign-in and backup</li><li>Updates, AI key</li></ul></div>
+  </div></div>
+ </div>
+</div>
+<p class="note">Drawn from the app's screen code. Highlighted: the parts this page is about.</p>

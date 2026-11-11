@@ -1,0 +1,574 @@
+{
+ "title": "A health app where every number says [[how sure it is]].",
+ "hook": "Forma is an Android app I designed and built on my own. It reads the activity, sleep and heart records a Galaxy watch shares, and labels each one with when it was measured, where it came from and whether it is only an estimate.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "13 to 14 October 2026"
+  },
+  {
+   "label": "For",
+   "value": "Galaxy watch owners on Android. Built around one watch model and one phone"
+  },
+  {
+   "label": "Platform",
+   "value": "Android phone, Android 9 and up, with an optional Wear OS watch app"
+  },
+  {
+   "label": "Stack",
+   "value": "Kotlin, Jetpack Compose, Material 3, Health Connect, WorkManager"
+  },
+  {
+   "label": "Status",
+   "value": "Version 1.5.1, installed from GitHub releases. Not on Google Play. The scores are experimental"
+  }
+ ],
+ "links": [
+  {
+   "label": "Get the Android app",
+   "url": "https://github.com/srinidhibhat45/forma/releases/latest"
+  }
+ ],
+ "linksHeading": "Try it on an Android phone",
+ "summary": [
+  "The problem: a number from a watch can be fresh, days old, missing or a formula's guess. Most dashboards show all four the same way.",
+  "What I built: a native Android app with five main screens and 44 measurement histories. Every reading keeps its time, its source and its kind beside it.",
+  "The key idea: a score should open up to show what fed it, and a missing input should stay missing instead of turning into a zero.",
+  "Where it stands: version 1.5.1, installed from GitHub. It is tested on emulators with sample data. The real watch-to-phone sync still needs a check on the device, and I have no usage numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/forma/lead-screens.webp",
+  "alt": "Four Forma screens side by side on a pale green background: Today with activity rings, Sleep with a stage chart, Health with six vital cards, and Move with weekly totals",
+  "caption": "Version 3 of Forma: Today, Sleep, Health and Move. Every screen shows the app's built-in sample data, marked \"Demo mode\" in the top corner.",
+  "width": 2400,
+  "height": 1300
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A watch number can be fresh, old, missing or a guess",
+   "blocks": [
+    {
+     "p": "A smartwatch measures a lot: steps, heart rate, sleep, blood oxygen and more. On a Galaxy watch, those readings go to Samsung Health on the phone. Samsung Health then decides which ones to share with other apps, and when."
+    },
+    {
+     "p": "So the number an app shows can mean very different things. It might be a reading from two minutes ago. It might be a weight logged last week. It might be a zero that only means nothing was shared. Or it might be a score worked out by a formula. On a typical dashboard these all look alike."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/problem.webp",
+       "alt": "Diagram of four dark tiles showing a heart rate, a weight, zero minutes of exercise and a recovery score, each above a card that says what it really is: fresh, old, missing or a guess",
+       "caption": "The problem in one picture. The zero is the dangerous one: no shared workout is not proof of no workout. The values are made up for the diagram.",
+       "width": 1600,
+       "height": 690
+      }
+     ]
+    },
+    {
+     "p": "I wanted an app that reads those records and is honest about each one. It should say how old a reading is, where it came from, and when a number is an estimate rather than a measurement."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "No interviews or user testing. I built Forma around one watch model, the Galaxy Watch6 Classic, and a Galaxy phone. Every screen on this page uses the app's built-in sample data, not anyone's health records."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Forma only reads what Samsung Health chooses to share",
+   "blocks": [
+    {
+     "p": "Health Connect is Android's shared store for health records. Samsung Health publishes into it, and the person grants Forma each type of record one at a time. Forma works with all of them granted, some of them, or none."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/data-flow.webp",
+       "alt": "Diagram of the data path: Galaxy watch to Samsung Health to Health Connect to Forma on the phone, with a separate dashed path from an optional Forma watch app to a short-lived store",
+       "caption": "Two paths. The main one feeds history and scores. The optional watch app has its own path, and its readings never mix into history or scores.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "Until records arrive, the app opens on sample data with a \"Demo mode\" badge, so there is something to explore without handing anything over. The app has five places in the bottom bar and four rows in settings."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/destinations.webp",
+       "alt": "Diagram of five bottom-bar destinations, Today, Sleep, Move, Trends and Health, above five settings items: Devices, Targets, Your data, App updates and optional Personal tools",
+       "caption": "The structure after the version 1.5 clean-up. Today is the overview; the other four go deeper into one subject each.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/screens-sleep-move.webp",
+       "alt": "Two version 3 screens side by side: Sleep, with 7 hours 48 minutes against an 8 hour goal above a stage chart, and Move, with activity rings and a week of 60,605 steps",
+       "caption": "Sleep and Move. Sleep shows recorded time against your own goal, then the night by stage. Move's weekly totals say how many days were shared: \"7/7 days shared\".",
+       "width": 1600,
+       "height": 1420
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "versions",
+   "label": "Three versions",
+   "nav": "Three versions",
+   "heading": "Three looks in one day, each with fewer slogans",
+   "blocks": [
+    {
+     "p": "I redesigned the app twice on the first day, and saved screens of each version. Together they are the clearest record I have of how the design changed."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/generations.webp",
+       "alt": "Three versions of the Today screen side by side: a light sage version with three score cards, a dark version with a large body energy gauge, and a dark version with activity rings at the top",
+       "caption": "Today in versions 1, 2 and 3. Look at what fills the top half of each: a slogan, then an estimate, then measured activity.",
+       "width": 1600,
+       "height": 1240
+      }
+     ]
+    },
+    {
+     "p": "Version 1 was light and calm, with lines like \"A good day to find your flow\". I kept no written notes on why I moved to version 2, so I will only describe it. It went dark, and made body energy, a rough estimate, the biggest thing on the screen."
+    },
+    {
+     "p": "Version 3 turned that around. Measured activity went to the top: steps, calories and exercise against targets. The three estimates became small cards below. My design notes for version 3 say no decorative picture should take space from the measurements."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/screen-you-gen1.webp",
+       "alt": "Version 1 You screen: a large daily check-in card that says your watch cannot tell the whole story, and a water tracker",
+       "caption": "Version 1. The fifth tab, You, led with a mood check-in and a water log.",
+       "width": 720,
+       "height": 1473,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/forma/screen-you-gen2.webp",
+       "alt": "Version 2 You screen in dark colours: a check-in card titled More than a number, and a water log",
+       "caption": "Version 2. Same content, darker, with a bigger check-in button.",
+       "width": 720,
+       "height": 1600,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/forma/screen-health.webp",
+       "alt": "Version 3 Health screen: six cards of vitals, each with a usual value",
+       "caption": "Version 3. The fifth tab became Health, the library of measurements. The check-in and water log moved into optional settings tools.",
+       "width": 720,
+       "height": 1600,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Version 1 was friendlier to look at. Version 3 shows far more numbers at once, so every number needs its label to stay readable."
+     }
+    }
+   ]
+  },
+  {
+   "id": "labels",
+   "label": "Decision 1",
+   "nav": "Time and source on every reading",
+   "heading": "Every reading carries its time and its source",
+   "blocks": [
+    {
+     "p": "What you see: a badge in the header says where the data comes from. Each ring has a target and the amount still to go. The heart rate card says what kind of reading it is."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/annotated-today.webp",
+       "alt": "Today screen with five numbered notes: the source badge, ring targets, distance and the link to Move, the three estimate cards, and the heart rate label",
+       "caption": "Start at note 5. Here the reading says \"Sample\". With real data the same spot gives the time it was measured.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: Forma keeps two times for every reading. One is when the watch took it. The other is when Forma last checked. A fresh check never makes an old reading look new."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/live-label.webp",
+       "alt": "Diagram showing that a watch heart rate is labelled Live for 30 seconds and then shown with its time, and that watch steps lead the step ring for 5 minutes",
+       "caption": "\"Live\" runs out. After 30 seconds a heart reading is shown with the time it was taken.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "Totals such as steps use Android's own adding-up and only Samsung Health's records, so the same steps are not counted twice. When a resting heart rate is not shared, Forma can show a heart rate from sleep instead. It needs at least 12 minutes of readings, spread across at least half the night, and it is labelled \"Sleeping heart rate\", never \"resting\"."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Labels take space. \"Sample reading\", \"Recorded\" and \"7/7 days shared\" make each card busier. I kept them short and put longer explanations one tap away."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scores",
+   "label": "Decision 2",
+   "nav": "Scores that open up",
+   "heading": "A score opens to show what fed it",
+   "blocks": [
+    {
+     "p": "What you see: tap sleep, recovery or energy and a sheet opens. The score comes first, then one row for each input that fed it. The rule and the full working sit underneath, folded away."
+    },
+    {
+     "p": "The idea was there from the start. Version 1 had a \"See the calculation\" link under recovery, and version 2 listed what was \"Behind your readiness\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/screens-recovery-early.webp",
+       "alt": "Recovery in version 1 and version 2: both show a readiness score of 88, with a See the calculation link in version 1 and See what shaped it plus a list of inputs in version 2",
+       "caption": "Recovery in versions 1 and 2. Each already had a link to its working, and version 2 listed the inputs under the score.",
+       "width": 1600,
+       "height": 1280
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/score-sheet.webp",
+       "alt": "Schematic of the score sheet: a recovery score, three input rows with bars, and two folded sections, with four numbered notes",
+       "caption": "The sheet in version 1.5, redrawn from the app's code because I have no screen capture of it. Note 2 matters most: an input that is missing has no row at all.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "In the build: an input that is not available is left out, not counted as zero. Its weight is shared among the inputs that are there. If there is no recorded sleep, there is no recovery score at all."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/score-weights.webp",
+       "alt": "Bar diagram of score weights: recovery as sleep 60, HRV 25 and heart 15 percent, then sleep 80 and heart 20 without HRV, then no score without sleep; sleep score as 50, 30 and 20 percent, then 62.5 and 37.5",
+       "caption": "The weights drawn to scale. Samsung never shares schedule consistency, so with its records the sleep score uses the last row.",
+       "width": 1600,
+       "height": 830
+      }
+     ]
+    },
+    {
+     "p": "One problem showed me the sheet needed more. Sleep, recovery and energy share inputs and round to whole numbers, so all three could show the same value. That looked like a bug. The sheet now explains why the numbers match, shows the value before rounding, and can copy its working to the clipboard."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "Showing the working does not make the formula right. These are experimental wellness estimates. They are not medically tested and they are not Samsung's own scores. The app says so in the sheet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "usual",
+   "label": "Decision 3",
+   "nav": "Compared with your usual",
+   "heading": "Each reading is compared with your own usual, not with a chart of norms",
+   "blocks": [
+    {
+     "p": "What you see: each vital sits beside your usual value, with a seven-day line and the change, such as \"−3 vs usual\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/annotated-health.webp",
+       "alt": "Health screen with four numbered notes: the count of measurements, separate resting and sleeping heart rate cards, the usual value, and the footnote",
+       "caption": "Note 4 is the one I care about most: orange means a bigger change from your own pattern, not a medical finding.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/annotated-vitals.webp",
+       "alt": "Lower part of Today with four numbered notes: vitals with seven-day lines, the Recorded VO2 max label, hour-by-hour bars and the Tap an hour hint",
+       "caption": "Further down Today. The word \"Recorded\" at note 2 separates a measured value from a worked-out one.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: \"usual\" is the middle value of up to 28 earlier days. It needs at least seven days before it shows. Heart rate variability (HRV, the small changes in time between heartbeats) is compared on a log scale. So that small day-to-day noise does not look like a big change, the expected variation never drops below 1 breath a minute for breathing, 1 point for blood oxygen and 0.15°C for skin temperature."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Health ranges for the general population. Forma describes change against your own past, and does not say whether a value is healthy. The cost is a first week with no comparisons."
+     }
+    }
+   ]
+  },
+  {
+   "id": "cleanup",
+   "label": "Decision 4",
+   "nav": "Devices and data apart",
+   "heading": "Connecting a watch and looking after your data are two jobs",
+   "blocks": [
+    {
+     "p": "What you see: settings has four rows. Devices shows whether the watch is connected and one next step. Your data holds the counts, export, import and delete."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/devices-before-after.webp",
+       "alt": "Before and after diagram: one Devices panel holding connection, sync, import and export and coverage reports, becomes Devices with one main button plus a separate Your data place",
+       "caption": "The version 1.5 clean-up. Import, export and coverage reports left the connection flow.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/screen-data.webp",
+       "alt": "The Your data screen with sample data: 28 recorded days, 35 measurements with shared values, a date range, an export button, a folded file import section and a clear local data link",
+       "caption": "Your data, the only screen captured after the clean-up. \"Sample data\" sits in the card title.",
+       "width": 720,
+       "height": 1600,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: for version 1.5 I audited the app function by function. I checked whether each piece could be reached and whether it did real work, and wrote down how each one was verified."
+    },
+    {
+     "stats": [
+      {
+       "value": "11",
+       "label": "unused interface parts deleted. Nothing in the app could reach them"
+      },
+      {
+       "value": "2",
+       "label": "unused inputs removed: a name and a bedtime that no feature read"
+      },
+      {
+       "value": "46 → 44",
+       "label": "measurements, dropping two that Samsung's connection can never send"
+      },
+      {
+       "value": "4",
+       "label": "main settings rows: Devices, Targets, Your data, App updates"
+      }
+     ]
+    },
+    {
+     "p": "The audit also found real bugs. Export could report success when nothing had been written. File reading and writing ran on the thread that draws the screen. Trends showed the wrong number of decimals. All three are fixed."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Two places instead of one means one more name to learn. Clear row names and a back arrow to the parent screen have to do that work."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Two days of commits, with checks before every release",
+   "blocks": [
+    {
+     "p": "Forma is a native Android app. Every screen, chart and ring is drawn with Jetpack Compose; there is no web page inside it. Updates come from GitHub, not from an app store."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/release-pipeline.webp",
+       "alt": "Diagram of the release path: tests and lint, optimised build, signing and publishing on GitHub, then on the phone finding the update, the tap, file checks and Android's install prompt",
+       "caption": "How an update reaches the phone. Forma checks the size, checksum, package and signing key before Android is even asked.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Kotlin, Jetpack Compose, Material 3"
+       ],
+       [
+        "Health records",
+        "Health Connect, read only from Samsung Health"
+       ],
+       [
+        "Background refresh",
+        "WorkManager, optional, about every 15 minutes"
+       ],
+       [
+        "Watch app",
+        "Wear OS, Health Services for the 60-second heart check, and the encrypted Data Layer"
+       ],
+       [
+        "Charts",
+        "Drawn by hand on the native canvas"
+       ],
+       [
+        "Releases",
+        "GitHub Actions: tests, lint, signed builds, published manifests"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "12",
+       "label": "commits over 13 and 14 October 2026, one author"
+      },
+      {
+       "value": "55",
+       "label": "unit checks passing at the last recorded run"
+      },
+      {
+       "value": "39",
+       "label": "checks of real screens on an Android 14 emulator"
+      },
+      {
+       "value": "4.2 MB",
+       "label": "size of the phone app"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/forma/timeline.webp",
+       "alt": "Timeline of the two days: on 13 October the first two looks, signed updates, activity first, screen capture tools, version 3 and the watch app; on 14 October score explanations, energy fixes, the 1.5 clean-up, setup notes and an energy fallback",
+       "caption": "The build day by day, from the project history.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were in reading the data, not in drawing it."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Energy after waking",
+        "Energy dropped the whole clock hour in which you woke, so early movement went missing. It now starts at the real wake-up time. If Samsung's hourly summaries are missing, it asks for exact times instead, and six new tests cover those cases."
+       ],
+       [
+        "Changes during a read",
+        "A record could change while Forma was reading. Forma now notes where it started before reading and saves that point only after the import finishes, so nothing is skipped."
+       ],
+       [
+        "Moving to a new signing key",
+        "The first preview was signed with a different key. I checked that installing the new version kept every stored record, setting and the app's identity."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "There is no advertising and no analytics. Health records stay in the app's private storage and are left out of phone backups. An export leaves out personal notes."
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Installed from GitHub, not yet proven on the real watch",
+   "blocks": [
+    {
+     "p": "Forma is at version 1.5.1. It installs from GitHub releases and updates itself after you confirm. It is not on Google Play, and I have no usage numbers to share."
+    },
+    {
+     "p": "I use Forma every day myself."
+    },
+    {
+     "list": [
+      "The tests run on emulators, with sample data and made-up Health Connect responses. The full path from the watch through Samsung Health to Forma still needs a check on the real phone and watch.",
+      "How the watch installs its own updates still needs a check on a physical Galaxy watch.",
+      "The scores are experimental. Nothing about them has been checked against medical measurements.",
+      "Screens captured after the 1.5 clean-up are incomplete. Only Your data is on this page in its final form."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Check it on the device, then with people",
+   "blocks": [
+    {
+     "list": [
+      "Run the device checks: granted, refused and partial permissions on a Samsung phone and watch, a late sync and a corrected record.",
+      "Capture the final Today, Health, Devices and score sheet screens.",
+      "Ask a few people to sort readings into fresh, old, missing and estimated, and to explain what a recovery score does and does not mean."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A missing number is information too",
+   "blocks": [
+    {
+     "p": "The most useful rule was the simplest: missing stays missing. It shaped the rings, the scores, the charts with gaps and the labels. Every place that broke it would have shown a confident number with nothing behind it."
+    },
+    {
+     "p": "The three looks taught me to ask what fills the top of the screen. In two of the three versions it was not a measurement at all. The audit taught me that unused parts pile up fast, even in two days: there were eleven in this app."
+    }
+   ]
+  }
+ ]
+}

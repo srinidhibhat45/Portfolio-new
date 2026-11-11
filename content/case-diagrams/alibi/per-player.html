@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:25px}.card li{font-size:20px}.hi{border-color:var(--accent);background:var(--wash)}.mid{width:220px;flex:none;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;text-align:center}.mid p{font-size:21px;color:var(--dim)}.mid .arrow{font-size:46px}.no{color:var(--warn)!important}.no::before{background:var(--warn)!important}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 1, in the build</p><h1>One room on the server, a different copy for each player</h1>
+<div class="grow row" style="gap:22px;align-items:stretch">
+<div class="colm"><p>On the server, during the watch phase</p>
+<div class="card hi"><h2>The full room</h2><ul><li>Both clips of the chosen pair</li><li>Who the imposter is</li><li>Every clue and every vote so far</li><li>Each player's private rejoin key</li><li>The full list of clip pairs, which is never sent to a browser</li></ul></div></div>
+<div class="mid"><span class="arrow">→</span><p>Rebuilt for each player before every update is sent</p></div>
+<div class="colm"><p>What Player 1 receives</p>
+<div class="card"><h2>Same clip as most</h2><ul><li>One clip: its ID, start point and length</li><li>Their own clue</li><li>For everyone else, only a tick: has a clue, has voted</li><li class="no">No role. No other clip. No one else's clue or vote</li></ul></div></div>
+<div class="colm"><p>What the imposter receives</p>
+<div class="card"><h2>The different clip</h2><ul><li>One clip: its ID, start point and length</li><li>Their own clue</li><li>For everyone else, only a tick: has a clue, has voted</li><li class="no">Nothing that says "you are the imposter"</li></ul></div></div>
+</div>
+<p class="note">Clues are added for everyone once the round reaches Discuss. Votes, both clips and the imposter are added only at the reveal.</p>

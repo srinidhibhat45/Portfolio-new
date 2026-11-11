@@ -1,0 +1,84 @@
+/* Pointer feedback, decided in one place.
+   Everything you can press answers the pointer in one of four ways: text links underline,
+   outlined controls take a tint or flood with ink, and solid buttons lift.
+   The hover states only apply on devices that hover, so a tap on a phone never leaves one stuck. */
+
+/* The hand, for anything pressable that has not asked for a cursor of its own. */
+:where(button:not(:disabled), summary, select, label[for], [role="button"], a[href]) { cursor: pointer; }
+:where(button:disabled) { cursor: not-allowed; }
+
+/* Resting states: what moves needs a transition and, for arrows, a box to move in. */
+:where(.nav-logo, .case-library-link, .now-building, .service-intro a, .project-search > summary, .brain-map-options > summary,
+  .contact-direct > a, .recruiter-close, .recruiter-work, .test-flip-button, .brain-topics button, .note-tabs button,
+  .music-dock-controls button, .project-search-field button, #brainClear, .result-view, .result-reopen, .chess-square,
+  .heritage-path-name, .cf-field input, .cf-field select, .cf-field textarea) {
+  transition: color .2s ease, background-color .2s ease, border-color .2s ease, box-shadow .2s ease, transform .25s var(--ease), opacity .2s ease;
+}
+:where(.case-library-link, .service-intro a) > span[aria-hidden="true"],
+:where(.recruiter-work) > span,
+.nav-logo .brand-period,
+:where(.project-search, .brain-map-options) > summary::after {
+  display: inline-block;
+  transition: transform .25s var(--ease);
+}
+.nav-logo { background: linear-gradient(#D3B683, #D3B683) left calc(100% - 2px) / 0 2px no-repeat; transition: background-size .25s var(--ease); }
+.nav-logo .brand-period { transform-origin: 50% 85%; }
+/* The bike beside the social icons pulls a small wheelie: a hint that it goes somewhere fun. */
+.contact-ride svg { transform-origin: 23% 69%; transition: transform .3s var(--ease); }
+
+@media (hover: hover) and (pointer: fine) {
+  /* ---- Nav ---- */
+  .nav-logo:hover { background-size: 100% 2px; }
+  .nav-logo:hover .brand-period { transform: scale(1.55); }
+
+  /* ---- Text links: the rule under them firms up and the arrow steps out ---- */
+  .case-library-link:hover,
+  .service-intro a:hover,
+  .contact-direct > a:hover { border-bottom-color: currentColor; box-shadow: 0 1px 0 currentColor; }
+  :is(.case-library-link, .service-intro a):hover > span[aria-hidden="true"] { transform: translate(3px, -3px); }
+
+  /* ---- Disclosures: "Search design work +", "Map controls & list view +" ---- */
+  :is(.project-search, .brain-map-options) > summary:hover { text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 6px; }
+  :is(.project-search, .brain-map-options):not([open]) > summary:hover::after { transform: rotate(90deg); }
+  .project-search-field button:hover,
+  #brainClear:hover { background: var(--accent-soft); color: var(--accent); }
+
+  /* ---- Hero ---- */
+  .heritage-paths > a:hover .heritage-path-name { color: var(--kaavi-ink); }
+
+  /* ---- "In progress" strip under Built products ---- */
+  .now-building:hover { border-color: var(--accent); background: var(--accent-soft); color: var(--bone); }
+  .now-building:hover strong { color: var(--accent); }
+
+  /* ---- Testimonials ---- */
+  .test-flip-button:hover { border-color: currentColor; background: var(--accent-soft); color: var(--bone); }
+
+  /* ---- Brain (a night-sky section in both themes) ---- */
+  .brain-topics button:not([aria-pressed="true"]):hover { background: rgba(255, 255, 255, .07); border-color: rgba(255, 255, 255, .24); }
+
+  /* ---- Contact ---- */
+  #contact .cf-field :is(input, select, textarea):hover { border-bottom-color: currentColor; }
+
+  .contact-ride:hover svg { transform: rotate(-14deg); }
+
+  /* ---- Quick introduction ---- */
+  .recruiter-close:hover { transform: rotate(90deg); color: var(--accent); }
+  .recruiter-work:hover { color: var(--accent); }
+  .recruiter-work:hover > span { color: inherit; transform: translateX(4px); }
+
+  /* ---- Note composer ---- */
+  #noteForm .note-tabs button:not([aria-pressed="true"]):hover { background: var(--accent-soft); color: var(--bone); }
+
+  /* ---- Music ---- */
+  .music-dock-controls button:hover { border-color: var(--kaavi); background: var(--kaavi); color: #FFFBF2; }
+
+  /* ---- Games room ---- */
+  .result-view:hover { color: var(--kaavi); text-decoration: underline; text-underline-offset: 4px; }
+  .result-reopen:hover { background: var(--kaavi); color: #FFFBEF; }
+  .chess-square:not(:disabled):hover { box-shadow: inset 0 0 0 3px rgba(227, 188, 122, .95); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nav-logo, .nav-logo .brand-period, .recruiter-close { transition: none; }
+  .contact-ride:hover svg, .recruiter-close:hover, .nav-logo:hover .brand-period, :is(.project-search, .brain-map-options) > summary:hover::after { transform: none; }
+}

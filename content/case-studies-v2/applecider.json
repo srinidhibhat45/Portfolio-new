@@ -1,0 +1,649 @@
+{
+ "title": "A wireframe tool that [[looks like a sketch]] and works like a real canvas",
+ "hook": "AppleCider is a web tool I designed and built on my own for the first hour of a design, when the idea is still changing. It draws like a pen sketch, keeps your work in your own browser, and turns rough screens into a clickable flow or starter code.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself: make the first hour of a design faster"
+  },
+  {
+   "label": "Timeline",
+   "value": "September to October 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Web. Runs in the browser with no account. The editor needs a desktop screen"
+  },
+  {
+   "label": "Stack",
+   "value": "React 18, TypeScript, Vite, Zustand, Immer"
+  },
+  {
+   "label": "Status",
+   "value": "Live, version 0.1.0. Not tested with users. No usage numbers"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open AppleCider",
+   "url": "https://applecider.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: at the start of a design, a polished mock-up gets people arguing about colour and corners, while a paper sketch cannot be moved, shared or reused.",
+  "What I built: a browser tool that draws in a hand-drawn style on a real canvas, with 250 parts, auto layout, layout grids, links between screens and export to images, a clickable review page or code.",
+  "The key idea: keep the look rough, make every box real underneath, and never turn the roughness into fake decisions when the work moves on.",
+  "Where it stands: live as version 0.1.0. I have not tested it with users and I have no usage numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/applecider/editor-board.webp",
+  "alt": "The AppleCider editor with three hand-drawn phone screens for a shop app on the canvas, the parts library on the left and the style settings on the right",
+  "caption": "The editor with a sample board I built for this page from three of the library's ready-made phone screens. All names, prices and text inside the screens are the library's placeholder content.",
+  "width": 2400,
+  "height": 1500
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "The first hour of a design needs a sketch you can move",
+   "blocks": [
+    {
+     "p": "The first hour of a design is when you decide what a screen is for. It is also when the costly mistakes happen, while everyone still thinks they agree."
+    },
+    {
+     "p": "The usual tools pull in two directions. A paper sketch is fast, and nobody mistakes it for finished work. But you cannot move a block, send the file or reuse the header on the next screen. A polished mock-up fixes all of that, and then people argue about colour and corner sizes on a layout that should still be easy to throw away."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/problem.webp",
+       "alt": "Diagram comparing a paper sketch, AppleCider and a polished mock-up, with the strengths and weaknesses of each",
+       "caption": "The gap I wanted to close: the look of the sketch on the left with the abilities of the tool on the right.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "So I set myself one goal: shorten the time from \"I have an idea\" to \"here is the screen\". A wireframe, a rough plan of a screen made of boxes and labels, should keep the honesty of a sketch and still be a real file."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/landing-hero.webp",
+       "alt": "The AppleCider front page with the headline Wireframes at the speed of thought, two buttons and a sketched dashboard and phone beside it",
+       "caption": "The front page says the promise in one line. The sketched dashboard and phone are drawn live by the tool itself, not pasted in as pictures.",
+       "width": 1600,
+       "height": 632
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "No interviews or user tests sit behind this goal. It is my own reasoning about early design work, and this page does not claim anything more."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Three places in one web page, and no account",
+   "blocks": [
+    {
+     "p": "AppleCider is one web page with three places in it: a front page, a drive for your designs and the editor. Your designs are never sent to a server. They are saved in your own browser and can be saved out as a plain file."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/surfaces.webp",
+       "alt": "Diagram of the three places, front page, drive and editor, with three shared foundations below: saved in the browser, a file you own and any static host",
+       "caption": "How the parts connect. Look at the bottom row: no account, no upload, and the whole thing can sit on any plain web host.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/files-drive.webp",
+       "alt": "The drive showing three designs as live thumbnails, one starred, with All files, Recent, Starred and Trash in the sidebar",
+       "caption": "The drive. Each card draws the real document, so a thumbnail can never be out of date. The star and the trash count come from the designs I made for this page.",
+       "width": 1600,
+       "height": 550
+      }
+     ]
+    },
+    {
+     "p": "The editor is where the work happens. I kept the canvas clear: tools live in the top bar, panels on either side, and only the zoom control floats."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/annotated-editor.webp",
+       "alt": "The editor with eight numbered notes on the top bar, the rail of panel icons, the parts library, the frame labels, the inspector and the zoom control",
+       "caption": "The editor part by part. Note 4 matters most: one rail switches between seven panels, so the left side never fights over one row of tabs as the tool grows.",
+       "width": 1600,
+       "height": 1440
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "rough",
+   "label": "Decision 1",
+   "nav": "Rough on purpose",
+   "heading": "It looks unfinished on purpose, and every box still says what it is",
+   "blocks": [
+    {
+     "p": "What you see: wobbly lines, a handwriting-style font called Comic Neue and crossed-out picture boxes. One switch changes the whole board between three styles: Sketch, Wire (clean grey lines) and Mono (monospace type and hard shadows)."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/style-sketch.webp",
+       "alt": "A phone product screen drawn in the Sketch style with wobbly lines and handwriting-style type",
+       "caption": "Sketch. The lines wobble, so nobody reads it as final.",
+       "width": 872,
+       "height": 1794
+      },
+      {
+       "src": "assets/cases/applecider/style-wire.webp",
+       "alt": "The same product screen in the Wire style with straight grey lines and a plain sans-serif font",
+       "caption": "Wire. The same screen in clean grey, for a tidier review.",
+       "width": 872,
+       "height": 1794
+      },
+      {
+       "src": "assets/cases/applecider/style-mono.webp",
+       "alt": "The same product screen in the Mono style with monospace type and black buttons",
+       "caption": "Mono. Monospace type and hard edges. Nothing else on the board changed.",
+       "width": 872,
+       "height": 1794
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "In the build: the wobble is one SVG filter laid over the whole canvas, with a slider for how strong it is. I ruled out redrawing every shape with a sketch library. One filter is cheaper, and it bends text and lines together the way a real pen does."
+    },
+    {
+     "p": "The style switch changes one class on the canvas. The parts themselves never know which style is on, which is why all three stay consistent."
+    },
+    {
+     "p": "Rough is not the same as vague, though. If every part is the same thin rectangle, people stop reading the drawing and only read the labels. So each of the 250 parts takes one role, and the role sets its line, fill and corner."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/roles.webp",
+       "alt": "Diagram of ten visual roles: structure, surface, raised, field, control, bar, bare, media, sticky note and annotation, each with a small sample",
+       "caption": "The visual rules, redrawn. Compare Field and Control: a thin tinted well means \"type here\", a thick rounded block means \"click here\", and you can tell them apart from across a room.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A sketch style can hurt legibility, and the three fonts wrap text differently. A built-in check measures every part in all three styles for boxes that spill out, clipped text or parts that draw nothing. I recorded the library passing all 250 in all three."
+     }
+    }
+   ]
+  },
+  {
+   "id": "speed",
+   "label": "Decision 2",
+   "nav": "Fast from a blank page",
+   "heading": "From a blank page to a laid-out screen in a few keystrokes",
+   "blocks": [
+    {
+     "p": "What you see: drop a frame from 26 device sizes, press Alt and a number to split it into columns, then fill the columns from the library. Each column is real auto layout, a container that lines up and spaces its contents for you."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/split-1-frame.webp",
+       "alt": "An empty desktop frame drawn inside a monitor outline on the canvas",
+       "caption": "Step 1: an empty desktop frame, drawn with its monitor stand.",
+       "width": 1600,
+       "height": 1246
+      },
+      {
+       "src": "assets/cases/applecider/split-2-columns.webp",
+       "alt": "The same desktop frame split into three equal columns, all three selected",
+       "caption": "Step 2: one shortcut splits it into three columns.",
+       "width": 1600,
+       "height": 1246
+      },
+      {
+       "src": "assets/cases/applecider/split-3-filled.webp",
+       "alt": "The three columns holding a sign-in form, a revenue card with a line chart, and a task column",
+       "caption": "Step 3: parts dropped into the columns line up on their own.",
+       "width": 1600,
+       "height": 1246
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/palette.webp",
+       "alt": "The insert search box with the word pricing typed and three results: pricing card, pricing page and pricing table",
+       "caption": "Press the slash key anywhere, type a few letters and press Enter. The part lands where the pointer was.",
+       "width": 1400,
+       "height": 560
+      }
+     ]
+    },
+    {
+     "p": "In the build: once auto layout exists, the stored position of a part inside it is wrong, because the browser decides where it goes. I could have rebuilt the browser's layout rules in my own code. I ruled that out and ask the browser instead. Selection, snapping, hit-testing and export all measure the live page."
+    },
+    {
+     "p": "Dragging needed the same idea. When you drag a part out of a column, it is lifted out at the exact spot where it sat on screen. When you drop it into another column, the tool finds the nearest gap and shows a line where it will land. The whole drag is one undo step."
+    },
+    {
+     "p": "Layout grids follow the same thinking. A grid only draws guides and snaps. It never owns a part, so you can change the grid under finished work, or delete it, without losing anything."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/annotated-grid.webp",
+       "alt": "The dashboard screen with a layout grid shown as tinted regions and columns, and the grid settings in the inspector, with eight numbered notes",
+       "caption": "A grid on a sample dashboard from the library. Look at notes 6 and 7: any region can split again, and each part takes a share of the space.",
+       "width": 1600,
+       "height": 1660
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/grid-tree.webp",
+       "alt": "Diagram of a stored tree of regions, frame, header, body, sidebar and content, beside the boxes it produces on the frame",
+       "caption": "What the grid stores and what you see. A sidebar beside an eight-column content area is three choices, not a pile of throwaway boxes.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Measuring the page costs time on every read. At wireframe scale, hundreds of parts, I have not seen it matter, but I have not measured large boards. Tests with 50 and 100 screens are on the list."
+     }
+    }
+   ]
+  },
+  {
+   "id": "flow",
+   "label": "Decision 3",
+   "nav": "Screens that click",
+   "heading": "Screens link together, so a rough idea can be clicked through",
+   "blocks": [
+    {
+     "p": "What you see: select any part, choose which screen it opens, then press Present. Click an empty spot and every link on the screen lights up, so a reviewer knows what to try."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/flow-panel.webp",
+       "alt": "The prototype flow panel listing each screen with its incoming and outgoing links, next to the three phone screens",
+       "caption": "The flow panel lists every link as text: the home screen's picture opens the detail screen, and the detail screen has two links out. A missing destination can be fixed from here.",
+       "width": 1600,
+       "height": 1273
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/present-hotspots.webp",
+       "alt": "Present mode showing the home screen with the first picture highlighted in blue as a link",
+       "caption": "Present mode. I clicked an empty spot, and the one link on this screen lit up in blue.",
+       "width": 900,
+       "height": 1920,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/applecider/present-detail.webp",
+       "alt": "Present mode showing the detail screen after clicking the picture",
+       "caption": "Clicking the picture opens the detail screen. The bar at the top shows where you are: 2 of 3.",
+       "width": 900,
+       "height": 1920,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "In the build: links are stored on the parts themselves, so they travel with the file. They also survive export. The clickable HTML review page and the generated code both keep them, with one small click handler instead of a full router."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A link can only open another screen. Going back, overlays, transitions and links to other websites are not built yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "handoff",
+   "label": "Decision 4",
+   "nav": "Code that does not invent",
+   "heading": "The code export keeps the structure and refuses to invent the rest",
+   "blocks": [
+    {
+     "p": "What you see: one shortcut turns the board into a small React project, plain HTML and CSS, or a written brief for a developer. Retyping a wireframe into code is slow, dull work, and this skips it."
+    },
+    {
+     "p": "The hard part was knowing what not to carry over. A wireframe is vague on purpose. Its greys are placeholders and its thick lines are thick because they are drawn. Turning those into real colour and border choices would launder guesses into decisions nobody made."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/codegen.webp",
+       "alt": "Diagram of the export: the wireframe becomes a plain description of the screens, which is printed as React and Tailwind, HTML and CSS, or a build spec, with a list of what is left behind and what is carried across",
+       "caption": "One description of the screens, printed three ways. The red box is the point: what the export leaves out on purpose.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/code-react.webp",
+       "alt": "The export code window on the React tab showing the generated checkout screen, with a file list on the left",
+       "caption": "The checkout screen as React. Look at line 8: the phone status bar comes out as a note to skip it, not as fake code. The card titles became headings and the panels became sections.",
+       "width": 1600,
+       "height": 1086
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/annotated-spec.webp",
+       "alt": "The build spec tab of the export window with six numbered notes on the counts, the output tabs, the scope switch, the rules and the list of repeated parts",
+       "caption": "The written brief. Notes 4 and 5 carry the main idea: it tells the reader which parts are decided and which are still open.",
+       "width": 1600,
+       "height": 1500
+      }
+     ]
+    },
+    {
+     "p": "In the build: all the thinking happens in one step that works out what each box is. A button becomes a real button, a table gets real header cells, and heading levels follow text size. Parts that repeat are found by their shape, ignoring their words, and lifted out once. The three outputs are then simple printers, so a new one is a single file."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Charts, maps and date pickers come out as labelled gaps, not working parts. Choosing a chart library is a decision, and the export leaves it to you."
+     }
+    }
+   ]
+  },
+  {
+   "id": "second",
+   "label": "Second pass",
+   "nav": "Second pass",
+   "heading": "A second pass, checked against what people expect from Balsamiq",
+   "blocks": [
+    {
+     "p": "Five weeks after the first version I compared AppleCider with Balsamiq, a long-standing wireframing tool. I read its documentation and the themes in public reviews on G2 and Capterra. This was desk research, not research with my own users, and reviews are individual opinions, not test results."
+    },
+    {
+     "p": "The gaps it showed were about working over time, not about drawing. I built these and wrote down the limit of each:"
+    },
+    {
+     "table": {
+      "head": [
+       "What people expect",
+       "What I added",
+       "Its limit"
+      ],
+      "rows": [
+       [
+        "Reuse common parts",
+        "Save a part as a component, insert copies, push changes to them, or detach one",
+        "Only inside one document. Pushing a change replaces the copies, it does not merge edits"
+       ],
+       [
+        "Give feedback",
+        "Comments on a part or the whole document, with replies, resolve and filters",
+        "Stored in the file. Shared by sending the file, not live"
+       ],
+       [
+        "Try alternatives",
+        "Named versions with saved and current previews, restore, download, or a separate copy",
+        "The last 30 per document, kept in this browser"
+       ],
+       [
+        "Find things on a big board",
+        "Search screen names and text, then jump to the result",
+        "First 100 matches"
+       ],
+       [
+        "Share without an account",
+        "A clickable HTML review page, which can be printed to PDF",
+        "View only. No editing or comments in it"
+       ],
+       [
+        "Export every screen",
+        "All visible screens as a ZIP of SVG files",
+        "Some design apps cannot open this kind of SVG"
+       ],
+       [
+        "Use real images",
+        "Upload pictures straight into an image box",
+        "Up to 10 MB each"
+       ]
+      ]
+     }
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/comments.webp",
+       "alt": "The review comments panel with one comment attached to the revenue chart on a sample dashboard",
+       "caption": "A comment pinned to one part of the dashboard. I wrote this sample note for the page; the author field takes any name.",
+       "width": 1600,
+       "height": 944
+      },
+      {
+       "src": "assets/cases/applecider/versions.webp",
+       "alt": "The versions panel with a saved version called Starter layout and small previews of the saved and current design",
+       "caption": "A saved version beside the current design, after I switched the board to the Wire style.",
+       "width": 1600,
+       "height": 944
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "The same pass made saving safer. Each save now remembers which file it belongs to at the moment of the edit, so a quick switch between designs cannot write to the wrong one. Failed saves can be retried, and imported files are checked and rejected if they are broken. This is also when I added the first automated tests."
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One document, drawn by the browser and measured back",
+   "blocks": [
+    {
+     "p": "Every part on the canvas, from a frame to a button, has the same shape in the document. So undo, copy and paste, and export are each written once. Every change goes through one function, which is what makes undo and saving reliable."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/architecture.webp",
+       "alt": "Diagram in three columns: one store and its single path for changes; the renderer, browser layout and measuring; and the browser database, images and review page, and code",
+       "caption": "What runs where. The green boxes are the two ideas the rest depends on: one store, and measuring the real page.",
+       "width": 1600,
+       "height": 830
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Interface",
+        "React 18 and TypeScript, built with Vite"
+       ],
+       [
+        "Document and undo",
+        "Zustand with Immer. Unchanged parts are shared between undo steps, so a long history stays small"
+       ],
+       [
+        "Saving",
+        "The browser's own database (IndexedDB), with a .cider.json file to keep or send"
+       ],
+       [
+        "Everything else",
+        "Written in the project: canvas, snapping, icons, charts, export, code output and the ZIP writer"
+       ],
+       [
+        "Hosting",
+        "A static site that any plain web host can serve. My hosting setup adds a strict security policy: no third-party scripts and no analytics"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "5",
+       "label": "runtime libraries in total"
+      },
+      {
+       "value": "250",
+       "label": "parts in 15 groups, 20 of them full screens"
+      },
+      {
+       "value": "26",
+       "label": "device frames, from a watch to an ultrawide monitor"
+      },
+      {
+       "value": "25",
+       "label": "regression test cases, recorded passing on 27 October 2026"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/applecider/timeline.webp",
+       "alt": "Timeline of four commits: three on 21 September 2026 for the first version, hosting and layout grids, and one on 27 October for the second pass",
+       "caption": "The build in four commits. The first one holds the whole first version, so the history shows little of the process before it.",
+       "width": 1600,
+       "height": 600
+      }
+     ]
+    },
+    {
+     "p": "The checks that run on every push are the type checker and the production build. The regression tests cover save races, retries, undo, copy and paste, link remapping and broken imports. They run by hand. A separate set tests the browser database wrapper."
+    },
+    {
+     "p": "The hardest problems were the ones where what you export has to match what you see:"
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What I did"
+      ],
+      "rows": [
+       [
+        "Phone corners",
+        "In the first version the square screen poked out through the rounded phone outline. It was the most visible bug. Now each device clips its screen to its own corner radius."
+       ],
+       [
+        "Fonts in exports",
+        "Web fonts do not travel inside an exported image, so a PNG would show a default font on another computer. The export embeds the fonts inside the file."
+       ],
+       [
+        "PNG export in Chrome",
+        "Chrome refuses to turn an SVG into a PNG when the SVG comes from one kind of temporary link. The export loads it a different way."
+       ],
+       [
+        "Text that did not fit",
+        "Text boxes had a fixed width of 200px by default. Four short labels in one order tracker overflowed it by 368px. Making text fit its content by default fixed 18 parts at once."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no usage numbers and no user tests yet",
+   "blocks": [
+    {
+     "p": "AppleCider is live at version 0.1.0 and carries the MIT licence. It needs no account, has no analytics and keeps designs in the browser, so I have no usage numbers. Nobody has tested it in a study."
+    },
+    {
+     "p": "For this page I ran the built version and made the sample boards shown here. These are not done yet:"
+    },
+    {
+     "list": [
+      "Editing on phones and tablets.",
+      "Working on one board with other people at the same time, or syncing between devices.",
+      "Richer links: back, overlays, transitions and outside links.",
+      "Importing Balsamiq files.",
+      "Speed tests on large boards, and working fully offline."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Find out if it really is faster, then add people",
+   "blocks": [
+    {
+     "list": [
+      "Test the one number the tool is built for. Give people an early product idea, time them to a screen someone else can understand, ask them to change it after feedback, and then have them explain the export to a colleague.",
+      "Measure large boards with 50 and 100 screens before claiming the canvas stays fast.",
+      "Then the bigger pieces: shared editing without a server, parts that can be reused across projects, and code output for Vue, Svelte and SwiftUI from the same description."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Rough on the surface, strict underneath",
+   "blocks": [
+    {
+     "p": "The roughness only works if the structure under it is precise. The sketch look gives people permission to change things. The roles, the grid and the measured layout make sure that what they draw still means something."
+    },
+    {
+     "p": "The export taught me the same lesson from the other side. The most useful thing it does is refuse: it leaves the greys, the drawn lines and the dummy text behind and says so. And comparing my tool with an established one showed me that drawing was never the weak spot. Keeping, sharing and coming back to the work was."
+    }
+   ]
+  }
+ ]
+}

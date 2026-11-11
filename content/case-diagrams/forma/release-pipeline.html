@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x760">
+<style>.lane{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin:0 0 10px}.r{display:grid;grid-template-columns:repeat(4,1fr);gap:0;align-items:stretch}.r .card{margin-right:44px;position:relative}.r .card:not(:last-child)::after{content:'→';position:absolute;right:-36px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:32px}.card{padding:18px 20px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.x{border-color:var(--warn);background:var(--warn-wash)}.x h2{color:var(--warn)}.v{text-align:right;color:var(--accent);font-size:30px;margin:8px 70px 8px 0}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How a new version reaches the phone</p><h1>Every update is checked twice: before it is published, and before it is installed</h1>
+<div class="grow">
+<p class="lane">On GitHub, after each change</p>
+<div class="r">
+<div class="card"><h2>Tests and lint</h2><p>The unit tests and Android's code checks run first. A failure publishes nothing.</p></div>
+<div class="card"><h2>Optimised build</h2><p>The phone app and the watch app are built for release.</p></div>
+<div class="card"><h2>Signed</h2><p>With Forma's own signing key, held as an encrypted secret and deleted after use.</p></div>
+<div class="card hi"><h2>Published</h2><p>The app, a small manifest and a checksum, under a new build number.</p></div>
+</div>
+<p class="v">↓</p>
+<p class="lane">On the phone</p>
+<div class="r">
+<div class="card"><h2>Finds it</h2><p>Checks at most every 15 minutes while open, and every six hours in the background.</p></div>
+<div class="card"><h2>You tap update</h2><p>Nothing downloads on its own.</p></div>
+<div class="card hi"><h2>Forma checks the file</h2><p>Size, checksum, package name, a higher version number and the same signing key. Any mismatch stops it.</p></div>
+<div class="card"><h2>Android asks you</h2><p>The system installer replaces the app in place. Records and targets stay.</p></div>
+</div>
+</div>
+<p class="note">Android always asks before installing, so an update can never replace the app silently.</p>

@@ -1,0 +1,27 @@
+/* Schematic Hued screens, redrawn from the app's layout code. Not screenshots.
+   Tokens are the app's own light palette; Case Display stands in for Fraunces, Case Sans for Hanken Grotesk. */
+.phone { --day: #6FC68E; --day-dark: #49A068; --ink: #1A1A1A; --muted: #8E8E8E; --faint: #C7C7C7; --sunk: #FAFAFA; --line: #DBDBDB; --blue: #0095F6; --blue-wash: #EAF5FE; --gold: #FF7A1A; --gold-wash: #FFF1E6; --ok: #1E9E54;
+  position: relative; flex: none; width: 380px; height: 800px; padding: 10px; border-radius: 48px; background: #151515; box-shadow: 0 18px 44px rgba(25, 43, 50, .16); }
+.scr { position: relative; width: 100%; height: 100%; overflow: hidden; border-radius: 38px; background: #fff; color: var(--ink); font: 400 15px/1.35 'Case Sans', Arial, sans-serif; }
+.scr * { font-family: inherit; }
+.serif { font-family: 'Case Display', Georgia, serif !important; letter-spacing: -.01em; }
+.sb { height: 36px; display: flex; align-items: center; justify-content: space-between; padding: 0 26px; font-size: 13px; font-weight: 600; }
+.sb i { display: inline-block; width: 46px; height: 10px; border-radius: 3px; background: currentColor; opacity: .8; }
+.pad { padding: 0 18px; }
+.rowx { display: flex; align-items: center; }
+.bar { display: block; height: 9px; border-radius: 5px; background: #E6E6E6; }
+.av { flex: none; width: 34px; height: 34px; border-radius: 50%; background: #E3E3E3; }
+.ib { display: grid; place-items: center; width: 34px; height: 34px; border-radius: 50%; background: var(--blue-wash); }
+.ic { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.over { font-size: 10.5px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; }
+.pill { display: inline-flex; align-items: center; gap: 5px; padding: 6px 12px; border-radius: 99px; font-size: 13px; font-weight: 600; }
+/* A stand-in for a photograph: hatched, with a patch of the day's colour, so it never reads as a real photo. */
+.photo { position: relative; overflow: hidden; background: repeating-linear-gradient(135deg, #EDEBE7 0 12px, #E4E1DC 12px 24px); }
+.photo::before { content: ''; position: absolute; left: 22%; top: 30%; width: 46%; height: 42%; border-radius: 46% 54% 40% 60%; background: var(--day); opacity: .95; }
+.photo::after { content: 'photo'; position: absolute; right: 10px; bottom: 8px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: #9A968F; }
+.tabs { position: absolute; left: 0; right: 0; bottom: 0; height: 68px; display: flex; justify-content: space-around; align-items: center; border-top: 1px solid #EFEFEF; background: #fff; color: #3C3C3C; }
+.tabs span { display: grid; place-items: center; width: 54px; height: 36px; border-radius: 18px; }
+.tabs span.on { background: var(--blue-wash); color: var(--blue); }
+.tabs .ic { width: 22px; height: 22px; }
+.schem { position: absolute; left: 50%; transform: translateX(-50%); bottom: 76px; padding: 3px 10px; border-radius: 99px; background: rgba(25, 43, 50, .82); color: #fff; font-size: 10px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; white-space: nowrap; }
+.photo.thumb::after { display: none; }

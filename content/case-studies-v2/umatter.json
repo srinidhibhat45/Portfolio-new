@@ -1,0 +1,573 @@
+{
+ "title": "In our survey, the first thing in the way of therapy was [[privacy]], not price.",
+ "hook": "uMatter is a phone app concept for finding a mental-health professional and booking a session. A team of three designed it in a 14-hour design challenge, and I led the team.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Team lead. UX research and design"
+  },
+  {
+   "label": "Team",
+   "value": "Three people. Pratik Manjrekar on UI design, Nidhi S Kamath on UI and graphic design"
+  },
+  {
+   "label": "For",
+   "value": "Pixel Perfect UI/UX Challenge, as Team Elementors"
+  },
+  {
+   "label": "Platform",
+   "value": "Phone app"
+  },
+  {
+   "label": "Methods",
+   "value": "Survey, article reading, persona, ideation board, user flow, pencil wireframes"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "Status",
+   "value": "Design concept. Not built, not tested with users, and not a clinical service"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original deck (PDF)",
+   "url": "assets/pdfs/umatter.pdf"
+  }
+ ],
+ "linksHeading": "The original deck",
+ "summary": [
+  "The problem: the brief asked how to make mental-health diagnosis cheaper and easier to reach. In our survey of 65 people, 89.2% had never been to a therapist, and privacy was the difficulty they named most.",
+  "What I did: I led the team and its UX research and design. We ran the survey, wrote a persona, mapped the app and drew a path from sign-in to a paid booking. My two teammates worked on the UI and graphic design.",
+  "The key idea: show who the expert is, when they are free and what it costs before asking for any money. Two lighter routes sit beside booking for people who are not ready yet.",
+  "Where it stands: a set of phone screens made in 14 hours. It was never built or tested, and it makes no claim about diagnosis or treatment. One question is still open: how to stay anonymous while booking and paying."
+ ],
+ "lead": {
+  "src": "assets/cases/umatter/lead.webp",
+  "alt": "Six uMatter phone screens side by side: an onboarding screen, home, the experts list, an expert's page, the booking calendar and the confirmation screen",
+  "caption": "The path through the app, left to right: the privacy promise, home, the list of experts, one expert's page, booking a slot, and the price before payment. Photos and names in the mock-ups were placeholders and are blurred.",
+  "width": 2400,
+  "height": 1066
+ },
+ "sections": [
+  {
+   "id": "problem",
+   "label": "The problem",
+   "heading": "The brief asked about diagnosis. People were stuck before that.",
+   "blocks": [
+    {
+     "p": "The challenge brief was titled \"Mental health app - Diagnosis\". It said that finding out what is wrong through ordinary check-ups costs a lot of money and time, and it ended with a question."
+    },
+    {
+     "quote": {
+      "text": "How can we make the process of diagnosis more efficient and accessible?",
+      "by": "The challenge brief"
+     }
+    },
+    {
+     "p": "Our survey and our screens ended up one step earlier than diagnosis. Most of the people we asked had never been to a therapist at all. So the work became about reaching a professional in the first place: finding one, trusting them enough to book, and knowing the cost."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/before-after.webp",
+       "alt": "Diagram comparing five unanswered questions a person faces today with four steps in the uMatter app",
+       "caption": "The problem in one picture. The top row is what people told us got in the way. The bottom row is the path our screens offer.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "A limit to be clear about.",
+      "detail": "We were three designers with 14 hours. The screens show how someone might find an expert and book a session. They do not diagnose anything, and nothing here says whether any treatment works."
+     }
+    }
+   ]
+  },
+  {
+   "id": "plan",
+   "label": "Our plan",
+   "heading": "Fourteen hours, so we cut the process down",
+   "blocks": [
+    {
+     "p": "We used a shortened version of the Double Diamond, a common design process with four stages: discover, define, develop and deliver. Planning the work this way let us size the work and split it between three people. I led the research and the UX design, which means how the app is organised and how someone moves through it. My two teammates worked on the UI, the look of the screens, and the graphics."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/plan.webp",
+       "alt": "Diagram of four stages, discover, define, develop and deliver, with the work the team did in each",
+       "caption": "What we did in each stage. Look at the first card: a survey was the only research with people that fit in the time.",
+       "width": 1600,
+       "height": 680
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A survey is quick to send and quick to read, which is why we chose it. It cannot tell you why someone answered the way they did. Interviews would have, and we had no time for them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "research",
+   "label": "Research",
+   "heading": "65 people answered, and most had never seen a therapist",
+   "blocks": [
+    {
+     "p": "We wrote a ten-question survey about people's experience of therapy and therapists. 65 people answered it. We also read three published articles on why people avoid therapy."
+    },
+    {
+     "stats": [
+      {
+       "value": "65",
+       "label": "people answered the survey"
+      },
+      {
+       "value": "89.2%",
+       "label": "had never visited a therapist"
+      },
+      {
+       "value": "52.3%",
+       "label": "wanted professional help online while staying anonymous"
+      },
+      {
+       "value": "14 of 43",
+       "label": "named privacy as a difficulty, more than any other answer"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/survey-anonymity.webp",
+       "alt": "Pie chart from the original survey: 52.3 percent yes, 26.2 percent no and 21.5 percent maybe to staying anonymous while getting professional help online",
+       "caption": "One chart straight from our survey form. The blue slice is the 52.3% who wanted professional help online while staying anonymous.",
+       "width": 1200,
+       "height": 584
+      }
+     ]
+    },
+    {
+     "p": "I redrew all the answers as bars so they are easier to compare."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/chart-core.webp",
+       "alt": "Five small bar charts of survey answers on visiting a therapist, considering one, mental health issues, anonymity and willingness to pay",
+       "caption": "The five questions everyone answered. Start with the top left: 89.2% had never visited a therapist. Then the bottom right: only 30.8% gave a clear yes to paying.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The brief talked about cost, in money and in time. The people who answered put privacy ahead of both."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/chart-barriers.webp",
+       "alt": "Three bar charts: difficulties in reaching a therapist led by privacy, changes that would help led by acceptance and encouragement, and preferred ways to talk led by chat",
+       "caption": "Three follow-up questions. Privacy leads the first chart with 14 people, ahead of cost with 9. Chat leads the third with 24.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "Two more things stood out. The change people wanted most was acceptance and encouragement, named by 18 of 50, with awareness next at 15. A booking screen cannot give anyone those. And chat was the way most people felt comfortable talking, picked by 24 of 47."
+    },
+    {
+     "aside": {
+      "title": "How far these numbers go.",
+      "detail": "This was an informal survey, and I have no record of how the 65 people were reached. The numbers describe that group only. They do not measure how common mental-health problems are, and I do not set them beside public health figures."
+     }
+    },
+    {
+     "aside": {
+      "title": "A correction to our own deck.",
+      "detail": "Our slide called the 52.3% \"almost half\". It is just over half. This page uses the exact figures from the charts."
+     }
+    }
+   ]
+  },
+  {
+   "id": "persona",
+   "label": "Who it is for",
+   "heading": "Three groups, and one student to keep in mind",
+   "blocks": [
+    {
+     "p": "We named three groups the app could serve: students and teenagers, doctors and psychiatrists, and people living with anxiety, stress or depression. To keep one of them in view while designing, we wrote a persona. A persona is a made-up person who stands for a group of users."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/persona.webp",
+       "alt": "Persona card for Shritija, a 19-year-old medical student, with what keeps her going, what she wants and what gets in the way",
+       "caption": "Read the right-hand card first. No support at home and little free time echo difficulties people named in the survey.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "We named doctors and psychiatrists as a group, but every screen we drew is for the person looking for help. The expert's side of the app was not designed."
+    }
+   ]
+  },
+  {
+   "id": "features",
+   "label": "From problems to features",
+   "nav": "Problems to features",
+   "heading": "A list of problems became six features",
+   "blocks": [
+    {
+     "p": "I wrote every problem we had found on one note. Beside it I listed possible answers, and we starred some of them. Feature ideas went in the circles around the two lists."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/ideation-board.webp",
+       "alt": "Ideation board with a pink note listing problems, a yellow note listing solutions with stars, and purple circles of feature ideas",
+       "caption": "Our ideation board. My problems list is on the left. Possible solutions are in the middle, some of them starred. The circles on the right are feature ideas.",
+       "width": 1500,
+       "height": 1249
+      }
+     ]
+    },
+    {
+     "p": "From the board we settled on six features, and on a phone app, because the phone is the device people use most."
+    },
+    {
+     "list": [
+      "Easy, affordable access to genuine mental-health professionals and resources.",
+      "A safe, secure and anonymous way to talk to them.",
+      "Content that builds wellbeing and awareness.",
+      "Help offered when someone needs it.",
+      "Ratings, feedback and reviews, so trust in an expert can build.",
+      "Community events and forums about mental health."
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/research-to-design.webp",
+       "alt": "Diagram pairing six things heard in research with what the screens offer in answer, the last one marked as not designed",
+       "caption": "What we heard on the left, what the screens offer on the right. The last row is a gap I can see now: people preferred chat, and we never drew a chat session.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "Some ideas stayed on the board: an emergency helpline, sessions at home, end-to-end encryption, and a filter for therapists by speciality. Fourteen hours covered the booking path. None of these reached the screens we finished."
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "label": "Structure",
+   "heading": "One path from home to a booked session",
+   "blocks": [
+    {
+     "p": "Before the screens, we drew a user flow. That is a diagram of every screen in the app and the routes between them."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/p12.webp",
+       "alt": "User flow slide from the original deck, with coloured circles for login, home, search, community, profile and the booking steps",
+       "caption": "The user flow from our deck. Yellow is the booking path, red is community, green is profile and blue is search.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/structure-map.webp",
+       "alt": "Redrawn app map with four areas after login, home, search, community and profile, and the booking path as a row of steps",
+       "caption": "The same flow, redrawn so it can be read. The bottom row is the booking path, which ends back at home.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "In the flow, date, time and mode are three separate steps. On the final screen they sit together on one page, so a booking takes fewer screens. The cost is a longer page to scroll."
+    }
+   ]
+  },
+  {
+   "id": "sketches",
+   "label": "Sketches",
+   "heading": "Pencil first",
+   "blocks": [
+    {
+     "p": "We sketched the main screens in pencil before the finished designs. These are wireframes: rough drawings that settle where things go before any colour or type is chosen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/wireframes.webp",
+       "alt": "Six photographed pencil wireframes: a splash screen, two login screens, an appointment summary, home and a booking calendar",
+       "caption": "All six sketches from our deck. The bottom row holds the three that matter most: the appointment summary, home, and the booking calendar.",
+       "width": 1500,
+       "height": 956
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/sketch-to-screen.webp",
+       "alt": "Three pencil sketches each shown beside the finished screen it became: home, booking and confirmation",
+       "caption": "Sketch on the left of each pair, finished screen on the right. The order of things on each screen was settled on paper and did not change.",
+       "width": 1600,
+       "height": 1020
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "privacy",
+   "label": "The design",
+   "nav": "A promise of privacy",
+   "heading": "The first screens make a promise about privacy",
+   "blocks": [
+    {
+     "p": "The app opens with four short screens. The second one answers the survey directly. It reads \"Anonymous, safe and secure\", and under that, no more being embarrassed to speak about how you feel."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/app-onboard-talk.webp",
+       "alt": "uMatter opening screen reading Talk it out, talk to experts about how you feel",
+       "caption": "The first screen says what the app is for: talking to experts about how you feel.",
+       "width": 520,
+       "height": 1122
+      },
+      {
+       "src": "assets/cases/umatter/app-onboard-anonymous.webp",
+       "alt": "uMatter onboarding screen reading Anonymous, safe and secure",
+       "caption": "The second makes the privacy promise in three words.",
+       "width": 520,
+       "height": 1116
+      },
+      {
+       "src": "assets/cases/umatter/app-onboard-happiness.webp",
+       "alt": "uMatter onboarding screen reading Spread happiness",
+       "caption": "The third invites people to encourage others.",
+       "width": 520,
+       "height": 1116
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "Then comes sign-in. Most apps ask for an account here. This one also lets you in as a guest."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/closer-signin.webp",
+       "alt": "The uMatter sign-in screen with four numbered notes on its options, including sign in as a guest",
+       "caption": "The sign-in screen, part by part. Note 2 is the one that matters: a way in without an account.",
+       "width": 1300,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A promise on an opening screen is easy to make. The design does not yet show how it is kept: what a guest can do, what is stored, and what an expert gets to see."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ways-in",
+   "label": "The design",
+   "nav": "Three ways in",
+   "heading": "Home offers three ways in, and only one is booking",
+   "blocks": [
+    {
+     "p": "Not everyone who opens the app is ready to book. So home has three buttons: Inspiration, Talk to an expert, and Cheer me up."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/app-home.webp",
+       "alt": "uMatter home screen with three buttons, Inspiration, Talk to an expert and Cheer me up, above a video feed",
+       "caption": "Home. Three buttons under the greeting, then a feed of videos.",
+       "width": 520,
+       "height": 1126
+      },
+      {
+       "src": "assets/cases/umatter/app-inspiration.webp",
+       "alt": "uMatter Inspirations screen with a row of stories and cards holding users' written stories",
+       "caption": "Inspiration. Stories written by other users, and a plus button to add your own.",
+       "width": 520,
+       "height": 1126
+      },
+      {
+       "src": "assets/cases/umatter/app-cheer.webp",
+       "alt": "uMatter Cheer me up screen showing a short chat that tells a joke",
+       "caption": "Cheer me up. A short chat that asks how you are and offers a joke.",
+       "width": 520,
+       "height": 1127
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "Inspiration speaks to the change people wanted most: acceptance, encouragement and awareness. Reading that someone else has been through the same thing is a start. Cheer me up is light relief and nothing more. It is not support, and it is not therapy."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Two extra destinations can pull attention away from the route to a professional. I would test whether they help people take the next step or keep them from it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "booking",
+   "label": "The design",
+   "nav": "Booking",
+   "heading": "Booking shows who, when and how much before it asks for money",
+   "blocks": [
+    {
+     "p": "Talk to an expert opens a list of experts. Picking one opens their page. Only after that do you choose a slot, and only after that do you see a way to pay."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/app-experts.webp",
+       "alt": "uMatter experts screen listing experts as cards, each with a client count and a star rating",
+       "caption": "The experts list. Each card shows a client count and a star rating.",
+       "width": 520,
+       "height": 1124
+      },
+      {
+       "src": "assets/cases/umatter/app-doctor.webp",
+       "alt": "uMatter expert page with a rating, a description, an intro video, a Book an appointment button and reviews",
+       "caption": "One expert's page. The button to book sits below the description and the video.",
+       "width": 520,
+       "height": 1126
+      },
+      {
+       "src": "assets/cases/umatter/app-booking.webp",
+       "alt": "uMatter booking screen with a month calendar, six time slots, an online or offline switch and a Confirm button",
+       "caption": "Booking. A date, a time slot, and online or offline, then Confirm.",
+       "width": 520,
+       "height": 1448
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/closer-doctor.webp",
+       "alt": "The expert page with five numbered notes on the rating, description, intro video, booking button and reviews",
+       "caption": "The expert's page, part by part. Everything that helps you judge the person comes above the button to book.",
+       "width": 1300,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/closer-confirmation.webp",
+       "alt": "The confirmation screen with four numbered notes on the close button, the chosen slot, the price and the payment options",
+       "caption": "The confirmation screen, part by part. The total sits above the payment options, so nobody picks a way to pay before knowing the price.",
+       "width": 1300,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Stars and a client count are quick to read, but they do not show that someone is qualified. A real service would have to check each expert's credentials, and that is a process, not a screen."
+     }
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "nav": "What comes next",
+   "heading": "The question we could not answer in 14 hours",
+   "blocks": [
+    {
+     "p": "People asked for privacy. A booking needs a name somewhere: for the payment, for the expert, or for a visit in person. We drew both and did not decide how they fit together."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/umatter/sharing.webp",
+       "alt": "Diagram of five steps from guest sign-in to the session, showing what each asks the user to share, with payment and the session marked as open questions",
+       "caption": "What each step asks of you. The first three ask for little. The last two are where anonymity runs out, and where the design stops.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "p": "These are the steps I would take before adding any feature."
+    },
+    {
+     "steps": [
+      {
+       "title": "Decide what is shared at each step.",
+       "detail": "Then say it on the screen, in plain words, before the person commits."
+      },
+      {
+       "title": "Design the session itself.",
+       "detail": "Start with chat, since that is what most people in the survey were comfortable with."
+      },
+      {
+       "title": "Show how experts are checked.",
+       "detail": "Credentials, consent and how to cancel, worked out with mental-health professionals."
+      },
+      {
+       "title": "Test what people understand.",
+       "detail": "Can they tell what is private, what the expert sees, and that this app books a session and does not diagnose?"
+      }
+     ]
+    },
+    {
+     "p": "Our deck also lists longer-term ideas: free webinars and question-and-answer sessions at organisations, funding through NGOs and crowdfunding, reaching more kinds of users, and applying for government recognition."
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Anonymous and accountable pull against each other",
+   "blocks": [
+    {
+     "p": "The survey gave us a clear ask, and we answered it with a sentence on an opening screen and a guest button. That was the easy half. The hard half is the booking, where a real person pays a real professional. If I did this again I would map what is shared at each step before drawing a single screen."
+    },
+    {
+     "p": "I would also read my own numbers twice. \"Almost half\" and \"just over half\" are different claims, and only one of them was true."
+    }
+   ]
+  }
+ ]
+}

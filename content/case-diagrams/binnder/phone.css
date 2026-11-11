@@ -1,0 +1,29 @@
+/* Schematic phone parts for the Binnder diagrams. Drawn from the app's code, not captured. */
+.phone { position: relative; flex: none; width: 300px; height: 600px; border: 8px solid #1B1A17; border-radius: 36px; background: #F6F4F8; overflow: hidden; display: flex; flex-direction: column; }
+.phone.sm { width: 250px; height: 500px; border-width: 7px; border-radius: 30px; }
+.tb { display: flex; align-items: center; justify-content: space-between; padding: 22px 18px 10px; font-size: 20px; font-weight: 600; }
+.tb i { display: inline-block; width: 18px; height: 18px; border: 2.5px solid #45464F; border-radius: 4px; margin-left: 10px; }
+.chips { display: flex; gap: 6px; padding: 4px 14px 8px; }
+.chips span { padding: 3px 9px; border: 1.5px solid #C6C5D0; border-radius: 8px; font-size: 12px; white-space: nowrap; }
+.chips span:first-child { background: #DDE1F9; border-color: #DDE1F9; }
+.meta-row { display: flex; justify-content: space-between; padding: 2px 16px 6px; font-size: 13px; color: #45464F; }
+.fcard { margin: 0 10px; flex: 1; min-height: 0; border-radius: 16px; background: #ECEAF0; display: flex; flex-direction: column; overflow: hidden; }
+.prev { flex: 1; background: repeating-linear-gradient(135deg, #D9D6E0 0 10px, #E4E1EA 10px 20px); display: grid; place-items: center; color: #6B6A75; font-size: 14px; font-weight: 600; }
+.fmeta { padding: 10px 12px; font-size: 13px; line-height: 1.35; }
+.fmeta b { display: block; font-size: 15px; }
+.fmeta small { color: #6B6A75; font-size: 11px; }
+.acts { display: flex; justify-content: space-around; align-items: center; padding: 12px 8px 6px; font-size: 12px; text-align: center; }
+.acts div { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+.acts i { width: 46px; height: 46px; border-radius: 50%; border: 2px solid #45464F; }
+.acts .del i { width: 40px; height: 40px; border-color: #45464F; }
+.acts .del { color: #BA1A1A; }
+.acts .bin i { background: #46588F; border-color: #46588F; }
+.hint { padding: 0 0 12px; text-align: center; font-size: 10px; color: #45464F; }
+.strip { background: #2F3036; color: #F2F0F7; padding: 8px 10px 0; font-size: 12px; }
+.strip .item { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.strip .item b { display: block; font-size: 13px; font-weight: 500; }
+.strip .item span.u { color: #B7C4FF; font-weight: 600; }
+.strip .line { height: 2px; background: #45464F; margin-top: 6px; }
+.strip .line i { display: block; height: 2px; background: #B7C4FF; }
+.lab { position: absolute; padding: 4px 10px; border-radius: 99px; background: #1B1A17; color: #fff; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.schem { display: inline-block; padding: 3px 10px; border: 1.5px dashed var(--dim); border-radius: 99px; color: var(--dim); font-size: 16px; font-weight: 600; letter-spacing: .02em; }

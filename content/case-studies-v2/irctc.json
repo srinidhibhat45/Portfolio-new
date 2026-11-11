@@ -1,0 +1,293 @@
+{
+ "title": "The train search [[comes first]].",
+ "hook": "A redesign concept for the IRCTC rail-booking homepage. I set the brief myself: make searching for a train the first thing the page asks of you.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Page structure, hierarchy and visual design"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself. Not commissioned by IRCTC and not connected to it"
+  },
+  {
+   "label": "Platform",
+   "value": "Desktop web. One homepage, drawn 1,920 px wide"
+  },
+  {
+   "label": "Scope",
+   "value": "Homepage only. No results, payment or ticket screens"
+  },
+  {
+   "label": "Status",
+   "value": "Visual concept. Not built and not tested with users"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original design (PDF)",
+   "url": "assets/pdfs/irctc.pdf"
+  }
+ ],
+ "linksHeading": "The original design",
+ "summary": [
+  "The problem I set myself: a rail-booking homepage has to offer dozens of services, yet it should be obvious where to search for a train.",
+  "What I did: I designed one long homepage in six bands. The train search fills the first screen and everything else sits below it.",
+  "The key idea: rank tasks by position. Booking comes first, checking a trip you already have sits on its edge, and other services and holidays follow.",
+  "Where it stands: a single desktop mock-up. It was not commissioned, built or tested, and it stops at the Search button."
+ ],
+ "lead": {
+  "src": "assets/cases/irctc/lead.webp",
+  "alt": "The whole IRCTC homepage concept shown in three columns: the top with the train search and services, the middle with five holiday cards, and the end with the social strip and footer",
+  "caption": "The whole page, cut into three columns so it fits. Read it left to right: the search and services, then the holiday cards, then the footer.",
+  "width": 2400,
+  "height": 1016
+ },
+ "sections": [
+  {
+   "id": "brief",
+   "label": "The brief",
+   "heading": "Nobody asked for this, so I wrote the brief",
+   "blocks": [
+    {
+     "p": "I chose this page as practice because it is a hard ordering problem. One homepage has to carry train booking, trip status, flights, hotels, buses, catering, holidays and a long list of rules and help pages."
+    },
+    {
+     "p": "My rule was simple. Someone who arrives knowing their route and date should be able to start a search without reading anything else. Everything else stays on the page, further down."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/hero.webp",
+       "alt": "First screen of the concept with the header, a booking card on the left and a train photograph with the words Welcome to Indian Railways on the right",
+       "caption": "The first screen. The booking card takes the left half. The photograph and the welcome line take the right, so nothing else asks for a click.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this is not.",
+      "detail": "There was no client and no research. I did not study how people use the real site, so I make no claim that this version is faster or better. The emblems, logos, photographs and holiday text in the mock-up are placeholder content and belong to their owners."
+     }
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "label": "Structure",
+   "heading": "One long page in six bands",
+   "blocks": [
+    {
+     "p": "The design is a single page, 1,920 px wide and 5,400 px long. I split it into six bands. The header and the search together are 1,080 px tall, the height of a full HD screen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/page-map.webp",
+       "alt": "Map of the page as six numbered bands with their heights: header, hero and train search, other services, curated holidays, social strip and footer",
+       "caption": "The six bands and how much of the page each one takes. Look at band 4: the holiday cards are 41% of the page length, more than twice the search.",
+       "width": 1600,
+       "height": 1200
+      }
+     ]
+    },
+    {
+     "p": "That is the trade-off in this layout. The search is first, but most of the scrolling is promotion. Moving the holidays lower fixes the order. It does not make the page any shorter."
+    }
+   ]
+  },
+  {
+   "id": "hierarchy",
+   "label": "Task hierarchy",
+   "nav": "Task hierarchy",
+   "heading": "Position does the ranking",
+   "blocks": [
+    {
+     "p": "I sorted what the page offers into five kinds of task and gave each one a place. The more common I judged a task to be, the higher it sits. That was my own judgement. I had no usage data."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/task-hierarchy.webp",
+       "alt": "Diagram ranking five tasks by where they sit on the page: book a train, check an existing trip, use another travel service, browse holiday ideas, and look up everything else",
+       "caption": "The five tasks in order. The dashed line is the bottom of the first screen. Only booking and checking an existing trip sit above it.",
+       "width": 1600,
+       "height": 1130
+      }
+     ]
+    },
+    {
+     "p": "Type size does not follow the same order, and that is a weakness. The two section headings further down are 60 px, larger than Book Tickets at 40 px. The card wins on position and colour, and loses on size."
+    }
+   ]
+  },
+  {
+   "id": "search",
+   "label": "The search card",
+   "heading": "Five fields and one orange button",
+   "blocks": [
+    {
+     "p": "The booking card holds the whole search: From, To, Date, Class and Quota, then Search. From and To share a box, so the route reads as one thing. Class and Quota open with a value already in place."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/annotated-booking.webp",
+       "alt": "The booking card with six numbered callouts covering the status tabs, the route box, the date, the class and quota menus, the six checkboxes and the Search button",
+       "caption": "Six things to notice on the card. Start at 6: Search is the only orange button on the whole page.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The card still carries six less common options as small checkboxes, such as the disability concession and flexible dates. I left them in view because some of them are access needs. The cost is a busier card. A way to tuck the rest away, without hiding those, would need testing."
+    },
+    {
+     "p": "People who already hold a ticket have a different job. For them, PNR Status (a PNR is the booking reference on a rail ticket) and Charts/Vacancy sit as two tabs on the card's top edge. Track Train is the first item in the menu."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/annotated-header.webp",
+       "alt": "The page header with six numbered callouts: helpline and email, text-size buttons, language menu, the four menu items, login and register, and the two emblems",
+       "caption": "The header in two rows. The grey bar holds help and the text-size buttons. The white row holds the menu and the login.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "below",
+   "label": "Below the search",
+   "heading": "Everything else waits below the first screen",
+   "blocks": [
+    {
+     "p": "Under the search, ten other services appear as a grid of icons with short labels, from Flights and Hotels to Charter Train and Gallery. Icons keep this band light, like a menu."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/services.webp",
+       "alt": "Services band with the heading Find a suitable service for you here and ten navy icons in two rows of five",
+       "caption": "Ten shortcuts in two rows of five. All ten are the same size, so none of them competes with the search above.",
+       "width": 1600,
+       "height": 917
+      }
+     ]
+    },
+    {
+     "p": "Holidays come after that. Each of the five cards has a photo, an orange title, a paragraph and a Read more link. Someone booking a known route never has to read them."
+    },
+    {
+     "layout": "wide-narrow",
+     "figures": [
+      {
+       "src": "assets/cases/irctc/holidays.webp",
+       "alt": "Special Curated Holidays band with five navy cards in two rows, each with a photograph, an orange title and a paragraph",
+       "caption": "The five holiday cards. They start two screens down the page.",
+       "width": 1500,
+       "height": 1571
+      },
+      {
+       "src": "assets/cases/irctc/holiday-card.webp",
+       "alt": "One holiday card enlarged, with a photograph of a train at night, an orange title and a long justified paragraph in white",
+       "caption": "One card up close. The paragraph is long, bold and justified, which makes it heavy to read. The cards are still the densest part of the page.",
+       "width": 760,
+       "height": 1113
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "style",
+   "label": "Type and colour",
+   "heading": "Navy for structure, orange for one action",
+   "blocks": [
+    {
+     "p": "Navy carries almost everything: headings, icons, pills and the holiday cards. Orange is saved for the Search button and the card titles. The footer uses a darker indigo, so it reads as the end of the page."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/type-colour.webp",
+       "alt": "Chart of eight text samples from 85 px to 15 px cut from the design, five colour swatches with their values, and three contrast measurements",
+       "caption": "Type samples cut from the design at full size, with the colours and three contrast measurements. Read the contrast column: two of the three fall short.",
+       "width": 1600,
+       "height": 1250
+      }
+     ]
+    },
+    {
+     "p": "Measuring the mock-up shows two weaknesses. There are 13 text sizes between 12 and 85 px, more than a page like this needs. And the white Search label on orange has a contrast of 2.7 to 1, below the 3 to 1 that accessibility guidelines ask for large text. The grey 15 px option labels are low too, at 3.3 to 1."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/footer.webp",
+       "alt": "End of the page: a social strip shading from orange to green with eight network icons, a dark indigo footer with 19 link groups, and a row of payment logos",
+       "caption": "The end of the page. A social strip in flag colours, then 19 link groups, each with an arrow to open it. The copyright line and payment logos are placeholder content.",
+       "width": 1600,
+       "height": 842
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "heading": "What it would take to go further",
+   "blocks": [
+    {
+     "p": "This is one screen of a much longer journey. A calm homepage proves little until the screens after it handle the hard cases: no seats left, a changed fare, a route with no suitable train."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/irctc/scope.webp",
+       "alt": "Diagram of a booking journey in five steps where only the first, the homepage and train search, is marked as designed, with four missing homepage states listed below",
+       "caption": "Where the concept stops. Only the first box was designed. The rest is drawn to show what a full booking redesign would have to cover.",
+       "width": 1600,
+       "height": 610
+      }
+     ]
+    },
+    {
+     "list": [
+      "Draw the homepage's own missing states: an empty or wrong field, the station list and the open date picker.",
+      "Design a phone-width version. The page exists at desktop width only.",
+      "Test three tasks with travellers: find a train, check an existing trip and find a concession option.",
+      "Raise the contrast of the Search label and the small grey text, and cut down the number of type sizes."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "heading": "Order is the cheapest tool, and it is not enough",
+   "blocks": [
+    {
+     "p": "Putting the search first cost nothing and did most of the work. But position alone left gaps that only show up when you measure: headings lower down that are bigger than the main task, and an action colour that is hard to read."
+    },
+    {
+     "p": "The lesson I take from it is to settle the type scale and check contrast before drawing the first card."
+    }
+   ]
+  }
+ ]
+}

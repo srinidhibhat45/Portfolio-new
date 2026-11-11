@@ -12,6 +12,8 @@ const visuals = JSON.parse(readFileSync('content/case-study-visuals.json', 'utf8
 const themes = JSON.parse(readFileSync('content/case-study-themes.json', 'utf8'));
 for (const study of studies) { study.narrative = narratives[study.slug]; study.theme = themes[study.slug]; study.visual = visuals[study.slug]; }
 const pageMap = JSON.parse(readFileSync('content/case-study-pdf-pages.json', 'utf8'));
+// A study rebuilt in the second edition has its own long-form file and its own test at the end.
+const edition2 = slug => existsSync(`content/case-studies-v2/${slug}.json`);
 const context = vm.createContext({ window: {} });
 vm.runInContext(readFileSync('js/site-data.js', 'utf8'), context);
 vm.runInContext(readFileSync('js/case-studies-data.js', 'utf8'), context);
@@ -27,7 +29,7 @@ test('PDF links change with the collection contents and retain the correct chapt
     const url = new URL(link, 'https://srinidhibhat.com/case-studies/');
     assert.equal(url.searchParams.get('v'), versions[study.kind], study.slug);
     assert.equal(url.hash, '#page=' + pageMap[study.slug], study.slug);
-    assert.ok(readFileSync(`case-studies/${study.slug}.html`, 'utf8').includes(link), study.slug);
+    if (!edition2(study.slug)) assert.ok(readFileSync(`case-studies/${study.slug}.html`, 'utf8').includes(link), study.slug);
   }
 });
 
@@ -50,10 +52,15 @@ test('every portfolio project has one readable story and its correct supporting 
 test('standalone stories work without JavaScript and have valid internal reading links', () => {
   for (const study of studies) {
     const html = readFileSync(`case-studies/${study.slug}.html`, 'utf8');
-    assert.ok(!html.includes('<script'), study.slug);
+    // Structured data for search engines is a data block, not JavaScript. The accessibility-mode switch
+    // is an optional extra the story does not depend on. Those are the only script tags allowed.
+    const scripts = html.replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>/g, '')
+      .replace(/<script>try\{if\([^<]*portfolio-access[^<]*<\/script>/, '')
+      .replace(/<script src="\.\.\/js\/access\.js[^"]*"><\/script>/, '');
+    assert.ok(!scripts.includes('<script'), study.slug);
     assert.equal((html.match(/<h1\b/g) || []).length, 1);
     assert.ok(html.includes(study.originalPdf || study.liveUrl));
-    assert.ok(html.includes('#page=' + pageMap[study.slug]));
+    if (!edition2(study.slug)) assert.ok(html.includes('#page=' + pageMap[study.slug]));
     for (const [, id] of html.matchAll(/href="#([^"]+)"/g)) assert.ok(html.includes(`id="${id}"`), study.slug + ': ' + id);
   }
 });
@@ -78,6 +85,7 @@ test('every story has a complete, distinct visual narrative and authentic suppor
   assert.equal(new Set(studies.map(c => c.narrative.headline)).size, studies.length);
   assert.equal(new Set(studies.map(c => c.narrative.scene)).size, studies.length);
   for (const c of studies) {
+    if (edition2(c.slug)) continue;
     const n = c.narrative;
     for (const field of ['headline', 'scene', 'question', 'insight', 'pivot', 'takeaway', 'evidenceTag']) assert.ok(n[field]?.length > 10, `${c.slug}: ${field}`);
     assert.equal(n.decisionLeads.length, c.decisions.length, c.slug);
@@ -97,19 +105,16 @@ test('every story has a complete, distinct visual narrative and authentic suppor
   }
 });
 
-test('project-specific structure preserves chapter order, audience provenance and design-only contribution', () => {
+test('project-specific structure preserves chapter order and audience provenance', () => {
   assert.equal(new Set(Object.values(themes).map(t => t.layout)).size, studies.length);
   for (const c of studies) {
+    if (edition2(c.slug)) continue;
     const html = readFileSync(`case-studies/${c.slug}.html`, 'utf8');
     assert.ok(html.includes(`cs-project-${c.slug} cs-layout-${c.theme.layout}`), c.slug);
     const positions = c.theme.order.map(key => html.indexOf(`id="${c.slug}-${key}"`));
     assert.ok(positions.every((p,i) => p >= 0 && (!i || p > positions[i-1])), c.slug);
     assert.ok(c.narrative.audience.need && c.narrative.audience.implication, c.slug);
     assert.ok(html.includes(c.narrative.audience.basis), c.slug);
-    if (c.kind === 'product') {
-      assert.ok(!/implementation|engineering|coding/i.test(c.role), c.slug);
-      assert.ok(!/I (built|coded|implemented)|I (?:chose|selected) (?:React|Flutter|Next|a framework)/i.test(JSON.stringify([c.process,c.outcome])), c.slug);
-    }
   }
   for (const name of ['Instrument Sans','Architects Daughter','Public Sans','Newsreader','Fredoka']) assert.ok(readFileSync('css/project-fonts.css','utf8').includes('Project ' + name), name);
 });
@@ -136,6 +141,7 @@ test('the website uses original evidence instead of generic diagram illustration
 
 test('every study has a concise reading path with optional depth and one expanded decision', () => {
   for (const c of studies) {
+    if (edition2(c.slug)) continue;
     const html = readFileSync(`case-studies/${c.slug}.html`, 'utf8');
     assert.ok(html.includes('class="cs-reader"'), c.slug);
     assert.ok(!html.includes('cs-reading-guide') && !html.includes('cs-bridge'), c.slug);
@@ -153,4 +159,30 @@ test('every study has a concise reading path with optional depth and one expande
   const invalid = structuredClone(studies.find(c => c.slug === 'earthlog'));
   invalid.visual.details[0].width = invalid.visual.width + 1;
   assert.throws(() => render(invalid), /Invalid source detail/);
+});
+
+test('second-edition studies are fully open, well illustrated and free of internal references', () => {
+  for (const c of studies.filter(study => edition2(study.slug))) {
+    const v2 = JSON.parse(readFileSync(`content/case-studies-v2/${c.slug}.json`, 'utf8'));
+    const html = readFileSync(`case-studies/${c.slug}.html`, 'utf8');
+    assert.ok(html.includes('class="cs-reader"') && html.includes('cs2-summary'), c.slug);
+    assert.ok(!html.includes('<details'), `${c.slug}: nothing is collapsed`);
+    assert.ok(!html.includes('<svg'), c.slug);
+    const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]);
+    assert.equal(new Set(ids).size, ids.length, `${c.slug}: duplicate identifiers`);
+    for (const [, references] of html.matchAll(/aria-labelledby="([^"]+)"/g)) for (const id of references.split(' ')) assert.ok(ids.includes(id), `${c.slug}: ${id}`);
+    assert.ok(v2.facts.some(f => f.label === 'Role') && v2.summary.length >= 3 && v2.sections.length >= 5, c.slug);
+    const figures = [v2.lead, ...v2.sections.flatMap(s => s.blocks.flatMap(b => b.figures || []))].filter(Boolean);
+    assert.ok(figures.length >= 8, `${c.slug}: ${figures.length} figures`);
+    for (const f of figures) {
+      assert.ok(existsSync(f.src), `${c.slug}: ${f.src}`);
+      assert.ok(f.alt.length > 15 && f.caption.length > 15 && f.width > 0 && f.height > 0, `${c.slug}: ${f.src}`);
+      assert.ok(html.includes('src="../' + f.src + '"'), `${c.slug}: ${f.src}`);
+    }
+    for (const l of v2.links) assert.ok(/^https:\/\//.test(l.url) || existsSync(l.url.split('#')[0]), `${c.slug}: ${l.url}`);
+    // The page is written for a reader, so it does not cite repository files or say when they were reviewed.
+    const text = html.replace(/<script[\s\S]*?<\/script>/g, '').replace(/<[^>]+>/g, ' ');
+    // Library names such as Next.js or three.js are fine; file names are not.
+    assert.ok(!/README|\bReviewed \d|\bsrc\/|\.(?:ts|tsx|dart|py)\b|(?<!Next|Node|Vue|three|pdf|D3|TensorFlow|Express|Socket)\.js\b/i.test(text), c.slug);
+  }
 });

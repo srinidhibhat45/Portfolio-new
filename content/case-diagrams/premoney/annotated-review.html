@@ -1,0 +1,52 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1040">
+<style>
+.stage{display:grid;grid-template-columns:auto auto 1fr;gap:60px;align-items:center}
+.shot{position:relative}
+.day{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);margin-top:4px}
+.tile{display:flex;align-items:center;gap:12px;padding:6px 2px}
+.tile .w{color:var(--warnc);font-size:14px;font-weight:700}
+.tile .amt{margin-left:auto}
+.nudge{display:flex;gap:12px;align-items:center;background:var(--warnSoft);border-radius:16px;padding:12px 14px}
+.nudge .ic{flex:none;width:36px;height:36px;border-radius:50%;background:#F3DDB0;display:grid;place-items:center;color:#8A5A0B;font-weight:800}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker"><span class="schem">Schematic, not a screenshot</span>&nbsp; Drawn from the app's code · made-up entries</p>
+<h1>The review queue: one tap from home, filed one at a time</h1>
+<div class="grow stage">
+ <div class="shot">
+  <div class="phone" style="height:330px"><div class="bar"><span>9:10</span><span>●●●</span></div>
+   <div class="scr"><p class="h" style="font-size:22px">Good morning</p>
+    <div class="nudge"><span class="ic">!</span><div class="grow1"><p class="t" style="font-size:15px">3 transactions need a category</p><p class="s" style="font-size:13px">Sorting these makes every chart more accurate</p></div><span style="color:var(--warnc)">›</span></div>
+    <div class="pcard" style="height:90px"><p class="s">Spent this month</p></div>
+   </div></div>
+  <span class="num mk" style="left:100%;top:47%">1</span>
+ </div>
+ <div class="shot">
+  <div class="phone"><div class="bar"><span>9:10</span><span>●●●</span></div>
+   <div class="scr">
+    <p class="h" style="font-size:22px">‹ &nbsp;Needs a category</p>
+    <div class="row" style="gap:8px;flex-wrap:wrap"><span class="chip on">All</span><span class="chip">Spending</span><span class="chip">Income</span><span class="chip on">Needs a category ✓</span></div>
+    <div class="pcard" style="background:#E3F0EB;border-color:#B9D9CD"><div class="row"><span style="color:var(--brand);font-size:20px">✦</span><div class="grow1"><p class="t" style="font-size:14px">Automated AI Intelligence Active</p><p class="s" style="font-size:13px">3 items remaining in review queue</p></div><span class="btn fill" style="font-size:13px;padding:7px 12px">▶ Process AI</span></div></div>
+    <p class="day">Today</p>
+    <div class="tile"><span class="av" style="background:#A8AEAB">?</span><div class="grow1"><p class="t">Kettle House Cafe <span class="w">ⓘ</span></p><p class="s">08:42 · Uncategorised</p></div><span class="amt">−₹240</span></div>
+    <div class="tile"><span class="av" style="background:#A8AEAB">?</span><div class="grow1"><p class="t">UPI Payment <span class="w">ⓘ</span></p><p class="s">07:15 · Uncategorised</p></div><span class="amt">−₹60</span></div>
+    <p class="day">Yesterday</p>
+    <div class="tile"><span class="av" style="background:#1BAF7A">+</span><div class="grow1"><p class="t">NEFT Credit <span class="w">ⓘ</span></p><p class="s">18:30 · Other Income</p></div><span class="amt" style="color:var(--earn)">+₹1,500</span></div>
+   </div>
+   <div class="nav"><span>Home</span><span class="on">Activity <span class="badge">3</span></span><span>Insights</span><span>Goals</span></div>
+  </div>
+  <span class="num mk" style="left:0;top:20.5%">2</span>
+  <span class="num mk" style="left:100%;top:27.5%">3</span>
+  <span class="num mk" style="left:0;top:46%">4</span>
+  <span class="num mk" style="left:0;top:61%">5</span>
+  <span class="num mk" style="left:100%;top:95%">6</span>
+ </div>
+ <div class="legend">
+  <div><span class="num">1</span><span>Home shows a nudge only when something is waiting. It opens straight into the queue.</span></div>
+  <div><span class="num">2</span><span>The queue is the Activity list with one filter on, not a separate screen to learn.</span></div>
+  <div><span class="num">3</span><span>An optional AI step sends these entries to an outside service for suggestions. It runs only when I press the button.</span></div>
+  <div><span class="num">4</span><span>A warning mark sits beside the name. A screen reader hears "needs category review".</span></div>
+  <div><span class="num">5</span><span>A placeholder name, "UPI Payment", says the merchant could not be read. It is not invented.</span></div>
+  <div><span class="num">6</span><span>The Activity tab carries the count, so the queue is visible from anywhere.</span></div>
+ </div>
+</div>

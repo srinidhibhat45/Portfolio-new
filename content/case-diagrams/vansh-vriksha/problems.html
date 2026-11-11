@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.three{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}.card{display:flex;flex-direction:column;gap:14px}.card h2{font-size:27px}.pic{height:250px;border-radius:10px;background:var(--warn-wash);display:grid;place-items:center}svg text{font-family:'Case Sans',Arial,sans-serif}.b{fill:#fff;stroke:#CDBF9F;stroke-width:1.5}.t{font-size:15px;font-weight:600;fill:#192B32}.l{stroke:#3B3A36;stroke-width:1.6;fill:none}.chip{padding:6px 14px;border-radius:99px;background:#fff;border:1.5px solid var(--line);font-size:20px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Why it is hard, in one picture</p><h1>Three ways an open family tree goes wrong</h1>
+<div class="grow three">
+<div class="card"><div class="pic"><svg width="380" height="220" viewBox="0 0 380 220">
+<rect class="b" x="30" y="16" width="130" height="44" rx="8"/><text class="t" x="44" y="44">Person A</text>
+<rect class="b" x="220" y="16" width="130" height="44" rx="8" style="stroke:#B4472F;stroke-width:2.2"/><text class="t" x="234" y="44">Person A again</text>
+<path class="l" d="M95 60 V96 M40 96 H150 M40 96 V128 M150 96 V128 M285 60 V96 M230 96 H340 M230 96 V128 M340 96 V128"/>
+<rect class="b" x="5" y="128" width="70" height="34" rx="6"/><rect class="b" x="115" y="128" width="70" height="34" rx="6"/><rect class="b" x="195" y="128" width="70" height="34" rx="6"/><rect class="b" x="305" y="128" width="70" height="34" rx="6"/>
+<text x="190" y="200" text-anchor="middle" style="font-size:15px;fill:#B4472F">half the family hangs off each copy</text></svg></div>
+<h2>One ancestor, two copies</h2><p>Someone adds a great-grandfather who is already recorded. From then on the descendants split between two copies, and that is very hard to undo years later.</p></div>
+<div class="card"><div class="pic"><div style="display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:340px"><span class="chip" style="border-color:var(--accent);border-width:2.5px">Shreenivas</span><span class="chip" style="opacity:.55">Srinivasa</span><span class="chip" style="opacity:.55">Sreenivas</span><span class="chip" style="opacity:.55">Shrinivas</span><p style="font-size:16px;color:var(--warn);margin-top:10px">a plain search for one finds none of the others</p></div></div>
+<h2>Four spellings, one man</h2><p>Names move from one script into English letters in many ways. Four cousins can write the same name four ways.</p></div>
+<div class="card"><div class="pic"><svg width="380" height="220" viewBox="0 0 380 220">
+<rect class="b" x="30" y="16" width="130" height="44" rx="8"/><text class="t" x="44" y="44">Person B</text>
+<rect class="b" x="220" y="16" width="130" height="44" rx="8"/><text class="t" x="234" y="44">Person C</text>
+<path class="l" d="M95 60 V96" stroke-dasharray="5 5" opacity=".4"/>
+<path d="M285 60 V80 Q285 96 250 102 L170 116 Q140 120 140 130" fill="none" stroke="#B4472F" stroke-width="2.4"/>
+<rect class="b" x="80" y="130" width="120" height="40" rx="8" style="stroke:#B4472F;stroke-width:2.2"/><text class="t" x="94" y="155">Person D</text>
+<text x="190" y="200" text-anchor="middle" style="font-size:15px;fill:#B4472F">one wrong link moves everyone below it</text></svg></div>
+<h2>A confident wrong link</h2><p>A wrong parent quietly rewrites the ancestry of everyone below, and people believe it because it is written down.</p></div>
+</div>
+<p class="note">Drawn from the risks named in the product's own documentation. Names are placeholders; the four spellings are the example the product itself uses.</p>

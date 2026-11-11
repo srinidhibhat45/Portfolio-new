@@ -1,0 +1,354 @@
+{
+ "title": "A designer's portfolio site, worked out in [[four pages]].",
+ "hook": "Steve Wilson is a made-up designer. I used him to design a portfolio site concept: a home page, a list of work, a project page and a contact form.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Visual design and page structure"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself. No client asked for it"
+  },
+  {
+   "label": "Platform",
+   "value": "Desktop website, drawn 1920 pixels wide"
+  },
+  {
+   "label": "Scope",
+   "value": "Four pages: Home, Work, Project, Contact"
+  },
+  {
+   "label": "Method",
+   "value": "Layout, type and colour. No research behind it"
+  },
+  {
+   "label": "Status",
+   "value": "Visual concept. Not built, not tested with users"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original pages (PDF)",
+   "url": "assets/pdfs/steve-wilson.pdf"
+  }
+ ],
+ "linksHeading": "The original pages",
+ "summary": [
+  "The problem: a designer's site has three jobs. Say who the designer is, show a few projects, and make it easy to get in touch.",
+  "What I did: I set myself that brief and designed four desktop pages around a made-up designer called Steve Wilson.",
+  "The key idea: keep choosing and reading apart. The work page is a short numbered list. Each project then gets one long page built from the same template.",
+  "Where it stands: a visual concept. There was no research and no testing, and it was never built. The name, the client and the numbers in the mock-ups are sample text, not my record."
+ ],
+ "lead": {
+  "src": "assets/cases/steve-wilson/lead.webp",
+  "alt": "The four pages of the concept side by side: home, the work list, the long project page and contact",
+  "caption": "The whole concept. Home and Work are two screens tall, Contact is one, and the project page (third from the left) runs to seven. The stock portrait on the home page is swapped for a grey placeholder here.",
+  "width": 2400,
+  "height": 1050
+ },
+ "sections": [
+  {
+   "id": "brief",
+   "label": "The brief",
+   "heading": "I set the brief myself: who, what, how to reach me",
+   "blocks": [
+    {
+     "p": "Nobody asked for this site. I wanted to practise designing a portfolio, so I wrote the brief myself. A visitor should learn who the designer is, see a few projects and find a way to get in touch, in that order."
+    },
+    {
+     "p": "I did no research for it and tested it with no one. I invented a designer, Steve Wilson, so the pages had a name and some content to hold. So this page is about the design itself: how the pages are arranged, and the type and colour choices."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/site-map.webp",
+       "alt": "Diagram of the site: a menu with three links, the Home, Work, Project and Contact pages, and a footer strip shared by all",
+       "caption": "The four pages as a map. The menu has three doors. The project page is the only one you reach from inside another page.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What is not real.",
+      "detail": "Steve Wilson does not exist. His projects, the client named on the project page and the result figures are filler I typed to test the layout. None of it is my client history or my results."
+     }
+    }
+   ]
+  },
+  {
+   "id": "home",
+   "label": "Home page",
+   "nav": "Home page",
+   "heading": "The name is the loudest thing on the site",
+   "blocks": [
+    {
+     "p": "The home page opens with a small greeting and then the name, set 250 pixels tall. Nothing else on the site is bigger than 75. I wanted a visitor to know whose site this is before reading a sentence."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/home-name.webp",
+       "alt": "Close crop of the home page: the words Hi, I am, then Steve in yellow and Wilson in white, with four yellow social icons below",
+       "caption": "The name at close range. The first name takes the yellow and the surname stays white. The four social links below use the same yellow.",
+       "width": 1100,
+       "height": 902
+      }
+     ]
+    },
+    {
+     "p": "Under the name come a short About me paragraph and four services: graphic design, content writing, presentation design and logo design."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/annotated-home.webp",
+       "alt": "The full home page with seven numbered callouts, from the menu at the top to the yellow footer strip",
+       "caption": "The home page from top to bottom. Follow the numbers: each one is a separate job the page does.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/home-services.webp",
+       "alt": "Lower half of the home page: an About Me paragraph, four service tiles with yellow icons, and the yellow footer strip",
+       "caption": "The lower half. Look at the service tiles: each has a soft yellow glow, the one decorative effect on the page.",
+       "width": 1400,
+       "height": 788
+      }
+     ]
+    },
+    {
+     "p": "The trade-off: a huge name says nothing about why this designer is worth hiring. If I did it again, I would put one clear line about the work next to it."
+    }
+   ]
+  },
+  {
+   "id": "system",
+   "label": "Type, colour, layout",
+   "nav": "Type and colour",
+   "heading": "Eight type sizes, three colours and a few fixed widths",
+   "blocks": [
+    {
+     "p": "I measured the artwork to see what system it really uses. There are eight type sizes across the four pages. Section headings are 75 pixels, body text is 35 and the menu is 30."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/type-scale.webp",
+       "alt": "Chart of the eight type sizes used, from 250 pixels for the name down to 25 pixels for form hints, with where each is used",
+       "caption": "Every type size on the site, drawn to scale. The jump from 75 to 250 is what makes the name stand out.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "The colour is just as narrow. Every page is black, with white text and one yellow. On the home page black covers 75% of the area and yellow less than 5%. Because yellow is rare, it works as a pointer: it marks the name, the page you are on and the button to press."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/palette.webp",
+       "alt": "Colour chart: black, yellow, white and one dark grey, a bar showing how much of the home page each covers, and three contrast pairs",
+       "caption": "The palette, with how much of the home page each colour covers. Yellow on black has a contrast of 12 to 1, so it stays easy to read.",
+       "width": 1600,
+       "height": 1030
+      }
+     ]
+    },
+    {
+     "p": "The layout has no strict grid, meaning a fixed set of columns that everything lines up to. It leans on repeated sizes and on centring instead."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/grid.webp",
+       "alt": "Three pages with red bands drawn over them to show column widths: the work list, the service tiles on the home page and the contact form",
+       "caption": "The widths that repeat. On the work page every tile is the same size and the rows are evenly spaced. The service tiles and the contact form are centred on the page.",
+       "width": 1600,
+       "height": 1370
+      }
+     ]
+    },
+    {
+     "p": "Measuring also showed two loose ends. Headings start between 130 and 167 pixels from the left edge, depending on the page. And the project names in the work list are set in a second, plainer typeface. I would fix both."
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "Work page",
+   "heading": "The work page is a list you can scan in seconds",
+   "blocks": [
+    {
+     "p": "The work page shows four projects and nothing else. Each row has a large outline number, a colour tile, the project name, the kind of work and the tool used. There are no descriptions to read. This page is for choosing."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/work.webp",
+       "alt": "The work page: four numbered rows, each with a coloured tile, a project name, the type of work and the tool used",
+       "caption": "The whole work page. Four rows fit with room to spare, so nothing competes with the list.",
+       "width": 1200,
+       "height": 1350,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/annotated-work.webp",
+       "alt": "One row of the work list enlarged, with five numbered callouts for the number, the tile, the name, the type of work and the tool",
+       "caption": "One row, taken apart. The eye goes from the number to the colour, then to the three lines of text.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "The four projects are sample entries. Three of them use well-known product names and logos as stand-ins. None of them is client work."
+    },
+    {
+     "p": "The trade-off: a list this bare depends on its labels. A project name that nobody knows would need a line saying what it is."
+    }
+   ]
+  },
+  {
+   "id": "project",
+   "label": "Project page",
+   "heading": "Every project gets the same long page",
+   "blocks": [
+    {
+     "p": "Choosing a project opens the long page. It is a template, which means the same fourteen blocks in the same order for every project. A reviewer who has read one knows where to look in the next."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/template-map.webp",
+       "alt": "The full project page shown top to bottom beside a list of its fourteen blocks, grouped as who and what, answers first, then the story, and where next",
+       "caption": "The project page as a map. The summary, results and lessons come first. The story of problem, process, personas and solutions comes after, for anyone who wants it.",
+       "width": 1600,
+       "height": 1640
+      }
+     ]
+    },
+    {
+     "p": "That order is the main decision on this page. A reviewer in a hurry gets the answer before the method."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/annotated-template-top.webp",
+       "alt": "Top of the project page with four numbered callouts: the outline number, the boxed project name, a grey strip of five facts and a purple cover tile",
+       "caption": "The top of the page answers the basic questions before any story starts. The values are sample text, and the sample client name has been painted out.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/template-results.webp",
+       "alt": "Project page blocks titled Overview, Results and Key Takeaways, filled with prompts and placeholder figures",
+       "caption": "The answers. The bullet points are prompts for the writer, such as whether the project shipped. The figures 123%, 123+ and $123 are placeholders, not results.",
+       "width": 1300,
+       "height": 1380
+      },
+      {
+       "src": "assets/cases/steve-wilson/template-video.webp",
+       "alt": "Project page blocks titled Final Product, showing a phone outline with a play button, and Problem, with three filler bullet points",
+       "caption": "The Final product block is a slot for a video of the finished design. Below it the story begins, in lorem ipsum, the filler Latin that designers use before real text exists.",
+       "width": 1300,
+       "height": 1199
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/template-more.webp",
+       "alt": "End of the project page: the heading More of my work, two project tiles and the yellow footer strip",
+       "caption": "The page ends by offering two more projects, so a visitor always has somewhere to go next.",
+       "width": 1300,
+       "height": 484
+      }
+     ]
+    },
+    {
+     "p": "The weakness is plain in the pictures: the template is empty. It is scaffolding, and it proves nothing until a real project fills it."
+    }
+   ]
+  },
+  {
+   "id": "contact",
+   "label": "Contact page",
+   "heading": "Three fields and one button",
+   "blocks": [
+    {
+     "p": "The contact page is the shortest, a single screen. It has fields for name, email and message, and a yellow Send button. It is the only page where white takes up real space, about 18% of it, because the fields are white."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/steve-wilson/contact.webp",
+       "alt": "The contact page: the heading Contact Me, white fields for name, email and message, and a yellow Send button",
+       "caption": "Contact. The button is the only yellow between the menu and the footer, so it is hard to miss. The grey hint text in the fields is too faint: its contrast with white is about 1.8 to 1, where 4.5 to 1 is the usual minimum.",
+       "width": 1400,
+       "height": 788
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "heading": "What it would need to become a real site",
+   "blocks": [
+    {
+     "p": "What exists is four flat pictures of a desktop site. To take it further, I would do these things in order."
+    },
+    {
+     "steps": [
+      {
+       "title": "Fill the template with one real project",
+       "detail": "Then ask a reviewer to find the role, the main decision and the outcome in a quick scan."
+      },
+      {
+       "title": "Design it for a phone",
+       "detail": "Every page here is drawn at one desktop width."
+      },
+      {
+       "title": "Check it can be used by everyone",
+       "detail": "Contrast, keyboard use and reading order, before any build."
+      },
+      {
+       "title": "Tidy the system",
+       "detail": "One typeface, one left edge and darker hint text in the form."
+      }
+     ]
+    },
+    {
+     "p": "What I took from it: a layout can earn a visitor's attention, but only real work earns their trust. I would keep the split between a list for choosing and a page for reading, and write the project pages around real decisions."
+    }
+   ]
+  }
+ ]
+}

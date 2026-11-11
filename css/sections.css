@@ -424,3 +424,28 @@
 #contact .copy-status { font-size: 13px; line-height: 1.5; }
 /* The brain's list view keeps its words off the edge of the dark panel. */
 #brain .brain-list { padding: 30px clamp(18px, 2.4vw, 32px) 24px; }
+
+/* ---- Brain: the map's tools sit in one visible row above it (they used to hide in a drawer),
+   and the trail only appears once there is somewhere to go back to. ---- */
+#brain .brain-map-head { align-items: center; }
+#brain .brain-trail:not(:has(> * + *)) { display: none; }
+#brain .brain-map-options { margin-left: auto; }
+#brain .brain-map-options .brain-controls { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; padding-top: 0; }
+#brain .brain-controls button { min-height: 40px; padding: 8px 12px; border-radius: 6px; font-size: 13px; }
+#brain .brain-controls button:disabled { opacity: .4; }
+@media (max-width: 760px) {
+  #brain .brain-map-options { margin-left: 0; width: 100%; }
+  #brain .brain-map-options .brain-controls { justify-content: flex-start; }
+  #brain .brain-controls button { min-height: 44px; }
+}
+
+/* ---- Hero between phone and desktop widths: the portrait keeps the weight it has on a large
+   screen, and the side columns' type steps down with the window instead of crowding it. ---- */
+@media (min-width: 601px) and (max-width: 1100px) {
+  .heritage-stage { grid-template-columns: minmax(0, 1fr) minmax(0, 2.1fr) minmax(0, 1fr); gap: 16px; }
+  .heritage-photo { max-width: min(440px, 100%, 62svh); }
+  .heritage-intro > p:first-child { font-size: clamp(17px, 2.3vw, 23px); }
+  .heritage-path-name { font-size: clamp(20px, 2.9vw, 28px); }
+  .heritage-work, .heritage-about { font-size: clamp(12px, 1.6vw, 15px); padding-inline: 12px; gap: 10px; }
+  .heritage-paths > a { padding: 13px 0; }
+}

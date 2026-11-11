@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>
+.flow{display:grid;grid-template-columns:300px 40px 1fr 40px 330px;gap:0 10px;align-items:center}
+.ins{display:flex;flex-direction:column;gap:12px}
+.ins .card{padding:14px 18px}
+.card h2{font-size:22px}.card p{font-size:18px;margin-top:4px}
+.mid{display:flex;flex-direction:column;gap:8px}
+.mid .card{padding:14px 18px}
+.v{text-align:center;color:var(--accent);font-size:26px;line-height:1}
+.hi{border-color:var(--accent);background:var(--wash)}
+.out{display:flex;flex-direction:column;gap:16px}
+.lab{font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.rev{border-color:#C7871B;background:#FBEFD8}
+.gone{border-style:dashed;background:transparent}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How a message travels</p>
+<h1>Four ways in, one path through, three ways out</h1>
+<div class="grow flow">
+ <div class="ins"><p class="lab">Ways in</p>
+  <div class="card"><h2>Inbox scan</h2><p>Reads up to a year back on first run, then anything since the last scan.</p></div>
+  <div class="card"><h2>Live listener</h2><p>Catches an alert as it arrives while the app is open.</p></div>
+  <div class="card"><h2>Background capture</h2><p>Runs when the app is closed, with its own database connection.</p></div>
+  <div class="card"><h2>Share to PreMoney</h2><p>Send a message from another app through its share menu.</p></div>
+ </div>
+ <span class="arrow">→</span>
+ <div class="mid">
+  <div class="card"><h2>Is the sender a bank?</h2><p>Texts from ordinary phone numbers are skipped before anything is read. Shared text skips this check.</p></div>
+  <p class="v">↓</p>
+  <div class="card"><h2>Have I taught it about this kind of message?</h2><p>"Ignore" stops it here. "Always import" lowers the bar for proof.</p></div>
+  <p class="v">↓</p>
+  <div class="card hi"><h2>Parser</h2><p>Five checks in a fixed order. Any of them can reject the message and record why.</p></div>
+  <p class="v">↓</p>
+  <div class="card"><h2>Categoriser</h2><p>My own rules first, then about 330 built-in merchant patterns.</p></div>
+ </div>
+ <span class="arrow">→</span>
+ <div class="out"><p class="lab">Where it ends up</p>
+  <div class="card hi"><h2>Saved once</h2><p>Each entry gets a key made from the message itself. The database refuses a second copy, so the four routes can overlap safely.</p></div>
+  <div class="card rev"><h2>Review queue</h2><p>Saved, but flagged when the category is a guess or the merchant could not be named.</p></div>
+  <div class="card gone"><h2>Not saved</h2><p>OTPs, adverts, statements, failed payments, requests. The reason can be checked in the message tester.</p></div>
+ </div>
+</div>
+<p class="note">Drawn from the app's import code and its project notes.</p>

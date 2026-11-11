@@ -1,0 +1,453 @@
+{
+ "title": "An SEO panel you can [[read at a glance]].",
+ "hook": "I compared GetMetaData, a Chrome extension that lists the details search engines read on a web page, with three rival tools, then redesigned its panel so the data is easier to find and read.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Competitive review, information structure, wireframes and interface design"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "For",
+   "value": "A design assignment set by a company"
+  },
+  {
+   "label": "Platform",
+   "value": "Chrome extension"
+  },
+  {
+   "label": "Methods",
+   "value": "Review of four tools on one test page, a positioning map, two personas, paper wireframes, a Figma prototype"
+  },
+  {
+   "label": "Status",
+   "value": "Design prototype. Not tested with users, and no built version to show"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open the prototype in Figma",
+   "url": "https://www.figma.com/proto/P86VsJJUoQDMzxsUFCnRHo/3MMaven-Project?node-id=8-2&starting-point-node-id=8%3A2&t=K4zjIkNOs7p8WSiR-1"
+  },
+  {
+   "label": "View the original deck (PDF)",
+   "url": "assets/pdfs/gmd.pdf"
+  }
+ ],
+ "linksHeading": "Try the prototype",
+ "summary": [
+  "The problem: GetMetaData shows a lot of useful SEO data, but in very small text with no clear grouping. It is hard to see what needs attention.",
+  "What I did: I reviewed it beside three competing extensions on the same web page, sketched a new layout on paper, and designed a prototype with a side menu of eight sections.",
+  "The key idea: keep the depth and the export, and give the data a reading order. A separate bug that shows the data twice needs a code fix, so I kept it out of the design work.",
+  "Where it stands: my deck shows two finished screens, Overview and Headings, and there is a Figma prototype. It has not been tested with users."
+ ],
+ "lead": {
+  "src": "assets/cases/gmd/lead.webp",
+  "alt": "Two screens of the redesigned GetMetaData panel side by side: the Overview and the Headings view",
+  "caption": "The two finished screens. On the left, the Overview, with a pass or fail chip beside each value. On the right, Headings, with a count for each level above the heading tree.",
+  "width": 2200,
+  "height": 960
+ },
+ "sections": [
+  {
+   "id": "problem",
+   "label": "The problem",
+   "heading": "Useful data, in text too small to read",
+   "blocks": [
+    {
+     "p": "SEO is short for search engine optimisation: the work of helping a web page show up in search results. Much of it comes down to details most visitors never see, such as the page title, its description, its headings, the text behind its images and its links."
+    },
+    {
+     "p": "GetMetaData is a Chrome extension that pulls those details out of a page and lists them. The brief was to design an interface for it that helps people extract and analyse five kinds of data: meta tags, header tags, image tags, structured data and links."
+    },
+    {
+     "p": "When I used the extension, the data was all there. Reading it was the hard part. The text was very small, the information was poorly organised, and the look was dated."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/before-after.webp",
+       "alt": "Diagram comparing the extension as reviewed, one dense readout in small text shown twice, with the redesign, a side menu and one readable panel",
+       "caption": "The problem in one picture. On the left, everything arrives at once in small text. On the right, the same data is split into sections you can read. This is a sketch from my notes, not a screenshot of the old extension.",
+       "width": 1600,
+       "height": 850
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "Two problems, kept apart.",
+      "detail": "The extension also showed its data twice every time it opened. That is a bug in the code. A new layout cannot fix it, so I recorded it and kept it out of the design work."
+     }
+    }
+   ]
+  },
+  {
+   "id": "review",
+   "label": "Competitive review",
+   "nav": "The review",
+   "heading": "I ran four tools on the same page",
+   "blocks": [
+    {
+     "p": "Before drawing anything, I wanted to know what good looked like. I picked three other SEO extensions and ran each of them, and GetMetaData itself, on one page: my own portfolio site. With the page held steady, the differences I saw came from the tools."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/method.webp",
+       "alt": "Diagram of the review method: one test page, four tools, four questions and two outputs",
+       "caption": "How the review ran. The four questions are the ones named in my deck: functionality, usability and interface, SEO metrics, and documentation.",
+       "width": 1600,
+       "height": 630
+      }
+     ]
+    },
+    {
+     "p": "For each tool I wrote down what it did well and where it fell short."
+    },
+    {
+     "stats": [
+      {
+       "value": "4",
+       "label": "tools reviewed, three competitors and GetMetaData"
+      },
+      {
+       "value": "1",
+       "label": "test page shared by all four"
+      },
+      {
+       "value": "23",
+       "label": "strengths written down"
+      },
+      {
+       "value": "11",
+       "label": "weaknesses written down"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/competitors.webp",
+       "alt": "Four cards listing the strengths and weaknesses noted for SEO META in 1 CLICK, All in One SEO Analyzer, Detailed SEO Extension and GetMetaData",
+       "caption": "My notes for each tool, redrawn from four slides. Read the last card first: GetMetaData had as many weaknesses as strengths, and one of them was a bug.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "p": "Lists like these are hard to compare by eye. So I sorted the same notes by question."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/matrix.webp",
+       "alt": "Table comparing the four tools on ten questions, with each cell marked as a strength, a weakness or not noted",
+       "caption": "The same notes side by side. Look at the last column: GetMetaData is red on looks and on organisation, where two of the competitors are green. It is green on export, where two of them are red.",
+       "width": 1600,
+       "height": 1150
+      }
+     ]
+    },
+    {
+     "list": [
+      "All three competitors had help tooltips on every feature. I counted that as a strength each time.",
+      "Two of them ran their data down one long column, which I expected to be a pain on a large website.",
+      "GetMetaData was the only one that showed every metric at one time, and it exported easily. One competitor could not export at all. Another had swapped export for copy."
+     ]
+    },
+    {
+     "aside": {
+      "title": "A snapshot, not a ranking.",
+      "detail": "These are my notes on each tool as it was when I looked, on one page. The tools may have changed since, and one page cannot stand for every kind of website."
+     }
+    }
+   ]
+  },
+  {
+   "id": "map",
+   "label": "Where it stood",
+   "nav": "Where it stood",
+   "heading": "The others had more features and were easier to use",
+   "blocks": [
+    {
+     "p": "I then placed all four tools on a simple map. Left to right is how many features a tool has. Bottom to top is how good it is to use."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/map.webp",
+       "alt": "Two-by-two map with features on one axis and ease of use on the other. Three competitors sit top right and GetMetaData sits bottom left, with a dashed arrow pointing up",
+       "caption": "The map from my deck, redrawn. The three competitors sit top right and GetMetaData sits bottom left. The dashed arrow is the aim of the redesign, not a result.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "My brief was the interface, not the feature list. So the goal was to move the tool up the map, and to keep its easy export on the way."
+    }
+   ]
+  },
+  {
+   "id": "personas",
+   "label": "Who it is for",
+   "nav": "Who it is for",
+   "heading": "An expert and a beginner read the same panel",
+   "blocks": [
+    {
+     "p": "An SEO tool has two very different kinds of reader. One does this for a living. The other runs a business and wants the website to be found. To keep both in mind I wrote two personas, made-up people who each stand for a type of user."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/personas.webp",
+       "alt": "Two persona cards without photos: Rutik, a 29-year-old SEO engineer, and Sneha, a 31-year-old content marketer and small business owner, each with a quote, goals, a frustration and what matters to them",
+       "caption": "Rutik wants something simple that helps him at work. Sneha is not technical and finds normal SEO tools a hassle to understand. Compare the two frustrations: one is about usefulness, the other about being understood.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What these are not.",
+      "detail": "I wrote these personas as a design aid. They are not backed by interviews, so I treat them as a way to frame decisions and not as research findings."
+     }
+    }
+   ]
+  },
+  {
+   "id": "features",
+   "label": "From review to design",
+   "nav": "Review to design",
+   "heading": "Each change traces back to a finding",
+   "blocks": [
+    {
+     "p": "I went through the weaknesses one at a time and asked what the interface could do about each. I also kept an eye on the strengths, in the competitors and in GetMetaData, so the redesign would not throw away something that worked."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/review-to-design.webp",
+       "alt": "Diagram pairing six findings from the review with what the prototype does about each. The sixth, the repeated-data bug, is marked as not answered by the design",
+       "caption": "Findings on the left, answers on the right. The last row is in red on purpose: the bug is real, but no layout can fix it.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The old tool's one clear advantage was showing every metric at one time. Splitting the data into sections gives some of that up, and comparing items in different sections takes more clicks. The Overview screen keeps the basics of a page together in one place."
+     }
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "label": "Structure",
+   "heading": "Eight sections in one side menu",
+   "blocks": [
+    {
+     "p": "The side menu has eight sections. Five of them match the five kinds of data in the brief. Social, Advanced and Settings are additions."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/structure.webp",
+       "alt": "Map of the eight menu sections, showing which kind of data from the brief each one covers and whether it exists as a finished screen, a paper sketch or a menu item only",
+       "caption": "The eight sections in menu order. Solid outlines are finished screens, Images is a paper sketch, and dashed boxes are named in the menu only.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "My deck shows two of these as finished screens, Overview and Headings, and a third, Images, as a paper sketch."
+    }
+   ]
+  },
+  {
+   "id": "sketches",
+   "label": "Sketches",
+   "heading": "Three screens on paper first",
+   "blocks": [
+    {
+     "p": "I started on paper. A wireframe is a rough sketch of a screen that shows where things go, without colour or detail. I drew three: the overview, the headings and the images."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/wire-overview.webp",
+       "alt": "Photographed pencil sketch of the overview screen with a menu on the left and two cards on the right",
+       "caption": "Overview. The menu, a main card with two buttons, and a second card below.",
+       "width": 800,
+       "height": 594
+      },
+      {
+       "src": "assets/cases/gmd/wire-headings.webp",
+       "alt": "Photographed pencil sketch of the headings screen with a strip of counts above an indented list",
+       "caption": "Headings. A strip of counts above an indented list.",
+       "width": 800,
+       "height": 589
+      },
+      {
+       "src": "assets/cases/gmd/wire-images.webp",
+       "alt": "Photographed pencil sketch of the images screen with three thumbnails and two counts",
+       "caption": "Images. Thumbnails, then two counts.",
+       "width": 800,
+       "height": 507
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "The pencil is faint in the photos, so here are the same three sketches traced cleanly."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/wireframes-traced.webp",
+       "alt": "The three paper sketches redrawn as clean line drawings: overview, headings and images",
+       "caption": "A tracing of the three sketches. Most of the final layout is already here: the menu on the left, the two buttons in the corner of the panel, the count strip above the heading tree.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    },
+    {
+     "p": "A few things changed between paper and screen. The first sketch is headed getMetaTags, and the finished screens say getMetaData. The sketched count strip stops at H5, and the finished one runs to H6. The first sketch also has a switch in the top corner that the finished Overview does not."
+    }
+   ]
+  },
+  {
+   "id": "overview",
+   "label": "The design",
+   "nav": "The Overview screen",
+   "heading": "The basics of a page, each with a verdict",
+   "blocks": [
+    {
+     "p": "The Overview is the first screen. It lists the page's title, description, address and canonical link, which is the address a page names as its official one. Below those come the keywords, the word count and the publisher."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/annotated-overview.webp",
+       "alt": "The Overview screen with six numbered notes explaining the menu, the Export and Copy buttons, the pass and fail chips, the missing value and the keywords",
+       "caption": "The Overview, part by part. Start with notes 3 and 4: the chips are what turn a list of values into a list of verdicts.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The chip on the right of each row carries the main idea. Someone who knows SEO can run an eye down the chips and stop at the red one. Someone who does not gets a plain signal that a row needs attention before reading any detail."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/details.webp",
+       "alt": "Close crops of the Overview panel showing the pass and fail chips and a help tooltip open beside the Title label",
+       "caption": "Two details up close. The page in the prototype is the same portfolio site I used for the review, so the 25 and the 85 are real character counts.",
+       "width": 1600,
+       "height": 1090
+      }
+     ]
+    },
+    {
+     "p": "The tooltips come straight from the review. All three competitors had them, and for a reader like Sneha they are where a word like \"canonical\" gets explained."
+    }
+   ]
+  },
+  {
+   "id": "headings",
+   "label": "The design",
+   "nav": "The Headings screen",
+   "heading": "Headings shown the way they nest",
+   "blocks": [
+    {
+     "p": "Headings are the titles and subtitles inside a page. They are numbered from H1, the main title, down to H6. This screen answers two questions about them: how many of each level does the page have, and how do they sit under one another?"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gmd/annotated-headings.webp",
+       "alt": "The Headings screen with five numbered notes explaining the menu, the buttons, the count strip and the heading tree",
+       "caption": "The Headings screen, part by part. The count strip answers the first question and the tree answers the second.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A tree gets long on a page with many headings. That is the same long-column problem I marked down in two competitors. The count strip at the top gives the short answer, and the tree is there when you need the detail."
+     }
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "nav": "What comes next",
+   "heading": "What I would do before calling it done",
+   "blocks": [
+    {
+     "p": "The prototype shows how the panel could look and read. It does not show that people find things faster with it. That needs a test, and a few other things need doing first."
+    },
+    {
+     "steps": [
+      {
+       "title": "Fix the bug on its own terms.",
+       "detail": "The extension should show its data once. I would check that separately, with its own pass or fail, before judging the new layout."
+      },
+      {
+       "title": "Test real tasks with both kinds of reader.",
+       "detail": "Ask someone new to SEO and someone experienced to find a missing description, check the image descriptions and export what they found."
+      },
+      {
+       "title": "Try awkward pages.",
+       "detail": "Use pages with very long values, missing values and a great many headings, and see where the layout breaks."
+      },
+      {
+       "title": "Bring every section to the same level.",
+       "detail": "My deck shows Overview and Headings finished and Images as a sketch. All eight sections need the same care."
+      },
+      {
+       "title": "Tidy one label.",
+       "detail": "The menu says Headings and the panel title says Headers. I would use one word in both places."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Easier to read is not the same as correct",
+   "blocks": [
+    {
+     "p": "The most useful thing I did here was keep two problems apart. One was how the data is laid out. The other was whether the data is right. A cleaner panel that still showed everything twice would look better and be just as wrong."
+    },
+    {
+     "p": "The review also taught me to look for what a weak tool does well. GetMetaData sat lowest on my map, yet it was the only one of the four that showed every metric at once, and it exported easily. Export stayed in the redesign because of that."
+    },
+    {
+     "p": "If I did it again, I would talk to a few real users before writing the personas."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860"><style>.flow{display:flex;align-items:center;gap:12px}.st{flex:1;padding:18px 16px;border:1.5px solid var(--line);border-radius:14px;background:#fff;text-align:center}.st b{display:block;font-size:23px}.st span{display:block;font-size:18px;color:var(--dim);margin-top:4px;line-height:1.35}.st.hi{border-color:var(--accent);background:var(--wash)}.side{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.side .card h2{font-size:23px}.side .card p{font-size:19px;margin-top:6px}.arrow{font-size:30px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">One ride, step by step</p><h1>The ride stops at the meeting point and waits for a tap</h1>
+<div class="grow"><div class="flow">
+<div class="st"><b>Idle</b><span>Map, search, group</span></div><span class="arrow">→</span>
+<div class="st"><b>Preview</b><span>Time, distance, Start</span></div><span class="arrow">→</span>
+<div class="st"><b>Riding, leg 1</b><span>To the meeting point</span></div><span class="arrow">→</span>
+<div class="st hi"><b>At the meeting point</b><span>"2 of 3 riders here". Waits for Continue</span></div><span class="arrow">→</span>
+<div class="st"><b>Riding, leg 2</b><span>A fresh route on to the destination</span></div><span class="arrow">→</span>
+<div class="st"><b>Arrived</b><span>Within 40 m of the destination</span></div><span class="arrow">→</span>
+<div class="st"><b>Saved</b><span>A ride card on the Rides tab</span></div>
+</div>
+<div class="side">
+<div class="card"><h2>Off the route</h2><p>More than 50 m off the line for 3 location updates in a row, and the app fetches a new route. A small "Re-routing…" chip shows while it does.</p></div>
+<div class="card"><h2>No meeting point</h2><p>If none is worth it, the ride goes straight from Preview to the destination in one leg.</p></div>
+<div class="card"><h2>Ended early</h2><p>End at any point returns to Idle. A ride that never arrived is not saved.</p></div>
+</div></div>
+<p class="note">Why the pause: nobody gets routed on toward the destination alone while the group is still gathering.</p>

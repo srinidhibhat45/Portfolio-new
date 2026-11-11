@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x760">
+<style>.flow{display:grid;grid-template-columns:1fr 40px 1fr 40px 1fr;gap:12px;align-items:stretch}.flow .card{display:flex;flex-direction:column}.step{font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}.flow h2{font-size:26px}.flow p{margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.rules{margin-top:24px;display:grid;grid-template-columns:repeat(4,1fr);gap:16px}.rules .card h2{font-size:22px}.rules .card p{font-size:19px;margin-top:4px}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">Sync, offline first</p><h1>A change is saved on the phone before it goes anywhere</h1>
+<div class="grow"><div class="flow">
+<div class="card hi"><p class="step">1 Save</p><h2>Written to SQLite</h2><p>The app answers at once. No network needed.</p></div>
+<span class="arrow">→</span>
+<div class="card"><p class="step">2 Queue</p><h2>Added to a waiting list</h2><p>Stored on the phone, so it survives the app closing. Each entry names the account it belongs to.</p></div>
+<span class="arrow">→</span>
+<div class="card"><p class="step">3 Send</p><h2>Pushed to Firestore</h2><p>Tried when the app comes to the front and every two minutes while it is in use. A try that takes over 12 seconds stops and waits.</p></div>
+</div>
+<div class="rules">
+<div class="card"><h2>Typed IDs</h2><p>A film and a series can share a number in the database, so every record is "movie:" or "tv:" plus the number.</p></div>
+<div class="card"><h2>Deletions leave a marker</h2><p>A tombstone stops a title I removed from coming back from another device.</p></div>
+<div class="card"><h2>Newer wins</h2><p>Conflicts compare update times, all turned into UTC first.</p></div>
+<div class="card"><h2>Never synced</h2><p>API keys. A failure shows as changes waiting, never as "synced".</p></div>
+</div></div>
+<p class="note">Each account can read and write only its own records. The server rules check this, not the app.</p>

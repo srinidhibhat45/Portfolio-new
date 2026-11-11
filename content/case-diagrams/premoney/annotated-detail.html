@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1120">
+<style>
+.stage{display:grid;grid-template-columns:auto 1fr;gap:80px;align-items:center}
+.shot{position:relative}
+.big{font-size:38px;font-weight:700;text-align:center;letter-spacing:-.02em}
+.sw{width:42px;height:24px;border-radius:99px;background:var(--outline);position:relative;flex:none}
+.sw::after{content:'';position:absolute;left:3px;top:3px;width:18px;height:18px;border-radius:50%;background:#fff}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker"><span class="schem">Schematic, not a screenshot</span>&nbsp; Drawn from the app's code · made-up entry</p>
+<h1>An entry in review shows where it came from and how to fix it</h1>
+<div class="grow stage">
+ <div class="shot">
+  <div class="phone" style="height:880px"><div class="bar"><span>9:11</span><span>●●●</span></div>
+   <div class="scrim"></div>
+   <div class="sheet" style="top:60px">
+    <div class="grab"></div>
+    <div class="row"><span class="av" style="background:#A8AEAB">?</span><div class="grow1"><p class="t" style="font-size:19px">Kettle House Cafe</p><p class="s">14 Sep 2026 · 08:42</p></div></div>
+    <p class="big">−₹240.00</p>
+    <div class="warnbox">ⓘ&nbsp; This one could not be categorised confidently. Picking a category teaches the app for next time.</div>
+    <div class="dl"><b>Category</b><span>Uncategorised</span><span class="chip on">Change</span></div>
+    <div class="dl"><b>Method</b><span>UPI</span><span></span></div>
+    <div class="dl"><b>Source</b><span>Read from AX-SMPLBK</span><span></span></div>
+    <div class="dl"><b>Reference</b><span>600000000001</span><span></span></div>
+    <div class="row" style="padding:6px 0"><div class="grow1"><p class="t" style="font-size:15px">This is a transfer between my own accounts</p><p class="s" style="font-size:13px">Transfers are left out of spending and income totals</p></div><span class="sw"></span></div>
+    <p class="t" style="font-size:15px">Original message ⌃</p>
+    <div class="mono">Rs.240.00 debited from A/c XX0000 on 14-09-26 08:42 to KETTLE HOUSE CAFE. UPI Ref 600000000001. Avl Bal Rs.18,560.00.</div>
+    <div class="row" style="gap:10px"><span class="btn grow1">Edit</span><span class="btn grow1" style="color:var(--spend)">Delete</span></div>
+   </div></div>
+  <span class="num mk" style="left:100%;top:29.5%">1</span>
+  <span class="num mk" style="left:100%;top:38.3%">2</span>
+  <span class="num mk" style="left:0;top:50.3%">3</span>
+  <span class="num mk" style="left:100%;top:65%">4</span>
+  <span class="num mk" style="left:0;top:79%">5</span>
+  <span class="num mk" style="left:100%;top:87%">6</span>
+ </div>
+ <div class="legend">
+  <div><span class="num">1</span><span>The banner says why the entry is here, in plain words, and what fixing it will do.</span></div>
+  <div><span class="num">2</span><span>The fix is one button on the row that is wrong. It opens the category picker.</span></div>
+  <div><span class="num">3</span><span>"Read from" names the sender, so I can tell an entry the app made from one I typed ("Added by you").</span></div>
+  <div><span class="num">4</span><span>Moving money between my own accounts is not spending. One switch takes it out of both totals.</span></div>
+  <div><span class="num">5</span><span>The original message is one tap away. When the app has misread something, the proof is right here.</span></div>
+  <div><span class="num">6</span><span>Delete is where the app asks whether this was a real transaction at all.</span></div>
+ </div>
+</div>

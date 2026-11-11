@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:16px 20px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.7}.arrow{font-size:40px}.src{display:grid;grid-template-columns:1fr;gap:8px}.src div{padding:9px 16px;border:1.5px solid var(--line);border-radius:10px;background:#fff;font-size:19px}.src b{font-weight:600}</style>
+<body style="--accent:#0E7C7B;--wash:#DCEEEA">
+<p class="kicker">How it is put together</p><h1>Static files in the browser, public feeds with no keys</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm"><p>Public sources, read live</p>
+<div class="src">
+<div><b>USGS</b> earthquakes, live and back to 1900</div>
+<div><b>NASA EONET</b> volcanoes, fires, storms, floods</div>
+<div><b>NOAA SWPC</b> geomagnetic index, solar flares</div>
+<div><b>Open-Meteo</b> weather, air, real time zone</div>
+<div><b>Celestrak</b> the space station's orbit</div>
+<div><b>Launch Library 2</b> upcoming launches</div>
+<div><b>Nominatim, Photon</b> place search</div>
+<div><b>CARTO, Esri</b> map and satellite tiles</div></div></div>
+<span class="arrow" style="align-self:center">→</span>
+<div class="colm" style="flex:1.2"><p>In the browser</p>
+<div class="card"><h2>One source module per feed</h2><p>Each fetches the feed through a shared cache and turns it into one shape. When a feed fails, the app carries on without it.</p></div>
+<div class="row" style="gap:12px"><div class="card" style="flex:1"><h2>Worked out locally</h2><p>Sun, moon, planets, twilight, the night side, station passes.</p></div><div class="card" style="flex:1"><h2>Bundled catalogues</h2><p>22 solar eclipses, meteor showers, 48 landmark events.</p></div></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>App state and wiring</h2><p>The selected place, the tab, the time window and radius. Every view is drawn from here.</p></div></div>
+<span class="arrow" style="align-self:center">→</span>
+<div class="colm"><p>What you see</p>
+<div class="card"><h2>The globe</h2><p>MapLibre GL JS 5 in globe mode. It unrolls into a flat map as you zoom in.</p></div>
+<div class="card"><h2>The readout panel</h2><p>Place, Weather, Sky and The Log, plus a record view for any event.</p></div>
+<div class="card"><h2>Status line</h2><p>Live counts and the name of every source.</p></div></div>
+</div>
+<p class="note">No framework, no build step, no accounts and no API keys. Hosted as plain files on Netlify.</p>

@@ -1,0 +1,94 @@
+{
+  "pdf": "assets/pdfs/irctc.pdf",
+  "cuts": [
+    {
+      "name": "page",
+      "page": 1,
+      "box": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "width": 1920,
+      "quality": 82
+    },
+    {
+      "name": "hero",
+      "page": 1,
+      "box": [
+        0,
+        0,
+        1,
+        0.2
+      ],
+      "width": 1600
+    },
+    {
+      "name": "header",
+      "page": 1,
+      "box": [
+        0,
+        0,
+        1,
+        0.0324
+      ],
+      "width": 1600
+    },
+    {
+      "name": "booking-card",
+      "page": 1,
+      "box": [
+        0.0104,
+        0.0444,
+        0.536,
+        0.1944
+      ],
+      "width": 1200
+    },
+    {
+      "name": "services",
+      "page": 1,
+      "box": [
+        0,
+        0.2,
+        1,
+        0.4037
+      ],
+      "width": 1600
+    },
+    {
+      "name": "holidays",
+      "page": 1,
+      "box": [
+        0,
+        0.4037,
+        1,
+        0.776
+      ],
+      "width": 1500
+    },
+    {
+      "name": "holiday-card",
+      "page": 1,
+      "box": [
+        0.0208,
+        0.4426,
+        0.3229,
+        0.6
+      ],
+      "width": 760
+    },
+    {
+      "name": "footer",
+      "page": 1,
+      "box": [
+        0,
+        0.813,
+        1,
+        1
+      ],
+      "width": 1600
+    }
+  ]
+}

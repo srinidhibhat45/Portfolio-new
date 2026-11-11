@@ -1,0 +1,138 @@
+/* Dark mode, designed rather than inverted: the site by lamplight.
+   Light mode is lime plaster with Kaavi red drawn on it. Dark mode is the same wall at night:
+   near-black laterite grounds, each chapter dyed a deep shade of its own cloth, lamp brass for
+   the small lights, and paper things (notebook, brief, sticky notes) kept as paper.
+   This sheet loads last and is the only place the dark theme is decided. */
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --ink: #15100E;
+  --ink-2: #1E1714;
+  --ink-3: #1B1512;
+  --bone: #F3E6D6;
+  --bone-dim: #C4B1A0;
+  --line: #3A2D27;
+  --paper: #1E1714;
+  --paper-ink: #F3E6D6;
+  --paper-dim: #C4B1A0;
+  --paper-line: #3A2D27;
+  --accent: #E8998A;
+  --accent-2: #E8998A;
+  --accent-soft: rgba(232, 153, 138, .14);
+  --focus-ring: #F3D7A2;
+  --lamp: #E3BC7A;
+  --ground: var(--ink);
+  --card: #1E1714;
+  --card-hover: #261D19;
+  --edge: #3A2D27;
+  --edge-strong: #6B5348;
+}
+:root[data-theme="dark"] body { background: var(--ink); color: var(--bone); }
+:root[data-theme="dark"] ::selection { background: #A63B2E; color: #FFF6EA; }
+
+/* ---- Every chapter gets its own ground; cards and rules are mixed from it so they sit on any dye ---- */
+:root[data-theme="dark"] :is(#hero, #work, #playground, #gallery, #services, #about, #experience, #testimonials, #brain, #writing, #board),
+:root[data-theme="dark"] .footer {
+  --card: color-mix(in oklab, var(--ground), #FFE6D0 6%);
+  --card-hover: color-mix(in oklab, var(--ground), #FFE6D0 11%);
+  --edge: color-mix(in oklab, var(--ground), #FFE6D0 20%);
+  --edge-strong: color-mix(in oklab, var(--ground), #FFE6D0 40%);
+  --ink-2: var(--card);
+  --ink-3: var(--card-hover);
+  --line: var(--edge);
+  --paper: var(--card);
+  --paper-line: var(--edge);
+  background-color: var(--ground);
+}
+:root[data-theme="dark"] #hero { --ground: #15100E; }
+:root[data-theme="dark"] #work { --ground: #15100E; }
+:root[data-theme="dark"] #playground { --ground: #1B1512; }
+:root[data-theme="dark"] #gallery { --ground: #0D111D; }       /* Pichwai: night indigo */
+:root[data-theme="dark"] #services { --ground: #1D140F; }      /* Warli: the mud wall */
+:root[data-theme="dark"] #about { --ground: #2A1310; }         /* Kaavi: the red itself, in shadow */
+:root[data-theme="dark"] #experience { --ground: #121726; }    /* Ajrakh: indigo vat */
+:root[data-theme="dark"] #testimonials { --ground: #1C1010; }  /* Bandhani: madder */
+:root[data-theme="dark"] #brain { --ground: #0F181C; }         /* Kolam: before sunrise */
+:root[data-theme="dark"] #writing { --ground: #1F1611; }       /* Kalamkari: iron black and umber */
+:root[data-theme="dark"] #board { --ground: #15100E; }
+:root[data-theme="dark"] .footer { --ground: #0E0A09; }
+
+/* ---- Nav: the red bar stays, a shade deeper so it does not shout over dark pages ---- */
+:root[data-theme="dark"] .nav { background-color: #6A211A; border-bottom-color: rgba(255, 230, 208, .12); }
+
+/* ---- Hero: a lamp behind the portrait ---- */
+:root[data-theme="dark"] .heritage-hero {
+  --hero-paper: #15100E;
+  --hero-wine: #F3E6D6;
+  --hero-muted: #C4B1A0;
+  --hero-gold: var(--lamp);
+  background-image:
+    radial-gradient(circle min(64vw, 560px) at 50% var(--lamp-y, 56%), rgba(176, 64, 49, .42), rgba(132, 43, 34, .16) 52%, transparent 100%),
+    var(--b-grain);
+  background-size: auto, 240px 240px;
+}
+
+@media (max-width: 600px) { :root[data-theme="dark"] .heritage-hero { --lamp-y: 46%; } }
+
+/* ---- Cards ---- */
+:root[data-theme="dark"] .cover-card { background: var(--card); border-color: var(--edge); box-shadow: inset 0 1px 0 rgba(255, 236, 218, .05); }
+:root[data-theme="dark"] .cover-media,
+:root[data-theme="dark"] .play-product-preview { background: var(--card-hover); }
+@media (hover: hover) {
+  :root[data-theme="dark"] .cover-card:hover { border-color: var(--edge-strong); box-shadow: inset 0 1px 0 rgba(255, 236, 218, .08), 0 26px 40px -24px rgba(0, 0, 0, .8); }
+}
+:root[data-theme="dark"] .work .project-search-field { background: var(--card); border-color: var(--edge); color: var(--bone); }
+
+/* ---- Experience ---- */
+:root[data-theme="dark"] .xp-row { background: var(--card); border-color: var(--edge); }
+:root[data-theme="dark"] .xp-current,
+:root[data-theme="dark"] .xp-row:hover { background: var(--card-hover); }
+:root[data-theme="dark"] .xp-chapter { background-color: var(--ground); color: var(--bone-dim); }
+:root[data-theme="dark"] .xp-current .xp-chapter { background-color: var(--lamp); color: #2A1A12; }
+:root[data-theme="dark"] .xp-when,
+:root[data-theme="dark"] .xp-current .xp-when::after { color: var(--lamp); }
+
+/* ---- Testimonials ---- */
+:root[data-theme="dark"] .test-item,
+:root[data-theme="dark"] .test-face { background: var(--card); border-color: var(--edge); }
+:root[data-theme="dark"] .test-item::before,
+:root[data-theme="dark"] .test-face::before { border-color: var(--edge); }
+:root[data-theme="dark"] .test-flip-button { border-color: var(--edge); }
+
+/* ---- Brain: the map was drawn for a night sky, so it keeps its own palette ---- */
+:root[data-theme="dark"] .brain-section { --brain-paper: var(--ground); --line: var(--edge); }
+
+/* ---- Writing ---- */
+:root[data-theme="dark"] .writing-notebook { background: #EFE4CF; }
+
+/* ---- Board ---- */
+:root[data-theme="dark"] .board-frame { background: var(--card); border-color: var(--edge); }
+:root[data-theme="dark"] .board-toolbar,
+:root[data-theme="dark"] .board-bottom { background: var(--card); border-color: var(--edge); }
+:root[data-theme="dark"] .board-tools button:hover:not(:disabled) { background: var(--card-hover); }
+:root[data-theme="dark"] .visitor-board { background-color: #120E0C; }
+:root[data-theme="dark"] .board-world { background-color: #1E1714; background-image: radial-gradient(rgba(255, 226, 200, .17) 1px, transparent 1px); }
+
+/* ---- Footer ---- */
+:root[data-theme="dark"] .footer { color: var(--bone-dim); }
+
+/* ---- Type: the italic half of a chapter title keeps the brand's second colour ---- */
+:root[data-theme="dark"] .section-title em { color: var(--kaavi-ink); }
+
+/* ---- Overlays: warm shade behind every dialog instead of the old blue ---- */
+:root[data-theme="dark"] .recruiter-dialog::backdrop,
+:root[data-theme="dark"] .playroom-dialog::backdrop,
+:root[data-theme="dark"] #noteDialog::backdrop { background: rgba(8, 5, 4, .68); }
+:root[data-theme="dark"] .recruiter-dialog,
+:root[data-theme="dark"] .playroom-dialog { background-color: #1B1411; border-color: #4A3930; box-shadow: 0 40px 80px -30px rgba(0, 0, 0, .9); }
+:root[data-theme="dark"] .lightbox { background: rgba(9, 6, 5, .95); }
+
+/* ---- Filled controls keep the Kaavi red after dark, a step brighter so it carries on near-black ---- */
+:root[data-theme="dark"] :is(#board #noteOpen, #noteForm .note-tabs button[aria-pressed="true"], #noteForm #noteSubmit, .play-chip[aria-pressed="true"], .gallery-browse[aria-pressed="true"]) {
+  background: #A63B2E;
+  border-color: #A63B2E;
+  color: #FFF6EA;
+}
+@media (hover: hover) {
+  :root[data-theme="dark"] :is(#board #noteOpen, #noteForm #noteSubmit):hover { background: #BC4737; border-color: #BC4737; color: #FFF6EA; }
+}

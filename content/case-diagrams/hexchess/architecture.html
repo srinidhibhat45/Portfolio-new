@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x960">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">How it is put together</p><h1>Everything runs in the browser. The server only hands out files</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>What you see</p>
+<div class="card"><h2>React interface</h2><p>The board drawn as SVG, the lessons, the rules guide, dialogs and the move list.</p></div>
+<p class="v">↓ every tap</p>
+<div class="card hi"><h2>One legal-move gate</h2><p>Your moves, the computer's replies, premoves and moves arriving in a link all pass the same check.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>The game</p>
+<div class="card hi"><h2>Rules engine</h2><p>91 cells from hex coordinates, every piece's moves, check, en passant, promotion and the draw rules.</p></div>
+<div class="card"><h2>Session</h2><p>A game is its settings and its list of moves. The board is rebuilt by replaying them.</p></div>
+<div class="card"><h2>Computer opponent</h2><p>Searches in a Web Worker, a background thread, so the board never freezes while it thinks.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Kept on the device</p>
+<div class="card"><h2>Local storage</h2><p>Autosave, preferences and a queued premove. Nothing goes to a server.</p></div>
+<div class="card"><h2>Game links and files</h2><p>The move list, encoded into a link or exported as a file.</p></div>
+<div class="card"><h2>Service worker</h2><p>Saves the whole app after the first visit, so it plays offline. Updates wait until open tabs close.</p></div></div>
+</div>
+<p class="note">Hosted as static files on Vercel. No accounts, database, analytics or live connection.</p>

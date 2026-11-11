@@ -1,0 +1,636 @@
+{
+ "title": "A globe that tells you [[what happened here]], and how sure it is.",
+ "hook": "EarthLog is a web app I designed and built on my own. Click anywhere on Earth and it shows the quakes, NASA events, weather, night sky and landmark disasters around that point, each with its source, its age and its limits.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "August 2026"
+  },
+  {
+   "label": "For",
+   "value": "My own project, no client"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on desktop and phone"
+  },
+  {
+   "label": "Stack",
+   "value": "Plain HTML, CSS and JavaScript, MapLibre GL JS 5, Open Props"
+  },
+  {
+   "label": "Status",
+   "value": "Live. No usage numbers, no user testing and no claim of scientific validation"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open EarthLog",
+   "url": "https://earthlog.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: a measured quake, an old NASA record, a forecast and a worked-out eclipse all look the same as dots on a map. They are not equally fresh or equally sure.",
+  "What I built: a globe in the browser that answers from a place or from a question, with each answer showing its source, its age and how far to trust it.",
+  "The key idea: an open record is not an event happening now. I grade NASA events by when they were last seen, and put each model’s error next to its answer.",
+  "Where it stands: live on the web, built over three days in August 2026. I have no usage numbers, and there are no automated tests yet."
+ ],
+ "lead": {
+  "src": "assets/cases/earthlog/lead-panels.webp",
+  "alt": "Three EarthLog panels side by side: the Place tab for a point near Naples, The Log filtered to deep history, and the record for the total solar eclipse of 2 August 2027",
+  "caption": "One point near Naples, three views: the Place tab, The Log showing landmark events, and the next total eclipse. Captured offline. The live feeds are empty and the globe is not shown.",
+  "width": 2400,
+  "height": 1308
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A dot on a map hides how old and how sure it is",
+   "blocks": [
+    {
+     "p": "I wanted one place to ask what the planet is doing at any spot: the weather now, this week’s quakes, this century’s disasters and what is overhead tonight. I also wanted the reverse question. Where was the last big quake? Where does the next total eclipse land?"
+    },
+    {
+     "p": "The data is free and public. The trouble is that it comes in different kinds. Some is measured by instruments. Some is a record nobody has closed. Some is a forecast, some is worked out from orbits, and some is a plan that may slip."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/sureness.webp",
+       "alt": "Table of six kinds of answer in EarthLog, from measured earthquakes to planned rocket launches, with how fresh each is and where it can mislead",
+       "caption": "The six kinds of answer, side by side. Read the right-hand column: each one can mislead in its own way.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "p": "Draw all of that as the same coloured dot and the map looks more certain than it is. So the design problem was to make each answer easy to find and easy to question."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did not interview anyone or test EarthLog with users. The people I designed for are an assumption: someone curious about a place, or following an event they heard about."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Start from a place or from a question, and land on the same readout",
+   "blocks": [
+    {
+     "p": "A globe fills the screen. As you zoom in, it unrolls into a flat map. A readout panel on the right has four tabs: Place, Weather, Sky and The Log."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/annotated-home.webp",
+       "alt": "The EarthLog start screen with six numbered notes: search, the Where is chips, the globe area, the four tabs, Layers and the status line",
+       "caption": "The first screen before anything is chosen. Note 3 is honest about my capture: offline, the globe could not load.",
+       "width": 1600,
+       "height": 1340
+      }
+     ]
+    },
+    {
+     "p": "You can pick a point by clicking the globe, typing a name or pasting coordinates. Or you can press one of ten “Where is…” chips, which run the question the other way round."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/two-ways.webp",
+       "alt": "Diagram: three ways to start from a place on the left, ten question chips on the right, both arrows meeting at one readout with four tabs",
+       "caption": "Both routes end in the same readout, so there is one thing to learn.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "The Place tab is a short report on that point, always in the same order. The things that change by the hour come first. The deep past and the night sky come last."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/annotated-place.webp",
+       "alt": "The Place tab for a point near Naples with five numbered notes on the place header, weather, next eclipse, NASA events and recent quakes",
+       "caption": "The top half of the Place tab. Note 5 is a flaw my offline capture exposed, and I return to it in the last sections.",
+       "width": 1600,
+       "height": 1240
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/place-record.webp",
+       "alt": "Lower half of the Place tab: two past eruptions near Naples, then a table of sun, daylight, moon, planets and the next meteor shower",
+       "caption": "The lower half. Past eruptions come with a distance and a compass direction from the chosen point. The sky lines are worked out in the browser, so they still appear offline.",
+       "width": 880,
+       "height": 1352
+      },
+      {
+       "src": "assets/cases/earthlog/sky-tonight.webp",
+       "alt": "The Sky tab listing six planets with their height, direction, time and brightness, each with a bar for its height in the sky",
+       "caption": "The Sky tab. Each planet gets a height, a direction, a time and a plain word for how bright it is, such as “unmistakable” or “faint but naked-eye”.",
+       "width": 880,
+       "height": 1330
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "The Log is the whole board in one list, newest first, with filters by kind. A deep-history filter lists the 48 landmark events that ship with the app."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/log-history.webp",
+       "alt": "The Log filtered to deep history: a list of past disasters from the 2022 Hunga Tonga eruption back through the 2004 Indian Ocean earthquake",
+       "caption": "The Log on its deep-history filter. These come from a curated list bundled with the app, so they show offline too.",
+       "width": 880,
+       "height": 1736,
+       "kind": "tall"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "backwards",
+   "label": "Decision 1",
+   "nav": "Ask it backwards",
+   "heading": "Ten chips that answer “where” as well as “what is here”",
+   "blocks": [
+    {
+     "p": "What you see: a row of chips under the globe, such as “the last big quake” and “the next total eclipse”. Each one finds the answer, flies the globe there and opens the record."
+    },
+    {
+     "p": "Someone may be curious about the latest earthquake without knowing where it happened. Making them search for a place first would ask a question they cannot answer."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/record-vesuvius.webp",
+       "alt": "Record for the eruption of Vesuvius in 79 CE, with its date, scale, position and distance from the chosen point",
+       "caption": "A deep-history record. The “something extraordinary” chip opens one of the 48 at random and flies the globe to it.",
+       "width": 880,
+       "height": 848
+      },
+      {
+       "src": "assets/cases/earthlog/phone-eclipse.webp",
+       "alt": "EarthLog on a phone showing the total solar eclipse record for 2 August 2027",
+       "caption": "The next total eclipse chip, on a phone. Its answer comes from the bundled catalogue, so it works offline.",
+       "width": 780,
+       "height": 1688,
+       "kind": "plain"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "In the build: each chip is a small query over data the app holds or can fetch. Some need no network. The next total eclipse and something extraordinary come from lists bundled with the app, and the planets are worked out in the browser. The rest wait on live feeds."
+    },
+    {
+     "p": "The chips and the place search had to arrive at the same record view. Every record has a Back button that returns to the tab you came from."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A chip promises an answer. When its feed is down it can only say so, and nothing on the chip tells you in advance which ones need the network."
+     }
+    }
+   ]
+  },
+  {
+   "id": "open",
+   "label": "Decision 2",
+   "nav": "Open is not now",
+   "heading": "An open NASA record is not an event happening now",
+   "blocks": [
+    {
+     "p": "What you see: each NASA event is labelled active, ongoing or ended, with when it was last seen. The status line at the bottom counts only the active ones."
+    },
+    {
+     "p": "In the build: NASA’s EONET feed keeps an event open until someone closes it by hand. It holds over 2,000 open wildfire records, most of them long out, and volcanoes whose last satellite fix is a year old. Counting “open” would have made the planet look on fire."
+    },
+    {
+     "p": "So I grade every event by its most recent observation, not by its status."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/open-vs-active.webp",
+       "alt": "Decision diagram: a NASA record is ended if closed, active if still open and seen within 30 days, ongoing if open but not seen for longer",
+       "caption": "The rule as a diagram. The ages in the labels are examples. My offline captures could not show live events, so this is drawn rather than shown on a screen.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The record view says the same in words. For an ongoing event it gives the date it was last seen and adds that an open record is not proof it is still going."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Thirty days is my cut-off, not NASA’s. A slow eruption last seen 31 days ago drops to ongoing, and a fire put out yesterday can still read as active until NASA closes it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "limits",
+   "label": "Decision 3",
+   "nav": "Limits beside the answer",
+   "heading": "Each answer carries its own error, right where you read it",
+   "blocks": [
+    {
+     "p": "What you see: under an eclipse, a space station pass or a forecast, a short note says how far to trust it, in plain words."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/annotated-eclipse.webp",
+       "alt": "An eclipse record for 1 June 2030 with five numbered notes: the focused Back button, catalogue facts, the answer for this place, the data table and the accuracy note",
+       "caption": "Look at notes 3 and 5. The answer for this point and the limit of the drawing sit one above the other.",
+       "width": 1600,
+       "height": 1200
+      }
+     ]
+    },
+    {
+     "p": "In the build: I chose simple models that run in the browser with no server. That makes them fast and free, and less exact. So the notes had to be specific."
+    },
+    {
+     "table": {
+      "head": [
+       "Answer",
+       "How it is worked out",
+       "How far to trust it"
+      ],
+      "rows": [
+       [
+        "Eclipse paths",
+        "Dates and widths from NASA’s Five Millennium Canon. Each path is a dozen-odd points, smoothed into a curve.",
+        "About ±50 km. Enough to see if it crosses your region, not to choose a viewing spot."
+       ],
+       [
+        "Space station passes",
+        "A Kepler + J2 orbit model, simpler than SGP4, the usual standard.",
+        "Drifts about half a minute a day from its starting data."
+       ],
+       [
+        "Planets",
+        "JPL’s approximate orbital elements.",
+        "A few arcminutes. Fine for “is it up”, not for a narrow telescope view."
+       ],
+       [
+        "Aurora",
+        "A model from the current geomagnetic index.",
+        "Real aurora is patchy and moves fast."
+       ],
+       [
+        "Weather",
+        "Open-Meteo’s forecast, interpolated to the exact point.",
+        "The weather near there, not a station reading."
+       ],
+       [
+        "Local time",
+        "Sun time from longitude, until the real time zone arrives.",
+        "Can be an hour or more off the clock on the wall."
+       ],
+       [
+        "Quiet areas",
+        "USGS earthquake coverage.",
+        "Much denser in the United States. A quiet map can mean few instruments."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "A space station pass is only called visible when the station is in sunlight, above your horizon, and your own sky is dark. Far north or south of its orbit, the app explains that the station can never climb high, instead of just saying there are no passes."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/sky-limits.webp",
+       "alt": "Foot of the Sky tab: a launch manifest message, space weather still loading, and a boxed note on the accuracy of eclipses, planets and station passes",
+       "caption": "The foot of the Sky tab, where the limits are repeated in one place. Offline, the launch list and space weather could not load.",
+       "width": 880,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this is not.",
+      "detail": "No scientist has checked these results, and EarthLog makes no claim of scientific accuracy. The notes are there so you can judge each answer yourself, with a link to the original source where one exists."
+     }
+    }
+   ]
+  },
+  {
+   "id": "less",
+   "label": "Decision 4",
+   "nav": "Less on the globe",
+   "heading": "Draw the next three eclipses, not all 22",
+   "blocks": [
+    {
+     "p": "What you see: the globe draws the next three eclipse paths and dims everything except what is open in the panel. Layers lets you show the next 8, or all 22 in the catalogue."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/layers.webp",
+       "alt": "The Layers menu with eight map layers, a choice of next 3, next 8 or all 22 eclipse tracks, a time window and a scan radius",
+       "caption": "Layers, opened from the keyboard: the yellow ring marks where focus is. Next 3 is the default. Captured offline.",
+       "width": 536,
+       "height": 1166,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: twenty-two eclipse tracks drawn at once was the problem this rebuild set out to fix. The globe could not be read. Each track is now smoothed into a curve and drawn as the band of the shadow, not a thin line. The eclipse that matters to the chosen place stays on screen even when it is not one of the next three."
+    },
+    {
+     "p": "The camera had the same kind of problem. Choosing a place fired one move straight away and a second a moment later, when the place’s outline arrived. The two raced, and if the map was still loading the move was lost. Now each choice makes exactly one camera move, which waits until the map exists."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Someone looking for an eclipse ten years out has to open Layers or the Sky tab. I accepted that in exchange for a globe you can read."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Plain files in the browser, and a globe that needed care",
+   "blocks": [
+    {
+     "p": "EarthLog has no framework, no build step and no accounts. Every source is a free public feed that needs no key, so the whole app is a folder of files."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/architecture.webp",
+       "alt": "Diagram in three columns: eight public sources, then the browser with source modules, local astronomy, bundled catalogues and app state, then the globe, readout panel and status line",
+       "caption": "What runs where. Everything in the middle column runs in your browser.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Globe and map",
+        "MapLibre GL JS 5 in globe mode, with CARTO’s dark map and Esri satellite imagery"
+       ],
+       [
+        "Look",
+        "Open Props tokens plus my own colour tokens; Fraunces, Public Sans and IBM Plex Mono"
+       ],
+       [
+        "Astronomy",
+        "My own code for the sun, moon, planets, twilight and the line between day and night"
+       ],
+       [
+        "Orbits",
+        "My own Kepler + J2 model for the space station’s track and passes"
+       ],
+       [
+        "Hosting",
+        "Netlify, serving the files as they are"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "5",
+       "label": "commits, 19 to 21 August 2026"
+      },
+      {
+       "value": "16",
+       "label": "JavaScript files, about 5,300 lines"
+      },
+      {
+       "value": "8",
+       "label": "kinds of public source, none needing a key"
+      },
+      {
+       "value": "0",
+       "label": "automated tests so far"
+      }
+     ]
+    },
+    {
+     "p": "The first commit is already a rebuild. The earlier version is not in the history, so I cannot show a before and after."
+    },
+    {
+     "p": "The hardest problems were in the globe, not the panel."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Colour from space",
+        "The dark map paints water lighter than land, so from orbit the Earth read as a flat grey ball. I flipped land and sea with zoom ramps, and hand back to the map’s own colours at street level."
+       ],
+       [
+        "Atmosphere",
+        "The haze that gives the globe its edge painted a street map solid black. The library did not update it while zooming, so I set the values myself on every zoom step."
+       ],
+       [
+        "Size",
+        "The globe’s width on screen is 256 pixels times 2 to the power of the zoom. I work the starting zoom out from that, so the sphere fills the space beside the panel."
+       ],
+       [
+        "Phones",
+        "When the web fonts arrived they changed the header’s height, and the globe stayed sized for the first guess. It now re-fits once the fonts settle."
+       ],
+       [
+        "A missing map",
+        "If the map style has not arrived after 12 seconds, a bare globe takes its place so the data layers still draw."
+       ]
+      ]
+     }
+    },
+    {
+     "aside": {
+      "title": "What is missing.",
+      "detail": "There are no automated tests and no checks that run on each change. The astronomy and orbit maths have not been compared against published tables in code."
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Dark, but every word clears the AA contrast level",
+   "blocks": [
+    {
+     "p": "Dark designs often fade small text into the background. I set a floor instead. Contrast ratio measures how far apart two colours are in brightness, and body text needs at least 4.5 to 1 under WCAG AA, the common accessibility standard."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/contrast.webp",
+       "alt": "Bar chart of six text colours against the dark panel: 15.9, 9.9, 7.4, 5.6 and 4.6 to 1, all above the 4.5 line, and a 2.2 colour used only for rules",
+       "caption": "Each text colour against the panel. The faintest one used for words sits just above the line. The 2.2 colour is kept for dividing lines only.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "list": [
+      "Keyboard: / jumps to search, 1 to 4 switch tabs, Esc leaves a record, and the arrow keys move through tabs and search results. Two skip links lead past the globe.",
+      "The tabs and the search box follow the standard ARIA patterns. ARIA is a set of labels that tell a screen reader what a control is and what state it is in.",
+      "A live region reads out one short sentence when the view changes, rather than the whole panel.",
+      "Touch targets are 44 pixels on touch screens. The app follows the system settings for reduced motion and for higher contrast.",
+      "When a record opens, focus moves to its Back button, so a keyboard user starts at the top."
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/phone-home.webp",
+       "alt": "EarthLog on a phone with nothing chosen: search under the title, one row of chips and the readout as a sheet below",
+       "caption": "On a phone, the readout becomes a sheet under the globe.",
+       "width": 780,
+       "height": 1688,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/earthlog/phone-place.webp",
+       "alt": "EarthLog on a phone with a point near Naples chosen, showing the place header and the weather unavailable message",
+       "caption": "The chips stay in one row that scrolls sideways. Captured offline.",
+       "width": 780,
+       "height": 1688,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "The AA claim is mine, from building to it. No outside audit or screen-reader session has been done."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no usage numbers, and a gap my offline screens exposed",
+   "blocks": [
+    {
+     "p": "EarthLog is live at earthlog.srinidhibhat.com. I have no visitor numbers or feedback to share."
+    },
+    {
+     "p": "I took every screen on this page with no network, so the globe, the map tiles and the live feeds could not load. That turned out to be a useful test. Some failures are handled well. The weather card and the space station section both say plainly that their source could not be reached."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/fail-weather.webp",
+       "alt": "Weather tab saying the forecast service did not answer for this point and will retry",
+       "caption": "Weather, offline. It names the problem and says it will retry.",
+       "width": 880,
+       "height": 748
+      },
+      {
+       "src": "assets/cases/earthlog/fail-iss.webp",
+       "alt": "A No answer message saying the element set for the space station is not reachable right now",
+       "caption": "The space station chip, offline. A clear “no answer”.",
+       "width": 880,
+       "height": 588
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "Others are not. A failed quake request reads as a quiet week: “The ground here has been quiet.” The status line counts 0 quakes. The Log says “updated just now” over an empty list, and one chip shows a raw browser error."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/earthlog/fail-log.webp",
+       "alt": "The Log showing 0 events on the board, updated just now, and a message that nothing matches the filter",
+       "caption": "The Log, offline. “Updated just now” over nothing reads as a calm planet.",
+       "width": 880,
+       "height": 876
+      },
+      {
+       "src": "assets/cases/earthlog/fail-quake.webp",
+       "alt": "A No answer message reading That lookup failed: Failed to fetch",
+       "caption": "The last big quake chip, offline. The browser’s own error leaks through.",
+       "width": 880,
+       "height": 588
+      }
+     ],
+     "layout": "two"
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Tell a failed feed apart from a calm planet, then test with people",
+   "blocks": [
+    {
+     "list": [
+      "Give every feed its own failed state, so “no quakes” and “could not reach USGS” never look the same, in the panel, the status line or The Log.",
+      "Fix the moon icon. My captures showed a 4% crescent drawn as an almost full disc.",
+      "Add tests for the astronomy and orbit maths, checked against published tables.",
+      "A first test with people: ask them to explain one result in their own words. What happened, when was it seen, and where did the information come from? Finding an event is only half the task."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "An empty list has to know why it is empty",
+   "blocks": [
+    {
+     "p": "Most of the design work was not the globe. It was deciding how sure each answer is, and saying so in plain words right beside it."
+    },
+    {
+     "p": "The offline screens showed me where I stopped short. I wrote careful notes for every model, then let a failed request tell people the ground had been quiet. Honesty about a model is not enough if the app is not also honest about its own connection."
+    }
+   ]
+  }
+ ]
+}

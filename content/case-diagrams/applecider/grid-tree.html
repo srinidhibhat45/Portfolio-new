@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.tree{flex:0 0 640px;display:flex;flex-direction:column;gap:0}.n{padding:14px 20px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:22px}.n b{font-weight:600}.n small{display:block;font-size:18px;color:var(--dim)}.kids{margin-left:40px;padding-left:28px;border-left:2.5px solid var(--accent);display:flex;flex-direction:column;gap:14px;padding-top:14px}.hi{border-color:var(--accent);background:var(--wash)}
+.frame{flex:1;display:flex;flex-direction:column;gap:14px;padding:18px;border:3px solid var(--ink);border-radius:10px;background:#fff}.hdr{flex:1;border:2px dashed var(--accent);border-radius:6px;display:grid;place-items:center;font-size:20px;color:var(--accent)}.body{flex:8;display:flex;gap:14px}.side{flex:1;border:2px dashed var(--accent);border-radius:6px;display:grid;place-items:center;font-size:20px;color:var(--accent)}.main{flex:4;border:2px dashed var(--accent);border-radius:6px;display:grid;grid-template-columns:repeat(8,1fr);gap:8px;padding:10px;position:relative}.main i{background:color-mix(in srgb,var(--accent) 16%,#fff)}.main span{position:absolute;inset:auto 0 14px 0;text-align:center;font-size:20px;color:var(--accent)}.lbl{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Layout grids</p><h1>A grid is a tree of regions, solved into boxes</h1>
+<div class="grow row" style="gap:50px;align-items:stretch">
+<div class="tree"><p class="lbl">What is stored</p>
+<div class="n hi"><b>Frame</b> <small>split into rows, gap 24</small></div>
+<div class="kids">
+<div class="n"><b>Header</b> <small>share 1</small></div>
+<div class="n"><b>Body</b> <small>share 8, split into columns</small></div>
+<div class="kids">
+<div class="n"><b>Sidebar</b> <small>share 1</small></div>
+<div class="n"><b>Content</b> <small>share 4, with 8 guide columns, gutter 20</small></div>
+</div></div></div>
+<span class="arrow">→</span>
+<div style="flex:1;display:flex;flex-direction:column"><p class="lbl">What you see on the frame</p>
+<div class="frame"><div class="hdr">Header</div><div class="body"><div class="side">Sidebar</div><div class="main"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><span>Content</span></div></div></div></div>
+</div>
+<p class="note">The App shell preset, drawn as the tool stores it. The grid only draws and snaps. It never owns a part, so it can be changed under finished work.</p>

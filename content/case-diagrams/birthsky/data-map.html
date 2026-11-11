@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x680">
+<style>.c3{display:grid;grid-template-columns:1.15fr 1fr 1fr;gap:26px;align-items:stretch}.card h2{font-size:26px}.card p{font-size:21px;margin-top:10px}.card .what{margin-top:14px;font-size:19px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}.chips span{padding:4px 12px;border-radius:99px;background:var(--wash);color:var(--accent);font-size:18px;font-weight:600}.bad{border-color:var(--warn);background:var(--warn-wash)}.bad .chips span{background:#fff;color:var(--warn)}.bad h2{color:var(--warn)}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">Where the answers go, in the current version</p><h1>The picture stays in the browser. The answers do not.</h1>
+<div class="grow c3">
+<div class="card"><h2>Your browser</h2><p>Works out the sky, paints it and makes the PNG. The download is saved straight to the device.</p><p class="what">Uses</p><div class="chips"><span>all four answers</span><span>coordinates</span></div></div>
+<div class="card"><h2>OpenStreetMap place search</h2><p>Gets the place text while you type (from 3 letters) and again on reveal if no suggestion was picked. It sends back coordinates.</p><p class="what">Receives</p><div class="chips"><span>place text</span></div></div>
+<div class="card bad"><h2>A Google Sheet</h2><p>Gets one row on every reveal, through a Google Apps Script web address in the page's code. Nothing on the page mentions it.</p><p class="what">Receives</p><div class="chips"><span>time of the reveal</span><span>name</span><span>birth date</span><span>birth time</span><span>place</span><span>latitude</span><span>longitude</span></div></div>
+</div>
+<p class="note">Read from the page's code. Because of the third column, this page makes no claim that BirthSky keeps your details private.</p>

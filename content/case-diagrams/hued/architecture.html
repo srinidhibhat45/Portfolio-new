@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.foot{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">How it is put together</p><h1>The phone does the work that costs money; the server keeps the record</h1>
+<div class="grow">
+<div class="row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>On the phone (Expo, React Native)</p>
+<div class="card hi"><h2>Daily colour</h2><p>Worked out from the date. No server call.</p></div>
+<div class="card hi"><h2>Scoring and compression</h2><p>The 64 × 64 copy is scored; the 1,080-pixel WebP is what gets uploaded.</p></div>
+<div class="card"><h2>Demo mode</h2><p>With no server keys, the whole app runs on built-in sample data.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>On the server (Supabase)</p>
+<div class="card"><h2>Postgres</h2><p>Posts (one per person per day), follows, groups, messages, notifications.</p></div>
+<div class="card"><h2>Rules in the database</h2><p>Row-level security decides who reads what. Triggers keep streaks, vote and comment counts, and block users from editing their own badges or streak.</p></div>
+<div class="card"><h2>Sign-in, photo storage, two functions</h2><p>Accounts, a photos bucket, push notifications and account deletion.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Around it</p>
+<div class="card"><h2>Admin panel</h2><p>A separate web app with a dashboard, analytics and moderation. Admins sign in as themselves and the database checks they are admins.</p></div>
+<div class="card"><h2>Releases</h2><p>Tagging a version builds the Android APK. Every push to main sends an over-the-air update to installed apps.</p></div></div>
+</div>
+</div>
+<p class="note">Built to run on free tiers: no per-photo server work, and uploads small enough for a 1 GB storage bucket to hold thousands of photos.</p>

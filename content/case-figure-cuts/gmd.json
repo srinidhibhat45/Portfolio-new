@@ -1,0 +1,82 @@
+{
+  "pdf": "assets/pdfs/gmd.pdf",
+  "cuts": [
+    {
+      "name": "screen-overview",
+      "page": 14,
+      "box": [
+        0.1104,
+        0.2455,
+        0.5333,
+        0.8765
+      ],
+      "width": 1000
+    },
+    {
+      "name": "screen-headings",
+      "page": 14,
+      "box": [
+        0.5556,
+        0.242,
+        0.8813,
+        0.7235
+      ],
+      "width": 900
+    },
+    {
+      "name": "detail-tooltip",
+      "page": 14,
+      "box": [
+        0.5556,
+        0.7457,
+        0.8896,
+        0.9
+      ],
+      "width": 760
+    },
+    {
+      "name": "detail-chips",
+      "page": 14,
+      "box": [
+        0.2326,
+        0.2753,
+        0.5208,
+        0.6741
+      ],
+      "width": 900
+    },
+    {
+      "name": "wire-overview",
+      "page": 13,
+      "box": [
+        0.0389,
+        0.3374,
+        0.3083,
+        0.6926
+      ],
+      "width": 800
+    },
+    {
+      "name": "wire-headings",
+      "page": 13,
+      "box": [
+        0.3403,
+        0.3374,
+        0.6118,
+        0.6926
+      ],
+      "width": 800
+    },
+    {
+      "name": "wire-images",
+      "page": 13,
+      "box": [
+        0.6431,
+        0.3374,
+        0.9694,
+        0.7049
+      ],
+      "width": 800
+    }
+  ]
+}

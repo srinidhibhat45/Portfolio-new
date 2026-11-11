@@ -1,0 +1,33 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1100">
+<style>
+.g{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:1fr 1fr;gap:24px;height:100%}
+.p{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:22px 24px;display:flex;flex-direction:column}
+.p h2{font-size:25px;font-weight:600;line-height:1.3}
+.p p{font-size:20px;color:var(--dim);margin-top:6px;line-height:1.4}
+.pic{flex:1;position:relative;margin-top:18px;min-height:230px}
+.fr{position:absolute;border:2px solid #8C989B;border-radius:12px;background:#F4F2EC}
+.fr>i{position:absolute;top:-15px;left:14px;background:#fff;border:1.5px solid #8C989B;border-radius:6px;font-style:normal;font-size:15px;padding:1px 8px;color:var(--dim)}
+.c{position:absolute;width:150px;height:44px;border-radius:8px;background:#fff;border:2px solid var(--accent);font-size:16px;display:flex;align-items:center;padding:0 10px;box-shadow:0 1px 0 rgba(0,0,0,.05)}
+.c.loose{border-style:dashed;border-color:#8C989B;color:var(--dim)}
+.ar{position:absolute;color:var(--accent);font-size:26px;font-weight:700}
+.chip{position:absolute;font-size:14px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--wash);color:var(--accent);border:1.5px solid var(--accent)}
+.line{position:absolute;height:3px;background:var(--accent)}
+.line.then{background:repeating-linear-gradient(90deg,var(--ink) 0 8px,transparent 8px 14px)}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">How the board reads position</p><h1>Where a card sits is what it means</h1>
+<div class="grow"><div class="g">
+<div class="p"><h2>Inside a day frame</h2><p>The card happens on that day.</p>
+<div class="pic"><div class="fr" style="left:10px;top:20px;right:10px;bottom:10px"><i>Sat 26 Sept</i></div><div class="c" style="left:40px;top:70px">Airport transfer</div><div class="c" style="left:40px;top:130px">Early check-in</div></div></div>
+<div class="p"><h2>Top to bottom</h2><p>Inside a frame, higher means earlier in the day.</p>
+<div class="pic"><div class="fr" style="left:10px;top:20px;right:10px;bottom:10px"><i>Sat 26 Sept</i></div><div class="c" style="left:40px;top:44px;width:200px">Morning sessions</div><div class="c" style="left:40px;top:104px;width:200px">Lunch</div><div class="c" style="left:40px;top:164px;width:200px">Afternoon sessions</div><span class="ar" style="left:260px;top:84px">↓</span><span class="ar" style="left:260px;top:144px">↓</span></div></div>
+<div class="p"><h2>Side by side</h2><p>Two columns mean at the same time. Two tracks are not a queue.</p>
+<div class="pic"><div class="fr" style="left:10px;top:20px;right:10px;bottom:10px"><i>Fri 25 Sept</i></div><div class="c" style="left:30px;top:80px">Track A</div><div class="c" style="left:200px;top:80px">A flight lands</div><span class="chip" style="left:150px;top:150px">same time</span></div></div>
+<div class="p"><h2>Outside any frame</h2><p>The card means nothing yet. A dashed edge says so.</p>
+<div class="pic"><div class="fr" style="left:10px;top:20px;width:190px;bottom:10px"><i>Sun 27 Sept</i></div><div class="c" style="left:30px;top:70px;width:150px">Temple visit</div><div class="c loose" style="left:240px;top:120px;width:150px">Cricket match?</div></div></div>
+<div class="p"><h2>A travel connector</h2><p>The second card comes after the first, plus the modelled journey between the two places.</p>
+<div class="pic"><div class="c" style="left:10px;top:70px;width:140px">Hotel</div><div class="line" style="left:150px;width:120px;top:91px"></div><span class="chip" style="left:160px;top:56px">travel · 32 min</span><div class="c" style="left:270px;top:70px;width:140px">Venue</div></div></div>
+<div class="p"><h2>A then connector</h2><p>Only "after". No journey is added. A click on the chip switches the kind.</p>
+<div class="pic"><div class="c" style="left:10px;top:70px;width:140px">Sessions</div><div class="line then" style="left:150px;width:120px;top:91px"></div><span class="chip" style="left:180px;top:56px">then</span><div class="c" style="left:270px;top:70px;width:140px">Dinner</div></div></div>
+</div></div>
+<p class="note">Rules as built into the board. The small pictures are drawn to explain them, not captured from the app.</p>

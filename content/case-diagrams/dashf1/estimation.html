@@ -1,0 +1,28 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x820">
+<style>.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}.card{padding:18px 20px}.card h2{font-size:23px;display:flex;gap:12px;align-items:center}.card p{font-size:19px;margin-top:8px}.num{width:34px;height:34px;font-size:18px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">Placing a car without GPS</p><h1>Each car is placed between the last timing line it crossed and the next</h1>
+<div class="grow col" style="gap:0"><svg viewBox="0 0 1472 300" width="1472" height="300" font-family="Case Sans, Arial" font-size="20">
+<rect x="60" y="108" width="1350" height="24" rx="12" fill="#E7E1D3"/>
+<line x1="60.0" y1="96" x2="60.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="127.5" y1="96" x2="127.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="195.0" y1="96" x2="195.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="262.5" y1="96" x2="262.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="330.0" y1="96" x2="330.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="397.5" y1="96" x2="397.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="465.0" y1="96" x2="465.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="532.5" y1="96" x2="532.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="600.0" y1="96" x2="600.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="667.5" y1="96" x2="667.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="735.0" y1="96" x2="735.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="802.5" y1="96" x2="802.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="870.0" y1="96" x2="870.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="937.5" y1="96" x2="937.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1005.0" y1="96" x2="1005.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1072.5" y1="96" x2="1072.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1140.0" y1="96" x2="1140.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1207.5" y1="96" x2="1207.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1275.0" y1="96" x2="1275.0" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1342.5" y1="96" x2="1342.5" y2="144" stroke="#B9B2A2" stroke-width="2"/><line x1="1410.0" y1="96" x2="1410.0" y2="144" stroke="#B9B2A2" stroke-width="2"/>
+<rect x="532.5" y="108" width="67.5" height="24" fill="#EFE6D2" stroke="#8F6600" stroke-width="2"/>
+<line x1="532.5" y1="84" x2="532.5" y2="156" stroke="#1E5B3A" stroke-width="5"/>
+<line x1="600" y1="84" x2="600" y2="156" stroke="#B4472F" stroke-width="4" stroke-dasharray="7 6"/>
+<text x="60" y="186" fill="#59696D">Start of lap</text><text x="1410" y="186" fill="#59696D" text-anchor="end">One lap later</text>
+<text x="520" y="64" fill="#1E5B3A" text-anchor="end" font-weight="600">Last line crossed</text>
+<text x="614" y="64" fill="#B4472F" font-weight="600">Next line, not crossed yet</text>
+<circle cx="586" cy="120" r="11" fill="none" stroke="#192B32" stroke-width="3" stroke-dasharray="4 3"/>
+<circle cx="562" cy="120" r="12" fill="#8F6600"/>
+<path d="M548 214 L560 136" stroke="#8F6600" stroke-width="2.5" fill="none"/>
+<text x="420" y="240" fill="#8F6600" font-weight="600">Drawn dot</text><text x="420" y="266" fill="#59696D" font-size="18">moves only forward toward the estimate</text>
+<path d="M760 214 L592 134" stroke="#192B32" stroke-width="2.5" fill="none"/>
+<text x="770" y="240" fill="#192B32" font-weight="600">Estimate</text><text x="770" y="266" fill="#59696D" font-size="18">own pace since the last line, held short of the next one</text>
+<text x="736" y="25" fill="#59696D" font-size="18" text-anchor="middle">About 20 timing lines a lap, roughly 4 seconds apart</text>
+</svg>
+<div class="steps">
+<div class="card"><h2><span class="num">1</span>Learn the lines</h2><p>Every crossing tells the model where a line really is. Averaged over the field, the layout settles on the truth.</p></div>
+<div class="card"><h2><span class="num">2</span>Move at own pace</h2><p>Between lines, a car moves at its measured pace and is held just short of the line it has not reached.</p></div>
+<div class="card"><h2><span class="num">3</span>Check the gap</h2><p>A car 2 seconds back sits where the leader was 2 seconds ago. That nudges the estimate, and takes over if crossings go stale.</p></div>
+<div class="card"><h2><span class="num">4</span>Smooth the dot</h2><p>The dot is steered toward the estimate, always forward, closing any error in about a second.</p></div>
+</div></div>
+<p class="note">An illustration of the method, not real race data. The lap is drawn straight here; on screen it follows the circuit outline.</p>

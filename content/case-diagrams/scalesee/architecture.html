@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.foot{display:flex;gap:20px;margin-top:20px}.foot .card{flex:1;background:var(--paper)}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">How it is put together</p><h1>One small state, eleven drawing functions, no server</h1>
+<div class="grow"><div class="row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>What it knows</p>
+<div class="card"><h2>Categories</h2><p>11 categories, each with its units, ready-made pairs and a list of real things to compare with.</p></div>
+<div class="card"><h2>Numbers behind it</h2><p>125 reference points, 46 ready-made pairs, 5 currencies at fixed rough rates.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>What you chose</p>
+<div class="card hi"><h2>The state</h2><p>Category, two sides (number, unit, currency) and the scale mode. Every value is turned into one base unit first.</p></div>
+<div class="card"><h2>The address</h2><p>The state is written into the link after every change, so a link reopens the same comparison.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>What you see</p>
+<div class="card"><h2>The sentence</h2><p>The ratio, plus a borrowed pair of real things.</p></div>
+<div class="card"><h2>The drawing</h2><p>One function per category returns a picture on a fixed 1000 × 560 canvas, plus a note.</p></div>
+<div class="card"><h2>Table and references</h2><p>The same two amounts in other terms, and the list of real things.</p></div></div>
+</div>
+<div class="foot">
+<div class="card"><h2>A shared drawing kit</h2><p>Solids, silhouettes and landmarks, lit from one side. The light and dark palettes live here too.</p></div>
+<div class="card"><h2>Delivery</h2><p>Plain files that open from disk, or one self-contained file made by a short build script.</p></div>
+</div></div>

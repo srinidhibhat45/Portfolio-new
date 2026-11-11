@@ -1,0 +1,200 @@
+{
+  "pdf": "assets/pdfs/umatter.pdf",
+  "cuts": [
+    {
+      "name": "app-onboard-talk",
+      "page": 16,
+      "box": [
+        0.0323,
+        0.2944,
+        0.1778,
+        0.8525
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-onboard-anonymous",
+      "page": 16,
+      "box": [
+        0.1899,
+        0.2944,
+        0.3361,
+        0.8525
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-onboard-happiness",
+      "page": 16,
+      "box": [
+        0.3479,
+        0.2944,
+        0.4941,
+        0.8525
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-signin",
+      "page": 16,
+      "box": [
+        0.6646,
+        0.2944,
+        0.8101,
+        0.8525
+      ],
+      "width": 520
+    },
+    {
+      "name": "raw-experts",
+      "page": 17,
+      "box": [
+        0.0944,
+        0.213,
+        0.2372,
+        0.7623
+      ],
+      "width": 520
+    },
+    {
+      "name": "raw-home",
+      "page": 17,
+      "box": [
+        0.2674,
+        0.213,
+        0.4101,
+        0.7623
+      ],
+      "width": 520
+    },
+    {
+      "name": "raw-doctor",
+      "page": 17,
+      "box": [
+        0.4448,
+        0.2167,
+        0.5875,
+        0.766
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-booking",
+      "page": 17,
+      "box": [
+        0.6087,
+        0.2167,
+        0.7517,
+        0.9253
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-confirmation",
+      "page": 17,
+      "box": [
+        0.7819,
+        0.2167,
+        0.9243,
+        0.8136
+      ],
+      "width": 520
+    },
+    {
+      "name": "raw-inspiration",
+      "page": 18,
+      "box": [
+        0.1674,
+        0.1802,
+        0.3333,
+        0.8191
+      ],
+      "width": 520
+    },
+    {
+      "name": "app-cheer",
+      "page": 18,
+      "box": [
+        0.7063,
+        0.1802,
+        0.8719,
+        0.8191
+      ],
+      "width": 520
+    },
+    {
+      "name": "survey-anonymity",
+      "page": 6,
+      "box": [
+        0.4956,
+        0.389,
+        0.9856,
+        0.813
+      ],
+      "width": 1200,
+      "blank": [
+        [
+          0.9,
+          0.95,
+          0.96,
+          1.0
+        ]
+      ]
+    },
+    {
+      "name": "ideation-board",
+      "page": 13,
+      "box": [
+        0.369,
+        0.337,
+        0.8135,
+        0.995
+      ],
+      "width": 1500
+    },
+    {
+      "name": "wireframes",
+      "page": 15,
+      "box": [
+        0.02,
+        0.225,
+        0.7,
+        0.995
+      ],
+      "width": 1500
+    },
+    {
+      "name": "sketch-appointment",
+      "page": 15,
+      "box": [
+        0.0917,
+        0.5441,
+        0.262,
+        0.9608
+      ],
+      "width": 480
+    },
+    {
+      "name": "sketch-home",
+      "page": 15,
+      "box": [
+        0.3381,
+        0.5337,
+        0.4772,
+        0.9605
+      ],
+      "width": 480
+    },
+    {
+      "name": "sketch-booking",
+      "page": 15,
+      "box": [
+        0.5719,
+        0.556,
+        0.6954,
+        0.958
+      ],
+      "width": 480
+    }
+  ]
+}

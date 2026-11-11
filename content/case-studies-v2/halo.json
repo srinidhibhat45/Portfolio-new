@@ -1,0 +1,572 @@
+{
+ "title": "Your most used actions in a ring around the pointer, [[one shortcut away]].",
+ "hook": "Halo is a desktop app I designed and built on my own, for macOS and Windows. Press one shortcut, or a mouse button, and a ring of your actions opens wherever the pointer is.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "My take on Logitech's Actions Ring, for any mouse or keyboard, with no account"
+  },
+  {
+   "label": "Platform",
+   "value": "macOS 26 or later, and Windows 10 and 11"
+  },
+  {
+   "label": "Stack",
+   "value": "Swift, SwiftUI and AppKit on the Mac. C#, .NET 10 and WPF on Windows"
+  },
+  {
+   "label": "Status",
+   "value": "Version 1.0.0, free and open source. No usage numbers"
+  }
+ ],
+ "links": [
+  {
+   "label": "View Halo on GitHub",
+   "url": "https://github.com/srinidhibhat45/Halo"
+  }
+ ],
+ "linksHeading": "See the project",
+ "summary": [
+  "The problem: the controls you use most are spread across menu bars and key combinations, and most only work while their app is in front.",
+  "What I built: two native apps, one for the Mac and one for Windows, that open a ring of up to 12 actions around the pointer, with its own ring for each app and folders for the rest.",
+  "The key idea: one shortcut does two jobs. Tap it and click, or hold it, flick toward an action and let go. Time and angle tell the two apart.",
+  "Where it stands: version 1.0.0 on both systems, free under the GPL. It collects no data, so I have no usage numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/halo/lead.webp",
+  "alt": "Two Halo screens side by side: the Classic ring over a page with Play/Pause highlighted, and the ring editor with the Finder slot selected and its settings beside it",
+  "caption": "The ring around the pointer, and the editor that sets it up. The editor draws the same ring, at full size.",
+  "width": 2400,
+  "height": 1000
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A shortcut is only quick if you can reach it from where you are",
+   "blocks": [
+    {
+     "p": "Say you are writing in one app and need to mute a call in another. You switch to the meeting, press its shortcut and switch back. The shortcut itself only works while that app is in front."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/problem.webp",
+       "alt": "Two columns comparing three steps to mute a Teams call from another app with two steps using Halo",
+       "caption": "The problem in one picture. Look at step 2 on the left: the shortcut exists, but only works once you have gone to the app.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "Logitech's Actions Ring answers this with a ring of actions around the pointer. Halo is my own take on that idea, and it is not connected to Logitech. I set three rules for it: it works with any mouse or keyboard, it needs no account, and it sends nothing anywhere."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did not run interviews or user tests for Halo, so this page quotes none. The spec lists binding decisions from technical research, but the notes behind them were not kept."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Press, point, let go, and you are back in your work",
+   "blocks": [
+    {
+     "p": "Halo sits in the menu bar on a Mac and next to the clock on Windows. Press its shortcut and a ring of slots opens around the pointer. Each slot holds one action. A new ring has eight, and a ring can have from 4 to 12."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/annotated-ring.webp",
+       "alt": "The Classic ring enlarged, with five numbered notes on the first slot, the highlighted Play/Pause slot, the Finder icon, a folder tab and the centre",
+       "caption": "The ring as it opens. Start at note 2: the slot under the pointer turns dark and names itself, so you can check before you let go.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "A slot can do far more than open an app. These are the kinds of action it can hold:"
+    },
+    {
+     "table": {
+      "head": [
+       "Kind",
+       "Examples"
+      ],
+      "rows": [
+       [
+        "Apps",
+        "Open, switch to, show or hide, or quit an app"
+       ],
+       [
+        "Inside an app",
+        "An app's own shortcut, such as Teams: Mute, sent even from another app"
+       ],
+       [
+        "Websites and files",
+        "Open a page, a document or a folder"
+       ],
+       [
+        "Media",
+        "Play or pause, next track, volume, mute, brightness"
+       ],
+       [
+        "Screenshots",
+        "An area, a window or the whole screen, to a file or the clipboard"
+       ],
+       [
+        "Windows",
+        "Snap left or right, fill, centre, move to the next display"
+       ],
+       [
+        "Text",
+        "Snippets with the date, the time or the selected text filled in"
+       ],
+       [
+        "AI prompts",
+        "Send the selected text with a prompt to Claude, ChatGPT, Perplexity or Gemini"
+       ],
+       [
+        "Smart Actions",
+        "Several actions in a row, with pauses between them"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "I chose the eight starting slots to match Logitech's default Mac ring, with a folder of window layouts where Logitech has a settings shortcut. The most used ones sit straight up, down, left and right."
+    }
+   ]
+  },
+  {
+   "id": "choose",
+   "label": "Decision 1",
+   "nav": "Tap or hold",
+   "heading": "One shortcut gives two ways to choose, and time tells them apart",
+   "blocks": [
+    {
+     "p": "What you see: tap the shortcut and the ring stays open for you to click. Or hold it, flick toward a slot and let go. Once a layout is familiar, the flick becomes one quick stroke."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/selection-states.webp",
+       "alt": "Flow from pressing the shortcut to four outcomes: the ring stays open, the slot runs, the ring closes, or nothing runs, plus the three selection modes",
+       "caption": "What each way of letting go does. The two green outcomes are the ones you aim for. The two red ones are how you back out safely.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "In the build: the line between a tap and a hold is 0.28 seconds. Let go sooner with nothing highlighted, and Halo reads it as a tap. These rules live in a small piece of logic with no interface, so I could test every outcome on its own."
+    },
+    {
+     "p": "Picking the slot is pure geometry. Halo measures the angle from the centre to the pointer. While you hold, that is measured from where you pressed, and a flick far past the ring still counts."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/hit-zones.webp",
+       "alt": "Two to-scale diagrams of the ring's slices: while holding, slices run to the edge of the screen; after a tap, they stop at a circle 60 points beyond the ring",
+       "caption": "How the highlighted slot is found. Note the thin pale band: the highlight holds on for 5 degrees past its edge, so it does not flicker on a boundary.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "Mouse buttons made this harder. Many people will open Halo from a spare mouse button, mapped to the shortcut in their mouse's own software. Some of those programs hold the key down while the button is down. Others send a quick tap, and a hold never happens."
+    },
+    {
+     "p": "So the welcome guide has a Test Your Trigger step. You hold your mouse button for about a second, and Halo tells you which kind of software you have. If it only taps, you can switch to Tap, Then Click."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A time limit is a guess about what you meant. Hold a moment too long before moving and letting go closes the ring. The limit can be changed, and the two fixed modes remove the guess entirely."
+     }
+    }
+   ]
+  },
+  {
+   "id": "editor",
+   "label": "Decision 2",
+   "nav": "An editor shaped like the ring",
+   "heading": "You set up the ring on the ring itself, not in a list",
+   "blocks": [
+    {
+     "p": "What you see: the settings window shows the same ring you use, large, in your chosen look. Click a slot to select it and its settings open beside it. Drag one slot onto another to swap them."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/annotated-editor.webp",
+       "alt": "The ring editor with eight numbered notes on the ring name, the slot count, the selected Finder slot, a folder tab, an empty slot and three parts of the settings panel",
+       "caption": "The editor. Note 3 is the point: the slot you are changing sits in the same spot it has around the pointer, so there is nothing to translate.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "In the build: the editor's ring and the floating ring share one model, one set of measurements and the same two looks. A drop onto the editor is placed by the same angle maths that picks a slot in the live ring. Every change goes through one place that records it for undo and saves it to a readable settings file."
+    },
+    {
+     "p": "The two views do differ in one way, on purpose. The editor keeps every position, so you can see where an empty slot is. The live ring hides empty slots and spreads your actions evenly."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/gap-closing.webp",
+       "alt": "Two drawn rings: the editor view with eight positions and one empty, and the live view with seven actions evenly spaced",
+       "caption": "The same ring in both views. With seven actions, each one gets a wider slice to aim at in the live ring.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Closing the gaps moves actions when you add or remove one, which works against remembering a direction. People who want fixed positions can turn \"Close up empty slots\" off."
+     }
+    }
+   ]
+  },
+  {
+   "id": "apps",
+   "label": "Decision 3",
+   "nav": "A ring for each app",
+   "heading": "Each app can have its own ring, and folders hold the rest",
+   "blocks": [
+    {
+     "p": "What you see: a meeting app and a photo editor need different controls. So any app can have its own ring. It opens instead of the main ring, called Everywhere, whenever that app is in front."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/app-rings.webp",
+       "alt": "Diagram of the Everywhere ring and an example Microsoft Teams ring, with the steps that decide which one opens; three Teams slots are borrowed from Everywhere",
+       "caption": "How Halo picks a ring. The dashed slots on the right are empty in the Teams ring, so they borrow the Everywhere actions in the same positions.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "Folders keep the first ring small. Rest the pointer on a folder and its actions fan out on an outer arc. The main ring dims but stays where it was."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/folders.webp",
+       "alt": "The Windows folder open: six window actions fanned out on an outer arc beside the dimmed ring, with Next Display highlighted",
+       "caption": "A folder of window layouts, open. The ring behind it is dimmed to 55%, so you can see where you came from.",
+       "width": 720,
+       "height": 720
+      },
+      {
+       "src": "assets/cases/halo/teams.webp",
+       "alt": "The Add to Ring picker for a Microsoft Teams ring, listing Teams actions such as Mute, Camera and Raise Hand first, then apps",
+       "caption": "Adding to a Teams ring. The picker lists that app's own actions first, each with its shortcut.",
+       "width": 480,
+       "height": 560
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: an action inside another app can reach it in three ways. I used the simplest one that works for each action."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/in-app-actions.webp",
+       "alt": "Three rows showing how an action reaches an app: by its own shortcut, by a menu command, or by clicking its buttons in order; plus a note on 369 ready-made actions for 30 apps",
+       "caption": "The three routes, simplest first. Teams has no shortcut to start recording, so Halo clicks Teams' own buttons by their names.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The 369 ready-made actions for 30 apps are kept as one list. Each entry records where its shortcut is documented. Some come with notes, because an app's settings can change them. Zoom's shortcuts, for example, only work from other apps when they are marked as global in Zoom."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Halo depends on other apps keeping their shortcuts and button names. If an app changes them, the action breaks until the list is updated. This is also why the list has not reached Windows yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "look",
+   "label": "Decision 4",
+   "nav": "Two looks, quick motion",
+   "heading": "A look you can read over any page, and motion that never makes you wait",
+   "blocks": [
+    {
+     "p": "What you see: two looks. Classic uses light round bubbles. Glass uses the Liquid Glass material from macOS 26, as one ring of curved segments with the name of the action in the centre."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/classic.webp",
+       "alt": "The Classic ring over a sample page, Play/Pause highlighted in near-black with its label beside it",
+       "caption": "Classic. The bubbles are almost solid, so the icons stay clear over text.",
+       "width": 720,
+       "height": 720
+      },
+      {
+       "src": "assets/cases/halo/glass.webp",
+       "alt": "The Glass ring over a sample page: curved glass segments around a centre that reads Play/Pause, with that segment tinted blue",
+       "caption": "Glass. The highlighted segment takes the accent colour and the centre names it.",
+       "width": 720,
+       "height": 720
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: Logitech's Mac bubbles are only about 38% solid, and reviewers have found them hard to read. I made Classic's bubbles about 90% solid, with a hairline edge and a very soft shadow, so they show up on a white page too."
+    },
+    {
+     "p": "Windows cannot blur the windows behind another window. So for Glass on Windows, Halo takes a small blurred snapshot of the screen just before the ring appears and draws on top of it. With transparency turned off, both systems use solid fills."
+    },
+    {
+     "p": "Every movement has a number in the spec, so the two apps could match."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/motion.webp",
+       "alt": "Timing chart: the centre and eight slots opening one after another about 28 ms apart, then bars for the tap or hold threshold, folder opening, highlight, chosen slot flash, close and the empty slot shake",
+       "caption": "The motion, redrawn from the spec's timings. The whole ring has opened in under half a second, and clicks and keys never wait for it.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Glass looks right on the Mac, but what shows through it depends on what is behind the ring. Classic is the safer choice on a busy screen, and it is the default."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Two native apps that share one description of a ring",
+   "blocks": [
+    {
+     "p": "Halo is two native apps, one for each system. A ring that floats over every app and never takes focus depends on each system's own window rules, so each app handles those its own way. Both apps read and write the same settings file, so a ring exported on a Mac opens on Windows."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/architecture.webp",
+       "alt": "Three-column diagram: the Mac app in Swift, the shared settings file, action list and spec in the middle, and the Windows app in C#",
+       "caption": "What runs where. The middle column is what keeps the two apps behaving the same.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Mac app",
+        "Swift, SwiftUI and AppKit, built with Swift Package Manager. No third-party code"
+       ],
+       [
+        "Windows app",
+        "C#, .NET 10 and WPF with the Fluent theme"
+       ],
+       [
+        "Shared",
+        "One settings file in readable JSON, one list of in-app actions, one spec"
+       ],
+       [
+        "Install and updates",
+        "A disk image on the Mac. Velopack on Windows. Both update from GitHub Releases"
+       ],
+       [
+        "Checks",
+        "Swift tests and xUnit, run by GitHub Actions on every change to the main branch"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "26,300",
+       "label": "lines of Swift in the Mac app, tests included, rounded"
+      },
+      {
+       "value": "12,900",
+       "label": "lines of C# and XAML in the Windows app, tests included, rounded"
+      },
+      {
+       "value": "144",
+       "label": "unit tests: 56 on the Mac side, 88 on Windows"
+      },
+      {
+       "value": "369",
+       "label": "ready-made in-app actions for 30 apps"
+      }
+     ]
+    },
+    {
+     "p": "The tests cover the parts with no interface: the slot maths, the tap-or-hold rules, settings files and the action list. On Windows, a separate check builds the installer, installs it on a clean machine, runs a first-start self-test with screenshots, and uninstalls it."
+    },
+    {
+     "p": "The hardest problems were where Halo meets the system, not in the ring."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Focus",
+        "If the ring took focus, a shortcut it sends would land in Halo instead of your app. The ring window never becomes active, and clicks outside it pass through to the app below."
+       ],
+       [
+        "Lost key releases",
+        "Mouse software, or a Windows security screen, can swallow the release of the shortcut, which would leave the ring stuck. Halo checks the keys itself and treats 0.15 seconds of released keys as a release. A watchdog frees every key it borrowed whenever the ring is hidden."
+       ],
+       [
+        "Permissions",
+        "macOS ties the Accessibility permission to the app's signature, and each new build lost it. I gave the app a fixed identity so permission survives updates, and added a Fix Access button for a stale grant."
+       ],
+       [
+        "Safe updates",
+        "An update replaces the app itself. The Mac updater installs a download only if its checksum, app identity, version and signature all match."
+       ],
+       [
+        "Windows editor",
+        "The ring preview in the editor came up blank, because its width started unset. I fixed it, and the self-test now checks that every preview has a size."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "The ring works from the keyboard and speaks to screen readers",
+   "blocks": [
+    {
+     "p": "A ring is a pointer idea, but it should not need a pointer. While it is open, Halo borrows a few keys and hands them back when it closes, so the app you were in keeps its focus."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/halo/keyboard-map.webp",
+       "alt": "Diagram of the ring with slots numbered 1 to 8, a number pad mapped by direction, and the keys for moving, running and closing",
+       "caption": "The keyboard map. The number pad works by direction: 8 is up, 6 is right, 5 runs the highlighted slot.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "list": [
+      "Each change of highlight is announced by VoiceOver on the Mac and Narrator on Windows.",
+      "With Reduce Motion on, the ring only fades. Nothing scales or bounces.",
+      "With Reduce Transparency on, Glass becomes solid with hairline borders. With Increase Contrast on, the highlight gets an outline as well as a colour.",
+      "The ring never closes by itself after a delay, so nobody is rushed."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are features in the code. I have no record of testing them with people who rely on a screen reader or a keyboard."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Version 1.0.0 on both systems, with clear gaps on Windows",
+   "blocks": [
+    {
+     "p": "Halo 1.0.0 is free and open source under the GNU GPL. It has no account, no analytics and no tracking. The only request it makes on its own is the daily check for updates. That also means I have no usage numbers to share."
+    },
+    {
+     "p": "I use Halo every day on my own Mac."
+    },
+    {
+     "p": "These are not done yet:"
+    },
+    {
+     "list": [
+      "The Mac app is not notarised by Apple, which needs a paid developer account. The first time you open it, macOS asks you to allow it in Privacy and Security.",
+      "The Windows installer is not code-signed yet, so Windows may warn before it runs.",
+      "The Windows editor is simpler than the Mac one. It has no drag and drop, no icon or tint picker and no editor for Smart Action steps.",
+      "Apple Shortcuts, AppleScript and menu commands are Mac only, and the list of ready-made in-app actions is not in the Windows app yet.",
+      "This page shows only the Mac app. I have no Windows screens or recordings of the ring in motion to show yet."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Test it with people, then bring Windows level",
+   "blocks": [
+    {
+     "list": [
+      "A first study: set up three actions people use often, repeat a task after a break, and compare their hesitation with the shortcuts they already use.",
+      "Checks I want to run: setting up a ring with the keyboard only, switching rings between apps, backing out of folders, and actions that fail for lack of permission.",
+      "Bring the Windows editor and the ready-made in-app actions level with the Mac.",
+      "Sign the Windows installer and notarise the Mac app, so neither system warns on first open."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Write the feel down as numbers, and test it like logic",
+   "blocks": [
+    {
+     "p": "How a ring feels comes down to a few numbers: 0.28 seconds, 16 points, 5 degrees, 28 milliseconds. Once they were written down and tested without any interface, a second app on another system could behave the same way."
+    },
+    {
+     "p": "The ring was the easy part. Most of my time went to the edges, where Halo depends on the system and on other apps: focus, lost key releases, permissions and other apps' shortcuts. That is where I would look first in my next tool of this kind."
+    }
+   ]
+  }
+ ]
+}

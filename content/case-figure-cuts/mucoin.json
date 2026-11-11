@@ -1,0 +1,12 @@
+{
+  "pdf": "assets/pdfs/mucoin.pdf",
+  "cuts": [
+    {
+      "name": "logo",
+      "page": 1,
+      "box": [0.13, 0.008, 0.87, 0.16],
+      "width": 1200,
+      "blank": [[0.74, 0.86, 1, 1]]
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1100">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}.lock{border-style:dashed}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">How it is put together</p><h1>One rules file, used by the phone and by the server</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>On the device</p>
+<div class="card"><h2>Game screen</h2><p>Plain JavaScript and CSS, with no framework. Draws the board, sheets and the original piece drawings.</p></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>Rules engine</h2><p>Setup, moves, bluffs, challenges, penalties and the computer player. One file.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Saved on the device</h2><p>Computer and pass-and-play games save after every move and work offline.</p></div>
+<div class="card"><h2>Service worker</h2><p>Stores all 11 game files for offline play. Install is offered only once every file is saved.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Online rooms only</p>
+<div class="card"><h2>Rooms API</h2><p>Imports the same rules engine and checks every move on the server. The browser cannot decide a move is legal.</p></div>
+<div class="card"><h2>Seven-character room code</h2><p>Each seat gets a long secret token. The server stores only a hash of it, never the token.</p></div>
+<div class="card"><h2>Revision number</h2><p>A move sent against an old board is refused, so two moves at once cannot both win.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>What each player receives</p>
+<div class="card hi"><h2>A filtered view</h2><p>The server turns every enemy piece into "?" before sending the board. Kings show only in games set to revealed kings.</p></div>
+<div class="card lock"><h2>Never sent</h2><p>The private record of which bluffs were legal stays on the server. A test searches each player's copy of the board for any trace of it.</p></div>
+<div class="card"><h2>Cloudflare D1</h2><p>Stores each room's state. Rooms expire after 48 hours without a move.</p></div></div>
+</div>
+<p class="note">Computer and pass-and-play games never talk to the server. Online moves are never queued while offline; the game reconnects and reloads the true board instead.</p>

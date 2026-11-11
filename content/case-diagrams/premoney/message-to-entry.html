@@ -1,0 +1,43 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1000">
+<style>
+body{padding:48px 64px}.phone{height:760px}
+.stage{display:grid;grid-template-columns:400px 1fr 400px;gap:40px;align-items:center}
+.bubble{background:#E9EEEA;border-radius:20px 20px 20px 6px;padding:16px 18px;font-size:16px;line-height:1.5;color:#2A302D}
+.mid{display:flex;flex-direction:column;gap:14px}
+.mid .card{padding:16px 20px}
+.mid .card h2{font-size:22px}
+.mid .card p{font-size:19px;margin-top:4px}
+.big{font-size:40px;font-weight:700;text-align:center;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Schematic drawn from the app's code · sample message and amounts are made up</p>
+<h1>One bank alert becomes one entry you can check</h1>
+<div class="grow stage">
+ <div class="phone"><div class="bar"><span>8:43</span><span>●●●</span></div>
+  <div class="scr"><p class="h" style="font-size:21px">AX-SMPLBK</p><p class="s">Bank alert, received 8:42</p>
+   <div class="bubble">Rs.240.00 debited from A/c XX0000 on 14-09-26 08:42 to KETTLE HOUSE CAFE. UPI Ref 600000000001. Avl Bal Rs.18,560.00. Not you? Report to your bank.</div>
+   <p class="s" style="margin-top:6px">Other messages in the same inbox</p>
+   <div class="bubble" style="opacity:.55">Your one-time password is ●●●●●● for a payment of Rs.999. Do not share it.</div>
+   <div class="bubble" style="opacity:.55">Get up to Rs.50,000 credit limit on a new credit card. Apply now.</div>
+  </div></div>
+ <div class="mid">
+  <div class="card"><h2>Is this a real movement of money?</h2><p>Reject OTPs, failed payments, statements and adverts. Ask for the marks a bank leaves on a real alert.</p></div>
+  <span class="arrow" style="align-self:center">↓</span>
+  <div class="card"><h2>Which fields can be read, and how sure is each?</h2><p>Amount, direction, merchant, account digits, reference, date. A guessed field lowers the confidence instead of being made up.</p></div>
+  <span class="arrow" style="align-self:center">↓</span>
+  <div class="card" style="border-color:var(--accent);background:var(--wash)"><h2>Save it once, file it, or ask me</h2><p>Duplicates are refused. Unsure entries go to a review queue.</p></div>
+ </div>
+ <div class="phone"><div class="bar"><span>8:43</span><span>●●●</span></div>
+  <div class="scrim"></div>
+  <div class="sheet" style="top:70px">
+   <div class="grab"></div>
+   <div class="row"><span class="av" style="background:#EB6834">K</span><div class="grow1"><p class="t" style="font-size:19px">Kettle House Cafe</p><p class="s">14 Sep 2026 · 08:42</p></div></div>
+   <p class="big">−₹240.00</p>
+   <div class="dl"><b>Category</b><span>Food &amp; Dining</span><span class="chip on">Change</span></div>
+   <div class="dl"><b>Method</b><span>UPI</span><span></span></div>
+   <div class="dl"><b>Source</b><span>Read from AX-SMPLBK</span><span></span></div>
+   <div class="dl"><b>Reference</b><span>600000000001</span><span></span></div>
+   <p class="t" style="font-size:15px">Original message ⌄</p>
+   <div class="row" style="gap:10px"><span class="btn grow1">Edit</span><span class="btn grow1" style="color:var(--spend)">Delete</span></div>
+  </div></div>
+</div>

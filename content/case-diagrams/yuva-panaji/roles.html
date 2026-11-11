@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>table{width:100%;border-collapse:separate;border-spacing:0;font-size:21px;background:#fff;border:1.5px solid var(--line);border-radius:14px;overflow:hidden}
+th{font-size:19px;font-weight:600;text-align:center;padding:14px 12px;background:var(--wash);color:var(--ink);line-height:1.25}th small{display:block;font-weight:400;color:var(--dim);font-size:16px}
+th:first-child{text-align:left}
+td{padding:11px 14px;border-top:1px solid var(--line);text-align:center}td:first-child{text-align:left;font-weight:500}
+td small{display:block;font-size:16px;color:var(--dim);font-weight:400}
+.y{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--good-wash);color:var(--good);font-weight:700}
+.k{display:inline-block;padding:3px 12px;border-radius:99px;background:var(--accent);color:#fff;font-size:16px;font-weight:700}
+.n{color:#B7BFBB}
+</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">Roles and permissions</p><h1>Who can do what, read from the site's code</h1>
+<div class="grow">
+<table><thead><tr><th style="width:42%">Action</th><th>Anyone<small>no account</small></th><th>Someone who registered<small>known only by phone number</small></th><th>Committee<small>one shared login</small></th></tr></thead><tbody>
+<tr><td>Browse events, team, gallery and recognitions</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+<tr><td>Register for an event<small>only while it is open and before its deadline</small></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+<tr><td>Apply in a membership drive<small>only while a drive is open</small></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+<tr><td>Find and correct their own entry<small>only if that event allows it; the phone number cannot be changed</small></td><td class="n">–</td><td><span class="y">✓</span></td><td><span class="y">✓</span></td></tr>
+<tr><td>Create events, build forms, set fees and limits</td><td class="n">–</td><td class="n">–</td><td><span class="y">✓</span></td></tr>
+<tr><td>See lists, mark payments and check-in, export, print</td><td class="n">–</td><td class="n">–</td><td><span class="y">✓</span></td></tr>
+<tr><td>Ledger, certificates, reports, team, recognitions</td><td class="n">–</td><td class="n">–</td><td><span class="y">✓</span></td></tr>
+<tr><td>See applicants' photos<small>private storage; each link expires after one hour</small></td><td class="n">–</td><td class="n">–</td><td><span class="y">✓</span></td></tr>
+<tr><td>Delete an event, close a drive, start a new campaign</td><td class="n">–</td><td class="n">–</td><td><span class="k">password again</span></td></tr>
+</tbody></table></div>
+<p class="note">The committee signs in once and stays signed in for up to seven days. Every private request checks that sign-in on the server.</p>

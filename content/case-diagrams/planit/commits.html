@@ -1,0 +1,27 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x660">
+<style>
+.tl{position:relative;margin-top:20px;height:100%}
+.track{position:absolute;left:0;right:0;top:64px;height:4px;background:var(--line)}
+.night{position:absolute;top:40px;height:52px;background:repeating-linear-gradient(135deg,#ECEAE3 0 8px,#F6F4EE 8px 16px);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:17px;color:var(--dim)}
+.day{position:absolute;top:0;font-size:22px;font-weight:600}
+.c{position:absolute;top:56px;width:20px;height:20px;border-radius:50%;background:var(--accent);transform:translateX(-50%);box-shadow:0 0 0 4px var(--paper)}
+.lbl{position:absolute;width:250px;font-size:19px;line-height:1.35;transform:translateX(-12px);padding-left:12px;border-left:2px solid var(--accent)}
+.lbl b{display:block;font-variant-numeric:tabular-nums;color:var(--accent);font-size:17px}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">The build, from the project history</p><h1>Nine commits over two days in September 2026</h1>
+<div class="grow"><div class="tl">
+<!-- scale: 10 Sep 15:30 = 0%, 11 Sep 10:30 = 100%; night 11 Sep 00:00-08:30 compressed visually as a band -->
+<span class="day" style="left:0">10 September</span><span class="day" style="left:76%">11 September</span>
+<div class="track"></div>
+<div class="night" style="left:62%;width:12%">overnight</div>
+<span class="c" style="left:3.6%"></span><span class="c" style="left:5%"></span><span class="c" style="left:12%"></span><span class="c" style="left:35%"></span><span class="c" style="left:50%"></span><span class="c" style="left:59%"></span><span class="c" style="left:60.5%"></span><span class="c" style="left:80.5%"></span><span class="c" style="left:91%"></span>
+<div class="lbl" style="left:3.6%;top:110px"><b>16:00</b>First planner: people, time zones, views and the analyser</div>
+<div class="lbl" style="left:12%;top:250px"><b>16:11 and 17:08</b>Hosting settings. Then a library of trips, a node canvas and sub-trips</div>
+<div class="lbl" style="left:35%;top:110px"><b>20:17</b>The canvas becomes a freeform board that resolves to the timeline</div>
+<div class="lbl" style="left:50%;top:250px"><b>22:19</b>The clock goes back on the board, with keyboard control under it</div>
+<div class="lbl" style="left:59%;top:110px"><b>23:35 and 23:46</b>Every view can build the plan. A fix for the board updating the app mid-render</div>
+<div class="lbl" style="left:80.5%;top:250px"><b>09:00</b>Every control explains itself. Trips survive an update</div>
+<div class="lbl" style="left:83%;top:110px"><b>09:50</b>A second built-in trip. A one-way booking no longer reads as a departure</div>
+</div></div>
+<p class="note">Commit times in India time. The night between the two days is shortened to fit.</p>

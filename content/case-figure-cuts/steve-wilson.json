@@ -1,0 +1,16 @@
+{
+  "pdf": "assets/pdfs/steve-wilson.pdf",
+  "cuts": [
+    {"name": "home", "page": 1, "box": [0, 0, 1, 1], "width": 1200, "blank": [[0.5104, 0.0917, 0.9438, 0.4333]]},
+    {"name": "home-name", "page": 1, "box": [0.02, 0.105, 0.5, 0.455], "width": 1100},
+    {"name": "home-services", "page": 1, "box": [0, 0.5, 1, 1], "width": 1400},
+    {"name": "work", "page": 2, "box": [0, 0, 1, 1], "width": 1200},
+    {"name": "work-row", "page": 2, "box": [0.12, 0.1435, 0.88, 0.31], "width": 1200},
+    {"name": "raw-template", "page": 3, "box": [0, 0, 1, 1], "width": 720},
+    {"name": "raw-template-top", "page": 3, "box": [0, 0, 1, 0.2222], "width": 1200},
+    {"name": "template-results", "page": 3, "box": [0.04, 0.2355, 0.96, 0.4835], "width": 1300},
+    {"name": "template-video", "page": 3, "box": [0.04, 0.4835, 0.96, 0.699], "width": 1300},
+    {"name": "template-more", "page": 3, "box": [0, 0.9055, 1, 1], "width": 1300},
+    {"name": "contact", "page": 4, "box": [0, 0, 1, 1], "width": 1400}
+  ]
+}

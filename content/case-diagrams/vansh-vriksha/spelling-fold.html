@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x920">
+<style>.wrap{display:grid;grid-template-columns:1fr 560px;gap:56px}.grp{display:grid;grid-template-columns:260px 60px 1fr;align-items:center;gap:8px;margin-bottom:34px}.sp{display:grid;gap:10px}.sp span{padding:8px 16px;border:1.5px solid var(--line);border-radius:99px;background:#fff;font-size:23px;width:max-content}.key{padding:16px 26px;border-radius:14px;background:var(--wash);border:2px solid var(--accent);font:600 30px/1.2 ui-monospace,Menlo,monospace;color:var(--ink);width:max-content}.key small{display:block;font:500 17px/1.3 'Case Sans',Arial;color:var(--dim);margin-top:6px}ol{list-style:none;display:grid;gap:11px;counter-reset:r}ol li{counter-increment:r;display:grid;grid-template-columns:34px 1fr;gap:12px;font-size:20px;line-height:1.35}ol li::before{content:counter(r);display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:#fff;font-size:16px;font-weight:700}ol code{font:600 19px ui-monospace,Menlo,monospace;color:var(--ink)}.rh{font-size:19px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 2</p><h1>Four spellings fold down to one search key</h1>
+<div class="grow wrap">
+<div><p class="rh">How cousins write the same name</p>
+<div class="grp"><div class="sp"><span>Shreenivas</span><span>Srinivasa</span><span>Sreenivas</span><span>Shrinivas</span></div><span class="arrow">→</span><div class="key">srinivas<small>one key, so a search for any of them finds all four</small></div></div>
+<div class="grp"><div class="sp"><span>Laxmi</span><span>Lakshmi</span></div><span class="arrow">→</span><div class="key">laksmi<small>x and ksh are the same sound</small></div></div>
+<p style="font-size:21px;color:var(--dim);max-width:30ch">After folding, search still allows up to two letters of difference, and those near misses rank below a matching key.</p>
+</div>
+<div><p class="rh">The folding rules, in order</p>
+<ol>
+<li><span>Letter pairs first: <code>sh→s</code>, <code>bh→b</code>, <code>th→t</code>, <code>ksh→ks</code> and others</span></li>
+<li><span>Drop a stray <code>h</code>, except at the start of a name</span></li>
+<li><span>Same sound, one letter: <code>w→v</code>, <code>f→p</code>, <code>x→ks</code></span></li>
+<li><span>Long vowels: <code>aa→a</code>, <code>ee→i</code>, <code>oo→u</code></span></li>
+<li><span><code>y→i</code>, since it works as a vowel in these names</span></li>
+<li><span>Drop a final <code>a</code> on names of five letters or more</span></li>
+<li><span>Collapse doubled letters</span></li>
+</ol></div>
+</div>
+<p class="note">Keys worked out by hand from the folding code. The order matters: pairs must be resolved before a bare h is dropped. Names written in Devanagari or Kannada script are indexed as they are.</p>
