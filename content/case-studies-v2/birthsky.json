@@ -1,0 +1,510 @@
+{
+ "title": "A star map of the night you were born, [[drawn in the browser]] and kept as a wallpaper.",
+ "hook": "BirthSky is a web page I designed and built on my own. You give it a name, a birth date, a time and a place. It works out the sky over that spot at that moment and lets you save it for a phone or a desktop.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A personal project. No client and no user research"
+  },
+  {
+   "label": "Timeline",
+   "value": "July 2026. The git history covers one day, from first release to version 1.0.4"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on phones and desktops. No sign-in"
+  },
+  {
+   "label": "Stack",
+   "value": "HTML, CSS and plain JavaScript with no libraries. OpenStreetMap place search. Hosted on Netlify"
+  },
+  {
+   "label": "Status",
+   "value": "Live, version 1.0.4. No usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open BirthSky",
+   "url": "https://birthsky.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: a star map can be a technical chart or a personal object. I wanted one page that gives you both from four answers.",
+  "What I built: a static page with its own sky engine in plain JavaScript, three display modes, four switches and two wallpaper sizes.",
+  "The key idea: one painter draws everything. A mode only turns layers on or off, and a download is the same painter run again at full size.",
+  "Where it stands: live as version 1.0.4. The sky has not been checked against a reference, and the current version logs every visitor's answers to a Google Sheet without saying so. Both are next."
+ ],
+ "lead": {
+  "src": "assets/cases/birthsky/result-stargazer.webp",
+  "alt": "BirthSky's result screen: a dark sky full of stars, constellation lines and labels, with a control bar across the top",
+  "caption": "The result screen in Stargazer mode, for the name \"Sample\", 1 January 2000, 9:00 pm, Mumbai. Every capture on this page uses these same test answers.",
+  "width": 2400,
+  "height": 1500
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A date, a time and a place are enough to work out a sky",
+   "blocks": [
+    {
+     "p": "There was no client and no research. The brief was the line I put on the landing page: the night sky above you at the moment you were born, calculated, drawn and yours to keep."
+    },
+    {
+     "p": "That line sets two jobs. The sky has to be worked out from the answers, not decorated. And the result has to be something a person keeps, so the page ends in a download, not in a chart."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/landing-form.webp",
+       "alt": "The BirthSky landing page on a desktop: a gold title, a short promise and a form with name, birth date, birth time and birth place",
+       "caption": "The landing page, filled in with the test answers. Four fields and one button. The faint lines behind it are a slowly turning star chart.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/birthsky/phone-landing.webp",
+       "alt": "The BirthSky landing page on a phone: the title and the four-field form, with no subtitle",
+       "caption": "On a phone the subtitle is hidden and the form is compressed so all four fields and the button fit on one screen.",
+       "width": 900,
+       "height": 1151,
+       "kind": "plain"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "No interviews, no tests with users and no usage numbers. This page describes the product and its code, and nothing more."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Eight steps from four answers to a saved picture",
+   "blocks": [
+    {
+     "p": "The page finds the place, turns the local time into world time, and then works out where every star and planet sat in the sky. Two terms come up. Sidereal time is \"star time\": it tells you which part of the sky is overhead at a spot on Earth. A stereographic projection is a way of laying the curved sky flat, the way a world map flattens the globe."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/flow.webp",
+       "alt": "Diagram of eight steps in two rows: four answers, find the place, find the moment, set the sky clock, place every object, flatten the dome, paint in layers, keep it. A red note below says the answers are also sent to a Google Sheet",
+       "caption": "Read the two rows left to right. The red note at the bottom is part of the flow today and has its own section below.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The result screen keeps every control in one bar and gives the rest of the window to the sky."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/annotated-result.webp",
+       "alt": "The result screen with six numbered notes on the back button, the title, the three modes, the four switches, the two downloads and the full-window sky",
+       "caption": "Notes 3 and 4 are the whole set of choices. Nothing else on the screen can be changed.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "form",
+   "label": "Decision 1",
+   "nav": "Four questions",
+   "heading": "Four questions, and the time is allowed to be unknown",
+   "blocks": [
+    {
+     "p": "What you see: four fields. Birth time starts at midnight and carries a hint, \"Local time at birth place\". Place suggestions appear after three letters."
+    },
+    {
+     "p": "In the build: the typed place goes to OpenStreetMap's place search, which sends back a latitude and longitude. The local time then has to become world time, and that needs the time zone. I did not add a time-zone database. The page guesses the offset from longitude, at one hour for every 15 degrees."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/timezone.webp",
+       "alt": "Two BirthSky renders side by side for the same answers: one with the guessed offset of UTC+5, one with India's real offset of UTC+5:30. The second shows Delphinus and Cygnus at its left edge",
+       "caption": "Both pictures come from BirthSky's own engine. Only the offset differs. Look at the left edge of the second.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "No database means nothing extra to download or call. But the guess is wrong wherever clocks do not follow longitude. In India it is 30 minutes out, and daylight saving is ignored everywhere. A time left at midnight is also drawn as if it were known."
+     }
+    }
+   ]
+  },
+  {
+   "id": "modes",
+   "label": "Decision 2",
+   "nav": "Three modes",
+   "heading": "Three modes for three uses of the same sky",
+   "blocks": [
+    {
+     "p": "What you see: Stargazer is for reading the sky, with lines, names and planets. Gift adds the person's name, date, time and place to the picture. Pure Sky removes every word and line and leaves only light."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/result-gift.webp",
+       "alt": "The result screen in Gift mode: the same labelled sky with the name SAMPLE and a line of birth details in the lower left corner",
+       "caption": "Gift. Compare it with the lead image: the sky is the same, with the name and details added in the lower left.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/birthsky/result-puresky.webp",
+       "alt": "The result screen in Pure Sky mode: stars and soft glows only, with no lines or labels",
+       "caption": "Pure Sky. The same stars with no lines, names or planets.",
+       "width": 1600,
+       "height": 1000
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: there is one painting function with up to 11 layers. A mode only decides which layers are drawn. The same function paints the screen and both downloads, so a mode never looks different in the saved file."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/layers.webp",
+       "alt": "Table of 11 layers painted bottom to top, with filled or open dots showing which appear in Stargazer, Gift and Pure Sky",
+       "caption": "The mode is a column in this table. Open dots are the layers the switches can hide.",
+       "width": 1600,
+       "height": 930
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Gift writes personal details into the image itself. Anyone who sees the wallpaper sees the name, birth date, time and place."
+     }
+    }
+   ]
+  },
+  {
+   "id": "wallpaper",
+   "label": "Decision 3",
+   "nav": "A wallpaper, not a chart",
+   "heading": "A wallpaper that fills the frame, not a round chart",
+   "blocks": [
+    {
+     "p": "What you see: the sky runs edge to edge in a rectangle. On a tall phone screen it is zoomed in."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/annotated-gift.webp",
+       "alt": "A downloaded Gift wallpaper for a phone with five numbered notes, and an enlarged strip showing the name SAMPLE above a gold rule and a line with the date, time and place",
+       "caption": "Note 2 was a fix on launch day. Before it, the portrait view squeezed the shapes.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: the download is not a screenshot. The painter runs again on a hidden canvas at 2160×3840 for a phone or 3840×2160 for a desktop, and the browser saves it as a PNG file. Star sizes, line widths and text are scaled to the size of the picture, so they hold at that resolution."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/export-desktop-stargazer.webp",
+       "alt": "A downloaded desktop wallpaper at 3840 by 2160 in Stargazer mode, with constellation lines and names",
+       "caption": "The desktop file in Stargazer, shown here reduced. The names stay readable at full size.",
+       "width": 1600,
+       "height": 900
+      },
+      {
+       "src": "assets/cases/birthsky/export-phone-puresky.webp",
+       "alt": "A downloaded phone wallpaper at 2160 by 3840 in Pure Sky mode, stars only",
+       "caption": "The phone file in Pure Sky. No words at all.",
+       "width": 900,
+       "height": 1600,
+       "kind": "tall"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "To fill the corners, the page also draws stars and planets down to about 34 degrees below the horizon, and there is no horizon line or compass. So the picture includes some of the sky nobody at that spot could see. For the test answers, 110 of the 304 catalogue stars the page placed were below the horizon."
+     }
+    }
+   ]
+  },
+  {
+   "id": "names",
+   "label": "Decision 4",
+   "nav": "Indian names",
+   "heading": "Indian names are one switch away",
+   "blocks": [
+    {
+     "p": "What you see: the Indian Names switch changes the labels, not the sky. Sirius becomes Lubdhaka, Betelgeuse becomes Ardra and Aldebaran becomes Rohini. The Sun, the Moon and the five planets change too, so Mars, Jupiter and Saturn read Mangala, Guru and Shani."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/names-english.webp",
+       "alt": "Close-up of Orion, Taurus and Canis Major with English star names such as Sirius, Rigel and Betelgeuse",
+       "caption": "Switch off. The usual English names.",
+       "width": 1600,
+       "height": 904
+      },
+      {
+       "src": "assets/cases/birthsky/names-indian.webp",
+       "alt": "The same close-up with Indian names such as Lubdhaka, Rajanya and Ardra, and the planets labelled Mangala, Guru and Shani",
+       "caption": "Switch on. Stars without an Indian name in the list, such as Bellatrix and Saiph, keep their English ones.",
+       "width": 1600,
+       "height": 904
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: the swap is a lookup at the moment a label is drawn. Positions are never recalculated, so the switch is instant on screen and in the downloads."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The list is short: 17 stars plus the seven bodies of the solar system. Constellation names stay in Latin."
+     }
+    }
+   ]
+  },
+  {
+   "id": "privacy",
+   "label": "Your answers",
+   "nav": "What happens to your answers",
+   "heading": "The current version logs every reveal to a Google Sheet, and does not say so",
+   "blocks": [
+    {
+     "p": "The sky is worked out and painted in the browser, and the download goes straight to the device. But each time someone presses Reveal My Sky, the current version also sends a row to a Google Sheet: the time, the name, the birth date and time, the place, and its latitude and longitude."
+    },
+    {
+     "p": "There is no notice on the page about this today, and no consent step. The place text also goes to OpenStreetMap's search while you type."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/data-map.webp",
+       "alt": "Diagram of three destinations for the answers: the browser, which uses everything; OpenStreetMap place search, which receives the place text; and a Google Sheet, highlighted in red, which receives the time, name, birth date, birth time, place, latitude and longitude",
+       "caption": "The red column is the one to read. It is what the code does today.",
+       "width": 1600,
+       "height": 680
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this means for this page.",
+      "detail": "I make no claim that BirthSky keeps your details private. Adding a clear notice, or removing the logging, is first on the list of what is next."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Eight files, no libraries, and a morning of fixes on a phone",
+   "blocks": [
+    {
+     "p": "The whole product is a static page: one HTML file, one stylesheet and six scripts, 3,262 lines in all. The sky engine and the painter are written for this page, with no astronomy library. The star positions come from a catalogue of bright stars built into the page."
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Page",
+        "HTML and CSS, with a dark theme and three web fonts"
+       ],
+       [
+        "Sky engine",
+        "Plain JavaScript: day count, star time, height and direction of each object, projection"
+       ],
+       [
+        "Painter",
+        "The browser's canvas, one function for screen and file"
+       ],
+       [
+        "Data",
+        "416 bright stars with position, brightness and colour; 21 nebulae, galaxies and clusters"
+       ],
+       [
+        "Place search",
+        "OpenStreetMap"
+       ],
+       [
+        "Hosting",
+        "Netlify, with security headers"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "416",
+       "label": "stars in the catalogue, down to magnitude 5.5"
+      },
+      {
+       "value": "69",
+       "label": "constellations with lines, 334 line segments"
+      },
+      {
+       "value": "3,000",
+       "label": "faint decorative dots in every sky"
+      },
+      {
+       "value": "15",
+       "label": "commits, all on 12 July 2026"
+      }
+     ]
+    },
+    {
+     "p": "The constellation lines are not typed in by hand. For each constellation, the page joins its catalogue stars with the shortest set of links that connects them all. That always produces clean lines, but not the traditional figures. Orion is a tree of short links, not the hunter."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/timeline.webp",
+       "alt": "Timeline of 15 commits on 12 July 2026: three around 1:25 am for the release, then a cluster between 8:25 and 10:27 am for phone layout, sheet logging and caching",
+       "caption": "The history starts at a finished first version, so the work before it is not in the log. Seven of the 15 commits are phone layout fixes.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/birthsky/phone-result.webp",
+       "alt": "The result screen on a phone, with the control bar stacked in three rows above the sky",
+       "caption": "On a phone the bar stacks: title, then modes, then switches and downloads.",
+       "width": 900,
+       "height": 1948,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/birthsky/phone-gift.webp",
+       "alt": "The Gift mode result on a phone, with the name and birth details at the bottom of the sky",
+       "caption": "Gift on a phone. The overlay is placed by proportion, so it lands in the same spot at any size.",
+       "width": 900,
+       "height": 1948,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Phone layout",
+        "The header did not stay pinned, the title was clipped, date and time fields were hard to read in dark mode, and the hidden result layer could sit on top of the form. Seven commits fixed these, ending in a compact layout that fits the form on one screen."
+       ],
+       [
+        "Portrait sky",
+        "On a tall screen the sky looked squeezed. The painter now zooms in when the frame is taller than it is wide."
+       ],
+       [
+        "Updates not showing",
+        "Browsers kept old copies of the scripts. I removed long-term caching and added version numbers to the script links."
+       ],
+       [
+        "Checks",
+        "There are no automated tests and no build step. I have no test results to report."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live as version 1.0.4, with no usage numbers and no accuracy check",
+   "blocks": [
+    {
+     "p": "BirthSky is live as version 1.0.4. I have no usage numbers to share. The only record of use is the sheet, and it holds visitors' details, so I do not draw on it here."
+    },
+    {
+     "p": "These limits are in the current version:"
+    },
+    {
+     "list": [
+      "The positions of stars and planets have not been checked against a reference sky for any date. The planets come from a simplified orbit model.",
+      "The time zone is guessed from longitude, with no daylight saving.",
+      "The sky is always drawn as night. For a daytime birth, the Sun shows as a glowing dot among the stars.",
+      "The 3,000 faint dots are decoration, in the same pattern for every sky. The Milky Way glow varies a little each time it is drawn, so a download is not an exact copy of the screen.",
+      "The sky is a single image with no text description for screen readers."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Fix the logging first, then the inputs",
+   "blocks": [
+    {
+     "list": [
+      "Add a clear notice beside the Reveal My Sky button that says what is logged and why, or remove the logging. This comes before anything else.",
+      "Look up the real time zone for the place and date, including daylight saving.",
+      "Check star and planet positions against a reference sky for a set of known dates and places, and correct what is off.",
+      "Mark a sky that was drawn from an unknown birth time.",
+      "Give the sky a short text description for screen readers."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A sharp picture can hide a rough input",
+   "blocks": [
+    {
+     "p": "The picture looks exact whatever goes in. A guessed time zone, a default midnight and stars below the horizon all come out just as crisp as a correct sky. The work that matters next is in the inputs, not in the painting."
+    },
+    {
+     "p": "One painter for the screen and the file was worth it. Every mode and switch worked in the downloads from the first release, because there was no second drawing to keep in step. And a feature added on launch day, like the logging, needs the same care about what it tells people as everything else."
+    }
+   ]
+  }
+ ]
+}

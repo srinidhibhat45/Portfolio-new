@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.map{display:grid;grid-template-columns:repeat(4,1fr);gap:16px 40px;align-content:start}.hd{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding-bottom:4px;border-bottom:2px solid var(--line)}.st{position:relative;padding:14px 18px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:20px;line-height:1.35}.st b{display:block;font-size:22px}.st small{display:block;color:var(--dim);font-size:18px;margin-top:4px}.wait{border-color:var(--accent);background:var(--wash)}.rest{border-color:var(--good);background:var(--good-wash)}.gone{border-color:var(--warn);background:var(--warn-wash)}.st::after{content:'→';position:absolute;right:-32px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:28px}.end::after{content:none}.blank{border:0;background:none}.blank::before{content:"";position:absolute;left:-12px;right:0;top:50%;border-top:2px solid var(--accent)}.rules{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:26px}.rules .card p{font-size:20px}.rules .card h2{font-size:23px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">How the app keeps track</p><h1>Every file action is a record that moves through steps</h1>
+<div class="grow"><div class="map">
+<div class="hd">Waiting, Undo works</div><div class="hd">Working on the file</div><div class="hd">Resting</div><div class="hd">Finished</div>
+<div class="st wait"><b>Pending</b><small>Swiped right</small></div><div class="st"><b>Moving</b><small>Into the bin folder</small></div><div class="st rest"><b>In the bin</b><small>For 30 days</small></div><div class="st end"><b>Restored</b><small>Back where it was</small></div>
+<div class="st wait"><b>Pending</b><small>Swiped up and confirmed</small></div><div class="st"><b>Deleting</b><small>The original file</small></div><div class="st blank"></div><div class="st gone end"><b>Deleted</b><small>Counted as freed space</small></div>
+<div class="st wait"><b>Pending</b><small>Deleted from the bin</small></div><div class="st"><b>Purging</b><small>Also after 30 days</small></div><div class="st blank"></div><div class="st gone end"><b>Deleted</b><small>Counted as freed space</small></div>
+</div>
+<div class="rules">
+<div class="card"><h2>If the app is killed half way</h2><p>On the next run each record is checked against the disk. A file found in the bin is marked as binned. A file still in its old place is left alone. Anything that does not add up is kept and reported, never guessed.</p></div>
+<div class="card"><h2>If a step fails</h2><p>A failed move leaves the original where it was. A failed restore leaves the file in the bin. A failed delete keeps the file. Folders are never deleted, only single files.</p></div>
+</div></div>
+<p class="note">Drawn from the app's storage code. The records live in a small SQLite database on the phone. Restoring goes back through its own "restoring" step, not shown.</p>

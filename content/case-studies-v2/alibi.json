@@ -1,0 +1,552 @@
+{
+ "title": "A video party game that keeps [[one player's secret]] while the whole room plays together.",
+ "hook": "Alibi is a browser game I designed and built on my own. Everyone watches the same short clip except one player, who gets a different one without being told, and the group has to work out who.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "October 2026"
+  },
+  {
+   "label": "For",
+   "value": "3 to 8 friends playing together over a call"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on computers and phones. Needs a running Node server"
+  },
+  {
+   "label": "Stack",
+   "value": "React 19, Vite, Express 5, Socket.IO, WebRTC, the YouTube embedded player"
+  },
+  {
+   "label": "Status",
+   "value": "Playable. No permanent public link yet, and no player feedback to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the code on GitHub",
+   "url": "https://github.com/srinidhibhat45/VideoImposter"
+  }
+ ],
+ "linksHeading": "See the project",
+ "summary": [
+  "The problem: an imposter game spoils itself if a clip, a clue or a vote shows up too early, or if the group sits waiting for one player's video.",
+  "What I built: a browser game for 3 to 8 friends. The server sends each player only their own share of the round, through six timed phases, with a clearly labelled solo practice mode.",
+  "The key idea: privacy is decided on the server. A screen cannot leak what it was never sent.",
+  "Where it stands: playable, with 32 automated tests. I prepared it for a seven-player game night, and friends played full rounds on the night. It still has no permanent link."
+ ],
+ "lead": {
+  "src": "assets/cases/alibi/home.webp",
+  "alt": "The Alibi home screen in dark charcoal and acid green, with the headline Trust no one, a fan of five player cards, a panel to create or join a lobby, and five clip packs below",
+  "caption": "The home screen. You can create a lobby, join one with a code, or play solo practice. The five cards show how a round works: four players get the same clip, one gets a different one.",
+  "width": 1441,
+  "height": 1150
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "An imposter game falls apart if anyone sees too much, too soon",
+   "blocks": [
+    {
+     "p": "The idea comes from an imposter game played on a popular YouTube channel. Everyone watches a clip. One person, the imposter, has seen a different but related clip and does not know it. Each player gives one word about what they saw, the group talks, and then everyone votes on who the imposter is."
+    },
+    {
+     "p": "I wanted to play it with friends on their own devices, over the internet. That means each person needs a private screen, while the group shares one clock. Alibi is my own version. It is not connected to that channel or to YouTube."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/round-secrets.webp",
+       "alt": "Diagram of five players, four sent Clip A and one sent Clip B, above two lists: what the room has to share and what each player has to keep private",
+       "caption": "The problem in one picture. The left list must be shared on time. The right list must stay hidden until the right moment, or the round is spoiled.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "Two things can spoil a round. Something private shows up early, such as one clue before the others are in. Or the game stalls while one person's video loads, and the group waits with no idea why."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did no research with players. I built the game for my own group of friends, and this page does not quote any of them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "A round runs in six phases, and each one has its own clock",
+   "blocks": [
+    {
+     "p": "A host creates a room and shares the link. Friends join with just a name. There is no sign-up. The host picks a clip pack, the number of rounds (3, 5, 8 or 10), the clip length and the time to talk."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/round-flow.webp",
+       "alt": "Diagram of six phase cards in a row, Lobby, Watch, One word, Discuss, Vote and Reveal, each with its time limit and what moves the round on",
+       "caption": "One round. Look at the bottom of each card: every phase moves on when everyone is done, or when its timer runs out, so one slow player cannot stall the group.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "In the watch phase you see a private player with one button. The clip starts at a set point and stops by itself. Then you get one box for one word."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/watch.webp",
+       "alt": "The watch phase: a panel headed For your eyes only with a Play my clip button, a timer reading 0:00 of 0:15, and the room chat on the right",
+       "caption": "Watching. The panel is marked as your private video, and the call is muted while clips play. This host had set 15-second clips.",
+       "width": 1310,
+       "height": 740
+      },
+      {
+       "src": "assets/cases/alibi/clue.webp",
+       "alt": "The clue phase: a panel headed A word to the wise with a text box, a Lock my clue button and four of five players marked as locked in",
+       "caption": "The one-word clue. The line under the box says nobody sees your word until everyone has submitted. Others only see that you are done.",
+       "width": 1320,
+       "height": 518
+      }
+     ],
+     "layout": "one"
+    },
+    {
+     "p": "The reveal is where everything held back comes out at once."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/reveal-annotated.webp",
+       "alt": "The reveal screen with four numbered notes: the result heading, both clips side by side, the vote count per player, and the Next round button",
+       "caption": "The reveal in a practice round. Note 2 is the payoff: both clips side by side, so the group sees what the imposter was looking at.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "server",
+   "label": "Decision 1",
+   "nav": "The server keeps secrets",
+   "heading": "Each screen only receives what that player is allowed to know",
+   "blocks": [
+    {
+     "p": "What you see: your own clip, your own clue, and a tick for everyone else. Nothing on your screen says whether you are the imposter."
+    },
+    {
+     "p": "In the build: the whole room lives on the server. Before every update, the server builds a separate copy for each player and leaves out anything that player should not have yet. The list of clip pairs never reaches a browser at all."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/per-player.webp",
+       "alt": "Diagram with the full room on the server on the left, and on the right what an ordinary player and the imposter each receive, which look the same apart from the clip",
+       "caption": "The two right-hand copies have the same shape. Only the clip differs, so neither player can tell their role from the data.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "Tests check this directly. One confirms that exactly one player gets the other clip without seeing any roles. Others check that clues appear together, and that a vote cannot be changed or cast for yourself."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A host can add up to 20 pairs of their own YouTube links. That host knows what both clips are, though not who got which."
+     }
+    }
+   ]
+  },
+  {
+   "id": "practice",
+   "label": "Decision 2",
+   "nav": "Honest practice",
+   "heading": "Practice players are labelled as practice everywhere they appear",
+   "blocks": [
+    {
+     "p": "What you see: solo practice puts you in a room with four simulated players. They are ready at once, lock in clues and vote, so you can see a whole round alone before inviting anyone."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/lobby-annotated.webp",
+       "alt": "The practice lobby with six numbered notes pointing at the solo practice label, the SOLO code, the phase list, the Practice tags on seats, the chat welcome message and the ready count",
+       "caption": "The practice lobby. Notes 1, 2, 4 and 5 each say in a different place that these players are simulated.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: simulated players are flagged in the room data. Three of them give fixed words and all of them vote at random, which is honest about what they are. Nobody else can join a practice room. If a host leaves a real room, control passes to another real player, never to a simulated one."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Practice teaches the steps. It cannot copy the talk, the bluffing and the hesitation of a real group."
+     }
+    }
+   ]
+  },
+  {
+   "id": "clips",
+   "label": "Decision 3",
+   "nav": "Short clips, no repeats",
+   "heading": "Clips are short, start at a set point and never repeat back to back",
+   "blocks": [
+    {
+     "p": "What you see: my first version let a host pick 30, 45 or 60-second clips, with 45 as the default. Each player pressed \"I've seen my clip\" when they were done."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/phone-watch-45.webp",
+       "alt": "Phone screen of the first watch phase, saying Watch 45 seconds, with a timer of 0:00 of 0:45 and an I've seen my clip button",
+       "caption": "Before: 45 seconds, and a button to say you had finished.",
+       "width": 385,
+       "height": 815,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/alibi/settings.webp",
+       "alt": "The room settings dialog with rounds, time to watch set to 30 seconds and time to point fingers set to 90 seconds, and a button to add a custom YouTube pair",
+       "caption": "After: 30 seconds is the longest choice. The clip stops by itself and marks you done.",
+       "width": 502,
+       "height": 572
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "A few hours later I capped clips at 30 seconds, with 15 and 20 as shorter choices. The round now moves on by itself once everyone has watched. One of the rules I wrote for the game is that a round should be quick to understand and replay."
+    },
+    {
+     "p": "In the build: curated clips start 15 seconds into the source video. YouTube can resume a video where it was last left, so every round loads a fresh player and sets its own start and end. A late signal from the old clip cannot end the new one. Eight tests cover playback alone."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/clip-choice.webp",
+       "alt": "Diagram of five numbered steps the server follows to pick the next pair of clips, from the chosen pack down to a random pick, with the reason for each on the right",
+       "caption": "How the next pair is chosen. Step 3 was added the day after the first build. Before it, a pack that started over could serve the pair just played.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The library is small, eight pairs in all, so packs run out. The throwbacks pack has one pair and must repeat. The room is told when a pack starts over. Playback also depends on YouTube, where a video can be blocked in some countries or removed."
+     }
+    }
+   ]
+  },
+  {
+   "id": "look",
+   "label": "Decision 4",
+   "nav": "A game, not a booking page",
+   "heading": "A dark game lobby instead of a polite booking page",
+   "blocks": [
+    {
+     "p": "What you see: my first version used ivory and sage, soft headings and food photos as the hero. It looked like a hotel booking site. I dropped it the same evening, before the first commit, and started again as a game."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/look-before-after.webp",
+       "alt": "Two home screens side by side: the first in ivory with a pizza and burger photo, the second in charcoal and acid green with a fan of player cards",
+       "caption": "The same screen before and after. The content barely changed. Colour, type and the player cards changed what kind of evening it promises.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/design-sheet.webp",
+       "alt": "Sheet of the game's colours, its heading and body fonts, a green Create lobby button, an amber warning strip and three corner sizes",
+       "caption": "The rules behind the look. Note the amber strip: a clip problem gets its own colour, so a warning never looks like a hint about someone's role.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "In the build: the player faces are drawn in code, a coloured tile with a dark visor, two eyes and a mouth. They blink every six seconds, and the blink stops for anyone whose device asks for less motion. The card marked with a different clip appears only in the labelled example on the home screen, never on a real player's seat."
+    },
+    {
+     "p": "On phones the order changes. Create and join come first. Inside a room, the ready and start control sits right under the heading. Text boxes use 16px type so phones do not zoom in when you type."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/phone-entry.webp",
+       "alt": "Phone home screen with the create lobby panel at the top, above the introduction",
+       "caption": "Create or join comes before the introduction.",
+       "width": 385,
+       "height": 700,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/alibi/phone-room.webp",
+       "alt": "Phone lobby with the room code, an invite button and a 7 of 7 ready bar with a Start game button directly under the heading",
+       "caption": "Start game sits right under the room heading.",
+       "width": 385,
+       "height": 545,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/alibi/phone-vote.webp",
+       "alt": "Phone vote screen headed Who's got a bad alibi, with four player cards showing each player's one-word clue and a Lock my vote button",
+       "caption": "Voting on a phone. Each card shows that player's clue. Names are blurred.",
+       "width": 385,
+       "height": 1010,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The arcade look leans on small labels, down to 11px for some details. They are harder to read than the rest of the screen."
+     }
+    }
+   ]
+  },
+  {
+   "id": "night",
+   "label": "Game night",
+   "nav": "Ready for seven players",
+   "heading": "Getting it ready for seven friends on a Teams call",
+   "blocks": [
+    {
+     "p": "Two weeks later I prepared Alibi for a game night with seven players. The group would talk on Microsoft Teams, not the in-app call. The game cannot mute Teams, so the instructions tell everyone to mute while watching and unmute when the clues appear."
+    },
+    {
+     "p": "I added a three-step guide to the lobby and clearer headings for each phase."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/night-annotated.webp",
+       "alt": "The game-night lobby with seven ready players and six numbered notes pointing at the room code, the three-step guide, the phase list, the seats, the Start game button and the voice controls",
+       "caption": "The lobby with seven players ready. Note 2 is the new three-step guide. Player names are blurred.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "p": "I also listed what could go wrong in the middle of a game, and gave each case an answer inside the game."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/recovery.webp",
+       "alt": "Diagram of six problems, such as a clip that will not play or a dropped connection, each with what the game does about it",
+       "caption": "The first row mattered most. Replacing clips mid-round keeps the round number and the scores, so a broken video does not cost anyone points.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    },
+    {
+     "p": "Before the night I checked it end to end. Seven separate clients played a full round through the public link: watching, private clues, discussion, private votes and the reveal. All 16 clip videos were still listed as available that day. For the in-app call, seven test clients with generated camera and microphone feeds connected all 21 pairs between them."
+    },
+    {
+     "aside": {
+      "title": "What I do not know.",
+      "detail": "I have no notes, photos or feedback from the night itself, so this page does not claim it went well."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One server decides the round, and tests guard the secrets",
+   "blocks": [
+    {
+     "p": "The server is the only place a round is decided. Browsers send actions, such as \"lock my clue\", and get back their own copy of the room."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/architecture.webp",
+       "alt": "Diagram in three columns: the game screen, YouTube player and recent clip list in each browser; rooms, game rules and Express on one Node server; and the optional in-app call, relay server and Teams",
+       "caption": "What runs where. The shaded boxes hold the secrets, and both are on the server.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Game screen",
+        "React 19, built with Vite"
+       ],
+       [
+        "Server",
+        "Node with Express 5. Rooms are kept in memory"
+       ],
+       [
+        "Live updates",
+        "Socket.IO, with a separate copy of the room for each player"
+       ],
+       [
+        "Video",
+        "YouTube's official embedded player. Nothing is downloaded or hosted again"
+       ],
+       [
+        "Optional call",
+        "WebRTC between browsers. Voice by default, camera optional"
+       ],
+       [
+        "Hosting",
+        "A Docker file and a Render setup, plus a script for a temporary public link"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "5",
+       "label": "commits, 16 to 30 October 2026"
+      },
+      {
+       "value": "32",
+       "label": "automated tests, all passing at the last recorded run"
+      },
+      {
+       "value": "7",
+       "label": "separate clients in the largest full-round test"
+      },
+      {
+       "value": "21",
+       "label": "call connections made between seven test clients"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/alibi/timeline.webp",
+       "alt": "Timeline of three dates: 16 October with the first build, 17 October with the clip changes, and 30 October with the game-night preparation",
+       "caption": "The build by date. Most of the game arrived on the first day. The later work went into clips and recovery.",
+       "width": 1600,
+       "height": 620
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were about time and order, not about the screens."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Old video positions",
+        "YouTube could carry over where a video was last stopped, and a late signal from the old clip could end the new one. Each round now gets a fresh player and reloads its own segment. Tests cover seeking, buffering and clips that end early."
+       ],
+       [
+        "Repeats",
+        "In the first version, when a pack ran out and started over, the pair just played could come straight back. The server now skips it whenever another pair is left."
+       ],
+       [
+        "Seven-way calls",
+        "Seven cameras need 21 connections, and the setup messages arrive in bursts. Call setup now has its own allowance, so a burst cannot block clues and votes. Camera video is capped at 15 frames a second where the browser allows it."
+       ],
+       [
+        "Drop-outs",
+        "A player who drops keeps their seat for 90 seconds. One test plays a full round with three clients, reconnects one of them and hands over the host."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Playable from start to finish, with no permanent home yet",
+   "blocks": [
+    {
+     "p": "Alibi works end to end, in solo practice and in real rooms. It has no permanent public address. For a game night it runs on my computer behind a temporary link, which lasts only while the computer stays on and connected."
+    },
+    {
+     "p": "These limits are still there:"
+    },
+    {
+     "list": [
+      "Rooms live in the server's memory, so a restart ends every game.",
+      "It runs as one server. More than one would need shared storage for rooms.",
+      "In-app calls across different networks need a relay server, which is not set up.",
+      "Beyond that game night I have no usage numbers."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Watch a real group hit a problem, then give it a permanent home",
+   "blocks": [
+    {
+     "list": [
+      "Watch a real group through a round that goes wrong, not only one that works: a blocked video, a player who reconnects, a host who leaves. That would show whether the instructions keep the game moving or turn the host into tech support.",
+      "Compare a round on the in-app call with a round on Teams.",
+      "Move it to a permanent host with a relay server, so friends on any network can join."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "In a party game, privacy belongs on the server",
+   "blocks": [
+    {
+     "p": "The most useful decision was to keep secrets on the server and send each player only their share. After that, no screen design could leak a role by mistake, and the tests could check it."
+    },
+    {
+     "p": "Most of my later work was not new features. It was making the game fail politely: a clip that will not load, a player who drops, a host who leaves. I also learned to drop a look early. The first one was tidy and wrong for the mood, and seeing that cost one evening instead of a rebuild."
+    }
+   ]
+  }
+ ]
+}

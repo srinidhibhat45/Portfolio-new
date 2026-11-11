@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x700"><style>.bar{--label:360px;grid-template-columns:var(--label) 1fr 200px}.bar b{font-size:30px}.cards{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}.cards .card p{margin-top:6px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">A bug the share card made obvious</p><h1>One bad location fix put 4,475 km/h on a ride card</h1>
+<div class="grow"><div class="bars">
+<div class="bar" style="--v:100"><span>Top speed, before the fix</span><i style="background:var(--warn)"></i><b>4,475 km/h</b></div>
+<div class="bar" style="--v:2.31"><span>Top speed, after the fix</span><i></i><b>103.3 km/h</b></div>
+</div>
+<div class="cards">
+<div class="card"><h2>The cause</h2><p>Top speed was the fastest gap between two location fixes. One jump, from a bad fix or the demo's fast-forward, became the headline number.</p></div>
+<div class="card"><h2>The rule now</h2><p>Any stretch faster than 299 km/h is left out of top speed. Distance and average speed still count every stretch, because one spike barely moves them.</p></div>
+</div></div>
+<p class="note">Both numbers come from simulated rides in the app, before and after the change, as I recorded them at the time. Neither is a real ride.</p>

@@ -1,0 +1,604 @@
+{
+ "title": "A billion is easy to write and hard to picture, so I [[drew it to scale]].",
+ "hook": "ScaleSee is a web tool I designed and built on my own. Pick two amounts of the same kind, and it draws them side by side at the same scale.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "Big numbers are easy to read and hard to picture"
+  },
+  {
+   "label": "Timeline",
+   "value": "August 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on desktop and phone. It opens from a file, with no server"
+  },
+  {
+   "label": "Stack",
+   "value": "Plain HTML, CSS and JavaScript. Drawings in SVG. No libraries"
+  },
+  {
+   "label": "Status",
+   "value": "Working web tool. Not tested with readers, no usage numbers"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open ScaleSee",
+   "url": "https://scalesee.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: written down, a million and a billion differ by three zeros. As cash, one is a single brick of notes and the other is a block taller than a person.",
+  "What I built: a web tool with 11 kinds of quantity, each drawn its own way, with true and log scale, a link for every comparison and a picture you can save.",
+  "The key idea: show the true gap first. When a picture has to be squashed to fit, it says so.",
+  "Where it stands: it works on desktop and phone, in light and dark. Nobody has tested it with readers yet, and I have no usage numbers."
+ ],
+ "lead": {
+  "src": "assets/cases/scalesee/lead.webp",
+  "alt": "ScaleSee comparing $1 million with $1 billion: the sentence \"$1 billion is 1,000× more than $1 million\" above a drawing of one small purple brick of cash and a large green block of cash, with a grey person beside each",
+  "caption": "The default comparison, $1 million against $1 billion. The sentence gives the ratio. The drawing shows it as stacked $100 bills, with a person for scale.",
+  "width": 1600,
+  "height": 1183
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Three zeros on paper are a thousand times the cash",
+   "blocks": [
+    {
+     "p": "A ratio can be easy to read and still hard to picture. Written down, $1 million and $1 billion look alike: the second just has three more zeros. In $100 bills, the first is one brick about 9 cm thick. The second is a block 2.1 metres tall."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/problem.webp",
+       "alt": "Diagram: on the left, $1,000,000 and $1,000,000,000 written as numbers; on the right, the ScaleSee drawing of one brick of cash beside a block of 1,000 bricks",
+       "caption": "The problem in one picture. On the left, the two numbers as we usually see them. On the right, the same pair drawn by ScaleSee at true scale.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "I wanted a tool where you pick any two amounts of the same kind and see them side by side, to the same scale. The same idea works for height, land, weight, time and six other kinds of quantity."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I have no user research or test sessions for ScaleSee, so this page does not quote any. It shows the product and how I made it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Two amounts in, one sentence and one drawing out",
+   "blocks": [
+    {
+     "p": "You choose a category, then type two amounts. Each side has a number and a unit. Money also has a currency, so 1 crore can sit next to $1 million."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/annotated-page.webp",
+       "alt": "The top of the ScaleSee page with six numbered notes: the category strip, the two inputs, the ready-made pairs, the sentence, the scale switch and the drawing",
+       "caption": "The page from the top. Note 4 is the sentence, and note 6 is the drawing it describes.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "p": "The sentence states the ratio and how many of the smaller one fit inside the bigger one. Then it borrows a pair of real things with about the same gap. A 1,000× gap reads as \"roughly a person next to the Burj Khalifa\"."
+    },
+    {
+     "p": "There are 11 categories, and each one draws its amounts in its own way."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/categories.webp",
+       "alt": "Grid of eleven drawings from ScaleSee: money as cash blocks, height as buildings, distance as roads, land as plots, weight as a balance, temperature as thermometers, time as filling bars, data as squares, speed as a race, volume as cubes and energy as a ladder",
+       "caption": "All eleven drawings, captured from the working app. Each one is built for one kind of quantity.",
+       "width": 1600,
+       "height": 1170
+      }
+     ]
+    },
+    {
+     "p": "Under the drawing, a table gives both amounts in other terms. For money, that means the time it takes to count the cash out at one dollar a second, or what it weighs. At the bottom is a list of real reference points. Pick one and it loads on the right side, so you can walk up the scale."
+    }
+   ]
+  },
+  {
+   "id": "pictures",
+   "label": "Decision 1",
+   "nav": "A picture for each quantity",
+   "heading": "Each quantity gets a picture that fits it, not one chart for all",
+   "blocks": [
+    {
+     "p": "What you see: money is cash stacked into a block. Land is the small plot laid in the corner of the big one. Weight is a balance. Speed is a race down the same 400 m lap."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/land.webp",
+       "alt": "Land comparison of 1 cent and 1 acre: a green square plot with a small purple square in its near corner, a house and a tree, and the text \"1 acre holds 100 of 1 cent\"",
+       "caption": "Land. One acre holds 100 cents. The purple square in the near corner is one cent, and a house stands on the plot for scale.",
+       "width": 1600,
+       "height": 1060
+      },
+      {
+       "src": "assets/cases/scalesee/weight.webp",
+       "alt": "Weight comparison of 70 kg and 6 tonnes: a balance tipped down to the right under a large green block, with a small purple block on the raised pan",
+       "caption": "Weight. 70 kg against 6 tonnes. Underneath, the heavier side is also counted in cars.",
+       "width": 1600,
+       "height": 1060
+      },
+      {
+       "src": "assets/cases/scalesee/speed.webp",
+       "alt": "Speed comparison of 5 km/h and 104 km/h: two cars on two identical road laps, with the times for each written underneath",
+       "caption": "Speed. Walking pace against a cheetah on the same lap. The fast one finishes in 13.8 seconds, the slow one in 4.8 minutes.",
+       "width": 1600,
+       "height": 1031
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "In the build: each category has its own drawing function. All eleven take the same input, the two amounts in one base unit and the scale mode. Each returns a picture on a fixed canvas 1,000 units wide and 560 tall, plus a one-line note. A shared kit draws the solids, the silhouettes and the landmarks, so the eleven pictures look like one product."
+    },
+    {
+     "p": "The height scene got the most care. Its landmarks are drawn from their real elevations."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/annotated-height.webp",
+       "alt": "The height drawing of 5.9 ft against 828 m with six numbered notes: the ruler, the landmark lines, the ratio bracket, the tiny person, the faded landmarks and the Burj Khalifa model",
+       "caption": "The height scene, part by part. Note 4 is the honest answer at this scale: the person is a speck.",
+       "width": 1600,
+       "height": 1250
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Every picture carries an assumption. The cash block assumes $100 bills, about 0.0115 m³ per million. Landmark heights are real but rounded. And eleven drawing functions are eleven things to keep correct, where one shared chart would have been one."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scale",
+   "label": "Decision 2",
+   "nav": "True scale first",
+   "heading": "The true gap comes first, and a squashed picture says it is squashed",
+   "blocks": [
+    {
+     "p": "What you see: every comparison opens at true scale. If one side is too small to see, a line under the drawing says that is the point, and that log scale will show where it is."
+    },
+    {
+     "p": "A log scale, short for logarithmic scale, gives each tenfold step the same space. Huge gaps then fit on one screen, but the sizes are no longer in proportion."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/height-true.webp",
+       "alt": "Height drawing at true scale: a ruler from 100 to 800 metres, the green Burj Khalifa, and a purple label for 5.9 ft above a person too small to see",
+       "caption": "True scale. At 828 m against 5.9 ft, the person is a speck, and the note under the drawing says so.",
+       "width": 1600,
+       "height": 1060
+      },
+      {
+       "src": "assets/cases/scalesee/height-log.webp",
+       "alt": "Height drawing at log scale: a purple person now clearly visible beside the green Burj Khalifa, with no ruler on the left",
+       "caption": "Log scale. Both now fit. The ruler is gone, because metre labels on a squashed axis would be false.",
+       "width": 1600,
+       "height": 1060
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: one shared function turns the two amounts into sizes for every category that follows the switch. At true scale it is a straight proportion, with a small minimum so the little side never vanishes. At log scale it squashes. Then each drawing removes whatever would now be false: the height ruler, and the person standing beside the cash and the cubes."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/scale-rules.webp",
+       "alt": "Diagram in three groups: seven categories that follow the scale switch, two whose picture is not a size, and two that are a count or a ladder, with notes on what changes at true and at log scale",
+       "caption": "Not every category should obey the switch. Four of them ignore it, because their picture is not a size that can be squashed.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Log scale makes a picture easier to read and less true. I kept true scale as the default and let the reader choose, rather than choose the readable view for them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "names",
+   "label": "Decision 3",
+   "nav": "Name the thing",
+   "heading": "A number is called after the real thing it is close to",
+   "blocks": [
+    {
+     "p": "What you see: type 5.9 ft and the label says \"about a person\", drawn as a person. Type 828 m and it says \"the Burj Khalifa\". Put 5 ft against 7 ft and you get two people at their true heights, not two bars."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/people.webp",
+       "alt": "Height drawing of 5 ft against 7 ft: a purple person and a taller green person on a ruler marked in centimetres and metres, both labelled \"about a person\"",
+       "caption": "5 ft against 7 ft. Both are named \"about a person\" and drawn as people, at 1.52 m and 2.13 m.",
+       "width": 1600,
+       "height": 1031
+      }
+     ]
+    },
+    {
+     "p": "In the build: one small rule looks through that category's list of real things for the closest one, compared by ratio. If it is within 1.35 times, the amount takes its name. That one answer decides both which model is drawn and what the label says."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/naming.webp",
+       "alt": "Flow diagram: a value comes in, the closest reference is found, and the result is an exact name, an \"about\" name within 1.35 times, or the plain measurement; below, the three places the name is used",
+       "caption": "One rule with two jobs. The sentence above the drawing uses a separate, looser match against 17 known pairs.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "I applied the same thinking to money. A flat white used to read \"$0.005 thousand\". It now falls back to plain numbers and reads \"$5\"."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A name is a rounding. \"About a person\" covers anything from about 1.26 m to 2.3 m. So the measured figure always sits under the name, in a monospaced type that lines numbers up."
+     }
+    }
+   ]
+  },
+  {
+   "id": "phone",
+   "label": "Decision 4",
+   "nav": "Phone layout",
+   "heading": "On a phone, the drawing comes before everything else",
+   "blocks": [
+    {
+     "p": "What you see: on a phone, the drawing runs edge to edge and pans sideways inside its own frame. A fade on the right edge and a line under it say there is more to see. Everything you can tap is at least 40 px."
+    },
+    {
+     "p": "In the build: the first phone layout put the drawing's card 810 px down an 812 px screen. The main thing sat below the fold, the bottom of the first screen before any scrolling. I cut the space above it, and the card now starts at 666 px."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/phone-fold.webp",
+       "alt": "Two phone screens side by side, before and after, with a dashed line where the drawing card starts: at the very bottom of the screen before, and about four fifths down after",
+       "caption": "Before and after on the same 812 px screen. Every row saved above the drawing is scrolling the reader no longer has to do.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "p": "One fix needed a second pass. The category strip is three times wider than a phone, so the chosen category is scrolled back into view when it changes. It is checked again once the web font loads, because every label then gets wider. Without that pass, a shared link could open with its category off the screen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/phone-drawing.webp",
+       "alt": "ScaleSee on a phone, scrolled to the height drawing, which runs to both screen edges and is cut off on the right, with the line \"drag the picture sideways\" underneath",
+       "caption": "The drawing on a phone. It is cut off on the right on purpose, and the line under it ends with \"drag the picture sideways\".",
+       "width": 1125,
+       "height": 2436,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A drawing that pans hides part of itself until you drag it. The other option was to shrink it to the width of the screen, which keeps it whole but makes everything in it smaller."
+     }
+    }
+   ]
+  },
+  {
+   "id": "look",
+   "label": "The look",
+   "nav": "Light and dark",
+   "heading": "One drawing in two palettes, with colours chosen by contrast",
+   "blocks": [
+    {
+     "p": "The two sides are always violet and green. Violet keeps a strong blue in it where the green has none. The aim is that the pair stays apart for people with colour blindness too. I have not tested that with anyone."
+    },
+    {
+     "p": "Both colours were worked out, not picked by eye. Each is the darkest point on its hue that still carries white label text at a contrast of 4.5 to 1, the usual minimum for small text."
+    },
+    {
+     "p": "In the build: the drawings take their sky, ground and text colours from a palette in the script. Switching the theme swaps that palette and draws the picture again. The violet and green are read back from the page styles each time, which is how they can be lighter in dark mode."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/eiffel-light.webp",
+       "alt": "Height drawing in light mode: a purple giraffe label at 5.5 m beside a green Eiffel Tower at 330 m, with a grey pyramid and a tree in the background",
+       "caption": "A giraffe against the Eiffel Tower, in light mode. The tower is 60 times taller.",
+       "width": 1600,
+       "height": 1060
+      },
+      {
+       "src": "assets/cases/scalesee/eiffel-dark.webp",
+       "alt": "The same height drawing in dark mode, with a dark sky and ground and lighter violet and green",
+       "caption": "The same comparison in dark mode. Sky, ground and text all change, and the violet and green get lighter.",
+       "width": 1600,
+       "height": 1060
+      }
+     ],
+     "layout": "two"
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "The drawing has a text version, and the colours meet AA",
+   "blocks": [
+    {
+     "p": "I checked ScaleSee against WCAG 2.1 AA, the common standard for accessible web pages. Every text colour, including the text inside the drawings, clears 4.5 to 1 against the surface it sits on, in both themes."
+    },
+    {
+     "list": [
+      "The drawing is marked as an image, with a description written from the comparison: the sentence, the scale used and the note.",
+      "A table under the drawing gives the same figures as text, with a caption and proper headers.",
+      "Every control has a name. The number boxes have real labels, and the category and scale buttons report which one is on.",
+      "Focus shows as a solid 2 px ring. Hit targets are at least 32 px, and 40 px on touch screens.",
+      "The moving cars and filling bars stay still when the system asks for reduced motion.",
+      "The faded landmarks in the height scene are below 3 to 1 on purpose. They are decoration, and each one is also named on a line."
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/facts-table.webp",
+       "alt": "Table titled \"put another way\" comparing $1 million and $1 billion in six rows, such as counting it out one a second: 11.6 days against 31.7 years",
+       "caption": "The table under the drawing for $1 million against $1 billion. Counted out at one dollar a second, the billion takes 31.7 years.",
+       "width": 1600,
+       "height": 574
+      },
+      {
+       "src": "assets/cases/scalesee/keyboard.webp",
+       "alt": "The keyboard shortcuts panel listing ten keys, including S to swap sides, T for true or log scale and P to save the picture",
+       "caption": "The keyboard shortcuts. Press the question mark key to open them.",
+       "width": 800,
+       "height": 1094,
+       "kind": "tall"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "This was my own check against the standard. I have no record of anyone using a screen reader on ScaleSee."
+     }
+    }
+   ]
+  },
+  {
+   "id": "share",
+   "label": "Sharing",
+   "nav": "Links and pictures",
+   "heading": "Every comparison is a link, and the drawing can be saved",
+   "blocks": [
+    {
+     "p": "The comparison is written into the page address after every change: the category, both amounts with their units and currency, and the scale. Copy the link and it opens the same picture."
+    },
+    {
+     "p": "Save the picture writes the drawing out as a PNG image, 2,000 by 1,120 pixels."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/saved-picture.webp",
+       "alt": "A saved PNG of the height drawing of 5.9 ft against the Burj Khalifa, with the ruler, landmarks and labels but no sentence or page around it",
+       "caption": "A saved picture of 5.9 ft against the Burj Khalifa. It holds the drawing and nothing else.",
+       "width": 1600,
+       "height": 896
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What is missing.",
+      "detail": "The saved picture leaves the sentence and the note behind. A height picture saved in log scale does not say it was squashed. That is the first thing I would fix."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Eleven drawing functions around one small state",
+   "blocks": [
+    {
+     "p": "ScaleSee uses no libraries and needs no server. It opens straight from a file. A short build script can also fold everything into one self-contained file, to send or host."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/scalesee/architecture.webp",
+       "alt": "Diagram in three columns: what the tool knows (categories and reference points), what you chose (the state and the link), and what you see (the sentence, the drawing, the table), with a shared drawing kit and delivery underneath",
+       "caption": "How it fits together. The state in the middle is small: a category, two sides and a scale mode.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Page",
+        "HTML and one stylesheet"
+       ],
+       [
+        "Logic",
+        "Plain JavaScript in seven files, with no framework"
+       ],
+       [
+        "Drawings",
+        "SVG built by my own functions. The animation is SVG too, and is skipped under reduced motion"
+       ],
+       [
+        "Type",
+        "Space Grotesk for the sentence, Inter Tight for the interface, DM Mono for every number, Fraunces for the name"
+       ],
+       [
+        "Build",
+        "A Node.js script that inlines everything into one HTML file"
+       ],
+       [
+        "Checks",
+        "None automated. There are no tests"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "11",
+       "label": "categories, each with its own drawing"
+      },
+      {
+       "value": "125",
+       "label": "real reference points across them"
+      },
+      {
+       "value": "46",
+       "label": "ready-made pairs to try"
+      },
+      {
+       "value": "3,085",
+       "label": "lines of HTML, CSS and JavaScript"
+      },
+      {
+       "value": "3",
+       "label": "commits, all on 31 August 2026"
+      }
+     ]
+    },
+    {
+     "p": "The hardest parts were small and exact."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What was hard, and what I did"
+      ],
+      "rows": [
+       [
+        "Landmarks",
+        "Each one is stored as its setback heights and widths divided by its own height, so the outline stays right at any size. The Burj Khalifa steps left and right on its way up, the way the real tower spirals."
+       ],
+       [
+        "Tiny amounts",
+        "At true scale a small side can round down to nothing. It keeps a minimum size, and the note under the drawing says the speck is the real answer."
+       ],
+       [
+        "Phone strip",
+        "A shared link could open with its category off the screen, because the labels grew wider when the web font arrived. The strip now re-centres after the font loads."
+       ],
+       [
+        "The name",
+        "The wordmark read \"Scale See\", because its two halves were laid out as separate boxes with a gap between them. It is now one word."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "It works, and nobody has tested it with readers",
+   "blocks": [
+    {
+     "p": "ScaleSee works on desktop and phone, in light and dark. I built it in August 2026, and its project history has three commits, all on 31 August."
+    },
+    {
+     "p": "I have no usage numbers, feedback or test results. These are also true:"
+    },
+    {
+     "list": [
+      "Landmark figures are real but rounded, for example 828 m for the Burj Khalifa and 150 tonnes for a blue whale.",
+      "Currency rates are rough and fixed in the code: 83 rupees, 0.92 euros, 0.79 pounds and 150 yen to the dollar.",
+      "There are no automated tests. The naming rule and the scale rules have only been checked by eye.",
+      "A few labels still slip between singular and plural, for example \"1 litres\"."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Find out whether people read the pictures correctly",
+   "blocks": [
+    {
+     "list": [
+      "Ask readers to guess a ratio before and after each view, including an extreme gap and a log-scale picture. That would show whether the drawings help, and whether log scale misleads.",
+      "Put the sentence and the scale into the saved picture, so it keeps its meaning when it is shared.",
+      "Add tests for the naming rule and the scale rules.",
+      "Fix the singular and plural labels."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "The speck is the answer, so help people find it",
+   "blocks": [
+    {
+     "p": "I learned to treat a tiny side as the answer, not as a bug to hide. The work went into helping people see it: a note under the drawing, a name they know, and a switch that is open about what it changes."
+    },
+    {
+     "p": "I also learned that a number reads better as a thing. \"About a person\" says more than \"1.8 m\", as long as the real number stays right under it."
+    }
+   ]
+  }
+ ]
+}

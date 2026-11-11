@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x1100">
+<style>.stage{display:grid;grid-template-columns:auto auto 1fr;gap:56px;align-items:center}.phone{width:340px;height:680px}.pad{padding:6px 18px}.h{font-size:22px;font-weight:600;margin-top:6px}.s{font-size:13px;color:#45464F;margin-top:6px;line-height:1.4}.rowi{padding:12px 18px;border-top:1px solid #DAD8E0}.rowi b{font-size:15px;font-weight:600;display:block}.rowi span{display:block;font-size:13px;color:#45464F}.rowi small{display:block;font-size:11px;color:#6B6A75;margin-top:2px}.btns{display:flex;gap:16px;margin-top:6px;font-size:13px;font-weight:600;color:#46588F}.btns .r{color:#BA1A1A}.set .sec{padding:8px 18px}.set .sec b{display:block;font-size:17px}.set .sec p{font-size:13px;color:#45464F;margin-top:4px;line-height:1.4}.set .big{font-size:20px;font-weight:600;margin-top:4px}.wrapP{position:relative}.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #fff}.legend{display:grid;gap:20px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:start;font-size:22px;line-height:1.4}.cap{text-align:center;font-size:18px;font-weight:600;color:var(--dim);margin-top:12px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Drawn from the code</p><h1>The bin and the storage count say the same thing</h1>
+<div class="grow stage">
+<div><div class="wrapP"><div class="phone">
+<div class="tb">← Recycle bin</div>
+<div class="pad"><div class="h">1.6 GB in the bin</div><div class="s">Still using storage. Expired files are deleted automatically when Android allows background work, or when you open Binnder.</div></div>
+<div class="rowi" style="margin-top:8px"><b>example-video.mp4</b><span>1.2 GB · 29d until deletion</span><small>/storage/…/Movies/example-video.mp4</small><div class="btns"><span>Preview</span><span>Restore</span><span class="r">Delete forever</span></div></div>
+<div class="rowi"><b>example-archive.zip</b><span>420 MB · 12d until deletion</span><small>/storage/…/Download/example-archive.zip</small><div class="btns"><span>Preview</span><span>Restore</span><span class="r">Delete forever</span></div></div>
+</div>
+<span class="num dot" style="left:0;top:16%">1</span><span class="num dot" style="left:100%;top:21%">2</span><span class="num dot" style="left:0;top:34%">3</span><span class="num dot" style="left:100%;top:40%">4</span>
+</div><p class="cap">Recycle bin</p></div>
+<div><div class="wrapP"><div class="phone set">
+<div class="tb">← Settings</div>
+<div class="sec"><b>Storage</b><div class="big">3.1 GB permanently deleted by Binnder</div><p>Moving a file to the bin does not free space. Files are kept on their original storage volume.</p></div>
+<div class="sec" style="border-top:1px solid #DAD8E0;margin-top:8px;padding-top:14px"><b>GitHub updates</b><p>Use a public repository with Binnder’s signed release workflow. Automatic checks download verified updates; Android asks you to approve installation.</p></div>
+<div class="sec" style="color:#6B6A75;font-size:13px">… then the swipe guide</div>
+</div>
+<span class="num dot" style="left:100%;top:16%">5</span>
+</div><p class="cap">Settings</p></div>
+<div class="legend">
+<div><span class="num">1</span><span>The total says how much is in the bin, and the line under it says plainly that it still uses space.</span></div>
+<div><span class="num">2</span><span>It also admits that cleanup depends on Android letting the app run.</span></div>
+<div><span class="num">3</span><span>Each row counts down the days left before the file is deleted.</span></div>
+<div><span class="num">4</span><span>Preview, Restore and Delete forever on every row. Deleting from here also gets five seconds to undo.</span></div>
+<div><span class="num">5</span><span>Only bytes the app has really deleted count as freed.</span></div>
+</div></div>
+<p class="note"><span class="schem">Schematic</span>&nbsp; The wording is the app's own. The files and sizes are examples. There are no screenshots of these screens yet.</p>

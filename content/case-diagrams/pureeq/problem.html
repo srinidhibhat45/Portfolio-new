@@ -1,0 +1,29 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.side{flex:1;display:flex;flex-direction:column;gap:18px}.side>p.h{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.eq{display:flex;gap:16px;align-items:flex-end;justify-content:space-between;height:300px;padding:26px 30px 18px}.s{display:flex;flex-direction:column;align-items:center;gap:10px;flex:1}.s .t{position:relative;width:6px;height:200px;border-radius:3px;background:var(--line)}.s .k{position:absolute;left:50%;width:30px;height:16px;border-radius:5px;background:var(--ink);transform:translate(-50%,-50%)}.s span{font-size:17px;color:var(--dim)}.q{font:400 30px/1.3 'Case Display',Georgia,serif}.ask{display:flex;gap:18px;align-items:flex-start}.ask .num{margin-top:2px}.ask h2{font-size:27px;font-weight:600;line-height:1.3}.ask p{font-size:21px;color:var(--dim);margin-top:4px}.btns{display:flex;gap:10px;margin-top:10px}.btns i{font-style:normal;padding:6px 16px;border-radius:99px;background:var(--wash);color:var(--accent);font-size:19px;font-weight:600}.res{border-color:var(--accent);background:var(--wash)}.res h2{color:var(--accent)}.mid{flex:none;align-self:stretch;width:2px;background:var(--line)}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">The problem in one picture</p><h1>An equaliser asks which slider to move. PureEQ asks what you hear.</h1>
+<div class="grow row" style="gap:48px;align-items:stretch">
+<div class="side"><p class="h">A usual 10-band equaliser</p>
+<div class="card eq">
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>31</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>62</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>125</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>250</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>500</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>1k</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>2k</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>4k</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>8k</span></div>
+<div class="s"><div class="t"><b class="k" style="top:50%"></b></div><span>16k</span></div>
+</div>
+<p class="q">“Which of these ten should I move, which way, and by how much? For my left ear or my right?”</p>
+<p style="font-size:21px;color:var(--dim)">The right answer depends on two things the sliders cannot see: your ears and your headphones.</p>
+</div>
+<div class="mid"></div>
+<div class="side"><p class="h">PureEQ</p>
+<div class="card ask"><span class="num">1</span><div><h2>Did you hear that beep?</h2><p>Short beeps in each ear, at 7 pitches from 500 Hz to 8 kHz. About 2 minutes.</p><div class="btns"><i>Yes</i><i>No</i></div></div></div>
+<div class="card ask"><span class="num">2</span><div><h2>Which do you enjoy more, A or B?</h2><p>The same music with two settings, equally loud. Usually 5 to 7 rounds.</p><div class="btns"><i>A</i><i>Same</i><i>B</i></div></div></div>
+<div class="card res"><h2>One EQ curve for each ear</h2><p>Played on everything the phone plays, or exported to another equaliser app.</p></div>
+</div>
+</div>
+<p class="note">The 10-band equaliser on the left is a generic one, drawn for comparison. Its slider labels are frequencies in hertz (Hz): low numbers are bass, high numbers are treble.</p>

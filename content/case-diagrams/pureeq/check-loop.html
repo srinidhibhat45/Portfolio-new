@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1040">
+<style>.loop{display:grid;grid-template-columns:1fr 60px 1fr 60px 1fr;grid-template-rows:auto 60px auto;align-items:stretch}.loop .card h2{font-size:25px;display:flex;align-items:center;gap:12px}.loop .card p{font-size:20px;margin-top:8px}.a{display:grid;place-items:center;color:var(--accent);font-size:36px}.hi{border-color:var(--accent);background:var(--wash)}.end{margin-top:26px;display:flex;gap:22px;align-items:center}.end .card{flex:1}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">Inside the listening check</p><h1>Each beep is chosen to teach the most about your ears</h1>
+<p class="sub">The check keeps one running best guess for all 7 pitches in both ears, with how unsure it is about each. Every answer narrows it.</p>
+<div class="grow">
+<div class="loop">
+<div class="card hi"><h2><span class="num">1</span>Best guess so far</h2><p>For each pitch and ear: the quietest beep you can likely hear, and how sure the check is. Neighbouring pitches and the two ears inform each other.</p></div>
+<div class="a">→</div>
+<div class="card"><h2><span class="num">2</span>Pick the next beep</h2><p>Pitch: 1, 2, 4, 8 kHz and 500 Hz first, then 3 and 6 kHz, ears taking turns. Level: the one expected to shrink the doubt most, never more than 10 dB above anything played so far.</p></div>
+<div class="a">→</div>
+<div class="card"><h2><span class="num">3</span>Play it</h2><p>Two pulsed beeps, 225 ms on and 200 ms off, with soft edges so nothing clicks. Each wavers ±5% in pitch, so one narrow earbud peak cannot pass for a weak band.</p></div>
+<div></div><div></div><div></div><div></div><div class="a">↓</div>
+<div class="card"><h2><span class="num">5</span>Update the guess</h2><p>The answer moves the estimate for that pitch and nudges its neighbours and the other ear. Every answer is also saved with the profile.</p></div>
+<div class="a">←</div>
+<div class="card" style="grid-column:3/6"><h2><span class="num">4</span>Answer</h2><p>Yes, No, or play it again once. Every 8 to 12 turns a silent turn plays nothing, to measure how often you guess Yes. A replayed beep is scored as two chances to hear it, so replaying cannot make a band look better than it is.</p></div>
+</div>
+<div class="end"><span class="tag">Stop</span><div class="card"><p style="font-size:21px;color:var(--ink)">A pitch is finished in one ear once the doubt falls to 3.5 dB (Standard), after at least two beeps and one Yes. Quick stops at 4.5 dB and Thorough at 2.75 dB.</p></div></div>
+</div>
+<p class="note">dB (decibels) measures loudness. Values are the app's settings in version 1.7.3.</p>

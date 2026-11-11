@@ -1,0 +1,582 @@
+{
+ "title": "An open family tree where [[every record says where it came from]].",
+ "hook": "Vansh Vriksha is a free public family-tree archive that I designed and built on my own, where anyone can add a whole family without an account and every record says what it rests on.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "August to October 2026"
+  },
+  {
+   "label": "For",
+   "value": "Families tracing their lineage, free to read and add to"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on desktop and phone"
+  },
+  {
+   "label": "Stack",
+   "value": "Next.js 15, React 19, TypeScript, Tailwind CSS 4, Zod, Netlify Blobs"
+  },
+  {
+   "label": "Status",
+   "value": "Live, running on generated demonstration data. No real-family or usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open Vansh Vriksha",
+   "url": "https://vanshvriksha.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "See it yourself",
+ "summary": [
+  "The problem: families keep their history in pieces, and an open tree goes wrong in quiet ways. One ancestor gets added twice, four spellings of a name never meet, and a wrong parent link is believed because it is written down.",
+  "What I built: a public archive with a family-tree viewer, a search that understands spelling, a relationship finder in English and Konkani, and a way to add a whole family at once that waits for review.",
+  "The key idea: a claim is only as good as what it rests on. Every person carries a source mark, every change is kept with an author, a date and a reason, and nothing is published without a person reading it.",
+  "Where it stands: live, running on a generated set of made-up people. It does not yet establish any real family counts, and I have no usage numbers to share."
+ ],
+ "lead": {
+  "src": "assets/cases/vansh-vriksha/home.webp",
+  "alt": "The Vansh Vriksha home page: a red notice saying the data is a demonstration, the headline 'One tree, with room on it for every family', and one large search box",
+  "caption": "The home page, captured from the built site. The red bar at the top says every person shown is fictional. Example searches under the box are blurred because some name real families.",
+  "width": 2400,
+  "height": 1272
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Families remember their history in pieces, and the joins go first",
+   "blocks": [
+    {
+     "p": "Most families can name four generations without help. The fifth is often just a first name and a village. After that, the proof that two branches now in different countries were once one household is gone."
+    },
+    {
+     "p": "But families that lose names usually keep four other things: a surname, a gotra (the ancestral sage a family line descends from, passed from father to child), a family deity and a home village. I built the archive around those four, so they work as ways in when the names run out."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/ways-in.webp",
+       "alt": "The home page section 'Four things a family tends to remember', with rows for surname, gotra, family deity and home village, each with a short explanation",
+       "caption": "The four ways in, from the home page. Each row says why that field survives. The counts on the right are blurred because they come from made-up data.",
+       "width": 1600,
+       "height": 767
+      }
+     ]
+    },
+    {
+     "p": "I wanted one public tree that anyone could read and add to, for free and without an account. An open tree like that has three ways to go wrong, and each one shaped a part of the design."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/problems.webp",
+       "alt": "Three panels: one ancestor recorded twice with descendants split between the copies; four spellings of one name; a wrong parent link that moves a person into another family",
+       "caption": "The three risks, drawn from the product's own documentation. The rest of this page is mostly about how the design answers them.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I have no interview notes or feedback from families to show, so this page quotes none."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Three doors into one archive: read, add and review",
+   "blocks": [
+    {
+     "p": "Reading needs no account. Adding needs no account either, but what you add goes to a queue. One maintainer, behind a sign-in, decides what is published."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/site-map.webp",
+       "alt": "A map in three columns: nine pages for reading, the contribute form with six kinds of submission, and four maintainer tools",
+       "caption": "Every part of the product, grouped by who uses it. Read the middle column as the bridge: anything added waits in the queue.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "p": "The home page asks one question: what is the one name you are sure of?"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/annotated-home.webp",
+       "alt": "The home page with five numbered notes: the demonstration notice, the Contribute button, the search box, the blurred example searches and three links",
+       "caption": "Start at note 3: one search box takes a name, a surname, a gotra or a village, because different families remember different things.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "A record backed by a register and a record backed by a grandmother's memory are both worth keeping. What would ruin the archive is not being able to tell them apart, so every person carries one of four marks."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/source-marks.webp",
+       "alt": "The About page section 'What counts as a source', listing four marks: documented, corroborated, family memory and unverified, each with a short definition",
+       "caption": "The four source marks, as the site explains them. Look at the last one: an unverified record is kept, but flagged so nobody builds a branch on it.",
+       "width": 1600,
+       "height": 709
+      }
+     ]
+    },
+    {
+     "p": "The relationship finder answers \"how am I related to…?\" in English and in Konkani, the language these families speak at home. English is vague in exactly the places Konkani is precise."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/kin-terms.webp",
+       "alt": "Diagram: the English words uncle and aunt split into five Konkani words for father's elder brother, father's younger brother, father's sister, mother's brother and mother's sister",
+       "caption": "Where English says uncle or aunt, Konkani has five words, and each carries a different role. The finder works out the path between two people, then names it in both languages.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "A diaspora page shows where families moved, generation by generation."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/annotated-diaspora.webp",
+       "alt": "The 'Births by generation' chart: stacked bars for each twenty-year span, coloured by region of birth, with the totals blurred and three numbered notes",
+       "caption": "Read the colours left to right as a route: home region, down the coast, the cities, then abroad. The totals are blurred because the people behind them are generated.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "couples",
+   "label": "Decision 1",
+   "nav": "Couples, not parents",
+   "heading": "Children hang from a couple, not from one parent",
+   "blocks": [
+    {
+     "p": "What you see: a couple sits side by side, a small junction sits below them, and their children hang from the junction. A second marriage gets its own junction and its own set of children."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/union-before-after.webp",
+       "alt": "Before and after: a plain tree where four children hang from one man, and a couple layout where two marriages each have their own junction and children",
+       "caption": "Why it matters: in a plain tree, half-brothers and half-sisters look like full ones. That is the difference families care about most.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "In the build: genealogy is not really a tree, because a person has two parents and can marry more than once. So the layout works on couples. It measures how wide each branch needs to be, then places it inside that width, so two cards can never overlap. There is no clean-up pass afterwards."
+    },
+    {
+     "p": "The layout code uses nothing from React or the server. The same code runs in the browser, so re-centring the tree on another person happens at once, with no wait for the server."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/tree-annotated.webp",
+       "alt": "A drawing of the tree viewer with eight numbered notes: four view modes, a daughters' lines chip, a PDF button, cards, a third line on one card, the marriage junction, tabs that open more layers, and a key",
+       "caption": "The viewer opened on one household. Notes 4 and 8 work together: what the whole family shares is said once in the key, so each card can stay short.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "The cards themselves were too small at first. At 190 by 78 pixels a name was cut at about 14 letters, which cuts most names here in half. I made them 244 by 96 and set an order for shortening a name, so the surname is the last thing to go."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/name-fit.webp",
+       "alt": "Diagram comparing the old and new card sizes, then four steps for shortening a name: full, father's name as an initial, father's name dropped, and an ellipsis last",
+       "caption": "Look at the underline: the surname is the part a reader scans for, so every step protects it.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "In these families a daughter's children are recorded with her husband's family. So by default the tree draws her husband and children, and puts her grandchildren on a tab. I ruled out drawing every line in full, because by the third generation that grafts several other families' trees into this one. It is a reading convention, not a claim about who matters, and one chip turns it off."
+     }
+    }
+   ]
+  },
+  {
+   "id": "search",
+   "label": "Decision 2",
+   "nav": "Spelling-tolerant search",
+   "heading": "Four spellings of one name fold into one search key",
+   "blocks": [
+    {
+     "p": "What you see: type any spelling of a name and the others turn up too."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/spelling-fold.webp",
+       "alt": "Diagram: four spellings of one name fold to the key srinivas, two spellings of another fold to laksmi, beside the seven folding rules in order",
+       "caption": "The four spellings are the product's own example. The seven rules on the right only cover the ways these names really vary when written in English letters.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "p": "In the build: each name is stored twice in the search index, once as written and once as its folded key. A search then allows up to two letters of difference on top, and ranks those near misses lower. Some surnames split into two spellings through different colonial spelling systems rather than through speech. Folding cannot join those, so they are linked by hand."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Loose matching for new names people type into the lists. A fuzzy pass once turned one village's name into a city in another state, and nobody was told. New names now match only on an exact key, and a looser guess is shown to the maintainer as a suggestion instead."
+     }
+    }
+   ]
+  },
+  {
+   "id": "duplicates",
+   "label": "Decision 3",
+   "nav": "Duplicates and whole families",
+   "heading": "A likely duplicate shows its reasons and offers to link, while you type",
+   "blocks": [
+    {
+     "p": "What you see: as you type a name, a box appears under the fields if the person may already be in the archive. It lists the reasons and offers one button: this is the same person."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/match-annotated.webp",
+       "alt": "A drawing of the duplicate warning with five numbered notes: it runs while typing, a strong match gets a firmer heading, one click dismisses it, it shows reasons instead of a score, and it offers a link",
+       "caption": "Start at note 4. A person can check \"father is Person B\" against what they know. Nobody can check a percentage.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: the first version warned about duplicates on the thank-you screen, after the person had finished. That was the wrong moment. The merge had become a reviewer's problem, when it could have been a two-second choice by the one person who knew."
+    },
+    {
+     "p": "The check compares every name a record carries, including nicknames and the name in Devanagari script, and says which one matched. Family fields count too. A matching gotra is evidence for a match. A different gotra is strong evidence against, because it passes from father to child and never changes."
+    },
+    {
+     "p": "The most common real contribution is not one person. It is a couple, their children, and who each child married, learned in one afternoon with an elderly relative. Sent one at a time, that is many forms, and none can name a parent who has not been published yet. So a whole family can be built on a drawing and sent as one piece."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/builder-annotated.webp",
+       "alt": "A drawing of the family builder with six numbered notes: relationship buttons around the selected card, a child button under the couple, a linked existing person, the form beside the drawing, a list that accepts typed answers, and one send button",
+       "caption": "The builder. Note 2 is the important one: a child is added from under a couple, so it can never be attached to the wrong marriage.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "In the build: the people in a draft get temporary keys. On sending, every key becomes a real record in one pass and one write. The builder refuses true contradictions, such as a child born before their father. It only warns about unlikely ones, because real families produce records that look wrong and are not."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The builder is a bigger thing to learn than a single form. In return, a relationship is stated by where you add someone, so a link cannot be left half-entered."
+     }
+    }
+   ]
+  },
+  {
+   "id": "review",
+   "label": "Decision 4",
+   "nav": "Review and history",
+   "heading": "Records live in version control, and nothing publishes itself",
+   "blocks": [
+    {
+     "p": "What you see: after sending, a contribution waits. A maintainer can approve it, decline it, or ask for changes. Asking is the option most review queues lack, and often the only useful reply to a real memory with a date nobody can place."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/review-flow.webp",
+       "alt": "Flow of four steps: someone sends a submission, it waits in a queue, a maintainer approves, asks for changes or declines, and approval becomes a commit with an author, date and reason",
+       "caption": "From sending to published. Step 4 is the design promise: every change keeps who made it, when, and why.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "In the build: the records are plain JSON files kept in git, not rows in a database. When two cousins disagree about a birth year in twenty years' time, the history will show who claimed what and on what basis."
+    },
+    {
+     "p": "That promise broke when the site moved to a serverless host, where files written on the server vanish on the next restart. So a maintainer's approval is now committed to the repository on GitHub, and the push rebuilds the site. The queue of unreviewed submissions lives in separate storage, because it does not need that history until someone has read it."
+    },
+    {
+     "p": "A check reads the whole family graph before every build. Some mistakes are invisible in a single record and obvious across the graph."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/data-check.webp",
+       "alt": "Two lists: errors that stop the build, such as broken links, impossible dates and ancestry loops, and warnings that are only reported, such as very long lives",
+       "caption": "Errors stop the site from being built. Warnings do not, because unusual is not the same as wrong.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "With no database, an approved change reaches everyone only after a rebuild, which takes a couple of minutes. The maintainer sees their own change at once."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "No database, one graph in memory, and a check that blocks a broken archive",
+   "blocks": [
+    {
+     "p": "When the site starts, the whole archive is read into memory as one graph. Every interesting question, such as six generations of descendants or the path between two people, is a walk through that graph rather than a series of database queries."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/architecture.webp",
+       "alt": "Diagram in three columns: stored family records, reference lists and photo storage; the in-memory graph, search index and data check; and pre-built pages, the tree viewer and open JSON endpoints",
+       "caption": "What is stored, what happens when the site starts, and what is served. The dashed box at the bottom is how an approved change gets back in.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Next.js 15 with the App Router, React 19, TypeScript"
+       ],
+       [
+        "Styling",
+        "Tailwind CSS 4. The tree, the charts and the ornaments are hand-written SVG"
+       ],
+       [
+        "Records",
+        "JSON files in git, checked before every build"
+       ],
+       [
+        "Queue and photos",
+        "Netlify Blobs"
+       ],
+       [
+        "Input checking",
+        "Zod, on what contributors send and what the maintainer saves"
+       ],
+       [
+        "Data libraries",
+        "None: no database, no state library, no chart library, no component library"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "13",
+       "label": "commits, August to October 2026, one author"
+      },
+      {
+       "value": "27,700",
+       "label": "lines of TypeScript, roughly"
+      },
+      {
+       "value": "0",
+       "label": "automated tests. The data check is the only gate"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/timeline.webp",
+       "alt": "Timeline of commits: 2 August 1, 3 August 6, 4 August 3, 5 August 1, 9 August 1, 14 October 1, each with its main changes",
+       "caption": "Most of the work happened in the first week of August. October brought one fix for caching and search crawlers.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were not the drawing of the tree."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Saving on a serverless host",
+        "Approvals were written to a disk the host wipes on restart, so they were silently lost. They are now committed to GitHub. Raw GitHub errors also reached people's screens; every write path now catches them and shows a plain message."
+       ],
+       [
+        "The family builder",
+        "A \"child\" button under someone's parents added a brother instead of a son: the very confusion the couple layout exists to prevent. Edits made from a wife's side of a marriage were dropped. Both are fixed, and the builder now offers only the marriages the selected person is in."
+       ],
+       [
+        "Approvals",
+        "Approving a story about a person could reset their recorded sex, because a missing field fell back to a default. Now a field a submission does not mention is left alone."
+       ],
+       [
+        "Speed",
+        "The server was fast; the wait was elsewhere. Fonts came from another site and blocked the first paint, and every link in view woke the server. Fonts are now served from the site itself, prefetching is off for on-demand pages, and the diaspora page's photos went from 3.6 MB to 1.2 MB."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "privacy",
+   "label": "Privacy and accessibility",
+   "nav": "Privacy and accessibility",
+   "heading": "Public on purpose, so the risks had to be designed for",
+   "blocks": [
+    {
+     "p": "Everything in the archive is public and found by search engines. That is the point, and it is also the risk. The rules for living people are short and stated on the site."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/living-people.webp",
+       "alt": "The About page section 'Living people', listing four rules: ask before adding a living person, never submit addresses or phone numbers, anyone can be reduced to a name or removed, children are a name and a parent link only",
+       "caption": "The rules as the site states them. They are applied in review by a person, not by code, which is why they are written for people to read.",
+       "width": 1600,
+       "height": 618
+      }
+     ]
+    },
+    {
+     "p": "Photos needed one rule enforced by code. A phone photo carries hidden details, including where it was taken."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/photo-privacy.webp",
+       "alt": "Flow of four steps: a phone photo with hidden location data, redrawn in the browser at 1600 pixels which drops that data, stored at an address the archive owns, and attached only on approval",
+       "caption": "Step 2 is a privacy fix as much as a size one. An archive that quietly published where a photo was taken could reveal a family's home.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "Accessibility: I ran an audit over the whole site and fixed what it found. Dialogs now hold keyboard focus and give it back when they close. The tree's view switch works from the keyboard as a proper set of options. Gender is no longer shown by colour alone. Heading order, table headers and language tags were corrected, and everything pressable is at least 48 pixels."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are fixes from my own audit. I have not tested the archive with people who use screen readers."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, on made-up people, with no real-family numbers",
+   "blocks": [
+    {
+     "p": "The site is live. It runs on a generated demonstration dataset: every person in it is fictional. The reference lists around them, such as gotras, temples and villages, are real. A notice on every page says so, and it removes itself when the first real record arrives."
+    },
+    {
+     "p": "So nothing here establishes how many real families the archive holds, and I have no usage numbers to share. The site is also honest about what any family archive misses."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/vansh-vriksha/biases.webp",
+       "alt": "The About page section 'What this record is biased towards', with three parts: it follows sons, it follows literacy and money, it follows whoever is online now",
+       "caption": "The three biases, stated on the site itself. The demonstration data copies the first one on purpose rather than pretending to a balance real records do not have.",
+       "width": 1600,
+       "height": 909
+      }
+     ]
+    },
+    {
+     "list": [
+      "There are no automated tests. The data check guards the records, not the interface.",
+      "The rate limits are kept in memory per server, so they stop casual misuse, not a determined attacker.",
+      "Several family deities still have no freely licensed photograph."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Real records, then real contributors",
+   "blocks": [
+    {
+     "list": [
+      "Load real records. Importers for family-tree software files and spreadsheets already exist, and they report anything they cannot match instead of guessing.",
+      "Proposed test: ask a family contributor to send a relationship, look at what it rests on, and correct a disputed link.",
+      "Proposed review: tell made-up and sourced records apart in every public count, and check living people's privacy across search and sharing."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "The family's way of counting is a design input",
+   "blocks": [
+    {
+     "p": "The worst bugs I found were the product's own problem, handed back as a button: a child added to the wrong marriage, a wife's side of a marriage that could not be edited. Each time, the fix was to follow how these families actually count relationships, not how a tree diagram usually works."
+    },
+    {
+     "p": "I also learned to put a warning where someone can still act on it. The duplicate check was useless on the thank-you screen and useful under the name field."
+    }
+   ]
+  }
+ ]
+}

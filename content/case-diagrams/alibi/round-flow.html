@@ -1,0 +1,13 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.ph{flex:1;display:flex;flex-direction:column;gap:10px;padding:20px 18px;border:1.5px solid var(--line);border-radius:14px;background:#fff}.ph h2{font-size:26px;font-weight:600}.ph .t{align-self:flex-start;padding:3px 12px;border-radius:99px;background:var(--wash);color:var(--accent);font-size:18px;font-weight:600}.ph p{font-size:19px;line-height:1.4;color:var(--dim)}.ph .go{margin-top:auto;padding-top:10px;border-top:1.5px dashed var(--line);font-size:18px;color:var(--ink)}.ph.priv{background:var(--wash);border-color:var(--accent)}.ph.priv .t{background:#fff}.arrow{font-size:28px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How a round runs</p><h1>Six phases, each with its own clock</h1>
+<div class="grow row" style="gap:8px;align-items:stretch">
+<div class="ph"><h2>Lobby</h2><span class="t">no clock</span><p>3 to 8 players. The host picks a clip pack, rounds, clip length and talk time.</p><p class="go">Moves on when everyone is ready and the host starts</p></div><span class="arrow">→</span>
+<div class="ph priv"><h2>Watch</h2><span class="t">15, 20 or 30 s</span><p>Each player plays their own clip. The in-app call is muted. 30 extra seconds allow for slow loading.</p><p class="go">Moves on when all have watched, or time runs out</p></div><span class="arrow">→</span>
+<div class="ph priv"><h2>One word</h2><span class="t">60 s</span><p>One word, up to 24 characters. Others see only a tick that you are done.</p><p class="go">Moves on when all clues are in. A missing clue shows as a dash</p></div><span class="arrow">→</span>
+<div class="ph"><h2>Discuss</h2><span class="t">60 to 180 s</span><p>All clues appear together. The group talks it through.</p><p class="go">Moves on when time runs out, or the host opens voting early</p></div><span class="arrow">→</span>
+<div class="ph priv"><h2>Vote</h2><span class="t">45 s</span><p>One vote each, for someone else. It cannot be changed.</p><p class="go">Moves on when all have voted, or time runs out</p></div><span class="arrow">→</span>
+<div class="ph"><h2>Reveal</h2><span class="t">no clock</span><p>Both clips, every vote, the scores. +1 for each correct vote. +2 if the imposter escapes. A tie lets them escape.</p><p class="go">The host starts the next round</p></div>
+</div>
+<p class="note">Shaded phases hold something private. Times are the game's own settings and limits.</p>

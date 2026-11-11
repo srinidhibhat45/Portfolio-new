@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1040">
+<style>.flow{display:grid;grid-template-columns:330px 60px 1fr;gap:0;align-items:stretch}.start{align-self:center}.opts{display:grid;gap:18px}.opt{display:grid;grid-template-columns:1fr 50px 1fr;align-items:center;gap:0}.card h2{font-size:25px}.card p{font-size:21px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:36px;text-align:center}.res{display:grid;gap:10px}.res .card{padding:14px 20px}.bad{border-color:var(--warn);background:var(--warn-wash)}.good{border-color:var(--good);background:var(--good-wash)}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">The rules in one picture</p><h1>On your turn you can do one of three things</h1>
+<p class="sub">You see your own army. Every enemy piece is a shield until it is captured.</p>
+<div class="grow flow">
+<div class="card hi start"><h2>Your turn</h2><p>You know what your own pieces are. You know where the enemy pieces are, but not what they are.</p></div>
+<span class="arrow">→</span>
+<div class="opts">
+<div class="opt"><div class="card"><h2>Move</h2><p>A normal chess move. Only legal squares are offered.</p></div><span class="arrow">→</span><div class="card"><p>Capture a piece and it is revealed. Capture the king and you win. There is no check or checkmate.</p></div></div>
+<div class="opt"><div class="card"><h2>Bluff</h2><p>Move your piece to any empty or enemy square, legal or not.</p></div><span class="arrow">→</span><div class="card"><p>The game keeps a private record of whether it was legal. Your opponent sees only where the piece went.</p></div></div>
+<div class="opt"><div class="card"><h2>Challenge</h2><p>Accuse any earlier enemy move that has not been checked yet.</p></div><span class="arrow">→</span>
+<div class="res"><div class="card good"><p><b>It was legal.</b> Nothing is revealed and nobody loses a piece.</p></div><div class="card bad"><p><b>It was illegal.</b> That piece is removed, and you pick one more enemy piece to remove (two if it was already captured). A second proven offence loses the game.</p></div></div></div>
+</div></div>
+<p class="note">From the game's written rules. A challenge and its penalty do not use up your move. A king capture waits for the other player to review it, so an illegal one can still be caught.</p>

@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000"><style>.steps{display:grid;gap:16px}.step{display:grid;grid-template-columns:40px 1fr 380px;gap:22px;align-items:start;padding:18px 22px;border:1.5px solid var(--line);border-radius:14px;background:#fff}.step h2{font-size:24px;font-weight:600}.step p{font-size:20px;color:var(--dim);margin-top:4px;line-height:1.4}.step .rule{font-size:19px;padding:10px 14px;border-radius:10px;background:var(--wash);color:#4E3A00;line-height:1.35}.step.end{border-style:dashed}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How the meeting point is chosen</p><h1>First look for a road everyone already takes. Only then compromise.</h1>
+<div class="grow steps">
+<div class="step"><span class="num">1</span><div><h2>Route every rider to the destination</h2><p>Each from where they are now. It needs at least two known positions.</p></div><div class="rule">Fewer than 2 riders: no meeting point</div></div>
+<div class="step"><span class="num">2</span><div><h2>Look for where the routes merge</h2><p>Walk back from the destination along the longest route. Find the earliest point after which every other route stays on the same road.</p></div><div class="rule">"Same road" means within 60 m, checked every 50 m</div></div>
+<div class="step"><span class="num">3</span><div><h2>Keep it only if it is worth stopping for</h2><p>"Meet 400 m before the café" is just the café.</p></div><div class="rule">At least 500 m before the destination, or 5% of the longest route if that is more</div></div>
+<div class="step"><span class="num">4</span><div><h2>No merge? Try the places routes pass closest</h2><p>Score each by the extra distance for the rider it costs most. Pick the lowest.</p></div><div class="rule">Rejected if it adds more than 15% to anyone's ride</div></div>
+<div class="step end"><span class="num">5</span><div><h2>Nothing passes: no meeting point</h2><p>Everyone rides straight to the destination. A forced detour is worse than no meeting point.</p></div><div class="rule">Routing fails: the same. The ride still works.</div></div>
+</div>
+<p class="note">A merge point from step 2 adds no distance for anyone, so it needs no detour cap.</p>

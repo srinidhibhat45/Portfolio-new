@@ -1,0 +1,618 @@
+{
+ "title": "A group trip planner that catches the [[flight that lands too late]].",
+ "hook": "PlanIt is a web app I designed and built on my own. It plans trips where people arrive, attend and leave at different times, in different time zones, and it reads the plan back to say what cannot work.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "September 2026"
+  },
+  {
+   "label": "Why",
+   "value": "My own brief: group trips where one shared list stops working"
+  },
+  {
+   "label": "Platform",
+   "value": "Web. Runs entirely in the browser, with a phone layout"
+  },
+  {
+   "label": "Stack",
+   "value": "React 19, TypeScript, Vite, Leaflet, lz-string"
+  },
+  {
+   "label": "Status",
+   "value": "Live. No usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open PlanIt",
+   "url": "https://planit.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: on a group trip, people land, attend and leave at different times. One shared list hides who is where, and it cannot tell you when a plan is impossible.",
+  "What I built: one plan with eight views, a whiteboard that turns into a schedule only when asked, and a checker that flags journeys that do not fit.",
+  "The key idea: automation should be predictable. Resolve only moves cards that opted in, only pushes them later, and never moves a pinned time.",
+  "Where it stands: live, with no accounts and no server. The UX India group used it to plan their trip. I have no usage numbers beyond that."
+ ],
+ "lead": {
+  "src": "assets/cases/planit/timeline-lead.webp",
+  "alt": "PlanIt timeline for Saturday 26 September of the sample trip: a filter panel on the left and one lane per traveller, with four Track B sessions outlined in red",
+  "caption": "The timeline on one day of the sample trip. Each lane is one person. The red outlines mark a session that one of its four travellers cannot reach in time. Names are blurred.",
+  "width": 1600,
+  "height": 700
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "One list cannot show eight different days",
+   "blocks": [
+    {
+     "p": "On a group trip, people rarely do the same thing at the same time. One flies in a day early. Two go to a different track. Someone leaves before the farewell dinner. Most planners still treat the trip as one list that everyone follows."
+    },
+    {
+     "p": "I set myself the brief of planning a trip like that properly. PlanIt opens with a worked example: eight people meet in Bengaluru for a conference, from six cities and three time zones."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/problem.webp",
+       "alt": "Chart of eight sample travellers as bars across 22 September to 1 October, coloured by conference track, with the Track A, Track B and workshop days shaded",
+       "caption": "The sample trip as eight bars. Look at how few days everyone is there at once, and at the two travellers who land on the morning Track B begins.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "p": "Two faults are built into the example on purpose, so the checker has something to find. The worse one looks fine on paper. A flight lands at 09:15 and the session starts at 09:30. But the airport is 33 km from the venue, in morning traffic."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/late-arrival.webp",
+       "alt": "Time bar diagram: a flight lands at 09:15, 15 free minutes, sessions at 09:30, and below it a drive of about 1 hour 35 minutes that ends near 10:50",
+       "caption": "The fault in one picture. The schedule leaves 15 minutes. The app estimates the drive at about an hour and 35 minutes, so the plan is short by about 80.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "The library also holds a second trip, copied from a real group's planning board. Where the board was blank or had a question mark, the item is marked tentative instead of guessed."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "There were no interviews or surveys behind this. The problem comes from the kind of trip I wanted to plan, so this page quotes no users."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Eight views of the same plan, in the order a planner works",
+   "blocks": [
+    {
+     "p": "A trip holds people, places and a plan. The plan is made of blocks: a flight, a session, a lunch, a transfer. Eight views show the same blocks in different shapes, and every one of them can add, move and remove blocks."
+    },
+    {
+     "p": "The first time a trip opens, a short tour explains the order that works. It starts with people, not with the calendar, because everything else hangs off who is coming."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/trip.webp",
+       "alt": "Trip view: the whole trip as a grid of day cards from 21 September to 1 October, each listing its first few blocks and the people present",
+       "caption": "Trip view. Each card is a day. It is the view for spotting the empty evening or moving something to another day.",
+       "width": 1600,
+       "height": 720
+      },
+      {
+       "src": "assets/cases/planit/tour-flow.webp",
+       "alt": "First-run tour card titled The order that works, listing five steps: add who is coming, sketch it on the board, fix what cannot happen, fill the empty evenings, hand it out",
+       "caption": "The tour's second card. Five steps, each tied to a view.",
+       "width": 544,
+       "height": 478
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/day.webp",
+       "alt": "Day view for Saturday 26 September: hours down the side and a column per traveller, with flights at night and four red-outlined sessions from 09:30",
+       "caption": "Day view. Hours down the side, a column per person. It answers \"where do I need to be, and when?\"",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/planit/agenda.webp",
+       "alt": "Agenda view for Saturday 26 September: each block written as a line of text with its times, type, place and a note, and the journey between two stops",
+       "caption": "Agenda view. The plan as plain sentences, with the journeys spelled out. This is the version that prints and that a screen reader reads.",
+       "width": 1600,
+       "height": 1000
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/ideas.webp",
+       "alt": "Ideas view: a column of activities not yet scheduled, each showing who is interested, beside day columns that count evening items and invite a drop",
+       "caption": "Ideas view. Things people want to do, with interest counted. Drop one on a day and it looks for a free evening slot.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "people",
+   "label": "People first",
+   "nav": "People first",
+   "heading": "Each person keeps their own arrival, their own window and their own clock",
+   "blocks": [
+    {
+     "p": "What you see: a lane per person on the timeline, and a card per person that holds where they fly from, when they arrive and leave, their hotel, what they like and how full their days are. A stretch before someone arrives is shaded and labelled with the day they land, so an empty lane is never a mystery."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/people.webp",
+       "alt": "People view: eight traveller cards showing origin city, track, arrival and departure flights, hotel, interests and a daily load bar",
+       "caption": "People view. Every field here feeds the checker: arrival, departure, the window someone can be there, diet and interests.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/planit/clock-menu.webp",
+       "alt": "The Show times in menu: item local time, trip time, my device, and one entry per traveller's home clock with its zone",
+       "caption": "The clock menu. Times can show in each place's own zone, in trip time, or as any one traveller sees them from home.",
+       "width": 560,
+       "height": 660
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "In the build: every moment is stored in UTC, the world reference time. A block also records the zone it physically happens in. The screen then shows it in whichever zone you pick. This handles daylight saving, India's half-hour offset and Nepal's quarter-hour one."
+    },
+    {
+     "p": "One rule took a bug to find. The board groups cards into days, and at first it read the day in whatever clock was on screen. Switching to a London traveller's clock moved every overnight flight to the wrong day. Now the board always reads days in the trip's own zone, because it is one shared board."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A person takes longer to add than a name in a list. I kept it because each field earns its place: the checker uses all of them."
+     }
+    }
+   ]
+  },
+  {
+   "id": "board",
+   "label": "The board",
+   "nav": "The board",
+   "heading": "The board stays a whiteboard until you press Resolve",
+   "blocks": [
+    {
+     "p": "What you see: a board you can pan and zoom, with cards you place by hand. It is deliberately not a calendar. Nothing on it touches the clock until you ask."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/annotated-board.webp",
+       "alt": "The board zoomed into Saturday and Sunday frames, with six numbered notes on the Times and Resolve buttons, a day frame, gap chips, parallel columns and the day ribbon",
+       "caption": "The sample trip laid out with Tidy. Look at note 4: the gap chips say what Resolve would do before you press it.",
+       "width": 1600,
+       "height": 1300
+      }
+     ]
+    },
+    {
+     "p": "Position gets its meaning from frames and connectors. I kept this grammar small on purpose, so a card's place on the board always means one thing."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/board-grammar.webp",
+       "alt": "Six small panels: inside a day frame, top to bottom, side by side, outside any frame with a dashed edge, a travel connector and a then connector",
+       "caption": "The board's grammar. These panels are drawn to explain the rules, not captured from the app.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "In the build: the board stores positions and the calendar stores times. Only one piece of code turns one into the other. That is what lets a card sit somewhere meaningless without breaking the plan."
+    },
+    {
+     "p": "Two buttons cross between them. Tidy lays the existing plan out on the board, a frame per day. Resolve reads the board back and hands out times. I ruled out a board that rearranges itself, because a board that moves under your hands is not a board. Resolve follows four rules, so its changes are predictable."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/resolve-rules.webp",
+       "alt": "Diagram of Tidy and Resolve as two directions between the plan and the board, then four rules for Resolve, each with a small before and after",
+       "caption": "Resolve's four rules. The small before and after cards are an illustration, not a capture.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "A test checks the most important property: on a freshly tidied board, Resolve changes nothing. In the app it says so in plain words: \"Everything already sits where the board says it should.\""
+    },
+    {
+     "p": "One default taught me how far automation can reach. Leaving ten minutes between back-to-back cards rewrote thirty cards of a schedule that was already fine. So the default gap is zero: lunch can end as the afternoon session begins."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/board-flows.webp",
+       "alt": "The whole board at 75 percent zoom, with day frames in a row and coloured lines that bundle travellers moving from one card to another",
+       "caption": "People flows on. The lines are worked out from who is on each card and the clock, not from anything drawn. Four people making the same hop share one line.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Spatial meaning has to be learned. A frame that looks decorative can change the plan, and two buttons are one more idea to hold. The view description and the tour explain both, and each button explains itself on hover."
+     }
+    }
+   ]
+  },
+  {
+   "id": "checker",
+   "label": "The checker",
+   "nav": "The checker",
+   "heading": "Warnings come in three strengths, so people keep reading them",
+   "blocks": [
+    {
+     "p": "What you see: a list of issues, sorted by how serious they are. On the sample trip there is 1 blocking issue, 2 risky ones and 41 to consider, such as free evenings that match someone's interests or long days with no meal."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/annotated-issues.webp",
+       "alt": "The timeline with the issues panel open, with six numbered notes on the issue levels, the blocking issue, a tight transfer, the clock menu, journey ribbons and red-outlined blocks",
+       "caption": "The checker beside the timeline. Compare notes 2 and 3: one is impossible, the other is two minutes short, and they are not given the same weight.",
+       "width": 1600,
+       "height": 1240
+      }
+     ]
+    },
+    {
+     "p": "A journey can fail in three ways, and each needs a different fix. So each gets its own verdict."
+    },
+    {
+     "table": {
+      "head": [
+       "Verdict",
+       "What it means",
+       "Example from the app"
+      ],
+      "rows": [
+       [
+        "Tight",
+        "The cab is slow. Leave earlier or allow more time.",
+        "A hotel to a restaurant, 2.5 km, two minutes short"
+       ],
+       [
+        "Needs a flight",
+        "Nothing on the ground closes the gap. A flight would, and none is booked.",
+        "Delhi to Bengaluru with eight hours and no booking"
+       ],
+       [
+        "Impossible",
+        "Even the quickest route does not fit. Move something.",
+        "Bengaluru to Goa, 560 km, in three hours"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "I held the line between them to a real margin. Calling a two-minute shortfall impossible teaches people to ignore the warnings that are. Repeated findings are also rolled up per person per day, so the real problems stay visible."
+    },
+    {
+     "p": "In the build: travel time starts from a road route when the routing service answers. A traffic curve for the time of day, set per city, goes on top, so 09:15 in Delhi is not 09:15 in Goa. Airport check-in and walking time are added separately. The screen says which number came from the router and which from the model."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/map-offline.webp",
+       "alt": "Map view for Saturday 26 September with no map tiles: seven numbered stops joined by dashed straight lines, and a stop list noting that routing is unavailable",
+       "caption": "The map with the network off. The tiles are blank, the routes fall back to dashed straight lines, and the panel says \"Routing unavailable\".",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/planit/inspector.webp",
+       "alt": "Details panel for a Track B session, with the blocking issue at the top explaining the 33 km drive and the 15 free minutes",
+       "caption": "Select a flagged block and the reason is the first thing in its details.",
+       "width": 368,
+       "height": 440
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "Travel times are modelled estimates, not live traffic. I captured these screens offline, so the drive time shown is the app's own model."
+     }
+    }
+   ]
+  },
+  {
+   "id": "sharing",
+   "label": "Sharing",
+   "nav": "Sharing",
+   "heading": "A plan can be shared without a server or an account",
+   "blocks": [
+    {
+     "p": "What you see: a share dialog with a link, a calendar file and a backup. A link can be read-only or an editable copy, and it can carry one person's days instead of the whole trip."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/share.webp",
+       "alt": "Share this plan dialog: read only or editable copy, a choice of whose itinerary to send, a link with a Copy button and its length, calendar export with reminders, and other formats",
+       "caption": "The share dialog. For the sample trip the link is 9,934 characters long, because the whole plan travels inside it.",
+       "width": 607,
+       "height": 738,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: the plan is compressed into the part of the link after the \"#\". Browsers never send that part to a server, so a link is private to whoever holds it and needs nothing to sign in to. Calendar files write times in UTC, so Google, Outlook and Apple Calendar each show them in the reader's own zone."
+    },
+    {
+     "p": "Trips are saved in the browser, one entry per trip plus a small index. A hosted app that stores data in the browser must never lose it when a new version ships. So the index is treated as a cache: if it cannot be read, it is rebuilt from the trips. Older storage names are still searched, and a save that fails says so and offers a backup."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "With no accounts, a trip lives in one browser on one device. Moving it means a link or a JSON backup. I ruled out accounts and sync because they need a server, and this app has none by design."
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Keyboard, contrast and colour were built in, not added later",
+   "blocks": [
+    {
+     "p": "Drag and drop works from the keyboard, using the same logic as the mouse. Space picks a block up, the arrow keys move it, Enter drops it and Escape puts it back. Each step is announced with the new time. This meets two WCAG rules: everything works from a keyboard, and dragging always has a simpler alternative."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/tooltip.webp",
+       "alt": "The board toolbar with a tooltip under Resolve to timeline that gives its name, its shortcut and one line on what it does",
+       "caption": "Every control explains itself: a name, its shortcut and what it is for. The tip also appears on keyboard focus, and Escape closes it.",
+       "width": 960,
+       "height": 400
+      }
+     ]
+    },
+    {
+     "p": "I measured contrast for every visible piece of text against the background it is actually painted on. Both themes have zero failures at the AA level. The lowest ratio is 4.99 to 1, and about two thirds of the text passes the stricter AAA level. A higher-contrast setting raises that to 91%."
+    },
+    {
+     "p": "Colour is never the only signal. Every block has an icon as well as a colour. A tentative block is hatched, dashed and labelled. The app also follows the system settings for reduced motion, reduced transparency, more contrast and Windows high contrast."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/day-light.webp",
+       "alt": "Day view in the light theme for Saturday 26 September, with hatched tentative blocks and red-outlined sessions",
+       "caption": "The light theme. Look at the sunrise trip: it is tentative, so it is hatched and dashed, not just a paler colour.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/planit/phone-agenda.webp",
+       "alt": "Phone layout of the agenda for Saturday 26 September, with a tentative label, a clash label and a tab bar of views at the bottom",
+       "caption": "On a phone, the views move to a tab bar at the bottom.",
+       "width": 780,
+       "height": 1458,
+       "kind": "tall"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are my own measurements with my own audit script. They are not a study with people who use a screen reader, and I do not claim one."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "No server: a tested core, eight views and the browser's own storage",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/architecture.webp",
+       "alt": "Diagram in three columns: views, one store and a core with no screen code; browser storage, share link and calendar files; and three optional online services with their offline fallbacks",
+       "caption": "How PlanIt is put together. Everything on the right is optional. With the network off, each part falls back to something that still works.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "React 19, TypeScript, Vite"
+       ],
+       [
+        "Map",
+        "Leaflet, with OpenStreetMap tiles"
+       ],
+       [
+        "Share links",
+        "lz-string compression"
+       ],
+       [
+        "Routes and places",
+        "A public routing service and OpenStreetMap search, both optional"
+       ],
+       [
+        "Hosting",
+        "Four static files. Any static host works"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The core has no screen code in it, so it is tested on its own. The tests cover time zone maths, the traffic model, calendar output, share links, storage recovery, the board's maths and Resolve. The project has a single check that runs type checking, the tests and a production build."
+    },
+    {
+     "stats": [
+      {
+       "value": "9",
+       "label": "commits"
+      },
+      {
+       "value": "2",
+       "label": "days, 10 and 11 September 2026"
+      },
+      {
+       "value": "8",
+       "label": "views of one plan"
+      },
+      {
+       "value": "0",
+       "label": "servers, accounts or databases"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/planit/commits.webp",
+       "alt": "Timeline of nine commits on 10 and 11 September 2026, from the first planner to a second built-in trip",
+       "caption": "The project history. The board that resolves to the timeline arrived on the first evening.",
+       "width": 1600,
+       "height": 660
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were small rules that broke big things."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Overnight flights",
+        "The board read days in the clock on screen, so switching clocks moved every overnight flight by a day. Days are now always read in the trip's zone."
+       ],
+       [
+        "Default slack",
+        "Ten minutes between cards rewrote thirty cards of a good schedule. The default is now zero."
+       ],
+       [
+        "Fast drags",
+        "Drag tracking started a moment too late, so a quick gesture could be lost. It now starts the instant the pointer goes down."
+       ],
+       [
+        "Text in blocks",
+        "Blocks have a fixed height, and long text painted over the line below. Each block now measures first and drops the place, then the clock, then the title, down to just an icon."
+       ],
+       [
+        "Dialogs",
+        "A style name used by both old and new dialogs made every dialog show at once. The new panels use their own name."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no accounts and no usage numbers",
+   "blocks": [
+    {
+     "p": "PlanIt is live and free to use. With no accounts and no server, I have no count of users or trips to report. These are also still open:"
+    },
+    {
+     "list": [
+      "I have no feedback from a group using it to share here.",
+      "Travel times are estimates from a model, not live traffic.",
+      "A trip lives in one browser. Moving it needs a link or a backup file."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Find out whether people can predict what Resolve will do",
+   "blocks": [
+    {
+     "p": "The test I would run next:"
+    },
+    {
+     "list": [
+      "Give people a trip with parallel sessions, a pinned departure and travellers in two time zones.",
+      "Ask them to say what Resolve will change before they press it.",
+      "Count the changes that surprised them, the conflicts they found on their own, and how well they can explain the final plan."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Useful automation is modest and easy to predict",
+   "blocks": [
+    {
+     "p": "Each time automation reached too far, it cost trust. Ten minutes of invented slack rewrote thirty cards. A board that rearranged itself would have stopped being a board. Resolve became useful when I limited what it may touch: cards that opted in, only later, never a pin."
+    },
+    {
+     "p": "Warnings work the same way. If every shortfall is \"impossible\", people stop reading. Giving each kind of failure its own name and its own fix kept the one real problem easy to see among 44."
+    }
+   ]
+  }
+ ]
+}

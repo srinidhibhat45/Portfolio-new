@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:18px 22px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.lane{font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);margin-bottom:4px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">How it is put together</p><h1>Replays go straight from the browser. Live timing needs a small relay.</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm" style="flex:.85"><p>Free sources</p>
+<div class="card"><div class="lane">Replay</div><h2>OpenF1</h2><p>Timing, GPS, telemetry, laps, tyres, race control, radio, weather.</p></div>
+<div class="card"><div class="lane">Both</div><h2>Jolpica</h2><p>Championship standings and season results.</p></div>
+<div class="card"><div class="lane">Live</div><h2>F1 live-timing feed</h2><p>A live socket behind a load balancer that ties each connection to a cookie.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>In between</p>
+<div class="card"><h2>A request queue in the page</h2><p>One request every 380 ms, to stay under OpenF1's limit of 3 a second, with retries. Data is fetched in 30-second slices around the playhead, so a full race never downloads at once.</p></div>
+<div class="card hi"><h2>A relay on a server</h2><p>A web page cannot carry that cookie, so a server opens the socket and passes each update on as a stream the page can read. It also serves session status and the circuit outline. It runs in the local dev server or as a Netlify Function.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>In the browser</p>
+<div class="card"><h2>One store</h2><p>Every feed kept in time order, so any panel can ask "what was true at this moment".</p></div>
+<div class="card hi"><h2>Lap model</h2><p>Places each car on the circuit in race mode.</p></div>
+<div class="card"><h2>Drawing</h2><p>React and TypeScript. Canvas for the map and speed trace, SVG for the charts. No chart library.</p></div></div>
+</div>
+<p class="note">A Netlify Function has a time limit, so there the live stream ends and reconnects, and timing arrives in bursts. Run locally, it does not.</p>

@@ -1,0 +1,545 @@
+{
+ "title": "Setting up a budget should [[give something back]] along the way.",
+ "hook": "MuCoin is a personal-finance app concept, and this is its setup: five steps that take a person from their income to a first budget they have checked themselves.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Flow, screen design, prototype and written rationale"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "For",
+   "value": "A design assignment set by a company"
+  },
+  {
+   "label": "Platform",
+   "value": "Setup flow for a personal-finance app, as a clickable Figma prototype"
+  },
+  {
+   "label": "Methods",
+   "value": "Double Diamond process, three usability rules (Hick, Miller, Jakob), a plan of 18 measures"
+  },
+  {
+   "label": "Status",
+   "value": "Concept. Not built or tested. Every number on this page is a target, not a result"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open the Figma prototype",
+   "url": "https://www.figma.com/proto/fTSm9Chs0awMrjMUN2OWSa/MuCoin?node-id=1-2&starting-point-node-id=191%3A955&t=z97O9d2NsQAgujdk-1"
+  },
+  {
+   "label": "Read the written rationale (PDF)",
+   "url": "assets/pdfs/mucoin.pdf"
+  }
+ ],
+ "linksHeading": "The prototype and the written rationale",
+ "summary": [
+  "The problem: a budgeting app has to ask what you earn and spend before it can help. Those numbers are private and hard to remember, and a long form gives nothing back until the end.",
+  "What I did: I designed a five-step setup (income, fixed expenses, variable expenses, saving goals, review), made it a clickable prototype and wrote down the reason for every screen.",
+  "The key idea: ask for a little, then show what it adds up to. Each expense step ends with a chart and a total, and the last step lets the person fix anything.",
+  "Where it stands: a concept. It has not been built or tested. I set targets for 18 measures, and none of them has been measured."
+ ],
+ "lead": {
+  "src": "assets/cases/mucoin/lead.webp",
+  "alt": "Five schematic screens in a row: income, fixed expenses, variable expenses, saving goals and review, each under a progress bar",
+  "caption": "The whole setup, left to right: income, fixed expenses, variable expenses, saving goals and review. These are schematics I drew from my rationale. The real screens are in the Figma prototype.",
+  "width": 1600,
+  "height": 800
+ },
+ "sections": [
+  {
+   "id": "problem",
+   "label": "The problem",
+   "heading": "A budgeting app asks its hardest questions first",
+   "blocks": [
+    {
+     "p": "A budgeting app can only help once it knows what you earn and what you spend. So the first thing it does is ask. Income is a private number. Expenses are hard to remember, and there are many of them."
+    },
+    {
+     "p": "If setup is one long form, the person does all of that work before they see anything useful. I wanted the setup itself to give something back along the way."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/before-after.webp",
+       "alt": "Diagram comparing one long setup form, which shows a result only at the end, with MuCoin's five steps that show results as they go",
+       "caption": "The idea in one picture. In the top row the first useful view comes after all the work. In MuCoin each expense step ends with a chart and a total. This is an illustration, not a measured comparison.",
+       "width": 1600,
+       "height": 660
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What you are looking at.",
+      "detail": "MuCoin is a concept. It has not been built or tested with users. The real screens are in the Figma prototype linked on this page. The pictures here are diagrams I drew from my written rationale, so they show what each screen holds and why. They do not show its final look."
+     }
+    }
+   ]
+  },
+  {
+   "id": "approach",
+   "label": "My approach",
+   "heading": "I wrote down a reason for every screen",
+   "blocks": [
+    {
+     "p": "This was a solo project. I followed the Double Diamond, a design process with four stages: discover, define, develop and deliver. Here is what I have to show for each stage, including what has not happened yet."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/plan.webp",
+       "alt": "Diagram of four stages, discover, define, develop and deliver, with what exists for each and two items marked as not done",
+       "caption": "Read the last card first. The flow was designed and prototyped, and the measures were planned. No test has been run.",
+       "width": 1600,
+       "height": 650
+      }
+     ]
+    },
+    {
+     "p": "For each screen I leaned on a well-known usability rule. These rules are short summaries of how people tend to behave. Each one gave me a reason to keep a screen small or familiar."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/laws.webp",
+       "alt": "Three cards explaining Hick's Law, Miller's Law and Jakob's Law in plain words, each with where it is used in MuCoin",
+       "caption": "Each rule is at the top of its card in plain words. The green box says where it shows up in the flow.",
+       "width": 1600,
+       "height": 630
+      }
+     ]
+    },
+    {
+     "p": "I wrote all of this up as an 11-page rationale. One page covers the name and the process, four pages go through the flow screen by screen, and six pages define how each screen would be measured."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/p03.webp",
+       "alt": "A page of the written rationale covering the expense summary and the variable expenses screen",
+       "caption": "A page from the flow section. It explains the expense summary and why the variable-expense screen copies the fixed-expense one.",
+       "width": 1120,
+       "height": 1585
+      },
+      {
+       "src": "assets/cases/mucoin/p09.webp",
+       "alt": "A page of the written rationale listing measures for the goals screen, each with a definition, goal, measurement and target",
+       "caption": "A page from the measures section. Every measure has a definition, a goal, a way to count it and a target.",
+       "width": 1120,
+       "height": 1585
+      }
+     ],
+     "layout": "two"
+    }
+   ]
+  },
+  {
+   "id": "income",
+   "label": "The design",
+   "nav": "Step 1: income",
+   "heading": "Income gets two fields and nothing more",
+   "blocks": [
+    {
+     "p": "Income is the first step, and it is a private number. I did not want the screen to scare anyone off. So it asks for two things only: the amount and where it comes from."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/screen-income.webp",
+       "alt": "Schematic of the income step with five numbered notes: progress bar, amount with currency, source dropdown, add another source, and help and privacy links",
+       "caption": "The income step, part by part. Look at 5: the help and privacy links are on this step and stay on every step after it.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Two fields cannot describe every kind of income. Someone who is paid irregularly, or who is unsure of the exact figure, still needs a way to answer honestly. A short form should not force a wrong number."
+     }
+    }
+   ]
+  },
+  {
+   "id": "expenses",
+   "label": "The design",
+   "nav": "Steps 2 and 3: expenses",
+   "heading": "Expenses go in one at a time, then add up on screen",
+   "blocks": [
+    {
+     "p": "Fixed expenses stay the same each month. Variable expenses change. Listing all of them in detail is where I expected people to give up, because nobody holds a whole month of spending in their head."
+    },
+    {
+     "p": "So the step starts empty, with one prompt. Each expense goes through a short form: the details, a category and an optional comment."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/expense-loop.webp",
+       "alt": "Three schematic states of the expense step: an empty screen with a prompt, a short form, and a summary with a pie chart, a table and a total",
+       "caption": "Three states of the expense step, left to right. The form in the middle is the only thing a person has to learn.",
+       "width": 1600,
+       "height": 1030
+      }
+     ]
+    },
+    {
+     "p": "Once an expense is entered, the person sees a summary. This is the part that gives something back: real numbers about their own money, before setup is finished."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/screen-summary.webp",
+       "alt": "Schematic of the expense summary with four numbered notes: pie chart, summary table, total in bold, and total as a share of income",
+       "caption": "The summary, part by part. Look at 4: the total is shown as a share of income, which ties this step back to the first one.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "p": "The variable-expense step uses the same three states. By then the pattern is familiar, so I expected it to go faster. That is a guess I have not tested."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A chart is only as good as what was typed in. If someone is guessing, the summary should read as an estimate and not as a precise account."
+     }
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "label": "The design",
+   "nav": "Step 4: saving goals",
+   "heading": "“Financial goals” became “saving goals”",
+   "blocks": [
+    {
+     "p": "This step was first called Financial goals. In informal research with a small group of users, Saving goals appealed more, so I renamed it. My write-up does not say how many people that was, so I treat it as a hint and not as a finding."
+    },
+    {
+     "p": "The step opens with a question: how much are you looking to save? Under it are suggested amounts, shown as shares of the person's income. After that they can set a goal of their own or pick a suggested one."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/goals-flow.webp",
+       "alt": "Flow diagram of the goals step: savings prompt, suggested amounts, set a goal, the goal form, and a celebration animation",
+       "caption": "The goals step in order. The celebration at the end is there so that setting one goal makes people want to set another.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/screen-goal.webp",
+       "alt": "Schematic of the goal form with five numbered notes: goal name, target amount, amount already saved, reminder, and icon",
+       "caption": "The goal form, part by part. It looks like the expense form on purpose, so it is already familiar.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The icons and the celebration make this the longest step. I set its time target at 3 to 5 minutes, against 1 to 2 minutes for an expense step. Whether that extra time helps people or loses them is something only a test can show."
+     }
+    }
+   ]
+  },
+  {
+   "id": "review",
+   "label": "The design",
+   "nav": "Step 5: review",
+   "heading": "The last step is a check, and everything can still be changed",
+   "blocks": [
+    {
+     "p": "The final step shows everything the person entered, grouped into three sections: Income, Expenses and Goals. Each section opens and closes, and each entry can be edited. Editing goes back to a form the person already knows."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/screen-review.webp",
+       "alt": "Schematic of the review step with five numbered notes: full progress bar, three sections, open and close, edit links, and confirm",
+       "caption": "The review, part by part. Look at 4: an edit returns to the same form the entry came from.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "p": "I wanted this step to do two jobs. It lets people catch mistakes while the numbers are fresh. It also gives setup a clear end, so the person feels finished and in control of what they shared."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "In my rationale I wrote that this screen would ensure a 100% completion rate. No screen can promise that. A review also adds one more screen before the person gets into the app, so it has to earn its place by catching real errors."
+     }
+    }
+   ]
+  },
+  {
+   "id": "measures",
+   "label": "Measures",
+   "nav": "How I would measure it",
+   "heading": "Eighteen measures, each with a target",
+   "blocks": [
+    {
+     "p": "A KPI, or key performance indicator, is a number you track to see whether something is working. I defined 18 of them across the five steps. The two expense steps share the same four. For each one I wrote what it counts, how to count it and the number I would aim for."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/kpi-targets.webp",
+       "alt": "Chart of fourteen percentage targets on a scale from 0 to 100 percent, grouped by income, expenses, saving goals and review",
+       "caption": "The fourteen targets that are percentages, on one scale. Dark bars are zones where higher is better. Pale bars are drop-off, where lower is better. These are aims, not results.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "p": "Here is the full list, including the four that are times or counts."
+    },
+    {
+     "table": {
+      "head": [
+       "Step",
+       "Measure",
+       "What it counts",
+       "Target"
+      ],
+      "rows": [
+       [
+        "Income",
+        "First-attempt completion",
+        "People who finish the step without going back to fix or fill in something",
+        "85% or more"
+       ],
+       [
+        "Income",
+        "Drop-off",
+        "People who leave the step unfinished",
+        "Under 10%"
+       ],
+       [
+        "Income",
+        "Task completion",
+        "People who fill in every required field",
+        "95 to 100%"
+       ],
+       [
+        "Expenses",
+        "Drop-off",
+        "People who leave before finishing the required fields",
+        "Under 10%"
+       ],
+       [
+        "Expenses",
+        "Time to complete",
+        "Average time from opening the step to finishing it",
+        "1 to 2 minutes"
+       ],
+       [
+        "Expenses",
+        "Input accuracy",
+        "People whose entries are correct and complete on the first try",
+        "90% or more"
+       ],
+       [
+        "Expenses",
+        "Optional fields used",
+        "People who use an optional field or add a category of their own",
+        "60% or more"
+       ],
+       [
+        "Saving goals",
+        "Form completion",
+        "People who start the goal form and submit it",
+        "90% or more"
+       ],
+       [
+        "Saving goals",
+        "Time on goal setting",
+        "Average time from opening the step to finishing the goals",
+        "3 to 5 minutes"
+       ],
+       [
+        "Saving goals",
+        "Goal tools used",
+        "People who adjust or customise a goal",
+        "70% or more"
+       ],
+       [
+        "Saving goals",
+        "Goals section completed",
+        "People who reach the step and submit a goal",
+        "95 to 99%"
+       ],
+       [
+        "Saving goals",
+        "Drop-off",
+        "People who start a goal and do not finish it",
+        "Under 10%"
+       ],
+       [
+        "Saving goals",
+        "Celebration shown",
+        "People who finish a goal and see the animation",
+        "90% or more"
+       ],
+       [
+        "Saving goals",
+        "Goals revisited",
+        "People who come back to review or change a goal within 30 days",
+        "40% or more"
+       ],
+       [
+        "Review",
+        "Time on review",
+        "Average time on the review screen before submitting",
+        "1 to 3 minutes"
+       ],
+       [
+        "Review",
+        "Edits after review",
+        "Changes made after reaching the review screen",
+        "1 or fewer per person, on average"
+       ],
+       [
+        "Review",
+        "Edit and collapse used",
+        "People who use click-to-edit or open and close a section",
+        "75% or more"
+       ],
+       [
+        "Review",
+        "Errors found",
+        "People who spot at least one error and fix it",
+        "80% or more"
+       ]
+      ]
+     }
+    },
+    {
+     "aside": {
+      "title": "Targets, not results.",
+      "detail": "None of these numbers has been measured. My rationale does not say where each target came from, so they are starting points for a test and nothing more. The Expenses rows apply to the fixed step and again to the variable step."
+     }
+    }
+   ]
+  },
+  {
+   "id": "questions",
+   "label": "Looking back",
+   "nav": "What I would question",
+   "heading": "Three targets I would rewrite",
+   "blocks": [
+    {
+     "p": "Reading the targets again, some of them do not hold up. I would fix these before running any test."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/kpi-questions.webp",
+       "alt": "Three cards, each pairing something written in the rationale with what the author thinks of it now",
+       "caption": "Each card shows what I wrote in pink and what I think now in green. The middle card matters most: a corrected number is a good outcome, not a failure.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "A smaller one sits beside these. I set a target for how often the celebration plays after a goal is set. It plays every time, so that number would only tell me whether the animation works. It says nothing about how people feel."
+    },
+    {
+     "p": "The measure I care about most now is corrections. Someone who notices a wrong amount and fixes it has a better budget than someone who finished fast with the wrong numbers."
+    }
+   ]
+  },
+  {
+   "id": "name",
+   "label": "Name and look",
+   "nav": "Name and look",
+   "heading": "The name means small steps",
+   "blocks": [
+    {
+     "p": "Mu is the Greek letter μ. It is often used to mean micro, and in statistics it stands for the mean, or average. Both fit a budgeting app, where small amounts and averages matter. Despite the word coin, MuCoin has nothing to do with cryptocurrency."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/mucoin/name.webp",
+       "alt": "The MuCoin logo, a gold coin stamped with the Greek letter mu beside the name, with three notes on what the name means",
+       "caption": "The logo and the three ideas behind the name. Look at the coin: it carries the letter μ.",
+       "width": 1600,
+       "height": 770
+      }
+     ]
+    },
+    {
+     "p": "For colour I wanted a mix of formal and casual. Money is a heavy subject, and the look was meant to make it feel a little lighter."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "nav": "What comes next",
+   "heading": "What I would do before building it",
+   "blocks": [
+    {
+     "p": "The flow is designed and the measures are written. The next job is to find out whether any of it is true."
+    },
+    {
+     "steps": [
+      {
+       "title": "Test it with real people.",
+       "detail": "Watch each step: who finishes, how long it takes to reach a useful summary, and which errors get caught at review."
+      },
+      {
+       "title": "Compare it with a shorter path.",
+       "detail": "Try a short version with optional detail against this five-step sequence, and see which one people complete."
+      },
+      {
+       "title": "Include the awkward cases.",
+       "detail": "Irregular income, rough estimates and skipped answers, as well as tidy inputs."
+      },
+      {
+       "title": "Ask about privacy.",
+       "detail": "Check that people understand what happens to the numbers they enter."
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A target is a guess until it is tested",
+   "blocks": [
+    {
+     "p": "The flow rests on one idea I still believe in: give people something back while they are still entering their numbers. A summary after each step is a reason to keep going and a chance to fix a mistake."
+    },
+    {
+     "p": "What I would change is how I wrote about it. I stated some targets as if they were outcomes. Next time I would write each one as a question, run a small test, and only then put numbers on the page."
+    }
+   ]
+  }
+ ]
+}

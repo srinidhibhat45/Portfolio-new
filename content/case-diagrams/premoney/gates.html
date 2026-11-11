@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>
+.gates{display:grid;grid-template-columns:repeat(5,1fr) 200px;gap:14px;align-items:stretch}
+.g{display:flex;flex-direction:column;gap:10px;padding:18px;border-radius:14px;background:#fff;border:1.5px solid var(--line)}
+.g h2{font-size:25px;line-height:1.25}
+.g p{font-size:20px;color:var(--dim);line-height:1.4}
+.g .rej{margin-top:auto;padding-top:10px;border-top:1.5px dashed var(--line);font-size:18px;color:var(--warn);font-weight:600;line-height:1.4}
+.pass{display:flex;flex-direction:column;justify-content:center;gap:10px;padding:18px;border-radius:14px;background:var(--wash);border:1.5px solid var(--accent)}
+.pass h2{font-size:24px;color:var(--accent)}
+.pass p{font-size:20px;color:var(--dim)}
+.hard{background:#F6F3F1}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Inside the parser</p>
+<h1>Five checks, always in this order</h1>
+<p class="sub">A message must pass every check to become an entry. The order is part of the design, and tests hold it in place.</p>
+<div class="grow gates">
+ <div class="g hard"><span class="num">1</span><h2>Never a payment</h2><p>OTPs come first, because they often quote the amount. Then failed payments and statements.</p><p class="rej">Rejected: OTP, failed, statement. No amount of proof overrides these.</p></div>
+ <div class="g"><span class="num">2</span><h2>Advert or request?</h2><p>Promotional wording, future dates and payment requests.</p><p class="rej">Rejected: promotional, future or requested. Skipped when the bank's own marks are overwhelming.</p></div>
+ <div class="g"><span class="num">3</span><h2>Which way did money go?</h2><p>Card names are blanked first. Then the first verb wins, so "debited from A, credited to B" is a payment out.</p><p class="rej">Rejected: nothing says money moved.</p></div>
+ <div class="g"><span class="num">4</span><h2>How much?</h2><p>Balances, limits and offer figures are set aside by the words around them. The earliest number left wins.</p><p class="rej">Rejected: no amount, or over ₹5 crore.</p></div>
+ <div class="g"><span class="num">5</span><h2>Enough proof?</h2><p>Count the bank's marks and the advert's tells. The more it reads like an advert, the more proof it needs.</p><p class="rej">Rejected: advert, or not enough proof.</p></div>
+ <div class="pass"><h2>Accepted</h2><p>Now the fields are read: merchant, account digits, reference, channel, date. Each one it cannot read lowers the confidence.</p></div>
+</div>
+<p class="note">Why checks 1 and 2 come before direction: so the message tester reports an advert as an advert, not as whichever later check it happened to fail.</p>

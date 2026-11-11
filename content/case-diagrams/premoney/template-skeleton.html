@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>
+.flow{display:grid;grid-template-columns:1fr 50px 1fr 50px 380px;align-items:center;gap:8px}
+.msgs{display:flex;flex-direction:column;gap:14px}
+.msg{font-size:19px;line-height:1.5;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:12px 14px}
+.msg em{font-style:normal;background:#FBEFD8;border-radius:4px;padding:0 3px}
+.sk{font-size:19px;line-height:1.5;background:var(--wash);border:1.5px solid var(--accent);border-radius:12px;padding:12px 14px}
+.sk em{font-style:normal;color:var(--accent);font-weight:700}
+.lab{font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:6px}
+.card h2{font-size:22px}.card p{font-size:19px;margin-top:6px}
+.res{display:flex;flex-direction:column;gap:14px}
+.diff{border-style:dashed}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How "messages like this" is decided</p>
+<h1>Each message is reduced to the shape of its template</h1>
+<div class="grow flow">
+ <div class="msgs"><p class="lab">Two sends of one made-up advert</p>
+  <p class="msg">Spent <em>Rs.2,999</em> on your card? Convert it to EMI. Offer ref <em>AB1234</em> valid till <em>30-09-26</em>.</p>
+  <p class="msg">Spent <em>Rs.7,450</em> on your card? Convert it to EMI. Offer ref <em>CD5678</em> valid till <em>15-10-26</em>.</p>
+ </div>
+ <span class="arrow">→</span>
+ <div><p class="lab">The skeleton both reduce to</p>
+  <p class="sk">spent rs.<em>#</em> on your card? convert it to emi. offer ref <em>#</em> valid till <em>#</em>.</p>
+  <p style="font-size:19px;color:var(--dim);margin-top:12px">Amounts, dates, references and masked digits are blanked. What is left is the wording the sender reuses.</p>
+ </div>
+ <span class="arrow">→</span>
+ <div class="res"><p class="lab">Is a new message the same template?</p>
+  <div class="card"><h2>Same skeleton</h2><p>A match.</p></div>
+  <div class="card"><h2>82% or more of the words shared</h2><p>Also a match. Set high on purpose: a false match would silently drop a real payment.</p></div>
+  <div class="card diff"><h2>A different merchant</h2><p>Always a different template, so blocking one shop's advert never blocks payments to another.</p></div>
+ </div>
+</div>
+<p class="note">The messages are made up. The blanking, the 0.82 overlap threshold and the merchant rule are taken from the app's code and notes.</p>

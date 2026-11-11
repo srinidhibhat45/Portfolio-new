@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x840">
+<style>.stage{display:grid;grid-template-columns:1fr auto 1fr;gap:36px;align-items:stretch}.colm{display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.ops{flex:1;padding:24px 26px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font:400 20px/1.75 ui-monospace,Menlo,monospace;color:var(--dim)}.ops b{color:var(--ink);font-weight:600}.layers{flex:1;display:grid;gap:12px;align-content:start}.layer{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:14px 20px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:22px}.layer .tag{text-align:center}.mid{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:12px;color:var(--accent);font-size:20px;font-weight:600;text-align:center;width:150px}.mid .arrow{font-size:48px}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">The problem in one picture</p><h1>A PDF keeps how a slide looks, and drops what it was made of</h1>
+<div class="grow stage">
+<div class="colm"><p>What the PDF holds</p>
+<div class="ops">
+<b>set colour</b> dark green<br>
+<b>draw letters</b> “R a i n w a t e r” at 64, 180<br>
+<b>draw letters</b> “f o r t h e” at 380, 180<br>
+<b>fill path</b> 41 points, white<br>
+<b>fill path</b> circle, teal<br>
+<b>paint image</b> 1200 × 900<br>
+<b>draw letters</b> “M a y” at 60, 480<br>
+<b>fill rectangle</b> × 6, teal<br>
+<b>draw letters</b> “2” at 880, 500<br>
+… hundreds more
+</div></div>
+<div class="mid"><span class="arrow">→</span>DeckForge rebuilds the objects</div>
+<div class="colm"><p>What a presenter wants to grab</p>
+<div class="layers">
+<div class="layer"><span class="tag">Title</span><span>One paragraph, in its own typeface</span></div>
+<div class="layer"><span class="tag">Bullet list</span><span>Four lines that can arrive one per click</span></div>
+<div class="layer"><span class="tag">Logo</span><span>Many paths treated as one object</span></div>
+<div class="layer"><span class="tag">Chart</span><span>Six bars that move as one series</span></div>
+<div class="layer"><span class="tag">Photo</span><span>The image, lifted out of the page</span></div>
+<div class="layer"><span class="tag">Page number</span><span>Known as furniture, so it can stay still</span></div>
+</div></div>
+</div>
+<p class="note">An illustration. The left column puts real kinds of PDF drawing instructions into plain words; it is not a literal file listing.</p>

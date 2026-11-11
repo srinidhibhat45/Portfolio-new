@@ -1,0 +1,559 @@
+{
+ "title": "A phone cleaner where [[nothing is deleted the moment you swipe]].",
+ "hook": "Binnder is an Android app I designed and built on my own. It shows your largest files one at a time, and you swipe to keep each one, move it to a bin or delete it for good.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself: clear space on a phone without losing the wrong file"
+  },
+  {
+   "label": "Platform",
+   "value": "Native Android, version 11 and newer"
+  },
+  {
+   "label": "Stack",
+   "value": "Kotlin, Jetpack Compose, Material 3, SQLite, WorkManager"
+  },
+  {
+   "label": "Timeline",
+   "value": "October 2026, versions 0.1.0 to 0.1.2"
+  },
+  {
+   "label": "Status",
+   "value": "Runs in an Android emulator. Not yet tested on a real phone, not published, no users"
+  }
+ ],
+ "links": [],
+ "linksHeading": "There is no public download yet",
+ "summary": [
+  "The problem: clearing storage is easy to rush, and one fast gesture on a file you did not really look at can lose it for good.",
+  "What I built: a native Android app that shows one large file at a time, biggest first, with three swipes that have three different consequences.",
+  "The key idea: no swipe touches a file straight away. Every deletion waits five seconds with its own Undo, binned files stay for 30 days, and only real deletions count as freed space.",
+  "Where it stands: version 0.1.1 runs in an emulator and its rules have 23 automated tests. It has not been tried on a real phone or published, and it has no users."
+ ],
+ "lead": {
+  "src": "assets/cases/binnder/lead.webp",
+  "alt": "Two Binnder screens side by side: the review screen showing one large PDF preview with Keep, Delete forever and Bin buttons, and the Delete permanently dialog naming the same file",
+  "caption": "Version 0.1.1 in an Android emulator, with sample files. Left, the review screen. Right, the one question the app asks before a permanent delete. The name on the sample deck is blurred.",
+  "width": 1600,
+  "height": 1000
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Clearing space is quick until the wrong file goes",
+   "blocks": [
+    {
+     "p": "Phones fill up with big files: videos, downloads, old documents. Clearing them is a chore, and a chore is easy to rush."
+    },
+    {
+     "p": "I wanted a tool that keeps the fast part fast and makes the dangerous part slow. You should see the file itself, know what each choice will do, and have a way back when you get it wrong."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/problem.webp",
+       "alt": "Diagram in two rows: a fast gesture, plus a file you cannot see, plus one kind of delete, leads to the wrong file being lost; below it, the four things Binnder puts in the way",
+       "caption": "The risk on the top row, and what the app puts in its way on the bottom. This is the thinking behind the app, not a research finding.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "I set the brief myself and wrote four rules before drawing a screen:"
+    },
+    {
+     "list": [
+      "Show the file before any delete control.",
+      "Keep routine swipes fast. Interrupt only for a choice that cannot be undone.",
+      "If a move, a restore or a check fails, keep the data.",
+      "No accounts, no analytics, no file uploads."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did not interview anyone or test with users for this. Who it is for is my own assumption: anyone with an Android phone who wants space back without losing something they needed."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "One file at a time, biggest first, three ways to decide",
+   "blocks": [
+    {
+     "p": "Binnder scans the phone's shared storage and any SD card, then shows files one at a time, largest first, because the biggest files free the most space. You can narrow the queue to images, videos, audio, PDFs or other files."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/annotated-review.webp",
+       "alt": "The review screen with seven numbered notes: the filters, the largest-first count, the full-screen button, the preview, the file details, the three action buttons and the swipe hint",
+       "caption": "The review screen. Start at note 6: the three buttons sit outside the card, so they are always in reach.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "The preview is the point. Images and PDFs zoom with a pinch, every page of a PDF can be read, and video, audio and text play or show inside the app. Formats Android cannot draw open in another installed app."
+    },
+    {
+     "p": "Then you decide, with a swipe or a button."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/gestures.webp",
+       "alt": "Schematic of the review screen with three arrows: left to Keep for seven days, right to Move to bin for 30 days, up to Delete forever after a question",
+       "caption": "The three swipes. Left and right happen when you let go. Up asks first. A schematic drawn from the code, not a screenshot.",
+       "width": 1600,
+       "height": 1300
+      }
+     ]
+    },
+    {
+     "p": "The three choices differ in what they cost you if you are wrong. Putting them side by side is how I worked out which one needed a question and which did not."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/consequences.webp",
+       "alt": "Table comparing Keep, Move to bin and Delete forever on four rows: whether the app asks first, the Undo strip, the way back afterwards and the space freed",
+       "caption": "Read the Delete forever column: it is the only one that asks first, and the only one with no way back after five seconds.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "file-first",
+   "label": "Decision 1",
+   "nav": "The file comes first",
+   "heading": "The file gets the screen, and everything else moves out of its way",
+   "blocks": [
+    {
+     "p": "What you see: the preview takes all the height left after the filters and the file name. Bin and Settings are icons in the top bar. There is no bottom navigation. The three buttons sit below the card and never scroll away."
+    },
+    {
+     "p": "In the build: version 0.1.0 had a bottom navigation bar and smaller previews. In 0.1.1 I removed the bar, made the previews bigger, and moved the full path and date into a Details sheet that opens on request. A sheet is a panel that slides up from the bottom of the screen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/layout-change.webp",
+       "alt": "Two schematic phones: version 0.1.0 with a bottom navigation bar, stacked Undo rows and a small preview, and version 0.1.1 with top-bar icons, one Undo strip and a large preview",
+       "caption": "Before and after. There is no screenshot of 0.1.0, so the left phone is drawn from the change notes and is only approximate.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "Speed matters when you look at file after file. The app draws the current file and the next two ahead of time, into a memory cache capped at 24 MB, and fades from one file to the next. A full-screen preview opens as its own screen, so a pinch or a scroll there is never read as a swipe."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A bigger preview leaves less room for detail. The card still shows the name, location and size, but the date and a path you can select and copy wait behind Details."
+     }
+    }
+   ]
+  },
+  {
+   "id": "ask-once",
+   "label": "Decision 2",
+   "nav": "Only one swipe asks",
+   "heading": "Routine swipes stay fast. Only the one you cannot take back asks first",
+   "blocks": [
+    {
+     "p": "What you see: as you drag, the card follows your finger, tilts a little and shows a label with the action. Let go too early and it springs back."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/drag-sequence.webp",
+       "alt": "Four schematic frames of a swipe: the card at rest, dragged right with a Move to bin label, sprung back after an early release, and replaced by the next file with the Undo strip showing",
+       "caption": "A swipe right, frame by frame. Frame 2 is the one that matters: you see the action named before it happens. A schematic, not a screenshot.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "p": "Keep and Bin happen as soon as you let go, because both can be undone. Delete forever opens a dialog that names the file and says what is different."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/annotated-confirm.webp",
+       "alt": "The Delete permanently dialog with six numbered notes: the icon, the question, the file name, its size and location, the consequence and the two buttons",
+       "caption": "The dialog. Note 5 carries the weight: it says this skips the bin and gives five seconds before the file is gone for good.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "In the build: one distance decides every swipe, 96 dp. A dp is Android's unit for size on screen, the same physical size on every phone; 96 dp is about 15 mm. The label appears at a third of that distance."
+    },
+    {
+     "p": "An upward swipe only counts when the drag is at least 1.2 times more up than sideways, so a sloppy swipe to the side cannot turn into a permanent delete. A short vibration marks the point where the swipe counts, but it is never the only signal."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The question slows down anyone who wants to delete many files for good. I kept it for that one action and left the bin as the fast route."
+     }
+    }
+   ]
+  },
+  {
+   "id": "undo",
+   "label": "Decision 3",
+   "nav": "Five seconds to undo",
+   "heading": "No deletion starts until five seconds have passed",
+   "blocks": [
+    {
+     "p": "What you see: after a swipe right or up, a dark strip appears at the bottom with the file's name, a countdown and Undo. Several actions can wait at once, each with its own countdown. The strip stays on screen in the bin, in Settings and in a full-screen preview."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/undo-strip.webp",
+       "alt": "Schematic of the Undo strip below the action buttons, with two waiting actions, each showing a countdown label, a file name, an Undo button and a draining progress line",
+       "caption": "The Undo strip with two actions waiting. Note 3: undoing one leaves the other alone. Drawn from the code, with example file names.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: a swipe does not move or delete anything. It writes a record marked as pending in a small database on the phone. Undo removes the record, and the file was never touched. Only when the five seconds are up does the app check the file again and act."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/undo-timeline.webp",
+       "alt": "Timeline from the swipe to five seconds and after: the choice is saved but not carried out, then checks run and either the action happens or it is cancelled and the file kept",
+       "caption": "The five seconds and what follows. If the file changed or is already in another bin, the action is cancelled and the file stays.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "Two details took the most care. The countdown runs on the phone's uptime clock, together with a saved count of restarts, so changing the time of day cannot shorten it. And the pending records survive the app being closed, so closing the app neither skips the wait nor loses the choice."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Leaving the app does not cancel a waiting action. It finishes when Android next lets the app work in the background. After the five seconds, the bin is the way back for a binned file, and there is none for a file deleted forever."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bin",
+   "label": "Decision 4",
+   "nav": "An honest bin",
+   "heading": "The bin says plainly that binned files still take up space",
+   "blocks": [
+    {
+     "p": "What you see: the bin lists each file with the days left before it is deleted, and buttons to preview it, restore it or delete it for good. Its total says how much is in the bin and that this is still using storage. Settings counts only the bytes Binnder has really deleted."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/bin-screen.webp",
+       "alt": "Two schematic screens: the recycle bin with a total, a warning that it still uses storage and two file rows with days left, and Settings with the space permanently deleted by Binnder",
+       "caption": "The bin and Settings, in the app's own words. Note 5: moving a file to the bin is never counted as space freed. The files and sizes are examples.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "In the build: a binned file moves into a hidden folder on the same storage volume. The move is instant and never makes a second copy. It also means the space is not free yet, and counting it as freed would make the app look better while telling you something false."
+    },
+    {
+     "p": "Restore will not overwrite. If a new file now sits where the old one was, the restore stops and both files are kept. Thirty days after a file enters the bin, an hourly background job deletes it, and the app checks again whenever you open it."
+    },
+    {
+     "p": "One gap is spelled out in Settings. If you uninstall Binnder, the binned files stay on the phone, but the app's list of where each one came from is lost. So the app asks you to restore your bin first."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Thirty days is not an exact appointment. Battery limits, a force-stop or a removed SD card can delay cleanup, and a phone that is switched off cannot run it. The bin screen says so instead of promising a date."
+     }
+    }
+   ]
+  },
+  {
+   "id": "exclusions",
+   "label": "Decision 5",
+   "nav": "Bins stay out of review",
+   "heading": "Files that are already in a bin never come back for review",
+   "blocks": [
+    {
+     "p": "What you see: nothing, which is the point. A photo you already deleted in your gallery app, or a file sitting in Samsung's My Files trash, should not appear again as something to decide about."
+    },
+    {
+     "p": "In the build: I added this filter in version 0.1.1. Android marks some deleted files as trashed while they keep a normal-looking name, and other apps keep their own recycle folders, so the app checks for both."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/exclusions.webp",
+       "alt": "Funnel diagram from everything on shared storage down to the review queue, removing protected app data, files Android has trashed, other apps' recycle folders and Binnder's own bin",
+       "caption": "What is filtered out before you see anything. The band widths show the order of the filters, not measured file counts.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The check runs again when you come back to the app and right before any action is carried out. If the check itself fails, waiting deletions are held. The app does not act on a file it is unsure about."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Recycle folders are matched by name, and a list of names can miss one phone maker's own folder. Checking this on real Samsung and other phones is on the list of device checks still to run."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "A small app, with most of its care spent on not losing files",
+   "blocks": [
+    {
+     "p": "Binnder is a native Android app in Kotlin, ten source files in all. Everything runs on the phone. The only use of the network is checking for updates."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/architecture.webp",
+       "alt": "Architecture diagram in four columns: the screens, the app's logic, the phone's storage with the SQLite record and safe disk operations, and background work for cleanup and update checks",
+       "caption": "What runs where. The storage column is where the safety lives: every move and delete passes through it.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Language",
+        "Kotlin"
+       ],
+       [
+        "Interface",
+        "Jetpack Compose and Material 3. It follows the phone's light or dark theme and wallpaper colours, with a teal fallback"
+       ],
+       [
+        "Records",
+        "SQLite on the phone, for every waiting action, every bin entry and the history of kept files"
+       ],
+       [
+        "Background work",
+        "WorkManager: cleanup every hour, update checks every 15 minutes from version 0.1.2"
+       ],
+       [
+        "Updates",
+        "Public GitHub releases, checked before Android is asked to install them"
+       ],
+       [
+        "Oldest Android",
+        "Android 11"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Every file action is a record that steps through a few named states. That is what lets the app recover if it is stopped halfway through a move."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/journal.webp",
+       "alt": "State diagram: pending actions become moving, deleting or purging, then rest in the bin or finish as restored or deleted, with notes on what happens when the app is killed or a step fails",
+       "caption": "The life of one action. The two boxes at the bottom are the rules I care most about: a half-finished step is checked, never guessed.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The other guard is what the app means by \"the same file\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/identity.webp",
+       "alt": "Diagram of the five facts that identify a file, path, size, modified time, device and inode, and an example where a new file at the same path cancels a waiting move",
+       "caption": "Why a stale decision cannot hit a replacement file. The example values are made up; the five facts and the message come from the code.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The rules are covered by tests that run on a computer. The checks that need a real phone are written down and not yet done."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/binnder/checks.webp",
+       "alt": "Bar chart of 23 automated tests in four groups, timing rules 7, safe moves 6, bin detection 6 and update rules 4, beside a list of device checks still to run",
+       "caption": "What is checked in code, and what still needs a phone. The phone column is the bigger risk.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "stats": [
+      {
+       "value": "10",
+       "label": "source files, about 1,550 lines with the tests"
+      },
+      {
+       "value": "23",
+       "label": "automated tests for the rules, plus 6 for the release script"
+      },
+      {
+       "value": "3",
+       "label": "versions, 0.1.0 to 0.1.2, the last prepared but not released"
+      },
+      {
+       "value": "14",
+       "label": "checks on a real phone, written and not yet run"
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were about what happens when things go wrong."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What I did"
+      ],
+      "rows": [
+       [
+        "The app is killed mid-action",
+        "On the next run, each record is checked against the disk. A file found in the bin is marked as binned, a file still in its old place is left alone, and anything that does not add up is kept and reported."
+       ],
+       [
+        "A file changes after the scan",
+        "Every move and delete first confirms the file's five facts. A new file saved at the same path is never touched."
+       ],
+       [
+        "A move fails",
+        "There is no fallback that copies and then deletes. The original stays where it was, and folders are never deleted, only single files."
+       ],
+       [
+        "Updates without a server",
+        "The app reads public GitHub releases and installs only when the file's SHA-256 checksum, the package name, a higher version number and the exact signing certificate all match."
+       ],
+       [
+        "Building without the usual tools",
+        "The machine I built on had no network access for Gradle, Android's standard build tool. I built the installable app straight from the Android SDK tools instead. A full Gradle build and lint pass are still to run."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Every swipe also has a button and a named action",
+   "blocks": [
+    {
+     "p": "Swiping is hard for some people and impossible for others. Every gesture has a labelled button below the card. Screen readers get three named actions on the card itself: \"Keep for seven days\", \"Move to recycle bin\" and \"Request permanent deletion\". All of them call the same code as the swipe."
+    },
+    {
+     "p": "Vibration supports the visible label and never replaces it. The screens scroll when the text is set large, and stay clear of the phone's notches and rounded corners."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "None of this has been tried with TalkBack, Android's screen reader, or with large text on a real phone. Both are in the device checks."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Built and tested in code, not yet on a real phone",
+   "blocks": [
+    {
+     "p": "Version 0.1.1 builds into an installable app and runs in an Android emulator, where the two screenshots on this page were taken with sample files. Version 0.1.2, which adds automatic update checks, is prepared but not released."
+    },
+    {
+     "list": [
+      "It has not been tested on a real phone. I wrote 14 device checks, from refusing file access to pulling out the SD card mid-action, and none is recorded as done.",
+      "It is not published, so there is no public download link.",
+      "It has no users, and no numbers on files reviewed or space freed."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Run the phone checks, then put it in front of people",
+   "blocks": [
+    {
+     "list": [
+      "Run the 14 device checks on throwaway files, starting with the ones that could lose data: a killed app, a removed SD card and a replaced file.",
+      "Capture real screens of the bin, the Undo strip, a swipe in progress and the Details sheet, to replace the drawings on this page.",
+      "Publish the signed release, so updates can reach installed copies.",
+      "Then a small test with people: review a set of sample files, undo a mistaken swipe and restore a file, without help."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Safety is mostly what happens after the tap",
+   "blocks": [
+    {
+     "p": "The swipe and the dialog were a few decisions. Most of the design sat behind them: the record for each action, the five facts that pin down a file, and the rule that a failed step keeps the data. A cleanup tool earns trust when it says what happened and keeps a way back, most of all when it could not finish."
+    },
+    {
+     "p": "I also learned to be exact about words. \"Freed\" has to mean freed. \"Delete\" had to split into two actions with different costs, because one word was hiding two decisions."
+    }
+   ]
+  }
+ ]
+}

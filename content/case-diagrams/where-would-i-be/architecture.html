@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x790">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">How it is put together</p><h1>Data built once, then every plate moved on the graphics card</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>Built once, before deploy</p>
+<div class="card"><h2>Open data</h2><p>Plate motions (NNR-MORVEL56), plate outlines (PB2002), coastlines and borders (Natural Earth), place names (GeoNames).</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>A build script</h2><p>Cleans them into four JSON files, works out every boundary's type, and checks the plates add up to 510.1 million km².</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>In the browser, at load</p>
+<div class="card"><h2>Plate maths</h2><p>Each plate is a cap turning about its own pole. A point's whole future is one rotation.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>The mesh</h2><p>Land and plates cut into triangles. Every corner is tagged with the plate it belongs to.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Every frame</p>
+<div class="card hi"><h2>52 rotations, one small texture</h2><p>The rotation of each plate is packed into a 64 by 1 texture and sent to the graphics card.</p></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>A shader moves each corner</h2><p>Each corner is turned by its own plate. Lines are thin strips of triangles, so they ride the crust too.</p></div></div>
+</div>
+<p class="note">No server and no analytics. A shared location is used in the browser and never sent anywhere.</p>

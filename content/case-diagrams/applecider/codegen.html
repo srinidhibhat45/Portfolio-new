@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x920">
+<style>.colm{display:flex;flex-direction:column;gap:14px}.card h2{font-size:25px}.card p,.card li{font-size:20px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.warn{border-color:var(--warn);background:var(--warn-wash)}.warn li::before{background:var(--warn)}.good{border-color:var(--good);background:var(--good-wash)}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">From wireframe to code</p><h1>Work out what each box is, then print it three ways</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm" style="flex:1"><div class="card"><h2>The wireframe</h2><p>Boxes, text, links between screens and the names you gave things.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm" style="flex:1.3"><div class="card hi"><h2>A plain description of the screens</h2><ul><li>A button becomes a real button. A table gets real header cells.</li><li>Heading levels come from text size, the way you would judge by eye.</li><li>Parts that repeat are lifted out once. Text that differs becomes a setting.</li></ul></div></div>
+<span class="arrow">→</span>
+<div class="colm" style="flex:1"><div class="card"><h2>React and Tailwind</h2><p>A small project you can run.</p></div><div class="card"><h2>HTML and CSS</h2><p>No build step, one stylesheet.</p></div><div class="card"><h2>Build spec</h2><p>A written brief for a developer.</p></div></div>
+</div>
+<div class="row" style="gap:20px;margin-top:22px">
+<div class="card warn" style="flex:1.6"><h2>Left behind on purpose</h2><ul><li>The sketch greys become neutral colours, not chosen ones.</li><li>Thick hand-drawn lines become thin borders.</li><li>Dummy text comes out marked as placeholder.</li><li>Charts, maps and date pickers become labelled gaps to fill.</li></ul></div>
+<div class="card good" style="flex:1"><h2>Carried across</h2><ul><li>Links between screens. The exported pages are still clickable.</li></ul></div>
+</div>

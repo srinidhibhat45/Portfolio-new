@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x840">
+<style>
+.two{display:grid;grid-template-columns:1fr 1.05fr;gap:40px}
+table{border-collapse:collapse;width:100%;font-size:21px}
+td{padding:9px 6px;border-bottom:1.5px solid var(--line)}
+td:last-child{text-align:right;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.lab{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:12px}
+.bars{gap:16px}
+.bar{grid-template-columns:270px 1fr 120px}
+.bar span{font-size:19px}
+.ex{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:22px}
+.ex .card{padding:16px 18px}
+.ex .card h2{font-size:21px}
+.ex .card p{font-size:18px;margin-top:6px}
+.score{display:flex;gap:8px;margin-top:10px;flex-wrap:wrap}
+.score b{padding:3px 10px;border-radius:99px;font-size:16px;background:var(--wash);color:var(--accent)}
+.score b.w{background:var(--warn-wash);color:var(--warn)}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">Check 5, the proof test</p>
+<h1>The more a message reads like an advert, the more proof it needs</h1>
+<div class="grow two">
+ <div><p class="lab">Marks a bank leaves on a real alert</p>
+  <table>
+   <tr><td>Masked account or card digits (A/c XX0000)</td><td>+2</td></tr>
+   <tr><td>A settlement reference number</td><td>+2</td></tr>
+   <tr><td>The balance or limit left afterwards</td><td>+2</td></tr>
+   <tr><td>An anti-fraud line ("Not you?")</td><td>+2</td></tr>
+   <tr><td>A time of day</td><td>+1</td></tr>
+   <tr><td>A date</td><td>+1</td></tr>
+   <tr><td>A named channel (UPI, card, ATM, transfer)</td><td>+1</td></tr>
+   <tr><td>A past-tense verb right beside the amount</td><td>+1</td></tr>
+  </table>
+ </div>
+ <div><p class="lab">Proof needed, by number of advert tells</p>
+  <div class="bars">
+   <div class="bar"><span>No advert wording</span><i style="--v:33"></i><b>2 marks</b></div>
+   <div class="bar"><span>1 or 2 tells</span><i style="--v:67"></i><b>4 marks</b></div>
+   <div class="bar"><span>3 or more tells</span><i style="--v:100"></i><b>6 marks</b></div>
+  </div>
+  <p style="font-size:19px;color:var(--dim);margin-top:14px">Tells are phrases like "up to", "get Rs", "click", "valid till". A web link counts as two.</p>
+  <div class="ex">
+   <div class="card"><h2>Made-up payment alert</h2><p>"Rs.240.00 debited from A/c XX0000 on 14-09-26 08:42 … UPI Ref … Avl Bal … Not you?"</p><div class="score"><b>12 marks</b><b>0 tells</b><b>needs 2: accepted</b></div></div>
+   <div class="card"><h2>Made-up shop advert</h2><p>"Spent Rs.2,000 at FRESHMART this week? Enjoy Rs.500 back on your next visit."</p><div class="score"><b class="w">1 mark</b><b class="w">2 tells</b><b class="w">needs 4: rejected</b></div></div>
+  </div>
+ </div>
+</div>
+<p class="note">Points and thresholds are the parser's own. The two examples are made up and scored by hand from those rules, as an illustration. A message I have marked "always import" skips this check.</p>

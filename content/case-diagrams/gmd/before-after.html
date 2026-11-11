@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x850">
+<style>
+.side{flex:1;display:grid;grid-template-columns:270px 1fr;gap:28px;padding:28px;border-radius:16px;align-items:start}
+.side.bad{background:var(--warn-wash);border:1.5px solid color-mix(in srgb,var(--warn) 40%,#fff)}
+.side.good{background:var(--good-wash);border:1.5px solid color-mix(in srgb,var(--good) 35%,#fff)}
+.side h2{grid-column:1/-1;font-size:29px;font-weight:600}
+.mock{height:410px;border-radius:10px;background:#fff;border:1.5px solid var(--line);overflow:hidden;padding:14px}
+.old{display:grid;gap:5px;align-content:start}
+.old b{font-size:9px;font-weight:600;color:var(--dim);line-height:1.2;margin-top:3px}
+.old i{display:block;height:3px;border-radius:2px;background:#B9C2C1}
+.old .dup{margin:6px -14px 0;padding:8px 14px 40px;background:var(--warn-wash);display:grid;gap:5px}
+.new{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:12px}
+.new nav{display:grid;gap:9px;align-content:start;padding-top:6px}
+.new nav i{display:block;height:15px;border-radius:5px;background:#E4E9E6}
+.new nav i.on{background:var(--good)}
+.new .panel{display:grid;gap:14px;align-content:start;padding:14px;border-radius:8px;background:#F3F6F4}
+.new .rowx{display:grid;grid-template-columns:1fr 46px;gap:8px;align-items:center}
+.new .rowx b{display:block;height:13px;width:70%;border-radius:4px;background:var(--ink)}
+.new .rowx s{display:block;height:6px;margin-top:7px;border-radius:3px;background:#B9C2C1}
+.new .rowx u{display:block;height:16px;border-radius:5px;background:var(--good)}
+.new .rowx u.no{background:var(--warn)}
+.say{display:grid;gap:14px;list-style:none}
+.say li{position:relative;padding-left:26px;font-size:23px;line-height:1.4}
+.say li::before{content:'';position:absolute;left:0;top:.55em;width:12px;height:4px}
+.bad .say li::before{background:var(--warn)}.good .say li::before{background:var(--good)}
+.say small{display:block;font-size:19px;color:var(--dim)}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">The problem in one picture</p><h1>Plenty of data, no easy way through it</h1>
+<div class="grow row" style="gap:26px;align-items:stretch">
+<div class="side bad"><h2>The extension as I reviewed it</h2>
+<div class="mock old"><b>meta tags</b><i></i><i style="width:80%"></i><i style="width:92%"></i><b>header tags</b><i></i><i style="width:70%"></i><i></i><i style="width:85%"></i><b>image tags</b><i style="width:90%"></i><i></i><i style="width:60%"></i><b>structured data</b><i></i><i style="width:75%"></i><b>links</b><i></i><i style="width:88%"></i><i style="width:66%"></i>
+<div class="dup"><b style="color:var(--warn)">the same data, shown again</b><i></i><i style="width:80%"></i><i style="width:92%"></i><i></i><i style="width:70%"></i><i></i><i style="width:85%"></i><i style="width:90%"></i><i></i><i style="width:60%"></i><i></i><i style="width:75%"></i><i></i><i style="width:88%"></i><i></i><i style="width:70%"></i><i style="width:92%"></i></div></div>
+<ul class="say"><li>Every metric in one view<small>Useful, and the only tool of the four that did it</small></li><li>Very small text<small>Hard to read and to understand</small></li><li>No clear grouping<small>Nothing tells you where to look first</small></li><li>The data shows up twice<small>A bug, each time the extension opens</small></li><li>Easy to export<small>Worth keeping</small></li></ul></div>
+<div class="side good"><h2>The redesign</h2>
+<div class="mock new"><nav><i class="on"></i><i></i><i></i><i></i><i></i><i style="margin-top:22px"></i><i></i><i></i></nav>
+<div class="panel"><div class="rowx"><div><b></b><s></s></div><u class="no"></u></div><div class="rowx"><div><b style="width:85%"></b><s></s><s style="width:70%"></s></div><u></u></div><div class="rowx"><div><b style="width:45%"></b><s style="width:80%"></s></div><u></u></div><div class="rowx"><div><b style="width:75%"></b><s style="width:50%;background:var(--warn)"></s></div><span></span></div></div></div>
+<ul class="say"><li>Eight sections in a side menu<small>One kind of data at a time</small></li><li>Large labels, values under them<small>Readable at a glance</small></li><li>A chip beside each value<small>Green for fine, red for needs attention</small></li><li>Export and Copy on every panel<small>The old strength stays</small></li><li>The bug is not fixed here<small>It needs a code fix, not a new layout</small></li></ul></div>
+</div>
+<p class="note">A sketch of the difference, drawn from my review notes. It is not a screenshot of the old extension, and not a measured result.</p>

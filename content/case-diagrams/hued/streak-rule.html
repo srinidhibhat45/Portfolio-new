@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x640">
+<style>.days{display:grid;grid-template-columns:repeat(8,1fr);gap:14px}.dy{border:1.5px solid var(--line);border-radius:14px;background:#fff;padding:16px;text-align:center}.dy p{font-size:19px;color:var(--dim)}.dy .m{display:grid;place-items:center;width:52px;height:52px;margin:12px auto;border-radius:50%;font-size:26px;font-weight:700}.yes .m{background:#FFF1E6;color:#FF7A1A}.no .m{background:#EEF0EE;color:var(--dim)}.dy b{display:block;font-size:34px;font-weight:600}.dy span{font-size:17px;color:var(--dim)}.no{background:#F6F6F2}.reset{border-color:var(--accent);background:var(--wash)}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">The streak rule, from the database trigger</p><h1>Post on the next day to add one. Miss a day and it starts again</h1>
+<div class="grow" style="margin-top:40px"><div class="days">
+<div class="dy yes"><p>Day 1</p><div class="m">✓</div><b>1</b><span>first post</span></div>
+<div class="dy yes"><p>Day 2</p><div class="m">✓</div><b>2</b><span>next day: +1</span></div>
+<div class="dy yes"><p>Day 3</p><div class="m">✓</div><b>3</b><span>+1</span></div>
+<div class="dy no"><p>Day 4</p><div class="m">–</div><b>3</b><span>no post, nothing runs</span></div>
+<div class="dy yes reset"><p>Day 5</p><div class="m">✓</div><b>1</b><span>after a gap: back to 1</span></div>
+<div class="dy yes"><p>Day 6</p><div class="m">✓</div><b>2</b><span>+1</span></div>
+<div class="dy yes"><p>Day 7</p><div class="m">✓</div><b>3</b><span>+1</span></div>
+<div class="dy yes"><p>Day 8</p><div class="m">✓</div><b>4</b><span>best streak: 4</span></div>
+</div></div>
+<p class="note">A sample week, worked through the rule. The count is stored on the server and changes only when a post is saved. The phone cannot write it.</p>

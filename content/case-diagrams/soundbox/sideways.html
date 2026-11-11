@@ -1,0 +1,10 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x600">
+<style>.r{flex:1;display:flex;flex-direction:column;gap:12px}.r .card{flex:1}.r h2{font-size:25px;margin-top:10px}.r p{margin-top:8px}.st{font-size:18px;font-weight:600}.st.ok{color:var(--good)}.st.wait{color:#8A6A12}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">One button, three ways to turn sideways</p><h1>Tried in order, so the button works even with auto-rotate off</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="r"><div class="card"><span class="num">1</span><h2>Ask the Android app</h2><p>The thin Android shell tells the system to rotate. Auto-rotate does not get a vote.</p><p class="st wait">Built and compiled. Not yet watched on a device.</p></div></div><span class="arrow">→</span>
+<div class="r"><div class="card"><span class="num">2</span><h2>Ask the browser</h2><p>Lock the screen to landscape. Browsers allow it only in full screen, so it is tried only on an upright touchscreen.</p><p class="st ok">Checked in the browser.</p></div></div><span class="arrow">→</span>
+<div class="r"><div class="card" style="border-color:var(--accent);background:var(--wash)"><span class="num">3</span><h2>Turn the page itself</h2><p>Rotate the whole page 90 degrees. It cannot fail, and it is the route most phones will take.</p><p class="st ok">Checked in the browser.</p></div></div>
+</div>
+<p class="note">Live updates replace the web code without a new Android install, so an older app can be running newer code. That is why route 3 had to exist.</p>

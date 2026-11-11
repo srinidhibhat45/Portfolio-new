@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.stage{display:grid;grid-template-columns:820px 1fr;gap:64px;align-items:center}.shot{position:relative;padding:30px;border:2px solid #CDBF9F;border-radius:16px;background:#FBF7EE;font-family:'Case Sans',Arial,sans-serif}.lbl{font-size:16px;font-weight:600;color:#3B3A36;margin-bottom:6px}.in{display:flex;gap:14px;margin-bottom:18px}.in div{flex:1}.fld{height:50px;border:1.5px solid #CDBF9F;border-radius:10px;background:#fff;padding:11px 14px;font-size:20px}.hint{border:2px solid #A8302A;border-radius:12px;background:#F8ECE8;padding:18px}.hh{display:flex;justify-content:space-between;align-items:baseline}.hh b{font-size:20px}.txt{font-size:16px;color:#A8302A;font-weight:600}.cand{margin-top:14px;padding:14px;border-radius:9px;background:#FDF8F2}.cand a{font-size:20px;font-weight:600;color:#192B32;text-decoration:underline;text-decoration-color:#CDBF9F}.cand small{font-size:16px;color:var(--dim);margin-left:8px}.cand p{font-size:17px;color:#4A4945;margin-top:6px}.btn{display:inline-block;margin-top:10px;padding:7px 16px;border-radius:99px;background:#EBD9D2;color:#7E241F;font-size:16px;font-weight:600}.fine{font-size:15px;color:var(--dim);margin-top:12px;line-height:1.4}.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #FBF9F3}.legend{display:grid;gap:20px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:18px;align-items:start;font-size:22px;line-height:1.42}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 3, a closer look</p><h1>"This may already be here", said while there is time to act</h1>
+<div class="grow stage"><div class="shot">
+<div class="in"><div><p class="lbl">Given name</p><div class="fld">Firstname</div></div><div><p class="lbl">Surname</p><div class="fld">Surname</div></div></div>
+<div class="hint">
+<div class="hh"><b>This looks like somebody already here</b><span class="txt">Not any of these</span></div>
+<div class="cand"><a>Person A</a><small>born · died</small>
+<p>recorded here as "a nickname" · same gotra, same home village · father is Person B</p>
+<span class="btn">This is the same person</span></div>
+<div class="cand"><a>Person C</a><small>born</small>
+<p>a very similar name · born within 2 years</p>
+<span class="btn">This is the same person</span></div>
+<p class="fine">Linking joins your entry to the record that is already here instead of adding a second copy of the same person. Anything you have filled in that the archive is missing still reaches a reviewer.</p>
+</div>
+<span class="num dot" style="left:0%;top:11%">1</span>
+<span class="num dot" style="left:0%;top:30%">2</span>
+<span class="num dot" style="left:100%;top:30%">3</span>
+<span class="num dot" style="left:100%;top:47%">4</span>
+<span class="num dot" style="left:0%;top:56%">5</span>
+</div>
+<div class="legend">
+<div><span class="num">1</span><span>The check runs under the name fields as they are typed, from the third letter, after a short pause.</span></div>
+<div><span class="num">2</span><span>A strong match gets a firmer heading than a possible one.</span></div>
+<div><span class="num">3</span><span>One click dismisses the whole box.</span></div>
+<div><span class="num">4</span><span>Reasons, never a score. A person can check "father is Person B" against what they know. Nobody can check "87%".</span></div>
+<div><span class="num">5</span><span>The answer is an action. The row becomes that record, so the branch joins the family already in the archive.</span></div>
+</div></div>
+<p class="note">A drawing based on the component's code, not a capture. Names, dates and the matching reasons are placeholders written in the form the code produces.</p>

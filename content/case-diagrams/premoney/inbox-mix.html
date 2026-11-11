@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x960">
+<style>
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.m{display:flex;flex-direction:column;gap:12px;padding:20px 22px;border-radius:16px;background:#fff;border:1.5px solid var(--line)}
+.m q{quotes:none;font-size:19px;line-height:1.5;color:var(--ink);background:#EEF1EE;border-radius:14px 14px 14px 4px;padding:12px 14px}
+.m .who{font-size:16px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--dim)}
+.v{display:flex;gap:10px;align-items:baseline;font-size:20px;line-height:1.4}
+.v b{flex:none;padding:2px 10px;border-radius:99px;font-size:16px;font-weight:700}
+.yes b{background:var(--good-wash);color:var(--good)}
+.no b{background:var(--warn-wash);color:var(--warn)}
+.m.real{border-color:var(--accent);box-shadow:0 0 0 3px var(--wash)}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">The problem in one picture · made-up messages</p>
+<h1>Bank senders send far more than payments</h1>
+<p class="sub">Six messages that could arrive from the same bank in one day. Only one of them moved money.</p>
+<div class="grow grid">
+ <div class="m real"><p class="who">Bank alert</p><q>Rs.240.00 debited from A/c XX0000 to KETTLE HOUSE CAFE. UPI Ref 600000000001. Avl Bal Rs.18,560.00.</q><p class="v yes"><b>Entry</b>A real payment. Amount, merchant, account and reference are all there.</p></div>
+ <div class="m"><p class="who">One-time password</p><q>OTP ●●●●●● for a payment of Rs.999 at an online store. Do not share it.</q><p class="v no"><b>Skip</b>It quotes an amount, but nothing has been paid yet.</p></div>
+ <div class="m"><p class="who">Card advert</p><q>Your new credit card is ready! Get up to Rs.50,000 credit limit. Apply now.</q><p class="v no"><b>Skip</b>It says "credit" twice and quotes a big number. Neither means money arrived.</p></div>
+ <div class="m"><p class="who">Card statement</p><q>Statement for card XX0000: total due Rs.6,210.00, minimum due Rs.310.00, due by 05-10-26.</q><p class="v no"><b>Skip</b>Totals for a month, not a movement. The due date is not a future payment.</p></div>
+ <div class="m"><p class="who">Failed payment</p><q>Your payment of Rs.1,200.00 to NORTHLINE CABS has failed. Any amount debited will be refunded.</q><p class="v no"><b>Skip</b>The word "debited" is there, but no money moved.</p></div>
+ <div class="m"><p class="who">Payment request</p><q>LEAF AND LOAF has requested Rs.180.00 from you. Approve in your UPI app.</q><p class="v no"><b>Skip</b>A request, not a payment. It may never be approved.</p></div>
+</div>
+<p class="note">Every message here is made up. The verdicts are the parser's own rejection reasons: OTP, advert, statement, failed, future or requested payment.</p>

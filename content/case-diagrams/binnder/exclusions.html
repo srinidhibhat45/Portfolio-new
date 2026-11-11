@@ -1,0 +1,16 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.funnel{display:grid;gap:12px;margin-top:30px}.lvl{display:grid;grid-template-columns:1fr 520px;gap:30px;align-items:center}.lvl .bandw{display:flex;justify-content:center}.band{height:66px;border-radius:12px;background:var(--wash);border:1.5px solid var(--accent);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:600;color:var(--ink)}.out{font-size:21px;line-height:1.4;color:var(--dim)}.out b{color:var(--warn);font-weight:600}.end .band{background:var(--accent);color:#fff}.foot{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:26px}.foot .card p{font-size:20px}.foot .card h2{font-size:23px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Added in version 0.1.1</p><h1>Files already in a bin never come back for review</h1>
+<div class="funnel">
+<div class="lvl"><div class="bandw"><div class="band" style="width:100%">Everything on shared storage and SD cards</div></div><div class="out"><b>Out:</b> other apps' private data. Android protects it.</div></div>
+<div class="lvl"><div class="bandw"><div class="band" style="width:88%">Files Binnder can read</div></div><div class="out"><b>Out:</b> files Android has marked as trashed, even with a normal-looking name.</div></div>
+<div class="lvl"><div class="bandw"><div class="band" style="width:76%">Not trashed by Android</div></div><div class="out"><b>Out:</b> other apps' recycle folders at any depth, such as Samsung My Files and Gallery trash, or folders named Trash or RecycleBin.</div></div>
+<div class="lvl"><div class="bandw"><div class="band" style="width:64%">Not in another app's bin</div></div><div class="out"><b>Out:</b> Binnder's own bin, and any file with an action already waiting.</div></div>
+<div class="lvl end"><div class="bandw"><div class="band" style="width:52%">The review queue, largest first</div></div><div class="out">What you are shown.</div></div>
+</div>
+<div class="foot">
+<div class="card"><h2>Checked again, not just once</h2><p>When you come back to the app, and again just before a keep, a bin or a delete is carried out.</p></div>
+<div class="card"><h2>When the check itself fails</h2><p>Waiting deletions are held, not carried out, and the app asks you to scan again.</p></div>
+</div>
+<p class="note">Band widths only show the order of the filters, not measured file counts.</p>

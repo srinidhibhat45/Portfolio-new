@@ -1,0 +1,657 @@
+{
+ "title": "A flat PDF deck, rebuilt as [[layers you can edit and animate]].",
+ "hook": "DeckForge is a web app I designed and built on my own that takes a PDF of a slide deck apart into text, shapes and images you can edit, animate and present, without uploading the file.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "To work again with slides you only have as a PDF"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, in the browser. A phone page acts as the remote"
+  },
+  {
+   "label": "Stack",
+   "value": "React, TypeScript, Vite, Zustand, Tailwind, pdf.js"
+  },
+  {
+   "label": "Timeline",
+   "value": "September 2026"
+  },
+  {
+   "label": "Status",
+   "value": "Live and free, version 0.1.0. No usage numbers yet"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open DeckForge",
+   "url": "https://deckforge.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: a deck you only have as a PDF looks right but cannot be changed. Most converters hand back a picture of each page.",
+  "What I built: a browser app that rebuilds each page as layers, animates them, and presents or exports the result, with a phone as the remote.",
+  "The key idea: be clear about what was recovered. A page that cannot be taken apart stays a picture, and the app says so.",
+  "Where it stands: live and free, version 0.1.0. I have no usage numbers or measured success rate to share."
+ ],
+ "lead": {
+  "src": "assets/cases/deckforge/editor-cards.webp",
+  "alt": "The DeckForge editor with a three-card slide open, a list of nine layers on the left, an outline around the selected shape and an animation timeline below",
+  "caption": "A slide from a PDF, after import. Each heading and paragraph is its own layer, named by role in the list on the left, and each has its own bar on the timeline.",
+  "width": 1600,
+  "height": 1000
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A PDF keeps the look of a slide and loses its parts",
+   "blocks": [
+    {
+     "p": "Slides often reach you only as a PDF, exported from Keynote, PowerPoint, Google Slides, Figma, InDesign or Canva. The PDF looks right. But you cannot fix one line of text, move a logo or animate one chart."
+    },
+    {
+     "p": "Most \"PDF to slides\" tools give you a picture of each page. A PDF is really a list of drawing instructions: put these letters here, fill this shape, paint this image. The objects a person sees, such as a title or a chart, are not stored anywhere."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/problem.webp",
+       "alt": "Diagram comparing a list of PDF drawing instructions on the left with a list of named layers such as Title, Bullet list, Logo and Chart on the right",
+       "caption": "The gap in one picture. The PDF stores how to paint the page. A presenter wants to grab a title, a list or a chart.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "p": "DeckForge takes the page apart instead. Text comes back as paragraphs, a logo as one object, and a bar chart as one series. It all happens inside the browser tab. The file is not uploaded and there is no account."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/landing.webp",
+       "alt": "The DeckForge home page with the headline \"Turn a flat PDF into an animated deck\", a drop zone for the PDF and four feature labels",
+       "caption": "The home page. The illustration on the right lifts a title, an image, a shape and body text off a page, which is the whole idea of the product.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I designed for a presenter who has to revise a deck someone else exported. That is my own assumption. I have no interviews, user feedback or usage data, so this page does not quote any."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Drop a PDF, get layers back, then present or export",
+   "blocks": [
+    {
+     "p": "There are three steps. Drop in the PDF. Each page comes back as a slide of layers you can move, restyle and animate. Then present it full screen, with a phone as the remote, or export it."
+    },
+    {
+     "p": "Each import gets its own link and is saved in the browser on that machine. Importing a second PDF never overwrites the first."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/list-slide.webp",
+       "alt": "A rebuilt slide with a serif heading and four bullet points, each line set in the original typefaces",
+       "caption": "A list slide after import. The four bullets came back as one list layer with real bullet marks, not as a picture.",
+       "width": 995,
+       "height": 590
+      },
+      {
+       "src": "assets/cases/deckforge/library.webp",
+       "alt": "The Your decks area of the home page showing one saved deck with a thumbnail and the label 6 slides",
+       "caption": "The library. Decks stay in the browser on this device, each with a thumbnail and slide count.",
+       "width": 630,
+       "height": 354
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "To make the screens on this page I wrote a six-page test deck with sample text and made-up numbers, saved it as a PDF and opened it in DeckForge."
+    }
+   ]
+  },
+  {
+   "id": "layers",
+   "label": "Layers you recognise",
+   "nav": "Layers you recognise",
+   "heading": "Layers that match what you see, not loose fragments",
+   "blocks": [
+    {
+     "p": "What you see: each layer has a name and a role, such as title, heading, body, label, shape or photo. A photo comes out as a photo. A chart comes out as one chart."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/photo-layers.webp",
+       "alt": "Editor showing a slide with a drawn landscape on the left and a heading on the right, and a layer list of four items including one marked Photo",
+       "caption": "A picture-and-text slide. The image was lifted out as its own Photo layer, and the heading and caption are separate text layers.",
+       "width": 1312,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "p": "In the build: pdf.js opens the file in the browser. My code then reads each page three ways and merges the results. The first reading replays the drawing instructions one by one, keeping track of position, clipping, colour and transparency. That is what tells you where each mark really landed and in what colour."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/pipeline.webp",
+       "alt": "Flow diagram: a PDF page is read as drawing instructions, as text and as a rendered picture, then grouped and named, and becomes a slide of layers",
+       "caption": "How a page comes apart. The third reading, a rendered picture, is there for colour: it checks what sits under each block of text.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "p": "Grouping turns hundreds of marks into a few objects. Nearby paths join into one object, so a logo made of 40 paths is one layer. Shapes that are alike and evenly spaced join into one series, so a bar chart moves as one chart."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/annotated-chart.webp",
+       "alt": "Annotated screenshot of a chart slide in the editor, with five numbered markers pointing at the label, the chart, the layer list and the month captions",
+       "caption": "The chart slide from my test file, marked up. Two of the five notes are misses, which is why the roles are shown and not hidden.",
+       "width": 1600,
+       "height": 1260
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Grouping and roles are a best guess from size, position and spacing. On my test file the three cards and their coloured dots came back as one shape layer. I kept the guessing visible, so a wrong name is easy to spot."
+     }
+    }
+   ]
+  },
+  {
+   "id": "fallback",
+   "label": "The honest fallback",
+   "nav": "The honest fallback",
+   "heading": "A page that cannot be rebuilt stays a picture, and says so",
+   "blocks": [
+    {
+     "p": "What you see: on my test file, five of the six pages came back as layers. The cover did not. Its analysis failed, the import listed that in a note, and the slide kept the original page as one image. The layer panel says so in plain words."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/cover-fallback.webp",
+       "alt": "Editor showing the cover slide of the test deck, with an empty layer panel reading \"No editable layers on this slide. The original page is shown as a single image.\"",
+       "caption": "The cover of my test file. It still looks right and still presents, but the layer panel is honest that nothing on it can be edited piece by piece.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "p": "In the build: there are three ways a page ends up as a picture. Each one keeps the page usable, and each one is reported."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/fallbacks.webp",
+       "alt": "Decision diagram with four rows: analysis failed, no text to read, more than 6,000 paths, and otherwise rebuilt as layers",
+       "caption": "The fallback rules. Every page also keeps its original picture, which can be shown underneath the layers as a safety net.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Forcing every page into shapes. A scanned page has no text to recover, and a dense map can hold thousands of paths. Both would come back mangled. A sharp picture is less useful than layers, but it is never wrong."
+     }
+    }
+   ]
+  },
+  {
+   "id": "motion",
+   "label": "Auto-animate",
+   "nav": "Auto-animate",
+   "heading": "One button animates the deck, after reading each slide",
+   "blocks": [
+    {
+     "p": "What you see: press Auto-animate and a panel works through the deck slide by slide. It says what kind of slide it found and what it will do. At the end it sums up."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/auto-reading.webp",
+       "alt": "Progress panel titled \"Reading your deck\" showing slide 4 labelled Series, described as a series animated along its own row",
+       "caption": "Midway through my test deck. Slide 4, the bar chart, was read as a series.",
+       "width": 598,
+       "height": 313
+      },
+      {
+       "src": "assets/cases/deckforge/auto-result.webp",
+       "alt": "Summary panel titled \"Your deck is animated\" with 6 slides staged, 29 layers animated, 1.9s longest build, and the slide types and transitions it chose",
+       "caption": "The summary for my test deck. \"Empty\" is the cover, which had no layers to move.",
+       "width": 598,
+       "height": 447
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: each slide is checked against five questions before anything moves. The answers set the order and timing of every layer. The gap between two slides gets a transition chosen from what changes between them."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/auto-animate.webp",
+       "alt": "Diagram listing five questions auto-animate asks of a slide, leading to a build for each slide, a transition for each seam, and a note that there is no randomness",
+       "caption": "How auto-animate reads a slide, redrawn from the product's own description. Question 3 is why three cards arrive card by card.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "p": "Underneath, each of the 40 animation presets is a small formula that turns progress from 0 to 1 into a position, size, blur or opacity. An exit is the same formula played backwards, so every preset works both ways."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "There is no randomness, so the same deck animated twice makes the same choices. That makes the result easy to trust and to undo, but it never offers a second take. For a different feel, six house styles can be applied by hand."
+     }
+    }
+   ]
+  },
+  {
+   "id": "pace",
+   "label": "The speaker sets the pace",
+   "nav": "The speaker sets the pace",
+   "heading": "Bullets wait for the speaker, recordings do not",
+   "blocks": [
+    {
+     "p": "What you see: any animation can start \"On click\" instead of with the slide. A text layer can go further and spend one press per line, so a list arrives as you talk through it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/annotated-onclick.webp",
+       "alt": "Annotated screenshot of the editor with a bullet list set to start on click, six numbered markers on the slide rail, the slide, the inspector and the timeline",
+       "caption": "Turning a four-line list into four presses. Marker 4 is the sentence I cared most about: it tells you where the waiting happens and where it does not.",
+       "width": 1600,
+       "height": 1420
+      }
+     ]
+    },
+    {
+     "p": "In the build: each animation can carry a build step. Only a live talk waits for a press. Everywhere else nobody is there to press, so the editor, the thumbnails, the video export and the web export play the steps one after another."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/build-stages.webp",
+       "alt": "Two timelines of the same slide: in a live talk each bullet starts at a press after a gap; elsewhere the bullets play one after another with no gaps",
+       "caption": "The same slide in two places. An illustration of the rule, not a measured timeline.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/present-waiting.webp",
+       "alt": "Present mode showing a slide with only its heading, and a toolbar at the bottom with slide count, timer, pointer tools, Record and remote buttons",
+       "caption": "Present mode, first press still to come. The toolbar holds the pointer tools, recording and the remote, and fades away on its own.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/deckforge/present-two-lines.webp",
+       "alt": "The same slide in present mode with two of the four bullets showing and the toolbar hidden",
+       "caption": "Two presses later. Pressing faster than the animation finishes it at once, so a quick speaker never loses a bullet.",
+       "width": 1600,
+       "height": 1000
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The same slide now behaves two ways. If that were hidden, a speaker could export a video expecting pauses that are not there. So the panel states the rule in one sentence, right under the press picker."
+     }
+    }
+   ]
+  },
+  {
+   "id": "present",
+   "label": "Presenting and the remote",
+   "nav": "Presenting",
+   "heading": "Two windows for the talk, and a phone as the remote",
+   "blocks": [
+    {
+     "p": "Press A while presenting and DeckForge opens an audience window with only the slides in it. You drag it to the projector, or pick it when a video call asks which window to share. The main window becomes the presenter console: the current slide, the next one, your notes and the clock."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/presenter-console.webp",
+       "alt": "Presenter console with the current slide on the left, a notes panel and an Up next preview on the right, a large Next button and a slide number strip",
+       "caption": "The presenter console. \"Audience window live\" at the top confirms the second window is open. Notes added in the editor appear on the right.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/deckforge/audience-window.webp",
+       "alt": "The audience window showing only the slide, with two bullets visible and no controls",
+       "caption": "The audience window, captured at the same moment. No notes, no controls.",
+       "width": 800,
+       "height": 533
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "A phone becomes the remote by scanning a QR code. It shows a live view of the slide, your notes, a laser pointer you steer with a finger, and buttons for effects such as confetti and applause."
+    },
+    {
+     "p": "Pairing is the one part that needs a server, because two devices cannot find each other on their own. The copy I ran for these screens was served as plain files, with nothing to pair through. Both the laptop panel and the phone say exactly that, instead of spinning forever. So I could not capture a paired phone for this page."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/pairing-panel.webp",
+       "alt": "Pairing panel with a QR code, a six-digit match code, and two notices saying the build is served as plain static files with nothing to pair through",
+       "caption": "The pairing panel on a copy with no pairing service behind it. It names the problem and the two ways to fix it. I blurred the local link.",
+       "width": 670,
+       "height": 624
+      },
+      {
+       "src": "assets/cases/deckforge/phone-remote.webp",
+       "alt": "Phone screen of the DeckForge remote showing \"Not connected\", six effect buttons, Black, Replay, Notes and a large Next button",
+       "caption": "The phone remote on the same copy. The layout is all there; the red line at the top explains why it is not connected.",
+       "width": 780,
+       "height": 1688,
+       "kind": "plain"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "stats": [
+      {
+       "value": "5–10 ms",
+       "label": "from pressing Next to a repainted phone view, down from 228 ms, measured on the local relay"
+      },
+      {
+       "value": "8–13 ms",
+       "label": "the same with the deck's tab in the background, down from over a second"
+      }
+     ]
+    },
+    {
+     "p": "Those numbers came from one change. The phone's view used to wait for a timer, and browsers slow timers to once a second in a background tab. Now it repaints the moment the slide changes."
+    },
+    {
+     "aside": {
+      "title": "What is not local.",
+      "detail": "The deck itself never leaves the browser. On the live site a small function acts as a mailbox: the phone and laptop swap a handshake through it, then talk directly. If a network blocks that, the mailbox carries slide control and small preview pictures, and keeps them for under a minute."
+     }
+    }
+   ]
+  },
+  {
+   "id": "export",
+   "label": "Getting it out",
+   "nav": "Getting it out",
+   "heading": "Three ways out: a video, one web page, or the project",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/export-video.webp",
+       "alt": "Video export dialog with choices for resolution up to 4K, frame rate 24, 30 or 60, MP4 or WebM, quality, hold time per slide and transitions, and an estimate of 6 slides and 26 seconds",
+       "caption": "The video export. Frames are drawn from the layers, not recorded off the screen, so there is no window frame or toolbar in the file.",
+       "width": 670,
+       "height": 598
+      },
+      {
+       "src": "assets/cases/deckforge/export-menu.webp",
+       "alt": "Export menu with four items: Video (MP4 or WebM), Standalone web presentation, DeckForge project, and Open a project file",
+       "caption": "The Export menu. Each choice says in one line what you get.",
+       "width": 287,
+       "height": 262
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "A video can be up to 4K at 24, 30 or 60 frames a second, as MP4 or WebM. You can also record the talk itself in present mode: your voice over the slides, at your own pace, with the pointer and effects."
+    },
+    {
+     "p": "The web export is one HTML file with every animation baked into CSS, the browser's own styling language, and no JavaScript at all. Because each preset is a formula of progress, it can be sampled into CSS steps, so springy and bouncing curves survive."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "An export with no JavaScript cannot do everything. Magic Move, where shared layers glide to their new places, falls back to a crossfade. A video clip on a slide starts when the browser is ready, not at its set point in the build."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One renderer, one store, and the browser does the work",
+   "blocks": [
+    {
+     "p": "Everything that touches the deck runs in the browser tab. One renderer draws the canvas, the slide list, the layer thumbnails and present mode, so what you edit is what you present."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/architecture.webp",
+       "alt": "Architecture diagram: a large browser box holding extraction, the project store, one renderer, animation, exports and the library, and a smaller box outside the tab used only for pairing the phone remote",
+       "caption": "How it is put together. The box on the right is only for the phone remote.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "React 18, TypeScript, Vite"
+       ],
+       [
+        "State",
+        "Zustand, with undo that treats a whole drag as one step"
+       ],
+       [
+        "Reading the PDF",
+        "pdf.js, plus my own code to rebuild pages as layers"
+       ],
+       [
+        "Look and themes",
+        "Tailwind and CSS variables, light, dark and system"
+       ],
+       [
+        "Phone remote",
+        "A WebSocket relay when run locally; Netlify Functions and Blobs as a mailbox, then a direct WebRTC link, on the live site"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "13",
+       "label": "commits, on 2 and 3 September 2026. The first already held most of the app"
+      },
+      {
+       "value": "~29,000",
+       "label": "lines of TypeScript"
+      },
+      {
+       "value": "7",
+       "label": "test files, for extraction, animation, auto-animate, builds, pairing and colour contrast"
+      },
+      {
+       "value": "40",
+       "label": "animation presets, and 10 slide transitions"
+      }
+     ]
+    },
+    {
+     "p": "There is no automated test run on each push yet. The build does run one extra check: it keeps the site's security policy in step with the one small script allowed to run inline."
+    },
+    {
+     "p": "The hardest problems were small details with large effects."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Colour",
+        "pdf.js hands colours over as numbers from 0 to 255, not fractions from 0 to 1. Read the wrong way, a whole document turns white."
+       ],
+       [
+        "Thin lines",
+        "A drawn horizontal line has zero height, so every underline and divider vanished. The stroke width now pads the line's box."
+       ],
+       [
+        "Fonts",
+        "Fonts inside the PDF are lifted out and installed in the browser, then checked against the widths the PDF recorded. A font that fails the check is swapped for a substitute instead of printing blanks."
+       ],
+       [
+        "Phone lag",
+        "The phone waited for a timer that a background tab slows to once a second. It now repaints on the event."
+       ],
+       [
+        "Recording",
+        "The recording clock runs in a separate worker, so it keeps going when the audience window covers the editor."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Contrast and keyboard",
+   "nav": "Contrast and keyboard",
+   "heading": "Contrast is a test the build must pass, not a promise",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/deckforge/editor-dark.webp",
+       "alt": "The DeckForge editor in its dark theme, with graphite panels around a light slide of three cards",
+       "caption": "The dark theme is graphite rather than black, so the slide is the only bright thing on screen.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "Every colour in the interface comes from one set of named values, so one change themes the whole app in light and dark. Text and controls are held to WCAG 2.1 AA, the common accessibility standard. A contrast ratio says how far apart two colours are in brightness; body text needs at least 4.5 to 1, and the edge of a control needs 3 to 1."
+    },
+    {
+     "p": "A test reads the real stylesheet and fails if any pairing the app uses drops below its floor. The interface also works from the keyboard, with a visible focus ring, dialogs that hold and return focus, targets at least 24 pixels across, and reduced motion respected."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are checks on colour and code. They are not an accessibility audit, and I do not claim one."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live and free, with no usage numbers yet",
+   "blocks": [
+    {
+     "p": "DeckForge is live at deckforge.srinidhibhat.com, version 0.1.0, under the MIT licence. It is free and asks for no sign-up."
+    },
+    {
+     "p": "I have no user counts, feedback or measured success rate for extraction, and no results from a set of real-world decks. These limits are known:"
+    },
+    {
+     "list": [
+      "Gradients come back as flat colour.",
+      "Scanned pages have no text to recover; they stay pictures.",
+      "Very dense artwork, such as maps, stays a picture instead of shapes.",
+      "Rotated text is handled line by line, not as a paragraph.",
+      "Magic Move does not carry into the web export, where it becomes a crossfade.",
+      "Direct pairing carries one phone. A second phone falls back to the mailbox.",
+      "Video and GIFs travel inside the project file, up to 48 MB each."
+     ]
+    },
+    {
+     "p": "The screens on this page come from a built copy on my machine and my own test file, so details may differ slightly from the live site."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Test it on hard decks, then widen what it can export",
+   "blocks": [
+    {
+     "list": [
+      "Find out why the cover of my test file failed to rebuild.",
+      "Proposed: import a fixed set of decks, including clean text, scanned, multi-column and dense vector pages, and record how editable and how faithful each one is, separately.",
+      "Planned and not built: Magic Move in the web export, motion paths, a relay server so direct pairing works across networks, trimming a recording inside the app, editing with others at the same time, and ready-animated slide templates."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A guess is fine when it shows that it is a guess",
+   "blocks": [
+    {
+     "p": "Taking a PDF apart is guesswork. The PDF never says \"this is a title\" or \"these six bars are a chart\". What made the guesses useful was showing them: a named role on every layer, a note when a page fails, a panel that says nothing can be edited here."
+    },
+    {
+     "p": "The same rule held outside extraction. The pairing panel names the missing service instead of spinning. The animation panel says which places wait for a press. And a clean six-page test file of my own still turned up a failed cover, a lost word gap and a wrong role. Next time I would start with the hardest decks I can find."
+    }
+   ]
+  }
+ ]
+}

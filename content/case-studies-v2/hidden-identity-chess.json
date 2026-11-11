@@ -1,0 +1,601 @@
+{
+ "title": "Chess where you can [[bluff]], and your opponent can call it.",
+ "hook": "Hidden Identity Chess is a web game I designed and built on my own. It turns a published board game, where you cannot see what the enemy pieces are, into something you can play on a phone, offline or with a friend online.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "October 2026"
+  },
+  {
+   "label": "Why",
+   "value": "A digital version of a board game I wanted to play, Hidden Identity Chess by Triple S Games. Independent, not an official release"
+  },
+  {
+   "label": "Platform",
+   "value": "Web game for phone and desktop. It installs to the home screen and plays offline"
+  },
+  {
+   "label": "Stack",
+   "value": "Plain JavaScript, a service worker, Next.js 16 on Cloudflare Workers, Cloudflare D1"
+  },
+  {
+   "label": "Status",
+   "value": "Live and playable. Not yet tested with other players. No usage numbers"
+  }
+ ],
+ "links": [
+  {
+   "label": "Play the game",
+   "url": "https://hidden-identity-chess-club.soundmite3.chatgpt.site/game/"
+  },
+  {
+   "label": "The original board game",
+   "url": "https://www.thegamecrafter.com/games/hidden-identity-chess-pieces-only-"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: in this game you see where the enemy pieces stand but not what they are, and you may make illegal moves on purpose. A normal chess screen shows neither of those things.",
+  "What I built: a game you can install, with secret setup, a Move and Bluff switch, challenges and penalties, a computer opponent, pass-and-play on one phone and online rooms.",
+  "The key idea: a secret has to be kept in the data, not just covered on the screen. The server blanks out the enemy pieces before it sends a player the board.",
+  "Where it stands: live and playable, made in four commits between 17 and 19 October 2026. I have not tested it with other players yet."
+ ],
+ "lead": {
+  "src": "assets/cases/hidden-identity-chess/lead.webp",
+  "alt": "Five phone screens of the game in order: arranging an army, bluff mode with every square open, a captured piece revealed as a knight, choosing a penalty piece, and the win screen with every piece revealed",
+  "caption": "One game, left to right. Every enemy piece is a shield with a question mark until it is captured, or until the game ends.",
+  "width": 2400,
+  "height": 1000
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Ordinary chess pieces, with the enemy's identities hidden",
+   "blocks": [
+    {
+     "p": "Hidden Identity Chess is a board game published by Triple S Games. The pieces move like chess pieces. The difference is what you know. You see your own army, but each enemy piece is hidden until you capture it."
+    },
+    {
+     "p": "You also set up your own army in secret, anywhere in your two nearest rows. There is no check or checkmate. You win by taking the king. And you may move a piece in a way it is not allowed to move, as long as you accept that your opponent can call it out."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/turn-flow.webp",
+       "alt": "Diagram of one turn: from Your turn, three choices. Move leads to capture and reveal. Bluff leads to a private record of legality. Challenge leads to two results, legal with no cost, or illegal with the piece removed and a penalty",
+       "caption": "The rules in one picture. Look at the Challenge row: a wrong accusation costs nothing, but a caught bluff costs two pieces.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "I wanted to play it on a phone, against the computer or a friend. I set the brief myself: familiar, not cartoonish and not formal, with as little text as possible during play. I gave the look a working name, a modern board-game lounge: a teal table, ivory and sage squares, and warm yellow for whatever needs your attention."
+    },
+    {
+     "aside": {
+      "title": "What I started from.",
+      "detail": "The written rules on the publisher's page. There was no research with players. The people I designed for, two friends playing together or far apart and solo players against the computer, are my own assumption."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How a game goes",
+   "heading": "Arrange in secret, play, challenge, and take the king",
+   "blocks": [
+    {
+     "p": "There are three ways to play. Computer and Pass & play work offline once the game has loaded. Online friend makes a room with a seven-character code that a friend types in on their own device."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-setup.webp",
+       "alt": "Setup screen on a phone: three mode tabs, Arrange your army with Shuffle and Classic buttons, a Play against computer button, Game options, and the board with hidden enemy pieces",
+       "caption": "Setup. Shuffle mixes your army, Classic gives the usual order, or you tap two pieces to swap them.",
+       "width": 824,
+       "height": 1520
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-lobby.webp",
+       "alt": "Online friend tab: Play a friend, a Create a room button, and a room code field with a Join button",
+       "caption": "Online friend. One button to make a room, one field to join one. No account is needed.",
+       "width": 824,
+       "height": 1260
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-rules.webp",
+       "alt": "The rules sheet titled Chess, with a secret, with sections on arranging your army, capturing the king and promotion",
+       "caption": "The rules, one tap away at all times. The unusual ones are written out in full.",
+       "width": 824,
+       "height": 1520
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "On your turn you move, bluff or challenge. Capturing a piece reveals it. Every move goes into a list, and any enemy move that has not been checked yet can be challenged from that list."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-reveal.webp",
+       "alt": "A pawn has just captured on d5 and a banner reads A knight. Identity revealed. The captured knight appears beside You",
+       "caption": "A capture. The banner names what you took, and the piece joins your captures beside your name.",
+       "width": 824,
+       "height": 1520
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-moves.webp",
+       "alt": "The Moves sheet listing e2 to e4 and b8 to e5, with a Challenge button under the enemy move and offence counts of 0 of 2",
+       "caption": "The move list. The hidden piece jumped from b8 to e5, so the list offers a Challenge button under it.",
+       "width": 824,
+       "height": 1520
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-challenge.webp",
+       "alt": "A dialog titled Challenge b8 to e5? explaining that a legal move stays hidden and an illegal move loses the piece and an extra penalty",
+       "caption": "One confirm step, with the stakes in one sentence.",
+       "width": 824,
+       "height": 1520
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/annotated-penalty.webp",
+       "alt": "The board after a caught bluff, with six numbered notes on the notice, the yellow rings, the emptied square, the captured knight, the instruction line and the reduced dock",
+       "caption": "The same game a moment later: the bluff was illegal. Start at note 2. Only the pieces you are allowed to remove can be tapped.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-penalty-log.webp",
+       "alt": "The Moves sheet after the penalty: b8 to e5 marked Caught: illegal, Forest offences 1 of 2, and Forest pawn removed as the penalty",
+       "caption": "The record afterwards. The move is marked as caught and the offence count reads 1 of 2. A second proven offence loses the game.",
+       "width": 824,
+       "height": 1520
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-gameover.webp",
+       "alt": "The final board with every enemy piece revealed, a notice that the king capture was checked and legal, and Ivory wins with a Play again button",
+       "caption": "A win. The computer challenged the king capture, found it legal, and every piece was shown.",
+       "width": 824,
+       "height": 1480
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "I set up these positions myself in a local copy of the game to show each state. They are not recorded games."
+    }
+   ]
+  },
+  {
+   "id": "shields",
+   "label": "Decision 1",
+   "nav": "One shield for every piece",
+   "heading": "Every enemy piece is the same shield until it is captured",
+   "blocks": [
+    {
+     "p": "What you see: your own pieces are drawn as chess pieces. Every enemy piece is the same dark shield with a question mark, a little smaller than a real piece. When it is captured, the shield turns into the piece it really was."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/pieces.webp",
+       "alt": "The game's piece set: king, queen, rook, bishop, knight and pawn in light and dark, beside two hidden-piece shields on light and dark squares",
+       "caption": "The piece set I drew for the game, and the shield on the right. Each piece has a different top, so it still reads at phone size.",
+       "width": 1600,
+       "height": 504
+      }
+     ]
+    },
+    {
+     "p": "I drew the pieces myself as simple outlines on one 45-unit grid, with the same line weight on every piece. My rule for the shield was that nothing about it may give the piece away: not its size, its shape, or the label a screen reader announces."
+    },
+    {
+     "p": "In the build: hiding a piece on screen is not enough, because the data behind the screen could still say what it is. So one function makes each player's copy of the board, and it swaps every enemy piece's type for a question mark before anything is drawn or sent. A test checks that both players' copies hide all 16 enemy pieces, and only show the king when the game is set to revealed kings."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Sixteen identical shields put the memory work on the player. To help, the game keeps the full move list one tap away and lets you mark a private guess on any enemy piece. The guess is only a note to yourself, never a reveal."
+     }
+    }
+   ]
+  },
+  {
+   "id": "bluff",
+   "label": "Decision 2",
+   "nav": "Bluffing on purpose",
+   "heading": "A bluff is a switch you choose, never an accident",
+   "blocks": [
+    {
+     "p": "What you see: Move and Bluff share one switch under the board. In Move, only legal squares light up. Turn on Bluff and every empty or enemy square becomes a target, the switch turns yellow, and a short notice warns that a challenge can expose you."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-bluff.webp",
+       "alt": "Bluff mode on a phone: a knight is selected, dots fill every empty square, rings surround every enemy piece, and the Bluff half of the switch is yellow",
+       "caption": "Bluff on, with the knight on g1 picked. Compare the dots with a knight's usual two or three squares.",
+       "width": 824,
+       "height": 1520,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: the rules allow any move, so I could have let every move through. I kept legal moves as the default instead. An illegal move in Move mode is refused with a message that points to Bluff, so a slip of the finger never turns into a risk of losing two pieces."
+    },
+    {
+     "p": "When you do bluff, the move is played and the game writes down in a private record whether it was legal. A challenge reads that record. A test checks that a player's copy of the board never contains it, and another checks that the computer opponent makes the same choices whatever that record says."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A bluff costs one extra tap. In a game about reading your opponent, I chose to make lying a deliberate act rather than a hidden side effect."
+     }
+    }
+   ]
+  },
+  {
+   "id": "board",
+   "label": "Decision 3",
+   "nav": "The board gets the screen",
+   "heading": "The board gets the screen, and everything else waits in a sheet",
+   "blocks": [
+    {
+     "p": "What you see: during a game the phone shows the board, one row for each player, one line of status and a small dock. Moves, hints, sound, rules, install and resign all open as sheets that slide up from the bottom. I call this zen mode, and it is on by default."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/annotated-play.webp",
+       "alt": "The phone play screen with six numbered notes on the player row, the shields, the yellow turn text, the status line, the Move and Bluff switch and the dock",
+       "caption": "The play screen as it shipped. Note 5 is the one I care most about: the two actions that change the game sit under your thumb.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "The first version was not like this. It tried to explain the game while you played it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/before-after-play.webp",
+       "alt": "Two phone screens at the same scale: the first version with many panels below the board, and the final version with only a status line and dock",
+       "caption": "Same game, same scale. Everything the first version showed is still there, one tap away.",
+       "width": 1600,
+       "height": 1240
+      }
+     ]
+    },
+    {
+     "p": "Setup had the opposite problem. The board came first, so on a phone the Play button sat below the first screen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/before-after-setup.webp",
+       "alt": "Two setup screens at the same scale with the Play button outlined: far below an 844px line in the first version, and near the top in the final one",
+       "caption": "The outlined Play button moved from below the dashed line to near the top. The board still follows, ready for swapping pieces.",
+       "width": 1600,
+       "height": 1400
+      }
+     ]
+    },
+    {
+     "p": "In the build: the board's size is the smallest of 600px, the screen height less 280px, and the screen width less 36px, so it fills whatever the device allows. On touch screens every button outside the board is at least 48px tall, and main actions are 56px. In a short landscape window the squares never drop below 44px; the page scrolls instead."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/polish-desktop.webp",
+       "alt": "Desktop in zen mode: the board centred with the dock below and nothing beside it",
+       "caption": "Desktop with zen mode on, the default.",
+       "width": 1120,
+       "height": 930
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/desktop-standard.webp",
+       "alt": "Desktop with zen mode off: the board on the left and a Moves panel on the right listing three moves, each with a Challenge button",
+       "caption": "Zen off. A wide screen has room to keep the move list beside the board.",
+       "width": 1120,
+       "height": 1060
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/s24-landscape.webp",
+       "alt": "A phone turned sideways: the board on the left and the Move and Bluff switch with the dock on the right",
+       "caption": "A phone on its side. The controls move beside the board instead of shrinking it.",
+       "width": 910,
+       "height": 589
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Hiding the history makes a challenge one tap further away, and a challenge often depends on remembering an earlier move. That is why Moves stays in the dock in every phase of the game, including while you choose a penalty."
+     }
+    }
+   ]
+  },
+  {
+   "id": "handoff",
+   "label": "Decision 4",
+   "nav": "Passing the phone",
+   "heading": "Passing the phone covers the whole board",
+   "blocks": [
+    {
+     "p": "What you see: in Pass & play, two people share one phone. After each move the board is covered and the next player taps Show my pieces when only they can see the screen."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/first-handoff.webp",
+       "alt": "First version of the handoff: a covered board reading Over to Forest, with a status card, move list, buttons and tips still shown below",
+       "caption": "The first version. The board is covered, but the move list and buttons below stay on show.",
+       "width": 384,
+       "height": 1162
+      },
+      {
+       "src": "assets/cases/hidden-identity-chess/screen-handoff.webp",
+       "alt": "Final handoff: the whole table covered in teal with a lock, Pass to Ivory, Keep your army to yourself, and a yellow Show my pieces button. Move and Bluff are greyed out",
+       "caption": "The final version. One instruction and one button. Move, Bluff and Challenge are switched off until the next player is ready.",
+       "width": 824,
+       "height": 1520
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "In the build: while the cover is up, the squares are switched off and the game ignores taps on them. A pass-and-play game reopened later starts covered, so whoever picks up the phone does not see the last player's army."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A cover cannot stop someone looking at the screen at the wrong moment. It only makes the safe moment obvious. Online play needs no cover, because each device only ever receives its own player's view."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One rules file, trusted on the server and offline on the phone",
+   "blocks": [
+    {
+     "p": "The rules live in one file: setup, moves, bluffs, challenges, penalties and the computer player. The game screen uses it directly. The online rooms import the same file on the server, so both sides apply exactly the same rules."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/architecture.webp",
+       "alt": "Diagram in three columns: the game screen, rules engine, local save and service worker on the device; the rooms API, room code and revision number online; and the filtered view, the private record that is never sent, and the D1 database",
+       "caption": "What runs where. The right-hand column is the point: a player only ever receives the board with the enemy pieces blanked out.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Game",
+        "Plain JavaScript modules and CSS, no framework"
+       ],
+       [
+        "Pieces and icons",
+        "My own SVG drawings"
+       ],
+       [
+        "Type",
+        "Manrope, stored with the game so it works offline"
+       ],
+       [
+        "Offline",
+        "A service worker and the browser's local storage"
+       ],
+       [
+        "Online rooms",
+        "Next.js 16 with vinext on Cloudflare Workers, a D1 database through Drizzle"
+       ],
+       [
+        "Checks",
+        "43 tests on Node's built-in test runner"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The computer opponent is a simple set of rules, not a chess engine that searches ahead. It plays from the same view you have. It never reads your hidden pieces or the private record of bluffs."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/computer.webp",
+       "alt": "Table of the three computer styles, Casual, Club and Challenger, with bluff and challenge chances, beside four steps showing how a piece's moves narrow down what it can be",
+       "caption": "The three styles differ by a few numbers. On the right, the one case where the computer challenges for certain.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "stats": [
+      {
+       "value": "4",
+       "label": "commits, 17 to 19 October 2026"
+      },
+      {
+       "value": "22",
+       "label": "review screenshots across three rounds"
+      },
+      {
+       "value": "43",
+       "label": "tests in five files: rules, bluffs and challenges, online rooms, offline loading, installing"
+      },
+      {
+       "value": "48h",
+       "label": "an online room lasts without a move"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/timeline.webp",
+       "alt": "Timeline of three rounds: the whole game working on 17 October, less on screen while playing the same evening, and the Samsung phone fix on 19 October, each with a thumbnail",
+       "caption": "The three rounds. I checked each one by taking screenshots at several screen sizes before moving on.",
+       "width": 1600,
+       "height": 660
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were about trust and loading, not drawing the board."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Installed app",
+        "Installed to the home screen of a Samsung phone, the game failed to open. The host redirected the page, and the saved offline copy kept a trace of that redirect, which the browser rejects when it opens an installed app. The offline copy is now rebuilt without it, every file is checked before an update takes over, and a repair page lets an old install refresh without losing saved games."
+       ],
+       [
+        "Install timing",
+        "Install now appears only after all 11 game files are saved. If a download fails, the earlier version stays in place and the game offers Try again."
+       ],
+       [
+        "Secrets online",
+        "Each seat gets a long random token, and the server keeps only a hash of it. Every move carries a revision number, so if two moves arrive at once only one counts. Tests run two separate clients and check that neither ever sees the other's pieces."
+       ],
+       [
+        "Old saved games",
+        "Games saved before I added challenges have no private record of their moves. The game says those moves cannot be checked, instead of guessing."
+       ]
+      ]
+     }
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hidden-identity-chess/s24-install.webp",
+       "alt": "A sheet titled Getting your game ready, saying the board, pieces and game are being saved for offline play",
+       "caption": "What you see before install is offered: the game saving itself for offline play.",
+       "width": 407,
+       "height": 1159,
+       "kind": "tall"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Big targets, a keyboard path, and no secret in the labels",
+   "blocks": [
+    {
+     "list": [
+      "On touch screens, buttons outside the board are at least 48px tall and the main actions 56px. Phone labels are 14 to 16px.",
+      "The board works with a keyboard. The arrow keys follow the board as you see it, even when it is turned for the other player, and focus moves to a sensible next control after each move.",
+      "Focus shows as a thick amber outline. Notices are read out by screen readers as they appear.",
+      "If your device asks for less motion, the game turns off its animations.",
+      "A screen reader hears a hidden piece as \"hidden enemy piece\", never its name."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are things the game was built to do. I have not run a screen-reader pass or a formal accessibility audit."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live and playable, but not yet played by anyone else",
+   "blocks": [
+    {
+     "p": "The game is live at a public link. Anyone can open it, play the computer, pass a phone or start an online room. The game itself needs no account, and it has no ratings, chat or tracking."
+    },
+    {
+     "p": "It is an independent adaptation. The rules and the original idea belong to Triple S Games, and the game says so. It is not an official release."
+    },
+    {
+     "p": "I have no usage numbers to share. These are also still open:"
+    },
+    {
+     "list": [
+      "No games between two people are recorded, online or on one phone.",
+      "I checked phone layouts at 360, 384 and 412px wide in a browser. A check of the install on a real Samsung phone is not recorded.",
+      "There is no way to agree a draw. If a player has no legal move against the computer, the game ends in a draw, a rule I added that is not in the original."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Watch a chess player learn it",
+   "blocks": [
+    {
+     "list": [
+      "Watch first-time players arrange an army, make a bluff and challenge a past move. Experienced chess players are the most interesting, because they will apply habits that no longer hold.",
+      "Test the pass-and-play cover, moving across the board by keyboard, a player who drops out of an online game, and reopening a saved game.",
+      "Install it on a real Samsung phone and record the result.",
+      "Add a way for both players to agree a draw."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A secret on the screen is not a secret",
+   "blocks": [
+    {
+     "p": "Covering a piece is the easy part. The real work was making sure the hidden facts never reach the wrong place: not the other player's device, not a screen reader label, and not the computer opponent's choices."
+    },
+    {
+     "p": "The first version also taught me something about help text. Each card under the board was useful on its own. Together they pushed the controls off the screen. Moving them into sheets kept every one of them and gave the board its space back."
+    }
+   ]
+  }
+ ]
+}

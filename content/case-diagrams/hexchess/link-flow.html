@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x820">
+<style>.lane{display:grid;grid-template-columns:repeat(5,1fr);gap:0;align-items:stretch}.st{position:relative;margin:0 14px;display:flex;flex-direction:column;gap:8px}.st .who{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.st .card{flex:1}.st .card h2{font-size:24px}.st .card p{font-size:20px;margin-top:6px}.st:not(:last-child)::after{content:'→';position:absolute;right:-24px;top:52%;color:var(--accent);font-size:32px}.hi{border-color:var(--accent);background:var(--wash)}.bad{border-color:color-mix(in srgb,var(--warn) 45%,#fff);background:var(--warn-wash)}.checks{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:30px}.checks .card h2{font-size:24px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Playing by link</p><h1>The whole game travels in the link, one move at a time</h1>
+<div class="grow">
+<div class="lane">
+<div class="st"><span class="who">You</span><div class="card"><h2>Make a move</h2><p>Then tap Share game link. You can queue one premove while you wait.</p></div></div>
+<div class="st"><span class="who">The link</span><div class="card hi"><h2>Carries every move</h2><p>After the # sign, which a browser does not send to the server.</p></div></div>
+<div class="st"><span class="who">Your friend</span><div class="card"><h2>Opens it and plays one move</h2><p>As the colour assigned to them, with the board turned to their side.</p></div></div>
+<div class="st"><span class="who">The reply</span><div class="card hi"><h2>A new link back</h2><p>Your friend shares the updated game. Always use the newest one.</p></div></div>
+<div class="st"><span class="who">You</span><div class="card"><h2>Open the reply</h2><p>Every move is replayed and checked. A queued premove is checked again, then played.</p></div></div>
+</div>
+<div class="checks">
+<div class="card bad"><h2>Turned away, board unchanged</h2><ul><li>Your own outgoing link, opened again</li><li>A reply that changes moves already saved on this device</li><li>A reply that adds more than one move, or an illegal one</li></ul></div>
+<div class="card"><h2>What a link cannot do</h2><ul><li>Prove who sent it. There are no accounts</li><li>Stop someone reading it, or using a chess engine on the side</li><li>Stay short in a long game. A game file can be exported instead</li></ul></div>
+</div></div>
+<p class="note">The share dialog says this too: friendly play, with no way to verify who sent a link or to stop outside engine help.</p>

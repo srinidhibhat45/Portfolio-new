@@ -1,0 +1,30 @@
+/* Shared look for case-study diagrams: the same paper, ink and type as the case-study pages. */
+@font-face { font-family: 'Case Sans'; src: url('../../assets/fonts/dm-sans.woff2') format('woff2'); font-weight: 100 900; }
+@font-face { font-family: 'Case Display'; src: url('../../assets/fonts/libre-caslon-display.woff2') format('woff2'); font-weight: 400; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 100%; height: 100%; }
+body { --paper: #FBF9F3; --ink: #192B32; --dim: #59696D; --line: #D8DED9; --accent: #23357A; --wash: #E0E4F2; --warn: #B4472F; --warn-wash: #F7E3DD; --good: #1E5B3A; --good-wash: #DEEADF;
+  display: flex; flex-direction: column; padding: 56px 64px; background: var(--paper); color: var(--ink); font: 400 26px/1.45 'Case Sans', Arial, sans-serif; overflow: hidden; }
+h1 { font: 400 46px/1.15 'Case Display', Georgia, serif; letter-spacing: -.02em; }
+.kicker { margin-bottom: 12px; font-size: 19px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.sub { margin-top: 10px; font-size: 24px; color: var(--dim); max-width: 60ch; }
+.note { margin-top: auto; padding-top: 22px; font-size: 19px; color: var(--dim); }
+.grow { flex: 1; min-height: 0; margin-top: 34px; }
+.row { display: flex; gap: 22px; }
+.col { display: flex; flex-direction: column; gap: 16px; }
+.card { padding: 22px 24px; border: 1.5px solid var(--line); border-radius: 14px; background: #fff; }
+.card h2 { font-size: 26px; font-weight: 600; line-height: 1.3; }
+.card p, .card li { font-size: 22px; line-height: 1.45; color: var(--dim); }
+.card ul { margin-top: 10px; padding-left: 0; list-style: none; display: grid; gap: 8px; }
+.card li { position: relative; padding-left: 22px; }
+.card li::before { content: ''; position: absolute; left: 0; top: .62em; width: 10px; height: 3px; background: var(--accent); }
+.tag { display: inline-block; padding: 4px 12px; border-radius: 99px; background: var(--wash); color: var(--accent); font-size: 18px; font-weight: 600; }
+.num { display: inline-grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 20px; font-weight: 700; }
+.arrow { flex: none; align-self: center; color: var(--accent); font-size: 34px; line-height: 1; }
+/* Bar charts */
+.bars { display: grid; gap: 14px; }
+.bar { display: grid; grid-template-columns: var(--label, 300px) 1fr 150px; align-items: center; gap: 18px; font-size: 24px; }
+.bar i { display: block; height: 30px; border-radius: 6px; background: var(--accent); width: calc(var(--v) * 1%); min-width: 6px; }
+.bar.soft i { background: color-mix(in srgb, var(--accent) 45%, #fff); }
+.bar b { font-weight: 600; font-variant-numeric: tabular-nums; }
+.bar span { color: var(--dim); font-size: 20px; }

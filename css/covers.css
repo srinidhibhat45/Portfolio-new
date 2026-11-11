@@ -190,3 +190,10 @@
   .cover-card:hover { transform: none; }
   .cover-card:hover .cover-media img { transform: none; }
 }
+
+/* ---- Before the script draws the covers, and for anyone who never runs it, each rail is a plain
+   list of the same projects (written into index.html by tools/build_case_study_pages.mjs). ---- */
+.cover-grid:has(> .case-index) { display: block; }
+.case-index { display: grid; gap: 10px; max-width: 70ch; margin: 0; padding: 0; list-style: none; color: var(--bone-dim); font-size: 1rem; line-height: 1.5; }
+.case-index a { color: var(--bone); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.js .case-index { display: none; }

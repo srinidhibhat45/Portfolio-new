@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x830">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:18px 22px}.card h2{font-size:24px}.card p{font-size:19px;margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:26px;line-height:.7}.arrow{font-size:40px}</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How it is put together</p><h1>One document, drawn by the browser, measured back</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm"><p>The document</p>
+<div class="card hi"><h2>One store</h2><p>Every part has the same shape, so undo, copy and paste, and export are each written once. Built with Zustand and Immer.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Every change goes through one door</h2><p>A whole drag counts as one undo step, and undo never moves your view.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>On screen</p>
+<div class="card"><h2>Renderer</h2><p>Turns each part into page elements. Each part redraws only when it changes.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>The browser lays it out</h2><p>Auto layout is real CSS flexbox and grid.</p></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>Measure the live page</h2><p>Selection, snapping, hit-testing and export read where things really are.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Out and away</p>
+<div class="card"><h2>Browser database</h2><p>One table of folders and designs. Saves are queued and confirmed.</p></div>
+<div class="card"><h2>Images and review page</h2><p>PNG, SVG, a ZIP of every screen, or a clickable HTML page.</p></div>
+<div class="card"><h2>Code</h2><p>React, HTML or a written spec, from the same document.</p></div></div>
+</div>
+<p class="note">Five runtime libraries in all. The canvas, snapping, icons, charts, export, code generation and the ZIP writer are written in the project.</p>

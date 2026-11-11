@@ -1,0 +1,553 @@
+{
+ "title": "Follow a Formula 1 race on one screen, and [[know which numbers are estimates]].",
+ "hook": "DashF1 is a free web dashboard I designed and built on my own. It puts the timing, the track map, the car's data and the race messages of a Formula 1 session on one screen, as a replay or live.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "July 2026"
+  },
+  {
+   "label": "Why",
+   "value": "To follow a race weekend without the broadcast, with no login and no cost"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, a desktop dashboard. A Mac launcher runs it locally"
+  },
+  {
+   "label": "Stack",
+   "value": "React 18, TypeScript, Vite, Canvas and SVG, a Netlify Function"
+  },
+  {
+   "label": "Status",
+   "value": "Live and free. No usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open DashF1",
+   "url": "https://f1dash.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: Formula 1 race data is free, but it is split across three sources. One is locked during live sessions, one has no car positions, and one only has results.",
+  "What I built: one screen with a timing tower, a track map, car telemetry, nine tabs of race detail and a replay bar, fed from whichever source works at that moment.",
+  "The key idea: during a live race the free feed has no GPS, so the map places cars from timing lines and says so. Anything the feed does not carry is left out, not guessed.",
+  "Where it stands: live on the web and free. I have no usage numbers, and the latest work on race interruptions is not yet merged."
+ ],
+ "lead": {
+  "src": "assets/cases/dashf1/screen-dashboard.webp",
+  "alt": "The DashF1 dashboard replaying the 2025 Monaco Grand Prix: timing tower on the left, track map and prediction tab in the middle, car telemetry and race control on the right, playback bar along the bottom",
+  "caption": "The whole dashboard, replaying the 2025 Monaco Grand Prix three and a half minutes in. The field is still bunched after the start. Driver photo and name blurred.",
+  "width": 1280,
+  "height": 720
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "The race data is free, but no single source has all of it",
+   "blocks": [
+    {
+     "p": "DashF1 is for following a Formula 1 race weekend without watching the broadcast. It needs no login and no account, and it costs nothing."
+    },
+    {
+     "p": "The data to do that is public, but it lives in three places. OpenF1, a public data service, has almost everything, including GPS positions and car telemetry. Telemetry is the stream of speed, gear, throttle and brake readings from each car. But OpenF1 allows a free user about 3 requests a second, and it locks free users out while a session is live."
+    },
+    {
+     "p": "The official F1 live-timing feed is open during the session, but it has no GPS and no telemetry, and a web page cannot connect to it on its own. Jolpica, a results archive, adds championship standings."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/problem.webp",
+       "alt": "Diagram of three free data sources, OpenF1, the official F1 live-timing feed and Jolpica, each with what it has and its gap, all feeding into DashF1",
+       "caption": "Read the red lines. Each source has a different hole, so the dashboard has to know which one to use at any moment.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did no interviews or user testing for this project, and I have no usage data. This page does not quote any."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Timing on the left, the track in the middle, one car on the right",
+   "blocks": [
+    {
+     "p": "It opens on the most recent session that has started. From the top bar you can pick any season, Grand Prix and session. In replay, the data streams in around the point you are watching, and you can play it at up to 60 times normal speed."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/annotated-dashboard.webp",
+       "alt": "The dashboard with seven numbered notes on the top bar, timing tower, track map, bottom tabs, telemetry, race control and playback bar",
+       "caption": "The seven parts. The tower and the map take the most room.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The timing tower is the running order. The panel on the right shows one car in detail. With nobody picked, that car is the leader."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/annotated-panels.webp",
+       "alt": "The timing tower and the car telemetry panel side by side, with seven numbered notes on tyres, gaps, lap times, the leader label, the speed trace, throttle and brake, and the large readouts",
+       "caption": "Note 4 is easy to miss: the panel says out loud that it is showing the leader because no one is picked.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/screen-map.webp",
+       "alt": "The track map of Monaco with the cars bunched together in team colours after the start, and sector markers on the circuit",
+       "caption": "The map. The circuit shape is rebuilt from GPS data and kept in the browser, one copy per circuit.",
+       "width": 528,
+       "height": 344
+      },
+      {
+       "src": "assets/cases/dashf1/screen-race-control.webp",
+       "alt": "The race control panel showing session started, green light with pit exit open, and DRS disabled messages, with a team radio tab beside it",
+       "caption": "Race control and team radio. Each message appears when the replay reaches it.",
+       "width": 324,
+       "height": 174
+      }
+     ],
+     "layout": "wide-narrow"
+    }
+   ]
+  },
+  {
+   "id": "focus",
+   "label": "Decision 1",
+   "nav": "One click to follow a driver",
+   "heading": "One click picks the driver for every panel",
+   "blocks": [
+    {
+     "p": "What you see: click a row in the timing tower, or a car on the map, and the whole dashboard turns to that driver. Click again to let go."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/focus.webp",
+       "alt": "Diagram of one click in the timing tower changing six panels: the track map, car telemetry, lap times, positions, all cars and the tower itself",
+       "caption": "What one click changes. Each panel shows the choice in its own way, from a bigger dot to faded lines.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "In the build: the chosen driver is held once, in one shared store, and every panel reads it from there. No panel keeps its own copy, so they cannot disagree about who you are following."
+    },
+    {
+     "p": "The Lap Times chart shows the top six by default and adds your driver to them. Chips above the chart let you switch other drivers on and off by hand."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "With nobody picked, the telemetry panel follows whoever leads, so it jumps to a new car when the lead changes. Picking a driver is the way to hold it still."
+     }
+    }
+   ]
+  },
+  {
+   "id": "modes",
+   "label": "Decision 2",
+   "nav": "Leave out what is missing",
+   "heading": "During a live race, the dashboard leaves out what the free feed does not carry",
+   "blocks": [
+    {
+     "p": "What you see: in replay every panel is full. During a live session the dashboard switches to race mode. That mode shows what the free live feed carries, and leaves the rest out instead of showing dashes or made-up numbers."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/two-modes.webp",
+       "alt": "Table comparing replay and race mode across track map, timing, race control, history, telemetry, DRS and the bottom bar",
+       "caption": "Look at the two red rows. Car telemetry and DRS, the opening rear wing, are not in the free live feed, so race mode does not show them.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "In the build: this was a reversal. On 22 July my live mode filled every panel. It worked out speed, gear, rpm, throttle and brake for every car from a profile of the circuit and the driver's pace, and tagged each value \"(est)\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/reversal.webp",
+       "alt": "Before and after cards: on 22 July live mode estimated every telemetry value with a small tag, on 26 July race mode left those panels out and kept one labelled estimate",
+       "caption": "Both versions are in the project history. The later one shows less, and more of what it shows is measured.",
+       "width": 1600,
+       "height": 680
+      }
+     ]
+    },
+    {
+     "p": "Four days later I took it out. Race mode now shows only what the feed carries, instead of putting estimates in place of what it lacks. One thing is still estimated, the car's place on the track, and it is labelled where you read it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/race-mode.webp",
+       "alt": "Schematic of three race-mode elements: the bottom bar with a live badge and a note on what is estimated, a driver card marked estimated with speed traps marked real measurements, and the map caption",
+       "caption": "Where race mode says \"estimated\": in the bottom bar, on the driver card and under the map. A schematic redrawn from the code, because I have no capture of a live session yet.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/screen-connecting.webp",
+       "alt": "A dark card reading Connecting to live timing, explaining that the dashboard is switching to the official F1 live-timing feed and what race mode will and will not show",
+       "caption": "The card shown while race mode connects. It says what you will get before you get it. I captured it from the built app with no network, so here it waits for a feed that never arrives.",
+       "width": 448,
+       "height": 340
+      }
+     ]
+    },
+    {
+     "p": "If someone has an OpenF1 key, they can type it in. It stays in their browser, and a live session then gets the full replay data."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Race mode looks emptier than replay, and familiar panels change when a session goes live. The connecting card and the bottom bar have to explain why."
+     }
+    }
+   ]
+  },
+  {
+   "id": "estimate",
+   "label": "Decision 3",
+   "nav": "Placing cars without GPS",
+   "heading": "Cars are placed from timing lines, and the map says so",
+   "blocks": [
+    {
+     "p": "What you see: during a live race every car still moves around the map. A caption under the circuit says the positions are estimated from mini-sector timing, and hovering a car tells you what its position was worked out from."
+    },
+    {
+     "p": "A mini-sector is one of about 20 short timing stretches in a lap. The free feed reports each car crossing each of those lines, roughly every 4 seconds, along with sector times, lap times and time gaps."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/estimation.webp",
+       "alt": "Diagram of a lap drawn as a straight strip with about 20 timing lines; a car's estimate sits after the last line it crossed and just short of the next, with the drawn dot moving forward toward it, and four steps below",
+       "caption": "The method in four steps. An illustration, not real race data.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "In the build: the circuit outline comes from GPS recorded earlier that weekend. Its points are spaced by time, not distance. So a car that moves along it at a steady rate is slow in corners and quick on straights without any extra work."
+    },
+    {
+     "p": "The model first spreads the timing lines evenly between the sector boundaries. That is only a starting guess. Each crossing shows where a line really is, so the model averages the crossings over the whole field. In testing, the real lines sat up to about 5 seconds of lap time away from that first layout."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/accuracy.webp",
+       "alt": "Chart of estimate error measured in mini-sectors: typical error up to half a mini-sector, worst case about 1.2, and 83% of estimates inside the exact mini-sector",
+       "caption": "How close it gets, by my own measurement on a recorded live race feed. Good enough to see who is in a train and where a battle is. Not GPS.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These numbers come from my own replay of a recorded feed, checked against the feed's own timing. No one else has tested them, and they are not a GPS comparison."
+     }
+    }
+   ]
+  },
+  {
+   "id": "predict",
+   "label": "Decision 4",
+   "nav": "Guesses name their method",
+   "heading": "Every prediction says it is a rule of thumb",
+   "blocks": [
+    {
+     "p": "What you see: the Predict tab gives a safety-car risk, cars that are catching the one ahead, and battles where a pit stop could swap places. Each one names its method next to its title."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/annotated-predict.webp",
+       "alt": "The Predict tab with five numbered notes on the heuristic label, the 34% safety car risk, the reason chip, catch-ups and the undercut watch",
+       "caption": "Note 2 is the whole model for this number. Anyone can add it up.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "In the build: the safety-car risk starts at 12% for a quiet race. Points are added for a yellow flag, recent incident messages, the first two laps and a wet track, and the total stays between 5% and 95%. The Weather tab works the same way and labels its rain outlook \"extrapolated, not a forecast\"."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "None of these models is fitted to past races, so each is a rough signal. In return, every number can be traced to a reason printed on screen."
+     }
+    }
+   ]
+  },
+  {
+   "id": "conditions",
+   "label": "Race conditions",
+   "nav": "Race conditions",
+   "heading": "The map was built for a green-flag race, so I taught it the rest",
+   "blocks": [
+    {
+     "p": "The first version of the position model assumed nothing interrupts the race. Every interruption either put cars in the wrong place or stopped them moving. I went through them one at a time."
+    },
+    {
+     "table": {
+      "head": [
+       "Situation",
+       "What the model now does"
+      ],
+      "rows": [
+       [
+        "Safety car or virtual safety car",
+        "Pace drops by more than half at once. Every car's pace is rescaled the moment it is called, not a lap later, and learning the timing lines pauses."
+       ],
+       [
+        "Red flag, before the start, after the flag",
+        "The model's clock stops, so nothing drifts round an empty track."
+       ],
+       [
+        "Pit stop",
+        "The car is walked down the pit lane over the time cars are seen to spend there."
+       ],
+       [
+        "Car stopped on track",
+        "It stays on the map, frozen and ringed, until marshals have had time to clear it. A car that retires without stopping on track is removed."
+       ],
+       [
+        "Change of leader",
+        "The gap-based backup is re-anchored to the new leader, so it keeps working."
+       ],
+       [
+        "Blue flags and penalties",
+        "Read from race control and shown next to the driver. Checked against the race control feed of the 2026 Hungarian Grand Prix."
+       ]
+      ]
+     }
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/pit-lane.webp",
+       "alt": "Before and after illustration on an oval track: before, three pitting cars frozen on the circuit; after, the same cars moving along the pit lane toward the exit",
+       "caption": "The pit lane fix. Before, a pitting car froze at the last line it crossed. An illustration of the change, not a capture.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "A check script drives the model through these situations on a simple test circuit. It has 16 checks: the dots never jump, never go backwards and stay close to the true position, plus checks for the safety car, red flag, lead change, pit lane and stopped cars."
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Replays run in the browser. Live timing needs a small relay.",
+   "blocks": [
+    {
+     "p": "Replays talk to the public data services straight from the browser. The live feed cannot be opened from a web page, so a small server opens it and passes it on."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/architecture.webp",
+       "alt": "Diagram in three columns: free sources OpenF1, Jolpica and the F1 live-timing feed; a request queue and a server relay in between; the store, lap model and drawing in the browser",
+       "caption": "What runs where. The highlighted parts are the two pieces the live race depends on.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Interface",
+        "React 18, TypeScript, Vite"
+       ],
+       [
+        "Track map and speed trace",
+        "Canvas, drawn by hand"
+       ],
+       [
+        "Charts",
+        "SVG, with no chart library"
+       ],
+       [
+        "Replay data",
+        "OpenF1 and Jolpica, called from the browser"
+       ],
+       [
+        "Live data",
+        "The F1 live-timing feed, through a relay that runs as a Netlify Function or in the local dev server"
+       ],
+       [
+        "Checks",
+        "One script for the position model. No test framework and no automated builds"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "OpenF1 allows about 3 requests a second, so every request waits in one queue and goes out at least 380 milliseconds after the last. Data is fetched in 30-second slices around the playhead, so a full race never downloads at once."
+    },
+    {
+     "stats": [
+      {
+       "value": "8",
+       "label": "commits, 19 to 26 July 2026"
+      },
+      {
+       "value": "9",
+       "label": "tabs of race detail"
+      },
+      {
+       "value": "16",
+       "label": "checks on the position model"
+      },
+      {
+       "value": "380 ms",
+       "label": "minimum gap between data requests"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/dashf1/timeline.webp",
+       "alt": "Timeline of eight commits over five days between 19 and 26 July 2026, with what each day added",
+       "caption": "The build day by day. 24 and 26 July are fixes for problems that only showed up in live races.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems all came from live sessions."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Opening the live feed",
+        "On 22 July a direct connection from the browser had worked. It did not hold. The feed's load balancer ties each connection to a cookie that a web page cannot send. I moved the connection to a server relay."
+       ],
+       [
+        "Locked out during a session",
+        "While a session is live, OpenF1 refuses free requests, so the race menus came up empty and you could not switch races. The menus now fall back to Jolpica's calendar."
+       ],
+       [
+        "The wrong circuit",
+        "An outline left over from replaying another Grand Prix stayed in place when live mode began, so every car was drawn on the wrong track. A loose name match could also find any race through the words \"grand\" and \"prix\". Outlines are now tagged with their circuit, and the lookup matches circuit and location exactly."
+       ],
+       [
+        "Jumpy dots",
+        "Every input arrives in steps, so dots jumped by up to half a mini-sector whenever a gap refreshed. They are now steered toward the estimate, always forward, closing the error in about a second."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live and free, with the newest work still on a branch",
+   "blocks": [
+    {
+     "p": "DashF1 is live on the web, free and with no login. Replay works for any past session that OpenF1 has."
+    },
+    {
+     "p": "I have no user counts or feedback to report. These are also not there yet:"
+    },
+    {
+     "list": [
+      "The safety car, red flag and pit lane work sits on its own branch and is not yet merged into the main version.",
+      "On Netlify, a function can only run for a limited time, so the live relay ends and reconnects and timing arrives in bursts. Run locally, the feed does not break.",
+      "I have no screen capture of race mode, because it only appears during a real session.",
+      "The driver photos and race data come from Formula 1 and the public data services, not from me."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Merge the race work, then test it with people",
+   "blocks": [
+    {
+     "list": [
+      "Merge the race-condition branch and capture race mode during a real session.",
+      "Proposed study: ask someone to follow a battle and say which values are measured, which are history and which are estimated.",
+      "Proposed checks: missing telemetry, stale updates, a broken stream, safety-car periods, and the switch back to replay."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A dashboard should say less when it knows less",
+   "blocks": [
+    {
+     "p": "The version that filled every panel looked the most finished, but none of its telemetry was measured. Taking those numbers away made the screen more honest, and the one estimate I kept got a label in three places."
+    },
+    {
+     "p": "I also learned to let the data correct the starting assumptions. The first layout of the timing lines was up to 5 seconds of lap time out, and only the crossings of the whole field showed it."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,636 @@
+{
+ "title": "Hexagonal chess you learn by [[making the moves]].",
+ "hook": "HexChess is a web app I designed and built on my own. It teaches Gliński’s hexagonal chess in six one-move lessons, then lets you play the computer, a friend on the same device, or a friend by link.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "October 2026"
+  },
+  {
+   "label": "For",
+   "value": "People who already play chess and want to try the hexagonal version. This is my assumption, not research"
+  },
+  {
+   "label": "Platform",
+   "value": "Web app for phone and desktop. It installs to the home screen and plays offline after the first visit"
+  },
+  {
+   "label": "Stack",
+   "value": "React 19, TypeScript, Vite, a Web Worker and a service worker. Vitest for tests"
+  },
+  {
+   "label": "Status",
+   "value": "Live and free. No accounts and no analytics, so no usage numbers. Not tested with learners"
+  }
+ ],
+ "links": [
+  {
+   "label": "Play HexChess",
+   "url": "https://hexchess.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: on a hexagonal board the pieces keep their names but not their moves. A rook has six directions, a knight has twelve jumps, and each side has three bishops.",
+  "What I built: a web app with a rules guide, six one-move lessons, a computer opponent at three levels, pass-and-play and games sent by link. It works offline.",
+  "The key idea: teach on the board. A lesson asks for one move to one outlined cell, and in a real game you can tap any enemy piece to see where it reaches.",
+  "Where it stands: live and free, with no accounts. I have not watched anyone learn with it, so I cannot say the lessons work."
+ ],
+ "lead": {
+  "src": "assets/cases/hexchess/lead.webp",
+  "alt": "HexChess on a laptop mid-game, the knight lesson on a phone, and a game in progress on a phone, all on a grey hexagonal board",
+  "caption": "The playing room on a laptop, the knight lesson on a phone, and a game against the computer on a phone. All three use the default Classic board.",
+  "width": 2400,
+  "height": 1200
+ },
+ "sections": [
+  {
+   "id": "problem",
+   "label": "The problem",
+   "nav": "The problem",
+   "heading": "On this board, chess instincts point the wrong way",
+   "blocks": [
+    {
+     "p": "Gliński’s hexagonal chess is played on 91 six-sided cells. It has the same six pieces as ordinary chess, and most of them move differently."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/compare.webp",
+       "alt": "Table comparing standard chess with Gliński’s hexagonal chess for the board, rook, bishop, knight, king and stalemate",
+       "caption": "Read the right column. Every row is a habit a chess player has to unlearn, down to how a stalemate is scored.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "A player who knows chess brings the wrong instincts. They reach for a diagonal that is not there, or miss a knight jump they have never seen. A rules page can describe the new directions. It cannot make them feel normal."
+    },
+    {
+     "p": "Even the board needs explaining. Cells are named by a letter and a number, like squares, but the letters mark slanted columns, called files, and there are three shades instead of two."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/board-map.webp",
+       "alt": "Map of all 91 hexagonal cells with their names, in three shades of grey, with the centre cell f6 outlined and the file letters a to l along the bottom",
+       "caption": "Every cell and its name. Find f6 in the middle, then follow file f up to f11. The j is missing on purpose.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "Who it is for.",
+      "detail": "I designed for someone who already plays chess and wants to try this version. That is my assumption. I did no interviews or survey."
+     }
+    }
+   ]
+  },
+  {
+   "id": "approach",
+   "label": "My approach",
+   "nav": "My approach",
+   "heading": "Learn by moving a piece, then play straight away",
+   "blocks": [
+    {
+     "p": "I laid out a route with four stops. Each is optional. The playing room opens first, with links to the lessons and the rules beside the board."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/journey.webp",
+       "alt": "Flow of four steps: read the basics, six lessons, an untimed first game, then a choice of opponent",
+       "caption": "The route. The lessons in the middle are the part I spent the most care on.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "p": "The rules guide is for reading. It explains a first game in three steps, has a piece explorer, and keeps the finer rules, such as en passant, promotion and endings, in panels you open when you want them."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/learn-knight.webp",
+       "alt": "The rules guide on the knight: a practice board with twelve dots around a knight, and a short explanation beside it",
+       "caption": "The piece explorer on the knight. The dots are all twelve of its jumps from the centre of an empty board.",
+       "width": 1600,
+       "height": 930
+      }
+     ]
+    },
+    {
+     "p": "The lessons are for doing. The next four sections are the decisions that make that work, each with what it meant in the build."
+    }
+   ]
+  },
+  {
+   "id": "lessons",
+   "label": "Decision 1",
+   "nav": "One move per lesson",
+   "heading": "Each lesson asks for one move to one outlined cell",
+   "blocks": [
+    {
+     "p": "What you see: six lessons, one per piece. Each puts a single white piece on an empty board, outlines one target, and asks you to select the piece and then move it there."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/annotated-lesson.webp",
+       "alt": "The rook lesson with six numbered notes on the lesson tabs, the outlined target, the move dots, the two-step checklist, the feedback line and the locked Next lesson button",
+       "caption": "The rook lesson just after a real rook move to the wrong cell. Look at note 5: the reply corrects me, and the lesson carries on.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The dots matter as much as the target. They show the whole shape of a piece’s reach, so a learner sees six rook lines or twelve knight jumps at once."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/board-rook.webp",
+       "alt": "Lesson board with a rook in the centre and dots along six straight lines",
+       "caption": "Rook: six straight lines through cell edges.",
+       "width": 900,
+       "height": 954
+      },
+      {
+       "src": "assets/cases/hexchess/board-bishop.webp",
+       "alt": "Lesson board with a bishop in the centre and dots along six diagonals",
+       "caption": "Bishop: six diagonals through cell corners. Every dot is on the same shade as the bishop.",
+       "width": 900,
+       "height": 954
+      },
+      {
+       "src": "assets/cases/hexchess/board-knight.webp",
+       "alt": "Lesson board with a knight in the centre and twelve dots around it",
+       "caption": "Knight: twelve jumps. Pieces in between would not block it.",
+       "width": 900,
+       "height": 954
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "In the build: each lesson runs on its own small position, apart from any game. Every tap goes through one function that returns the next message. I wrote a reply for each kind of mistake, so a wrong tap explains itself instead of ending the lesson."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/feedback.webp",
+       "alt": "Five rows pairing an action in the rook lesson with the exact message the app shows for it",
+       "caption": "Every reply in lesson 1. The two orange rows are the mistakes. Neither one resets the board.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "A lesson is ticked only when you make its move. Skipping does not count. Tests check every lesson’s target, selecting before moving, other legal moves, retries and the pawn capture."
+    },
+    {
+     "p": "One of the six commits went only to this: clearer lesson targets and simpler beginner rules."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A lesson board shows how a piece moves, not whether the move is safe. King safety waits for the king lesson and the rules guide, so the first lessons stay about shape."
+     }
+    }
+   ]
+  },
+  {
+   "id": "preview",
+   "label": "Decision 2",
+   "nav": "See the enemy’s reach",
+   "heading": "Tap an enemy piece to see where it can go",
+   "blocks": [
+    {
+     "p": "What you see: in a game, tapping one of your pieces shows filled dots where it can legally move. Tapping one of the opponent’s pieces shows hollow rings where it could go next. Nothing is moved or queued."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/annotated-preview.webp",
+       "alt": "A game board with a black bishop selected for preview, hollow rings on the cells it reaches, a dashed ring on a white pawn, and the white king’s cell in red, with six numbered notes",
+       "caption": "The computer’s bishop has just given check. Tapping it shows why: note 4 is the king it attacks.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "p": "On an unfamiliar board, the threat is the hard thing to see. This lets a player check a piece’s reach before moving, without leaving the game for the rules."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/select-queen.webp",
+       "alt": "The same game with the white queen selected, filled dots on its legal moves and a ring around a black pawn it can capture",
+       "caption": "My own queen selected, for comparison. Filled dots are its legal moves, and the ringed pawn is one it can take.",
+       "width": 1600,
+       "height": 1711,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: the preview follows each piece’s movement rules and respects pieces in the way, but it does not test king safety. The status line says so every time."
+    },
+    {
+     "p": "Two smaller rules are covered by tests. If a piece of yours is selected and you tap an enemy piece it can capture, the capture wins over the preview. And en passant shows only for the side whose turn it is."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A ring can sit on a cell the piece could not really reach, because moving there would expose its own king. That is why the preview is labelled as a preview."
+     }
+    }
+   ]
+  },
+  {
+   "id": "help",
+   "label": "Decision 3",
+   "nav": "Help only in practice",
+   "heading": "Hints and takebacks belong to practice against the computer",
+   "blocks": [
+    {
+     "p": "What you see: against the computer you get Hint, Undo and Pause. In a game with a person, on one device or by link, all three are gone. Flipping the board, drawing arrows, offering a draw and resigning stay."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/hint-board.webp",
+       "alt": "A game against the computer with a pawn highlighted by a hint and a message at the bottom reading Try pawn f5 to g5",
+       "caption": "A hint against the computer. It selects the piece, marks the cell, and names the move at the bottom.",
+       "width": 1600,
+       "height": 1980,
+       "kind": "tall"
+      },
+      {
+       "src": "assets/cases/hexchess/new-game.webp",
+       "alt": "The new game dialog with Computer, Pass and play and Play by link, a choice of side, a computer level menu and six time options",
+       "caption": "Starting a game: who to play, which side, the computer’s level and the clock.",
+       "width": 960,
+       "height": 1608,
+       "kind": "tall"
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build, hints, takebacks and pausing each have a one-line rule: computer games only. Tests check that a human game cannot use them. Every move, from you, the computer, a premove or a link, passes the same legality check."
+    },
+    {
+     "p": "The computer searches for its move in a Web Worker, a background thread, so the board never freezes while it thinks. Its three levels differ in how far ahead it looks and how long it may think: about a fifth of a second, two thirds of a second, or 1.8 seconds. The beginner level picks at random from up to five moves close to its best."
+    },
+    {
+     "aside": {
+      "title": "What I do not claim.",
+      "detail": "The levels are not ratings. I have not measured their strength against players or other programs, and the app shows no Elo number."
+     }
+    }
+   ]
+  },
+  {
+   "id": "links",
+   "label": "Decision 4",
+   "nav": "Games by link",
+   "heading": "A game sent by link is a snapshot, and the app says so",
+   "blocks": [
+    {
+     "p": "What you see: Play by link needs no account. You make a move and send a link. Your friend opens it, plays one move and sends a new link back. There is no live room and no clock."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/link-flow.webp",
+       "alt": "Flow of a link game in five steps, with a list of links the app turns away and a list of what a link cannot do",
+       "caption": "One round of a link game. The red box is what the app refuses. The white box is what it cannot promise.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/share-dialog.webp",
+       "alt": "The share dialog with three numbered steps, a note about snapshots, the game link with a copy button, and a warning about identity and engine help",
+       "caption": "The share dialog. The warning at the bottom is part of the design. The address is from the local copy I captured it on.",
+       "width": 960,
+       "height": 1392,
+       "kind": "tall"
+      },
+      {
+       "src": "assets/cases/hexchess/link-recipient.webp",
+       "alt": "The game opened from the link as Black, with the board turned so Black is at the bottom and the side panel showing Black to move",
+       "caption": "The same game opened as Black. The board turns to Black’s side, and the cell names stay the same.",
+       "width": 1600,
+       "height": 1237
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/annotated-link.webp",
+       "alt": "A link game while waiting for Black, with a premove in blue, an orange arrow, the status line and the side panel, with six numbered notes",
+       "caption": "Back on my side while I wait. Note 1 is a premove: it is checked again when the reply arrives, and played only if still legal.",
+       "width": 1600,
+       "height": 1090
+      }
+     ]
+    },
+    {
+     "p": "In the build: a link holds the game’s moves, not its board. Opening one replays every move through the rules. If this device already knows the game, the reply must keep the saved moves and add at most one. Anything else is turned away with the message “This link is invalid or conflicts with your saved game. Your board is unchanged.”"
+    },
+    {
+     "p": "A premove lives only on the device and never goes into a link. When the reply arrives it is checked against the new position, including pins, captures and promotion, before it is played."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "With no server there is no identity. Anyone with the link can read the game, and nothing stops a player using a chess engine on the side. The app calls link games friendly play and does not claim more."
+     }
+    }
+   ]
+  },
+  {
+   "id": "screens",
+   "label": "On every screen",
+   "nav": "Phone and desktop",
+   "heading": "On a phone, the board takes the width",
+   "blocks": [
+    {
+     "p": "Starting a game turns on zen mode, which hides everything except the players, the board and the controls. Z or Esc brings the full room back, and the app remembers that choice."
+    },
+    {
+     "p": "On a phone the board runs almost edge to edge. Move history and the game menu open only when asked for. Controls are at least 44 pixels tall."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/phone-room.webp",
+       "alt": "A phone screen in zen mode with two player cards, the board across the full width, a status line and a row of controls",
+       "caption": "A game on a phone. Players, board, status, one row of controls.",
+       "width": 900,
+       "height": 1948
+      },
+      {
+       "src": "assets/cases/hexchess/phone-history.webp",
+       "alt": "The move history panel open over the board on a phone, listing the first three turns",
+       "caption": "Move history opens over the board. Picking a move shows that position, and the clock keeps running.",
+       "width": 900,
+       "height": 1948
+      },
+      {
+       "src": "assets/cases/hexchess/phone-menu.webp",
+       "alt": "The game menu on a phone with eight buttons: new game, rules, tutorial, preferences, share, pause, draw and resign",
+       "caption": "The game menu holds the rules, the lessons, preferences, sharing and game actions.",
+       "width": 900,
+       "height": 1948
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "The fifth commit was for phones: a larger board, and a piece that follows your finger while you drag it."
+    },
+    {
+     "p": "The board comes in four palettes and a dark mode. The second commit added Classic, a soft grey board, and it is now the default. Garden, Slate and Walnut remain."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/palettes.webp",
+       "alt": "The starting position shown five times: Classic grey, Garden green, Slate blue, Walnut brown, and Classic in dark mode",
+       "caption": "The same opening position in all four palettes, and Classic in dark mode. The three shades stay distinct in each.",
+       "width": 2000,
+       "height": 530
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "No server, so the rules have to hold up on their own",
+   "blocks": [
+    {
+     "p": "HexChess is a set of static files. The rules, the computer, saved games and links all run in the browser."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/architecture.webp",
+       "alt": "Diagram in three columns: the React interface and one legal-move gate; the rules engine, session and computer opponent; and local storage, game links and the service worker",
+       "caption": "What runs where. Start at the legal-move gate: everything that changes a game passes through it.",
+       "width": 1600,
+       "height": 960
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "React 19, TypeScript, Vite"
+       ],
+       [
+        "Board",
+        "SVG, drawn from each cell’s two hex coordinates"
+       ],
+       [
+        "Computer",
+        "A search that looks a few moves ahead, in a Web Worker"
+       ],
+       [
+        "Offline",
+        "A service worker that saves the app on the first visit"
+       ],
+       [
+        "Checks",
+        "Vitest, run by GitHub Actions on every push and before every deploy"
+       ],
+       [
+        "Hosting",
+        "Vercel, as static files"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The board is built from coordinates, not drawn by hand. Each cell has two numbers, and its name, its shade and every move direction come from them. The board map near the top of this page was drawn from the same formula."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/link-anatomy.webp",
+       "alt": "A game link and, below it, the decoded record: version, game id, sender, settings, the list of moves, draw offer and result, with notes on four fields",
+       "caption": "What a link carries after one move. Only the moves travel, so the receiving app can check every one of them.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "stats": [
+      {
+       "value": "6",
+       "label": "commits, all on 9 October 2026"
+      },
+      {
+       "value": "10",
+       "label": "test files, run before every deploy"
+      },
+      {
+       "value": "90,000",
+       "label": "characters, the longest link the app accepts"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/commits.webp",
+       "alt": "Timeline of six commits on one day, from the first full version to the recorded live deployment",
+       "caption": "The six commits. After the first working version, four passes refined the board, the lessons, the notation and the phone layout.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The hardest parts were not the board."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What made it hard, and what I did"
+      ],
+      "rows": [
+       [
+        "Rules",
+        "Hexagonal geometry has many edge cases: pins, en passant, discovered check, promotion on 11 edge cells and the ¾ stalemate score. Tests cover each, plus the starting armies and the bishops’ shades."
+       ],
+       [
+        "Links",
+        "A link can be old, edited or your own. Replies must keep the saved moves and add at most one, and a draw needs an offer and an acceptance. Tests try conflicting links, made-up results and impossible clock values."
+       ],
+       [
+        "Premoves",
+        "A queued move can turn illegal after the reply. It is checked again against the new position. Tests cover captures, blocked cells, stale queues, promotion and link replies."
+       ],
+       [
+        "Offline and clocks",
+        "A game has to survive reloads and updates. A new version waits until open tabs close, and clocks count real time through background tabs. Tests cover offline loading, cache updates and damaged saves."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Beyond the tests, I checked the desktop and phone layouts, finishing the lessons, computer replies, link round trips, reloads and offline play in a browser."
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "The board can be played from the keyboard",
+   "blocks": [
+    {
+     "p": "Press Tab to reach the board, the arrow keys to move between cells, and Enter or Space to select and move. Each cell has a name a screen reader can read out, such as “d1, white Knight, selected”."
+    },
+    {
+     "p": "Drawing arrows, normally a right-drag, also has a Draw tool for touch and keyboard. A reduced-motion setting on the device turns off animation. The move list writes out each piece and both cells instead of chess shorthand, and has a short guide to reading it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hexchess/move-list.webp",
+       "alt": "The side panel of a game against the computer: both clocks, then a move list where each turn shows a piece name and the from and to cells",
+       "caption": "The side panel. Each move names the piece and both cells in full, so no notation has to be learned first.",
+       "width": 600,
+       "height": 1290,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I have not done.",
+      "detail": "I have no record of testing with a screen-reader user or of a formal accessibility audit, so I do not claim either."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no way of knowing who plays it",
+   "blocks": [
+    {
+     "p": "HexChess is live at hexchess.srinidhibhat.com. The deployment was checked on 9 October 2026. It needs no account and has no analytics, so I have no usage numbers."
+    },
+    {
+     "list": [
+      "No one has been observed learning with it, so there is no evidence that the lessons improve learning.",
+      "The computer levels have no measured rating.",
+      "Link games have no sign-in, so a player cannot prove who they are.",
+      "The rules guide’s video and outside links need a connection. Everything else works offline."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Watch a new player go from a lesson to a game",
+   "blocks": [
+    {
+     "list": [
+      "Watch someone new to the variant finish a piece lesson, then see whether they use the same move unaided in a practice game.",
+      "Check the moments most likely to confuse: reloading mid-game, picking up offline, and two people trading replies while saying what they think a link is."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A finished lesson is weak evidence",
+   "blocks": [
+    {
+     "p": "A ticked lesson tells me someone made one move. It does not tell me they will spot that move in a real game. The evidence I need is a new player recognising a move, recovering from a mistake and carrying on without an explanation."
+    },
+    {
+     "p": "The other thing I would keep is putting limits where they apply. The preview says it ignores king safety, the share dialog says a link cannot prove who sent it, and the levels make no claim about strength."
+    }
+   ]
+  }
+ ]
+}

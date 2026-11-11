@@ -1,0 +1,324 @@
+{
+ "title": "One long page that takes a furniture shopper from [[looking to choosing]].",
+ "hook": "Gloria Furniture is a storefront concept: a single long page that opens with photos of furniture and ends with ten products, their prices and a place to ask for help.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Visual design and page structure"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself. No client asked for it"
+  },
+  {
+   "label": "Platform",
+   "value": "Desktop web page, drawn 1920 pixels wide"
+  },
+  {
+   "label": "Scope",
+   "value": "One long landing page in five bands"
+  },
+  {
+   "label": "Method",
+   "value": "Layout, type and colour. No research behind it"
+  },
+  {
+   "label": "Status",
+   "value": "Visual concept. No shop behind it, not built, not tested"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original page (PDF)",
+   "url": "assets/pdfs/gloria-furniture.pdf"
+  }
+ ],
+ "linksHeading": "The original page",
+ "summary": [
+  "The problem: furniture is a visual purchase and a practical one. A shop's front page has to inspire first, then give names and prices.",
+  "What I did: I set myself that brief and designed one long desktop page in five bands: a hero, categories, quality promises, two rows of products and a footer.",
+  "The key idea: narrow the choice step by step. Photos first, then five categories, then ten products on one repeated card so they are easy to compare.",
+  "Where it stands: a visual concept. There was no research and no testing, and there is no cart or checkout. The prices, warranty and contact details are illustrative."
+ ],
+ "lead": {
+  "src": "assets/cases/gloria-furniture/lead.webp",
+  "alt": "The first screen of the Gloria Furniture page, with a headline, a Buy Now button and six photos, beside a small view of the whole long page",
+  "caption": "The first screen at full size, with the whole page beside it for scale. The page is five screens long. The contact details in its footer are painted out.",
+  "width": 2400,
+  "height": 1230
+ },
+ "sections": [
+  {
+   "id": "brief",
+   "label": "The brief",
+   "heading": "I set the brief: one page, from looking to choosing",
+   "blocks": [
+    {
+     "p": "No shop asked for this page. I set the brief myself, to practise designing a storefront. Furniture is a visual purchase and a practical one. A shopper wants to be inspired first, and then wants names and prices. I wanted one page that follows that order."
+    },
+    {
+     "p": "There was no research behind it and nobody tested it. So this page is about the design: how the long page is cut into bands, what each band looks like up close, and what the type, colour and layout really measure."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/page-map.webp",
+       "alt": "The whole Gloria page shown top to bottom beside a list of its eight parts, grouped into five steps: look, browse, trust, choose and ask",
+       "caption": "The page as a map. Read the five coloured bars from top to bottom: each one is a step in the shopper's path.",
+       "width": 1600,
+       "height": 1640
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What is not real.",
+      "detail": "The prices, the three-year warranty and the contact details on the page are illustrative. None of the buttons work. There is no cart and no checkout."
+     }
+    }
+   ]
+  },
+  {
+   "id": "hero",
+   "label": "First screen",
+   "heading": "The first screen makes one offer",
+   "blocks": [
+    {
+     "p": "The first screen has one headline, one button and six photos. The headline is 88 pixels tall, the largest type on the page, split into a red line and a black line. The photos sit in four narrow columns at different heights."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/annotated-hero.webp",
+       "alt": "The first screen with six numbered callouts: logo, menu, headline, Buy Now button, photo collage and the dividing line",
+       "caption": "The first screen, taken apart. The red button is the only solid red shape here, so the eye lands on it after the headline.",
+       "width": 1600,
+       "height": 1230
+      }
+     ]
+    },
+    {
+     "p": "The trade-off: the button says Buy Now before a single product has been shown. Looking back, a label that promises browsing would suit this spot better."
+    }
+   ]
+  },
+  {
+   "id": "browse",
+   "label": "Browse and trust",
+   "nav": "Categories and quality",
+   "heading": "Five ways in, then four reasons to trust",
+   "blocks": [
+    {
+     "p": "The second screen offers five categories: Furniture, Lighting, Re-Styling, Decor and Art & More. Each is a tall photo with a red label. Every other photo sits lower, which keeps the row from looking like a table."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/categories.webp",
+       "alt": "The We are Gloria band: five tall photos labelled Furniture, Lighting, Re-Styling, Decor and Art and More, with the second and fourth set lower",
+       "caption": "The five categories. The photo does the selling and the small red label does the naming.",
+       "width": 1500,
+       "height": 829
+      }
+     ]
+    },
+    {
+     "p": "The third screen is about trust. Four icon tiles carry four promises: 3 Year Warranty, Top Quality Material, All QC Passed and Best-in-class."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/quality.webp",
+       "alt": "The Symbol of Quality band: four pale pink tiles with red icons, labelled 3 Year Warranty, Top Quality Material, All QC Passed and Best-in-class",
+       "caption": "The quality band comes before any price, so the reassurance is read first. The promises are sample text.",
+       "width": 1500,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "p": "The trade-off: promises like these need real policies behind them. A concept can show where reassurance belongs on a page. It cannot make the claims true."
+    }
+   ]
+  },
+  {
+   "id": "products",
+   "label": "Products",
+   "heading": "Ten products on one card design",
+   "blocks": [
+    {
+     "p": "The last band before the footer holds two rows of five products, Home Decor and Furniture. All ten use the same card: photo, name, price, three colour dots and two buttons. Because the card never changes, the eye can run along a row and compare."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/home-decor.webp",
+       "alt": "The Home Decor row: five product cards for a stool, three vases and a table lamp, each with a price and two buttons",
+       "caption": "The Home Decor row. Run your eye along the prices: they sit in the same place on every card.",
+       "width": 1600,
+       "height": 584
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/annotated-card.webp",
+       "alt": "One product card enlarged with six numbered callouts: photo, name, price, colour dots, Add to Cart and Buy Now",
+       "caption": "One card, taken apart. The order on the card is the order of a decision: what it is, what it costs, which colour, then what to do.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/furniture.webp",
+       "alt": "The Furniture row: five product cards for a couch, a chair, drawers, a coffee table and another chair, with a Visit Shop button below",
+       "caption": "The Furniture row uses the same card for much higher prices. Visit Shop, bottom right, is the only way on to the full shop.",
+       "width": 1600,
+       "height": 692
+      }
+     ]
+    },
+    {
+     "p": "The weak point is the pair of buttons. Add to Cart and Buy Now sit side by side at the same size on every card, so neither is clearly the main one."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/buttons.webp",
+       "alt": "Bar chart counting the buttons on the page: Buy Now 11 times, Add to Cart 10 times, Visit Shop once",
+       "caption": "Every button on the page, counted. Twenty-one of the 22 ask the shopper to buy at once.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "Today I would give each card one main action that opens a product page, and test that before offering instant purchase everywhere."
+    }
+   ]
+  },
+  {
+   "id": "system",
+   "label": "Type, colour, layout",
+   "nav": "Type and colour",
+   "heading": "Type, colour and layout, measured",
+   "blocks": [
+    {
+     "p": "I measured the artwork to see how tidy the system is. It uses ten type sizes. Two pairs are almost the same (88 and 85, 36 and 35), so fewer sizes would do the same job."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/type-scale.webp",
+       "alt": "Chart of the ten type sizes on the page, from 88 pixels for the headline down to 15 pixels for the card buttons, with where each is used",
+       "caption": "Every type size on the page, drawn to scale. Compare the top row with the bottom one: the card buttons are set at 15 pixels.",
+       "width": 1600,
+       "height": 1140
+      }
+     ]
+    },
+    {
+     "p": "Colour is simpler. Half the page is white, about a tenth is one pure red, and four pale pinks sit behind the header, cards and tiles. The red is strong enough to lead the eye. But white text on it has a contrast of 4 to 1, just under the 4.5 to 1 usually asked of small text."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/palette.webp",
+       "alt": "Colour chart: red, white, four pale pinks and black, a bar showing how much of the page each covers, and four contrast pairs",
+       "caption": "The palette, with how much of the page each colour covers. Look at the last row: the pale grey Featured tag is the hardest thing on the page to read.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "p": "The three main rows each use their own column widths. So the edges of the category photos, the quality tiles and the product cards do not line up down the page."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/grid.webp",
+       "alt": "Three bands of the page with teal column guides drawn over them: five category photos, four quality tiles and five product cards",
+       "caption": "The columns in each row. One shared set of columns would make the long page feel calmer.",
+       "width": 1600,
+       "height": 1650
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "footer",
+   "label": "Footer",
+   "heading": "The footer answers the practical questions",
+   "blocks": [
+    {
+     "p": "The page ends in a solid red footer. It names the shop's city, Panjim in Goa, and lists five service links: Our Stores, Warranty Claim, Custom Requests, Bulk Orders and Open a Franchise. The copyright line is dated 2022."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/gloria-furniture/footer.webp",
+       "alt": "The red footer with the Gloria Furniture logo, a Panjim, Goa address and five service links, above a pale pink copyright bar",
+       "caption": "The left two thirds of the footer. The right-hand column holds a placeholder email and phone numbers, which I have left out.",
+       "width": 1400,
+       "height": 578
+      }
+     ]
+    },
+    {
+     "p": "Buying furniture takes service as well as photos, so the links for stores, warranty and custom orders sit where people look for help."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "heading": "What it would need before anyone could buy",
+   "blocks": [
+    {
+     "p": "What exists is one flat picture of a desktop page. To take it further, I would do these things in order."
+    },
+    {
+     "steps": [
+      {
+       "title": "Design a product page",
+       "detail": "Dimensions, materials, stock and delivery area. Those are the facts someone needs before buying furniture."
+      },
+      {
+       "title": "Give each card one main action",
+       "detail": "Then test it: ask someone to find a product within a budget, compare two options and explain the delivery terms."
+      },
+      {
+       "title": "Design it for a phone",
+       "detail": "The page is drawn at one desktop width."
+      },
+      {
+       "title": "Put real content in",
+       "detail": "Real products, prices and policies in place of the samples."
+      },
+      {
+       "title": "Tidy the system",
+       "detail": "Fewer type sizes, one set of columns and stronger contrast for small text."
+      }
+     ]
+    },
+    {
+     "p": "What I took from it: a good-looking product card still has to help someone decide what to do next."
+    }
+   ]
+  }
+ ]
+}

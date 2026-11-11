@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>.stage{display:grid;grid-template-columns:200px 40px 1fr 40px 320px 40px 230px;align-items:center}.card h2{font-size:24px}.card p{font-size:19px;margin-top:6px}.reads{display:grid;gap:14px}.read{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1.5px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}.read>div{padding:16px 20px}.read>div:first-child{background:var(--wash)}.read h2{font-size:22px;font-weight:600}.read p{font-size:18px;line-height:1.4;color:var(--dim);margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.stack{display:grid;gap:14px}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">How a page comes apart</p><h1>Each page is read three ways, then merged into layers</h1>
+<div class="grow stage">
+<div class="card hi"><h2>A PDF page</h2><p>Opened with pdf.js, inside the browser tab.</p></div>
+<span class="arrow">→</span>
+<div class="reads">
+<div class="read"><div><h2>The drawing instructions</h2><p>Every command the page uses to paint itself.</p></div><div><h2>Replayed step by step</h2><p>Tracks position, clipping, colour and transparency, so each path and image comes out where and how it was really painted.</p></div></div>
+<div class="read"><div><h2>The text</h2><p>Runs of letters with positions.</p></div><div><h2>Letters to lines to paragraphs</h2><p>A gap wide enough to be a second column stops two columns fusing into one paragraph.</p></div></div>
+<div class="read"><div><h2>A rendered picture</h2><p>The page drawn once as pixels.</p></div><div><h2>Colour under the text</h2><p>Text sits on cards and photos as often as on the page colour, so white text stays white.</p></div></div>
+</div>
+<span class="arrow">→</span>
+<div class="stack">
+<div class="card"><h2>Group</h2><p>Nearby paths become one object. Evenly spaced, similar shapes become one series, such as a bar chart.</p></div>
+<div class="card"><h2>Name</h2><p>Each object gets a role: title, bullet, stat, caption, logo, chart, photo, divider and more.</p></div>
+</div>
+<span class="arrow">→</span>
+<div class="card hi"><h2>A slide of layers</h2><p>Each one can be selected, restyled and animated on its own.</p></div>
+</div>
+<p class="note">Two traps the code has to handle: pdf.js hands colours over as bytes from 0 to 255, not fractions from 0 to 1, and reading them wrong turns a whole document white. A drawn horizontal line has zero height, so lines vanish unless the stroke width is added back.</p>

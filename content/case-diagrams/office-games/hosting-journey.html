@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>.tl{display:grid;grid-template-columns:200px 34px 1fr;row-gap:14px;align-items:start}.t{font-size:20px;font-weight:600;color:var(--dim);text-align:right;padding-top:2px}.d{width:16px;height:16px;border-radius:50%;background:var(--accent);margin:8px auto 0;box-shadow:0 0 0 5px var(--paper)}.d.o{background:#fff;border:3px solid var(--accent)}.e{font-size:22px;line-height:1.38}.e b{font-weight:600}.e span{color:var(--dim)}.day{grid-column:1/-1;font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);border-top:1.5px solid var(--line);padding-top:12px;margin-top:4px}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">From the commit history</p><h1>Getting players connected took 15 of the 34 commits</h1>
+<div class="grow tl">
+<p class="day">10 July 2026</p>
+<p class="t">00:45</p><i class="d o"></i><p class="e"><b>Keyboard Scramble on a Node server</b> <span>(Express and Socket.IO), with a one-click setup for Render</span></p>
+<p class="t">09:45 to 09:56</p><i class="d o"></i><p class="e"><b>Two hosts prepared:</b> <span>Render on its free tier, and a Docker file for Hugging Face Spaces</span></p>
+<p class="t">10:01</p><i class="d"></i><p class="e"><b>Rewritten for serverless hosting on Vercel.</b> <span>The server is deleted and the host's browser runs the game (1,372 lines removed)</span></p>
+<p class="t">10:14 to 14:40</p><i class="d"></i><p class="e"><b>Turned into a hub.</b> <span>Collision added at 10:43, The Forger at 14:40</span></p>
+<p class="t">14:59 to 15:39</p><i class="d"></i><p class="e"><b>Connection bugs:</b> <span>old connections left open, a timeout hiding the real error, a race when joining, then STUN and TURN servers added</span></p>
+<p class="day">13 July</p>
+<p class="t">08:33</p><i class="d"></i><p class="e"><b>The free public TURN server stopped working,</b> <span>so joins timed out behind firewalls. A server function now fetches short-lived TURN passwords</span></p>
+<p class="t">08:39 and 08:46</p><i class="d"></i><p class="e"><b>Two follow-up fixes:</b> <span>the reply had the wrong shape, and browsers kept a cached bad reply</span></p>
+<p class="day">17 July</p>
+<p class="t">16:17</p><i class="d"></i><p class="e"><b>Collision rules rebuilt:</b> <span>answer checking, a 30-second timer and a new strike rule</span></p>
+</div>
+<p class="note">Counted from the commit messages: 15 are about hosting or connections. The other 19 built the three games and the hub.</p>
+</body>

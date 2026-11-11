@@ -1,0 +1,422 @@
+{
+ "title": "A naval game for crews of three, where [[every decision has an owner]]",
+ "hook": "OhCaptain is a three-against-three naval game for the browser that I designed and built on my own. Each crew has one captain who spends and two operators who ask, and the screen is built around the next move each of them can make.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Team",
+   "value": "Just me"
+  },
+  {
+   "label": "For",
+   "value": "Players joining a small naval crew (my assumption, not research)"
+  },
+  {
+   "label": "Platform",
+   "value": "Web browser, keyboard and mouse"
+  },
+  {
+   "label": "Stack",
+   "value": "JavaScript and CSS. Rooms use direct peer connections"
+  },
+  {
+   "label": "Status",
+   "value": "Playable prototype. Not yet tested with human crews"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the game on GitHub",
+   "url": "https://github.com/srinidhibhat45/OhCaptain"
+  }
+ ],
+ "linksHeading": "See the project",
+ "summary": [
+  "The problem: in a crew game, the captain steers, fights and decides where shared supplies go, often in the same few seconds.",
+  "What I built: a playable 3 v 3 browser game with two stations, captain and operator, eight relays to hold and a match of at most 10 minutes.",
+  "The key idea: each kind of information gets a place and a priority. Urgent signals share a small budget, spending sits in a drawer, and planning sits in an overview.",
+  "Where it stands: a playable prototype for solo play with AI crew and for rooms. No human crew has played a test session yet."
+ ],
+ "lead": {
+  "src": "assets/cases/ohcaptain/combat.webp",
+  "alt": "OhCaptain in play: the player's ship on open water, with scores and a clock at the top, a corner map at bottom left, a hull bar at the bottom and a Fleet button at bottom right",
+  "caption": "The real game in solo play. AI crew fill the other seats. Notice how much open sea is left, because what you need sits at the edges.",
+  "width": 1280,
+  "height": 720
+ },
+ "sections": [
+  {
+   "id": "problem",
+   "label": "The problem",
+   "nav": "The problem",
+   "heading": "A captain has to steer, fight and spend in the same few seconds",
+   "blocks": [
+    {
+     "p": "OhCaptain is a naval game for the browser. Two crews of three try to capture and hold relays, which are fixed points on the map, before time runs out."
+    },
+    {
+     "p": "Picture one moment. Your ship is taking damage. An operator asks for a repair. The enemy crew is taking a relay. The captain has to decide where the crew's shared supplies go while still steering."
+    },
+    {
+     "p": "So the question I designed around was simple: what has to stay visible when sailing, fighting and command all happen at once?"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/problem.webp",
+       "alt": "Diagram: three demands arriving at the same moment and landing on one captain, beside the three places I gave them: the field, the Fleet drawer and the overview",
+       "caption": "The problem in one picture. On the left, three things that can land at once. On the right, the idea the whole game screen follows: each gets its own place.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I did no player research for this game. The audience is my own assumption, and no playtest with human crews has been run yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Two crews of three, eight relays and a ten-minute clock",
+   "blocks": [
+    {
+     "p": "Each crew has one captain and two operators. Everyone sails and fights. The captain has one more job: spending the crew's shared supplies. Operators ask for an upgrade or a repair instead of buying it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/crew.webp",
+       "alt": "Diagram of two crews, each with one captain and two operators, between them the numbers 8 relays and 10 minutes, and below a three-step flow of an operator's repair request reaching the captain",
+       "caption": "How a match is set up. Look at the bottom row: a repair always passes through the captain, so the supplies have one owner.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "A player chooses a station, then either plays solo, with AI crew in the empty seats, or assembles a crew in a room. Once deployed, the job is to read the battle and coordinate."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/journey.webp",
+       "alt": "Four-step flow: choose a station, play solo or assemble a crew, read the battle, coordinate",
+       "caption": "The player's path. Step 2 splits: solo play and rooms are separate paths, built differently.",
+       "width": 1300,
+       "height": 700
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "roles",
+   "label": "Decision 1",
+   "nav": "Roles before the battle",
+   "heading": "Who can spend is settled before the match starts",
+   "blocks": [
+    {
+     "p": "What you see: before deploying, you pick a station. Captain and Vessel Operator sit side by side as two cards, each with one line on what it does."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/annotated-stations.webp",
+       "alt": "The station picker cut from the game's menu, with three numbered notes: the Captain card, the Vessel Operator card and the Assemble your crew button",
+       "caption": "The station picker. Compare notes 1 and 2: only the captain's card mentions the treasury, the shared supplies.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "p": "Why: a shared purse needs one person who decides. If the roles are clear before the battle, an operator understands why they can ask for something but cannot buy it."
+    },
+    {
+     "p": "In the build: controls depend on the station. Both roles open the same Fleet drawer. A captain uses it to spend; an operator uses it to ask."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The captain can become a bottleneck, because they are also sailing and fighting. Requests that are waiting have to stay easy to find, without a panel pushed over the battle."
+     }
+    }
+   ]
+  },
+  {
+   "id": "field",
+   "label": "Decision 2",
+   "nav": "Battle state on the field",
+   "heading": "What you need every second stays on the sea",
+   "blocks": [
+    {
+     "p": "What you see: a revision I called Clear Deck. It keeps a small set of things on screen: score, clock, the balance of the relays, ships still afloat, your hull and a corner map. Spending and detail moved off the field."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/annotated-combat.webp",
+       "alt": "The combat screen with eight numbered notes: scores, clock, ships afloat, relay balance line, corner map, hull bar, Fleet button and a bearing marker",
+       "caption": "The combat screen, part by part. Start at note 5: the map never leaves, because it ties what happens near your ship to the relays you are fighting over.",
+       "width": 1600,
+       "height": 1500
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/hud-top.webp",
+       "alt": "Close-up of the top bar: Tide 599 against Coral 599, a clock at 09:06, three ships afloat on each side and a line reading Signal even, Relays 3 to 5",
+       "caption": "The top bar, enlarged. Two scores, one clock and one line on the relays. The scores are tied here at 599.",
+       "width": 1080,
+       "height": 166
+      }
+     ],
+     "layout": "one"
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/hud-minimap.webp",
+       "alt": "Close-up of the corner map: relays A to H, ships as coloured dots, and a key for You, Tide and Coral with M to expand",
+       "caption": "The corner map, enlarged. It is small, but it keeps all eight relays in view while you aim.",
+       "width": 488,
+       "height": 424
+      },
+      {
+       "src": "assets/cases/ohcaptain/hud-hull.webp",
+       "alt": "Close-up of the hull panel: the ship's name and station, a full bar at 100 of 100, and the Space key for boost and R for repair",
+       "caption": "Your hull, enlarged. The two keys you need most sit right under the bar.",
+       "width": 648,
+       "height": 208
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "In the build: information lives in three places. The field holds what you need every second. The Fleet drawer, opened with C, holds spending and requests. The expanded overview, opened with M, holds crew rosters, recent events and relay details."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/layers.webp",
+       "alt": "Diagram of three columns: the field, always on screen; the Fleet drawer, opened with C; and the expanded overview, opened with M, with what each holds",
+       "caption": "Three places for three kinds of attention. Read it left to right, from what you need every second to what you need when you stop to plan.",
+       "width": 1600,
+       "height": 700
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/annotated-map.webp",
+       "alt": "The expanded overview map with five numbered notes: the two fronts, the eight relays coloured by owner, the values under each relay, grey islands and ships as dots",
+       "caption": "The expanded overview. Both fronts, every ship and who holds each relay share one view. Ship names are blurred here.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The overview behaves differently by mode. In solo play it pauses the match. In a room, the match keeps going while it is open."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "An overview can interrupt the action, and players need to know that it pauses solo play but not online play. I also built for keyboard and mouse only. I make no claim about touch controls."
+     }
+    }
+   ]
+  },
+  {
+   "id": "attention",
+   "label": "Decision 3",
+   "nav": "An attention budget",
+   "heading": "Warnings share a small budget instead of piling up",
+   "blocks": [
+    {
+     "p": "What you see: at most one marker points to an enemy off screen. One line of warning text is kept for three cases: critical hull, safe healing or a home relay in danger. Your own hits show at most two damage numbers. Routine radio stays out of combat."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/attention.webp",
+       "alt": "Diagram comparing a ruled-out stack of eight warning banners with the chosen budget: one enemy bearing, one warning line, two damage numbers and no routine radio",
+       "caption": "The attention budget. The left side is the option I ruled out, drawn as an illustration, not taken from the game. The right side is the rule the game follows.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "Why: an alert is useful only if it helps a player choose an action. With a fixed order of importance, a hit you take or a low hull is easier to notice among effects, ships and objectives."
+    },
+    {
+     "p": "In the build: the rules that read the battle and decide which signal wins sit together in the game's awareness rules. They cover the single off-screen bearing, the warning priority and the damage feedback."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A quieter screen can hide context an experienced player wants. The map and the overview have to be a dependable route to that detail. The priority order itself still needs testing with people."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Two ways into one arena, with the online limits stated",
+   "blocks": [
+    {
+     "p": "Solo play and rooms lead to the same arena, but they are built differently. Solo play fills empty seats with AI crew. A room depends on one player, the host, keeping the page open, with other players joining over direct peer connections."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/paths.webp",
+       "alt": "Diagram of the two ways to play: solo with AI fill and a pausing overview, and a room with a host's browser, direct peer connections and no host migration, both leading to the same arena",
+       "caption": "How it is put together. The red card is the limit to remember: if the host leaves, the match cannot move to someone else.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What it is"
+      ],
+      "rows": [
+       [
+        "Game",
+        "A browser game in JavaScript and CSS, played with keyboard and mouse"
+       ],
+       [
+        "Solo play",
+        "AI crew fill the empty seats. The overview pauses the match"
+       ],
+       [
+        "Rooms",
+        "A host plus direct peer connections. No dedicated match service"
+       ],
+       [
+        "Battle rules",
+        "Awareness rules for role controls, alert priority, damage feedback and the single off-screen bearing"
+       ],
+       [
+        "Checks",
+        "Rule checks and seeded scenarios, which replay set situations"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The checks show that the rules do what they say. They do not show that the game is balanced, or that human crews can use it."
+    },
+    {
+     "p": "Online play is where most of the open questions are."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "Where it stands"
+      ],
+      "rows": [
+       [
+        "Host leaves",
+        "There is no host migration. The game still needs an honest message for when a host leaves"
+       ],
+       [
+        "Joining",
+        "Invitations, entering a room and changing roles still need to be checked"
+       ],
+       [
+        "Dropped players",
+        "A guest disconnecting has not been checked yet"
+       ],
+       [
+        "Networks",
+        "Restrictive networks that block peer connections have not been checked yet"
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "A playable prototype that no human crew has tested",
+   "blocks": [
+    {
+     "p": "OhCaptain is playable in the browser with keyboard and mouse. It supports solo matches with AI crew and crew rooms, in one capture-and-hold arena. The screens on this page are from the actual game, in solo play."
+    },
+    {
+     "p": "There is no hosted version to link to. The project is on GitHub."
+    },
+    {
+     "list": [
+      "No playtests with human crews have been run.",
+      "I have no player numbers or feedback to share.",
+      "Balance has not been tested."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Put two crews in front of it without coaching",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/ohcaptain/playtest.webp",
+       "alt": "Plan for a first playtest in four steps: two crews with no coaching, three tasks, four signs of trouble to watch for, then compare before changing anything",
+       "caption": "The first playtest I would run. Look at the third column: these are the signs that would tell me what to simplify.",
+       "width": 1600,
+       "height": 780
+      }
+     ]
+    },
+    {
+     "list": [
+      "Ask each player to explain their role, ask for or buy a repair, and name the relay that matters next.",
+      "Watch for missed requests, trouble matching the map to the sea, critical alerts nobody notices, and time spent in the overview. Compare these before changing the attention budget.",
+      "Check room invitations and entry, role changes, a guest dropping out, restrictive networks, and a clear message when the host leaves."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "A crew can coordinate when the next action has an owner",
+   "blocks": [
+    {
+     "p": "Information needs a place and a priority. A hull warning, a spending choice and a full fleet overview should not all ask for attention in the same way."
+    },
+    {
+     "p": "Most of my decisions here were about what to leave off the screen. Whether I left off the right things is something only a real crew can show me, which is why the playtest comes before any more changes."
+    }
+   ]
+  }
+ ]
+}

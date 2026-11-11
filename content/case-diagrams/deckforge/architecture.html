@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x840">
+<style>.stage{display:grid;grid-template-columns:1fr 60px 430px;gap:0;align-items:stretch}.box{border:2px solid var(--accent);border-radius:18px;padding:22px 24px;background:#fff;display:flex;flex-direction:column;gap:12px}.box>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--accent)}.out{border-color:#59696D}.out>p{color:#59696D}.g{display:grid;grid-template-columns:1fr 1fr;gap:12px}.card{padding:16px 18px}.card h2{font-size:22px}.card p{font-size:18px;margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.mid{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:6px;color:var(--dim);font-size:16px;text-align:center}.mid .arrow{font-size:36px}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">How it is put together</p><h1>Everything that touches the deck runs in the browser tab</h1>
+<div class="grow stage">
+<div class="box"><p>In the browser</p>
+<div class="g">
+<div class="card hi"><h2>Extraction</h2><p>pdf.js reads the file. The rebuilding code turns pages into layers.</p></div>
+<div class="card hi"><h2>The project store</h2><p>The deck, its layers and the undo history, kept in Zustand.</p></div>
+<div class="card"><h2>One renderer</h2><p>Canvas, slide rail, layer thumbnails and presenter mode all draw through it, so what you edit is what you present.</p></div>
+<div class="card"><h2>Animation</h2><p>Each preset is a function of progress from 0 to 1, so it can be played, scrubbed or sampled.</p></div>
+<div class="card"><h2>Exports</h2><p>Video drawn frame by frame from the layers. One HTML file with the motion baked into CSS and no JavaScript. A project file.</p></div>
+<div class="card"><h2>Library</h2><p>Every deck saved in the browser's own storage on this machine, each at its own link.</p></div>
+</div></div>
+<div class="mid"><span class="arrow">↔</span>only for<br>the phone<br>remote</div>
+<div class="box out"><p>Outside the tab</p>
+<div class="card"><h2>When run locally</h2><p>A small relay on the same port as the app passes messages between laptop and phone.</p></div>
+<div class="card"><h2>On the live site</h2><p>A small function acts as a mailbox. The two devices swap a handshake through it, then talk directly.</p></div>
+<div class="card"><h2>If direct traffic is blocked</h2><p>The mailbox carries slide control and small preview pictures, and keeps them for under a minute.</p></div>
+</div>
+</div>
+<p class="note">The PDF itself is never uploaded. A built copy served as plain files works fully except the remote, and says so.</p>

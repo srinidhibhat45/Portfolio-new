@@ -1,0 +1,551 @@
+{
+ "title": "Plate motion is too slow to see, so I built a globe that [[fast-forwards it]].",
+ "hook": "Where Would I Be…? is a 3D globe I designed and built on my own. Pick a place, drag the clock, and watch the ground under it ride its tectonic plate for up to 500 million years.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "September 2026"
+  },
+  {
+   "label": "Why",
+   "value": "A personal project, to make plate motion something you can feel"
+  },
+  {
+   "label": "Platform",
+   "value": "Web, on desktop and phone. Runs entirely in the browser"
+  },
+  {
+   "label": "Stack",
+   "value": "three.js and WebGL shaders, plain JavaScript modules, open plate data"
+  },
+  {
+   "label": "Status",
+   "value": "Live. No usage numbers: the site has no analytics"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open Where Would I Be…?",
+   "url": "https://wherewouldibe.srinidhibhat.com"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: the ground under you moves about as fast as your fingernails grow. A speed like 56.8 mm a year means nothing to most people.",
+  "What I built: a globe that moves all 52 plates at once. It answers in one sentence, and keeps every other number in a sheet you open when you want it.",
+  "What changed on the way: the morning after the first version, I rebuilt the interface twice, because its panels covered the globe that gives the answer.",
+  "Where it stands: live on the web. It carries today’s plate speeds forward unchanged, so it is an extrapolation, not a reconstruction of the past or a forecast."
+ ],
+ "lead": {
+  "src": "assets/cases/where-would-i-be/lead-panaji-50.webp",
+  "alt": "The globe centred on the Indian Ocean. A track runs from a cyan pin marked today on the coast of Goa to a coral pin marked 50 Myr near the Himalaya. Below, a dock reads: Panjim, Goa, India ends up 2,838 km to the north-east, in the subtropics.",
+  "caption": "Panjim, Goa, run 50 million years forward. The cyan pin is where it is today, the coral pin is where its ground ends up, and the dock says it in one sentence.",
+  "width": 2400,
+  "height": 1500
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "The ground moves, but too slowly to feel",
+   "blocks": [
+    {
+     "p": "The Earth’s surface is broken into tectonic plates, huge slabs of crust that slide over the hot rock below. They move a few centimetres a year. That is real, and also impossible to picture."
+    },
+    {
+     "p": "I wanted to give that speed a place you know. Pick your town, run the clock, and see where the ground under it ends up."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/scale.webp",
+       "alt": "Bar chart on a log scale of how far the ground under Panjim moves: 5.7 cm in 1 year, 5.68 m in 100 years, 57 m in 1,000 years, 56.8 km in 1 million, 568 km in 10 million, 2,838 km in 50 million years",
+       "caption": "The same speed at six timescales. Nothing changes that you could notice in a lifetime, and then the town ends up in another climate. Each figure is the app’s own answer.",
+       "width": 1600,
+       "height": 740
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Pick a place, run the clock, open the rest only if you want it",
+   "blocks": [
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/flow.webp",
+       "alt": "Diagram of three steps: pick a place, run the clock, then open the details or compare two places",
+       "caption": "The whole product in three steps. The first two share one dock at the bottom of the screen: the place picker turns into the time dial.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "The first screen asks one thing: where are you? Everything else waits until there is a place to talk about."
+    },
+    {
+     "p": "You can use your location, search a city, tap anywhere on the globe or let it pick for you. Your location is used in the browser and never sent anywhere."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/start.webp",
+       "alt": "The opening screen: a slowly turning globe over the Atlantic, and a single card at the bottom with Use my location, a search box and a Surprise me button",
+       "caption": "The opening screen. One card, one question. The plate seams show only as faint grey lines.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/where-would-i-be/search.webp",
+       "alt": "The place card with Nai typed into the search box, listing Nairobi, Naihati and Naivasha with their region, country and population",
+       "caption": "Search, with three letters typed. Each result shows its region, country and population.",
+       "width": 960,
+       "height": 1030
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "Then the clock. The slider runs from 500 million years ago to 500 million years ahead. Five buttons jump to 1,000 years, 1 million, 10 million, 50 million and 250 million. Play runs the whole journey in about seven seconds."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/annotated-explore.webp",
+       "alt": "The answer screen for Nairobi at 10 million years, with seven numbered notes on the place chip, the layers button, the centred globe, the two pins, the sentence, the line of plate figures and the time controls",
+       "caption": "The answer screen. Start at notes 5 and 6: one sentence, and one quiet line under it. Nairobi rides the Somalia plate at 35.3 mm a year.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "globe",
+   "label": "Decision 1",
+   "nav": "Nothing covers the globe",
+   "heading": "Nothing covers the globe, because the globe is the answer",
+   "blocks": [
+    {
+     "p": "What you see: a top bar, the globe and one dock at the bottom. Nothing floats over the middle of the screen, where the two pins and the track are doing the explaining."
+    },
+    {
+     "p": "In the build: the first version did the opposite. It opened two panels over the planet. Before you had done anything, they showed six expanded cards and about 25 numbers."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/first-version-desktop.webp",
+       "alt": "The first version on a desktop: a picker panel on the left and a readout panel on the right cover most of the globe, which is crowded with coloured boundary lines, a grid and long labels",
+       "caption": "The first version, run again from its commit at the same place and time. The panels and labels cover most of the planet, and every boundary is coloured.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The next morning I rebuilt it around one question at a time: pick a place, then explore it. On a phone, though, the answer sheet still took about two thirds of the screen, and very little of the planet was left in view. So I rebuilt it again."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/history.webp",
+       "alt": "Four phone screens side by side showing Panjim at 50 million years in each version: two stacked panels; an answer sheet covering the top two thirds; a clear globe with a one-sentence dock; and the same with the logo and a line of plate figures restored",
+       "caption": "The same answer in four versions, each captured from its own commit. The third screen fixed the globe and lost the logo and the plate figures. The fourth put them back.",
+       "width": 1600,
+       "height": 1250
+      }
+     ]
+    },
+    {
+     "p": "Clearing the screen was not enough on its own. With a dock at the bottom, a centred planet hides its lower third behind it. So the app measures how much room the top bar and the dock take. It moves the globe into the space that is left, and backs the camera off until the whole planet fits."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Every number beyond the sentence is now one tap away instead of on screen. On a phone the details sheet still covers the globe while it is open. It is the one exception, and it closes with Escape or a tap."
+     }
+    }
+   ]
+  },
+  {
+   "id": "sentence",
+   "label": "Decision 2",
+   "nav": "One sentence first",
+   "heading": "One sentence first, and every number one tap away",
+   "blocks": [
+    {
+     "p": "What you see: “Panjim, Goa, India ends up 2,838 km to the north-east, in the subtropics.” Under it, one line: the plate, its speed, and the climate then and now. The rest is in a details sheet."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/annotated-sheet.webp",
+       "alt": "The details sheet for Panjim with five numbered notes: coordinates, three tiles for distance, direction and climate, the compare button, the folds, and the list of places that end up next door",
+       "caption": "The details sheet. Note 3 matters most: comparing two places starts from inside an answer. In the first version it was a mode you had to choose before you began.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/phone-answer.webp",
+       "alt": "Phone screen of Panjim at 50 million years: the globe fills the top, and the dock holds the sentence, the plate line and the time controls",
+       "caption": "On a phone, the globe gets most of the screen.",
+       "width": 600,
+       "height": 1298,
+       "kind": "plain"
+      },
+      {
+       "src": "assets/cases/where-would-i-be/phone-sheet.webp",
+       "alt": "Phone screen with the details sheet pulled up over the page, showing coordinates, three tiles, the compare button and the neighbours list",
+       "caption": "Details opens as a sheet from the bottom, with the page behind it dimmed.",
+       "width": 600,
+       "height": 1298,
+       "kind": "plain"
+      }
+     ],
+     "layout": "phones"
+    },
+    {
+     "p": "In the build: my first one-sentence version went too far. It dropped the plate name and speed into a fold, and never stated the climate change at all. I put them back as that quiet second line."
+    },
+    {
+     "p": "The sentence changes on every frame while you drag. I wanted dragging to move the globe and the numbers and nothing else. The dock keeps one height for its whole life, and each frame only rewrites the words already on the page. Over a 201-step drag, the page made zero changes to its structure, down from 400."
+    },
+    {
+     "p": "Writing the sentence also caught a real bug. It used the plate’s direction of travel to say where the ground went. Run backwards, that is the wrong way round. Panjim “sat 2,838 km to the north-east” 50 million years ago, when it was really to the south-west. The sentence now uses the actual line from start to end."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The sentence is held to two lines, cut short or padded, so the dock never changes height. A long place name gets less room."
+     }
+    }
+   ]
+  },
+  {
+   "id": "seams",
+   "label": "Decision 3",
+   "nav": "Quiet plate seams",
+   "heading": "The plate seams are always drawn, but quietly",
+   "blocks": [
+    {
+     "p": "What you see: a faint grey line where one plate meets the next. One switch turns it into colours: pulling apart, crashing together or sliding past. The key comes on screen with the colours and goes away with them."
+    },
+    {
+     "p": "In the build: this one took four tries over two days."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/seams.webp",
+       "alt": "Four cards showing how plate boundaries were shown in each version: coloured from the start, coloured with a permanent key, hidden until asked, and finally a grey hairline always on with colour on request",
+       "caption": "Four versions of one decision. I swung from everything on to nothing on, then settled in between.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "Hiding the seams completely was wrong. They are the reason the answer is what it is: you can see that the line runs between your town and the next country. But naming, in three colours, which way every stretch is moving is a lecture nobody asked for."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/layers-edges.webp",
+       "alt": "The globe over the Atlantic with boundaries coloured orange, blue and yellow, the layers menu open on the right and the colour key in the bottom-left corner",
+       "caption": "Colours switched on from the layers menu. The key appears at the same moment, bottom left.",
+       "width": 1600,
+       "height": 1000
+      },
+      {
+       "src": "assets/cases/where-would-i-be/phone-edges.webp",
+       "alt": "Phone screen of Panjim at 10 million years with coloured boundaries around India and a key strip above the dock",
+       "caption": "On a phone the key sits just above the dock.",
+       "width": 600,
+       "height": 1298,
+       "kind": "plain"
+      }
+     ],
+     "layout": "wide-narrow"
+    },
+    {
+     "p": "The colours are worked out, not painted on. Nothing in the data says “this is a mid-ocean ridge”. For every short stretch of every plate edge, the build script finds the plate on the other side and compares how the two are moving. It splits that into opening and sliding. The checks compare the results with published rates at twelve well-known boundaries."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A first-time visitor sees grey lines with no key. The About panel explains them, but someone who never opens it may not know what they are."
+     }
+    }
+   ]
+  },
+  {
+   "id": "compare",
+   "label": "Decision 4",
+   "nav": "Comparing two places",
+   "heading": "Comparing two places asks when they come closest",
+   "blocks": [
+    {
+     "p": "What you see: pick a second place and the app says when the two patches of ground come closest, how close, and how fast they are closing."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/compare.webp",
+       "alt": "Honolulu and Tokyo compared: a track from Honolulu across the Pacific towards Japan at 65 million years, and a sheet showing closest 1,689 km, when 65 Myr, closing 86 mm a year, and a chart of distance over time with one dip",
+       "caption": "Honolulu and Tokyo are 6,206 km apart today. They come closest, 1,689 km, in 65 million years. The chart shows the dip.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: each place turns on its own circle around its plate’s pole. So the distance between two places rises and falls with no simple formula for the lowest point. The solver scans a billion years in coarse steps, keeps every dip, then narrows each one down."
+    },
+    {
+     "p": "I checked it against a brute-force answer from 400,000 evenly spaced samples. Places on the same plate are handled on their own: they never move apart, so the app says so."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Comparing is a button inside an answer, not a mode on the first screen. It is easier to start with one place, and harder to find the comparison if you came for it."
+     }
+    }
+   ]
+  },
+  {
+   "id": "trust",
+   "label": "How far to trust it",
+   "nav": "How far to trust it",
+   "heading": "The app says how far to trust its own answer",
+   "blocks": [
+    {
+     "p": "The plate speeds come from a published model, NNR-MORVEL56, averaged over roughly the last 780,000 years. The app carries those speeds forward unchanged. Real plates change course, jam and break."
+    },
+    {
+     "p": "So this is an extrapolation. It is not a reconstruction of where places were, and not a prediction of where they will be. Running the clock backwards uses the same assumption, so the past is not reconstructed either."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/trust.webp",
+       "alt": "Four columns grading the answer by timescale: 1,000 years solid, 1 million fair, 50 million a decent story, beyond that a well-informed daydream, each with the distance for Panjim",
+       "caption": "The app’s own guide to its answers. Look at the last column: past a point the distance even shrinks, because each plate keeps turning on a fixed circle.",
+       "width": 1600,
+       "height": 720
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/trust-250.webp",
+       "alt": "Panjim at 250 million years, with a track running over the top of the globe, and the details sheet open at Should I believe this?, which says that past 50 million years this is a very well-informed daydream, not a prediction",
+       "caption": "At 250 million years the sheet says plainly that this is a daydream, not a prediction. The warning only appears past 50 million years.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What is still weak.",
+      "detail": "The dock sentence itself carries no warning. At 250 million years it still states 13,471 km with no hedge, and the caveat is one tap away in the sheet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Every plate moves on the graphics card",
+   "blocks": [
+    {
+     "p": "Each plate behaves like a rigid cap turning on a sphere around one fixed point, its pole. Give a plate its pole and its rate, and the future of every point on it is one rotation. That is what lets the app redraw the world for any year instantly."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/architecture.webp",
+       "alt": "Diagram in three columns: open data cleaned by a build script into four JSON files; plate maths and a triangle mesh built in the browser; 52 plate rotations sent to the graphics card each frame, where a shader moves each corner",
+       "caption": "What runs where. The heavy work happens once before deploy. In the browser, the graphics card turns every plate on every frame.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    },
+    {
+     "p": "Every corner of the map is tagged with the plate it belongs to. On each frame, the 52 plate rotations go to the graphics card packed into one tiny 64 by 1 image. A shader, a small program that runs on the graphics card, turns each corner by its own plate. Lines are drawn as thin strips of triangles, so they ride the crust too."
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "Globe",
+        "three.js, with my own shaders for plate motion"
+       ],
+       [
+        "Shapes",
+        "earcut to cut land and plates into triangles, then my own refinement"
+       ],
+       [
+        "Code",
+        "Plain JavaScript modules. No build step and nothing to install"
+       ],
+       [
+        "Data",
+        "NNR-MORVEL56 plate motions, PB2002 plate outlines, Natural Earth coastlines, GeoNames places"
+       ],
+       [
+        "Checks",
+        "A script of science and geometry checks, run with Node"
+       ],
+       [
+        "Hosting",
+        "Static files, with a strict content security policy"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The checks cover which plate a place sits on, motion at twelve famous boundaries, that rotations agree with themselves, that both sides of a shared edge agree, plate areas, place search and the closest-approach solver. The plate outlines must add up to the Earth’s 510.1 million km²."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/timeline.webp",
+       "alt": "Timeline of six commits: first version on 19 September at 23:54, then five commits on 20 September between 09:17 and 10:17",
+       "caption": "The build from the commit history. The first version landed late one night, and every change on this page came the next morning.",
+       "width": 1600,
+       "height": 580
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were in the triangles, not the interface."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/where-would-i-be/mesh.webp",
+       "alt": "Two schematic drawings: an edge bowing towards the pole when split in 3D, and a short edge near a pole that sags far from where it should run, with the before and after numbers for each fix",
+       "caption": "Two bugs, each fixed in the same commit. Schematic drawings, not to scale.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Seas drawn as land",
+        "Long thin triangles were split along a curve the flat map never meant. Splitting in the flat map instead took sea test points drawn as land from 290 to 1 of 22,452."
+       ],
+       [
+        "Gaps at the poles",
+        "Near a pole a long edge measures short. Splitting by sag instead of length closed every gap in 7 passes and 95k triangles, against 12 passes and 147k. The finished mesh got smaller."
+       ],
+       [
+        "Play froze the app",
+        "Play wrote to a label I had deleted in the rebuild. The error stopped the drawing loop, so the whole globe froze. The loop now books its next frame first and survives a bad one."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "A 3D globe that also works from the keyboard",
+   "blocks": [
+    {
+     "p": "I built to WCAG 2.2 AA, the common accessibility standard for the web, and measured rather than assumed."
+    },
+    {
+     "list": [
+      "Contrast is tested where it is worst: the see-through dock over the brightest land on the globe. Measured that way, the faintest text was 2.88 to 1. I made the dock more solid and lightened that text to reach 4.7 to 1.",
+      "The globe works from the keyboard. Arrows turn it, plus and minus zoom, and Enter drops a pin at the centre of the view.",
+      "Screen readers hear the answer sentence when it changes. During Play it stays quiet, instead of reading out hundreds of passing sentences.",
+      "The slider reads as words, such as “50 Myr from now”, not as a raw number.",
+      "The details sheet and the About panel keep keyboard focus inside while open, close with Escape, and return focus where it was.",
+      "With reduced motion switched on, the globe stops spinning and Play jumps straight to the end.",
+      "Every pointer target is at least 24 by 24 pixels."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "These are my own checks, not an outside audit."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live, with no numbers to share",
+   "blocks": [
+    {
+     "p": "Where Would I Be…? is live on the web and works on desktop and phone. It has no server and no analytics, by design, so I have no visitor counts, and no feedback or user sessions to report."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Find out what people take away from it",
+   "blocks": [
+    {
+     "list": [
+      "A small study I would run: let someone explore for a few minutes, then ask what changed and what the model assumes.",
+      "Check whether the warning stays visible enough at far dates, since the sentence itself carries none.",
+      "Test the globe on narrow screens with the keyboard and with reduced motion, beyond my own checks."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Ask why the panel is there before tidying it",
+   "blocks": [
+    {
+     "p": "My first rebuild cleaned up the panel. It did not ask why there was a panel. The globe was the answer the whole time, and anything laid over it was working against the product."
+    },
+    {
+     "p": "I also learned to swing back. I hid the plate seams to quiet the screen, and that hid the reason for the answer. I cut the numbers to one sentence, and that dropped the plate and its speed. Both times the fix sat between my first two tries."
+    }
+   ]
+  }
+ ]
+}

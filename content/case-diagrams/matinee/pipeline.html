@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.flow{display:grid;grid-template-columns:1fr 34px 1fr 34px 1fr 34px 1fr;gap:10px;align-items:stretch}.flow .card{display:flex;flex-direction:column}.flow h2{font-size:25px}.step{font-size:17px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}.flow .card li{font-size:20px}.hi{border-color:var(--accent);background:var(--wash)}.opt{border-style:dashed}.foot{margin-top:22px;display:grid;grid-template-columns:1fr 1fr;gap:20px}.foot .card p{font-size:21px;margin-top:4px}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">How a feed is built</p><h1>From my ratings to a feed of 120 titles</h1>
+<div class="grow"><div class="flow">
+<div class="card"><p class="step">1 Profile</p><h2>Read the library</h2><ul>
+<li>Genres I rate 8 or more gain weight. Genres I rate 5 or less lose more.</li>
+<li>"Not interested" counts against a genre.</li>
+<li>Directors and actors are scored the same way.</li>
+<li>Count how much I watch in each language.</li></ul></div>
+<span class="arrow">→</span>
+<div class="card"><p class="step">2 Candidates</p><h2>Gather titles</h2><ul>
+<li>10 seed titles, taken in turn from each language I watch</li>
+<li>Titles similar to each seed</li>
+<li>Popular titles in each of my languages</li>
+<li>Up to 20 titles from each favourite director or actor</li>
+<li>Trending this week</li></ul></div>
+<span class="arrow">→</span>
+<div class="card hi"><p class="step">3 Score</p><h2>Add up eleven terms</h2><ul>
+<li>How strongly my own ratings vouch for it</li>
+<li>Genre match, language, quality, age</li>
+<li>Penalties for unreleased titles and people I dislike</li>
+<li>Keep the strongest reason as the label</li></ul></div>
+<span class="arrow">→</span>
+<div class="card"><p class="step">4 Arrange</p><h2>Fill the feed</h2><ul>
+<li>Reserve room for each chosen language</li>
+<li>No more than two from one franchise before a penalty</li>
+<li>Each repeat of a genre costs a little</li>
+<li>Apply my "more like this" and "hide" feedback</li></ul></div>
+</div>
+<div class="foot">
+<div class="card opt"><h2>Optional: a language model re-ranks the top 60</h2><p>Only if I add a Gemini key. Its ranking counts for 65% and the score for 35%, so a wrong answer cannot turn the feed upside down. The language and variety rules still run after it.</p></div>
+<div class="card"><h2>Cached until the library changes</h2><p>One feed costs over 40 requests to the film database. It is kept for 3 hours, and any log, rating or dismissal clears it.</p></div>
+</div></div>
+<p class="note">With fewer than three logged titles there is no history yet, so the feed ranks well-rated titles in my languages instead.</p>

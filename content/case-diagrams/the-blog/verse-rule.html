@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x660">
+<style>.pane{flex:1;display:flex;flex-direction:column;gap:14px}.pane>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.code{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:26px 30px;font:22px/1.7 Menlo,monospace;color:var(--ink);white-space:pre}.code b{color:var(--accent);font-weight:600}.verse{background:#faf8f3;border:1.5px solid var(--line);border-radius:14px;padding:26px 30px}.verse div{border-left:3px solid #6b3fa0;padding-left:28px}.verse p{font:italic 27px/1.65 Georgia,serif;color:#14130f}.verse p+p{margin-top:24px}.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;width:230px;text-align:center}.mid .arrow{font-size:44px}.mid span{font-size:19px;color:var(--dim)}.plain{margin-top:16px;font-size:21px;color:var(--dim)}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">How a poem becomes verse</p><h1>One rule: a fence with no language is a poem</h1>
+<div class="grow row" style="align-items:stretch">
+<div class="pane"><p>What I type in the editor</p><div class="code"><b>```</b>
+first line of a poem
+second line, kept as written
+
+a blank line starts a stanza
+<b>```</b></div><p class="plain" style="text-transform:none;letter-spacing:0;font-weight:400">A fence that names a language, such as <b style="font-family:Menlo,monospace">```js</b>, still shows as code.</p></div>
+<div class="mid"><span class="arrow">→</span><span>At build time, each line break becomes a real break and each blank line a stanza gap</span></div>
+<div class="pane"><p>What a reader sees</p><div class="verse"><div><p>first line of a poem<br>second line, kept as written</p><p>a blank line starts a stanza</p></div></div></div>
+</div>
+<p class="note">Placeholder lines, not a real poem. The serif italic and the violet rule are the blog's own verse style.</p>

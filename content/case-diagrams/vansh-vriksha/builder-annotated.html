@@ -1,0 +1,44 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1040">
+<style>.stage{display:grid;grid-template-columns:960px 1fr;gap:56px;align-items:center}.shot{position:relative;width:960px;height:700px}.shot svg{position:absolute;inset:0}svg text{font-family:'Case Sans',Arial,sans-serif}.box{fill:#fff;stroke:#CDBF9F;stroke-width:1.6}.nm{font-size:19px;font-weight:600;fill:#192B32}.yr{font-size:15px;fill:#59696D}.ln{stroke:#3B3A36;stroke-width:1.8;fill:none}.pl{fill:#fff;stroke:#A8302A;stroke-width:1.6}.pt{font-size:15px;font-weight:600;fill:#A8302A}.fl{fill:#fff;stroke:#CDBF9F;stroke-width:1.4}.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #FBF9F3}.legend{display:grid;gap:18px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;font-size:22px;line-height:1.42}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 3, a closer look</p><h1>Adding a whole family: the drawing is where you work</h1>
+<div class="grow stage"><div class="shot">
+<svg width="960" height="700" viewBox="0 0 960 700">
+<rect x="1" y="1" width="958" height="698" rx="16" fill="#FBF7EE" stroke="#CDBF9F" stroke-width="2"/>
+<line x1="610" y1="1" x2="610" y2="699" stroke="#CDBF9F" stroke-width="1.5"/>
+<rect x="90" y="96" width="94" height="32" rx="16" class="pl"/><text x="137" y="117" text-anchor="middle" class="pt">+ Father</text>
+<rect x="196" y="96" width="98" height="32" rx="16" class="pl"/><text x="245" y="117" text-anchor="middle" class="pt">+ Mother</text>
+<rect x="6" y="176" width="84" height="32" rx="16" class="pl"/><text x="48" y="197" text-anchor="middle" class="pt">+ Sibling</text>
+<rect class="box" x="100" y="146" width="190" height="90" rx="10" style="stroke:#A8302A;stroke-width:3"/><text class="nm" x="118" y="182">Person A</text><text class="yr" x="118" y="206">selected</text>
+<rect x="298" y="176" width="108" height="32" rx="16" class="pl"/><text x="352" y="197" text-anchor="middle" class="pt">+ Marriage</text>
+<rect class="box" x="414" y="146" width="180" height="90" rx="10"/><text class="nm" x="432" y="182">Person B</text><text class="yr" x="432" y="206">wife</text>
+<path class="ln" d="M504 236 V300 H352 M195 236 V300 H352"/>
+<path d="M352 292 l8 8 l-8 8 l-8 -8 z" fill="#A8302A"/>
+<rect x="312" y="318" width="80" height="32" rx="16" fill="#A8302A"/><text x="352" y="339" text-anchor="middle" class="pt" style="fill:#fff">+ Child</text>
+<path class="ln" d="M352 350 V420 M200 420 H500 M200 420 V450 M500 420 V450"/>
+<rect class="box" x="110" y="450" width="180" height="84" rx="10"/><text class="nm" x="128" y="486">Child 1</text><text class="yr" x="128" y="510">new row</text>
+<rect class="box" x="410" y="450" width="180" height="84" rx="10" style="stroke-dasharray:6 5"/><text class="nm" x="428" y="486">Person C</text><text class="yr" x="428" y="510">already in the archive</text>
+<text x="40" y="650" class="yr">Pan, pinch and zoom work as on the reader's tree</text>
+<text x="634" y="56" class="nm">Person A</text><text x="634" y="80" class="yr">the form sits beside the drawing</text>
+<text x="634" y="124" class="yr">Given name</text><rect x="634" y="132" width="300" height="40" rx="8" class="fl"/>
+<text x="634" y="200" class="yr">Born</text><rect x="634" y="208" width="140" height="40" rx="8" class="fl"/>
+<text x="634" y="276" class="yr">Gotra: pick one, or type it</text><rect x="634" y="284" width="300" height="40" rx="8" class="fl"/><text x="650" y="310" class="yr">not on the list? type it here</text>
+<text x="634" y="352" class="yr">Home village</text><rect x="634" y="360" width="300" height="40" rx="8" class="fl"/>
+<rect x="634" y="600" width="210" height="46" rx="23" fill="#A8302A"/><text x="739" y="629" text-anchor="middle" style="font-size:17px;font-weight:600;fill:#fff">Send to the archive</text>
+</svg>
+<span class="num dot" style="left:0%;top:16%">1</span>
+<span class="num dot" style="left:29.5%;top:47.7%;box-shadow:0 0 0 5px #FBF7EE">2</span>
+<span class="num dot" style="left:0%;top:70%">3</span>
+<span class="num dot" style="left:100%;top:8%">4</span>
+<span class="num dot" style="left:100%;top:43%">5</span>
+<span class="num dot" style="left:100%;top:89%">6</span>
+</div>
+<div class="legend">
+<div><span class="num">1</span><span>Relatives are added from the selected card: parents above, a brother or sister to the left, a marriage to the right.</span></div>
+<div><span class="num">2</span><span>A child is added from the junction under a couple, so it cannot land in the wrong marriage.</span></div>
+<div><span class="num">3</span><span>A row can be someone already in the archive. It is linked, not typed again.</span></div>
+<div><span class="num">4</span><span>The form for whoever is selected sits beside the drawing, not under it.</span></div>
+<div><span class="num">5</span><span>Every list also takes a typed answer, for the name it does not have yet.</span></div>
+<div><span class="num">6</span><span>The whole family goes to review as one piece.</span></div>
+</div></div>
+<p class="note">A drawing based on the builder's code, not a capture. Names are placeholders, and the form is shortened. A maintainer uses the same builder, and theirs writes straight to the archive.</p>

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex">
+  <meta name="theme-color" content="#842B22">
+  <title>Sunday Ride · Srinidhi Bhat</title>
+  <meta name="description" content="A small pixel race through the Western Ghats, tucked away in Srinidhi Bhat's portfolio. Beat Shri to the top.">
+  <link rel="icon" href="favicon.ico">
+  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-2">
+</head>
+<body class="ride" data-mode="title">
+  <header class="ride-bar">
+    <a class="ride-back" href="index.html#contact"><span aria-hidden="true">&larr;</span> Back to portfolio</a>
+    <p class="ride-name" aria-hidden="true">Sunday Ride</p>
+    <div class="ride-tools">
+      <button type="button" class="ride-tool" id="rideMute" aria-pressed="false" aria-label="Mute sound"><span aria-hidden="true">&#9834;</span></button>
+      <button type="button" class="ride-tool" id="ridePause" aria-label="Pause" hidden><span aria-hidden="true">II</span></button>
+    </div>
+  </header>
+
+  <main class="ride-main" id="rideMain">
+    <h1 class="sr-only">Sunday Ride: beat Shri to the top of the ghat</h1>
+
+    <div class="ride-stage" id="rideStage">
+      <canvas id="rideCanvas" width="320" height="200" tabindex="-1" role="img" aria-label="A pixel-art motorcycle race seen from behind your red bike, on a winding road through green hills. Shri rides the blue bike with the red bag."></canvas>
+    </div>
+
+    <div class="ride-pad" id="ridePad" hidden>
+      <div class="pad-group pad-steer">
+        <button type="button" class="pad-btn" data-key="left" aria-label="Steer left"><span aria-hidden="true">&#9664;</span></button>
+        <button type="button" class="pad-btn" data-key="right" aria-label="Steer right"><span aria-hidden="true">&#9654;</span></button>
+      </div>
+      <div class="pad-group pad-go">
+        <button type="button" class="pad-btn pad-horn" data-key="horn">Horn</button>
+        <button type="button" class="pad-btn pad-brake" data-key="brake">Brake</button>
+        <button type="button" class="pad-btn pad-gas" data-key="gas">Gas</button>
+      </div>
+    </div>
+
+    <section class="ride-panel" id="rideTitle" aria-labelledby="rideLogoText">
+      <div class="ride-card">
+        <canvas class="ride-logo" id="rideLogo" width="46" height="7" aria-hidden="true"></canvas>
+        <h2 class="sr-only" id="rideLogoText">Sunday Ride</h2>
+        <p class="ride-tag">Beat Shri to the top of the ghat</p>
+        <p class="ride-blurb">A pixel run through the Western Ghats. Shri is on the blue 350 with the red bag, and he knows these roads.</p>
+        <dl class="ride-keys ride-keys--desk">
+          <div><dt>Arrows or WASD</dt><dd>steer, gas, brake</dd></div>
+          <div><dt>H or Space</dt><dd>horn (traffic and cows move over)</dd></div>
+          <div><dt>P &middot; M</dt><dd>pause &middot; mute</dd></div>
+        </dl>
+        <p class="ride-keys ride-keys--touch">Left thumb steers. Right thumb: gas, brake, horn. Honk and traffic moves over.</p>
+        <form class="ride-form" id="rideForm" novalidate>
+          <label class="ride-label" for="ridePlate">Your number plate</label>
+          <div class="ride-form-row">
+            <input class="ride-input" id="ridePlate" name="plate" type="text" inputmode="text" maxlength="4" pattern="[A-Za-z0-9]{4}" autocapitalize="characters" autocomplete="off" autocorrect="off" spellcheck="false" enterkeyhint="go" placeholder="ABCD" aria-describedby="ridePlateHelp ridePlateError" required>
+            <button type="submit" class="ride-btn" id="rideStart" data-first>Start the ride</button>
+          </div>
+          <p class="ride-help" id="ridePlateHelp">4 letters or numbers. It goes on your bike and stays in this browser.</p>
+          <p class="ride-error" id="ridePlateError" role="alert" hidden></p>
+        </form>
+        <p class="ride-best" id="rideBest"></p>
+      </div>
+    </section>
+
+    <section class="ride-panel" id="ridePaused" aria-labelledby="ridePausedTitle" hidden>
+      <div class="ride-card">
+        <h2 class="ride-head" id="ridePausedTitle">Paused</h2>
+        <p class="ride-blurb">Engine off. The road will wait.</p>
+        <div class="ride-row">
+          <button type="button" class="ride-btn" id="rideResume" data-first>Carry on</button>
+          <button type="button" class="ride-btn ride-btn--quiet" id="rideRestart">Start again</button>
+        </div>
+        <a class="ride-link" href="index.html#contact">Back to the portfolio</a>
+      </div>
+    </section>
+
+    <section class="ride-panel" id="rideFinish" aria-labelledby="rideFinishTitle" hidden>
+      <div class="ride-card">
+        <h2 class="ride-head ride-result" id="rideFinishTitle">You made the viewpoint</h2>
+        <p class="ride-place" id="ridePlace"></p>
+        <p class="ride-time"><span class="ride-time-label">Time</span> <span id="rideTime"></span></p>
+        <p class="ride-best" id="rideRecord"></p>
+        <p class="ride-blurb" id="rideVerdict"></p>
+        <div class="ride-row">
+          <button type="button" class="ride-btn" id="rideAgain" data-first>Ride again</button>
+          <a class="ride-btn ride-btn--quiet" href="index.html#contact">Back to the portfolio</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <p class="sr-only" id="rideLive" aria-live="polite"></p>
+  <noscript><p class="ride-noscript">This little game needs JavaScript. <a href="index.html#contact">Back to the portfolio</a></p></noscript>
+  <script type="module" src="js/ride/main.js?v=20261112-ride-2"></script>
+</body>
+</html>

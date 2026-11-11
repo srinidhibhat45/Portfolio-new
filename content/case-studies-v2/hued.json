@@ -1,0 +1,546 @@
+{
+ "title": "One colour a day, found in the real world and [[scored on your phone]].",
+ "hook": "Hued is a phone app I designed and built on my own. Everyone gets the same colour each day, goes out to find it, and the phone scores how well the photo caught it.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself: a small daily reason to look closely, free to run"
+  },
+  {
+   "label": "Timeline",
+   "value": "25 June to 12 July 2026, 35 commits"
+  },
+  {
+   "label": "Platform",
+   "value": "Android app, with a separate web admin panel"
+  },
+  {
+   "label": "Stack",
+   "value": "Expo, React Native, TypeScript, Supabase"
+  },
+  {
+   "label": "Status",
+   "value": "Beta, shared as an Android download. No usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Visit the Hued site",
+   "url": "https://hued.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "See it for yourself",
+ "summary": [
+  "The problem: I wanted a small daily reason to look closely at the world. It had to be the same for everyone and cost almost nothing to run.",
+  "What I built: an Android app where the daily colour and each photo's score are worked out on the phone. A free-plan server keeps posts, friends, groups and standings.",
+  "The key idea: be generous about colour and strict about cheating. I made the colour match more forgiving and left the cheat checks alone.",
+  "Where it stands: a beta, built in 18 days. There is no user research behind it and I have no usage numbers to share."
+ ],
+ "lead": {
+  "src": "assets/cases/hued/lead-loop.webp",
+  "alt": "Four schematic phone screens in a row: Home with the day's colour, the camera with the colour pinned on top, the result with a score ring, and the standings list",
+  "caption": "The daily loop in four screens, redrawn from the app's layout code. These are schematics with sample values, not screenshots.",
+  "width": 2400,
+  "height": 1170
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A small daily prompt that costs almost nothing to run",
+   "blocks": [
+    {
+     "p": "Hued started from a brief I set myself. Give everyone one colour a day. They go out, find it in the real world and take a photo. The app scores how well they caught it, and they compare with friends."
+    },
+    {
+     "p": "I added a cost rule. It had to run on free plans. So anything that would cost money for every photo, such as working out a score, happens on the phone. The server only keeps the record."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/same-colour.webp",
+       "alt": "Diagram: the date 2026-11-11 feeds three phones, in India, in London and with no signal, which all show the same colour, Soft Seafoam Muted, with a note that no server call is made",
+       "caption": "The idea in one picture. The colour comes from the date, so every phone agrees without asking a server, even with no signal.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "There was no user research before I built it. I have no interview notes, survey results or usage numbers, so this page quotes none."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "One colour, one photo, one place in the standings",
+   "blocks": [
+    {
+     "p": "The app has four tabs: Home, Standings, Groups and Profile. The daily loop runs through the first two."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/game-loop.webp",
+       "alt": "Diagram of six steps in a loop: a new colour, hunt and shoot, scored on the phone, share and lock, streak, standings and feed, with a side note about drafts",
+       "caption": "One day in Hued. Look at the red box: the draft step is promised on screen but not built yet.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "p": "A streak counts the days in a row you have posted. The database keeps it, with a rule that runs each time a post is saved."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/streak-rule.webp",
+       "alt": "Eight sample days showing the streak count: 1, 2, 3, unchanged on a missed day, back to 1, then 2, 3 and 4",
+       "caption": "The streak rule worked through a sample week. A missed day changes nothing until your next post starts the count again.",
+       "width": 1600,
+       "height": 640
+      }
+     ]
+    },
+    {
+     "p": "Around the loop sit the social parts: following people, a feed of the day's photos from people you follow, groups with their own chat and standings, a calendar of past finds and an activity inbox."
+    }
+   ]
+  },
+  {
+   "id": "colour",
+   "label": "Decision 1",
+   "nav": "The daily colour",
+   "heading": "The colour is made from the date, and leans toward colours you can find",
+   "blocks": [
+    {
+     "p": "What you see: Home opens on the day's colour, with its name, its hex code and a short prompt about where it might be found."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/annotated-home.webp",
+       "alt": "Schematic Home screen with six numbered notes: the streak, the colour name and hex code, the prompt, the capture button, the feed and the tab bar",
+       "caption": "Home, as a schematic. Note 2 is the point: name, hex code and prompt all come from the date, on the phone.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "In the build: the daily colour changed four times in eleven days. I started with 48 hand-picked colours, each with a name and a prompt. The next day I grew the list to 137. Ten minutes later I replaced the list with a formula."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/colour-versions.webp",
+       "alt": "Four cards in a row: a list of 48 colours on 25 June, a list of 137 on 26 June, a formula made from the date on 26 June, and a findability weighting on 5 July",
+       "caption": "The four versions. The swatches in the first two cards are the real lists from the code at the time.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The formula turns the date into a number, and the number into a hue, a saturation and a lightness. Limits keep out grey, neon, black and white. Every phone gets the same answer, offline."
+    },
+    {
+     "p": "But the formula treated every hue the same. About one day in six it picked a colour that is hard to find outside, such as cyan, chartreuse or magenta. On 5 July I gave every colour a findability score."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/findability.webp",
+       "alt": "Line chart of findability across the colour wheel: high for earth tones, foliage and sky, low dips at chartreuse, cyan and magenta",
+       "caption": "Findability by hue, redrawn from the numbers in the code. Earth, foliage and sky score high. The three dips are the colours nature rarely makes.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "Now the code draws six candidates a day and holds a lottery. Each candidate's chance is its findability cubed, so common colours win most days, but not every day."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/daily-pick.webp",
+       "alt": "Six colour candidates for 11 November 2026 with their findability and chance, a bar split by those chances with a marker at 38.9%, and the winner, Soft Seafoam Muted",
+       "caption": "The draw for 11 November 2026, run on the real code. The most likely candidate lost. The seafoam green had 16.3% odds and won.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "stats": [
+      {
+       "value": "3.3%",
+       "label": "of days get a rare colour now, over every date from 2026 to 2035"
+      },
+      {
+       "value": "17.1%",
+       "label": "of days would, if the first candidate always won"
+      },
+      {
+       "value": "0.35",
+       "label": "findability, the line I used here for \"rare\""
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/month.webp",
+       "alt": "Calendar of November 2026 with each day filled in its Hued colour and labelled with its name",
+       "caption": "Every colour the current code picks for November 2026. Mostly earth tones, greens and blues, with a rare lime on the 15th.",
+       "width": 1600,
+       "height": 1200
+      }
+     ]
+    },
+    {
+     "p": "Rare colours did not go away. When one is the target, scoring needs less of it in the frame, so finding a small patch still counts."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The day changes at midnight UTC for everyone, which keeps the colour shared worldwide. In India that is 5:30 in the morning, and nothing on screen explains it yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scoring",
+   "label": "Decision 2",
+   "nav": "Scoring on the phone",
+   "heading": "The score is worked out on the phone, so a photo costs the server nothing",
+   "blocks": [
+    {
+     "p": "What you see: the camera opens with the target colour pinned on top. There is a shutter and nothing else, because Hued takes live photos only."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/annotated-capture.webp",
+       "alt": "Schematic camera screen with five numbered notes: the pinned colour chip, the framing guide, the processing message, the zoom badge and the shutter",
+       "caption": "The camera, as a schematic. Note 3: the score is ready before anything is uploaded.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "In the build: when you press the shutter, the phone makes two copies of the photo. A tiny one, 64 by 64 pixels, is used for scoring and never leaves the phone. A larger one waits until you share."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/scoring-pipeline.webp",
+       "alt": "Flow from the photo to two copies and place data, then three scoring layers, colour match, composition and real-photo guess, multiplied into a score with four verdict bands",
+       "caption": "How a photo becomes a score. The three layers multiply, so a weak result in any one pulls the whole score down.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The colour match uses Lab, a way of describing colour where equal distances look about equally different to people. A pixel counts as the colour if it is within 34 Lab units of the target."
+    },
+    {
+     "p": "The upload copy is WebP at quality 0.82, no more than 1,080 pixels on its longest side. That keeps each photo to roughly 100 to 200 KB, so the free 1 GB of storage holds thousands of them."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "The server stores the score the phone sends. It only checks that the number is between 0 and 100, so a determined person could send a score they did not earn. Scoring on the server would cost money for every photo, which is what I set out to avoid."
+     }
+    }
+   ]
+  },
+  {
+   "id": "fair",
+   "label": "Decision 3",
+   "nav": "Generous, then strict",
+   "heading": "Generous about colour, strict about cheating",
+   "blocks": [
+    {
+     "p": "What you see: the result screen leads with the score ring, drawn in the day's colour, and a one or two word verdict. Caption, location and sharing come after."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/annotated-result.webp",
+       "alt": "Schematic result screen with five numbered notes: the score ring, the verdict, the caption and location card, three small checks and the share button",
+       "caption": "The result, as a schematic with a sample score of 72. Note 4 replaced a single \"passed our checks\" label, so you can see which check failed.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "In the build: real colour rarely matches a target exactly. Light, shadow and the camera's white balance all shift it. On 3 July I widened the match, gave more credit for a close but imperfect colour, and lowered the verdict bands."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/relaxed.webp",
+       "alt": "Chart of how present a colour counts as against how much of the photo matches, before and after the change, next to a table of four settings before and after",
+       "caption": "The 3 July change. At 10% of the frame, a common colour now counts as 71% present instead of 57%. The bottom row is the point: the cheat checks did not move.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The cheat checks run in a fixed order. Some stop a photo outright. Others only lower the score and show a note."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/gate.webp",
+       "alt": "Flow of three checks, flat wall, missing camera data and a real-photo guess above 85%, each leading to a blocked message, then a green box for photos that can be shared, beside a note on the limits of the real-photo guess",
+       "caption": "The checks before sharing. Read the box on the right: the real-photo guess does much less than its name suggests.",
+       "width": 1600,
+       "height": 960
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "About the real-photo guess.",
+      "detail": "There is no free and reliable way to tell an AI image from a photo, and the code says so in its own notes. The guess is a tentative heuristic, not a reliable detector. On a photo with camera data it can lower the score by about 12% at most."
+     }
+    }
+   ]
+  },
+  {
+   "id": "look",
+   "label": "Decision 4",
+   "nav": "A quiet interface",
+   "heading": "A quiet interface, so the day's colour is the loudest thing on screen",
+   "blocks": [
+    {
+     "p": "What you see: white, greys, one blue for actions and orange for streaks. The only other colour is the day's, on the Home card, the camera chip, the score ring and the standings tag."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/brand.webp",
+       "alt": "The Hued logo, four frames of its loading animation, eight interface colour swatches and the two typefaces, Fraunces and Hanken Grotesk",
+       "caption": "The look of the app. The hand-drawn logo carries the personality, so the screens can stay plain.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "In the build: the light and dark palettes use the same name for each role, so every screen switches with one setting. Text on the day's colour turns dark or white depending on how bright the colour is, so the name stays readable whatever the date brings."
+    },
+    {
+     "p": "On 3 July I also gave shared parts and every icon-only button a role and a spoken label, including back, close, flip camera and the shutter. The capture button, for example, is read out as \"Capture today's colour\" followed by the colour's name."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/welcome.webp",
+       "alt": "The Hued sign-in screen on Android: the logo, a \"Welcome back\" heading, username and password fields and a light blue sign-in button",
+       "caption": "The sign-in screen of the release build, the one real capture I have. A serif heading, one blue action, nothing else.",
+       "width": 720,
+       "height": 1280,
+       "kind": "plain"
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Letting the colour lead means it can clash with the interface. On 13 November 2026 the colour is a strong blue, #1F7BE1, close to the blue of the buttons."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "The phone does the costly work; the database holds the rules",
+   "blocks": [
+    {
+     "p": "The phone works out the colour, the score and the compressed photo. The server keeps posts, people and standings, and the rules about who can see and change what live in the database itself."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/architecture.webp",
+       "alt": "Three columns: on the phone, daily colour, scoring and demo mode; on the server, Postgres, database rules and sign-in with storage; around it, the admin panel and releases",
+       "caption": "What runs where. With no server keys, the app runs on built-in sample data.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Expo SDK 51, React Native, TypeScript"
+       ],
+       [
+        "Camera, place and alerts",
+        "Expo camera, location and notifications"
+       ],
+       [
+        "Server",
+        "Supabase: Postgres, sign-in, photo storage and two server functions"
+       ],
+       [
+        "Admin panel",
+        "A separate Vite web app with charts"
+       ],
+       [
+        "Releases",
+        "GitHub Actions builds the Android app; Expo updates reach installed apps over the air"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "35",
+       "label": "commits in 18 days"
+      },
+      {
+       "value": "20",
+       "label": "screens in the app"
+      },
+      {
+       "value": "53",
+       "label": "written test cases, 19 of them must-pass"
+      },
+      {
+       "value": "7",
+       "label": "admin screens besides sign-in"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/hued/timeline.webp",
+       "alt": "Timeline of the build in five groups of days with commit counts: 25 to 26 June 10, 1 to 2 July 2, 3 July 10, 4 to 5 July 11, 12 July 2",
+       "caption": "The build by day. Most of the work landed in two bursts: the first two days, and 3 to 5 July.",
+       "width": 1600,
+       "height": 780
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were not on the screens people see."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Photos",
+        "On Android the camera reports the photo's size before it is turned upright. Resizing to that width and height squashed portrait photos. Now only one side is set and the other follows."
+       ],
+       [
+        "Sign-in",
+        "People were signed out every hour or two. The phone pauses timers in the background, so the sign-in token missed its refresh and was cancelled. Refreshing now starts when the app comes back to the front."
+       ],
+       [
+        "Groups",
+        "The rules for groups and members referred to each other, and the database stopped with an endless loop. I rewrote them in one file with helper functions and marked nine older scripts as not to be run."
+       ],
+       [
+        "Security",
+        "A pass found tables that anyone could read and a lookup that revealed people's emails. I turned the rules on, removed the lookup and locked an account for 15 minutes after 8 wrong passwords."
+       ]
+      ]
+     }
+    },
+    {
+     "p": "There are no automated tests on the scoring or the daily colour. The checks that exist are type checking and a written test plan of 53 cases for the feed, group chat, profile grid, capture and admin panel."
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "A beta on Android, with no usage numbers to share",
+   "blocks": [
+    {
+     "p": "Hued is a beta. The Android app is shared as a download, and updates reach installed apps over the air. Store listings and privacy answers for the App Store and Google Play are written, and a landing page was built on 12 July."
+    },
+    {
+     "p": "The admin panel has a dashboard and analytics, but I am not sharing numbers from it here. I have no user counts, retention figures or feedback notes to report. These are also not there yet:"
+    },
+    {
+     "list": [
+      "Drafts. The app says your best draft is submitted at the end of the day, but drafts are only held in the phone's memory and nothing submits them.",
+      "Real screenshots of the main loop. This page uses schematics redrawn from the code.",
+      "A run of the written test plan on a real phone. Its own notes say the phone cases still needed an emulator and a device."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Make the promises on screen true, then test with people",
+   "blocks": [
+    {
+     "list": [
+      "Build the end-of-day draft step, or take the promise off the screen.",
+      "Add a sanity check on the server for scores, and automated tests for the scoring and the daily colour.",
+      "Fix two quirks in the daily draw. On about nine days in ten the six candidates share one saturation, because of how the number from the date spreads its bits. And names can double up: 5 November 2026 is \"Deep Deep Rose\".",
+      "Show when the day changes in each person's own time.",
+      "Ask players how they read a low score, especially in poor light, before making the competitive parts more prominent."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Fairness is a design problem as much as a maths one",
+   "blocks": [
+    {
+     "p": "The colour list lasted a day. A formula gave endless variety, but it had no sense of what people can actually find. The fix was one number per colour, findability, used twice: to choose the colour and to score it."
+    },
+    {
+     "p": "I also learned to split generous from strict. A score that feels unfair for an honest photo makes the game feel broken, so the colour match got gentler. A cheat that works makes the standings worthless, so those checks stayed fixed."
+    },
+    {
+     "p": "And a check should be described by what it can really do. On a photo with camera data, the real-photo guess can never block anything, so I call it a guess."
+    }
+   ]
+  }
+ ]
+}

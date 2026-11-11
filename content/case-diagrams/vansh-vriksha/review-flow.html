@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.flow{display:grid;grid-template-columns:1fr 50px 1fr 50px 1.25fr 50px 1fr;align-items:stretch}.flow .arrow{align-self:center;text-align:center}.card h2{font-size:24px;margin-top:10px}.card p{font-size:19px;margin-top:6px}.opts{display:grid;gap:8px;margin-top:12px}.opt{padding:8px 12px;border-radius:9px;font-size:18px;font-weight:600}.ok{background:var(--good-wash);color:var(--good)}.ask{background:var(--wash);color:var(--accent)}.no{background:var(--warn-wash);color:var(--warn)}.hi{border-color:var(--accent);background:var(--wash)}.status{display:flex;gap:12px;margin-top:34px;align-items:center;flex-wrap:wrap}.status b{font-size:19px;color:var(--dim);font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-right:6px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 4</p><h1>Sending is not publishing: every addition waits for a person</h1>
+<div class="grow"><div class="flow">
+<div class="card"><span class="num">1</span><h2>Someone sends it</h2><p>No account. A whole family travels as one piece. Limited to 15 sends in 10 minutes from one address.</p></div>
+<span class="arrow">→</span>
+<div class="card"><span class="num">2</span><h2>It waits in a queue</h2><p>Stored apart from the records. Nothing is published automatically.</p></div>
+<span class="arrow">→</span>
+<div class="card hi"><span class="num">3</span><h2>A maintainer reads it</h2><div class="opts"><span class="opt ok">Approve</span><span class="opt ask">Ask for changes</span><span class="opt no">Decline</span></div><p>Most submissions are a real memory with a date nobody can place. Asking is often the only useful reply.</p></div>
+<span class="arrow">→</span>
+<div class="card"><span class="num">4</span><h2>It becomes history</h2><p>Approval writes the record as a commit with an author, a date and a reason. The live site rebuilds in a couple of minutes.</p></div>
+</div>
+<div class="status"><b>What the queue calls each state</b><span class="tag">waiting</span><span class="tag">sent back</span><span class="tag">accepted</span><span class="tag">published</span><span class="tag">declined</span></div></div>
+<p class="note">From the submission and review code. A field a contributor leaves out is ignored, so fixing a death year cannot blank a gotra. A field a maintainer clears is cleared.</p>

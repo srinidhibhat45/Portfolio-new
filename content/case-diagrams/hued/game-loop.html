@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>.loop{display:grid;grid-template-columns:repeat(3,1fr);gap:46px 60px;position:relative}.loop .card{position:relative;min-height:200px}.loop .card h2{display:flex;align-items:center;gap:14px;font-size:26px}.loop .card p{margin-top:10px}.loop .card:not(:nth-child(3)):not(:nth-child(6))::after{content:'→';position:absolute;right:-46px;top:50%;transform:translateY(-50%);color:var(--accent);font-size:34px}.loop .card:nth-child(3)::after{content:'↓';position:absolute;left:50%;bottom:-46px;color:var(--accent);font-size:34px}.r2{direction:rtl}.r2 .card{direction:ltr}.r2 .card:not(:nth-child(3))::after{content:'←'!important;right:auto!important;left:-46px}.hi{border-color:var(--accent);background:var(--wash)}.side{margin-top:34px;display:grid;grid-template-columns:1fr 1fr;gap:22px}.warn{border-color:var(--warn);background:var(--warn-wash)}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">The game loop, traced through the code</p><h1>One day in Hued, from new colour to standings</h1>
+<div class="grow">
+<div class="loop">
+<div class="card hi"><h2><span class="num">1</span>A new colour</h2><p>At midnight UTC every phone works out the same colour, its name and a prompt.</p></div>
+<div class="card"><h2><span class="num">2</span>Hunt and shoot</h2><p>The camera opens with the colour pinned on top. Live photos only.</p></div>
+<div class="card"><h2><span class="num">3</span>Scored on the phone</h2><p>A score from 0 to 100, a verdict and three checks. Nothing is uploaded yet.</p></div>
+</div>
+<div class="loop r2" style="margin-top:46px">
+<div class="card"><h2><span class="num">4</span>Share and lock</h2><p>The photo uploads. The database allows one post per person per day.</p></div>
+<div class="card"><h2><span class="num">5</span>Streak</h2><p>A database rule adds a day, or starts again at 1 after a gap.</p></div>
+<div class="card"><h2><span class="num">6</span>Standings and feed</h2><p>Ranked among friends or in a group, today or yesterday. Votes and comments in the feed; the post can also appear in your group chats.</p></div>
+</div>
+<div class="side"><div class="card"><h2>Then tomorrow</h2><p>A new colour, and step 1 again. The standings keep yesterday's ranking one tap away.</p></div>
+<div class="card warn"><h2>Already posted today?</h2><p>The share button becomes Save to draft. The app says the best draft is submitted at the end of the day, but in this build drafts are only held in the phone's memory. That step is not built yet.</p></div></div>
+</div>

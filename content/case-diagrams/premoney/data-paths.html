@@ -1,0 +1,30 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x940">
+<style>
+.wrap{display:grid;grid-template-columns:1fr 60px 1fr;gap:10px;align-items:stretch}
+.zone{border-radius:18px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.on{background:var(--wash);border:2px solid var(--accent)}
+.off{background:#fff;border:2px dashed var(--line)}
+.zone>p.lab{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.card{padding:16px 18px}
+.card h2{font-size:22px}.card p{font-size:19px;margin-top:4px}
+.when{display:inline-block;margin-top:8px;padding:3px 10px;border-radius:99px;background:#F7E3DD;color:var(--warn);font-size:16px;font-weight:700}
+.arrow{align-self:center}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">What stays on the phone, and what can leave it</p>
+<h1>Reading messages is local. Three optional features talk to outside services.</h1>
+<div class="grow wrap">
+ <div class="zone on"><p class="lab" style="color:var(--accent)">On the phone, always</p>
+  <div class="card"><h2>Reading and parsing messages</h2><p>The parser and the categoriser run on the device. They need no network.</p></div>
+  <div class="card"><h2>The database</h2><p>One local SQLite file holds every entry, rule, budget and goal.</p></div>
+  <div class="card"><h2>Fonts and charts</h2><p>The font is bundled, so the app draws fully offline.</p></div>
+  <div class="card"><h2>Export</h2><p>A CSV file goes to the share sheet. I choose where it goes.</p></div>
+ </div>
+ <span class="arrow">→</span>
+ <div class="zone off"><p class="lab" style="color:var(--warn)">Leaves the phone, only when used</p>
+  <div class="card"><h2>AI category suggestions (Groq)</h2><p>Sends each queued entry's merchant, amount and original message text.</p><span class="when">when I press Process AI</span></div>
+  <div class="card"><h2>Cloud backup (Firebase)</h2><p>Copies entries, including the original message text, plus accounts, categories, budgets, goals and rules.</p><span class="when">only after I sign in</span></div>
+  <div class="card"><h2>Update check</h2><p>Reads a public version file and downloads a new app file. No personal data is sent with it.</p><span class="when">on launch and from Settings</span></div>
+ </div>
+</div>
+<p class="note">Drawn from the app's code. The first-run screens were written before the backup and AI features and still promise that everything stays on the phone. That copy needs to change.</p>

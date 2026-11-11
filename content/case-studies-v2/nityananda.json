@@ -1,0 +1,303 @@
+{
+ "title": "A photography site that [[leaves room for the photographs]].",
+ "hook": "A one-page portfolio concept for a photographer. Three words run the whole site: About, Work and Contact.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Page structure, navigation and visual design"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2021–22"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself. Not a client commission"
+  },
+  {
+   "label": "Platform",
+   "value": "Desktop web. One long page, drawn 1,920 px wide"
+  },
+  {
+   "label": "Content",
+   "value": "Sample photographs, shoot names and award badges. Not real credentials"
+  },
+  {
+   "label": "Status",
+   "value": "Visual concept. Not built and not tested with users"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original design (PDF)",
+   "url": "assets/pdfs/nityananda.pdf"
+  }
+ ],
+ "linksHeading": "The original design",
+ "summary": [
+  "The brief I set myself: design a photographer's portfolio where the interface stays quiet and the pictures do the talking.",
+  "What I did: one long page with four screen-height sections (opening, About, Work, Contact) and a footer, tied together by a three-word tab bar.",
+  "The key idea: no brand colour. The page is black, white and grey, so all the colour on screen comes from a photograph.",
+  "Where it stands: a single desktop mock-up filled with sample content. It was not built or tested."
+ ],
+ "lead": {
+  "src": "assets/cases/nityananda/lead.webp",
+  "alt": "The whole portfolio page in two columns: the dark opening screen and white About section on the left, the black Work and Contact sections and white footer on the right",
+  "caption": "The whole page, cut in two so it fits. The left column is the top half and the right column carries on from it. Photos that show faces, and the award badges, are blurred.",
+  "width": 2400,
+  "height": 1750
+ },
+ "sections": [
+  {
+   "id": "brief",
+   "label": "The brief",
+   "heading": "A brief I set myself: keep the interface quiet",
+   "blocks": [
+    {
+     "p": "This is a concept, not client work. I set myself the job of designing a portfolio where a visitor sees pictures first, gets a feel for the person second and can get in touch third."
+    },
+    {
+     "p": "I had no research to lean on, so every decision here is design judgement. The page is my answer to one question: how little interface does a picture-led site need?"
+    },
+    {
+     "aside": {
+      "title": "Sample content.",
+      "detail": "The photographs, shoot names, places, years and award badges are there to fill the layout. They are not a record of real commissions or prizes."
+     }
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "label": "Structure",
+   "heading": "Four screens and a footer on one page",
+   "blocks": [
+    {
+     "p": "The whole site is one page, 1,920 px wide and 4,878 px long. The first four sections are each close to one full HD screen tall, between 1,030 and 1,135 px. The backgrounds run dark, white, black, then a white card on black."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/page-map.webp",
+       "alt": "Map of the page as five numbered parts with their heights and background colours: opening screen, About, Work, Contact and footer",
+       "caption": "The five parts and their heights. The small squares show the backgrounds: About is the one fully white screen, set between two dark ones.",
+       "width": 1600,
+       "height": 1270
+      }
+     ]
+    },
+    {
+     "p": "One page keeps the visit to a single scroll. The cost is room. The Work section holds eight cards, and there is no gallery behind any of them."
+    }
+   ]
+  },
+  {
+   "id": "opening",
+   "label": "The opening screen",
+   "nav": "Opening screen",
+   "heading": "The first screen is a picture and three words",
+   "blocks": [
+    {
+     "p": "There is no menu bar across the top. The three links sit in a list on the left in 80 px type, so they work as the headline and the menu at once. The rest of the screen belongs to a portrait and a film strip of photos."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/annotated-hero.webp",
+       "alt": "The dark opening screen with four numbered callouts: the logo, the three large links, the portrait with its face blurred, and the film strip of photos",
+       "caption": "Four things to notice on the opening screen. Start at 2: the menu is the largest type on it.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "navigation",
+   "label": "Navigation",
+   "heading": "Three words, shown four times",
+   "blocks": [
+    {
+     "p": "After the opening list, the same three words come back as a tab bar above each section. The section you are in gets a thin box around its name. The bar takes its colours from the section it sits on."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/nav-states.webp",
+       "alt": "The list of About, Work and Contact from the opening screen beside the three tab bars, each with a different word boxed",
+       "caption": "The opening list on the left and the three tab bars on the right. Only the box moves.",
+       "width": 1600,
+       "height": 770
+      }
+     ]
+    },
+    {
+     "p": "These are the questions I would expect from someone choosing a photographer: who is this, what have they shot, how do I reach them. The trade-off is space. Repeating the bar three times takes room that could go to pictures, and on a small screen I would test one bar fixed to the top."
+    }
+   ]
+  },
+  {
+   "id": "about",
+   "label": "About",
+   "heading": "Even the biography has pictures beside it",
+   "blocks": [
+    {
+     "p": "The About section has a cut-out portrait on the left, three short paragraphs in the middle and three photos stacked on the right. A row of four award badges sits under the text. The badges are sample content, so they are left out of the crop below."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/about.webp",
+       "alt": "The biography in three justified paragraphs with three stacked photographs to its right: clasped hands, a figure in a cave mouth, and a cat with a dog",
+       "caption": "The text column and the photo stack. Look at the second paragraph: justified text leaves uneven gaps between words. Left-aligned text would read more evenly.",
+       "width": 1400,
+       "height": 895
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "label": "Work",
+   "heading": "Two rows give two ways into the work",
+   "blocks": [
+    {
+     "p": "The Work section splits the pictures into Professional Work and Freelance Work, four cards each. The idea is that a visitor can head straight for the kind of job they have in mind."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/annotated-work.webp",
+       "alt": "The Work section with five numbered callouts: the tab bar, the underlined group heading, the row of four cards, the second group, and three blurred photos",
+       "caption": "The Work section with five callouts. The two groups use one pattern, so neither looks more important.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "Each card carries its caption inside the photo: a title in 25 px serif, then the place and year in 15 px italics, over a dark fade."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/professional-row.webp",
+       "alt": "The Professional Work heading above four photo cards showing a racing car, a backpack, a figure in a market lane and a pizza, each with a caption",
+       "caption": "The Professional Work row at full size. The captions are sample text.",
+       "width": 1600,
+       "height": 327
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/work-card.webp",
+       "alt": "One photo card enlarged, showing a pizza with a two-line caption in white serif type along the bottom",
+       "caption": "One card enlarged. The fade behind the caption is gentle, so on a bright photo like this the title is harder to read than on the darker cards.",
+       "width": 1000,
+       "height": 629
+      }
+     ]
+    },
+    {
+     "p": "The split into professional and freelance is my assumption. Real visitors might look by subject or by style, and that would need asking."
+    }
+   ]
+  },
+  {
+   "id": "contact",
+   "label": "Contact",
+   "heading": "The scroll ends at a short form",
+   "blocks": [
+    {
+     "p": "The last screen is a white card on black with three fields: name, email and message. A black Submit button and three social icons finish the card."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/contact.webp",
+       "alt": "The Contact section: the tab bar with Contact boxed above a white card holding the logo, three form fields, a black Submit button and three social icons",
+       "caption": "The contact card. The logo takes the left half, so the form stays short and narrow.",
+       "width": 1600,
+       "height": 851
+      }
+     ]
+    },
+    {
+     "p": "Below it, the footer repeats the logo and adds three service links and three pill buttons. The concept stops at the Submit button. There is no error message, no confirmation and no note on what happens next."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/footer.webp",
+       "alt": "The white footer with the logo on the left, three service links in the middle and three pill buttons on the right",
+       "caption": "The footer. Placeholder contact details are removed from this crop, and the dark credit bar under it is left out.",
+       "width": 1600,
+       "height": 402
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "style",
+   "label": "Type and colour",
+   "heading": "Black, white and four typefaces",
+   "blocks": [
+    {
+     "p": "There is no brand colour. The page is black, white and two greys, so the only colour on screen comes from the photographs."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/nityananda/type-colour.webp",
+       "alt": "Chart of text samples grouped under four typefaces, four colour swatches from black to light grey, and two contrast measurements",
+       "caption": "Text samples cut from the design, grouped by typeface, with the colours beside them. Count the groups on the left: four typefaces on one page.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "Type is where I was less strict. A thin display serif does the navigation, an old-style serif does the work captions, a light sans-serif does the reading and a plain sans-serif does the footer. Two would have been calmer. The small grey copyright line also measures 2.3 to 1 against white, which is too faint."
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "heading": "What it would take to go further",
+   "blocks": [
+    {
+     "list": [
+      "Build it with real photographs at sensible file sizes, with text descriptions and keyboard access.",
+      "Design the phone layout. Four cards across and 80 px links will not fit a narrow screen as drawn.",
+      "Add the missing form states: errors, a confirmation and what happens next.",
+      "Ask people choosing a photographer which grouping they expect to find.",
+      "Cut the typefaces to two and darken the small grey text."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "heading": "A quiet interface still has to give directions",
+   "blocks": [
+    {
+     "p": "Taking the colour away was the easy part. What holds the page together is the tab bar: three words, always in one order, always showing where you are."
+    },
+    {
+     "p": "The part I under-did was type. With so little else on the page, every extra typeface shows."
+    }
+   ]
+  }
+ ]
+}

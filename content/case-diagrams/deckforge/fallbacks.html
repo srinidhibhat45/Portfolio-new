@@ -1,0 +1,11 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.flow{display:grid;grid-template-columns:1fr 60px 1fr;gap:18px 0;align-items:center}.q{padding:20px 24px;border:1.5px solid var(--line);border-radius:14px;background:#fff;font-size:23px;font-weight:600}.q span{display:block;font-size:19px;font-weight:400;color:var(--dim);margin-top:4px}.out{padding:18px 24px;border-radius:14px;font-size:21px;line-height:1.4}.pic{background:var(--warn-wash);border:1.5px solid #E8C1B6}.pic b{color:var(--warn)}.ok{background:var(--good-wash);border:1.5px solid #B9D3BE}.ok b{color:var(--good)}.yes{text-align:center;font-size:17px;font-weight:600;color:var(--dim)}.yes i{display:block;font-style:normal;font-size:30px;color:var(--accent);line-height:1}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">The honest fallback</p><h1>When a page cannot be taken apart, it stays a picture</h1>
+<div class="grow flow">
+<div class="q">Did the analysis of this page fail?<span>Any error while rebuilding it.</span></div><div class="yes">yes<i>→</i></div><div class="out pic"><b>Whole page kept as one image.</b> The import lists it in a note at the end.</div>
+<div class="q">Is there no text to read?<span>A scanned page is only a photograph of text.</span></div><div class="yes">yes<i>→</i></div><div class="out pic"><b>Page kept as an image.</b> Running text recognition first is the way to get editable text.</div>
+<div class="q">More than 6,000 drawn paths?<span>Maps and dense illustrations.</span></div><div class="yes">yes<i>→</i></div><div class="out pic"><b>Artwork kept as a sharp image</b> instead of thousands of shapes, with a warning.</div>
+<div class="q" style="border-color:var(--accent)">Otherwise</div><div class="yes"><i>→</i></div><div class="out ok"><b>Rebuilt as layers.</b> The original page is still stored, and can be shown underneath as a safety net.</div>
+</div>
+<p class="note">A page that keeps its picture still presents, animates as a single fade and exports. It just cannot be edited piece by piece.</p>

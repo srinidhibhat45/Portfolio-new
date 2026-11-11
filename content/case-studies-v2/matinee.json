@@ -1,0 +1,585 @@
+{
+ "title": "A film diary that turns my ratings into [[what to watch next]]",
+ "hook": "Matinee is an Android app I designed and built on my own. It keeps a record of the films and series I watch, and every suggestion it makes says why it is there.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "My own brief: track what I watch and choose what to watch next"
+  },
+  {
+   "label": "Timeline",
+   "value": "June to October 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Android first, with a web companion"
+  },
+  {
+   "label": "Stack",
+   "value": "Expo, React Native, TypeScript, SQLite, Firebase, TMDB"
+  },
+  {
+   "label": "Status",
+   "value": "Working app, version 1.1.0. No usage numbers to share"
+  }
+ ],
+ "links": [
+  {
+   "label": "Matinee on the web",
+   "url": "https://matinee.srinidhibhat.com/"
+  }
+ ],
+ "linksHeading": "See it",
+ "summary": [
+  "The problem: finding a title and choosing what to watch tonight are different jobs. I wanted my own record of what I had seen and rated to help with the second one.",
+  "What I built: an Android app with four places (Discover, Upcoming, Stats and Library), a recommendation engine that runs on the phone, and sync for a second device.",
+  "The key idea: variety and reasons are rules in the code. Every pick names its reason, each chosen language gets room in the feed, and no franchise can fill the screen.",
+  "Where it stands: version 1.1.0, in three visual looks over five months. I have no usage numbers, and I have not measured how good the suggestions are."
+ ],
+ "lead": {
+  "src": "assets/cases/matinee/discover-wide.webp",
+  "alt": "Matinee's Discover screen on a wide window: a search bar, All, Movies and Series tabs, a row of genre chips, and a Recommended for You row of eight blurred posters with titles, years and the line Trending now",
+  "caption": "Discover on a wide window, in the pink design that came before the teal one. Each poster carries a Movie or Series badge and one short reason. Poster art is blurred on this page because it belongs to the studios.",
+  "width": 1280,
+  "height": 720
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "Choosing what to watch is a different job from browsing a catalogue",
+   "blocks": [
+    {
+     "p": "Browsing a catalogue is one job. Matinee is for the step after that: keeping track of what I have watched, saving what I want to see, and picking the next thing from what I already liked."
+    },
+    {
+     "p": "It started from a brief I set myself. I built it for one phone first, a Samsung Galaxy S24 Ultra, with the web as a companion. One line in my product notes sums it up: Matinee is a tracker, not a streaming browser."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/tracker.webp",
+       "alt": "Diagram in three columns: what stays upfront, what sits behind a menu, and what was left out, with the left-out items struck through",
+       "caption": "The rule, turned into three columns. Read the struck-through items: they are what streaming apps usually put first, and I kept them out.",
+       "width": 1600,
+       "height": 770
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "There was no user research. I designed it for my own viewing, so this page shows the design and the build, not findings."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Four places, one button for tonight, and a title page under everything",
+   "blocks": [
+    {
+     "p": "The app has four places: Discover, Upcoming, Stats and Library. Any poster opens a title page. A floating button on every tab opens Pick for tonight, which asks for a mood, a type and a length and returns three titles."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/structure.webp",
+       "alt": "Map of the app: four cards for Discover, Upcoming, Stats and Library listing what each holds, with the title page and Pick for tonight underneath",
+       "caption": "The whole app on one page. The title page and the picker sit under all four places, not inside one of them.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "Discover reads from the top: search, then what kind of title, then genre, then the feed."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/discover-annotated.webp",
+       "alt": "The Discover screen with six numbered notes: search, the All, Movies and Series tabs, genre chips, the Movie or Series badge, the reason line under each poster, and the four places at the bottom",
+       "caption": "Discover with notes. Look at notes 4 and 5: every poster says what it is and why it is there.",
+       "width": 1600,
+       "height": 1270
+      }
+     ]
+    },
+    {
+     "p": "Upcoming lists releases in my chosen languages, with new seasons of series alongside films."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/upcoming-annotated.webp",
+       "alt": "Two Upcoming cards with four numbered notes on the release date, the type and language labels, the Theatres label and the Remind and Calendar actions",
+       "caption": "An Upcoming card from the first version. Note 2 records a later fix: without the language label, the filter looked broken.",
+       "width": 1600,
+       "height": 960
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "reasons",
+   "label": "Decision 1",
+   "nav": "A reason on every pick",
+   "heading": "Every suggestion says why it is there",
+   "blocks": [
+    {
+     "p": "What you see: one short line under each pick, such as \"Directed by\" a director I rate well, \"You enjoy Thriller\" or \"Popular in Kannada\". The first version showed it as a banner on the title page."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/reasons.webp",
+       "alt": "A reason banner from the first version reading Since you loved, followed by a film title, above six reason phrases numbered in the order the app picks them",
+       "caption": "The six kinds of reason, in the order the app picks them. A title gets the first one that applies.",
+       "width": 1600,
+       "height": 770
+      }
+     ]
+    },
+    {
+     "p": "In the build: the feed is put together on the phone in four steps. It reads my library, gathers candidate titles, scores each one, then arranges the feed."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/pipeline.webp",
+       "alt": "Diagram of four steps, profile, candidates, score and arrange, with notes on the optional language model re-ranking and the cache",
+       "caption": "From my ratings to a feed of 120 titles. Step 3 is where the reason line comes from.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The biggest change was in how candidates are counted. At first, a title found through a film I rated 4 out of 10 counted as much as one found through a 10. A library I had rated with care still produced something close to a popularity chart."
+    },
+    {
+     "p": "Now each source carries the weight of my rating for it. A 9 or 10 counts fully, a 6 counts about a third, and a 5 or lower hardly counts. A title I logged without rating counts a little more than a 6. This endorsement can add up to 50 points, more than any other term."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/score-terms.webp",
+       "alt": "Bar chart of the eleven scoring terms and their ranges, from minus 60 for a disliked director or actor to plus 50 for endorsement by my ratings",
+       "caption": "The limits of each term, redrawn from the scoring code. Popularity can add at most 8 points, on purpose.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "If I add a Gemini key, a language model re-ranks the top 60. I kept it as a re-ranker, not a replacement. Its order counts for 65% and the score for 35%, and the language and variety rules still run afterwards."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A reason makes a pick easier to trust, but a scoring rule is not proof that the picks are good. I have not measured that."
+     }
+    }
+   ]
+  },
+  {
+   "id": "variety",
+   "label": "Decision 2",
+   "nav": "Room for every language",
+   "heading": "Each chosen language gets room, and no franchise can fill the feed",
+   "blocks": [
+    {
+     "p": "What you see: language chips on Upcoming and in settings. The app starts with seven: English, Hindi, Kannada, Tamil, Telugu, Korean and Japanese. Regional titles show up in the feed next to English ones."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/upcoming-phone.webp",
+       "alt": "The Upcoming screen at phone width in the dark theme: a search field, five language chips with English, Hindi and Kannada selected, an empty result, and a bottom bar with four icons",
+       "caption": "Upcoming at phone width in June. The language chips sit right under the search, so the filter is always in view. This search returned nothing.",
+       "width": 473,
+       "height": 1024,
+       "kind": "tall"
+      }
+     ]
+    },
+    {
+     "p": "In the build: the first rule gave every chosen language 15% of the feed. That breaks as soon as you choose many. Seven languages asked for 126 slots in a feed of 120, and nothing was left for what I actually watch."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/language-slots.webp",
+       "alt": "Two bars of 120 slots. Before: seven blocks of 18 that run past the end of the feed. Now: seven blocks of 6, and 78 slots shared by viewing habits",
+       "caption": "The same seven languages under the old rule and the new one. An illustration worked from the two rules, not a measured result.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "p": "Now 40% of the feed is shared between the chosen languages, and the rest follows how much I watch in each. While the feed fills, two more rules run on every pick. A third title from the same franchise loses 25 points. Each genre already in the feed costs a little more."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Franchises are found by a hand-kept list of 12 names, such as Marvel and Star Wars. A series that is not on the list is never capped."
+     }
+    }
+   ]
+  },
+  {
+   "id": "logging",
+   "label": "Decision 3",
+   "nav": "Three buttons, then More",
+   "heading": "Logging stays one tap away, and the rest moves under More",
+   "blocks": [
+    {
+     "p": "What you see: in the first version, a title page had six buttons of the same size. Watching a trailer looked as important as logging the film. Now three stay at the top: Watched, Watchlist and Rate. Everything else is under More."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/detail-actions.webp",
+       "alt": "Before and after: a June capture of six equal buttons with names blurred, beside a schematic of the October title page with three buttons, a play button on the poster and a More row",
+       "caption": "Left, a real capture. Right, a schematic I drew from the October spec, because I have no screenshot of that version yet.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "Logging was short from the start. The first version asked when I watched it, with Today and Yesterday as one-tap answers."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/log-date.webp",
+       "alt": "Dark logging panel asking When did you watch it?, with Today selected, Yesterday beside it, and day, month and year fields below",
+       "caption": "The logging step from the first version. Today and Yesterday are buttons. The date fields are there for anything older.",
+       "width": 815,
+       "height": 342
+      }
+     ]
+    },
+    {
+     "p": "In the build: a title can be logged as seen without a rating. Episode progress is stored apart from ratings, so ticking off episodes never asks for a score. A bookmark can sit alongside a Seen entry and its rating, and removing a title can be undone, ratings and episode logs included. The last three each have a check in the test suite."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "A row of buttons under every poster. Posters stay clean: tap opens the title, and a long press opens quick actions. The cost is that a long press is easy to miss."
+     }
+    }
+   ]
+  },
+  {
+   "id": "colour",
+   "label": "Decision 4",
+   "nav": "One colour, two themes",
+   "heading": "One source colour, so the rebrand only had to change the hue",
+   "blocks": [
+    {
+     "p": "What you see: light and dark themes, both drawn from one brand colour. In August I moved the brand from pink to teal."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/palette.webp",
+       "alt": "The pink app icon and brand ramp above the teal app icon and ramp, eleven steps each, with three cards on ramps and contrast ratios",
+       "caption": "The two brand ramps, step for step. The darkness of each step is the same. Only the hue moved.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: in August I rebuilt the interface on Material Design 3, Google's design system for Android. Every colour in the app is one step of one of six tonal ramps, a ramp being a set of shades from near black to near white. Light and dark themes pick different steps from the same ramps."
+    },
+    {
+     "p": "So the rebrand was a hue change. Each step kept its lightness and strength of colour. The app icon was recoloured by shifting the hue of its pixels, which kept its shading."
+    },
+    {
+     "p": "One thing slipped. The dark theme uses true black surfaces, and I had tuned those by hand against the pink. After the swap they still had a pinkish-brown cast. I fixed them in the same change."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Values tuned by hand sit outside the system, and that is where the rebrand went wrong. Contrast also shifted a little: the main accent on white went from 6.5:1 to 5.7:1, still above the 4.5:1 that text needs."
+     }
+    }
+   ]
+  },
+  {
+   "id": "layout",
+   "label": "Decision 5",
+   "nav": "Layout by window size",
+   "heading": "The window's width decides the layout, not the device",
+   "blocks": [
+    {
+     "p": "What you see: on a phone, the four places sit in a bottom bar and posters run three across. On a wider window the bar becomes a side rail and the grid widens, up to seven posters."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/window-sizes.webp",
+       "alt": "Five window outlines from compact to extra large, showing a bottom bar on the smallest and a side rail on the rest, with poster grids from 3 to 7 columns",
+       "caption": "Five window sizes, drawn from the layout code. dp is the unit Android uses so sizes look the same on any screen.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    },
+    {
+     "p": "In the build: one hook reads the window width and returns the size class, the margin, the number of poster columns and the number of stats columns. Every responsive screen reads from it, so a phone in landscape, a foldable and a browser window behave the same way at the same width."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A phone turned sideways counts as medium width and gets the side rail. In October I also had to restore the phone layout, keeping three poster columns and two columns of stats cards."
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Every colour pair is checked, after a contrast bug I caught myself",
+   "blocks": [
+    {
+     "p": "The first light theme had a contrast bug. I caught it in a capture and fixed it four minutes later."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/contrast-annotated.webp",
+       "alt": "A June capture of a title page in the light theme with three numbered notes: a row of streaming logos, six equal buttons, and dark fact cards whose dark text cannot be read",
+       "caption": "Note 3 is the bug: the fact cards kept their dark-theme colours in the light theme.",
+       "width": 1600,
+       "height": 1100
+      }
+     ]
+    },
+    {
+     "p": "The Material 3 rebuild made contrast part of the system. These are the accessibility changes in the project history:"
+    },
+    {
+     "list": [
+      "The colour pairs in both themes were set to meet the WCAG AA level, the common accessibility standard: 4.5 to 1 for text, 3 to 1 for icons and other meaningful graphics.",
+      "Touch targets are at least 48 dp. A later fix padded the last two that were too small.",
+      "Charts carry descriptions for screen readers, and rating values are exposed to the browser.",
+      "The phone's reduce-motion setting is respected.",
+      "In dark mode, a toggled reminder button showed as a near-white pill. It now uses a darker container colour.",
+      "On the web, toggle buttons were given a role name that does not exist, which turned them into unlabelled boxes a keyboard could not reach. Fixed in August."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "I have not recorded a screen-reader pass on a real phone, and the October changes have not had a visual check on a device yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Everything works on the phone first, and the cloud is optional",
+   "blocks": [
+    {
+     "p": "The library lives in a database on the phone. The film data comes from TMDB, a public film and series database, using a key each person adds. Sync and the language model are optional extras."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/architecture.webp",
+       "alt": "Diagram in three columns: screens, what runs on the phone, and services outside the phone, with optional ones drawn dashed",
+       "caption": "What runs where. With neither optional service, the app still works fully on one device.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Expo, React Native, TypeScript, Expo Router"
+       ],
+       [
+        "Library",
+        "SQLite on the phone, with backups and restores"
+       ],
+       [
+        "Film data",
+        "TMDB, with the person's own key"
+       ],
+       [
+        "Accounts and sync",
+        "Firebase email sign-in and Firestore, optional"
+       ],
+       [
+        "Suggestions",
+        "My own scoring code, plus Gemini if a key is added"
+       ],
+       [
+        "Builds and updates",
+        "GitHub Actions and EAS Build and Update"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Sync was the hardest part to get right. A change is saved on the phone first and queued, then sent when the app can reach the server."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/sync.webp",
+       "alt": "Diagram of three steps, save, queue and send, above four rules: typed IDs, deletion markers, newer wins, and API keys never synced",
+       "caption": "Offline first. The four rules underneath each come from a real collision, listed in the table below.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "Small changes reach installed apps as an over-the-air update, with no reinstall. Anything that touches native code needs a new APK, the Android install file. A check in the build pipeline decides which one a push needs."
+    },
+    {
+     "stats": [
+      {
+       "value": "36",
+       "label": "commits, June to October 2026"
+      },
+      {
+       "value": "23",
+       "label": "named checks in the regression suite, run against real SQLite in memory"
+      },
+      {
+       "value": "40+",
+       "label": "film-database requests behind one feed, now cached until the library changes"
+      },
+      {
+       "value": "6",
+       "label": "tonal ramps behind every colour in both themes"
+      }
+     ]
+    },
+    {
+     "p": "The October notes record 20 checks passing. The other three were added the next day, for saved keys when secure storage fails."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/matinee/timeline.webp",
+       "alt": "Bar chart of commits by period: June 22, July 1, 9 August 8, 24 August 1, October 4, with what changed in each",
+       "caption": "The build by month. Most of the work came in June. The two August changes gave it its second and third look.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Speed",
+        "One feed costs over 40 requests, and every visit to Discover paid it in full. The feed is now cached for three hours, and any log, rating or dismissal clears it."
+       ],
+       [
+        "Same number, two titles",
+        "A film and a series can share an ID in TMDB, so one could overwrite the other. Every record now carries its type as well as its number."
+       ],
+       [
+        "Titles coming back",
+        "A title removed on one phone could return from the cloud copy. Deletions now leave a marker, and re-adding a title does not bring back its old rating."
+       ],
+       [
+        "Keys and accounts",
+        "Sync used to be tied to the API key. In October it moved to email accounts, and keys stopped leaving the phone."
+       ],
+       [
+        "Updates that never arrive",
+        "An APK built before update channels were set up reports \"up to date\" forever. Settings now shows the channel, so a build that needs replacing is visible."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "A working app, with its newest screens still to be checked on a phone",
+   "blocks": [
+    {
+     "p": "Matinee is at version 1.1.0. It runs as an Android app, with a web version as a companion. It needs a TMDB key to show any films, and a Gemini key only for the optional extras."
+    },
+    {
+     "p": "I use Matinee every day myself."
+    },
+    {
+     "p": "I have no usage numbers or feedback to report. These are also not done yet:"
+    },
+    {
+     "list": [
+      "I have not measured how good the suggestions are.",
+      "The October changes, including the Library tools and the title page, still need a visual check on a real phone. I have no screenshots of the teal design yet.",
+      "Account sync is tested against an in-memory database. It still has to be tried on a second phone against the live project."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Check it on the phone, then test the suggestions",
+   "blocks": [
+    {
+     "list": [
+      "Run the device checks: layout, screen reader, notifications and sign-in.",
+      "Capture the teal design on the phone and replace the schematic on this page.",
+      "Test the suggestions: compare a new profile with one that has a rated history, and ask people why each pick feels relevant or repetitive."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Weight the evidence, and keep the system whole",
+   "blocks": [
+    {
+     "p": "Counting how many sources agreed on a title gave me a popularity chart. Weighting each source by how much I liked it gave me my own feed. The data was the same both times."
+    },
+    {
+     "p": "The colour system turned a rebrand into a single change, except for the one table I had tuned by hand. That table was the only part that went wrong."
+    }
+   ]
+  }
+ ]
+}

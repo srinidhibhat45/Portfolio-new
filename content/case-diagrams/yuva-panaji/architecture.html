@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x920">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">How it is put together</p><h1>One Next.js app on Netlify, and only the server talks to the database</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>In the browser</p>
+<div class="card"><h2>Public pages</h2><p>Read fresh from the database on each visit, so an edit in the admin shows at once with no rebuild.</p></div>
+<div class="card"><h2>Admin portal</h2><p>Signed in with a cookie the browser cannot read from scripts. Can be added to a phone's home screen.</p></div>
+<div class="card"><h2>Print pages</h2><p>Desk sheet and reports, laid out for paper and kept out of search engines.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>On Netlify</p>
+<div class="card hi"><h2>Next.js server</h2><p>Every private request checks the sign-in. Private responses are never cached.</p></div>
+<div class="card"><h2>Checks and limits</h2><p>Deadlines in Goa time, duplicate phones, places left, file types and sizes.</p></div>
+<div class="card"><h2>Image handling</h2><p>Uploads are re-encoded with sharp before they are stored.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Services</p>
+<div class="card hi"><h2>Supabase, Mumbai</h2><p>Postgres for events, registrations, ledger and applications. Storage for photos, with a private bucket for applicants.</p></div>
+<div class="card"><h2>Groq</h2><p>A language model drafts press releases and reports from the event's own records.</p></div>
+<div class="card"><h2>Netlify Forms and GitHub Actions</h2><p>The contact form, and a scheduled ping so the free database is not paused for low activity.</p></div></div>
+</div>
+<p class="note">Everything runs on the organisation's own accounts. The free plans can still pause, which shaped several choices.</p>

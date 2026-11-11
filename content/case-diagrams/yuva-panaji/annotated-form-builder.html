@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="yuva.css"><meta name="diagram-size" content="1600x1070">
+<style>.stage{display:grid;grid-template-columns:auto 1fr;gap:64px;align-items:start;padding-left:24px}.shot{position:relative}
+.dlg{border-radius:14px;overflow:hidden;box-shadow:0 18px 50px rgba(24,44,59,.22);border:1px solid #d9e1e7}
+.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #FBF9F3;z-index:3}
+.legend{display:grid;gap:20px;padding-top:20px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;font-size:22px;line-height:1.4}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker"><span class="schem">Schematic</span>&nbsp; A closer look</p><h1>The form builder: each event asks only what it needs</h1>
+<div class="grow stage"><div class="shot"><div class="dlg emb" style="width:720px;height:744px"><iframe src="parts/form-builder.html" style="width:720px;height:744px"></iframe></div>
+<span class="num dot" style="left:0;top:154px">1</span>
+<span class="num dot" style="left:0;top:276px">2</span>
+<span class="num dot" style="left:0;top:452px">3</span>
+<span class="num dot" style="left:720px;top:500px">4</span>
+<span class="num dot" style="left:0;top:601px">5</span>
+<span class="num dot" style="left:0;top:690px">6</span>
+</div>
+<div class="legend">
+<div><span class="num">1</span><span>Name and phone are always asked. The phone number is how a second entry is caught, and how a person finds their entry later.</span></div>
+<div><span class="num">2</span><span>Four standard fields can be included or left out, and made required. Address is left out here.</span></div>
+<div><span class="num">3</span><span>A custom question. A dropdown takes its options as a comma-separated list.</span></div>
+<div><span class="num">4</span><span>Questions can be moved up and down. The public form shows them in this order.</span></div>
+<div><span class="num">5</span><span>Five answer types: text, number, dropdown, paragraph, and a file upload for an image or PDF.</span></div>
+<div><span class="num">6</span><span>Nothing is live until the event itself is saved.</span></div>
+</div></div>
+<p class="note">Schematic redrawn from the builder's code, with a sample question.</p>

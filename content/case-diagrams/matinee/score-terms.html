@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.chart{display:grid;gap:13px}.r{display:grid;grid-template-columns:420px 1fr 170px;align-items:center;gap:20px;font-size:23px}.track{position:relative;height:30px}.axis{position:absolute;top:-8px;bottom:-8px;width:2px;background:var(--ink);left:calc(60/110*100%)}.seg{position:absolute;top:0;height:30px;border-radius:5px;background:var(--accent)}.seg.neg{background:var(--warn)}.r b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}.r span{color:var(--dim);font-size:19px}.scale{display:grid;grid-template-columns:420px 1fr 170px;gap:20px;font-size:18px;color:var(--dim)}.ticks{position:relative;height:24px}.ticks i{position:absolute;transform:translateX(-50%);font-style:normal}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">The scoring rule, redrawn</p><h1>What each term can add to a title's score</h1>
+<p class="sub">Points from −60 to +50. My own history carries the most weight. Popularity is kept small on purpose.</p>
+<div class="grow chart">
+<div class="r"><span style="color:var(--ink);font-size:23px">How strongly my ratings vouch for it</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(50/110*100%)"></i></div><b>0 to 50</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">Genre match</span><div class="track"><i class="axis"></i><i class="seg neg" style="left:calc(30/110*100%);width:calc(30/110*100%)"></i><i class="seg" style="left:calc(60/110*100%);width:calc(45/110*100%)"></i></div><b>−30 to 45</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">A favourite director or actor</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(25/110*100%)"></i></div><b>+25</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">How much I watch in its language</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(18/110*100%)"></i></div><b>0 to 18</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">Quality, trusted more with more votes</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(14/110*100%)"></i></div><b>0 to 14</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">Found by more than one source</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(10/110*100%)"></i></div><b>0 to 10</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">How recent it is</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(10/110*100%)"></i></div><b>0 to 10</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">How popular it is</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(8/110*100%)"></i></div><b>0 to 8</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">Daily shuffle, to break ties</span><div class="track"><i class="axis"></i><i class="seg" style="left:calc(60/110*100%);width:calc(5/110*100%)"></i></div><b>0 to 5</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">Not released yet</span><div class="track"><i class="axis"></i><i class="seg neg" style="left:calc(40/110*100%);width:calc(20/110*100%)"></i></div><b>−20</b></div>
+<div class="r"><span style="color:var(--ink);font-size:23px">From a director or actor I dislike</span><div class="track"><i class="axis"></i><i class="seg neg" style="left:0;width:calc(60/110*100%)"></i></div><b>−60</b></div>
+<div class="scale"><span></span><div class="ticks"><i style="left:0">−60</i><i style="left:calc(30/110*100%)">−30</i><i style="left:calc(60/110*100%)">0</i><i style="left:calc(85/110*100%)">+25</i><i style="left:100%">+50</i></div><span></span></div>
+</div>
+<p class="note">These are the limits written into the scoring code, not measured results.</p>

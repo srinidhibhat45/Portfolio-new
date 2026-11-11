@@ -1,0 +1,48 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><link rel="stylesheet" href="phone.css"><meta name="diagram-size" content="1600x920">
+<style>
+.stage{display:grid;grid-template-columns:auto auto 1fr;gap:56px;align-items:center}
+.shot{position:relative}
+.field{border:1.5px solid var(--outline);border-radius:14px;padding:10px 12px;background:var(--surface);font-size:14px;color:var(--muted)}
+.field b{display:block;font-size:12px;font-weight:600;color:var(--faint);margin-bottom:2px}
+.field p{color:var(--pink);font-size:14px;line-height:1.45}
+.res{border-radius:16px;padding:14px}
+.rej{background:var(--warnSoft)}
+.ok{background:var(--earnSoft)}
+.kv{display:grid;grid-template-columns:96px 1fr;gap:4px 8px;font-size:13px;margin-top:8px}
+.kv b{font-weight:600}
+.pill{margin-left:auto;padding:3px 10px;border-radius:99px;background:var(--brand);color:#fff;font-size:12px;font-weight:700}
+.legend>div{font-size:22px}.phone{height:600px}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker"><span class="schem">Schematic, not a screenshot</span>&nbsp; Drawn from the app's code · made-up messages</p>
+<h1>The message tester says why, not just yes or no</h1>
+<div class="grow stage">
+ <div class="shot">
+  <div class="phone"><div class="bar"><span>9:20</span><span>●●●</span></div>
+   <div class="scr"><p class="h" style="font-size:21px">SMS Parser Sandbox</p><p class="s" style="margin-top:-8px">Paste any SMS body to test parsing live</p>
+    <div class="field"><b>Sender Header</b><p>AX-SMPLBK</p></div>
+    <div class="field" style="height:150px"><b>Message</b><p>Get up to Rs.50,000 credit limit on a new card. Apply in 2 minutes: www.example.com. Hurry, valid till 30-09-26.</p></div>
+    <div class="row" style="gap:6px;flex-wrap:wrap"><span class="chip">Sample 1</span><span class="chip">Sample 2</span><span class="chip">Sample 3</span><span class="chip">Sample 4</span><span class="chip">Sample 5</span></div>
+    <div class="res rej"><div class="row"><span style="color:var(--warnc);font-size:26px">⊘</span><div><p class="t" style="color:var(--warnc)">Message Rejected</p><p class="s">Reason: promotional</p><p class="s">Evidence 1 · marketing signals 5</p></div></div></div>
+   </div></div>
+  <span class="num mk" style="left:0;top:77.5%">1</span>
+ </div>
+ <div class="shot">
+  <div class="phone"><div class="bar"><span>9:21</span><span>●●●</span></div>
+   <div class="scr"><p class="h" style="font-size:21px">SMS Parser Sandbox</p><p class="s" style="margin-top:-8px">Paste any SMS body to test parsing live</p>
+    <div class="field"><b>Sender Header</b><p>AX-SMPLBK</p></div>
+    <div class="field" style="height:110px"><b>Message</b><p>Rs.60.00 debited on 14-09-26 07:15 via UPI. A/c XX0000.</p></div>
+    <div class="res ok"><div class="row"><span style="color:var(--earn);font-size:22px">✓</span><p class="t" style="color:var(--earn)">Parsed Successfully</p><span class="pill">60% confidence</span></div>
+     <div class="kv"><b>Amount</b><span>₹60</span><b>Direction</b><span>Debit (−)</span><b>Merchant</b><span>UPI Payment (key: "upi payment")</span><b>Account Tail</b><span>A/c ending 0000</span><b>Channel</b><span>UPI</span><b>Evidence</b><span>6 (marketing signals: 0)</span></div></div>
+   </div></div>
+  <span class="num mk" style="left:100%;top:57%">2</span>
+  <span class="num mk" style="left:100%;top:72%">3</span>
+ </div>
+ <div class="legend">
+  <div><span class="num">1</span><span>A rejection names the check that stopped it and the two scores behind the decision.</span></div>
+  <div><span class="num">2</span><span>An accepted message shows its confidence. Here no merchant and no reference were found.</span></div>
+  <div><span class="num">3</span><span>Every field is listed with its evidence score, so a misread can be traced without a debugger.</span></div>
+  <div><span class="num">!</span><span>This is a tool for me, under Settings. Its reasons use the code's own names, such as "promotional", rather than sentences.</span></div>
+ </div>
+</div>
+<p class="note">The scores shown are worked out by hand from the parser's rules for these made-up messages, as an illustration.</p>

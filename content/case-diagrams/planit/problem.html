@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>
+.chart{display:grid;grid-template-columns:330px repeat(10,1fr);row-gap:10px;position:relative}
+.chart .h{font-size:19px;color:var(--dim);text-align:center;padding-bottom:6px;border-bottom:1.5px solid var(--line)}
+.chart .h b{display:block;color:var(--ink);font-size:21px}
+.lab{grid-column:1;font-size:21px;line-height:1.25;align-self:center}
+.lab span{display:block;font-size:17px;color:var(--dim)}
+.bar{height:34px;align-self:center;border-radius:8px;background:var(--wash);border:1.5px solid var(--accent);position:relative}
+.bar.b{background:#E7ECEF;border-color:#59696D}
+.band{position:absolute;top:0;bottom:0;border-radius:6px}
+.legend{display:flex;gap:34px;margin-top:22px;font-size:20px;color:var(--dim);align-items:center}
+.sw{display:inline-block;width:26px;height:16px;border-radius:4px;vertical-align:-2px;margin-right:8px}
+.flag{position:absolute;right:-6px;top:50%;transform:translate(100%,-50%);background:var(--warn);color:#fff;font-size:16px;font-weight:700;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.dot{position:absolute;left:-9px;top:50%;width:18px;height:18px;border-radius:50%;background:var(--warn);transform:translateY(-50%);box-shadow:0 0 0 4px #fff}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">The problem in one picture</p><h1>Eight people, one trip, eight different calendars</h1>
+<p class="sub">The sample trip that ships with PlanIt: a conference in Bengaluru with two tracks, two hotels and a joint workshop. Each bar is when one person is actually there.</p>
+<div class="grow" style="position:relative">
+<div class="band" style="left:calc(330px + (100% - 330px) * .1);width:calc((100% - 330px) * .3);background:rgba(201,80,10,.07)"></div>
+<div class="band" style="left:calc(330px + (100% - 330px) * .4);width:calc((100% - 330px) * .2);background:rgba(89,105,109,.09)"></div>
+<div class="band" style="left:calc(330px + (100% - 330px) * .6);width:calc((100% - 330px) * .2);background:rgba(30,91,58,.09)"></div>
+<div class="chart">
+<div></div><div class="h"><b>22</b>Tue</div><div class="h"><b>23</b>Wed</div><div class="h"><b>24</b>Thu</div><div class="h"><b>25</b>Fri</div><div class="h"><b>26</b>Sat</div><div class="h"><b>27</b>Sun</div><div class="h"><b>28</b>Mon</div><div class="h"><b>29</b>Tue</div><div class="h"><b>30</b>Wed</div><div class="h"><b>1</b>Thu</div>
+<div class="lab">From Goa<span>Track A</span></div><div class="bar" style="grid-column:2/10"></div>
+<div class="lab">From Delhi<span>Track A</span></div><div class="bar" style="grid-column:2/11"></div>
+<div class="lab">From Taipei, via Singapore<span>Track A</span></div><div class="bar" style="grid-column:2/12"></div>
+<div class="lab">From London<span>Track A</span></div><div class="bar" style="grid-column:2/11"></div>
+<div class="lab">From Delhi<span>Track B</span></div><div class="bar b" style="grid-column:5/11"></div>
+<div class="lab">From Manila, via Singapore<span>Track B</span></div><div class="bar b" style="grid-column:5/11"></div>
+<div class="lab">From Manila, overnight flight<span>Track B · lands 05:20</span></div><div class="bar b" style="grid-column:6/11"><span class="dot"></span></div>
+<div class="lab">From Manchester, via Dubai<span>Track B · lands 09:15</span></div><div class="bar b" style="grid-column:6/12"><span class="dot"></span></div>
+</div>
+
+</div>
+<div class="legend"><span><i class="sw" style="background:rgba(201,80,10,.18)"></i>Track A, 23 to 25 Sept</span><span><i class="sw" style="background:rgba(89,105,109,.22)"></i>Track B, 26 to 27 Sept</span><span><i class="sw" style="background:rgba(30,91,58,.2)"></i>Joint workshop, 28 to 29 Sept</span><span><i class="sw" style="background:var(--warn);border-radius:50%;width:16px"></i>Lands on the morning Track B begins</span></div>
+<p class="note">Arrival and departure days from the sample trip. The people in it are sample travellers, so I label them by where they fly from.</p>

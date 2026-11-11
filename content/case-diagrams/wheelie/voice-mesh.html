@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x920"><style>.stage{display:grid;grid-template-columns:640px 1fr;gap:56px}.mesh{position:relative;border:1.5px solid var(--line);border-radius:16px;background:#fff}.mesh svg{position:absolute;inset:0;width:100%;height:100%}.side{display:flex;flex-direction:column;gap:16px;justify-content:center}.side .card p{margin-top:6px;font-size:21px}.side .card h2{font-size:24px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How group voice travels</p><h1>Each phone talks straight to every other phone</h1>
+<div class="grow stage"><div class="mesh"><svg viewBox="0 0 640 620" font-family="Case Sans, Arial" font-size="21">
+<g stroke="#8F6600" stroke-width="4"><line x1="160" y1="150" x2="480" y2="150"/><line x1="160" y1="150" x2="160" y2="430"/><line x1="160" y1="150" x2="480" y2="430"/><line x1="480" y1="150" x2="160" y2="430"/><line x1="480" y1="150" x2="480" y2="430"/><line x1="160" y1="430" x2="480" y2="430"/></g>
+<g fill="#F7EBC6" stroke="#8F6600" stroke-width="3">
+<rect x="128" y="100" width="64" height="100" rx="12"/><rect x="448" y="100" width="64" height="100" rx="12"/><rect x="128" y="380" width="64" height="100" rx="12"/><rect x="448" y="380" width="64" height="100" rx="12"/></g>
+<g fill="#192B32" font-weight="600" text-anchor="middle"><text x="160" y="80">Rider 1</text><text x="480" y="80">Rider 2</text><text x="160" y="515">Rider 3</text><text x="480" y="515">Rider 4</text></g>
+<g fill="#59696D" font-size="18" text-anchor="middle"><text x="320" y="575">Planned for up to 6 riders. 4 phones means 6 links.</text></g>
+</svg></div>
+<div class="side">
+<div class="card"><h2>Audio: phone to phone</h2><p>WebRTC, the same standard browsers use for calls. Mono speech with a 24 kbps target, to go easy on mobile data.</p></div>
+<div class="card"><h2>Finding each other</h2><p>Phones swap connection details over a broadcast channel on the group's backend. No extra tables are needed.</p></div>
+<div class="card"><h2>When a network blocks it</h2><p>A free public server finds each phone's address. A free relay carries the audio when a direct link fails.</p></div>
+<div class="card"><h2>Why not Bluetooth between bikes</h2><p>Phone-to-phone Bluetooth audio is not possible with standard phone software. Each rider pairs their own headset to their own phone.</p></div>
+</div></div>
+<p class="note">The voice room is the ride group: there is nothing separate to pair. Live audio between two real devices has not been tested yet.</p>

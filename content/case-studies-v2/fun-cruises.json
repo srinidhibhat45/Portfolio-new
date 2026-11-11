@@ -1,0 +1,288 @@
+{
+ "title": "Choose a boat [[before you enquire]].",
+ "hook": "Fun Cruises Goa is a landing-page concept for a yacht-hire business. I designed one long page that shows each boat's seats and starting rate before a visitor has to ask.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Page structure, fleet browsing and visual design"
+  },
+  {
+   "label": "Team",
+   "value": "Solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "2022"
+  },
+  {
+   "label": "Why",
+   "value": "A brief I set myself: redesign the home page of a yacht-hire business in Goa"
+  },
+  {
+   "label": "Platform",
+   "value": "Desktop web page, designed 1920 px wide"
+  },
+  {
+   "label": "Scope",
+   "value": "One landing page. Finding a boat and starting an enquiry, with no booking flow"
+  },
+  {
+   "label": "Status",
+   "value": "Design concept. Not built, tested or launched"
+  }
+ ],
+ "links": [
+  {
+   "label": "View the original page design (PDF)",
+   "url": "assets/pdfs/fun-cruises.pdf"
+  }
+ ],
+ "linksHeading": "The original design",
+ "summary": [
+  "The problem: someone planning a boat trip for a group has two questions before they ask about a boat. Will everyone fit, and roughly what will it cost?",
+  "What I did: I designed one long landing page with a hero, an About block, a fleet list with three filters, and a footer.",
+  "The key idea: put the seats and a starting rate on every boat card, so a visitor can rule boats out without opening each one.",
+  "Where it stands: a 2022 concept with no research behind it. It stops at the enquiry. There is no booking flow, and the prices in the mock-up are old sample content."
+ ],
+ "lead": {
+  "src": "assets/cases/fun-cruises/lead.webp",
+  "alt": "The whole Fun Cruises Goa page shown in three columns: hero and About, the fleet filters and first boat card, and the second boat card with the footer",
+  "caption": "The whole page, read left to right: the hero and About block, the fleet filters with the first boat, then the second boat and the footer. Contact details are covered and guests' faces are blurred.",
+  "width": 2400,
+  "height": 848
+ },
+ "sections": [
+  {
+   "id": "brief",
+   "label": "The brief",
+   "heading": "I set myself a brief: help a group pick a boat",
+   "blocks": [
+    {
+     "p": "This was a brief I set myself. I did no interviews and no testing, so this page is about the design and nothing else."
+    },
+    {
+     "p": "I pictured someone organising a day out on the water for a group. Before they send an enquiry they have a few plain questions. I made answering those questions the job of the page. They are my assumption, not a research finding."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/questions.webp",
+       "alt": "Diagram pairing four visitor questions with the parts of the page that answer them",
+       "caption": "The four questions and where each is answered. The first three are all answered in the fleet list, which is why that part of the page got the most care.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What this concept leaves out.",
+      "detail": "It covers finding a boat and starting an enquiry. Checking dates, booking and paying were not designed. The hourly rates in the mock-up are sample content from 2022. They are not current offers."
+     }
+    }
+   ]
+  },
+  {
+   "id": "structure",
+   "label": "Page structure",
+   "heading": "One long page in seven bands",
+   "blocks": [
+    {
+     "p": "The whole concept is a single page, 1920 px wide and 5940 px tall. It has seven bands. The fleet is the largest at about 45% of the page, because that is where a visitor compares boats."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/page-map.webp",
+       "alt": "Scaled picture of the full page beside a list of its seven bands and the share of the page each one takes",
+       "caption": "The page from top to bottom, drawn to scale. Compare the thin navigation band with the fleet band, which is larger than the hero and About put together.",
+       "width": 1600,
+       "height": 1370
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "hero",
+   "label": "The top of the page",
+   "heading": "The first screen shows a boat and a way to book it",
+   "blocks": [
+    {
+     "p": "The hero, the large opening area of a page, does two things. It says what the business offers in one line, and it puts a boat in front of the visitor straight away. That featured boat already carries its seats and starting rate, so the pattern used later in the fleet list starts here."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/annotated-hero.webp",
+       "alt": "The navigation and hero with seven numbered markers and a note for each",
+       "caption": "The first screen with its seven parts marked. Look at 4 and 7: one is for a visitor who is ready to book, the other for one who wants to look first.",
+       "width": 1600,
+       "height": 1290
+      }
+     ]
+    },
+    {
+     "p": "The navigation holds seven links in one cream bar. Online Booking sits apart as a green button, so the quickest way in is always in the same corner. The cost is that Book Now and Online Booking sit close together and seem to do the same thing."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/nav.webp",
+       "alt": "The navigation bar: logo, seven orange links and a green Online Booking button",
+       "caption": "The navigation on its own. Home is bold to mark the current page.",
+       "width": 1600,
+       "height": 102
+      }
+     ]
+    },
+    {
+     "p": "Below the hero, the About block is for visitors who are not ready to choose. Its button says Get a quote, not Book Now. Some people know what they want. Others need a question answered first, and this is their way in."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/about.webp",
+       "alt": "The About block: a collage of six tall photos on the left, a heading, a paragraph and a Get a quote button on the right",
+       "caption": "The About block. The button is an outline, quieter than the filled Book Now above it. I have blurred the photos that show guests.",
+       "width": 1600,
+       "height": 828
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "fleet",
+   "label": "The fleet list",
+   "heading": "Every boat card shows seats and a starting rate",
+   "blocks": [
+    {
+     "p": "This is the centre of the page. Three filters sit above the list: seating, price order and boat type. They match the first three questions in my brief."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/filters.webp",
+       "alt": "The fleet heading above three outlined filter buttons for seating, pricing and type",
+       "caption": "The three filters, each with an icon and its current setting in brackets. They are drawn closed. I did not design the open menus.",
+       "width": 1600,
+       "height": 276
+      }
+     ]
+    },
+    {
+     "p": "Each boat gets a wide card. Photos take most of it. One strip underneath holds what a visitor needs to compare: the name, a starting hourly rate, the type and the number of seats. They can rule a boat out without opening it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/annotated-card.webp",
+       "alt": "One fleet card with six numbered markers: the large photo, the gallery photos, the boat name, the starting rate, the description line and the Know more button",
+       "caption": "One fleet card. Follow the numbers to see the reading order: photo first, then name, rate and seats, then the button.",
+       "width": 1600,
+       "height": 1410
+      }
+     ]
+    },
+    {
+     "p": "Two trade-offs come with this. Filters only work if every boat has the same details recorded, and I did not design what happens when no boat matches. A starting rate is also not the full cost. Minimum hours, what is included and any extra fees would still need explaining."
+    }
+   ]
+  },
+  {
+   "id": "type-colour",
+   "label": "Type and colour",
+   "heading": "Large names, and orange for anything you can press",
+   "blocks": [
+    {
+     "p": "I measured the type on the page. The headline is 75 px and running text is 25 px. Boat names are 70 px, almost as large as the headline, so the fleet reads as a list of names first."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/type.webp",
+       "alt": "Seven samples of text cut from the page, each with its measured size and where it is used",
+       "caption": "Real samples from the page, all at the same scale. Compare the first two rows: a boat name is nearly as big as the page headline.",
+       "width": 1600,
+       "height": 1010
+      }
+     ]
+    },
+    {
+     "p": "Looking at it now, the page uses five type styles: a wide sans for the headline, a condensed sans for headings, a light sans for filters, a round sans for links and buttons, and a serif for running text. That is a lot for one page, and it is the first thing I would tidy."
+    },
+    {
+     "p": "Colour has a simpler job. Orange marks what can be pressed: links, filter outlines, buttons and the line under each boat name. Cream sits behind as a quiet background. Green is kept for the hero shape, the Online Booking button and the bottom bar."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/colour.webp",
+       "alt": "Eight colour swatches with their hex values and where each is used on the page",
+       "caption": "The eight colours on the page. Three of them are shades of orange, used from strongest on links to palest on the Know more buttons.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "enquiry",
+   "label": "The enquiry path",
+   "heading": "Three routes lead towards an enquiry, and the page stops there",
+   "blocks": [
+    {
+     "p": "A visitor can move towards an enquiry in three ways, depending on how sure they are. Each route ends in a button. What opens after the button was not designed, so the diagram shows those screens as dashed boxes."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/enquiry-path.webp",
+       "alt": "Flow diagram of three routes: hero to Book Now, About to Get a quote, and fleet filters to a card to Know more, each ending in a screen that was not designed",
+       "caption": "The three routes. The red dashed boxes on the right are where this concept ends.",
+       "width": 1600,
+       "height": 660
+      }
+     ]
+    },
+    {
+     "p": "The footer repeats the main links and adds two pages a visitor would look for before paying: Terms & Conditions and Refund Policy."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/fun-cruises/footer.webp",
+       "alt": "The dark footer with the logo and a short description, seven links, an orange bar with two policy links and a copyright line dated 2022",
+       "caption": "The footer. I have left out the contact column that sat on the right.",
+       "width": 1600,
+       "height": 717
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What comes next",
+   "heading": "An enquiry should not look like a confirmed booking",
+   "blocks": [
+    {
+     "p": "That is what I would fix first. The page uses Book Now, Online Booking, Get a quote and Know more, and it does not say which of them reserves a boat and which only asks a question."
+    },
+    {
+     "list": [
+      "Design the boat page that Know more points to, with availability, what is included, accessibility details and cancellation terms.",
+      "Design the open filter menus and the screen shown when no boat matches.",
+      "Test it. Ask someone planning for a group to choose a boat, say what they expect to pay, and say what they would still need to confirm.",
+      "Correct the copy. The mock-up spells yacht as \"Yatch\" in several places, and I have left the artwork as it was."
+     ]
+    },
+    {
+     "p": "None of this was built or tested, so there are no results to report."
+    }
+   ]
+  }
+ ]
+}

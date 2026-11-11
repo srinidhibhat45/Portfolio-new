@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x980">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:28px;line-height:.8}.arrow{font-size:40px}.soft{border-style:dashed}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">How it is put together</p><h1>Everything runs in the browser, and the network is optional</h1>
+<div class="grow row" style="gap:20px;align-items:stretch">
+<div class="colm"><p>On screen</p>
+<div class="card"><h2>Eight views and a details panel</h2><p>Timeline, Day, Trip, Agenda, Map, Canvas, People, Ideas. Each one can add, move and remove blocks.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>One store</h2><p>Every change goes through one place, which keeps undo and redo and saves the trip.</p></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>The core: no screens in it</h2><p>Time zones, the travel model, the analyser, the board and Resolve, sub-trips, sharing and calendar files. Tested on its own.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Kept or handed out</p>
+<div class="card"><h2>Browser storage</h2><p>One saved entry per trip, plus a small index. If the index breaks, it is rebuilt from the trips.</p></div>
+<div class="card"><h2>Share link</h2><p>The whole plan, compressed into the part of the link after the #, which browsers never send to a server.</p></div>
+<div class="card"><h2>Calendar file, JSON backup, print</h2><p>Calendar times written in UTC, so each calendar app shows them in the reader's own zone.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Online, if available</p>
+<div class="card soft"><h2>Road routes</h2><p>From a public routing service. Without it: a straight-line estimate.</p></div>
+<div class="card soft"><h2>Map tiles</h2><p>From OpenStreetMap. Without them: a blank map with the stops still drawn.</p></div>
+<div class="card soft"><h2>Place search</h2><p>Live results join a built-in list of places that answers on the first keystroke.</p></div></div>
+</div>
+<p class="note">No server, no account, no database. What leaves the browser is search terms and coordinates for those three lookups.</p>

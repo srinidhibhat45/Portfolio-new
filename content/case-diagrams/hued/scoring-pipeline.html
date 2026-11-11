@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.colm{display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.ly h2{display:flex;gap:12px;align-items:center}.ly .num{width:34px;height:34px;font-size:18px}.f{font:600 22px/1.4 'Case Sans';color:var(--ink);margin-top:10px}.v{display:grid;gap:6px;margin-top:12px}.v div{display:flex;justify-content:space-between;font-size:19px;padding:6px 12px;border-radius:8px;background:#fff}.arrow{font-size:38px}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">How a photo becomes a score, traced through the code</p><h1>Two copies of each photo, three layers of scoring</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm" style="width:240px"><p>On the phone</p><div class="card hi" style="flex:1;display:flex;flex-direction:column;justify-content:center"><h2>Photo taken</h2><p>Full quality, with the camera's own data: make, model, aperture, shutter speed.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm" style="width:330px"><p>Made at the same time</p>
+<div class="card"><h2>Scoring copy</h2><p>64 × 64 pixels, saved as PNG so no compression shifts the colour. Never uploaded.</p></div>
+<div class="card"><h2>Upload copy</h2><p>WebP at quality 0.82, longest side 1,080 pixels. Sent only when you share.</p></div>
+<div class="card"><h2>Place and camera data</h2><p>Location if you allow it, plus the camera fields above.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm" style="flex:1"><p>Three layers, multiplied</p>
+<div class="card ly"><h2><span class="num">A</span>Colour match</h2><p>Each of the 4,096 pixels is compared with the target in Lab, a colour space built around how people see difference. Pixels close enough count. More of them, and closer ones, score higher, with diminishing returns.</p></div>
+<div class="card ly"><h2><span class="num">B</span>Composition</h2><p>Variety of colours (55%) and edges (45%). A flat wall is cut to 18%; low detail to 70%.</p></div>
+<div class="card ly"><h2><span class="num">C</span>Real-photo guess</h2><p>Smoothness and missing camera data. It can take off at most 22%.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm" style="width:290px"><p>Result</p><div class="card hi" style="flex:1"><h2>Score 0 to 100</h2><p class="f">100 × A × B × (1 − C)</p><div class="v"><div><span>Exceptional</span><b>82+</b></div><div><span>Strong match</span><b>65–81</b></div><div><span>Nice find</span><b>40–64</b></div><div><span>Keep hunting</span><b>0–39</b></div></div></div></div>
+</div>
+<p class="note">The scoring copy is read by a PNG decoder written in plain JavaScript, so no native code or server is needed.</p>

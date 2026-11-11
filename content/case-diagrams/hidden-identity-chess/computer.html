@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x820">
+<style>table{border-collapse:collapse;width:100%;font-size:22px}th,td{padding:12px 16px;text-align:left;border-bottom:1.5px solid var(--line)}th{font-size:19px;letter-spacing:.06em;text-transform:uppercase;color:var(--dim);font-weight:600}td b{font-variant-numeric:tabular-nums}.two{display:grid;grid-template-columns:1.15fr 1fr;gap:36px}.steps{display:grid;gap:12px}.step{display:grid;grid-template-columns:150px 1fr;gap:14px;align-items:center;padding:12px 18px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font-size:21px}.step b{font-size:22px}.tags{display:flex;gap:6px;flex-wrap:wrap}.out{text-decoration:line-through;opacity:.45}.final{border-color:var(--warn);background:var(--warn-wash)}h3{font-size:24px;margin-bottom:12px}</style>
+<body style="--accent:#532D3A;--wash:#EEE0E2">
+<p class="kicker">The computer player</p><h1>It plays from the same view you have, with no peeking</h1>
+<div class="grow two">
+<div><h3>Three styles, set by a few numbers</h3>
+<table><tr><th></th><th>Casual</th><th>Club</th><th>Challenger</th></tr>
+<tr><td>Luck in each choice</td><td><b>high</b></td><td><b>medium</b></td><td><b>low</b></td></tr>
+<tr><td>Chance it bluffs on a turn</td><td><b>2.5%</b></td><td><b>5%</b></td><td><b>8%</b></td></tr>
+<tr><td>Chance it challenges your last move on a hunch</td><td><b>10%</b></td><td><b>22%</b></td><td><b>36%</b></td></tr>
+<tr><td>Avoids squares next to your pieces</td><td>no</td><td>yes</td><td>yes</td></tr></table>
+<p style="margin-top:18px;font-size:21px;color:var(--dim)">It never bluffs with its king, and it only bluffs moves that some piece could have made. It always challenges a king capture before it accepts the loss.</p></div>
+<div><h3>How it catches a bluff for certain</h3>
+<div class="steps">
+<div class="step"><b>Start</b><span>A hidden piece could be any of six types.</span></div>
+<div class="step"><b>Moves diagonally</b><span>Only a queen or a bishop moves like that.</span></div>
+<div class="step"><b>Moves straight</b><span>A bishop cannot, so only a queen fits.</span></div>
+<div class="step final"><b>Jumps like a knight</b><span>No single piece moves all three ways. It challenges.</span></div>
+</div></div></div>
+<p class="note">The numbers come from the game's code. The three moves on the right are an illustration of the rule, not a recorded game. The computer reads only its own pieces, where yours are, and pieces already revealed.</p>

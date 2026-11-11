@@ -1,0 +1,586 @@
+{
+ "title": "One sign-up, carried all the way to the [[registration desk]].",
+ "hook": "I designed and built the website for Yuva, a youth service group in Goa. The public side lists events and takes sign-ups. The private side helps the committee check payments, print the desk list and run its membership drive.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "For",
+   "value": "Yuva, a youth social service organisation in Panaji, Goa, founded in 2012"
+  },
+  {
+   "label": "Platform",
+   "value": "Web: a public site and a private admin portal"
+  },
+  {
+   "label": "Timeline",
+   "value": "July to November 2026"
+  },
+  {
+   "label": "Status",
+   "value": "Live, on the organisation's own hosting and database. No usage numbers to share"
+  },
+  {
+   "label": "Stack",
+   "value": "Next.js 16, React 19, Supabase, Netlify"
+  }
+ ],
+ "links": [
+  {
+   "label": "Visit the live site",
+   "url": "https://yuva-website.netlify.app/"
+  }
+ ],
+ "linksHeading": "See it live",
+ "summary": [
+  "The problem: an event sign-up is only the start. The committee still has to check payments, fix mistakes, run a desk on the day, keep the accounts and report afterwards.",
+  "What I built: one site with a public front and a private back office. Each event gets its own form, and every sign-up flows into a list, a printed desk sheet and an Excel file.",
+  "The key idea: keep it one record from the form to the desk. Nobody types a sign-up out again.",
+  "Where it stands: live and run on the organisation's own accounts. I have no counts of events or sign-ups to share, because those sit with members' details."
+ ],
+ "lead": {
+  "src": "assets/cases/yuva-panaji/lead.webp",
+  "alt": "Three schematics side by side: a public event page with a registration form, the same form as a sheet on a phone, and the admin list of registrants with payment and check-in columns",
+  "caption": "The public event page, the same form on a phone, and the committee's list it feeds. These are schematics redrawn from the code with sample data, because the real screens hold members' names and faces.",
+  "width": 2400,
+  "height": 930
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A sign-up keeps creating work after the button is pressed",
+   "blocks": [
+    {
+     "p": "Yuva is a youth social service group in Panaji, Goa. It runs drives, camps, cultural events and sports, and it recruits new members once a year."
+    },
+    {
+     "p": "From the outside, an event needs a page and a form. Inside the committee, each sign-up starts a chain of jobs. Someone checks the fee was paid. Someone fixes a wrong name. Someone stands at a desk on the day with a list. Someone keeps the accounts and writes up the event afterwards."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/one-event.webp",
+       "alt": "Diagram: three steps a participant takes on the left, one registration record in the middle, and six committee jobs on the right, from checking the payment to reporting afterwards",
+       "caption": "The problem in one picture. One record in the middle, and six jobs the committee does with it. Sample data.",
+       "width": 1600,
+       "height": 820
+      }
+     ]
+    },
+    {
+     "p": "So I set myself one rule. A sign-up is entered once, by the person signing up. Every list, sheet and file after that is made from the same record."
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I have no interviews or written feedback from the committee, so this page quotes none. The jobs above come from what the admin side was built to do."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "A public front, a private back office and a few pages made for paper",
+   "blocks": [
+    {
+     "p": "The site has three parts. Anyone can browse the public pages, register for an event and apply in a membership drive. The committee works in an admin portal behind one shared login. A few plain pages are made to be printed, such as the attendance sheet for the desk."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/site-map.webp",
+       "alt": "Map of the site in three columns: public pages, admin portal sections and print pages, with arrows showing how events, sign-ups and applications move between them",
+       "caption": "How the site is organised. The middle arrows are the point: a saved event shows on the public page at once, and every sign-up lands in that event's list.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "There are no accounts for the public. A person who registered is known only by the phone number they gave. That one choice shaped a lot of what follows."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/roles.webp",
+       "alt": "Table of nine actions against three kinds of user: anyone, someone who registered, and the committee. Deleting an event, closing a drive or starting a new campaign asks the committee for the password again",
+       "caption": "Who can do what. Look at the last row: the riskiest actions ask for the password a second time, even when signed in.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "forms",
+   "label": "Decision 1",
+   "nav": "A form for each event",
+   "heading": "Each event asks only what it needs",
+   "blocks": [
+    {
+     "p": "What you see: a form builder inside each event. Name and phone are always asked. Email, age, gender and address can each be switched on or off and made required. Then the committee adds its own questions, such as a T-shirt size or a school name."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/annotated-form-builder.webp",
+       "alt": "The registration form builder with six numbered notes: locked name and phone fields, include and required toggles, a custom dropdown question, reorder arrows, answer types and the apply button",
+       "caption": "The form builder. Note 1 matters most: the phone number is how a second entry is caught, and how a person finds their entry later.",
+       "width": 1600,
+       "height": 1070
+      }
+     ]
+    },
+    {
+     "p": "The public form then shows exactly those questions, in that order. On a phone the form sits far down the page, so a Register button stays at the bottom of the screen and opens the form as a sheet."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/registration-form.webp",
+       "alt": "Three phone schematics: an event page with a Register button pinned to the bottom, the registration form open as a sheet with a UPI payment box, and the success message with a reference number",
+       "caption": "Registering on a phone, in three steps. In step 2 the fee adds a UPI box. In step 3 the person gets a reference to quote later.",
+       "width": 1600,
+       "height": 1160
+      }
+     ],
+     "layout": "one"
+    },
+    {
+     "p": "In the build: the database is reached through its web interface, which cannot add new columns. So each event's settings live as one hidden row in the same table that holds its questions. One shared function splits that row out before anything shows the form."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Adding a column for each new setting. Each one would have meant a script pasted into the database console by hand. The cost of my choice is that every part of the code that reads questions has to go through that one function, or the settings row would show up as a question."
+     }
+    }
+   ]
+  },
+  {
+   "id": "desk",
+   "label": "Decision 2",
+   "nav": "From form to desk",
+   "heading": "The sign-up becomes the list at the desk",
+   "blocks": [
+    {
+     "p": "What you see: after a sign-up, the person gets a reference such as YUVA-E12-00047. The committee sees them in that event's list, with a column for every answer. Payment is marked pending, paid or waived. A tick marks the entry verified."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/registration-flow.webp",
+       "alt": "Workflow in two rows: the participant's event page, form, server checks and reference number on top; the committee's list, desk sheet, Excel export and after-event work below",
+       "caption": "The registration workflow. Step 3 is where the rules live: open, before the deadline, no repeat phone, places left.",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/annotated-registrations.webp",
+       "alt": "The admin registrations tab with seven numbered notes on the tab, the desk sheet and Excel buttons, the reference, a custom question column, payment status, the verified tick and the edit and remove buttons",
+       "caption": "One event's registrations. Note 4: a question added in the builder turns into its own column here, with no extra setup.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "In the build: the reference number is made from the database's own row number, which is never reused. So no two people can share one, and nothing extra has to be stored."
+    },
+    {
+     "p": "The desk sheet is a separate page laid out for paper. The list is sorted A to Z and keeps only what the desk needs: name, phone, a Present column and room to sign. Blank numbered rows fill each page for people who walk in."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/desk-sheet.webp",
+       "alt": "Schematic of the printed attendance sheet with four numbered notes on the screen-only toolbar, the alphabetical count, the columns kept, and the blank numbered rows",
+       "caption": "The desk sheet. Note 4: 54 rows on the first page and 60 on each page after, so every printed page is full.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Paper is a snapshot. A correction made after printing does not reach the sheet, so the desk works from the list as it was when it was printed."
+     }
+    }
+   ]
+  },
+  {
+   "id": "edits",
+   "label": "Decision 3",
+   "nav": "Corrections by phone",
+   "heading": "People fix their own mistakes, with the phone number as the key",
+   "blocks": [
+    {
+     "p": "What you see: if the committee allows it for an event, an \"Already registered?\" panel appears on the event page. You type the phone number you used, pick your entry, and correct it. The phone number itself cannot be changed."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/self-edit.webp",
+       "alt": "Three schematic panels: entering a phone number, choosing between two entries that share it, and editing an entry with the phone number locked",
+       "caption": "Correcting an entry. Step 2 exists because one number can hold several entries, for example a parent registering two children.",
+       "width": 1600,
+       "height": 760
+      }
+     ]
+    },
+    {
+     "p": "In the build: before saving, the server checks that the phone given matches the entry. During an audit in October I also changed the lookup to an exact match. Before that, a phone search could match more than one number."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A phone number is not proof that it is yours. Anyone who knows it could open the entry. Doing better needs a one-time code or a signed link sent to the person, which I have not built."
+     }
+    }
+   ]
+  },
+  {
+   "id": "drive",
+   "label": "Decision 4",
+   "nav": "A drive that holds up",
+   "heading": "The membership drive is built for a crowd on phones",
+   "blocks": [
+    {
+     "p": "What you see: once a year the committee opens a membership drive. A banner appears on the home page and the link is shared. People apply on their phones, get a receipt such as YUVA-M57, and wait for a call. It started as a volunteer drive and was renamed in October; the old links still lead to it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/membership-form.webp",
+       "alt": "Two phone schematics of the membership page: the top of the form with eligibility note and fields, and the confirmation with a reference number",
+       "caption": "The membership page on a phone. One column, 16px text in the fields, and a receipt at the end. Sample data.",
+       "width": 1600,
+       "height": 1180
+      }
+     ]
+    },
+    {
+     "p": "In the build: I planned for many people applying at once on weak signal. The answers are kept in the browser tab for up to 24 hours. Repeat taps are blocked. A retry with unchanged answers carries the same key, so a lost reply cannot make a second application, and the person gets the same receipt back."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/membership-flow.webp",
+       "alt": "Workflow in three columns: the applicant's form, draft and single submission; the server's drive check, answer check and receipt; the committee's four statuses, interview notes, batches and exports",
+       "caption": "The membership workflow. The drive is checked again at the moment of saving, so a page left open cannot post to a closed drive.",
+       "width": 1600,
+       "height": 1000
+      }
+     ]
+    },
+    {
+     "p": "The photo was the hardest part. It is optional, but phone photos are large and the free storage plan is small. So the browser shrinks it before sending, and the server rebuilds it, strips location data and stores a small copy where only the committee can see it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/photo-pipeline.webp",
+       "alt": "Diagram of four steps for an applicant photo, from up to 10 MiB on the phone to 300 KiB sent and 160 KiB stored, with bars drawn to scale",
+       "caption": "One optional photo, four limits. The bars are to scale: what is stored is about one sixtieth of the largest photo accepted.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/annotated-membership.webp",
+       "alt": "The admin membership screen with seven numbered notes on the home-screen shortcut, folded system checks, drive status, counts, search and copy phones, private photos and statuses",
+       "caption": "The committee's side of the drive. It works as a calling list: note 5 copies every phone number in view in one tap.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "Isolated tests send 200 different applications at once and 50 retries of the same one, against a stand-in for the database."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "Those tests do not use the real database or hosting, so they say nothing about live capacity. The free plans can pause a project, so the checklist I wrote for the committee asks them to keep another way to collect contacts ready on drive day."
+     }
+    }
+   ]
+  },
+  {
+   "id": "admin",
+   "label": "Decision 5",
+   "nav": "A plainer back office",
+   "heading": "The back office got its own plainer design",
+   "blocks": [
+    {
+     "p": "What you see: the admin portal no longer borrows the public site's look. It has one sans-serif type scale, neutral surfaces, green main buttons and red only for actions that delete."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/admin-dashboard.webp",
+       "alt": "Schematic of the admin dashboard: a sidebar with nine sections, four summary cards with numbers left blank, a list of sample events and a ledger summary",
+       "caption": "The admin dashboard. The numbers are left blank on purpose, because the real ones belong to the organisation.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "In the build: I listed what made the working screens hard to use, then fixed each one. The public site's editorial type was the first thing to go."
+    },
+    {
+     "table": {
+      "head": [
+       "Problem",
+       "What I changed"
+      ],
+      "rows": [
+       [
+        "Decorative type, uppercase buttons and small labels made tables hard to scan",
+        "An admin-only stylesheet with one type scale and readable tables. Public pages are untouched"
+       ],
+       [
+        "Mixed emoji icons. The phone menu could not be closed by tapping outside it",
+        "One icon set, the current page marked, and a phone menu that closes on a tap outside or Escape and keeps keyboard focus inside"
+       ],
+       [
+        "A failed load looked like an empty list. No status filter, count or pages",
+        "An inline retry, a status filter, result counts, and pages of 25 events or 50 participants"
+       ],
+       [
+        "A pop-up after every save blocked the next action",
+        "Notices that do not block. Delete confirmations stay"
+       ],
+       [
+        "Login labels were not tied to their fields, and the show-password button could not be reached by keyboard",
+        "Both fixed"
+       ]
+      ]
+     }
+    },
+    {
+     "aside": {
+      "title": "What is still unchecked.",
+      "detail": "These changes passed the automated tests and the production build. Real phone checks, keyboard checks and a screen-reader pass have not been done yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One Next.js app, and only the server talks to the database",
+   "blocks": [
+    {
+     "p": "The whole site is one Next.js app on Netlify. Public pages read from the database on each visit, so an edit in the admin shows at once with no rebuild. The browser never talks to the database directly."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/architecture.webp",
+       "alt": "Diagram in three columns: public pages, admin portal and print pages in the browser; the Next.js server with checks and image handling on Netlify; Supabase, Groq, Netlify Forms and GitHub Actions as services",
+       "caption": "What runs where. The middle column is the gatekeeper: every private request checks the sign-in there.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Next.js 16 with the App Router, React 19, Node 22"
+       ],
+       [
+        "Data and files",
+        "Supabase: Postgres and storage, in the Mumbai region"
+       ],
+       [
+        "Sign-in",
+        "One committee login, a signed session cookie that scripts cannot read"
+       ],
+       [
+        "Images",
+        "sharp, to re-encode uploads before they are stored"
+       ],
+       [
+        "Exports",
+        "Excel files for lists and the ledger"
+       ],
+       [
+        "Drafted reports",
+        "A language model on Groq drafts press releases and reports from an event's records"
+       ],
+       [
+        "Hosting",
+        "Netlify, deployed on every push to the main branch"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "The site started in July as a static site edited through files. Within two weeks I moved it to a live database, because the admin portal needed to save changes as they happened."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/yuva-panaji/timeline.webp",
+       "alt": "Timeline of commits by month: July 79, August 4, September 0, October 7, November 9, with the main milestones under each month",
+       "caption": "The build by month. Most of it happened in July; October was an audit and the membership drive.",
+       "width": 1600,
+       "height": 800
+      }
+     ]
+    },
+    {
+     "stats": [
+      {
+       "value": "99",
+       "label": "commits, July to November 2026"
+      },
+      {
+       "value": "3",
+       "label": "automated test suites, first added in October 2026"
+      },
+      {
+       "value": "1,205",
+       "label": "made-up registrations one test runs against, to prove lists past 1,000 rows"
+      },
+      {
+       "value": "200",
+       "label": "applications sent at once in an isolated test"
+      }
+     ]
+    },
+    {
+     "p": "In late October I audited the admin side for speed and reliability. Most of what I found was silent: numbers that looked right and were not."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "Before",
+       "After"
+      ],
+      "rows": [
+       [
+        "Dashboard",
+        "Four requests downloaded every event, team member, registration and ledger row. Counts could stop at 1,000",
+        "One request with exact counts from the database"
+       ],
+       [
+        "Long lists and exports",
+        "The database's default limit could hide every row after the first 1,000",
+        "Read page by page in a fixed order"
+       ],
+       [
+        "Money",
+        "Totals added up as decimals, which can drift",
+        "Totals kept in paise, as whole numbers"
+       ],
+       [
+        "Registration",
+        "Phone lookups matched patterns. Deadlines closed at midnight UTC. Required custom answers were not checked on the server",
+        "Exact phone match, deadlines that include the whole day in Goa time, and required answers checked"
+       ],
+       [
+        "Uploads",
+        "A file could be stored before the sign-up was checked, and images had no general size cap",
+        "Check first. Images up to 20 MB, PDFs up to 5 MB, and new files removed if the sign-up fails"
+       ],
+       [
+        "Certificates",
+        "A slow reply for the last event could overwrite the attendees of the one just picked",
+        "Old requests are cancelled and late replies ignored"
+       ]
+      ]
+     }
+    },
+    {
+     "aside": {
+      "title": "What I do not claim.",
+      "detail": "I did not measure the live site before and after, so I claim no speed-up. The audit also wrote a database script that saves an event in one step and stops two people taking the last place at once. At the time it had not been applied to the live database; it needs a test on a copy first."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Live on the organisation's own accounts, with no numbers to share",
+   "blocks": [
+    {
+     "p": "The site is live and runs on the organisation's own hosting, database and code accounts. Changes deploy when they are pushed to the main branch."
+    },
+    {
+     "p": "I have no counts of events, registrations or membership applications to report. They live in the organisation's database next to members' names and phone numbers, and I have not taken figures out of it for this page."
+    },
+    {
+     "p": "These are still open:"
+    },
+    {
+     "list": [
+      "The committee shares one login, so the site cannot tell who did what.",
+      "Self-editing trusts the phone number, as described above.",
+      "The audit's database script was not yet applied to the live database at the time of the audit.",
+      "Real phone, keyboard and screen-reader checks of the admin are still to do."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Give people their own keys",
+   "blocks": [
+    {
+     "list": [
+      "Separate logins for committee members, so actions can be traced to a person.",
+      "A one-time code or a signed link for self-editing, instead of the phone number alone.",
+      "Test the audit's database script on a copy of the database, including two people taking the last place at once, then apply it.",
+      "A careful clean-up of stored images that nothing uses any more. Some old events share images, so blind deletion would break them.",
+      "A real-device pass on phones, with a keyboard and a screen reader."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "The quiet limits were the dangerous ones",
+   "blocks": [
+    {
+     "p": "The worst bugs did not crash anything. A dashboard count that stops at 1,000 looks like a real number. A list that ends at the 1,000th row looks complete. I now check where a number comes from before I trust it on screen."
+    },
+    {
+     "p": "I also learned that free plans are a design brief. The photo limits, the folded system checks and the scheduled ping to keep the database awake all come from working inside them. And a site without accounts still needs a key for each person. The phone number was the simplest key, and the page above is honest about what it costs."
+    }
+   ]
+  }
+ ]
+}

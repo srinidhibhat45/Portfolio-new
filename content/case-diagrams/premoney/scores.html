@@ -1,0 +1,24 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x780">
+<style>
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.card{padding:24px 26px}
+.card h2{font-size:30px}
+.card .w{font-size:20px;color:var(--dim);margin-top:4px}
+.comp{display:grid;grid-template-columns:1fr auto;gap:10px 16px;margin-top:18px;font-size:22px}
+.comp span:nth-child(even){color:var(--accent);font-weight:600;text-align:right}
+.rule{margin-top:26px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;padding:20px 24px;border-radius:14px;background:var(--wash);border:1.5px solid var(--accent);font-size:22px}
+.rule b{font-size:22px;color:var(--accent)}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">The two scores on the home screen</p>
+<h1>Two scores with stated targets, not curves</h1>
+<div class="grow"><div class="two">
+ <div class="card"><h2>Saver Score</h2><p class="w">0 to 100, higher is better · last 6 months</p>
+  <div class="comp"><span>Savings rate</span><span>target 30%</span><span>Month-to-month consistency</span><span></span><span>Share of income invested</span><span>target 15%</span><span>Emergency runway</span><span>target 6 months</span></div></div>
+ <div class="card"><h2>Spender Score</h2><p class="w">0 to 100, higher is freer spending · about 90 days</p>
+  <div class="comp"><span>Wants as a share of spending</span><span></span><span>Spending against income</span><span></span><span>How often I buy</span><span></span><span>How bursty daily spending is</span><span></span></div></div>
+</div>
+<div class="rule"><b>Missing input</b><span>A part that cannot be measured is marked unavailable and the rest is rescaled. A missing salary never shows as a failing grade.</span></div>
+<p style="font-size:21px;color:var(--dim);margin-top:18px">The Spender Score describes, it does not judge. A high Spender Score next to a high Saver Score is someone who earns well and enjoys it.</p>
+</div>
+<p class="note">Components, windows and targets are from the app's scoring code and notes. Investments count as savings, not spending, and transfers between my own accounts count as neither.</p>

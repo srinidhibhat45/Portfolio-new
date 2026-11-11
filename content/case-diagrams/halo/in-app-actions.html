@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.lane{display:grid;grid-template-columns:300px 1fr;gap:26px;align-items:center;padding:20px 0;border-bottom:1.5px solid var(--line)}.lane:last-of-type{border-bottom:0}.lane h2{font-size:26px;font-weight:600}.lane .w{font-size:19px;color:var(--dim);margin-top:4px}.flow{display:flex;gap:14px;align-items:center}.flow .card{flex:1;padding:16px 18px}.flow .card p{font-size:19px;color:var(--ink);line-height:1.35}.flow .arrow{font-size:28px}.eg{margin-top:6px;font-size:18px;color:var(--accent);font-weight:600}.src{display:flex;gap:22px;align-items:center;margin-top:18px;padding:18px 22px;border-radius:14px;background:var(--wash)}.src b{font-size:40px;color:var(--accent);font-weight:700}.src p{font-size:21px}</style>
+<body style="--accent:#0E7C7B;--wash:#DCEEEA">
+<p class="kicker">Reaching inside other apps</p><h1>Three ways an action gets into an app, from the simplest up</h1>
+<div class="grow">
+<div class="lane"><div><h2>The app's own shortcut</h2><p class="w">Mac and Windows</p><p class="eg">Teams: Mute</p></div>
+<div class="flow"><div class="card"><p>Bring the app forward, if it is behind</p></div><span class="arrow">→</span><div class="card"><p>Press its documented shortcut</p></div><span class="arrow">→</span><div class="card"><p>Return you to the window you were in</p></div></div></div>
+<div class="lane"><div><h2>A menu command</h2><p class="w">Mac only</p><p class="eg">Any item in an app's menu bar</p></div>
+<div class="flow"><div class="card"><p>Read the app's menus as they are right now</p></div><span class="arrow">→</span><div class="card"><p>Find the item by its path, such as File, then Export</p></div><span class="arrow">→</span><div class="card"><p>Choose it</p></div></div></div>
+<div class="lane"><div><h2>Click its buttons</h2><p class="w">Mac only</p><p class="eg">Teams: Start Recording</p></div>
+<div class="flow"><div class="card"><p>Find each control by the name it gives screen readers</p></div><span class="arrow">→</span><div class="card"><p>Try other names if the first is missing; skip optional steps</p></div><span class="arrow">→</span><div class="card"><p>Click them in order</p></div></div></div>
+<div class="src"><b>369</b><p>ready-made actions for 30 apps, each with the page it came from and its Mac and Windows keys. The Mac app offers the whole list. On Windows you add an app's shortcut yourself for now.</p></div>
+</div>
+<p class="note">The second and third routes use macOS Accessibility, the same permission screen readers rely on. Teams has no shortcut for starting a recording, which is why the third route exists.</p>

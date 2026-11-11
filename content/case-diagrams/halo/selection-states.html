@@ -1,0 +1,18 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>.start{display:flex;align-items:center;gap:22px}.start .card{flex:none;width:520px}.hi{border-color:var(--accent);background:var(--wash)}.bad{border-color:#EBCFC6;background:var(--warn-wash)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.branches{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:22px}.q{font-size:18px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--dim);margin-bottom:10px;min-height:52px}.v{text-align:center;color:var(--accent);font-size:30px;line-height:1;margin:8px 0}.t{display:inline-block;padding:2px 10px;border-radius:99px;background:#fff;border:1.5px solid var(--accent);color:var(--accent);font-size:18px;font-weight:700;margin-left:6px}.modes{display:flex;gap:18px;margin-top:22px}.modes .card{flex:1;padding:16px 20px}.modes h2{font-size:21px}.modes p{font-size:19px}</style>
+<body style="--accent:#0E7C7B;--wash:#DCEEEA">
+<p class="kicker">How a choice is made</p><h1>One shortcut, two ways to choose, told apart by time</h1>
+<div class="grow">
+<div class="start"><div class="card hi"><h2>Press the shortcut</h2><p>The ring opens around the pointer. Then it depends on how you let go.</p></div><span class="arrow">→</span><p style="font-size:22px;color:var(--dim)">The line between a tap and a hold is <span class="t">0.28 s</span> by default. It can be set anywhere from 0.15&nbsp;s to 0.8&nbsp;s.</p></div>
+<div class="branches">
+<div><p class="q">Let go quickly, nothing highlighted</p><div class="card hi"><h2>The ring stays open</h2><p>Click a slot, press its number, or use the arrows and Return.</p></div></div>
+<div><p class="q">Move toward a slot, then let go</p><div class="card hi"><h2>That slot runs</h2><p>Even a fast flick counts. The pointer can travel past the ring.</p></div></div>
+<div><p class="q">Hold past 0.28 s, nothing highlighted</p><div class="card bad"><h2>The ring closes</h2><p>Nothing runs. This is how you back out.</p></div></div>
+<div><p class="q">Let go over an empty slot</p><div class="card bad"><h2>Nothing runs</h2><p>Clicking an empty slot shakes it instead.</p></div></div>
+</div>
+<p class="q" style="margin:26px 0 0;min-height:0">Three modes in Settings</p><div class="modes" style="margin-top:10px">
+<div class="card"><h2>Automatic (the default)</h2><p>Both ways, as above.</p></div>
+<div class="card"><h2>Tap, then click</h2><p>Letting go never runs anything. For mouse software that sends only a quick tap.</p></div>
+<div class="card"><h2>Hold and release</h2><p>Letting go runs the highlight or closes the ring.</p></div>
+</div></div>
+<p class="note">Drawn from the selection rules in the spec. Each of these outcomes has its own unit test on both platforms.</p>

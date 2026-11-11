@@ -22,8 +22,49 @@
     return (prefix || '') + 'assets/pdfs/case-studies/' + file +
       (c.pdfVersion ? '?v=' + encodeURIComponent(c.pdfVersion) : '') + '#page=' + (c.pdfPage || 1);
   }
+  // ---- Second edition: a longer, fully open case study. The content file decides the sections,
+  // so no two projects have to follow the same arc. Nothing here is collapsed or scripted. ----
+  function renderV2(c, prefix) {
+    var d = c.v2, base = c.slug + '-';
+    function local(url) { return /^(https?:)?\/\//.test(url) || /^mailto:/.test(url) ? esc(url) : prefix + esc(url); }
+    function figure(f, eager) {
+      if (!f || !f.src || !f.alt || !f.caption) throw new Error('Figure needs src, alt and caption in ' + c.slug);
+      var size = f.width && f.height ? ' width="'+f.width+'" height="'+f.height+'"' : '';
+      return '<figure class="cs2-figure'+(f.kind?' cs2-figure-'+esc(f.kind):'')+'"><a href="'+local(f.src)+'" target="_blank" rel="noopener" aria-label="Open at full size: '+esc(f.alt)+'"><img src="'+local(f.src)+'" alt="'+esc(f.alt)+'"'+size+(eager?' fetchpriority="high"':' loading="lazy"')+' decoding="async"></a><figcaption>'+rich(f.caption)+'</figcaption></figure>';
+    }
+    function block(b) {
+      if (b.p) return '<p>'+rich(b.p)+'</p>';
+      if (b.lead) return '<p class="cs2-lead-line">'+rich(b.lead)+'</p>';
+      if (b.figures) return '<div class="cs2-figures cs2-l-'+esc(b.layout || (b.figures.length === 1 ? 'one' : 'two'))+'">'+b.figures.map(function(f){return figure(f);}).join('')+'</div>';
+      if (b.stats) return '<dl class="cs2-stats">'+b.stats.map(function(f){return '<div><dt>'+esc(f.value)+'</dt><dd>'+esc(f.label)+'</dd></div>';}).join('')+'</dl>';
+      if (b.points) return '<ul class="cs2-points">'+b.points.map(function(x){return '<li><strong>'+esc(x.title)+'</strong><span>'+rich(x.detail)+'</span></li>';}).join('')+'</ul>';
+      if (b.list) return '<ul class="cs2-list">'+b.list.map(function(x){return '<li>'+rich(x)+'</li>';}).join('')+'</ul>';
+      if (b.steps) return '<ol class="cs2-steps">'+b.steps.map(function(x){return '<li><strong>'+esc(x.title)+'</strong><span>'+rich(x.detail)+'</span></li>';}).join('')+'</ol>';
+      if (b.quote) return '<blockquote class="cs2-quote"><p>'+esc(b.quote.text)+'</p>'+(b.quote.by?'<footer>'+esc(b.quote.by)+'</footer>':'')+'</blockquote>';
+      if (b.aside) return '<aside class="cs2-aside"><p><strong>'+esc(b.aside.title)+'</strong> '+rich(b.aside.detail)+'</p></aside>';
+      if (b.table) return '<div class="cs2-table"><table><thead><tr>'+b.table.head.map(function(h){return '<th scope="col">'+esc(h)+'</th>';}).join('')+'</tr></thead><tbody>'+b.table.rows.map(function(r){return '<tr>'+r.map(function(cell,i){return i===0?'<th scope="row">'+esc(cell)+'</th>':'<td>'+rich(cell)+'</td>';}).join('')+'</tr>';}).join('')+'</tbody></table></div>';
+      throw new Error('Unknown block in ' + c.slug + ': ' + Object.keys(b).join(','));
+    }
+    function linkButtons(cls) {
+      return (d.links || []).map(function(l, i){return '<a class="'+(i===0?'cs-action':'cs2-link')+'" href="'+local(l.url)+'"'+(/^#/.test(l.url)?'':' target="_blank" rel="noopener"')+'>'+esc(l.label)+' <span aria-hidden="true">↗</span></a>';}).join('');
+    }
+    var coverSrc = prefix + 'assets/covers/' + esc(c.slug);
+    var cover = '<figure class="cs-cover"><img src="'+coverSrc+'.webp" srcset="'+coverSrc+'-800.webp 800w, '+coverSrc+'.webp 1280w" sizes="(min-width: 900px) 46vw, 92vw" alt="'+esc(c.name)+' cover artwork" width="1280" height="853" decoding="async"></figure>';
+    var facts = '<dl class="cs2-facts">'+d.facts.map(function(f){return '<div><dt>'+esc(f.label)+'</dt><dd>'+rich(f.value)+'</dd></div>';}).join('')+'</dl>';
+    var hero = '<header class="cs-hero cs2-hero"><div class="cs-intro"><p class="cs-eyebrow"><strong>'+esc(c.name)+'</strong><span>'+esc(d.kindLabel || (c.kind==='ux'?'Design case study':'Designed and built'))+' · '+c.readingMinutes+' min read</span></p><h1 id="'+base+'title">'+rich(d.title)+'</h1><p class="cs-deck">'+rich(d.hook)+'</p>'+facts+'<div class="cs2-actions">'+linkButtons()+'</div></div>'+cover+'</header>';
+    var summary = '<section class="cs2-summary" aria-labelledby="'+base+'short"><h2 id="'+base+'short">In short</h2><ul>'+d.summary.map(function(x){return '<li>'+rich(x)+'</li>';}).join('')+'</ul></section>';
+    var lead = d.lead ? '<div class="cs2-leadwork">'+figure(d.lead, true)+'</div>' : '';
+    var nav = '<nav class="cs-contents" aria-label="Case study sections"><p>On this page</p><ol>'+d.sections.map(function(s,i){return '<li><a href="#'+base+esc(s.id)+'"><span>'+('0'+(i+1)).slice(-2)+'</span>'+esc(s.nav || s.label)+'</a></li>';}).join('')+'</ol></nav>';
+    var sections = d.sections.map(function(s,i){
+      return '<section class="cs-scene cs2-section cs2-'+esc(s.type || 'section')+'" id="'+base+esc(s.id)+'" tabindex="-1" aria-labelledby="'+base+esc(s.id)+'-heading"><p class="cs-scene-label"><span>'+('0'+(i+1)).slice(-2)+'</span> '+esc(s.label)+'</p><h2 id="'+base+esc(s.id)+'-heading">'+rich(s.heading)+'</h2>'+s.blocks.map(block).join('')+'</section>';
+    }).join('');
+    var footer = '<footer class="cs2-foot"><h2>'+esc(d.linksHeading || 'See it for yourself')+'</h2><div class="cs2-actions">'+linkButtons()+'</div>'+(prefix?'':'<p class="cs2-share"><a href="case-studies/'+esc(c.slug)+'.html">Open this case study as its own page ↗</a></p>')+'</footer>';
+    var next = c.nextStory ? '<a class="cs-next-story" href="'+prefix+'case-studies/'+esc(c.nextStory.slug)+'.html"><span>Next case study</span><strong>'+esc(c.nextStory.name)+' <span aria-hidden="true">↗</span></strong><p>'+esc(c.nextStory.headline)+'</p></a>' : '';
+    return '<article class="case-study cs-custom cs2 cs-project-'+esc(c.slug)+' cs2-kind-'+esc(c.kind)+'" aria-labelledby="'+base+'title">'+hero+summary+lead+'<div class="cs-reader">'+nav+'<div class="cs-body">'+sections+footer+next+'</div></div></article>';
+  }
   function render(c, prefix) {
     prefix = prefix || '';
+    if (c.v2) return renderV2(c, prefix);
     var n = c.narrative, t = c.theme || {}, v = c.visual, base = c.slug + '-';
     if (!v || !n) throw new Error('Missing story or visual source for ' + c.slug);
     var order = t.order || ['brief','process','decisions','outcome','reflection'];

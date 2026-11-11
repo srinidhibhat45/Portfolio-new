@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.scale{position:relative;height:120px;margin:40px 30px 0}.axis{position:absolute;left:0;right:0;top:60px;height:3px;background:var(--ink)}.tk{position:absolute;top:52px;width:2px;height:19px;background:var(--ink)}.tl{position:absolute;top:80px;transform:translateX(-50%);font-size:20px;color:var(--dim)}.zone{position:absolute;top:30px;height:24px;border-radius:6px;background:var(--accent)}.zone.w{background:color-mix(in srgb,var(--accent) 35%,#fff)}.zl{position:absolute;top:0;font-size:21px;font-weight:600}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:40px}.card b{display:block;font:400 54px/1.1 'Case Display',Georgia,serif;color:var(--accent)}.card p{font-size:21px;margin-top:6px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">How close the estimate gets</p><h1>Usually within half a mini-sector, about 2 seconds of lap time</h1>
+<div class="grow">
+<div class="scale"><div class="axis"></div>
+<div class="zone w" style="left:0;width:80%"></div><div class="zone" style="left:0;width:33.3%"></div>
+<span class="zl" style="left:0;color:var(--accent)">Typical error</span><span class="zl" style="left:81%;color:var(--dim)">Worst case seen</span>
+<span class="tk" style="left:0"></span><span class="tl" style="left:0">0</span>
+<span class="tk" style="left:33.3%"></span><span class="tl" style="left:33.3%">0.5</span>
+<span class="tk" style="left:66.7%"></span><span class="tl" style="left:66.7%">1 mini-sector</span>
+<span class="tk" style="left:80%"></span><span class="tl" style="left:80%">1.2</span>
+<span class="tk" style="left:100%"></span><span class="tl" style="left:100%">1.5</span></div>
+<div class="stats">
+<div class="card"><b>½</b><p>a mini-sector off, typically, from where the time gaps say the car should be</p></div>
+<div class="card"><b>83%</b><p>of estimates fall inside the exact mini-sector the feed says the car is in</p></div>
+<div class="card"><b>1.2</b><p>mini-sectors off in the worst case</p></div>
+</div></div>
+<p class="note">My own measurement, made by replaying a recorded live race feed through the model. It compares the estimate with the feed's own timing, not with GPS, and no one else has checked it.</p>

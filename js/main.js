@@ -42,7 +42,7 @@
     });
     (SITE.vibe || []).forEach(function (v) {
       if (v.caseSlug && STORIES[v.caseSlug]) window.CASE_DATA[v.caseSlug] = {
-        title: v.name, tags: 'Product idea · UX direction · Interaction design', story: STORIES[v.caseSlug]
+        title: v.name, tags: 'Product design and build', story: STORIES[v.caseSlug]
       };
     });
 
@@ -80,13 +80,14 @@
 
     var vibeEl = document.getElementById('playGrid');
     if (vibeEl && SITE.vibe && SITE.vibe.length) {
-      var priority = ['Forma', 'Halo', 'Binnder', 'PureEQ', 'OhCaptain', 'Hidden Identity Chess', '5 Dead', 'Alibi', 'Arkitype', 'AppleCider', 'PlanIt', 'DeckForge', 'Earthlog', 'HexChess', 'DashF1', 'Vansh Vriksha', 'Hued'];
+      /* The owner's order: the three starred products first, then Matinee and Hued, then the rest. */
+      var priority = ['Arkitype', 'Halo', 'PureEQ', 'Matinee', 'Hued', 'Forma', 'Binnder', 'OhCaptain', 'Hidden Identity Chess', '5 Dead', 'Alibi', 'AppleCider', 'PlanIt', 'DeckForge', 'Earthlog', 'HexChess', 'DashF1', 'Vansh Vriksha'];
       var products = SITE.vibe.slice().sort(function (a, b) {
         var ai = priority.indexOf(a.name), bi = priority.indexOf(b.name);
         return (ai < 0 ? 100 : ai) - (bi < 0 ? 100 : bi);
       });
       vibeEl.innerHTML = products.map(function (v) {
-        var starred = ['Arkitype', 'Earthlog', 'AppleCider'].includes(v.name);
+        var starred = ['Arkitype', 'Halo', 'PureEQ'].includes(v.name);
         var hasStory = v.caseSlug && STORIES[v.caseSlug];
         return coverCard({
           slug: v.caseSlug, caseSlug: hasStory ? v.caseSlug : '', name: v.name, blurb: v.desc,
@@ -292,7 +293,8 @@
     var toggle = document.getElementById('themeToggle');
     if (!toggle) return;
     var metaTheme = document.querySelector('meta[name="theme-color"]');
-    var COLORS = { light: '#f6f4ef', dark: '#1d211f' };
+    /* The browser bar matches the nav: Kaavi red by day, a shade deeper at night. */
+    var COLORS = { light: '#842b22', dark: '#6a211a' };
     function apply(theme) {
       if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
       else document.documentElement.removeAttribute('data-theme');
@@ -580,8 +582,11 @@
       if (!c || !(c.story || c.pages && c.pages.length)) return false;
       titleEl.textContent = c.title;
       tagsEl.textContent = c.tags;
-      pdfEl.href = c.story ? window.CaseStudyRenderer.collectionUrl(c.story) : c.pdf;
-      pdfEl.textContent = c.story ? 'Collection PDF ↗' : 'PDF ↓';
+      // A second-edition study links to its own original deck (or nothing); the collection PDF still holds the older text.
+      var rebuilt = c.story && c.story.v2;
+      pdfEl.hidden = !!(rebuilt && !c.story.originalPdf);
+      pdfEl.href = rebuilt ? (c.story.originalPdf || '#') : c.story ? window.CaseStudyRenderer.collectionUrl(c.story) : c.pdf;
+      pdfEl.textContent = rebuilt ? 'Original deck ↗' : c.story ? 'Collection PDF ↗' : 'PDF ↓';
       if (protoEl) {
         var destination = c.story && c.story.liveUrl || c.prototypeUrl;
         if (destination) { protoEl.href = destination; protoEl.textContent = c.story && c.story.liveUrl ? (c.story.productHeaderLabel || 'Explore product') + ' ↗' : 'View prototype ↗'; protoEl.hidden = false; }

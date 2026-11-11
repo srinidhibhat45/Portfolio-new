@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x820">
+<style>table{width:100%;border-collapse:separate;border-spacing:0 10px;font-size:23px}th{text-align:left;font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);padding:0 22px}th.hex{color:var(--accent)}td{padding:16px 22px;background:#fff;border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line);vertical-align:top;line-height:1.35}td:first-child{border-left:1.5px solid var(--line);border-radius:12px 0 0 12px;font-weight:600;width:170px}td:last-child{border-right:1.5px solid var(--line);border-radius:0 12px 12px 0;background:var(--wash);color:var(--ink)}td.sq{color:var(--dim);width:520px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">The problem in one picture</p><h1>The pieces keep their names, but not their moves</h1>
+<div class="grow"><table>
+<tr><th></th><th>Standard chess</th><th class="hex">Gliński's hexagonal chess</th></tr>
+<tr><td>Board</td><td class="sq">64 squares in two colours</td><td>91 hexagons in three shades</td></tr>
+<tr><td>Rook</td><td class="sq">Slides in 4 directions</td><td>Slides in 6 directions, through cell edges</td></tr>
+<tr><td>Bishop</td><td class="sq">Two per side, 4 diagonals</td><td>Three per side, one per shade, 6 diagonals through cell corners</td></tr>
+<tr><td>Knight</td><td class="sq">Up to 8 jumps</td><td>Up to 12 jumps</td></tr>
+<tr><td>King</td><td class="sq">One step in 8 directions, and it can castle</td><td>One rook step or one bishop step, 12 directions. No castling</td></tr>
+<tr><td>Stalemate</td><td class="sq">A draw</td><td>¾ of a point to the side that stalemates, ¼ to the other</td></tr>
+</table></div>
+<p class="note">The right column is how HexChess plays and teaches the game. The left column is ordinary chess, added only for comparison.</p>

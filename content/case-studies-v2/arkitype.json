@@ -1,0 +1,632 @@
+{
+ "title": "A design system built from [[one file]], so nothing has to be copied by hand.",
+ "hook": "Arkitype is a web tool I designed and built on my own. You decide the colour, type, spacing, shape and motion. It turns those decisions into 90 working components and 17 export formats.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Timeline",
+   "value": "July to October 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Web. The editor needs a desktop screen"
+  },
+  {
+   "label": "Status",
+   "value": "Public beta, version 0.2.0-beta"
+  },
+  {
+   "label": "Stack",
+   "value": "Next.js 16, React 19, TypeScript, Zustand, Tailwind, Supabase"
+  }
+ ],
+ "links": [
+  {
+   "label": "Open Arkitype",
+   "url": "https://arkitype.srinidhibhat.com"
+  },
+  {
+   "label": "Read the manual",
+   "url": "https://arkitype.srinidhibhat.com/docs"
+  },
+  {
+   "label": "Figma plugin",
+   "url": "https://www.figma.com/community/plugin/1658818555967908857/arkitype-figma-sync-beta"
+  }
+ ],
+ "linksHeading": "Try it yourself",
+ "summary": [
+  "The problem: a design system usually lives in four places: the design file, a token file, a documentation site and the code. Each is edited by hand, so they slowly stop matching.",
+  "What I built: a web tool with eight areas of decisions, 90 components that read those decisions, and 17 export formats compiled from one file.",
+  "What changed on the way: I removed the numbered steps, rebuilt the templates after measuring them, and reversed my own rule against written documentation.",
+  "Where it stands: a public beta, version 0.2.0-beta. I have no usage numbers to share yet."
+ ],
+ "lead": {
+  "src": "assets/cases/arkitype/workspace-colour.webp",
+  "alt": "The Arkitype workspace on the Colour area, showing six colour ramps of ten shades each and a contrast panel on the right",
+  "caption": "The Colour area of a sample system called Northwind. Each colour family is a ten-shade ramp generated from one starting colour.",
+  "width": 1600,
+  "height": 900
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "A design system usually lives in four copies",
+   "blocks": [
+    {
+     "p": "A design system is the shared set of colours, type, spacing and components a product is built from. It usually lives in four places: the design file, a file of tokens, a documentation site and the code. A token is a named value, such as a colour or a spacing size, that design and code both refer to."
+    },
+    {
+     "p": "Each copy is edited by hand, and nothing tells you when two of them stop matching. I wanted one file that holds the decisions, with everything else produced from it."
+    },
+    {
+     "p": "I designed it for three groups: independent designers with no team behind them, developers who read the system and take its exports, and agencies who build systems for clients."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/dev-mode.webp",
+       "alt": "Arkitype in Dev mode: the button component on the left, greyed-out settings in the middle and a list of token names on the right",
+       "caption": "Dev mode, made for developers. Nothing can be edited. The right column lists each value with the token name used in code.",
+       "width": 1600,
+       "height": 1179
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I do not have.",
+      "detail": "I have no interview notes or usage data for these groups, so this page does not quote any."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Eight areas of decisions, then one place to ship",
+   "blocks": [
+    {
+     "p": "You start with a name and one brand colour. From there the product is eight areas: five foundations (colour, typography, spacing, shape and motion), then logos, components and a preview."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/areas-map.webp",
+       "alt": "Diagram of the eight areas in four groups, Foundations, Parts, Material and Proof, with Ship drawn separately as not an area",
+       "caption": "The eight areas. Read the arrows as \"feeds into\", not \"do this next\".",
+       "width": 1600,
+       "height": 880
+      }
+     ]
+    },
+    {
+     "p": "Each foundation is a short set of rules, not a long list of values."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/type-scale.webp",
+       "alt": "Typography area showing the same sentence set at five sizes, each with size, line height and tracking fields",
+       "caption": "Typography. One base size and one ratio set every step.",
+       "width": 1400,
+       "height": 943
+      },
+      {
+       "src": "assets/cases/arkitype/spacing-scale.webp",
+       "alt": "Spacing area showing ten spacing steps as bars of growing length",
+       "caption": "Spacing. Ten steps on a 4px base, drawn as bars.",
+       "width": 1400,
+       "height": 786
+      },
+      {
+       "src": "assets/cases/arkitype/shape-elevation.webp",
+       "alt": "Shape area showing corner radius steps, opacity steps and shadow levels in light and dark",
+       "caption": "Shape and elevation. Shadows appear in light and dark together.",
+       "width": 1400,
+       "height": 943
+      }
+     ],
+     "layout": "three"
+    },
+    {
+     "p": "The 90 components come in four groups: 26 controls, 28 display pieces, 16 for navigation and 20 larger patterns. Each opens in a studio where every setting points at a token."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/studio-annotated.webp",
+       "alt": "The component studio showing a button, with six numbered notes explaining the preview, the templates button, the variants, the states and the settings panel",
+       "caption": "The studio with a button open. Start at note 5: the background is a pointer to a role, not a typed colour.",
+       "width": 1600,
+       "height": 1280
+      }
+     ]
+    },
+    {
+     "p": "Preview draws a sample product from those components, as a desktop app, a phone app or a marketing page."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/preview-desktop.webp",
+       "alt": "Preview area showing a finance dashboard with a sidebar, four number cards and a table, drawn from the system",
+       "caption": "Preview as a desktop finance app, drawn from the library in the file's own colours.",
+       "width": 1500,
+       "height": 1189
+      },
+      {
+       "src": "assets/cases/arkitype/preview-phone-dark.webp",
+       "alt": "Preview area showing a phone banking screen in dark mode",
+       "caption": "The same system as a phone app in dark mode.",
+       "width": 1500,
+       "height": 1044
+      }
+     ],
+     "layout": "two"
+    },
+    {
+     "p": "Ship then turns the system into files, written documentation, a public page or a named release."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/ship-export.webp",
+       "alt": "The Ship space on Export, with a generated Tailwind config in the middle and seventeen format buttons on the right",
+       "caption": "Ship, on Export. The file shown is generated from the sample system's 249 tokens. The buttons on the right are the 17 formats.",
+       "width": 1600,
+       "height": 687
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "areas",
+   "label": "Decision 1",
+   "nav": "No numbered steps",
+   "heading": "Areas you can open in any order, not eight numbered steps",
+   "blocks": [
+    {
+     "p": "What you see: a list of areas with no numbers. A tick marks an area I have called settled. If something it depends on changes later, the tick becomes a warning."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/rail-status.webp",
+       "alt": "The list of areas with six numbered notes explaining group headings, the settled tick, the warning triangle, the tally and the built-from links",
+       "caption": "Notes 2 and 3 are the point: the product tells you where your last edit landed.",
+       "width": 1600,
+       "height": 950
+      }
+     ]
+    },
+    {
+     "p": "In the build: the first version was a wizard, with steps numbered 01 to 08 and a progress bar. That described a process nobody follows. You pick colours, build a button, find the colours cannot carry a disabled state, and go back."
+    },
+    {
+     "p": "So I deleted the step order. When an area is settled, the file stores a fingerprint of everything that area depends on. When the fingerprint stops matching, the area asks for another look."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A list with no numbers gives a first-time user less of a push than \"Step 1 of 8\". Group headings, status marks and a short tour have to do that job."
+     }
+    }
+   ]
+  },
+  {
+   "id": "source",
+   "label": "Decision 2",
+   "nav": "One colour, everywhere",
+   "heading": "One colour choice updates every component and every export",
+   "blocks": [
+    {
+     "p": "What you see: type a new brand colour and the system follows, in light and dark."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/colour-change.webp",
+       "alt": "Before and after strips of the same card: with a blue brand colour, then with an orange one typed into a single field",
+       "caption": "The same card before and after one edit. Only the field at note 1 was changed.",
+       "width": 1600,
+       "height": 1020
+      }
+     ]
+    },
+    {
+     "p": "In the build: no component holds a typed-in value. A button's background points at a semantic role, a name for a job such as \"primary action\". The role points at one shade of a colour ramp."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/token-flow.webp",
+       "alt": "Diagram of four linked tiers, primitive, semantic role, component token and component property, feeding the canvas, the exports, the styleguide and the Figma file",
+       "caption": "The chain behind that edit. A value passes through four named links before it reaches the screen.",
+       "width": 1600,
+       "height": 790
+      }
+     ]
+    },
+    {
+     "p": "A ramp is ten shades. I ruled out stepping the lightness evenly, because the steps then look uneven and differ from hue to hue. Each shade is worked out to hit a fixed brightness target."
+    },
+    {
+     "p": "The chain is also drawn as a map. My first version drew every link as a thin line, and with hundreds of them it could not be read. Now there is one ribbon for each pair of groups, thicker when it carries more links."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/variables-map.webp",
+       "alt": "The variables map with four columns of tokens and one role selected, its links drawn in purple to every component that uses it",
+       "caption": "The map with one role held. The panel on the right lists the 53 places that depend on it.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The exports are compiled from this chain, so a Tailwind file, a Figma variable and the published page cannot disagree about a value."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/export-formats.webp",
+       "alt": "Diagram of the 17 export formats in five groups, Figma, Tokens, Frameworks, Guardrails and Handoff, plus one hosted page",
+       "caption": "All 17 formats, in the product's own five groups.",
+       "width": 1600,
+       "height": 830
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "An export is a snapshot. After an edit the files have to be exported again, and nothing yet checks whether the code using them has moved away from the system."
+     }
+    }
+   ]
+  },
+  {
+   "id": "templates",
+   "label": "Decision 3",
+   "nav": "Templates change shape only",
+   "heading": "Templates change the shape and never the colour",
+   "blocks": [
+    {
+     "p": "What you see: five styles modelled on well-known design systems (Material 3, Apple HIG, IBM Carbon, Atlassian and Fluent 2). Pick one and every component takes on its corners, sizes and spacing. Your colours stay."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/templates-picker.webp",
+       "alt": "The template picker with six cards, the file's own style and five templates, each showing a small button",
+       "caption": "The picker: the file's own style and five templates, each drawn in this file's colours.",
+       "width": 1430,
+       "height": 998
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/button-material.webp",
+       "alt": "The button variants with the Material 3 template: fully rounded pill shapes",
+       "caption": "Material 3. Pill corners on a 40px control.",
+       "width": 1600,
+       "height": 433
+      },
+      {
+       "src": "assets/cases/arkitype/button-carbon.webp",
+       "alt": "The button variants with the IBM Carbon template: square corners",
+       "caption": "IBM Carbon. Square corners. The colours have not moved.",
+       "width": 1600,
+       "height": 433
+      },
+      {
+       "src": "assets/cases/arkitype/button-apple.webp",
+       "alt": "The button variants with the Apple HIG template: soft rounded corners",
+       "caption": "Apple HIG. 12px corners on a compact 34px control.",
+       "width": 1600,
+       "height": 433
+      }
+     ],
+     "layout": "one"
+    },
+    {
+     "p": "In the build: the first version described a template with eight settings. I measured it across all 90 components. The Fluent template and the default looked identical on 41 of them."
+    },
+    {
+     "p": "I rebuilt it with 23 settings, such as control height, focus ring and icon weight. A check now fails the build if any two templates differ on fewer than 14 of them. A template never overrides a setting the designer chose."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "A template that brings its own colours. The cost of getting this right was a rebuild: the eight-setting version was thrown away."
+     }
+    }
+   ]
+  },
+  {
+   "id": "docs",
+   "label": "Decision 4",
+   "nav": "Written and generated pages",
+   "heading": "Written pages sit beside generated ones, never instead of them",
+   "blocks": [
+    {
+     "p": "What you see: a documentation editor inside Ship. Every page starts with a block the system generates, such as a component's live preview. Around it you write your own text, images and code. The generated block can be moved but not deleted."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/docs-editor.webp",
+       "alt": "The documentation editor in split view: blocks being written on the left and the finished page on the right",
+       "caption": "Writing on the left, the finished page on the right. The first block, \"Generated by the system\", cannot be removed.",
+       "width": 1500,
+       "height": 1517
+      }
+     ]
+    },
+    {
+     "p": "In the build: my first rule was that a published page would show only what the system generated, so it could never go out of date. That was too strict. A generated page can say which token a button uses. It cannot say that filled buttons are kept for the save bar."
+    },
+    {
+     "p": "I kept the guarantee with a narrower rule, and in the same change moved Ship out of the list of areas. Exporting is something you do with a system, not a decision about one."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/published-button.webp",
+       "alt": "A published styleguide page for the Button component in dark mode, with navigation on the left and live states and variants in the middle",
+       "caption": "A published component page in dark mode. Anyone with the link can read it without an account.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Publishing freezes a copy. Later edits stay private until someone republishes, so the public page can be behind the file."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "One file in the middle, and checks around it",
+   "blocks": [
+    {
+     "p": "The whole design lives in one file. The canvas, the exports, the published page and the Figma plugin all read from it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/architecture.webp",
+       "alt": "Diagram in three columns: the design file, token compiler and canvas in the browser; exports, published styleguide and Figma plugin compiled from the file; Supabase, database rules and Stripe on the server",
+       "caption": "What runs where: the editor on the left, everything compiled from the file in the middle, the server on the right.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Next.js 16, React 19, TypeScript"
+       ],
+       [
+        "Design file",
+        "Zustand, one store that every screen and export reads"
+       ],
+       [
+        "Components",
+        "CSS variables, so a token change shows without redrawing"
+       ],
+       [
+        "Accounts and saving",
+        "Supabase (Postgres), with access rules in the database"
+       ],
+       [
+        "Billing",
+        "Stripe, optional"
+       ],
+       [
+        "Checks",
+        "Vitest and GitHub Actions"
+       ]
+      ]
+     }
+    },
+    {
+     "p": "Every push runs type checking, the test suite and nine smaller checks. One walks all 90 components and confirms that 948 declared token links match what each component draws."
+    },
+    {
+     "stats": [
+      {
+       "value": "223",
+       "label": "commits, July to October 2026"
+      },
+      {
+       "value": "150",
+       "label": "test files in the project"
+      },
+      {
+       "value": "1,171",
+       "label": "tests passing at the last full run I recorded"
+      },
+      {
+       "value": "9",
+       "label": "database migrations, each run against a real Postgres in the tests"
+      }
+     ]
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/timeline.webp",
+       "alt": "Timeline of the build in four months with commit counts: July 53, August 40, September 123, October 7, and the main milestones in each",
+       "caption": "The build by month. In September the library reached 90 components and the product opened to the public.",
+       "width": 1600,
+       "height": 770
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were not on the canvas."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Saving",
+        "A readiness audit found that moving an unopened file could overwrite its contents, and that very large shared edits were cut short. Both are fixed and covered by tests, one of which pushes 1,000 changes through."
+       ],
+       [
+        "Database rules",
+        "No test had ever run the rules for who can read a file. The tests now run every migration against a real Postgres. That found four bugs on the first run."
+       ],
+       [
+        "Figma plugin",
+        "It is released separately from the web app. One component went out as a grey placeholder because the plugin had no drawing for it. A check now fails when that would happen."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Contrast is checked as you work, and I audited my own interface",
+   "blocks": [
+    {
+     "p": "A contrast ratio says how far apart two colours are in brightness. Text usually needs at least 4.5 to 1. Arkitype measures every text and background pairing in the file, in light and dark, while you work."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/arkitype/contrast-audit.webp",
+       "alt": "The contrast audit screen with six numbered notes explaining the counts, the backgrounds tested, the AA and AAA scores, the rows and the fix button",
+       "caption": "The audit for the sample system. Look at note 4: the stricter level is not fully met, and the screen says so.",
+       "width": 1600,
+       "height": 1350
+      }
+     ]
+    },
+    {
+     "p": "Two details mattered. A see-through colour is measured as the blend that appears on screen, not the colour that is stored. Decorative lines are reported but do not count as failures, so the real ones are not buried."
+    },
+    {
+     "p": "Then I turned the same idea on the tool itself. Arkitype argues for systems over one-off values, and its own interface was not following that."
+    },
+    {
+     "stats": [
+      {
+       "value": "28",
+       "label": "font sizes in use"
+      },
+      {
+       "value": "12",
+       "label": "corner radii"
+      },
+      {
+       "value": "155",
+       "label": "different panel styles"
+      },
+      {
+       "value": "326",
+       "label": "hand-made buttons, with 282 different style strings"
+      },
+      {
+       "value": "90",
+       "label": "icon-only buttons with no name for a screen reader"
+      }
+     ]
+    },
+    {
+     "p": "The cause was a missing layer: a colour system, and no system for sizes. I added one scale, a shared kit of eight parts, and a check that fails if the count of one-off styles goes up. Making the shared icon button require a label is what surfaced the 90 unnamed controls."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "Contrast checks and live previews are not an accessibility audit of the 90 components, and I do not claim one. The interface targets WCAG 2.2 AA. A full screen-reader pass is still to be done."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "A public beta, with no usage numbers to share yet",
+   "blocks": [
+    {
+     "p": "Arkitype is live as a public beta, version 0.2.0-beta. It opened to anyone in September 2026, when the shared password came off. The free plan needs no card."
+    },
+    {
+     "p": "I launched it on Product Hunt as a public beta."
+    },
+    {
+     "p": "I have no user counts, testimonials or revenue to report. These are also not there yet:"
+    },
+    {
+     "list": [
+      "The editor needs a desktop-sized window. Only the manual and published pages work on phones.",
+      "No usability sessions have been run with the three groups it is designed for.",
+      "Real payments, two people editing at once and restoring a backup still need a rehearsal on a staging copy."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Read the rest of the code, then test with people",
+   "blocks": [
+    {
+     "list": [
+      "Read the interface code line by line. The pre-launch audit only scanned it, about 87,000 lines, and five bugs later turned up there that a scan could not see.",
+      "Run the staging rehearsals, a screen-reader pass and the first usability sessions.",
+      "Planned and not built: a check that compares a live website with the system, a view of what a token change would break, and publishing under a client's own brand."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "Put the rule where it cannot be skipped",
+   "blocks": [
+    {
+     "p": "The most useful fixes were small rules placed where they could not be skipped. Requiring a label on one shared button found 90 problems in an afternoon."
+    },
+    {
+     "p": "I learned to measure before trusting my eye: the templates looked different to me until the numbers said 41 of 90 were the same. And twice I had to undo my own rule, the numbered steps and the ban on written documentation. Both were protecting something real, and both were too wide."
+    }
+   ]
+  }
+ ]
+}

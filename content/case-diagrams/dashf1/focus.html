@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.start{display:grid;place-items:center;text-align:center;padding:26px;border-radius:14px;background:var(--wash);border:1.5px solid var(--accent)}.start h2{font-size:30px}.start p{font-size:21px;color:var(--dim);margin-top:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}</style>
+<body style="--accent:#8F6600;--wash:#EFE6D2">
+<p class="kicker">How focus works</p><h1>Click a driver once, and every panel follows them</h1>
+<div class="grow row" style="gap:26px;align-items:stretch">
+<div class="start" style="flex:.8"><div><h2>Click a row in the timing tower</h2><p>or a car on the map. Click again to let go.</p></div></div>
+<span class="arrow">→</span>
+<div class="grid" style="flex:2.4">
+<div class="card"><h2>Track map</h2><p>The car is drawn last, so it sits on top of a pack, with a larger dot and a bolder label.</p></div>
+<div class="card"><h2>Car telemetry</h2><p>Switches from the leader to this car. The header changes from "leader" to "selected".</p></div>
+<div class="card"><h2>Lap Times</h2><p>The chart shows the top six by default. Your driver is added and drawn thicker.</p></div>
+<div class="card"><h2>Positions</h2><p>Every other driver's line fades to 40%, so one race story stands out.</p></div>
+<div class="card"><h2>All Cars</h2><p>The driver's card is highlighted in the grid of every car.</p></div>
+<div class="card"><h2>Timing tower</h2><p>The row stays highlighted while the order changes around it.</p></div>
+</div></div>

@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.bars{gap:26px}.bar{--label:430px;grid-template-columns:var(--label) 1fr 120px}.bar i{height:40px}.bar.voice i{background:#9AA5A8}.bar b{font-size:28px}.scale{display:grid;grid-template-columns:430px 1fr 120px;gap:18px;font-size:19px;color:var(--dim)}.scale div{display:flex;justify-content:space-between;border-top:2px solid var(--ink);padding-top:8px}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">Piano gate, test 1: the attack</p><h1>How much of the sound arrives at once</h1>
+<p class="sub">Score from 0 to 1: the biggest jump between neighbouring 12-millisecond slices, divided by the loudest slice.</p>
+<div class="grow col" style="justify-content:center;gap:26px">
+<div class="bars">
+<div class="bar"><span>Struck string, best case</span><i style="--v:100"></i><b>1.0</b></div>
+<div class="bar"><span>Struck string, worst case<br><span>the strike split across two slices</span></span><i style="--v:50"></i><b>0.5</b></div>
+<div class="bar voice"><span>Held voice, highest score seen<br><span>across a run of windows</span></span><i style="--v:7"></i><b>0.07</b></div>
+</div>
+<div class="scale"><span></span><div><span>0</span><span>0.5</span><span>1</span></div><span></span></div>
+</div>
+<p class="note">Redrawn from the figures in my design document. Worked out and checked against synthetic struck and sung signals in the tests, not in a real room.</p>

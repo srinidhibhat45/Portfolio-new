@@ -1,0 +1,22 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000">
+<style>.g{flex:1;padding:18px 18px;border:1.5px solid var(--line);border-radius:14px;background:#fff}.g h2{font-size:23px;font-weight:600;line-height:1.25;margin:10px 0 6px}.g p{font-size:19px;line-height:1.4;color:var(--dim)}.g.hi{background:var(--wash);border-color:var(--accent)}.src{width:210px;flex:none;padding:18px;border-radius:14px;background:var(--ink);color:#fff;font-size:23px;font-weight:600;display:grid;place-items:center;text-align:center}.lbl{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.arrow{font-size:28px}</style>
+<body style="--accent:#C8281E;--wash:#F7DFDA">
+<p class="kicker">How the microphone is heard</p><h1>Five gates before a sound can move the song on</h1>
+<div class="grow col" style="gap:20px">
+<p class="lbl">Is anything musical happening?</p>
+<div class="row" style="gap:10px;align-items:stretch">
+<div class="src">Micro&shy;phone</div><span class="arrow">→</span>
+<div class="g"><span class="num">1</span><h2>Room noise</h2><p>The first second measures the room with nobody playing. That much is taken off every reading after.</p></div><span class="arrow">→</span>
+<div class="g"><span class="num">2</span><h2>Loud enough</h2><p>Two thresholds, one to switch on and a lower one to switch off, so a ringing chord does not flicker.</p></div><span class="arrow">→</span>
+<div class="g"><span class="num">3</span><h2>Shaped like music</h2><p>Music puts its energy in three or four of the twelve note names. A fan or traffic spreads it flat.</p></div><span class="arrow">→</span>
+<div class="g"><span class="num">4</span><h2>A hand's worth</h2><p>A hand plays three or four notes, never eight. A reading that broad is refused, not trimmed.</p></div>
+</div>
+<p class="lbl" style="margin-top:6px">Did it come from a piano, and which notes?</p>
+<div class="row" style="gap:10px;align-items:stretch">
+<div class="g hi" style="flex:1.4"><span class="num">5</span><h2>Piano gate</h2><p>Checks the shape of the sound over time: a struck string arrives at once, only gets quieter and holds its pitch. A voice does none of those.</p></div><span class="arrow">→</span>
+<div class="g" style="flex:1.4"><h2>Main detector: Basic Pitch</h2><p>A small open-source note-transcription model, run on the phone. It hears each key with its octave. Needs WebGL.</p></div><span class="arrow">→</span>
+<div class="g"><h2>Fallback</h2><p>A chromagram for chords and autocorrelation for single notes, when the model cannot run.</p></div><span class="arrow">→</span>
+<div class="g"><h2>Match the step</h2><p>Right: move on. Unsure: say “listening…”.</p></div>
+</div>
+</div>
+<p class="note">A USB digital piano skips all of this: MIDI reports exact keys. One setting, how noisy your room is, scales gates 1 to 4 together.</p>

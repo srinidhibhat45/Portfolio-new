@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}.hi{border-color:var(--accent);background:var(--wash)}.link{width:170px;flex:none;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;gap:8px}.link p{font-size:18px;color:var(--dim)}.link .arrow{font-size:40px}.ext{border-style:dashed}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How it is put together</p><h1>The server owns the game. Browsers only show their share of it</h1>
+<div class="grow row" style="gap:16px;align-items:stretch">
+<div class="colm"><p>In each player's browser</p>
+<div class="card"><h2>The game screen</h2><p>React, built with Vite. It draws whatever state the server last sent, and sends actions back.</p></div>
+<div class="card"><h2>YouTube player</h2><p>The official embedded player. It plays only the assigned part of the clip. Nothing is downloaded.</p></div>
+<div class="card"><h2>Recent clips</h2><p>The last 64 video IDs, kept in the browser and shared with the server on joining.</p></div></div>
+<div class="link"><span class="arrow">⇄</span><p>Socket.IO: actions in, a filtered room state out</p></div>
+<div class="colm"><p>On one Node server</p>
+<div class="card hi"><h2>Rooms</h2><p>Held in memory. Players, phase, timers, clues, votes and scores. A restart ends every room.</p></div>
+<div class="card hi"><h2>Game rules</h2><p>Picks pairs and the imposter, checks every action, moves phases on, tallies votes.</p></div>
+<div class="card"><h2>Express</h2><p>Serves the built app, a health check, the pack list and the call settings.</p></div></div>
+<div class="link"><span class="arrow">⇢</span><p>Optional</p></div>
+<div class="colm"><p>Calls</p>
+<div class="card"><h2>In-app call</h2><p>WebRTC: browsers connect to each other directly. The server only passes on the setup messages.</p></div>
+<div class="card"><h2>Relay server</h2><p>Needed only when networks block direct links. Not set up yet.</p></div>
+<div class="card ext"><h2>Teams</h2><p>The call the group planned to use on game night. It runs outside the app.</p></div></div>
+</div>
+<p class="note">Hosting: a Docker file and a Render setup are ready, but no permanent host is running. For a game night, a script can serve the app from my computer through a temporary public link.</p>

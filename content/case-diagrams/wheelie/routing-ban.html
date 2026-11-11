@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x990"><style>.stage{display:grid;grid-template-columns:700px 1fr;gap:56px;align-items:start}.mapbox{position:relative;border:1.5px solid var(--line);border-radius:16px;background:#F1EDE2;overflow:hidden}.mapbox svg{position:absolute;inset:0;width:100%;height:100%}.side{display:flex;flex-direction:column;gap:16px;justify-content:center}.side .card p{margin-top:6px;font-size:21px}.side .card h2{font-size:24px}.key{display:flex;gap:26px;font-size:20px;color:var(--dim)}.key i{display:inline-block;width:40px;height:7px;border-radius:4px;vertical-align:middle;margin-right:10px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">A decision checked on a real route</p><h1>A car route is not a motorcycle route</h1>
+<div class="grow stage"><div style="display:flex;flex-direction:column;gap:14px"><div class="mapbox" style="height:560px"><svg viewBox="0 0 700 560" font-family="Case Sans, Arial" font-size="22">
+<path d="M0 0 H330 C300 120 360 260 300 380 C270 450 300 520 290 560 H0 Z" fill="#C9DCEA"/>
+<text x="40" y="60" fill="#5E7F98" font-style="italic" font-size="19">Sea</text>
+<path d="M430 120 C330 150 240 270 280 350 C300 395 335 415 360 420" stroke="#B4472F" stroke-width="7" fill="none"/>
+<path d="M430 120 C520 220 560 300 520 380 C490 430 420 430 360 420" stroke="#1E5B3A" stroke-width="7" fill="none"/>
+<g font-weight="600" fill="#192B32"><circle cx="430" cy="120" r="12" fill="#192B32"/><text x="452" y="114">Bandra</text>
+<circle cx="360" cy="420" r="12" fill="#192B32"/><text x="380" y="460">Worli</text>
+<text x="40" y="270" fill="#B4472F">Sea Link</text><text x="40" y="296" font-size="18" font-weight="400" fill="#59696D">no two-wheelers allowed</text></g>
+</svg></div><div class="key"><span><i style="background:#B4472F"></i>Car profile: over the Sea Link</span><span><i style="background:#1E5B3A"></i>Motorcycle costing: around it</span></div></div>
+<div class="side">
+<div class="card"><h2>What was wrong</h2><p>Routing used a car profile. It would send a motorcycle over bridges and expressways where two-wheelers are banned.</p></div>
+<div class="card"><h2>What I ruled out</h2><p>The first router has only car, bicycle and walking profiles. A bicycle profile is wrong the other way: it avoids highways motorcycles may use.</p></div>
+<div class="card"><h2>What I changed</h2><p>A second free router, Valhalla, with its motorcycle setting. It reads OpenStreetMap's two-wheeler access tags. The first router stays as a fallback.</p></div>
+<div class="card"><h2>The limit</h2><p>It is only as good as OpenStreetMap's tags. A ban nobody has tagged can still slip through.</p></div>
+</div></div>
+<p class="note">Illustration, not to scale. I checked this trip live: the car setting took the Sea Link and the motorcycle setting went around it.</p>

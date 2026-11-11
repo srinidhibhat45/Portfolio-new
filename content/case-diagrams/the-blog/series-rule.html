@@ -1,0 +1,17 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x720">
+<style>.pane{display:flex;flex-direction:column;gap:12px}.pane>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.t{background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:14px 20px;font-size:23px}.t b{background:var(--wash);color:var(--accent);font-weight:600;border-radius:6px;padding:0 6px}.rule{background:var(--wash);border:1.5px solid var(--accent);border-radius:14px;padding:22px 24px;font-size:22px;line-height:1.45}.rule code{font:600 22px Menlo,monospace;color:var(--accent)}.out{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:22px 24px}.out h2{font-size:26px;font-weight:600}.out ol{margin-top:10px;padding-left:28px;font-size:22px;line-height:1.6}.small{font-size:20px;color:var(--dim)}</style>
+<body style="--accent:#C8281E;--wash:#F4E4DA">
+<p class="kicker">How a post joins a series</p><h1>The title decides the series and the order</h1>
+<div class="grow row" style="align-items:center;gap:26px">
+<div class="pane" style="flex:1.25"><p>Post titles, as written</p>
+<div class="t">The Murder in Classroom-10 <b>(Part 1)</b></div>
+<div class="t">The Murder in Classroom-10 <b>(Part 2)</b></div>
+<div class="t">The Murder in Classroom 10 <b>(Part 3)</b></div>
+<p class="small" style="text-transform:none;letter-spacing:0;font-weight:400">Parts 1 and 2 spell the name with a hyphen. Part 3 does not. Only the ending is matched, so all three still join.</p></div>
+<span class="arrow">→</span>
+<div class="pane" style="flex:1"><p>The series rule</p><div class="rule">Ends with <code>(Part N)</code><br>N sets the order. The matched words are taken off the title when it is listed.</div>
+<p class="small" style="text-transform:none;letter-spacing:0;font-weight:400">The other two series use <code style="font-family:Menlo,monospace">(Shri's Podcast: Ep #N)</code> and <code style="font-family:Menlo,monospace">All About F1 – #N</code>.</p></div>
+<span class="arrow">→</span>
+<div class="pane" style="flex:.9"><p>What a reader gets</p><div class="out"><h2>The Murder in Classroom 10</h2><ol><li>Part 1</li><li>Part 2</li><li>Part 3</li></ol></div></div>
+</div>
+<p class="note">Rules are edited in the editor's settings. A rule that is not valid is skipped with a warning, so a typo cannot stop the site from building.</p>

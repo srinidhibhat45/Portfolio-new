@@ -1,0 +1,20 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x860">
+<style>.facts{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:30px}.facts .card{padding:16px 18px}.facts h2{font-size:23px}.facts p{font-size:18px;margin-top:4px}.story{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:18px;align-items:stretch;margin-top:34px}.story .card h2{font-size:23px}.story .card p{font-size:19px;margin-top:6px}table{width:100%;margin-top:10px;font-size:18px;border-collapse:collapse}td{padding:3px 0;color:var(--dim)}td+td{text-align:right;font-weight:600;color:var(--ink)}.diff td+td{color:var(--warn)}.hi{border-color:var(--warn);background:var(--warn-wash)}.ok{border-color:var(--good);background:var(--good-wash)}.ok h2{color:var(--good)}.lbl{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:30px}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">Why a stale decision cannot hit the wrong file</p><h1>A file is five facts, not a name</h1>
+<div class="facts">
+<div class="card"><h2>Path</h2><p>Where it lives</p></div>
+<div class="card"><h2>Size</h2><p>In bytes</p></div>
+<div class="card"><h2>Modified time</h2><p>Last change</p></div>
+<div class="card"><h2>Device</h2><p>Which storage volume</p></div>
+<div class="card"><h2>Inode</h2><p>The number the file system gives that exact file</p></div>
+</div>
+<p class="lbl">An example of what this prevents</p>
+<div class="story">
+<div class="card"><h2>1. You bin a file</h2><table><tr><td>Path</td><td>…/report.pdf</td></tr><tr><td>Size</td><td>8.2 MB</td></tr><tr><td>Inode</td><td>40211</td></tr></table></div>
+<span class="arrow">→</span>
+<div class="card hi"><h2>2. Within five seconds, another app saves a new report.pdf in the same place</h2><table><tr><td>Path</td><td>same</td></tr><tr class="diff"><td>Size</td><td>8.4 MB</td></tr><tr class="diff"><td>Inode</td><td>40377</td></tr></table></div>
+<span class="arrow">→</span>
+<div class="card ok"><h2>3. The move is cancelled</h2><p>The facts no longer match, so the new file is never touched. You see: "report.pdf changed or moved; deletion cancelled."</p></div>
+</div>
+<p class="note">The file name, sizes and numbers are an illustration. The five facts and the message come from the app's code. The same check makes a kept file come back for review if it changes.</p>

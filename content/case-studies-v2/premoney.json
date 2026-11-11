@@ -1,0 +1,601 @@
+{
+ "title": "Bank texts turned into a spending list that [[says when it is unsure]].",
+ "hook": "PreMoney is an Android app I designed and built on my own. It reads the bank alerts already on my phone and turns them into a list of payments I can check and correct.",
+ "facts": [
+  {
+   "label": "Role",
+   "value": "Design and build, solo"
+  },
+  {
+   "label": "Why",
+   "value": "A spending log without retyping what my bank texts me"
+  },
+  {
+   "label": "Timeline",
+   "value": "July to August 2026"
+  },
+  {
+   "label": "Platform",
+   "value": "Android only. iPhones do not let apps read texts"
+  },
+  {
+   "label": "Stack",
+   "value": "Flutter, Dart, Riverpod, SQLite"
+  },
+  {
+   "label": "Status",
+   "value": "Version 1.17.0, a personal tool. Not on Google Play"
+  }
+ ],
+ "links": [
+  {
+   "label": "Get the Android app",
+   "url": "https://github.com/srinidhibhat45/PreMoney-releases"
+  }
+ ],
+ "linksHeading": "Release page",
+ "summary": [
+  "The problem: my bank already texts me about every payment, but those texts also include OTPs, adverts and statements. A wrong number in a money app is worse than no number.",
+  "What I built: an Android app that reads bank alerts, asks each one for proof that money moved, and saves it once. Anything it cannot read cleanly goes to a review queue instead of being guessed.",
+  "The key idea: when the app is unsure, it says so. One correction from me then fixes every entry of the same kind, past and future.",
+  "Where it stands: version 1.17.0, built over six days in July and August 2026. It is a personal tool. I have no accuracy figures from real messages and no other users."
+ ],
+ "lead": {
+  "src": "assets/cases/premoney/message-to-entry.webp",
+  "alt": "Schematic of a made-up bank alert on the left, three questions the app asks in the middle, and the saved entry on the right showing a cafe payment of 240 rupees",
+  "caption": "A schematic drawn from the app's code, with a made-up message. The app reads the alert on the left, asks the three questions in the middle and saves the entry on the right.",
+  "width": 1600,
+  "height": 1000
+ },
+ "sections": [
+  {
+   "id": "why",
+   "label": "Why I built it",
+   "nav": "Why I built it",
+   "heading": "My bank already tells me what I spend, mixed in with everything else",
+   "blocks": [
+    {
+     "p": "Every UPI or card payment I make sends me a text. Together those texts are almost a full spending log. Typing the same payments into an expense app felt like doing the work twice."
+    },
+    {
+     "p": "The catch is that most texts from a bank are not payments. OTPs quote amounts. Card adverts use the word \"credit\". Statements quote totals and due dates. A failed payment still says \"debited\"."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/inbox-mix.webp",
+       "alt": "Six made-up bank messages in a grid: one real payment marked Entry, and an OTP, a card advert, a statement, a failed payment and a payment request each marked Skip with the reason",
+       "caption": "The problem in one picture. Six made-up messages from one bank. Only the first moved money, and every other one quotes an amount.",
+       "width": 1600,
+       "height": 960
+      }
+     ]
+    },
+    {
+     "p": "So the design question was not how to read a payment. It was how to tell a payment from everything that looks like one, and what to do when the app cannot tell."
+    },
+    {
+     "aside": {
+      "title": "Who it is for.",
+      "detail": "Me. It is a personal tool for one person on one Android phone. I did no user research, and this page does not claim any."
+     }
+    }
+   ]
+  },
+  {
+   "id": "how",
+   "label": "How it works",
+   "nav": "How it works",
+   "heading": "Four ways in, one path through, three ways out",
+   "blocks": [
+    {
+     "p": "A bank alert can reach the app four ways. It can be found in a scan of the inbox, caught live while the app is open, caught in the background while it is closed, or shared in from another app. All four go through the same steps."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/pipeline.webp",
+       "alt": "Flow diagram: four ways in (inbox scan, live listener, background capture, share) lead through a sender check, learned rules, the parser and the categoriser, to three outcomes: saved once, review queue, or not saved",
+       "caption": "How a message travels. Look at the right-hand column: every message ends in exactly one of three places.",
+       "width": 1600,
+       "height": 980
+      }
+     ]
+    },
+    {
+     "p": "The app has four tabs: Home, Activity, Insights and Goals. The tools for checking the parser sit under Settings."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/screen-map.webp",
+       "alt": "Map of the app: four bottom tabs with their contents, the four first-run screens, and three groups of settings, with Activity and the Tools group highlighted",
+       "caption": "The structure. The highlighted parts, the Activity list and the tools in Settings, are where checking and correcting happen.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "On first run the app explains why it wants to read messages before Android asks for permission. It then reads up to a year of bank alerts and says how many it added and how many it skipped. Cash, and anything the messages missed, I add by hand."
+    }
+   ]
+  },
+  {
+   "id": "evidence",
+   "label": "Decision 1",
+   "nav": "Proof, not a block list",
+   "heading": "Ask each message for proof that money moved",
+   "blocks": [
+    {
+     "p": "What you see: the advert does not appear. Nothing in the list asks me to clean up a payment that never happened."
+    },
+    {
+     "p": "In the build: the first parser accepted anything that a list of blocked words did not catch. That was the wrong default. Bank adverts come from the same senders as real alerts, quote rupee amounts and talk about credit cards. The word \"credit\" was read as money coming in."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/phantom-income.webp",
+       "alt": "Before and after comparison of the same made-up insurance advert: before, the word credit and the cover amount turned it into fifty lakh rupees of income; after, the card name is blanked, the offer figure is ignored and it is not saved",
+       "caption": "The failure that led to the rewrite in version 1.17. My project notes record an insurance advert quoting a cover of ₹50 lakh that was saved as a ₹50 lakh deposit.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "Every new advert wording leaked through until I added another blocked word. So in version 1.17 I turned the question around. The parser now asks what a bank leaves behind on a real alert, things an advert has no reason to carry."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/gates.webp",
+       "alt": "Five numbered checks in order: never a payment, advert or request, which way money went, how much, and enough proof, each with what it rejects, followed by Accepted",
+       "caption": "The five checks. Look at check 1: an OTP is rejected at any level of proof, because it often quotes the amount of the payment it protects.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "The last check scores proof. A masked account number, a reference number, the balance afterwards and a \"Not you?\" line each count. The more advert wording a message has, the more of that proof it needs."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/evidence-scale.webp",
+       "alt": "Table of points for each mark of a real alert, bars showing that 0 advert tells need 2 marks, 1 or 2 need 4 and 3 or more need 6, and two worked made-up examples",
+       "caption": "The proof test. The points and thresholds are the parser's own. The two examples are made up and scored by hand, as an illustration, not a measured result.",
+       "width": 1600,
+       "height": 840
+      }
+     ]
+    },
+    {
+     "p": "The order of the checks matters, and tests hold it in place. Advert checks run before direction, so the message tester reports an advert as an advert. One test file has a simple rule: every advert in it must be rejected, and every genuine alert must be accepted with the right amount and direction."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "Asking for proof can turn away a real payment that arrives with very little detail. For that case a kind of message can be marked \"always import\", which lowers the bar. It never lets an OTP or a failed payment through."
+     }
+    }
+   ]
+  },
+  {
+   "id": "unsure",
+   "label": "Decision 2",
+   "nav": "Unsure, not invented",
+   "heading": "When a field cannot be read, lower the confidence and ask",
+   "blocks": [
+    {
+     "p": "What you see: an entry the app is unsure about gets a small warning mark, and Home tells me how many are waiting. A merchant it could not read shows as \"UPI Payment\" rather than a made-up name."
+    },
+    {
+     "p": "In the build: each accepted message gets a confidence score. It starts at 100% and drops for each field the parser could not read. The entry goes to the review queue if the merchant has no name or the category is only a guess."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/confidence.webp",
+       "alt": "Left: confidence starts at 100 percent and drops 35 for no merchant, 15 for no account digits, 5 for no reference and 15 for advert wording. Right: an entry goes to review if the merchant could not be named or the category is a guess",
+       "caption": "How unsure the app is, and what that triggers. The 60% example is made up, worked out from the code's own deductions.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "I did not build a separate review screen. The queue is the Activity list with one filter switched on, so there is nothing new to learn."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/annotated-review.webp",
+       "alt": "Schematic of the Home nudge saying 3 transactions need a category, and the Activity list filtered to Needs a category, with six numbered notes",
+       "caption": "The review queue, drawn from the code with made-up entries. Note 5 is the point: a placeholder name says what the app does not know.",
+       "width": 1600,
+       "height": 1040
+      }
+     ]
+    },
+    {
+     "p": "Opening an entry shows where it came from. The original message is one tap away, so I can check the app against the bank's own words."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/annotated-detail.webp",
+       "alt": "Schematic of an entry's detail sheet for a made-up cafe payment, showing a review banner, the category with a Change button, the source, a transfer switch, the original message and Edit and Delete buttons, with six numbered notes",
+       "caption": "An entry in review, drawn from the code with a made-up payment. Start at note 1: the banner says why the entry is here and what fixing it will do.",
+       "width": 1600,
+       "height": 1120
+      }
+     ]
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Filling the gap with a best guess, such as the nearest merchant name in the message. A plausible wrong entry is harder to notice than an honest \"UPI Payment\". The cost is a longer queue on day one."
+     }
+    },
+    {
+     "aside": {
+      "title": "A gap I found while writing this.",
+      "detail": "The confidence score is saved with every entry, but only the message tester shows it. The list shows a yes-or-no review flag instead."
+     }
+    }
+   ]
+  },
+  {
+   "id": "teach",
+   "label": "Decision 3",
+   "nav": "One fix, many entries",
+   "heading": "One correction should fix every entry of the same kind",
+   "blocks": [
+    {
+     "p": "What you see: when I change a category, a switch says \"Remember this for\" the merchant. It is on by default. When I delete an entry made from a message, the app asks whether it was a real transaction at all."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/annotated-teach.webp",
+       "alt": "Two schematics side by side: the category picker for a made-up cafe with the Remember switch on, and the delete dialog with This wasn't a real transaction ticked, each with the confirmation message shown below",
+       "caption": "The two teaching moments, drawn from the code with made-up entries. The text under each phone is the confirmation the app shows afterwards.",
+       "width": 1600,
+       "height": 1080
+      }
+     ]
+    },
+    {
+     "p": "In the build: a category correction becomes a rule for that merchant. My rules run before the app's 330 or so built-in merchant patterns. The same action refiles every past entry from that merchant."
+    },
+    {
+     "p": "Blocking a message works on its template, not its exact text. The app blanks out the amounts, dates and reference numbers, and what is left is the wording the sender reuses. One tap can clear months of entries that a single advert campaign created."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/template-skeleton.webp",
+       "alt": "Two made-up advert messages reduced to one shared skeleton with amounts, references and dates replaced by hash marks, and three rules for deciding whether a new message is the same template",
+       "caption": "How \"messages like this\" is decided. The messages are made up. The 0.82 threshold and the merchant rule come from the app's code.",
+       "width": 1600,
+       "height": 900
+      }
+     ]
+    },
+    {
+     "p": "Two messages count as the same template if their skeletons match, or if 82% or more of their words overlap. I set that bar high on purpose. A false match would quietly throw away a real payment, which is worse than having to block a reworded advert twice."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "A rule can spread a mistake as fast as it spreads a fix. So every rule, for categories and for messages, is listed in Settings and can be removed."
+     }
+    }
+   ]
+  },
+  {
+   "id": "tester",
+   "label": "Decision 4",
+   "nav": "A tester that says why",
+   "heading": "A message tester that explains every decision",
+   "blocks": [
+    {
+     "p": "What you see: under Settings there is a page where I can paste any message and see what the parser makes of it. A rejection shows which check stopped it, plus the proof score and the advert score."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/annotated-sandbox.webp",
+       "alt": "Schematic of the message tester twice: a made-up card advert rejected as promotional with evidence 1 and marketing signals 5, and a made-up UPI payment parsed at 60 percent confidence with each field listed",
+       "caption": "The message tester, drawn from the code. The scores for these made-up messages are worked out by hand, as an illustration.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "p": "In the build: every rejection carries a reason, and every result carries both scores. My rule for a bank that changes its wording is to add the new message to the tests first, then fix the patterns. The tester shows which check a message trips without a debugger."
+    },
+    {
+     "aside": {
+      "title": "The trade-off.",
+      "detail": "This screen is for me, not for a first-time user. It shows the code's own names for reasons, such as \"promotional\". The app has plain-English versions of those reasons, and this screen does not use them yet."
+     }
+    }
+   ]
+  },
+  {
+   "id": "scores",
+   "label": "Decision 5",
+   "nav": "Scores that wait for data",
+   "heading": "A score with missing data says so, instead of failing me",
+   "blocks": [
+    {
+     "p": "What you see: Home has two scores, a Saver Score and a Spender Score. With no income recorded, both say \"Not enough data\", and a hint says what to add."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/annotated-dashboard.webp",
+       "alt": "Real screenshot of the PreMoney home screen with no data, showing an empty state and two score gauges reading Not enough data, with six numbered notes",
+       "caption": "A real screen from version 1.13.0 on an Android emulator, with message access skipped. Note 4: no zero that would read as a failing grade.",
+       "width": 1600,
+       "height": 1060
+      }
+     ]
+    },
+    {
+     "p": "In the build: each score is made of parts, and each part has a stated target, such as saving 30% of income or keeping six months of costs in reserve. If a part cannot be measured, it is marked unavailable and the total is rescaled from the parts that can."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/scores.webp",
+       "alt": "Two cards listing the parts of the Saver Score with targets of 30 percent savings, 15 percent invested and 6 months runway, and the four parts of the Spender Score, above the rule for missing input",
+       "caption": "The two scores. The Saver Score looks back six months, so one late salary cannot swing it. The Spender Score looks at about 90 days.",
+       "width": 1600,
+       "height": 780
+      }
+     ]
+    },
+    {
+     "p": "The Spender Score describes how I spend, it does not grade me. Investments count as savings, not spending, and moving money between my own accounts counts as neither."
+    },
+    {
+     "aside": {
+      "title": "What I ruled out.",
+      "detail": "Fitting the scores to a curve. Stated targets are easier to argue with and to act on. The cost is that the targets are mine, and they may not suit someone else."
+     }
+    }
+   ]
+  },
+  {
+   "id": "privacy",
+   "label": "What leaves the phone",
+   "nav": "What leaves the phone",
+   "heading": "Reading is local, but three optional features send data out",
+   "blocks": [
+    {
+     "p": "The parser, the categoriser and the database all run on the phone. Even the font is bundled, so the app works with no network at all."
+    },
+    {
+     "p": "Three later features change that, and I want to be exact about them. None of them runs until I use it."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/data-paths.webp",
+       "alt": "Two zones: on the phone always (parsing, the database, fonts, export) and leaves the phone only when used (AI category suggestions, cloud backup, update check), each labelled with when it happens",
+       "caption": "What stays and what can leave. The AI step and the backup both include the original message text.",
+       "width": 1600,
+       "height": 940
+      }
+     ]
+    },
+    {
+     "list": [
+      "AI suggestions: a button in the review queue sends each waiting entry's merchant, amount and original message to Groq, an outside AI service, and asks for a category.",
+      "Backup: after I sign in, entries, including the original message, and my rules, budgets and goals are copied to Firebase.",
+      "Updates: the app reads a public version file and downloads the new app when there is one."
+     ]
+    },
+    {
+     "aside": {
+      "title": "What needs fixing.",
+      "detail": "The first-run screens still say everything stays on the phone. That was true when I wrote them, before backup and AI suggestions existed. So I make no such promise here, and that copy has to change before anyone else uses the app."
+     }
+    }
+   ]
+  },
+  {
+   "id": "build",
+   "label": "The build",
+   "nav": "The build",
+   "heading": "Screens never touch the database, and one number refreshes them all",
+   "blocks": [
+    {
+     "p": "Screens talk to Riverpod providers, providers call the domain logic, and only the repositories write SQL. After any write, one \"data version\" number goes up and every view that depends on data reloads. Nearly every write changes several screens, and listing them by hand at each call would have been a steady source of stale screens."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/architecture.webp",
+       "alt": "Layer diagram: screens, state, domain logic, repositories and SQLite, with background capture, the Android side and optional services drawn alongside",
+       "caption": "How the app is put together. The unique key at the bottom is what lets four routes save messages without creating doubles.",
+       "width": 1600,
+       "height": 920
+      }
+     ]
+    },
+    {
+     "table": {
+      "head": [
+       "Part",
+       "What I used"
+      ],
+      "rows": [
+       [
+        "App",
+        "Flutter and Dart, Android only"
+       ],
+       [
+        "State",
+        "Riverpod, with one data-version number"
+       ],
+       [
+        "Storage",
+        "SQLite on the phone, hand-written SQL, no code generation"
+       ],
+       [
+        "Messages",
+        "another_telephony for the inbox and live alerts"
+       ],
+       [
+        "Charts",
+        "fl_chart, with an eight-colour palette checked for colour blindness"
+       ],
+       [
+        "Optional services",
+        "Firebase for sign-in and backup, Groq for AI suggestions"
+       ]
+      ]
+     }
+    },
+    {
+     "stats": [
+      {
+       "value": "22",
+       "label": "commits, 28 July to 2 August 2026"
+      },
+      {
+       "value": "76",
+       "label": "Dart files, about 19,800 lines"
+      },
+      {
+       "value": "9",
+       "label": "test files, for the parser, adverts, duplicates, templates, categories, scores, export and sharing"
+      },
+      {
+       "value": "177 of 184",
+       "label": "test messages imported in an emulator run at version 1.6, with all 7 non-payments rejected"
+      }
+     ]
+    },
+    {
+     "p": "That last number is a check, not an accuracy figure. The messages were test messages I sent to an emulator, and the run was before the parser was rewritten in version 1.17."
+    },
+    {
+     "figures": [
+      {
+       "src": "assets/cases/premoney/timeline.webp",
+       "alt": "Timeline of three days of commits: 28 July with versions 1.0 to 1.5, 29 July with versions 1.6 to 1.16, and 2 August with version 1.17",
+       "caption": "The build by day. Most commits raised the version number by one, so the history reads as a list of releases.",
+       "width": 1600,
+       "height": 860
+      }
+     ]
+    },
+    {
+     "p": "The hardest problems were the quiet ones, where nothing showed an error."
+    },
+    {
+     "table": {
+      "head": [
+       "Area",
+       "What went wrong, and what I changed"
+      ],
+      "rows": [
+       [
+        "Live capture",
+        "It never fired, in front or in the background, and logged nothing. The message plugin does not declare its own receiver, so the app has to. I added it to the app's manifest in version 1.9."
+       ],
+       [
+        "Duplicates",
+        "The duplicate key used the inbox row number, which a live message does not have. Roughly half of Indian bank alerts carry no reference number, so most live captures were saved twice by the next scan. The key is now built from the message content, and a migration re-keyed the old rows."
+       ],
+       [
+        "Updates",
+        "The update file sat in a private repository, so every check failed, and the check hid its own errors. The app looked up to date and never updated. The feed now lives in a public repository, the release script writes it last, downloads are checked against their size and hash, and errors show in Settings."
+       ]
+      ]
+     }
+    }
+   ]
+  },
+  {
+   "id": "access",
+   "label": "Accessibility",
+   "nav": "Accessibility",
+   "heading": "Charts that do not depend on colour alone",
+   "blocks": [
+    {
+     "p": "I first picked 14 colours for categories by eye. A palette checker failed them on strength of colour and on how well they separate, both for normal vision and for colour blindness. I cut the set to eight colours that pass, and charts fold anything beyond eight into a grey \"Other\"."
+    },
+    {
+     "p": "Every chart also has a legend with values, so no category is known by colour alone. Each list entry reads out in full to a screen reader, including \"needs category review\" when it is in the queue."
+    },
+    {
+     "aside": {
+      "title": "What this does not prove.",
+      "detail": "I have not tested the app with a screen reader user or run a full accessibility audit."
+     }
+    }
+   ]
+  },
+  {
+   "id": "status",
+   "label": "Where it stands",
+   "nav": "Where it stands",
+   "heading": "Working on my phone, with no accuracy figures yet",
+   "blocks": [
+    {
+     "p": "PreMoney is at version 1.17.0. It installs by hand from a public release page and updates itself from there. It is not on Google Play. Google restricts apps that read text messages, and a listing would need a separate declaration."
+    },
+    {
+     "p": "It is built for one person. These are not there yet:"
+    },
+    {
+     "list": [
+      "No measured accuracy on a labelled set of real messages. The tests check known cases, not a rate.",
+      "No other users, and no evidence yet that the scores change how I spend.",
+      "Some phone makers' battery managers can still stop background capture. A scan of the inbox picks up anything missed.",
+      "A salary from an employer the app does not know lands in Other Income until I file it once."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "next",
+   "label": "What is next",
+   "nav": "What is next",
+   "heading": "Measure the parser, then fix what the app says about data",
+   "blocks": [
+    {
+     "list": [
+      "Build a labelled set of messages with personal details removed, and count wrong accepts, wrong rejects and duplicates for each bank's format.",
+      "Rewrite the first-run screens so they describe backup and AI suggestions plainly, with a clear way to say no.",
+      "Show the confidence score in the list, and use the plain-English reasons in the message tester.",
+      "Spot a salary on its own: a large credit that repeats near the start of each month."
+     ]
+    }
+   ]
+  },
+  {
+   "id": "learned",
+   "label": "What I learned",
+   "nav": "What I learned",
+   "heading": "An honest gap beats a confident guess",
+   "blocks": [
+    {
+     "p": "The worst bug in this app was not a crash. It was an advert saved as ₹50 lakh of income, which looked exactly like real data. That changed how I designed the rest: ask for proof, mark what is unsure, and keep the original message one tap away."
+    },
+    {
+     "p": "I also learned to distrust silence. Live capture, duplicate keys and updates all failed without an error. Each fix ended with the same rule: if something can fail, it has to say so somewhere I will see it."
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x880">
+<style>.rows{display:grid;gap:14px}.r{display:grid;grid-template-columns:400px 1fr;gap:0;border:1.5px solid var(--line);border-radius:14px;overflow:hidden;background:#fff}.r>div{padding:18px 24px;font-size:23px;line-height:1.4}.r>div:first-child{background:#F3F1EA;font-weight:600}.r .msg{color:var(--ink)}.r .msg::before{content:'\201C'}.r .msg::after{content:'\201D'}.r.ok{border-color:var(--good)}.r.ok>div:first-child{background:var(--good-wash);color:var(--good)}.r.warn>div:first-child{background:var(--wash);color:var(--accent)}</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">What the lesson says back</p><h1>Every tap gets an answer, and none of them ends the lesson</h1>
+<div class="grow rows">
+<div class="r"><div>Tap the board before choosing the rook</div><div class="msg">First select the white rook on f6.</div></div>
+<div class="r"><div>Select the rook</div><div class="msg">Rook selected. Now choose the outlined target on f9.</div></div>
+<div class="r warn"><div>Pick a cell a rook cannot reach</div><div class="msg">A rook cannot move there. Choose the outlined target on f9.</div></div>
+<div class="r warn"><div>Make a real rook move, but not to the target</div><div class="msg">That is also a valid rook move. For this lesson, choose the outlined target on f9.</div></div>
+<div class="r ok"><div>Reach the target</div><div class="msg">That is a rook move: three cells straight up, through shared edges.</div></div>
+</div>
+<p class="note">The exact messages from lesson 1. After the last one, Next lesson unlocks and Try again resets the board.</p>

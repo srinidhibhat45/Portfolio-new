@@ -1,0 +1,40 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>
+.two{display:grid;grid-template-columns:1.1fr 1fr;gap:44px}
+.lab{font-size:18px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-bottom:14px}
+.ded{display:grid;gap:12px}
+.d{display:grid;grid-template-columns:1fr 90px;gap:14px;align-items:center;padding:14px 18px;border-radius:12px;background:#fff;border:1.5px solid var(--line);font-size:22px}
+.d b{text-align:right;color:var(--warn);font-size:24px;font-variant-numeric:tabular-nums}
+.d.start{background:var(--wash);border-color:var(--accent)}.d.start b{color:var(--accent)}
+.meter{height:30px;border-radius:99px;background:#E7EBE8;overflow:hidden;margin:8px 0 4px}
+.meter i{display:block;height:100%;width:60%;background:var(--accent)}
+.card h2{font-size:24px}.card p{font-size:20px;margin-top:6px}
+.rule{display:grid;gap:12px;margin-top:16px}
+.or{font-size:20px;font-weight:700;color:var(--dim);text-align:center}
+.q{border-color:#C7871B;background:#FBEFD8}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">After a message passes</p>
+<h1>A field the parser cannot read lowers the confidence</h1>
+<div class="grow two">
+ <div><p class="lab">Confidence starts at 100% and drops for each gap</p>
+  <div class="ded">
+   <div class="d start"><span>Every field read cleanly</span><b>100%</b></div>
+   <div class="d"><span>No merchant named. A placeholder such as "UPI Payment" is used</span><b>−35</b></div>
+   <div class="d"><span>No account or card digits</span><b>−15</b></div>
+   <div class="d"><span>No reference number</span><b>−5</b></div>
+   <div class="d"><span>Some advert wording, even though it passed</span><b>−15</b></div>
+  </div>
+  <p style="font-size:20px;color:var(--dim);margin-top:16px">Made-up example: a UPI payment with account digits but no merchant and no reference scores 100 − 35 − 5 = <b style="color:var(--ink)">60%</b>.</p>
+  <div class="meter"><i></i></div>
+ </div>
+ <div><p class="lab">What sends an entry to review</p>
+  <div class="rule">
+   <div class="card q"><h2>The merchant could not be named</h2><p>The entry is saved under a placeholder name.</p></div>
+   <p class="or">or</p>
+   <div class="card q"><h2>The category is a guess</h2><p>No learned rule or built-in pattern matched, so it lands in Uncategorised or Other Income.</p></div>
+  </div>
+  <p style="font-size:20px;color:var(--dim);margin-top:18px">Either one puts the entry in the review queue. It still counts in totals, under a holding category, until I file it.</p>
+ </div>
+</div>
+<p class="note">The confidence number is stored with every entry. Today only the message tester shows it. The list shows the review flag instead.</p>

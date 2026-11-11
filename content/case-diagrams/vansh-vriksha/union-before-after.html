@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.pair{display:grid;grid-template-columns:640px 1fr;gap:56px}.pane h2{font-size:28px;font-weight:600;margin-bottom:4px}.pane p.s{font-size:21px;color:var(--dim);margin-bottom:18px}.bad h2{color:var(--warn)}svg text{font-family:'Case Sans',Arial,sans-serif}.box{fill:#fff;stroke:#CDBF9F;stroke-width:1.6}.nm{font-size:21px;font-weight:600;fill:#192B32}.yr{font-size:16px;fill:#59696D}.ln{stroke:#192B32;stroke-width:2;fill:none}.lab{font-size:16px;fill:#59696D}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">Decision 1, the problem in one picture</p><h1>Person A married twice. Which mother had which child?</h1>
+<div class="grow pair">
+<div class="pane bad"><h2>A plain tree</h2><p class="s">Children hang from one parent. All four look like full brothers and sisters.</p>
+<svg width="640" height="460" viewBox="0 0 640 460">
+<rect class="box" x="220" y="10" width="200" height="74" rx="10"/><text class="nm" x="240" y="44">Person A</text><text class="yr" x="240" y="68">years left out</text>
+<path class="ln" d="M320 84 V190 M80 190 H560 M80 190 V250 M240 190 V250 M400 190 V250 M560 190 V250"/>
+<g><rect class="box" x="10" y="250" width="140" height="74" rx="10"/><text class="nm" x="28" y="294">Child 1</text></g>
+<g><rect class="box" x="170" y="250" width="140" height="74" rx="10"/><text class="nm" x="188" y="294">Child 2</text></g>
+<g><rect class="box" x="330" y="250" width="140" height="74" rx="10"/><text class="nm" x="348" y="294">Child 3</text></g>
+<g><rect class="box" x="490" y="250" width="140" height="74" rx="10"/><text class="nm" x="508" y="294">Child 4</text></g>
+<text class="lab" x="10" y="370" style="fill:#B4472F;font-size:19px">Neither wife is on the page, so half-brothers</text><text class="lab" x="10" y="396" style="fill:#B4472F;font-size:19px">and half-sisters read as full ones.</text>
+</svg></div>
+<div class="pane"><h2>Children hang from a couple</h2><p class="s">Each marriage gets its own junction, and each set of children leaves from it.</p>
+<svg width="776" height="460" viewBox="0 0 776 460">
+<rect class="box" x="0" y="10" width="210" height="74" rx="10"/><text class="nm" x="20" y="44">Person B</text><text class="yr" x="20" y="68">1st wife</text>
+<rect class="box" x="283" y="10" width="210" height="74" rx="10" style="stroke:#8F6600;stroke-width:3"/><text class="nm" x="303" y="44">Person A</text><text class="yr" x="303" y="68">married twice</text>
+<rect class="box" x="566" y="10" width="210" height="74" rx="10"/><text class="nm" x="586" y="44">Person C</text><text class="yr" x="586" y="68">2nd wife</text>
+<path class="ln" d="M105 84 V112 H246 M330 84 V112 H246" stroke-dasharray="8 6"/>
+<path class="ln" d="M446 84 V112 H530 M671 84 V112 H530"/>
+<circle cx="246" cy="112" r="7" fill="#8F6600"/><circle cx="530" cy="112" r="7" fill="#8F6600"/>
+<text class="lab" x="234" y="150" text-anchor="end">1st marriage, ended</text><text class="lab" x="542" y="150">2nd marriage</text>
+<path class="ln" d="M246 112 V200 M85 200 H275 M85 200 V250 M275 200 V250"/>
+<path class="ln" d="M530 112 V222 M475 222 H675 M475 222 V250 M675 222 V250"/>
+<g><rect class="box" x="10" y="250" width="150" height="74" rx="10"/><text class="nm" x="28" y="294">Child 1</text></g>
+<g><rect class="box" x="200" y="250" width="150" height="74" rx="10"/><text class="nm" x="218" y="294">Child 2</text></g>
+<g><rect class="box" x="400" y="250" width="150" height="74" rx="10"/><text class="nm" x="418" y="294">Child 3</text></g>
+<g><rect class="box" x="600" y="250" width="150" height="74" rx="10"/><text class="nm" x="618" y="294">Child 4</text></g>
+<text class="lab" x="20" y="370" style="fill:#1E5B3A;font-size:19px">The first wife moves to the left, so each junction falls between the</text><text class="lab" x="20" y="396" style="fill:#1E5B3A;font-size:19px">two people in it. Each set of children leaves on its own line.</text>
+</svg></div>
+</div>
+<p class="note">A drawing of the layout rule, not a capture. Names are placeholders. The dashed line is how the product draws a marriage that ended, and it only does so for someone who married more than once.</p>

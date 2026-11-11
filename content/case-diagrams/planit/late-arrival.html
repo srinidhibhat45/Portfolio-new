@@ -1,0 +1,34 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x700">
+<style>
+.axis{position:relative;height:430px;margin:0 20px}
+.tick{position:absolute;top:0;bottom:40px;border-left:1.5px dashed var(--line)}
+.tick span{position:absolute;bottom:-40px;left:0;transform:translateX(-50%);font-size:20px;color:var(--dim);font-variant-numeric:tabular-nums}
+.row{position:absolute;left:0;right:0;height:62px}
+.row>b{position:absolute;left:0;top:-32px;font-size:20px;font-weight:600;color:var(--dim);letter-spacing:.06em;text-transform:uppercase}
+.blk{position:absolute;top:0;height:62px;border-radius:10px;display:flex;align-items:center;padding:0 18px;font-size:22px;white-space:nowrap}
+.pin{position:absolute;top:-8px;bottom:-8px;width:4px;background:var(--ink);border-radius:2px}
+</style>
+<body style="--accent:#C9500A;--wash:#FAE3D0">
+<p class="kicker">The fault the analyser has to catch</p><h1>Fifteen minutes on paper, over an hour and a half on the road</h1>
+<div class="grow">
+<div class="axis">
+<!-- scale: 08:45 = 0%, 11:15 = 100% (150 minutes) -->
+<div class="tick" style="left:10%"><span>09:00</span></div>
+<div class="tick" style="left:30%"><span>09:30</span></div>
+<div class="tick" style="left:50%"><span>10:00</span></div>
+<div class="tick" style="left:70%"><span>10:30</span></div>
+<div class="tick" style="left:90%"><span>11:00</span></div>
+<div class="row" style="top:50px"><b>What the schedule says</b>
+<div class="blk" style="left:0;width:20%;background:#E7ECEF;border:1.5px solid #59696D">Flight lands 09:15</div>
+<div class="blk" style="left:20%;width:10%;background:var(--good-wash);border:1.5px solid var(--good);justify-content:center;padding:0">15 min</div>
+<div class="blk" style="left:30%;width:70%;background:var(--wash);border:1.5px solid var(--accent)">Track B morning sessions, 09:30</div>
+</div>
+<div class="row" style="top:200px"><b>What the road says</b>
+<div class="blk" style="left:20%;width:63.3%;background:var(--warn-wash);border:1.5px solid var(--warn)">Airport to venue: 33 km, about 1 h 35 min by car</div>
+</div>
+<div class="row" style="top:300px">
+<div class="blk" style="left:30%;width:53.3%;border:2px dashed var(--warn);color:var(--warn);font-weight:600;justify-content:center">Short by about 80 minutes</div>
+</div>
+</div>
+</div>
+<p class="note">Times and distance as the app reports them for the sample trip, with the network off. The drive time is the app's own estimate, not a measured journey.</p>

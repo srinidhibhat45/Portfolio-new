@@ -1,0 +1,21 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x940">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:14px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:18px 20px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:5px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:40px}.back{margin-top:22px;padding:16px 22px;border:2px dashed var(--accent);border-radius:14px;font-size:20px;color:var(--ink);background:#fff}.back b{color:var(--accent)}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How it is put together</p><h1>Plain files in version control, read into one graph in memory</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm"><p>Stored</p>
+<div class="card hi"><h2>Family records</h2><p>One JSON file per family, kept in git. Every change has an author, a date and a reason.</p></div>
+<div class="card"><h2>Reference lists</h2><p>Gotras, family deities, mathas, places, communities, surname origins, temple photos with licences.</p></div>
+<div class="card"><h2>Queue and photographs</h2><p>Netlify Blobs, chosen from the environment. A laptop uses local folders.</p></div></div>
+<span class="arrow" style="align-self:center">→</span>
+<div class="colm"><p>When the site starts</p>
+<div class="card hi"><h2>The whole archive in memory</h2><p>People, the couples derived from them, family lines, generations and counts. Every question is a walk through this graph.</p></div>
+<div class="card"><h2>Search index</h2><p>Each name stored twice: as written and as its folded spelling key.</p></div>
+<div class="card"><h2>Data check</h2><p>Runs before every build. Errors stop the build.</p></div></div>
+<span class="arrow" style="align-self:center">→</span>
+<div class="colm"><p>Served</p>
+<div class="card"><h2>Pages built ahead of time</h2><p>Every person page and every directory page is plain HTML.</p></div>
+<div class="card"><h2>Tree viewer</h2><p>The layout code runs in the browser too, so re-centring on a person needs no trip to the server.</p></div>
+<div class="card"><h2>Open JSON endpoints</h2><p>Suggestions, a whole family line, a relationship, likely matches, and sending a submission.</p></div></div>
+</div>
+<div class="back"><b>The way back in:</b> a maintainer's approval is committed to the repository on GitHub, and the push rebuilds the site. Without that, writes on a serverless host would vanish on the next cold start.</div>

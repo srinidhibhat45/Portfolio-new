@@ -1,0 +1,14 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1260">
+<style>.shot{position:relative;border:1.5px solid var(--line)}.shot img{display:block;width:100%;height:auto}.dot{position:absolute;transform:translate(-50%,-50%);box-shadow:0 0 0 5px #fff}.legend{display:grid;grid-template-columns:1fr 1fr;gap:16px 44px;margin-top:28px}.legend div{display:grid;grid-template-columns:40px 1fr;gap:16px;align-items:start;font-size:22px;line-height:1.4}</style>
+<body style="--accent:#CC3562;--wash:#F9DFE6">
+<p class="kicker">A closer look</p><h1>A chart slide after import, with what it got right and wrong</h1>
+<div class="grow"><div class="shot"><img src="../../../assets/cases/deckforge/raw-chart-layers.webp" alt="">
+<span class="num dot" style="left:28.2%;top:24.2%">1</span><span class="num dot" style="left:92.4%;top:62.5%">2</span><span class="num dot" style="left:1.8%;top:59.8%">3</span><span class="num dot" style="left:1.8%;top:36%">4</span><span class="num dot" style="left:1.8%;top:67.6%">5</span></div>
+<div class="legend">
+<div><span class="num">1</span><span>A miss: the spaced-out label lost its word gaps. “Made-up numbers” came back as one long word.</span></div>
+<div><span class="num">2</span><span>Six bars, evenly spaced and alike, were merged into one chart object instead of six loose rectangles.</span></div>
+<div><span class="num">3</span><span>In the layer list the chart is one row, with a tiny bar chart as its thumbnail.</span></div>
+<div><span class="num">4</span><span>The month names came back as six separate captions, so each can be moved or animated.</span></div>
+<div><span class="num">5</span><span>A miss: the slide title was named Body, not Title. Roles are a best guess from size and position.</span></div>
+</div></div>
+<p class="note">A test file I made with sample text and made-up numbers.</p>

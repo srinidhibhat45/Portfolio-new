@@ -1,0 +1,37 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x920">
+<style>
+.wrap{display:grid;grid-template-columns:1fr 360px;gap:30px}
+.layers{display:flex;flex-direction:column;gap:10px}
+.L{display:grid;grid-template-columns:200px 1fr;gap:20px;align-items:center;padding:16px 20px;border-radius:14px;background:#fff;border:1.5px solid var(--line)}
+.L>b{font-size:21px;font-weight:700;color:var(--accent)}
+.L>div{display:flex;flex-wrap:wrap;gap:8px}
+.L .tag{font-size:17px}
+.L p{flex-basis:100%;font-size:18px;color:var(--dim);margin-top:2px}
+.v{text-align:center;color:var(--accent);font-size:22px;line-height:.7}
+.hi{background:var(--wash);border-color:var(--accent)}
+.side{display:flex;flex-direction:column;gap:14px}
+.card h2{font-size:22px}.card p{font-size:18px;margin-top:4px}
+.dash{border-style:dashed}
+</style>
+<body style="--accent:#1E5B3A;--wash:#DEEADF">
+<p class="kicker">How the app is put together</p>
+<h1>Screens never touch the database, and one token refreshes them all</h1>
+<div class="grow wrap">
+ <div class="layers">
+  <div class="L"><b>Screens</b><div><span class="tag">Home</span><span class="tag">Activity and review</span><span class="tag">Insights</span><span class="tag">Goals and budgets</span><span class="tag">Scores</span><span class="tag">Settings and tools</span><span class="tag">Onboarding</span></div></div>
+  <p class="v">↕</p>
+  <div class="L hi"><b>State</b><div><p style="margin:0;color:var(--ink)">Riverpod providers. After any write, one "data version" number goes up, and every view that depends on data reloads.</p></div></div>
+  <p class="v">↕</p>
+  <div class="L"><b>Domain logic</b><div><span class="tag">SMS parser</span><span class="tag">Dedupe key</span><span class="tag">Template skeleton</span><span class="tag">Categoriser</span><span class="tag">Scores</span><span class="tag">Recurring charges</span><span class="tag">CSV export</span><span class="tag">Subscriptions</span></div></div>
+  <p class="v">↕</p>
+  <div class="L"><b>Repositories</b><div><p style="margin:0;color:var(--ink)">One per table, with hand-written SQL. The only place SQL is allowed.</p></div></div>
+  <p class="v">↕</p>
+  <div class="L hi"><b>SQLite</b><div><p style="margin:0;color:var(--ink)">One local file. A unique index on the message key makes a second copy impossible.</p></div></div>
+ </div>
+ <div class="side">
+  <div class="card dash"><h2>Background capture</h2><p>Runs on its own when the app is closed, with its own database connection and no shared state. The app refreshes when it comes back to the front.</p></div>
+  <div class="card dash"><h2>Android side</h2><p>The SMS receiver is declared in the app's manifest. Updates are handed to Android's installer.</p></div>
+  <div class="card dash"><h2>Optional services</h2><p>Firebase for sign-in and backup. Groq for AI suggestions. Both are off until used.</p></div>
+ </div>
+</div>
+<p class="note">Flutter and Dart, Android only. iOS does not let apps read text messages, which is the core input.</p>

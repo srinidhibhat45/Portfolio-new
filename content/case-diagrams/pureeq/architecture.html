@@ -1,0 +1,25 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x800">
+<style>.colm{flex:1;display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:16px 20px}.card h2{font-size:23px}.card p{font-size:19px;margin-top:5px;line-height:1.4}.hi{border-color:var(--accent);background:var(--wash)}.v{text-align:center;color:var(--accent);font-size:26px;line-height:.7}.arrow{font-size:40px}.net{border-style:dashed}</style>
+<body style="--accent:#23357A;--wash:#E0E4F2">
+<p class="kicker">How it is put together</p><h1>Everything runs on the phone, around one profile</h1>
+<div class="grow row" style="gap:18px;align-items:stretch">
+<div class="colm"><p>Inside the app</p>
+<div class="card"><h2>Screens</h2><p>Jetpack Compose: setup, check, taste, fine-tune, export, settings.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Test sessions</h2><p>The listening check and taste test, each with its own model that picks the next question.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Audio engine</h2><p>Plays beeps and A/B music on its own sound thread, and stops 3 seconds after the last sound.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>The core</p>
+<div class="card hi"><h2>Profile</h2><p>Answers and choices only, saved on the phone.</p></div>
+<p class="v">↓</p>
+<div class="card hi"><h2>Curve maker</h2><p>Works out every curve and filter from the profile: correction, ear tuning, taste, mode, bass guard, preamp.</p></div>
+<p class="v">↓</p>
+<div class="card"><h2>Exporters</h2><p>Eight kinds of output, from slider values to impulse-response files for convolver apps.</p></div></div>
+<span class="arrow">→</span>
+<div class="colm"><p>Out to Android</p>
+<div class="card"><h2>Background service</h2><p>Holds Android's equaliser effect on the output mix, one switch per output. Shows a notification.</p></div>
+<div class="card"><h2>Quick Settings tile</h2><p>On, off, profile and Fine-tune from the swipe-down panel.</p></div>
+<div class="card net"><h2>Only two trips online</h2><p>AutoEq's public headphone data when you look up a model, and the GitHub build's check for its own updates.</p></div></div>
+</div>
+<p class="note">No account, no analytics, no server of my own. Kotlin and AndroidX only, with no other libraries at run time.</p>

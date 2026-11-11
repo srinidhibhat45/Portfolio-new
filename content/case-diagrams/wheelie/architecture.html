@@ -1,0 +1,26 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x1000"><style>.colm{flex:1;display:flex;flex-direction:column;gap:12px}.colm>p{font-size:18px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim)}.card{padding:16px 20px}.card h2{font-size:22px}.card p{font-size:18px;margin-top:4px}.hi{border-color:var(--accent);background:var(--wash)}.arrow{font-size:38px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">How it is put together</p><h1>Every service is free, and each sits behind a small swappable part</h1>
+<div class="grow row" style="gap:16px;align-items:stretch">
+<div class="colm"><p>On the phone</p>
+<div class="card hi"><h2>Flutter app</h2><p>One codebase for Android and the web. Map, Voice and Rides tabs.</p></div>
+<div class="card"><h2>Ride, group and voice state</h2><p>Held in Riverpod. The screens only read it.</p></div>
+<div class="card"><h2>Ride history</h2><p>Saved on the phone. Nothing about past rides leaves it unless you share a card.</p></div>
+<div class="card"><h2>Stand-ins</h2><p>Without backend keys, a pretend group, pretend voice and simulated GPS take over.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Free public services</p>
+<div class="card"><h2>Map tiles</h2><p>OpenStreetMap, credited on screen.</p></div>
+<div class="card"><h2>Search</h2><p>Photon, with Nominatim as fallback.</p></div>
+<div class="card"><h2>Routing</h2><p>Valhalla with motorcycle costing. OSRM as fallback.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Supabase, free tier</p>
+<div class="card"><h2>Sign-in</h2><p>Email and password, one stable id per rider.</p></div>
+<div class="card"><h2>Groups and members</h2><p>Postgres tables with access rules in the database. Only members can read a group.</p></div>
+<div class="card hi"><h2>Live positions</h2><p>Sent as presence messages and never written to the database. No location history is kept.</p></div>
+<div class="card"><h2>Voice setup</h2><p>A broadcast channel for phones to find each other.</p></div></div>
+<span class="arrow">↔</span>
+<div class="colm"><p>Between riders</p>
+<div class="card"><h2>WebRTC audio</h2><p>Phone to phone, planned for up to 6 riders.</p></div>
+<div class="card"><h2>STUN and TURN</h2><p>Free public servers to connect phones across networks.</p></div></div>
+</div>
+<p class="note">Anything that talks to the network lives behind one small class, so a free server can be swapped for a self-hosted one without touching the screens.</p>

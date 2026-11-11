@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="../diagram.css"><meta name="diagram-size" content="1600x900">
+<style>.two{display:grid;grid-template-columns:1.25fr 1fr;gap:28px}.card h2{font-size:26px;display:flex;align-items:center;gap:12px}.card ul{gap:10px;margin-top:16px}.card li{font-size:21px;color:var(--ink)}.err{border-color:var(--warn);background:#fff}.err li::before{background:var(--warn)}.wrn li::before{background:var(--accent)}.pill{font-size:16px;padding:4px 12px;border-radius:99px;font-weight:600}.e{background:var(--warn-wash);color:var(--warn)}.w{background:var(--wash);color:var(--accent)}.grp{font-size:17px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--dim);margin-top:16px}</style>
+<body style="--accent:#8F6600;--wash:#F7EBC6">
+<p class="kicker">The build</p><h1>The data check reads the whole graph before anything ships</h1>
+<div class="grow two">
+<div class="card err"><h2>Errors <span class="pill e">the build stops</span></h2>
+<p class="grp">Broken references</p><ul><li>A parent or spouse link points at nobody</li><li>A gotra, matha, deity or home village the lists do not know</li><li>Father and mother are the same person, or someone is their own parent</li><li>A temple photograph that has lost its photographer or licence</li></ul>
+<p class="grp">Impossible dates and loops</p><ul><li>Died before being born, or born in the future</li><li>A parent under 12 at the birth, or a child born after the mother died</li><li>Married under the age of 10, or after dying</li><li>Someone who ends up as their own ancestor</li></ul></div>
+<div class="card wrn"><h2>Warnings <span class="pill w">reported only</span></h2><ul><li>A life longer than 115 years</li><li>A parent over 65 at the birth</li><li>Born more than a year after the father died</li><li>Marked living, with a death year</li><li>Names people proposed that no maintainer has confirmed yet</li></ul>
+<p style="margin-top:22px;font-size:20px">Warnings do not block anything. Real families produce records that look wrong and are not.</p></div>
+</div>
+<p class="note">None of these show when you read one record. All of them show when you check the graph. The list is from the check's own code.</p>
