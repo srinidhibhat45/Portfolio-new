@@ -163,6 +163,7 @@ export function createAudio() {
       if (ctx) his.bus.gain.setTargetAtTime(0.32 * near, ctx.currentTime, 0.1);
     },
     get rpm() { return me.box.rpm; },
+    get gear() { return me.box.gear; },
     get state() { return ctx ? ctx.state : 'none'; },
     get gear() { return me.box.gear + 1; },
     get muted() { return muted; },

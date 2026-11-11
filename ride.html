@@ -8,7 +8,7 @@
   <title>Sunday Ride · Srinidhi Bhat</title>
   <meta name="description" content="A small pixel race through the Western Ghats, tucked away in Srinidhi Bhat's portfolio. Beat Shri to the top.">
   <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-2">
+  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-4">
 </head>
 <body class="ride" data-mode="title">
   <header class="ride-bar">
@@ -24,7 +24,7 @@
     <h1 class="sr-only">Sunday Ride: beat Shri to the top of the ghat</h1>
 
     <div class="ride-stage" id="rideStage">
-      <canvas id="rideCanvas" width="320" height="200" tabindex="-1" role="img" aria-label="A pixel-art motorcycle race seen from behind your red bike, on a winding road through green hills. Shri rides the blue bike with the red bag."></canvas>
+      <canvas id="rideCanvas" width="320" height="200" tabindex="-1" role="img" aria-label="A pixel-art motorcycle race seen from behind your red bike, on a winding road through green hills. Shri rides Sky, the blue bike with the red bag."></canvas>
     </div>
 
     <div class="ride-pad" id="ridePad" hidden>
@@ -39,12 +39,25 @@
       </div>
     </div>
 
-    <section class="ride-panel" id="rideTitle" aria-labelledby="rideLogoText">
+    <section class="ride-panel" id="rideIntro" aria-labelledby="rideIntroTitle">
+      <div class="ride-card ride-card--intro">
+        <canvas class="ride-portrait" id="ridePortrait" width="150" height="74" role="img" aria-label="Pixel picture of Shri standing beside Sky, a deep blue Honda CB350 with a brown seat and chrome exhaust, by a lake with green hills behind."></canvas>
+        <p class="ride-tag">Shri and Sky</p>
+        <h2 class="ride-head" id="rideIntroTitle">I love to ride</h2>
+        <p class="ride-blurb">I'm Shri. My bike is Sky, a Honda CB350 H'ness Legacy Edition in deep blue, with a brown seat and a lot of chrome. We ride around Goa, down the coast on NH 66, and up into the Western Ghats, where the roads start to twist.</p>
+        <p class="ride-blurb">Sunday Ride is one of those rides, in pixels. I'm on Sky with the red bag on the back, and I know every bend. Catch me if you can.</p>
+        <div class="ride-row">
+          <button type="button" class="ride-btn" id="rideNext" data-first>Let's ride</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="ride-panel" id="rideTitle" aria-labelledby="rideLogoText" hidden>
       <div class="ride-card">
         <canvas class="ride-logo" id="rideLogo" width="46" height="7" aria-hidden="true"></canvas>
         <h2 class="sr-only" id="rideLogoText">Sunday Ride</h2>
         <p class="ride-tag">Beat Shri to the top of the ghat</p>
-        <p class="ride-blurb">A pixel run through the Western Ghats. Shri is on the blue 350 with the red bag, and he knows these roads.</p>
+        <p class="ride-blurb">Three stages: the coast highway, the climb through the ghat, and the misty top. Lorries, buses and the odd cow share the road. Shri and Sky start ahead of you.</p>
         <dl class="ride-keys ride-keys--desk">
           <div><dt>Arrows or WASD</dt><dd>steer, gas, brake</dd></div>
           <div><dt>H or Space</dt><dd>horn (traffic and cows move over)</dd></div>
@@ -61,6 +74,7 @@
           <p class="ride-error" id="ridePlateError" role="alert" hidden></p>
         </form>
         <p class="ride-best" id="rideBest"></p>
+        <button type="button" class="ride-link ride-link--btn" id="rideBackToIntro">Meet Shri and Sky again</button>
       </div>
     </section>
 
@@ -93,6 +107,6 @@
 
   <p class="sr-only" id="rideLive" aria-live="polite"></p>
   <noscript><p class="ride-noscript">This little game needs JavaScript. <a href="index.html#contact">Back to the portfolio</a></p></noscript>
-  <script type="module" src="js/ride/main.js?v=20261112-ride-2"></script>
+  <script type="module" src="js/ride/main.js?v=20261112-ride-3"></script>
 </body>
 </html>

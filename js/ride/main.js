@@ -1,10 +1,10 @@
 // Sunday Ride: the page glue. Screens, input, the fixed-step loop and the debug flags.
 
-import { createGame, resetGame, step, autopilot, shriLead, STEP, RIDERS, MAX_SPEED } from './sim.js?v=20261112-ride-2';
-import { buildArt, drawSheet } from './sprites.js?v=20261112-ride-2';
-import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261112-ride-2';
-import { createAudio, auditEngine } from './audio.js?v=20261112-ride-2';
-import { drawText, textWidth } from './font.js?v=20261112-ride-2';
+import { createGame, resetGame, step, autopilot, shriLead, STEP, RIDERS, MAX_SPEED } from './sim.js?v=20261112-ride-3';
+import { buildArt, drawSheet, drawPortrait } from './sprites.js?v=20261112-ride-3';
+import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261112-ride-3';
+import { createAudio, auditEngine } from './audio.js?v=20261112-ride-3';
+import { drawText, textWidth } from './font.js?v=20261112-ride-3';
 
 const BEST = 'portfolio-ride-best', PLATE = 'portfolio-ride-plate';
 // The plate is four characters, A to Z and 0 to 9. It is kept in this browser only.
@@ -43,10 +43,10 @@ function run() {
   const audio = createAudio();
   const g = createGame();
   const main = $('rideMain'), pad = $('ridePad');
-  const panels = { title: $('rideTitle'), paused: $('ridePaused'), finish: $('rideFinish') };
+  const panels = { intro: $('rideIntro'), title: $('rideTitle'), paused: $('ridePaused'), finish: $('rideFinish') };
   const live = $('rideLive'), muteBtn = $('rideMute'), pauseBtn = $('ridePause');
   const demo = flag('demo');
-  let mode = 'title';            // title | ride | paused | finish
+  let mode = 'title';            // title (the intro and the pre-race card) | ride | paused | finish
   let attract = true;            // the autopilot rides behind the title
   let acc = 0, lastNow = 0, shake = 0, finishAt = 0, stopped = false, hudTop = 0;
 
@@ -100,7 +100,7 @@ function run() {
     if (e.code === 'KeyP' || e.code === 'Escape') { if (mode === 'ride') pause(); else if (mode === 'paused') resume(); }
     else if (e.code === 'KeyM') setMuted(!audio.muted);
     else if (e.code === 'Enter' && e.target.tagName !== 'BUTTON' && e.target.tagName !== 'A') {
-      if (mode === 'title') tryStart(); else if (mode === 'finish') startRide(); else if (mode === 'paused') resume();
+      if (mode === 'title') { if (!panels.intro.hidden) show('title'); else tryStart(); } else if (mode === 'finish') startRide(); else if (mode === 'paused') resume();
     }
   });
   window.addEventListener('keyup', e => { const k = KEYMAP[e.code]; if (k) { keys[k] = false; if (mode === 'ride') e.preventDefault(); } });
@@ -269,7 +269,7 @@ function run() {
     const live2 = mode !== 'paused';
     if (live2) advance(dt);
     if (mode === 'ride' && finishAt && now >= finishAt) finish();
-    renderer.draw(g, { dt: live2 ? dt : 0, hud: !attract, reduced, hudTop });
+    renderer.draw(g, { dt: live2 ? dt : 0, hud: !attract, reduced, hudTop, rpm: audio.rpm, gear: audio.gear });
     if (shake > 0) {
       shake -= dt;
       const k = reduced || shake <= 0 ? 0 : 3;
@@ -285,7 +285,12 @@ function run() {
 
   // ---- start-up, with the debug flags --------------------------------------
   g.phase = 'ride';                       // attract mode has no countdown
-  show('title');
+  // The intro picture: Shri and Sky, drawn in the game's own pixels.
+  const portrait = drawPortrait(), pc = $('ridePortrait');
+  pc.width = portrait.width; pc.height = portrait.height; pc.getContext('2d').drawImage(portrait, 0, 0);
+  $('rideNext').addEventListener('click', () => show('title'));
+  $('rideBackToIntro').addEventListener('click', () => show('intro'));
+  show(flag('autostart') || q.get('screen') || q.get('intro') === '0' ? 'title' : 'intro');
   if (flag('autostart')) { if (plate.length !== 4) { plate = 'RIDR'; art.setPlate(plate); } startRide(); }
   const skip = Math.max(0, Math.min(600, parseFloat(q.get('t')) || 0));
   if (skip) {

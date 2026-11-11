@@ -1,7 +1,7 @@
 // Sunday Ride: the renderer. A segment-projected road drawn one scanline at a time so every edge stays on the pixel grid.
 
-import { SEG, MAX_SPEED, WALL_H, WALL_AT, RAIL_AT, SCENERY, VEHICLES, RIDERS, kmh, progress, shriLead } from './sim.js?v=20261112-ride-2';
-import { drawText, drawTextShadow, textWidth } from './font.js?v=20261112-ride-2';
+import { SEG, MAX_SPEED, WALL_H, WALL_AT, RAIL_AT, SCENERY, VEHICLES, RIDERS, kmh, progress, shriLead } from './sim.js?v=20261112-ride-3';
+import { drawText, drawTextShadow, textWidth } from './font.js?v=20261112-ride-3';
 
 export const VIEW_W = 320;
 const W = VIEW_W;
@@ -231,13 +231,39 @@ export function createRenderer(canvas, art) {
   function note(text, seconds = 1.4) { toast = { text, left: seconds }; }
   function clear() { says.length = 0; toast = null; dust.length = 0; }
 
+  // ---- dials ----
+  function disc(cx, cy, r, col) {
+    for (let dy = -r; dy <= r; dy++) { const hw = Math.floor(Math.sqrt(r * r + r * 0.6 - dy * dy)); fill(cx - hw, cy + dy, hw * 2 + 1, 1, col); }
+  }
+  function seg(x0, y0, x1, y1, col) {
+    const n = Math.ceil(Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0))) || 1;
+    for (let k = 0; k <= n; k++) fill(Math.round(x0 + (x1 - x0) * k / n), Math.round(y0 + (y1 - y0) * k / n), 1, 1, col);
+  }
+  const A0 = Math.PI * 1.25, SWEEP = Math.PI * 1.5;
+  function dial(cx, cy, r, frac, max, major, minor, red, value, label) {
+    disc(cx, cy, r + 1, INK); disc(cx, cy, r, '#2a2320'); disc(cx, cy, r - 1, '#1d1816');
+    for (let k = 0; k * minor <= max + 1e-6; k++) {
+      const val = k * minor, a = A0 - SWEEP * val / max, big = Math.abs(val / major - Math.round(val / major)) < 1e-6;
+      const col = red != null && val >= red ? '#e0442e' : big ? CREAM : '#a89a8c';
+      const r0 = r - (big ? 5 : 3);
+      seg(cx + Math.cos(a) * r0, cy - Math.sin(a) * r0, cx + Math.cos(a) * (r - 2), cy - Math.sin(a) * (r - 2), col);
+    }
+    const a = A0 - SWEEP * clamp(frac, 0, 1);
+    seg(cx, cy, cx + Math.cos(a) * (r - 3), cy - Math.sin(a) * (r - 3), '#ff5a3c');
+    seg(cx + 1, cy, cx + 1 + Math.cos(a) * (r - 6), cy - Math.sin(a) * (r - 6), '#ff5a3c');
+    fill(cx - 1, cy - 1, 3, 3, CREAM);
+    drawText(ctx, value, cx, cy + Math.round(r * 0.42), CREAM, 1, 'center');
+    drawTextShadow(ctx, label, cx, cy + r + 4, CREAM, 1, 'center', INK);
+  }
+
   function hud(g, o) {
     // Bigger type on the taller phone canvas, where each game pixel is drawn smaller.
     const B = H > 220 ? 3 : 2, S = H > 220 ? 2 : 1, top = 6 + (o.hudTop || 0);
-    // speed, top left
-    const v = String(kmh(g));
-    drawTextShadow(ctx, v, 6, top, CREAM, B, 'left', INK);
-    drawTextShadow(ctx, 'KM/H', 9 + textWidth(v, B), top + 5 * (B - S), CREAM, S, 'left', INK);
+    // speedometer and rev counter, top left: two round dials like the bike's own
+    const R = H > 220 ? 19 : 16, cy = top + R + 1, c1 = 7 + R, c2 = c1 + 2 * R + 8;
+    const v = kmh(g);
+    dial(c1, cy, R, v / 140, 140, 20, 10, null, String(v), 'KM/H');
+    dial(c2, cy, R, (o.rpm || 1000) / 6000, 6, 1, 0.5, 5, 'G' + ((o.gear || 0) + 1), 'RPM');
     // place and time, top right
     const place = `${g.place}/${RIDERS}`;
     drawTextShadow(ctx, place, W - 6, top, CREAM, B, 'right', INK);
