@@ -103,7 +103,7 @@ export function createBoard({ $, onRide, onBack }) {
     }
     const beaten = data.top.filter(r => r.time < data.shri.time).length;
     status.textContent = !data.top.length ? 'Nobody on the board yet. Ride to the viewpoint and be the first.'
-      : `${data.total} ${data.total === 1 ? 'rider' : 'riders'} on the board. ${beaten ? `${beaten} of the top ${data.top.length} beat Shri's best.` : "Nobody has beaten Shri's best yet."}`;
+      : `${data.total} ${data.total === 1 ? 'rider' : 'riders'} on the board. ${beaten ? `${beaten} of the top ${data.top.length} beat Shri's best run.` : `Shri's best run is ${fmt(data.shri.time)}. Nobody has beaten it yet.`}`;
   }
 
   async function open(back, preloaded) {

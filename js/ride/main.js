@@ -5,7 +5,7 @@ import { buildArt, drawSheet, drawPortrait } from './sprites.js?v=20261112-ride-
 import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261112-ride-3';
 import { createAudio, auditEngine } from './audio.js?v=20261112-ride-3';
 import { drawText, textWidth } from './font.js?v=20261112-ride-3';
-import { createBoard } from './board.js?v=20261112-ride-4';
+import { createBoard } from './board.js?v=20261112-ride-6';
 
 const BEST = 'portfolio-ride-best', PLATE = 'portfolio-ride-plate';
 // The plate is four characters, A to Z and 0 to 9. It is kept in this browser only.
@@ -170,8 +170,11 @@ function run() {
     document.body.dataset.mode = mode;
     if (name) {
       // On the title, a keyboard user with no plate yet starts in the plate box; a phone never gets its keyboard thrown open.
+      // Every panel opens at its top. On a touch screen nothing is focused for you: some phone browsers scroll a
+      // focused button into view anyway, which used to open the intro halfway down, with its picture cut off.
+      panels[name].scrollTop = 0;
       const first = name === 'title' && plate.length !== 4 && !coarse ? plateInput : panels[name].querySelector('[data-first]');
-      if (first && !flag('freeze')) first.focus({ preventScroll: true });
+      if (first && !coarse && !flag('freeze')) first.focus({ preventScroll: true });
     }
     else canvas.focus({ preventScroll: true });   // so Space is the horn, not a press of whichever button had focus
   }
@@ -208,10 +211,11 @@ function run() {
     mode = 'finish';
     const { time, place, beat, margin } = g.finish;
     const by = margin.toFixed(1);
-    const result = beat ? `${plate} beat Shri by ${by} s` : `Shri got there first, by ${by} s. He knows these roads.`;
+    const result = beat ? `${plate} beat Shri by ${by}\u00a0s` : `Shri got there first, by ${by}\u00a0s. He knows these roads.`;
     $('rideFinishTitle').textContent = result;
-    const best = readBest(), fresh = !best || time < best;
-    if (fresh) { try { localStorage.setItem(BEST, time.toFixed(2)); } catch { /* ignore */ } }
+    // The debug finish screen (?screen=finish) shows a made-up result: it never becomes your best.
+    const best = readBest(), fresh = !best || time < best, real = q.get('screen') !== 'finish' && !assisted;
+    if (fresh && real) { try { localStorage.setItem(BEST, time.toFixed(2)); } catch { /* ignore */ } }
     $('ridePlace').textContent = `${ordinal(place).toLowerCase()} of ${RIDERS}`;
     $('rideTime').textContent = formatTime(time);
     $('rideRecord').textContent = fresh ? (best ? 'New best run.' : 'Your first finish.') : `Your best ${formatTime(best)}`;

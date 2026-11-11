@@ -371,12 +371,13 @@ body.ride {
 .ride-scores tbody tr.is-shri { background: #1d2f66; color: #cfe0ff; box-shadow: inset 4px 0 0 #6f8fe0; }
 .ride-scores tr.is-shri td:first-child { color: var(--gold); font-size: 15px; }
 .ride-scores tbody tr.is-you { background: var(--kaavi); color: var(--cream); box-shadow: inset 0 0 0 2px var(--gold); }
-.ride-scores tr.is-you th::before { content: "▶ "; color: var(--gold); animation: ride-blink 1s steps(1) infinite; }
+/* Your rank blinks, arcade style; a marker before the name would push it out of line with the others. */
+.ride-scores tr.is-you td:first-child { color: var(--gold); animation: ride-blink 1s steps(1) infinite; }
 .ride-scores tbody tr.is-gap { background: none; }
 .ride-scores tr.is-gap td { padding: 0; color: rgba(246, 240, 228, .5); text-align: center; letter-spacing: .4em; }
 .ride-board-status { margin: 0 0 14px; }
 @keyframes ride-blink { 50% { opacity: 0; } }
-@media (prefers-reduced-motion: reduce) { .ride-scores tr.is-you th::before { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .ride-scores tr.is-you td:first-child { animation: none; } }
 
 /* phones: tighter rows, the plate chip shrinks, names truncate */
 .is-portrait .ride-scores th, .is-portrait .ride-scores td { padding: 5px 4px; font-size: 12px; }
@@ -390,3 +391,39 @@ body.ride {
 .is-portrait .ride-scores thead th { letter-spacing: .06em; }
 .is-short .ride-scores th, .is-short .ride-scores td { padding-block: 3px; }
 .is-short .ride-card--board .ride-tag { display: none; }
+
+/* Phones held upright: the intro, the finish card and the leaderboard are taller than the space under the
+   picture, and there is no race to watch while they show, so they cover the whole game area (centred when
+   they fit, from the top when they don't). Shorter phones get a smaller portrait. */
+.is-portrait :is(#rideIntro, #rideFinish, #rideBoard) { top: 0; align-items: start; align-items: safe center; }
+.is-portrait .ride-card--intro { padding-top: 16px; }
+@media (max-height: 700px) {
+  .is-portrait .ride-portrait { width: min(280px, 100%); margin-bottom: 8px; }
+  .is-portrait .ride-card--intro .ride-head { font-size: 17px; margin-bottom: 6px; }
+  .is-portrait .ride-card--intro .ride-blurb { font-size: 12px; margin-bottom: 8px; }
+}
+@media (max-height: 600px) {
+  .is-portrait .ride-portrait { width: min(230px, 100%); }
+  .is-portrait .ride-card--intro { padding-top: 12px; padding-bottom: 12px; }
+}
+/* A full board (ten riders, Shri and maybe your own row below) fits an upright phone without scrolling. */
+.is-portrait #rideBoard .ride-card { padding-top: 12px; padding-bottom: 12px; }
+.is-portrait #rideBoard .ride-tag { margin-bottom: 4px; }
+.is-portrait #rideBoard .ride-head { font-size: 16px; margin-bottom: 8px; }
+.is-portrait #rideBoard .ride-scores th, .is-portrait #rideBoard .ride-scores td { padding-block: 4px; }
+.is-portrait #rideBoard .ride-board-status { margin: 8px 0 10px; }
+
+/* Any panel taller than the screen starts at its top (a plain centre would push its top out of reach). */
+.ride-panel { align-items: safe center; }
+/* Phones on their side: the intro's picture and words sit side by side, so "Let's ride" stays on screen. */
+.is-short .ride-card--intro {
+  display: grid;
+  grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+  column-gap: 18px;
+  align-items: center;
+  width: min(760px, 100%);
+  text-align: left;
+}
+.is-short .ride-card--intro > * { grid-column: 2; }
+.is-short .ride-card--intro > .ride-portrait { grid-column: 1; grid-row: 1 / span 5; width: 100%; margin: 0; }
+.is-short .ride-card--intro .ride-row { justify-content: flex-start; }
