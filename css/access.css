@@ -377,6 +377,8 @@ html[data-access="on"] body .heritage-footer > a { display: inline-flex !importa
 
 /* ---- Project cards: a wrapped grid, nothing scrolls sideways ---- */
 html[data-access="on"] body .cover-grid { display: grid !important; grid-template-columns: repeat(auto-fill, minmax(min(100%, 17rem), 1fr)) !important; gap: 1.25rem !important; margin: 1.5rem 0 !important; }
+/* The rails fade their edges in the normal site (css/covers.css); here every card is plainly in view. */
+html[data-access="on"] body .cover-grid { -webkit-mask-image: none !important; mask-image: none !important; }
 html[data-access="on"] body .cover-card { display: block !important; padding: 1rem !important; border: 2px solid var(--a-ink) !important; border-radius: 8px !important; color: var(--a-ink) !important; text-decoration: none !important; }
 html[data-access="on"] body .cover-card:hover { background: var(--a-panel) !important; }
 html[data-access="on"] body .cover-card img { display: block !important; width: 100% !important; margin: 0 0 .75rem !important; border-radius: 4px !important; }

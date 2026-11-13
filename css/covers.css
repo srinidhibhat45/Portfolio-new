@@ -1,6 +1,6 @@
 /* Cover cards: one system for design case studies and built products.
-   Each section is a single row that scrolls sideways and runs off the right edge
-   of the page, so the next card is always in view as a cue to keep going. */
+   Each section is a single row that scrolls sideways and runs past the content margins,
+   fading out towards the window edge, so the next card is always in view as a cue to keep going. */
 
 .cover-grid {
   display: grid;
@@ -14,20 +14,22 @@
   overscroll-behavior-x: contain;
   scroll-padding-inline: var(--pad-x);
   scroll-snap-type: x proximity;
-  /* The arrows and the card running off the edge show the way; the bar itself is not drawn. */
+  /* The arrows and the cards fading off the edges show the way; the bar itself is not drawn. */
   scrollbar-width: none;
+  /* Like the strip of covers in the hero: whatever runs past the content margins fades out towards the
+     window's edge, so there is always a faint next (or previous) card saying the row goes on. The cards
+     inside the margins are untouched. */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 var(--pad-x), #000 calc(100% - var(--pad-x)), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 var(--pad-x), #000 calc(100% - var(--pad-x)), transparent);
 }
 .cover-grid::-webkit-scrollbar { display: none; }
-/* On screens wider than the page column the row stays inside the column: three whole cards,
-   their edges in line with the heading and the arrows. */
+/* On screens wider than the page column: three whole cards in the column, their edges in line with the
+   heading and the arrows, and the neighbours faded in the margins on either side (owner, 2026-11-13: on a
+   large screen there was no sign the row scrolled). */
 @media (min-width: 1440px) {
   .cover-grid {
     grid-auto-columns: calc((100% - 48px) / 3);
     gap: 24px;
-    /* 4px of room so a focus ring on the first or last card is not cut off. */
-    margin-inline: -4px;
-    padding-inline: 4px;
-    scroll-padding-inline: 4px;
   }
 }
 /* A mouse can drag the rail; snapping waits until the drag ends. */

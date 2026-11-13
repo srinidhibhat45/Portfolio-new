@@ -1,7 +1,7 @@
 // Sunday Ride: every picture in the game, drawn in code onto small canvases.
 // Nothing here loads a file. Sprites are built once at start-up and scaled by the renderer.
 
-import { drawText, drawPlate, textWidth } from './font.js?v=20261112-ride-3';
+import { drawText, drawPlate, textWidth } from './font.js?v=20261113-thar-2';
 
 function blank(w, h) {
   const c = document.createElement('canvas');
@@ -250,6 +250,37 @@ function hatch(front, v) {
     P.r(13, 14, 15, 4, '#2a2a30').r(13, 16, 15, 1, C.chromeLo);
     P.r(15, 21, 11, 3, C.plate);
   }
+  return P.c;
+}
+
+// The Thar: a tall box on fat tyres, hard top, spare wheel on the tailgate, round lamps up front.
+// Every one of them carries the same plate.
+export const THAR_PLATE = 'FRCS';
+function thar(front, v) {
+  const P = new Pen(43, 39);
+  const col = ['#b3241e', '#1f2024', '#e9e6de', '#3d5a3a'][v % 4], lo = ['#7a1712', '#111114', '#b9b5a8', '#283d27'][v % 4];
+  const hi = ['#e04a3e', '#4a4b55', '#ffffff', '#5f8159'][v % 4], top = '#1c1c21', clad = '#26262b';
+  P.s(4, 30, 8, 9, C.tyre).s(5, 32, 6, 1, C.tyreHi).s(5, 35, 6, 1, C.tyreHi);
+  P.s(0, 10, 3, 3, C.ink);                                     // mirrors
+  P.r(6, 1, 31, 12, top).cuts(6, 1).r(8, 1, 27, 1, '#3a3a42');
+  P.r(3, 12, 37, 17, col).cuts(3, 12).r(4, 12, 35, 1, hi).r(3, 25, 37, 4, lo);
+  P.s(1, 22, 4, 9, clad);                                      // wheel-arch cladding
+  P.r(2, 29, 39, 4, '#2a2a30').r(2, 29, 39, 1, '#3a3a42');
+  if (!front) {
+    P.r(9, 3, 25, 8, C.glassLo).line(12, 9, 17, 4, C.glass).line(14, 10, 19, 5, C.glass);
+    P.s(3, 14, 3, 7, C.lamp).s(3, 14, 3, 1, '#e8584e').s(3, 21, 3, 2, C.amber);
+    P.disc(21, 18, 6, C.tyre).disc(21, 18, 4, '#2e2e35').disc(21, 18, 3, C.chromeLo).disc(21, 18, 1, C.chromeHi);
+    P.r(20, 35, 3, 2, '#3a3a42');                              // tow hook
+  } else {
+    P.r(7, 4, 29, 8, C.glassLo).r(7, 4, 1, 8, top).r(35, 4, 1, 8, top);
+    P.line(10, 10, 15, 5, C.glass).line(12, 11, 18, 5, C.glass).line(27, 10, 31, 6, C.glass);
+    P.r(4, 13, 35, 2, hi);                                     // bonnet edge
+    for (let k = 0; k < 6; k++) P.r(13 + k * 3, 16, 2, 7, '#1d1d22');
+    P.disc(8, 19, 3, C.light).disc(8, 19, 1, C.lightHi).disc(34, 19, 3, C.light).disc(34, 19, 1, C.lightHi);
+    P.s(5, 30, 3, 2, C.amber);
+  }
+  P.r(11, 26, 21, 9, C.ink).r(12, 27, 19, 7, C.plate);
+  drawPlate(P.g, THAR_PLATE, 14, 28, C.ink);
   return P.c;
 }
 
@@ -546,6 +577,7 @@ export function buildArt() {
       bus: { rear: set(v => bus(false, v)), front: set(v => bus(true, v)) },
       auto: { rear: [auto(false)], front: [auto(true)] },
       car: { rear: set(v => hatch(false, v)), front: set(v => hatch(true, v)) },
+      thar: { rear: set(v => thar(false, v)), front: set(v => thar(true, v)) },
       scooter: { rear: set(scooter), front: set(scooter) },
       cow: { rear: set(cow), front: set(cow) },
     },

@@ -1,7 +1,11 @@
 /* Scroll life (js/scroll-life.js): the hidden start state, and the entrances drawn on pseudo-elements.
    Nothing here applies until the script has marked an element, so the page reads fine without it. */
 
-.life-wait { opacity: 0; }
+/* Only where entrances can play. Elsewhere (reduced motion, print, access mode) a marked element simply keeps its
+   own opacity: the chapter art rests faint, so forcing everything back to 1 used to show it at full strength. */
+@media screen and (prefers-reduced-motion: no-preference) {
+  html:not([data-access="on"]) .life-wait { opacity: 0; }
+}
 
 /* The Kalamkari cloth is laid down under the notebook. */
 .writing-desk.life-css-wait::before { opacity: 0; }
@@ -28,11 +32,8 @@
 
 /* Reduced motion, access mode and print: everything simply shows. */
 @media (prefers-reduced-motion: reduce) {
-  .life-wait { opacity: 1 !important; }
   .life-css-wait::before, .life-css-wait::after, .life-css-play::before, .life-css-play::after { opacity: 1 !important; clip-path: none !important; animation: none !important; }
 }
 @media print {
-  .life-wait { opacity: 1 !important; }
   .life-css-wait::before, .life-css-wait::after { opacity: 1 !important; clip-path: none !important; }
 }
-html[data-access="on"] .life-wait { opacity: 1 !important; }

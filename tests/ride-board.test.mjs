@@ -29,13 +29,17 @@ function harness() {
   return { store, run, post, start, wait: s => { clock += s * 1000; }, as: who => { ip = who; } };
 }
 
-test('the course floor and the pinned Shri time match the game itself', () => {
+test('the course floor, Shri\'s race pace and his pinned best run fit together', () => {
   const g = createGame();
   assert.ok((g.route.finishZ - g.player.z) / MAX_SPEED >= MIN_TIME, 'no real ride can beat the floor');
-  // Shri's pinned time is his pace when a very good rider pushes him all the way.
+  // In a race, Shri rides at about 2:45 when a very good rider pushes him all the way (his race pace).
+  const RACE_PACE = 165.5;
   let n = 0; while ((g.shriAt == null || !g.finish) && n++ < 60 * 600) step(g, autopilot(g, 1));
-  assert.ok(Math.abs(g.shriAt - SHRI_TIME) < 1.5, `Shri rode ${g.shriAt}`);
+  assert.ok(Math.abs(g.shriAt - RACE_PACE) < 1.5, `Shri rode ${g.shriAt}`);
   assert.ok(g.finish.time > MIN_TIME);
+  // The board pins his best run, 2:37.10: a real time on this course, and quicker than his race pace.
+  assert.equal(SHRI_TIME, 157.1);
+  assert.ok(SHRI_TIME > MIN_TIME && SHRI_TIME < RACE_PACE);
 });
 
 test('names are checked, plates are strict and rude words stay off', () => {

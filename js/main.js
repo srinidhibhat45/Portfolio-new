@@ -577,9 +577,31 @@
       if (max > 0 && scroll.scrollTop >= max - 2) cur = total;
       progressEl.textContent = pad(cur) + ' / ' + pad(total);
     }
-    function openCase(slug) {
+    /* An open case study is a step in the browser's history (#case=<slug>), so the Back button,
+       a mouse's back button, a back swipe or Alt+Left close it instead of leaving the site.
+       `pushed` is true while the current entry is a case entry with the page itself behind it. */
+    var HASH = '#case=', pushed = false, openedAt = 0;
+    function viewable(slug) { var c = DATA[slug]; return !!(c && (c.story || c.pages && c.pages.length)); }
+    function caseInUrl() {
+      var h = location.hash;
+      if (h.indexOf(HASH) !== 0) return '';
+      try { return decodeURIComponent(h.slice(HASH.length)); } catch (err) { return ''; }
+    }
+    function pageUrl() { return location.pathname + location.search; }
+    function caseUrl(slug) { return pageUrl() + HASH + encodeURIComponent(slug); }
+    function ownEntry() { return !!(history.state && history.state.portfolioCase); }
+
+    function openCase(slug, fromHistory) {
       var c = DATA[slug];
-      if (!c || !(c.story || c.pages && c.pages.length)) return false;
+      if (!viewable(slug)) return false;
+      var already = cv.classList.contains('is-open');
+      // Record the step before the page is locked, so the page's own entry keeps its real scroll position.
+      if (!fromHistory) {
+        try {
+          if (already) history.replaceState({ portfolioCase: slug }, '', caseUrl(slug));
+          else { history.pushState({ portfolioCase: slug }, '', caseUrl(slug)); pushed = true; }
+        } catch (err) { /* sandboxed frames may refuse; the viewer still opens */ }
+      }
       titleEl.textContent = c.title;
       tagsEl.textContent = c.tags;
       // A second-edition study links to its own original deck (or nothing); the collection PDF still holds the older text.
@@ -594,23 +616,56 @@
       }
       total = c.pages ? c.pages.length : 1;
       build(c);
-      lastFocus = document.activeElement;
-      cv.classList.add('is-open');
-      cv.setAttribute('aria-hidden', 'false');
-      lockOverlay(cv);
+      if (!already) {
+        // Opening one case from inside another keeps the first opener to return focus to.
+        lastFocus = document.activeElement;
+        openedAt = window.scrollY;
+        cv.classList.add('is-open');
+        cv.setAttribute('aria-hidden', 'false');
+        lockOverlay(cv);
+        document.addEventListener('keydown', cvTrap);
+      }
       scroll.scrollTop = 0;
       updateProgress();
-      document.addEventListener('keydown', cvTrap);
       focusOverlay(cv, closeEl);
       return true;
     }
-    function closeCase() {
+    // fromHistory: the browser has already stepped back, so only the viewer needs closing.
+    function closeCase(fromHistory) {
+      if (!cv.classList.contains('is-open')) return;
       cv.classList.remove('is-open');
       cv.setAttribute('aria-hidden', 'true');
       unlockOverlay(cv);
       document.removeEventListener('keydown', cvTrap);
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
+      if (!fromHistory) {
+        try {
+          // Step back over our own entry, so history does not pile up; otherwise just drop the hash.
+          if (pushed && ownEntry()) history.back();
+          else if (caseInUrl()) history.replaceState(null, '', pageUrl());
+        } catch (err) { /* ignore */ }
+      }
+      pushed = false;
+      // The page never scrolls while the viewer is open; make sure it is exactly where the visitor left it.
+      if (Math.abs(window.scrollY - openedAt) > 1) window.scrollTo({ top: openedAt, behavior: 'instant' });
+      if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
     }
+    window.addEventListener('popstate', function (e) {
+      var slug = e.state && e.state.portfolioCase || caseInUrl();
+      if (slug && viewable(slug)) {
+        // Forward onto a case again: reopen it. Its page entry is still behind it.
+        pushed = true;
+        openCase(slug, true);
+        return;
+      }
+      if (!cv.classList.contains('is-open')) { pushed = false; return; }
+      // A jump link inside the case (they normally stay off the history) is not a way out.
+      var id = location.hash.slice(1), inside = id && document.getElementById(id);
+      if (inside && cv.contains(inside)) return;
+      closeCase(true);
+      // Some browsers restore the scroll position a frame later; hold it where it was.
+      var y = openedAt;
+      requestAnimationFrame(function () { if (!cv.classList.contains('is-open') && Math.abs(window.scrollY - y) > 1) window.scrollTo({ top: y, behavior: 'instant' }); });
+    });
     scroll.addEventListener('scroll', updateProgress, { passive: true });
     scroll.addEventListener('click', function (e) {
       var link = e.target.closest('.cs-contents a, .cs-jump');
@@ -630,7 +685,7 @@
     window.addEventListener('resize', function () {
       if (cv.classList.contains('is-open')) updateProgress();
     });
-    closeEl.addEventListener('click', closeCase);
+    closeEl.addEventListener('click', function () { closeCase(); });
     var surprise = document.getElementById('surpriseProject'), lastDiscovery = '';
     if (surprise) {
       surprise.setAttribute('aria-haspopup', 'dialog');
@@ -664,6 +719,19 @@
         // no data for slug -> fall through to href (PDF) as graceful fallback
       });
     });
+
+    // A shared or reloaded link with #case=<slug> opens that case study. A fresh link gets the page put
+    // behind it, so Back closes the case instead of leaving; a reload keeps the entries it already had.
+    var linked = caseInUrl();
+    if (linked && viewable(linked)) {
+      try {
+        if (ownEntry()) pushed = true;
+        else { history.replaceState(null, '', pageUrl()); history.pushState({ portfolioCase: linked }, '', caseUrl(linked)); pushed = true; }
+      } catch (err) { /* ignore */ }
+      openCase(linked, true);
+    } else if (linked) {
+      try { history.replaceState(null, '', pageUrl()); } catch (err) { /* ignore */ }
+    }
   })();
 
   /* ---------- Independent searches for design and built products ---------- */

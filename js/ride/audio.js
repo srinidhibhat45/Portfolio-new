@@ -176,6 +176,12 @@ export function createAudio() {
     resume() { if (ctx && ctx.state === 'suspended') ctx.resume().catch(() => {}); },
     stop() { clearInterval(timer); },
     horn() { tone(392, 0.2, 'square', 0.13); tone(494, 0.2, 'square', 0.11); },
+    // A Thar's horn: lower and brassier than yours, a short blast and a long one. near is 0 (far) to 1 (on top of you).
+    tharHorn(near = 1, long = false) {
+      const v = 0.04 + 0.1 * near, len = long ? 0.42 : 0.26;
+      tone(277, 0.11, 'sawtooth', v); tone(349, 0.11, 'sawtooth', v * 0.8);
+      tone(277, len, 'sawtooth', v, 0, 0.17); tone(349, len, 'sawtooth', v * 0.8, 0, 0.17);
+    },
     beep(high) { tone(high ? 880 : 440, high ? 0.3 : 0.12, 'square', 0.14); },
     bump() { tone(95, 0.14, 'sine', 0.5, -45); noise(0.08, 0.2, 900, 200); },
     scrape() { noise(0.16, 0.14, 2400, 700); },

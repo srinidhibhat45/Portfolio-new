@@ -224,6 +224,166 @@
 @keyframes jimmy-wiggle { 25% { transform: rotate(-4deg); } 75% { transform: rotate(4deg); } }
 @keyframes jimmy-munch { 50% { transform: scale(1.03, .97); } }
 @keyframes jimmy-sway { 50% { transform: rotate(-3deg); } }
+
+/* ---- Routines: the same fourteen poses, strung together by js/jimmy.js (ACTS) ---- */
+.jimmy-dock[data-state="highfive"] .jimmy-photo { --pose: url('../assets/img/jimmy/paw.webp'); animation: jimmy-highfive .9s cubic-bezier(.2, 1.1, .3, 1) 2; }
+.jimmy-dock[data-state="zoom"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-zoom 1.8s ease-in-out both; }
+.jimmy-dock[data-state="pant"] .jimmy-photo { --pose: url('../assets/img/jimmy/happy.webp'); animation: jimmy-pant .32s ease-in-out infinite; }
+.jimmy-dock[data-state="chase"] .jimmy-photo { --pose: url('../assets/img/jimmy/spin.webp'); animation: jimmy-chase .45s linear 4; }
+.jimmy-dock[data-state="dizzy"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-dizzy 1.5s ease-out both; }
+.jimmy-dock[data-state="flop"] .jimmy-photo { --pose: url('../assets/img/jimmy/roll.webp'); animation: jimmy-flop .55s cubic-bezier(.3, 1.4, .5, 1) both; }
+.jimmy-dock[data-state="peek"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-peek .6s cubic-bezier(.2, 1.2, .3, 1) both; }
+.jimmy-dock[data-state="dance1"] .jimmy-photo { --pose: url('../assets/img/jimmy/happy.webp'); animation: jimmy-step-l .56s ease-in-out both; }
+.jimmy-dock[data-state="dance2"] .jimmy-photo { --pose: url('../assets/img/jimmy/paw.webp'); animation: jimmy-step-r .56s ease-in-out both; }
+.jimmy-dock[data-state="dance3"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-jump .68s ease-out both; }
+.jimmy-dock[data-state="dance4"] .jimmy-photo { --pose: url('../assets/img/jimmy/spin.webp'); animation: jimmy-flip .82s ease-in-out both; }
+.jimmy-dock[data-state="howl"] .jimmy-photo { --pose: url('../assets/img/jimmy/speak.webp'); animation: jimmy-howl 2.7s ease-in-out both; }
+.jimmy-dock[data-state="achoo"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-achoo 1s ease-in-out both; }
+.jimmy-dock[data-state="watch"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-settle .5s ease-out both; }
+.jimmy-dock[data-state="dash"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-dash 1.4s ease-in-out both; }
+.jimmy-dock[data-state="proud"] .jimmy-photo { --pose: url('../assets/img/jimmy/happy.webp'); animation: jimmy-bounce .8s cubic-bezier(.2, 1.1, .3, 1) both; }
+.jimmy-dock[data-state="skyward"] .jimmy-photo { --pose: url('../assets/img/jimmy/speak.webp'); animation: jimmy-skyward 1.2s ease-in-out both; }
+.jimmy-dock[data-state="pounce"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-pounce .9s ease-out both; }
+.jimmy-dock[data-state="bellyrub"] .jimmy-photo { --pose: url('../assets/img/jimmy/roll.webp'); animation: jimmy-wiggle .42s ease-in-out infinite; }
+.jimmy-dock[data-state="lean"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-lean 2.3s ease-in-out both; }
+.jimmy-dock[data-state="wiggle"] .jimmy-photo { --pose: url('../assets/img/jimmy/happy.webp'); animation: jimmy-wiggle .3s ease-in-out infinite; }
+.jimmy-dock[data-state="melt"] .jimmy-photo { --pose: url('../assets/img/jimmy/nap.webp'); animation: jimmy-melt .7s ease-out both; }
+.jimmy-dock[data-state="tilt"] .jimmy-photo { --pose: url('../assets/img/jimmy/look.webp'); animation: jimmy-tilt .8s cubic-bezier(.2, 1.1, .3, 1) both; }
+.jimmy-dock[data-state="boing"] .jimmy-photo { --pose: url('../assets/img/jimmy/hop.webp'); animation: jimmy-boing .85s cubic-bezier(.2, 1.1, .3, 1) both; }
+.jimmy-dock[data-state="woof"] .jimmy-photo { --pose: url('../assets/img/jimmy/speak.webp'); animation: jimmy-bark .42s ease-in-out 3; }
+.jimmy-dock[data-state="adore"] .jimmy-photo { --pose: url('../assets/img/jimmy/bliss.webp'); animation: jimmy-bob 1.1s ease-in-out 2; }
+@keyframes jimmy-highfive { 30% { transform: translateY(-10px) rotate(-4deg); } 60% { transform: translateY(0) scale(1.02, .98); } }
+/* Zoomies: off to the left, all the way right, and home. The hop pose faces right, so it flips to run left. */
+@keyframes jimmy-zoom {
+  0% { transform: none; }
+  3% { transform: scaleX(-1); }
+  18% { transform: translate(-30px, -6px) scaleX(-1); }
+  25% { transform: translate(-34px, 0) scaleX(-1); }
+  27% { transform: translate(-34px, 0); }
+  50% { transform: translate(26px, -6px); }
+  57% { transform: translate(30px, 0); }
+  59% { transform: translate(30px, 0) scaleX(-1); }
+  80% { transform: translate(-6px, -4px) scaleX(-1); }
+  88% { transform: scaleX(-1); }
+  90%, 100% { transform: none; }
+}
+@keyframes jimmy-pant { 50% { transform: translateY(-2px) scale(1.01, .99); } }
+/* Chasing his tail: quick about-turns rather than a slow squeeze through the middle. */
+@keyframes jimmy-chase { 0%, 100% { transform: none; } 40% { transform: translateY(-3px) rotate(-4deg); } 50% { transform: translateY(-3px) scaleX(-1) rotate(4deg); } 90% { transform: scaleX(-1); } }
+@keyframes jimmy-flip { 0%, 100% { transform: none; } 40% { transform: translateY(-4px); } 50%, 88% { transform: translateY(-4px) scaleX(-1); } }
+@keyframes jimmy-dizzy { 15% { transform: rotate(-6deg); } 35% { transform: rotate(5deg); } 55% { transform: rotate(-3deg); } 75% { transform: rotate(2deg); } }
+@keyframes jimmy-flop { from { transform: translateY(-14px) rotate(-24deg); opacity: .6; } }
+@keyframes jimmy-peek { from { transform: translateY(8px) scale(.94); } }
+@keyframes jimmy-step-l { 50% { transform: translate(-3px, -2px) rotate(-7deg); } }
+@keyframes jimmy-step-r { 50% { transform: translate(3px, -5px) rotate(7deg); } }
+@keyframes jimmy-howl { 15%, 85% { transform: translateY(-3px) rotate(-4deg); } 50% { transform: translateY(-4px) rotate(-5deg) scale(1.01); } }
+/* A sneeze: a breath in, leaning back, then the whole dog jolts forward. */
+@keyframes jimmy-achoo { 35% { transform: translateY(-2px) scale(1.02, .98) rotate(-3deg); } 46% { transform: translateY(3px) scale(.97, 1.03) rotate(4deg); } 70% { transform: none; } }
+@keyframes jimmy-dash {
+  0% { transform: none; }
+  4% { transform: scaleX(-1); }
+  40% { transform: translate(-40px, -5px) scaleX(-1); }
+  47% { transform: translate(-42px, 0) scaleX(-1); }
+  51% { transform: translate(-42px, 0); }
+  86% { transform: translate(-2px, -4px); }
+  100% { transform: none; }
+}
+@keyframes jimmy-skyward { 50% { transform: translateY(-2px) rotate(-2deg); } }
+@keyframes jimmy-pounce { 40% { transform: translate(-6px, -26px); } 75% { transform: scale(1.03, .97); } }
+@keyframes jimmy-lean { 30%, 70% { transform: translateX(-3px) rotate(-6deg); } }
+@keyframes jimmy-melt { from { transform: translateY(-6px) scale(.92, 1.12); opacity: .5; } }
+@keyframes jimmy-tilt { 40% { transform: rotate(-7deg) translateY(-2px); } }
+@keyframes jimmy-boing { 35% { transform: translateY(-16px); } 70% { transform: translateY(0) scale(1.04, .96); } }
+
+/* Props sit in the same box as the picture (170 x 119), so they can be placed against the dog. */
+.jimmy-props { position: absolute; inset: -24px -43px 5px; z-index: 1; pointer-events: none; }
+.jimmy-props .jp { position: absolute; display: none; }
+.jimmy-props svg { display: block; width: 100%; height: 100%; overflow: visible; }
+.jimmy-props i { position: absolute; display: block; }
+.jimmy-dock[data-prop="hearts"] .jp-hearts,
+.jimmy-dock[data-prop="notes"] .jp-notes,
+.jimmy-dock[data-prop="stars"] .jp-stars,
+.jimmy-dock[data-prop="sparkle"] .jp-sparkle,
+.jimmy-dock[data-prop="puff"] .jp-puff,
+.jimmy-dock[data-prop="dust"] .jp-dust,
+.jimmy-dock[data-prop="ballout"] .jp-ball,
+.jimmy-dock[data-prop="ballback"] .jp-ball-back,
+.jimmy-dock[data-prop="butterfly"] .jp-butterfly { display: block; }
+/* Hearts drift up from just above his head, clear of his face in every pose. */
+.jp-hearts { left: 104px; top: -12px; }
+.jp-hearts i { width: 12px; height: 12px; color: #C2412F; animation: jimmy-heart 1.6s ease-out infinite both; }
+.jp-hearts i:nth-child(2) { left: 14px; top: 8px; width: 8px; height: 8px; color: #E0705C; animation-delay: .5s; }
+.jp-hearts i:nth-child(3) { left: -14px; top: 6px; width: 9px; height: 9px; animation-delay: 1s; }
+.jp-hearts path { fill: currentColor; }
+@keyframes jimmy-heart { 0% { opacity: 0; transform: translateY(6px) scale(.6); } 25% { opacity: 1; } 100% { opacity: 0; transform: translateY(-20px) scale(1); } }
+/* Music, in marigold so it reads on paper and in the dark. */
+.jp-notes { left: 120px; top: -5px; color: #D08A1E; }
+.jp-notes i { width: 13px; height: 13px; animation: jimmy-note 1.4s ease-out infinite both; }
+.jp-notes i:nth-child(2) { left: 14px; top: 10px; width: 10px; height: 10px; animation-delay: .7s; }
+.jp-notes path { fill: none; stroke: currentColor; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.jp-notes circle, .jp-notes ellipse { fill: currentColor; }
+@keyframes jimmy-note { 0% { opacity: 0; transform: translateY(6px) rotate(-12deg); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(12px, -18px) rotate(10deg); } }
+/* Dizzy stars circle over his head. */
+.jp-stars { left: 85px; top: -7px; color: #D9962A; }
+.jp-stars i { left: -4px; top: -4px; width: 9px; height: 9px; offset-path: path('M -17 0 A 17 5 0 1 0 17 0 A 17 5 0 1 0 -17 0'); offset-rotate: 0deg; animation: jimmy-orbit 1s linear infinite; }
+.jp-stars i:nth-child(2) { animation-delay: -.33s; }
+.jp-stars i:nth-child(3) { animation-delay: -.66s; }
+.jp-stars path { fill: currentColor; }
+@keyframes jimmy-orbit { from { offset-distance: 0%; } to { offset-distance: 100%; } }
+/* High five: a small burst at the raised paw. */
+.jp-sparkle { left: 48px; top: 44px; width: 26px; height: 26px; color: #D9962A; animation: jimmy-burst .9s ease-out 2 both; }
+.jp-sparkle path { fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; }
+@keyframes jimmy-burst { 0% { opacity: 0; transform: scale(.3); } 30% { opacity: 1; transform: scale(1); } 70%, 100% { opacity: 0; transform: scale(1.3); } }
+/* A sneeze, and the dust the zoomies kick up: soft clouds with a fine outline. */
+.jp-puff svg, .jp-dust svg { fill: #F3EBDD; stroke: #B7A288; stroke-width: 1.1; }
+.jp-puff { left: 50px; top: 32px; width: 20px; height: 20px; animation: jimmy-puff .8s ease-out .35s both; }
+@keyframes jimmy-puff { 0% { opacity: 0; transform: translateX(8px) scale(.3); } 30% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: translate(-10px, 4px) scale(1.5); } }
+.jp-dust { inset: 0; }
+.jp-dust i { top: 102px; width: 14px; height: 14px; opacity: 0; animation: jimmy-dust .6s ease-out both; }
+.jp-dust i:nth-child(1) { left: 128px; }
+.jp-dust i:nth-child(2) { left: 30px; animation-delay: .5s; }
+.jp-dust i:nth-child(3) { left: 112px; animation-delay: 1.05s; }
+@keyframes jimmy-dust { 0% { opacity: 0; transform: scale(.4); } 30% { opacity: .9; transform: scale(1); } 100% { opacity: 0; transform: translateY(-5px) scale(1.6); } }
+/* Fetch: the ball arcs off to the left, he runs for it, and it comes back to his paws. */
+.jp-ball, .jp-ball-back { width: 12px; height: 12px; }
+.jp-ball circle, .jp-ball-back circle { fill: #C8D93A; stroke: #8E9F1F; stroke-width: 1; }
+.jp-ball path, .jp-ball-back path { fill: none; stroke: #FFF8E6; stroke-width: 1.6; }
+.jp-ball { left: 78px; top: 62px; opacity: 0; animation: jimmy-ball-out 2.2s cubic-bezier(.3, .6, .5, 1) both; }
+@keyframes jimmy-ball-out {
+  0% { opacity: 0; transform: scale(.7); }
+  6% { opacity: 1; }
+  18% { transform: translate(-30px, -28px) rotate(-180deg); }
+  36% { transform: translate(-62px, 42px) rotate(-400deg); }
+  42% { transform: translate(-70px, 33px) rotate(-460deg); }
+  48%, 63% { opacity: 1; transform: translate(-76px, 42px) rotate(-520deg); }
+  66%, 100% { opacity: 0; transform: translate(-76px, 42px) rotate(-520deg); }
+}
+.jp-ball-back { left: 96px; top: 102px; animation: jimmy-ball-drop .5s cubic-bezier(.3, 1.5, .5, 1) both; }
+@keyframes jimmy-ball-drop { from { opacity: 0; transform: translateY(-14px); } }
+/* A marigold butterfly visits his nose, rises over his head and gets away when he jumps. */
+.jp-butterfly { left: 122px; top: 82px; width: 18px; height: 15px; animation: jimmy-flutter 3.1s ease-in-out both; }
+.jp-butterfly svg { animation: jimmy-flap .16s ease-in-out infinite alternate; }
+.jp-butterfly .jp-wings { fill: #E59A2C; stroke: #6B3F1D; stroke-width: 1; stroke-linejoin: round; }
+.jp-butterfly .jp-body { fill: none; stroke: #4A2E1C; stroke-width: 1.8; stroke-linecap: round; }
+@keyframes jimmy-flap { to { transform: scaleX(.3); } }
+@keyframes jimmy-flutter {
+  0% { opacity: 0; transform: translate(10px, -8px); }
+  8% { opacity: 1; transform: none; }
+  18% { transform: translate(-6px, -6px); }
+  28% { transform: translate(2px, -10px); }
+  40% { transform: translate(-8px, -40px); }
+  55% { transform: translate(-4px, -78px); }
+  68% { transform: translate(-14px, -92px); }
+  82% { opacity: 1; transform: translate(-52px, -122px); }
+  100% { opacity: 0; transform: translate(-90px, -150px); }
+}
+/* Without motion he still changes pose; only the props that stay put are shown. */
+@media (prefers-reduced-motion: reduce) {
+  .jp-ball, .jp-dust, .jp-butterfly { display: none !important; }
+  .jp-hearts i:nth-child(n+2), .jp-notes i:nth-child(n+2) { display: none; }
+  .jp-stars i { offset-path: none; }
+  .jp-stars i:nth-child(1) { left: -16px; } .jp-stars i:nth-child(3) { left: 8px; }
+}
 .jimmy-name { font: 600 13px/1 var(--sans); letter-spacing: .01em; }
 /* The buttons say what to do, so the written hint is kept for screen readers only. */
 .jimmy-hint { position: absolute; width: 1px; height: 1px; margin: 0; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
