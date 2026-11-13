@@ -1,7 +1,7 @@
 // Sunday Ride: the renderer. A segment-projected road drawn one scanline at a time so every edge stays on the pixel grid.
 
-import { SEG, MAX_SPEED, WALL_H, WALL_AT, RAIL_AT, SCENERY, VEHICLES, RIDERS, kmh, progress, shriLead } from './sim.js?v=20261112-ride-3';
-import { drawText, drawTextShadow, textWidth } from './font.js?v=20261112-ride-3';
+import { SEG, MAX_SPEED, WALL_H, WALL_AT, RAIL_AT, SCENERY, VEHICLES, RIDERS, THAR_LINE, kmh, progress, shriLead } from './sim.js?v=20261113-thar-2';
+import { drawText, drawTextShadow, textWidth } from './font.js?v=20261113-thar-2';
 
 export const VIEW_W = 320;
 const W = VIEW_W;
@@ -53,6 +53,7 @@ export function createRenderer(canvas, art) {
   const fogCache = new Map();
   const dust = [];
   const says = [];             // timed messages on the screen
+  const pops = [];             // what the Thars are saying and honking, drawn over everything on the road
   let toast = null;
 
   // Ridge lines for the three hill layers; whole numbers of waves so the tile wraps cleanly.
@@ -368,6 +369,7 @@ export function createRenderer(canvas, art) {
 
     // everything standing on the road, farthest first
     const tread = ((p.z / 90) | 0) & 1;
+    pops.length = 0;
     for (let n = N; n >= 0; n--) {
       const s = segs[baseIdx + n];
       if (!s._vis) continue;
@@ -412,6 +414,21 @@ export function createRenderer(canvas, art) {
       fill(Math.round(d.x), Math.round(d.y), d.size, d.size, d.col);
     }
 
+    // Thars: a speech bubble or a PAAP! over the ones in view, and a warning for one honking out of sight behind you.
+    // Like the HUD, the words are drawn twice the size on the taller phone canvas, where each game pixel is smallest.
+    const shake = o.reduced ? 0 : ((clock * 24) | 0) % 2, T = H > 220 ? 2 : 1;
+    for (const q of pops) {
+      if (q.say) bubble(q.x, q.y, THAR_LINE, T);
+      else drawTextShadow(ctx, 'PAAP!', Math.round(q.x) + shake, Math.max(2, q.y - 6 - 3 * T), '#f2c230', T, 'center', INK);
+    }
+    let behind = null;
+    for (const c of g.cars) if (c.thar && c.active && c.honk > 0 && c.z - camZ < 60 && p.z - c.z < 34 * SEG) behind = c;
+    if (behind) {
+      const right = behind.offset > p.x, x = right ? W - 8 : 8, y = H - 10 - 12 * T, align = right ? 'right' : 'left';
+      drawTextShadow(ctx, 'PAAP PAAP!', x + (right ? -shake : shake), y, '#f2c230', T, align, INK);
+      drawTextShadow(ctx, 'THAR BEHIND', x, y + 6 * T + 2, CREAM, T, align, INK);
+    }
+
     if (o.hud) hud(g, o);
     if (g.phase === 'count' && o.hud) {
       const n = String(Math.ceil(g.count)), cy = Math.round(H * 0.4);
@@ -453,6 +470,10 @@ export function createRenderer(canvas, art) {
       if (c.kind === 'cow') flip = !!c.flip;
     }
     blit(img, ww, wpx, sx, sy, s._clip, alpha, 0, flip);
+    if (c.thar && alpha > 0.35 && (c.say > 0 || c.honk > 0)) {
+      const top = Math.round(sy - ww * wpx * img.height / img.width);
+      if (sx > -20 && sx < W + 20 && top < s._clip) pops.push({ x: sx, y: top, say: c.say > 0 });
+    }
     if (c.shri && alpha > 0.25) {
       // a small name tag over his helmet, so he can be picked out of the field at a distance
       const top = Math.round(sy - ww * wpx * img.height / img.width) - 9, tx = Math.round(sx);
@@ -461,6 +482,19 @@ export function createRenderer(canvas, art) {
         drawText(ctx, 'SHRI', tx, top, CREAM, 1, 'center');
       }
     }
+  }
+
+  // A pixel speech bubble, its tail pointing down at whoever is talking. It stays on screen.
+  function bubble(x, top, lines, s = 1) {
+    const w = Math.max(...lines.map(l => textWidth(l, s))) + 4 + 4 * s, h = lines.length * 7 * s + 2 + 2 * s;
+    const bx = clamp(Math.round(x - w / 2), 3, W - w - 3), by = clamp(Math.round(top - h - 5), 2, H - h - 30);
+    fill(bx - 1, by - 1, w + 2, h + 2, INK);
+    fill(bx, by, w, h, CREAM);
+    const tx = clamp(Math.round(x), bx + 3, bx + w - 4);
+    fill(tx - 2, by + h, 5, 1, INK); fill(tx - 1, by + h, 3, 1, CREAM);
+    fill(tx - 1, by + h + 1, 3, 1, INK); fill(tx, by + h + 1, 1, 1, CREAM);
+    fill(tx, by + h + 2, 1, 1, INK);
+    lines.forEach((line, k) => drawText(ctx, line, bx + w / 2, by + 1 + 2 * s + k * 7 * s, k ? INK : '#842B22', s, 'center'));
   }
 
   function rider(g, o, tread) {

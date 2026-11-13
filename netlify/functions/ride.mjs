@@ -7,7 +7,8 @@ export const STORE = 'portfolio-ride-board';
 export const TOP = 10;
 export const MIN_TIME = 138;          // the route cannot be ridden faster than 2:18.8, even flat out with no bends
 export const MAX_TIME = 3600;
-export const SHRI_TIME = 165.5;       // Shri's best run on Sky, pinned on the board as the time to beat
+export const SHRI_TIME = 157.1;       // Shri's best run on Sky (2:37.10, set by the owner), pinned on the board as the time to beat.
+                                      // In a race the game's Shri rides at about 2:45 when pushed: his race pace, not his best.
 const COUNTDOWN_MS = 2500;            // the 3-2-1 before the clock starts, less a little slack
 const RUN_TTL_MS = 6 * 3600 * 1000;
 const POST_GAP_MS = 20000;

@@ -107,8 +107,14 @@
     var s = items.get(el); if (!s) return;
     observer.unobserve(el);
     var kind = KINDS[s.kind];
-    var a = el.animate(kind.k(), { duration: phone ? Math.round(kind.t * .85) : kind.t, delay: s.delay, easing: kind.e, fill: 'backwards' });
-    el.classList.remove('life-wait');                  // the animation's backwards fill holds the start
+    // Arrive at the element's own resting strength, not full strength: the chapter art rests faint
+    // (the Ajrakh print at .1, the pond at .28), and used to show at full strength until the entrance
+    // ended, then snap back. The class comes off first so its resting opacity can be read; the
+    // animation's backwards fill takes over in the same task, so nothing shows in between.
+    el.classList.remove('life-wait');
+    var rest = parseFloat(getComputedStyle(el).opacity);
+    var frames = kind.k().map(function (f) { if (f.opacity === 1 && rest < 1) f.opacity = rest; return f; });
+    var a = el.animate(frames, { duration: phone ? Math.round(kind.t * .85) : kind.t, delay: s.delay, easing: kind.e, fill: 'backwards' });
     running.set(el, a);
     a.onfinish = function () { running.delete(el); items.delete(el); };
     if (el.classList.contains('stat')) countUp(el, s.delay);

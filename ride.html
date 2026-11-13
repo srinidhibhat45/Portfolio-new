@@ -8,7 +8,7 @@
   <title>Sunday Ride · Srinidhi Bhat</title>
   <meta name="description" content="A small pixel race through the Western Ghats, tucked away in Srinidhi Bhat's portfolio. Beat Shri to the top.">
   <link rel="icon" href="favicon.ico">
-  <link rel="stylesheet" href="css/ride.css?v=20261112-ride-12">
+  <link rel="stylesheet" href="css/ride.css?v=20261113-fit-2">
 </head>
 <body class="ride" data-mode="title">
   <header class="ride-bar">
@@ -57,7 +57,7 @@
         <canvas class="ride-logo" id="rideLogo" width="46" height="7" aria-hidden="true"></canvas>
         <h2 class="sr-only" id="rideLogoText">Sunday Ride</h2>
         <p class="ride-tag">Beat Shri to the top of the ghat</p>
-        <p class="ride-blurb">Three stages: the coast highway, the climb through the ghat, and the misty top. Lorries, buses and the odd cow share the road. Shri and Sky start ahead of you.</p>
+        <p class="ride-blurb">Three stages: the coast highway, the climb through the ghat, and the misty top. Lorries, buses, the odd cow and some very loud Thars share the road. Shri and Sky start ahead of you.</p>
         <dl class="ride-keys ride-keys--desk">
           <div><dt>Arrows or WASD</dt><dd>steer, gas, brake</dd></div>
           <div><dt>H or Space</dt><dd>horn (traffic and cows move over)</dd></div>
@@ -123,11 +123,13 @@
       <div class="ride-card ride-card--board">
         <p class="ride-tag">High scores</p>
         <h2 class="ride-head" id="rideBoardTitle">Fastest to the viewpoint</h2>
-        <table class="ride-scores">
-          <caption class="sr-only">The ten fastest rides, with Shri's best run as the time to beat</caption>
-          <thead><tr><th scope="col">Rank</th><th scope="col">Rider</th><th scope="col">Plate</th><th scope="col">Time</th></tr></thead>
-          <tbody id="rideScores"></tbody>
-        </table>
+        <div class="ride-scores-wrap" id="rideScoresWrap" tabindex="0" role="region" aria-labelledby="rideBoardTitle">
+          <table class="ride-scores">
+            <caption class="sr-only">The ten fastest rides, with Shri's best run as the time to beat</caption>
+            <thead><tr><th scope="col">Rank</th><th scope="col">Rider</th><th scope="col">Plate</th><th scope="col">Time</th></tr></thead>
+            <tbody id="rideScores"></tbody>
+          </table>
+        </div>
         <p class="ride-help ride-board-status" id="rideBoardStatus" role="status"></p>
         <div class="ride-row">
           <button type="button" class="ride-btn" id="rideBoardRide" data-first>Ride</button>
@@ -139,6 +141,6 @@
 
   <p class="sr-only" id="rideLive" aria-live="polite"></p>
   <noscript><p class="ride-noscript">This little game needs JavaScript. <a href="index.html#contact">Back to the portfolio</a></p></noscript>
-  <script type="module" src="js/ride/main.js?v=20261112-ride-6"></script>
+  <script type="module" src="js/ride/main.js?v=20261113-thar-2"></script>
 </body>
 </html>

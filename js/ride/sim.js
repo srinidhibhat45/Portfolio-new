@@ -23,8 +23,10 @@ export const SCENERY = {
 };
 
 export const VEHICLES = {
-  lorry: { w: 0.74 }, bus: { w: 0.74 }, car: { w: 0.5 }, auto: { w: 0.42 }, scooter: { w: 0.24 }, cow: { w: 0.62 }, rider: { w: PLAYER_W },
+  lorry: { w: 0.74 }, bus: { w: 0.74 }, car: { w: 0.5 }, thar: { w: 0.52 }, auto: { w: 0.42 }, scooter: { w: 0.24 }, cow: { w: 0.62 }, rider: { w: PLAYER_W },
 };
+// What a Thar says, now and then, once it has got past you (or while you sit behind it).
+export const THAR_LINE = ["FRANCIS'", 'WORST NIGHTMARE'];
 
 const CRUISE = { lorry: [0.27, 0.35], bus: [0.36, 0.45], car: [0.48, 0.6], auto: [0.3, 0.37], scooter: [0.38, 0.5] };
 const MIX = [
@@ -284,6 +286,31 @@ export function resetGame(g) {
     mk('rider', 12 + n * 3, n % 2 ? -0.3 : -0.7, 0, 1, { rider: true, top, skill, v: n, home: n % 2 ? -0.4 : -0.62, stopZ: route.finishZ + (36 + n * 9) * SEG, park: n % 2 ? 0.55 : -0.55 });
   });
   g.shri = mk('rider', 31, -0.5, 0, 1, { rider: true, shri: true, top: SHRI.top, skill: SHRI.skill, v: 0, home: -0.5, stopZ: route.finishZ + 96 * SEG, park: -0.5 });
+
+  // Thars: quick, restless, and always on the horn. They draw from their own random stream, so the rest
+  // of the traffic (and Shri's pace through it) is exactly what it was before they arrived.
+  const T = rng(g.seed + 41);
+  g.tharR = T;
+  const thar = (seg, frac, extra) => {
+    const c = { kind: 'thar', thar: true, dir: 1, z: (seg + 0.5) * SEG, offset: -0.5, base: -0.5, lane: -0.5, speed: frac * MAX_SPEED, cruise: frac * MAX_SPEED,
+      w: VEHICLES.thar.w, v: Math.floor(T() * 4), aside: 0, rider: false, active: true, at: -1,
+      ph: T() * 6.28, wob: 0, dart: 3 + T() * 4, honk: 0, honkCd: 0, honkBack: 0, tail: 0, say: 0, rolled: false, ...extra };
+    g.cars.push(c);
+    return c;
+  };
+  const stretches = [
+    [260, route.ghatStart - 160, 3, 0.66, 0.8],
+    [route.ghatStart + 220, route.mistStart - 220, 3, 0.56, 0.68],
+    [route.mistStart + 160, route.finishIndex - 320, 2, 0.5, 0.6],
+  ];
+  for (const [from, to, n, lo, hi] of stretches) {
+    for (let k = 0; k < n; k++) thar(Math.round(from + (to - from) * (k + 0.3 + T() * 0.4) / n), lo + T() * (hi - lo));
+  }
+  // One more turns up behind you every so often, leaning on the horn until it finds a way past.
+  g.chaser = thar(0, 0, { chaser: true, active: false });
+  g.tharClock = 22 + T() * 10;
+  g.tharSaid = 0;
+  g.tharQuiet = 0;
   for (const c of g.cars) relist(g, c);
 }
 
@@ -429,14 +456,18 @@ export function step(g, input) {
       for (const c of segs[k].cars) {
         if (c.rider || c.dir < 0 || Math.abs(c.offset - p.x) > 0.8) continue;
         if (c.kind === 'cow') { if (Math.abs(c.base) < 1.2) shoo(g, c); }
+        else if (c.thar) { if (!c.honkBack) c.honkBack = 0.35; }   // a Thar never moves over; it honks back
         else c.aside = 4.5;
       }
     }
   }
 
+  chase(g, dt);
+  if (g.tharQuiet > 0) g.tharQuiet -= dt;
   for (const c of g.cars) {
     if (!c.active) continue;
     if (c.rider) rival(g, c, dt);
+    else if (c.thar) tharStep(g, c, dt);
     else {
       let target = c.base;
       if (c.aside > 0) { c.aside -= dt; target = -1.12 + c.w / 2; }
@@ -536,6 +567,114 @@ function rival(g, c, dt) {
   c.z = Math.min(c.z + c.speed * dt, g.route.length - 34 * SEG);
 }
 
+// A Thar every so often comes up from behind, quicker than anything else on the road.
+function chase(g, dt) {
+  const c = g.chaser, p = g.player, T = g.tharR;
+  if (c.active || g.phase !== 'ride') return;
+  g.tharClock -= dt;
+  if (g.tharClock > 0 || p.spill > 0 || p.speed < MAX_SPEED * 0.3 || p.z > g.route.finishZ - 170 * SEG) return;
+  const speed = clamp(p.speed + 0.2 * MAX_SPEED, 0.85 * MAX_SPEED, 1.15 * MAX_SPEED);
+  Object.assign(c, { active: true, z: p.z - 30 * SEG, offset: -0.5, lane: -0.5, speed, cruise: speed, v: Math.floor(T() * 4), ph: T() * 6.28,
+    wob: 0, dart: 4 + T() * 3, honk: 0, honkCd: 0, honkBack: 0, tail: 0, say: 0, rolled: false });
+}
+
+function honk(g, c, dz, long) {
+  c.honk = long ? 0.6 : 0.45;
+  c.honkCd = c.tailing ? 0.85 : 1.4 + g.tharR() * 1.2;
+  g.events.push({ type: 'tharHorn', near: clamp(1 - Math.abs(dz) / 32, 0.15, 1), long, behind: dz < 0 });
+}
+
+function tharStep(g, c, dt) {
+  const segs = g.route.segs, last = segs.length - 1, p = g.player, T = g.tharR;
+  const si = clamp(Math.floor(c.z / SEG), 0, last);
+  const dz = (c.z - p.z) / SEG;           // segments ahead of the player; negative when it is behind
+  c.wob += dt;
+  if (c.honk > 0) c.honk -= dt;
+  if (c.honkCd > 0) c.honkCd -= dt;
+  if (c.say > 0) c.say -= dt;
+  const on = nearestOncoming(g, c.z, 140);
+  const onGap = on ? (on.z - c.z) / SEG : 1e9;
+
+  // Restless: a weave that never settles, and now and then a dart over the white line for no reason.
+  // It never darts across a rider who is right behind it and already out in the other lane.
+  c.dart -= dt;
+  if (c.dart <= 0) {
+    if (c.lane < 0 && onGap > 120 && !(dz > 0 && dz < 10 && p.x > -0.15)) { c.lane = 0.3; c.dart = 0.9 + T() * 1.1; }
+    else { c.lane = -0.5; c.dart = 3 + T() * 4; }
+  }
+  if (c.lane > 0 && onGap < 90) c.lane = -0.5;
+  let target = c.lane + 0.15 * Math.sin(c.wob * 1.9 + c.ph) + 0.07 * Math.sin(c.wob * 5.3 + c.ph * 3);
+  let want = c.chaser ? (dz < 4 ? clamp(p.speed + 0.2 * MAX_SPEED, 0.85 * MAX_SPEED, 1.15 * MAX_SPEED) : 1.02 * MAX_SPEED) : c.cruise;
+
+  // The nearest slower thing in the way, the player included: swing out round it, or sit on its bumper and honk.
+  let block = null, you = false;
+  const consider = (d, isYou) => {
+    const gap = d.z - c.z;
+    if (gap <= -SEG * 0.6 || gap > 12 * SEG || d.speed > c.speed - 150) return;
+    const room = (d.w + c.w) / 2 + 0.06;
+    if ((Math.abs(d.offset - target) < room || Math.abs(d.offset - c.offset) < room) && (!block || d.z < block.z)) { block = d; you = isYou; }
+  };
+  for (let k = Math.max(0, si - 1); k <= Math.min(last, si + 12); k++) for (const d of segs[k].cars) if (d !== c && d.dir > 0) consider(d, false);
+  consider({ z: p.z, offset: p.x, w: PLAYER_W, speed: p.speed }, true);
+  c.tailing = false;
+  if (block && block.rider) {
+    // The other riders it just swerves round, on whichever side is open, without lifting off.
+    const room = (block.w + c.w) / 2 + 0.12, right = block.offset + room;
+    target = right < 0.92 && (onGap > 70 || right + c.w / 2 + 0.08 < on.offset - on.w / 2) ? right : Math.max(-1.02, block.offset - room);
+    c.tail = 0;
+  } else if (block) {
+    const room = (block.w + c.w) / 2 + 0.12, right = block.offset + room, left = block.offset - room, gap = block.z - c.z;
+    const rightOk = right < 0.92 && (onGap > 70 || right + c.w / 2 + 0.08 < on.offset - on.w / 2);
+    if (rightOk) { target = right; c.tail = 0; }
+    else {
+      c.tail += dt;                         // no way round: tailgate for a bit, then go up the inside
+      if (c.tail > 2.2 && left > -1.02) target = left;
+      else if (gap < 6 * SEG) want = Math.min(want, block.speed * 0.98);
+      c.tailing = you && gap < 8 * SEG;
+    }
+    if (gap < 2.2 * SEG && Math.abs(c.offset - block.offset) < (block.w + c.w) / 2) want = Math.min(want, block.speed * 0.95);
+  } else c.tail = 0;
+  if (on && onGap < 70) target = Math.min(target, on.offset - (on.w + c.w) / 2 - 0.12);
+  // Whatever else it is doing, it never runs into the player: it goes round, or holds back until there is room.
+  const pg = p.z - c.z;
+  if (pg > -SEG * 0.6 && pg < 5 * SEG) {
+    const room = (PLAYER_W + c.w) / 2 + 0.1, r = p.x + room, l = p.x - room;
+    if (Math.abs(target - p.x) < room || Math.abs(c.offset - p.x) < room) {
+      const rOk = r < 0.92 && (onGap > 70 || r + c.w / 2 + 0.08 < on.offset - on.w / 2);
+      target = rOk && (c.offset >= p.x || l < -1.02) ? r : l > -1.02 ? l : r;
+      if (pg > 0 && Math.abs(c.offset - p.x) < room) want = Math.min(want, p.speed * 0.97);
+    }
+  }
+  target = clamp(target, -1.02, 0.9);
+  c.offset += clamp(target - c.offset, -1.05 * dt, 1.05 * dt);
+  c.speed = Math.max(0, c.speed + clamp(want - c.speed, -BRAKE * 0.7 * dt, ACCEL * 0.9 * dt));
+  c.z += c.speed * dt;
+
+  // The horn: right on your tail, coming through, when you go past it, and straight back at you when you honk.
+  if (c.honkBack > 0) { c.honkBack -= dt; if (c.honkBack <= 0) { c.honkBack = 0; honk(g, c, dz, true); } }
+  if (g.phase === 'ride' && c.honkCd <= 0) {
+    const side = Math.abs(c.offset - p.x);
+    if (c.tailing && dz < 0) honk(g, c, dz, false);
+    else if (dz < -2 && dz > -26 && c.speed > p.speed + 400 && side < 0.8) honk(g, c, dz, false);
+    else if (dz > -1.2 && dz < 1.6 && p.speed > c.speed + 250 && side < 1) honk(g, c, dz, true);
+  }
+
+  // Now and then, once it is ahead of you and in plain view, it has something to say. Never twice in quick succession.
+  if (g.phase === 'ride' && dz > 2.5 && dz < 16) {
+    if (!c.rolled) {
+      c.rolled = true;
+      if (g.tharQuiet <= 0 && (g.tharSaid === 0 || T() < 0.35)) {
+        c.say = 3.4; g.tharSaid++; g.tharQuiet = 40;
+        g.events.push({ type: 'tharSay' });
+        if (c.honkCd <= 0) honk(g, c, dz, true);
+      }
+    }
+  } else if (dz < -4 || dz > 40) c.rolled = false;
+
+  if (c.chaser && dz > 170) { c.active = false; g.tharClock = 30 + T() * 30; }   // gone over the horizon
+  else if (c.z > g.route.length - 45 * SEG) c.active = false;
+}
+
 // A rider for the attract mode and for tests. `safety` is how much of the grip it dares to use in a bend:
 // about 0.93 is careful, 0.99 is a very good run, 0.8 is a sloppy one.
 export function autopilot(g, safety = 0.93) {
@@ -553,6 +692,7 @@ export function autopilot(g, safety = 0.93) {
     for (const d of segs[k].cars) {
       const dz = d.z - p.z;
       if (d.dir < 0 || dz < -SEG * 1.4 || (dz > SEG * 2 && d.speed > p.speed - 200)) continue;
+      if (d.thar && d.speed > p.speed + 200) continue;     // a Thar coming past steers round you; let it
       const reach = (d.w + PLAYER_W) / 2 + 0.12;
       if (Math.abs(d.offset - home) >= reach && Math.abs(d.offset - p.x) >= reach) continue;
       right = Math.max(right, d.offset + reach + 0.04);

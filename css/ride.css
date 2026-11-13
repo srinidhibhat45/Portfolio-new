@@ -38,6 +38,13 @@ body.ride {
 
 :focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
 
+/* The bar and the game sit in named rows. Browser extensions (password managers, assistants) sometimes add their
+   own element to the page; left to auto-placement it took the first row and pushed the bar into the stretchy one,
+   so the red bar filled the screen and the game shrank to a strip. Anything else in <body> goes in a third row. */
+.ride-bar { grid-row: 1; }
+.ride-main { grid-row: 2; }
+body.ride > :not(.ride-bar, .ride-main) { grid-row: 3; }
+
 /* ---- top bar ---- */
 .ride-bar {
   position: relative;
@@ -257,6 +264,8 @@ body.ride {
 
 /* ---- phones on their side: no bar, everything floats over the picture ---- */
 .is-short.ride { grid-template-rows: minmax(0, 1fr); }
+.is-short .ride-main { grid-row: 1; }
+.is-short.ride > :not(.ride-bar, .ride-main) { grid-row: 2; }
 .is-short .ride-bar {
   position: absolute;
   inset: 0 0 auto 0;
@@ -415,8 +424,8 @@ body.ride {
 
 /* Any panel taller than the screen starts at its top (a plain centre would push its top out of reach). */
 .ride-panel { align-items: safe center; }
-/* Phones on their side: the intro's picture and words sit side by side, so "Let's ride" stays on screen. */
-.is-short .ride-card--intro {
+/* Landscape screens that are not tall (phones on their side, laptops, small windows): the intro's picture and words sit side by side, so "Let's ride" stays on screen. */
+.is-low .ride-card--intro {
   display: grid;
   grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
   column-gap: 18px;
@@ -424,6 +433,69 @@ body.ride {
   width: min(760px, 100%);
   text-align: left;
 }
-.is-short .ride-card--intro > * { grid-column: 2; }
-.is-short .ride-card--intro > .ride-portrait { grid-column: 1; grid-row: 1 / span 5; width: 100%; margin: 0; }
-.is-short .ride-card--intro .ride-row { justify-content: flex-start; }
+.is-low .ride-card--intro > * { grid-column: 2; }
+.is-low .ride-card--intro > .ride-portrait { grid-column: 1; grid-row: 1 / span 5; width: 100%; margin: 0; }
+.is-low .ride-card--intro .ride-row { justify-content: flex-start; }
+
+/* ---- The leaderboard always fits its window ----
+   The card is capped to the space it has: the title and the buttons always show, and only the table scrolls
+   (its header stays put). Rows tighten as the window gets shorter, so most screens need no scroll at all. */
+#rideBoard:not([hidden]) { display: flex; flex-direction: column; align-items: center; justify-content: safe center; }
+#rideBoard .ride-card { display: flex; flex-direction: column; max-height: 100%; min-height: 0; }
+#rideBoard .ride-card > * { flex: none; }
+#rideBoard .ride-card > .ride-scores-wrap { flex: 0 1 auto; }
+.ride-scores-wrap {
+  min-height: 112px;
+  margin: 10px 0 8px;
+  overflow: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(246, 240, 228, .45) transparent;
+}
+.ride-scores-wrap .ride-scores { margin: 0; }
+.ride-scores thead th { position: sticky; top: 0; z-index: 1; }
+.ride-scores-wrap:focus-visible { outline-offset: 2px; }
+@media (max-height: 780px) {
+  .ride-card--board { padding-top: 14px; padding-bottom: 12px; }
+  #rideBoard .ride-head { margin-bottom: 2px; font-size: 18px; }
+  #rideBoard .ride-scores th, #rideBoard .ride-scores td { padding-block: 4px; }
+  #rideBoard .ride-board-status { margin-bottom: 10px; }
+}
+@media (max-height: 620px) {
+  #rideBoard .ride-tag { display: none; }
+  #rideBoard .ride-scores th, #rideBoard .ride-scores td { padding-block: 2px; font-size: 12px; }
+  #rideBoard .ride-scores-wrap { margin: 6px 0 4px; }
+}
+
+/* ---- Landscape windows that are not tall: compact cards, so the start and finish need no scroll ---- */
+@media (max-height: 700px) {
+  .is-low:not(.is-short) #rideTitle .ride-blurb { display: none; }
+  .is-low:not(.is-short) .ride-card { padding-top: 16px; padding-bottom: 14px; }
+  .is-low:not(.is-short) .ride-logo { margin-bottom: 6px; }
+  .is-low :is(#rideFinish, #ridePaused) .ride-link { display: none; }   /* the bar above already links back */
+  .is-low .ride-place { font-size: 24px; }
+}
+@media (max-height: 600px) {
+  .is-low #rideVerdict { display: none; }
+  .is-low:not(.is-short) #rideTitle .ride-keys { margin-bottom: 10px; padding-block: 6px; }
+}
+/* Small upright phones (an iPhone SE): the pre-race card under the picture keeps to the plate, the start button
+   and the links, so it fits without a scroll. */
+@media (max-height: 700px) {
+  .is-portrait #rideTitle .ride-best { display: none; }
+  .is-portrait #rideTitle .ride-logo { margin-bottom: 4px; }
+  .is-portrait #rideTitle .ride-tag { margin-bottom: 6px; }
+  .is-portrait #rideTitle .ride-links { margin-top: 4px; }
+  .is-portrait #rideTitle .ride-help { margin-top: 6px; }
+  .is-portrait #rideTitle { padding-bottom: 4px; }
+}
+/* Upright phones and tablets: under the picture there is room for the plate, the start button, the controls and
+   the links, but not the stage blurb as well (the intro has just told that story). The shortest phones (an
+   iPhone SE first edition, 640px Androids) have no room under the picture at all, so there the pre-race card
+   covers the game area like the intro does. */
+@media (max-height: 1100px) {
+  .is-portrait #rideTitle .ride-blurb { display: none; }
+}
+@media (max-height: 660px) {
+  .is-portrait #rideTitle { top: 0; align-items: safe center; }
+}

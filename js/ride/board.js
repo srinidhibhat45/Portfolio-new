@@ -101,6 +101,10 @@ export function createBoard({ $, onRide, onBack }) {
       const gap = document.createElement('tr'); gap.className = 'is-gap'; gap.innerHTML = '<td colspan="4" aria-hidden="true">· · ·</td>';
       body.append(gap, row([ORD(data.you.rank), data.you.entry.name, data.you.entry.plate, fmt(data.you.entry.time)], 'is-you'));
     }
+    // On a short window the table scrolls inside the card: start at the top, unless your own row would be out of sight.
+    const wrap = $('rideScoresWrap'), mine = body.querySelector('.is-you');
+    wrap.scrollTop = 0;
+    if (mine && mine.offsetTop + mine.offsetHeight > wrap.clientHeight) wrap.scrollTop = mine.offsetTop + mine.offsetHeight - wrap.clientHeight + 6;
     const beaten = data.top.filter(r => r.time < data.shri.time).length;
     status.textContent = !data.top.length ? 'Nobody on the board yet. Ride to the viewpoint and be the first.'
       : `${data.total} ${data.total === 1 ? 'rider' : 'riders'} on the board. ${beaten ? `${beaten} of the top ${data.top.length} beat Shri's best run.` : `Shri's best run is ${fmt(data.shri.time)}. Nobody has beaten it yet.`}`;

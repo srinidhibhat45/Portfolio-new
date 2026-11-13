@@ -194,6 +194,18 @@ main > section,
 .hero-ribbon { cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .hero-ribbon.is-dragging { cursor: grabbing; }
 .hero-ribbon.is-live .hero-ribbon-track { animation: none; will-change: transform; }
+/* Each cover is a link to its case study: a click opens it, a drag only moves the strip. */
+.hero-cover {
+  display: block;
+  flex: none;
+  border-radius: 12px;
+  cursor: pointer;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  transition: transform .35s cubic-bezier(.22, 1, .36, 1);
+}
+.hero-cover:nth-child(odd) { transform: rotate(-1.5deg); }
+.hero-cover:nth-child(even) { transform: translateY(5px) rotate(1.5deg); }
 .hero-ribbon img {
   display: block;
   pointer-events: none;
@@ -202,12 +214,20 @@ main > section,
   aspect-ratio: 3 / 2;
   border-radius: 12px;
   box-shadow: 0 12px 22px -16px rgba(75, 42, 37, .7);
+  transition: box-shadow .35s ease;
 }
-.hero-ribbon img:nth-child(odd) { transform: rotate(-1.5deg); }
-.hero-ribbon img:nth-child(even) { transform: translateY(5px) rotate(1.5deg); }
+/* Pointed at, a cover straightens and lifts off the strip. */
+@media (hover: hover) and (pointer: fine) {
+  .hero-ribbon:not(.is-dragging) .hero-cover:hover { transform: translateY(-6px) rotate(0deg) scale(1.03); }
+  .hero-ribbon:not(.is-dragging) .hero-cover:hover img { box-shadow: 0 22px 30px -18px rgba(75, 42, 37, .85); }
+}
+.hero-cover:active { transform: translateY(-2px) rotate(0deg) scale(1.01); }
+.hero-cover:focus-visible { outline: 2px solid var(--kaavi, #842B22); outline-offset: 4px; transform: rotate(0deg); }
+.hero-ribbon.is-dragging .hero-cover { cursor: grabbing; }
 @keyframes hero-ribbon { to { transform: translateX(-50%); } }
 @media (prefers-reduced-motion: reduce) {
   .hero-ribbon-track { animation: none; }
+  .hero-cover, .hero-ribbon img { transition: none; }
 }
 
 /* ---- Tickets: the primary button, shaped like a stub ---- */
@@ -229,4 +249,63 @@ main > section,
     background: var(--sec, var(--accent));
     color: #FFFBF2;
   }
+}
+
+/* ---- The scrollbar: a Kaavi-red thread on a paper selvedge ----------------------------------------------
+   The thumb is Kaavi red with a gold zari thread down its middle, strung with small beads; the track is the
+   page's paper with a faint dotted line between two hairlines, like the edge of a saree border. Chrome, Edge
+   and Safari draw it from the pseudo-elements below (a flat scrollbar-color would switch those off, so it is
+   reset there); Firefox only takes two colours, so it gets the red on paper. Panels that scroll inside the
+   page get a slimmer thread. Access mode and forced colours keep the system scrollbar. */
+@supports selector(::-webkit-scrollbar) {
+  html:not([data-access="on"]) { scrollbar-color: auto; scrollbar-width: auto; }
+}
+@supports not selector(::-webkit-scrollbar) {
+  html:not([data-access="on"]) { scrollbar-color: #842B22 #F3ECDF; }
+  :root[data-theme="dark"]:not([data-access="on"]) { scrollbar-color: #A63B2E #15100E; }
+}
+@media not (forced-colors: active) {
+  html:not([data-access="on"]) {
+    --sb-paper: #F3ECDF;
+    --sb-line: rgba(132, 43, 34, .16);
+    --sb-dot: rgba(132, 43, 34, .22);
+    --sb-thread: #842B22;
+    --sb-thread-hover: #9A3329;
+    --sb-thread-press: #611E17;
+    --sb-zari: #F2C230;
+  }
+  :root[data-theme="dark"]:not([data-access="on"]) {
+    --sb-paper: #15100E;
+    --sb-line: rgba(243, 230, 214, .1);
+    --sb-dot: rgba(232, 153, 138, .2);
+    --sb-thread: #A63B2E;
+    --sb-thread-hover: #B9473A;
+    --sb-thread-press: #842B22;
+  }
+  html:not([data-access="on"])::-webkit-scrollbar { width: 14px; height: 14px; }
+  html:not([data-access="on"]) body ::-webkit-scrollbar { width: 9px; height: 9px; }
+  html:not([data-access="on"])::-webkit-scrollbar-track {
+    background:
+      radial-gradient(circle, var(--sb-dot) 1.1px, transparent 1.6px) 50% 3px / 100% 12px repeat-y,
+      linear-gradient(90deg, var(--sb-line) 0 1px, transparent 1px calc(100% - 1px), var(--sb-line) calc(100% - 1px)),
+      var(--sb-paper);
+  }
+  html:not([data-access="on"]) body ::-webkit-scrollbar-track { background: transparent; }
+  html:not([data-access="on"])::-webkit-scrollbar-thumb,
+  html:not([data-access="on"]) body ::-webkit-scrollbar-thumb {
+    border: 3px solid transparent;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle, var(--sb-zari) 1.1px, transparent 1.6px) 50% 5px / 100% 10px repeat-y padding-box,
+      linear-gradient(90deg, transparent calc(50% - .5px), rgba(242, 194, 48, .55) calc(50% - .5px) calc(50% + .5px), transparent calc(50% + .5px)) padding-box,
+      var(--sb-thread) padding-box;
+  }
+  html:not([data-access="on"]) body ::-webkit-scrollbar-thumb { border-width: 2px; background-size: 100% 9px, auto, auto; }
+  html:not([data-access="on"])::-webkit-scrollbar-thumb:hover,
+  html:not([data-access="on"]) body ::-webkit-scrollbar-thumb:hover { background-color: var(--sb-thread-hover); }
+  html:not([data-access="on"])::-webkit-scrollbar-thumb:active,
+  html:not([data-access="on"]) body ::-webkit-scrollbar-thumb:active { background-color: var(--sb-thread-press); }
+  html:not([data-access="on"])::-webkit-scrollbar-corner,
+  html:not([data-access="on"]) body ::-webkit-scrollbar-corner { background: transparent; }
+  html:not([data-access="on"])::-webkit-scrollbar-button { display: none; }
 }

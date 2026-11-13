@@ -1,11 +1,11 @@
 // Sunday Ride: the page glue. Screens, input, the fixed-step loop and the debug flags.
 
-import { createGame, resetGame, step, autopilot, shriLead, STEP, RIDERS, MAX_SPEED } from './sim.js?v=20261112-ride-3';
-import { buildArt, drawSheet, drawPortrait } from './sprites.js?v=20261112-ride-3';
-import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261112-ride-3';
-import { createAudio, auditEngine } from './audio.js?v=20261112-ride-3';
-import { drawText, textWidth } from './font.js?v=20261112-ride-3';
-import { createBoard } from './board.js?v=20261112-ride-6';
+import { createGame, resetGame, step, autopilot, shriLead, STEP, RIDERS, MAX_SPEED } from './sim.js?v=20261113-thar-2';
+import { buildArt, drawSheet, drawPortrait } from './sprites.js?v=20261113-thar-2';
+import { createRenderer, VIEW_W, formatTime, ordinal } from './render.js?v=20261113-thar-2';
+import { createAudio, auditEngine } from './audio.js?v=20261113-thar-2';
+import { drawText, textWidth } from './font.js?v=20261113-thar-2';
+import { createBoard } from './board.js?v=20261113-thar-2';
 
 const BEST = 'portfolio-ride-best', PLATE = 'portfolio-ride-plate';
 // The plate is four characters, A to Z and 0 to 9. It is kept in this browser only.
@@ -143,6 +143,8 @@ function run() {
     const short = !portrait && vh < 520;
     document.body.classList.toggle('is-portrait', portrait);
     document.body.classList.toggle('is-short', short);
+    // A landscape window that is not very tall: the cards switch to their compact layouts so nothing needs a scroll.
+    document.body.classList.toggle('is-low', !portrait && vh < 800);
     document.body.classList.toggle('has-pad', touchUI || vw < 700);
     const h = portrait ? 260 : 200;
     if (renderer.height !== h) renderer.setSize(h);
@@ -257,6 +259,8 @@ function run() {
       case 'count': audio.beep(false); break;
       case 'go': audio.beep(true); renderer.say('GO!', 0.9, 5, 0.28); break;
       case 'horn': audio.horn(); break;
+      case 'tharHorn': audio.tharHorn(e.near, e.long); break;
+      case 'tharSay': live.textContent = "A Thar with the plate F R C S goes by. Its message: Francis' worst nightmare."; break;
       case 'moo': audio.moo(); renderer.note('MOO', 1.2); break;
       case 'bump': audio.bump(); shake = Math.max(shake, 0.18); break;
       case 'scrape': audio.scrape(); shake = Math.max(shake, 0.1); break;
